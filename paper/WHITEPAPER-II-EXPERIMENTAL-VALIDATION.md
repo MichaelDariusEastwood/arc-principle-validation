@@ -101,7 +101,7 @@ The scaling exponent α determines the nature of returns:
 - **α = 1:** Linear returns. Each doubling of R halves error.
 - **α > 1:** Compounding returns. Each doubling of R more than halves error.
 
-![Figure 8: The ARC Equation Visualised](figure_8_equation.png)
+![Figure 8: The ARC Equation Visualised](../figures/figure_8_equation.png)
 
 **Figure 8.** Visual representation of the ARC Principle equation showing how error rate E(R) decreases with recursive depth R according to the scaling exponent α.
 
@@ -186,7 +186,7 @@ The 58.3% baseline accuracy at minimal token budget ensured room for both improv
 
 ### 4.1 Raw Experimental Data
 
-![Figure 1: Raw Experimental Data](figure_1_raw_data.png)
+![Figure 1: Raw Experimental Data](../figures/figure_1_raw_data.png)
 
 **Figure 1.** Raw experimental data showing accuracy (%) versus token count for both sequential and parallel recursion conditions. Sequential recursion (blue) shows monotonic improvement from 58.3% to 91.7%. Parallel recursion (orange) remains flat at 66.7% despite increasing compute.
 
@@ -217,7 +217,7 @@ $$\alpha = \frac{\ln(0.417/0.083)}{\ln(576/280)} = \frac{\ln(5.02)}{\ln(2.06)} =
 
 **Uncertainty estimate:** Given discrete accuracy measurements across 12 problems, estimated 95% confidence interval: [1.5, 3.0].
 
-![Figure 5: Error Reduction Over Recursive Depth](figure_5_error_reduction.png)
+![Figure 5: Error Reduction Over Recursive Depth](../figures/figure_5_error_reduction.png)
 
 **Figure 5.** Error rate reduction as a function of token depth in sequential recursion. The fivefold reduction from 41.7% to 8.3% demonstrates the compounding nature of sequential self-correction.
 
@@ -247,7 +247,7 @@ $$\alpha_{parallel} \approx 0.0$$
 
 ### 4.4 Log-Log Scaling Analysis
 
-![Figure 2: Log-Log Scaling Analysis](figure_2_scaling_loglog.png)
+![Figure 2: Log-Log Scaling Analysis](../figures/figure_2_scaling_loglog.png)
 
 **Figure 2.** Log-log plot of error rate versus recursive depth (tokens). The slope of each line equals the scaling exponent α. Sequential recursion (blue, α ≈ 2.2) shows steep decline. Parallel recursion (orange, α ≈ 0) is flat. The theoretical α = 2 limit is shown for reference.
 
@@ -266,19 +266,19 @@ $$\alpha_{parallel} \approx 0.0$$
 
 **The form of recursion matters more than its quantity.**
 
-![Figure 14: Form vs Amount Comparison](figure_14_form_vs_amount.png)
+![Figure 14: Form vs Amount Comparison](../figures/figure_14_form_vs_amount.png)
 
 **Figure 14.** Direct comparison demonstrating that form matters more than amount. Sequential recursion with 412 tokens dramatically outperforms parallel recursion with 1,101 tokens, establishing that the architecture of recursion is more important than raw compute investment.
 
 ### 4.6 Divergence Between Recursion Types
 
-![Figure 9: Divergence Between Sequential and Parallel](figure_9_divergence.png)
+![Figure 9: Divergence Between Sequential and Parallel](../figures/figure_9_divergence.png)
 
 **Figure 9.** Visualisation of the divergence between sequential and parallel scaling trajectories. As compute increases, the gap widens due to fundamentally different scaling exponents.
 
 ### 4.7 Alpha Comparison
 
-![Figure 4: Alpha Comparison Across Conditions](figure_4_alpha_comparison.png)
+![Figure 4: Alpha Comparison Across Conditions](../figures/figure_4_alpha_comparison.png)
 
 **Figure 4.** Comparison of measured scaling exponents (α) across all experimental conditions. Sequential recursion consistently yields α > 1 (super-linear), while parallel recursion yields α < 1 (sub-linear to zero).
 
@@ -297,7 +297,7 @@ $$\alpha_{parallel} \approx 0.0$$
 | **This experiment** | **Sequential** | **2.2** | **[1.5, 3.0]** | **12** | **New** |
 | **This experiment** | **Parallel** | **0.0** | **N/A** | **12** | **New** |
 
-![Figure 12: Combined Scaling Comparison](figure_12_combined_scaling.png)
+![Figure 12: Combined Scaling Comparison](../figures/figure_12_combined_scaling.png)
 
 **Figure 12.** Combined scaling comparison across all three data sources: OpenAI o1 (parallel), DeepSeek R1 technical report (sequential), and this experiment (both conditions). The separation between sequential and parallel scaling is consistent across independent sources.
 
@@ -309,7 +309,7 @@ $$\alpha_{sequential} > 1 > \alpha_{parallel}$$
 
 The consistency across different models (o1, R1), different methodologies (published reports, controlled experiment), and different measurements (estimated tokens, visible tokens) strengthens confidence in the underlying principle.
 
-![Figure 13: Alpha Summary Statistics](figure_13_alpha_summary.png)
+![Figure 13: Alpha Summary Statistics](../figures/figure_13_alpha_summary.png)
 
 **Figure 13.** Summary of all measured α values with confidence intervals. The critical α = 1 threshold separates sub-linear (diminishing returns) from super-linear (compounding returns) regimes.
 
@@ -324,7 +324,7 @@ The difference between recursion forms is substantial and consistent.
 
 ### 5.4 Sensitivity Analysis
 
-![Figure 3: Sensitivity Analysis](figure_3_sensitivity.png)
+![Figure 3: Sensitivity Analysis](../figures/figure_3_sensitivity.png)
 
 **Figure 3.** Sensitivity analysis showing robustness of the key finding (α > 1 for sequential reasoning) to variations in assumptions. The super-linear scaling conclusion holds across a wide range of plausible parameter values.
 
@@ -352,7 +352,7 @@ The difference between recursion forms is substantial and consistent.
 | RLHF training | Weight modification | Partial | Unknown |
 | **Values-as-reasoning** | **Reasoning primitives** | **Full** | **Super-linear (if α > 1)** |
 
-![Figure 6: Alignment Strategy Taxonomy](figure_6_alignment_taxonomy.png)
+![Figure 6: Alignment Strategy Taxonomy](../figures/figure_6_alignment_taxonomy.png)
 
 **Figure 6.** Visual taxonomy of alignment strategies showing their integration depth and predicted scaling behaviour under the ARC Principle. Only values embedded at the reasoning level participate in recursive amplification.
 
@@ -381,7 +381,7 @@ By analogy to quantum error correction threshold theorems: if initial misalignme
 
 ### 7.1 Summary of Cross-Domain Support
 
-![Figure 7: Cross-Domain Evidence Summary](figure_7_cross_domain.png)
+![Figure 7: Cross-Domain Evidence Summary](../figures/figure_7_cross_domain.png)
 
 **Figure 7.** Summary of cross-domain evidence supporting the ARC Principle. Recursive scaling laws appear across quantum error correction, biological systems, and consciousness research, suggesting a deep mathematical pattern.
 
@@ -515,7 +515,7 @@ If sequential recursion yields α > 1, then alignment must be embedded in the re
 
 ### 11.3 Complete Research Summary
 
-![Figure 15: Complete Research Summary](figure_15_complete_summary.png)
+![Figure 15: Complete Research Summary](../figures/figure_15_complete_summary.png)
 
 **Figure 15.** Complete summary dashboard showing all key findings: experimental data, scaling analysis, α comparisons, and implications. The ARC Principle is supported by converging evidence across multiple independent sources.
 
@@ -535,11 +535,11 @@ The hypothesis is now supported by preliminary experimental evidence. The implic
 
 ### Complete Data Visualisation
 
-![Figure 10: Summary Dashboard](figure_10_summary.png)
+![Figure 10: Summary Dashboard](../figures/figure_10_summary.png)
 
 **Figure 10.** Summary dashboard providing an overview of all experimental findings in a single visualisation.
 
-![Figure 11: Detailed Experimental Data](figure_11_experimental_data.png)
+![Figure 11: Detailed Experimental Data](../figures/figure_11_experimental_data.png)
 
 **Figure 11.** Detailed tabular presentation of all experimental data points, including individual problem results, token counts, and accuracy measurements.
 
