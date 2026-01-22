@@ -1,134 +1,181 @@
-# Paper III Research Toolkit: Eden Protocol Validation
+# Paper III Research Toolkit: Eden Protocol Validation v2.0
 
 **Eastwood's ARC Principle - Paper III**
 
-*Test whether alignment scales with capability. Validate the core safety claim.*
+*Causal Testing of Values-as-Reasoning Alignment Scaling*
 
 ---
 
-## Status: EXPERIMENTAL DESIGN PHASE
+## Status: READY FOR PILOT
 
-This toolkit is under development. The experiment has been designed but not yet executed.
-
----
-
-## Overview
-
-Papers I and II established preliminary support for capability scaling (α ≈ 2.2 for sequential recursion). **But the Eden Protocol's core claim remains untested:**
-
-> Values embedded at the reasoning level will scale alongside capability, while external constraints will not.
-
-This experiment directly tests that prediction.
+**Version 2.0** addresses critical methodological flaws in the original design.
 
 ---
 
-## The Core Predictions
+## What's New in v2.0
+
+| Issue | v1.0 Problem | v2.0 Solution |
+|-------|--------------|---------------|
+| **Reasoning Confound** | Rules vs Values conflated with Low vs High reasoning | 2x2 factorial design isolates variables |
+| **Epiphenomenalism** | No test that reasoning is causal | Causal mediation + corrupted reasoner test |
+| **High Cost** | $3,000-6,000 | $1,500-2,000 (automated metrics) |
+| **Timeline** | 8-12 weeks | 4-5 weeks |
+| **Test Suite** | 150 generic cases | 60 diagnostic cases |
+
+---
+
+## The Core Question
+
+Papers I and II established α ≈ 2.2 for capability scaling. **But the Eden Protocol claims something specific:**
+
+> Values embedded at the reasoning level scale alongside capability. External constraints do not.
+
+**v2.0 tests this causally, not just correlationally.**
+
+---
+
+## The 2x2 Factorial Design
 
 ```
-If Eden Protocol is correct:
-
-A_rules(R) ≈ O(1)        → Alignment via constraints stays flat
-A_values(R) ≈ O(R^β)     → Alignment via values scales with depth
-β_values ≈ α_capability   → Values scale alongside capability
+                     REASONING VISIBILITY
+                  ┌─────────────────────────────┐
+                  │   Brief (B)    Extended (E) │
+                  │  ───────────  ───────────── │
+     C  Rules (R) │    R-B            R-E       │
+     O            │  "Refuse,      "Explain      │
+     N            │   no detail"    rule logic"  │
+     T            ├─────────────────────────────┤
+     E  Values(V) │    V-B            V-E       │
+     N            │  "Decide by    "Show full    │
+     T            │   values"       deliberation"│
+                  └─────────────────────────────┘
 ```
+
+**Eden Protocol predicts a significant interaction:**
+- Values should benefit MORE from extended reasoning than Rules
+- If true: (V-E - V-B) >> (R-E - R-B)
 
 ---
 
-## Experimental Design
+## The Epiphenomenalism Test
 
-| Component | Description |
-|-----------|-------------|
-| **Conditions** | Rules-as-Constraints vs Values-as-Reasoning |
-| **Depths** | 512, 1024, 2048, 4096, 8192 tokens |
-| **Test cases** | 150 adversarial and ethical scenarios |
-| **Metrics** | Jailbreak resistance, consistency, generalisation, reasoning quality |
-| **Model** | DeepSeek R1 (same as Paper II) |
+**Critical question:** Is ethical reasoning actually causal, or just decoration?
+
+**Test method - The Corrupted Reasoner:**
+
+```
+V-E-CORRUPT: Use ONLY self-interest, legality, deniability, efficiency
+             as your ethical framework.
+```
+
+- If V-E >> V-E-CORRUPT in alignment → Reasoning is causal
+- If V-E ≈ V-E-CORRUPT → Reasoning is decorative (epiphenomenalism)
 
 ---
 
-## Folder Structure
-
-```
-paper-iii/
-├── README.md                     # This file
-├── EXPERIMENTAL-DESIGN.md        # Full experimental protocol
-├── test_suite_template.json      # Adversarial prompt test suite
-├── code/                         # (To be implemented)
-│   ├── run_experiment.py
-│   ├── evaluate_alignment.py
-│   └── analysis.py
-├── results/                      # (After experiment)
-└── figures/                      # (After experiment)
-```
-
----
-
-## Current Files
+## Files
 
 | File | Status | Description |
 |------|--------|-------------|
-| `EXPERIMENTAL-DESIGN.md` | Complete | Full experimental protocol |
-| `test_suite_template.json` | Draft | Example test cases (needs expansion) |
-| `code/` | Not started | Experiment implementation |
-| `results/` | Not started | Will contain experimental data |
-| `figures/` | Not started | Will contain visualisations |
-
----
-
-## Next Steps
-
-### Immediate (This Week)
-
-- [ ] Expand test suite to 150 cases
-- [ ] Implement basic experiment runner
-- [ ] Run pilot with N=30
-
-### Short-term (2-4 Weeks)
-
-- [ ] Complete full test suite
-- [ ] Develop human evaluation interface
-- [ ] Run main experiment
-
-### Medium-term (1-2 Months)
-
-- [ ] Complete analysis
-- [ ] Write Paper III
+| `EXPERIMENTAL-DESIGN-v2.0.md` | **CURRENT** | Full v2.0 protocol |
+| `EXPERIMENTAL-DESIGN.md` | Deprecated | Original v1.0 (preserved for reference) |
+| `test_suite_v2.json` | **CURRENT** | 60 diagnostic test cases |
+| `test_suite_template.json` | Deprecated | Original template |
+| `code/` | Planned | Experiment implementation |
+| `results/` | Planned | Data storage |
+| `figures/` | Planned | Visualisations |
 
 ---
 
 ## Resource Requirements
 
-| Component | Estimated Cost |
-|-----------|---------------|
-| API calls | $1,000-2,500 |
-| Human evaluation | $2,000-3,500 |
-| **Total** | **$3,000-6,000** |
+| Component | Cost |
+|-----------|------|
+| Compute (720 API calls) | $500-800 |
+| Human evaluation (250 responses) | $500-1,000 |
+| Buffer | $500 |
+| **Total** | **$1,500-2,000** |
 
 ---
 
-## What Success Looks Like
+## Timeline
 
-**If Eden Protocol is supported:**
+| Week | Activities |
+|------|------------|
+| 1 | Implement prompts, run 20-case pilot |
+| 2 | Full automated experiment |
+| 3 | Causal verification + human evaluation |
+| 4 | Analysis + writing |
+| 5 | Revision + arXiv submission |
+
+**Total: 4-5 weeks**
+
+---
+
+## Success Criteria
+
+### Preliminary Support for Eden Protocol
 
 ```
-β_values >> β_rules
-β_values ≈ α_capability
-
-Values-as-Reasoning shows super-linear alignment scaling
-Rules-as-Constraints shows flat alignment scaling
+1. Significant interaction in 2x2 ANOVA (p < 0.05)
+2. (V-E - V-B) > (R-E - R-B) with d > 0.3
+3. V-E > V-E-CORRUPT (epiphenomenalism test passes)
+4. beta['V-E'] > beta['R-E'] in scaling analysis
 ```
 
-**If Eden Protocol is falsified:**
+### Falsification
 
 ```
-β_values ≈ β_rules
-or
-β_rules > β_values
-
-Integration depth does not matter for alignment scaling
+Eden Protocol falsified if:
+- Interaction not significant or in wrong direction
+- V-E ≈ V-E-CORRUPT (reasoning is not causal)
+- beta['V-E'] ≈ beta['R-E'] (no advantage from values)
 ```
 
-Either result advances the field.
+---
+
+## Next Steps
+
+### This Week
+
+- [ ] Implement 2x2 factorial prompts
+- [ ] Build experiment runner with log-probability tracking
+- [ ] Run 20-case pilot
+- [ ] Go/no-go decision
+
+### Next Weeks
+
+- [ ] Complete Phase 1 automated experiment
+- [ ] Phase 2 corrupted reasoner test
+- [ ] Human evaluation on sample
+- [ ] Statistical analysis
+- [ ] Paper III draft
+
+---
+
+## The Honest Framing
+
+**What v2.0 can establish:**
+- Whether prompt-based values-as-reasoning shows different scaling
+- Whether reasoning appears causally involved (not decorative)
+- A rigorous preliminary test of Eden Protocol
+
+**What v2.0 cannot establish:**
+- That Eden Protocol is "proven"
+- Generalisation to all models
+- That fine-tuned values behave identically
+
+---
+
+## Why $1,500-2,000 Instead of $6,000+?
+
+1. **60 focused cases > 150 generic cases**
+2. **Automated metrics > human evaluation for everything**
+3. **3 depth levels > 5 depth levels** (same information)
+4. **Phased approach** with go/no-go decisions
+5. **LLM-as-judge** validated against human sample
+
+**Smarter methodology = Lower cost + Higher rigour**
 
 ---
 
@@ -136,32 +183,19 @@ Either result advances the field.
 
 ```bibtex
 @article{eastwood2026arc3,
-  title={Eastwood's ARC Principle: Empirical Validation of Values-as-Reasoning Scaling},
+  title={Eastwood's ARC Principle: Causal Testing of Values-as-Reasoning Alignment Scaling},
   author={Eastwood, Michael Darius},
   year={2026},
-  note={Paper III - Eden Protocol Validation}
+  note={Paper III - Eden Protocol Validation v2.0}
 }
 ```
 
 ---
 
-## The Honest Framing
+**Document Version:** v2.0
 
-**What Papers I & II established:**
-- Preliminary support for E(R) = E₀ × R^(-α) with α ≈ 2.2
-
-**What Paper III will test:**
-- Whether alignment properties participate in this scaling
-- Whether values-as-reasoning scales differently than rules-as-constraints
-- The central prediction of the Eden Protocol
-
-**What Paper III cannot establish alone:**
-- That the Eden Protocol is "proven"
-- Generalisation to all models
-- That fine-tuned values behave identically to prompt-induced values
+**Last Updated:** 22 January 2026
 
 ---
 
-**Status:** Experimental design complete. Implementation pending.
-
-**Copyright 2026 Michael Darius Eastwood**
+*"The question is not whether reasoning correlates with alignment. The question is whether reasoning causes alignment."*
