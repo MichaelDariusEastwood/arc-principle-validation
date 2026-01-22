@@ -23,7 +23,7 @@ This toolkit analyses publicly available data from OpenAI o1 and DeepSeek R1 tec
 ```bash
 cd paper-i
 pip install -r requirements.txt
-python arc_principle_research_toolkit.py
+python code/arc_principle_research_toolkit.py
 ```
 
 ---
@@ -38,10 +38,29 @@ python arc_principle_research_toolkit.py
 
 ---
 
+## Folder Structure
+
+```
+paper-i/
+├── README.md               # This file
+├── requirements.txt        # Python dependencies
+├── LICENCE                 # MIT Licence
+├── code/
+│   └── arc_principle_research_toolkit.py
+├── results/
+│   └── arc_principle_results.json
+└── figures/
+    ├── arc_scaling_comparison.png
+    ├── arc_sensitivity_analysis.png
+    └── arc_falsification_regions.png
+```
+
+---
+
 ## Key Functions
 
 ```python
-from arc_principle_research_toolkit import calculate_alpha_two_points
+from code.arc_principle_research_toolkit import calculate_alpha_two_points
 
 alpha = calculate_alpha_two_points(
     R1=12000,   # Recursive depth point 1
@@ -54,17 +73,15 @@ print(f"alpha = {alpha:.3f}")  # alpha = 1.35
 
 ---
 
-## Files
+## Output Files
 
-| File | Description |
-|------|-------------|
-| `arc_principle_research_toolkit.py` | Main analysis script |
-| `arc_principle_results.json` | Pre-computed results |
-| `arc_scaling_comparison.png` | Parallel vs Sequential comparison |
-| `arc_sensitivity_analysis.png` | Alpha sensitivity to assumptions |
-| `arc_falsification_regions.png` | Falsification criteria visualisation |
-| `requirements.txt` | Python dependencies |
-| `LICENCE` | MIT Licence |
+| File | Location | Description |
+|------|----------|-------------|
+| `arc_principle_research_toolkit.py` | `code/` | Main analysis script |
+| `arc_principle_results.json` | `results/` | Pre-computed results |
+| `arc_scaling_comparison.png` | `figures/` | Parallel vs Sequential comparison |
+| `arc_sensitivity_analysis.png` | `figures/` | Alpha sensitivity to assumptions |
+| `arc_falsification_regions.png` | `figures/` | Falsification criteria visualisation |
 
 ---
 

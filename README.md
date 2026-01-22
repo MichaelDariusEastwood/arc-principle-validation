@@ -29,42 +29,37 @@ This repository contains the complete experimental code, raw data, figures, and 
 
 ```
 arc-principle-validation/
-├── README.md                 # You are here
-├── LICENCE                   # MIT Licence
-├── requirements.txt          # Python dependencies
+├── README.md                       # You are here
+├── LICENCE                         # MIT Licence
 │
-├── paper/                    # Published papers
+├── paper/                          # Published PDFs
 │   ├── EASTWOOD-ARC-PRINCIPLE-PAPER-I-v1.1.pdf
 │   └── EASTWOOD-ARC-PRINCIPLE-PAPER-II-v11.pdf
 │
-├── code/                     # Experiment scripts (legacy location)
-│   └── arc_validation_deepseek.py
-│
-├── data/                     # Raw experimental data (legacy location)
-│   └── arc_deepseek_results_20260121_175028.json
-│
-├── figures/                  # Publication figures (legacy location)
-│   └── figure_1_raw_data.png ... figure_15_complete_summary.png
-│
-└── research-toolkits/        # REPLICATION TOOLKITS
-    ├── README.md             # Toolkit overview
-    ├── paper-i/              # Paper I toolkit
-    │   ├── README.md
-    │   ├── arc_principle_research_toolkit.py
-    │   ├── arc_principle_results.json
-    │   ├── arc_scaling_comparison.png
-    │   ├── arc_sensitivity_analysis.png
-    │   ├── arc_falsification_regions.png
-    │   ├── requirements.txt
-    │   └── LICENCE
+└── research-toolkits/              # REPLICATION TOOLKITS
+    ├── README.md
     │
-    └── paper-ii/             # Paper II toolkit
+    ├── paper-i/                    # Paper I: Preliminary Evidence
+    │   ├── README.md
+    │   ├── requirements.txt
+    │   ├── LICENCE
+    │   ├── code/
+    │   │   └── arc_principle_research_toolkit.py
+    │   ├── results/
+    │   │   └── arc_principle_results.json
+    │   └── figures/
+    │       └── *.png (3 visualisations)
+    │
+    └── paper-ii/                   # Paper II: Experimental Validation
         ├── README.md
-        ├── arc_validation_deepseek.py
-        ├── arc_deepseek_results_20260121_175028.json
-        ├── figure_1_raw_data.png ... (15 figures)
         ├── requirements.txt
-        └── LICENCE
+        ├── LICENCE
+        ├── code/
+        │   └── arc_validation_deepseek.py
+        ├── results/
+        │   └── arc_deepseek_results_*.json
+        └── figures/
+            └── *.png (15 figures)
 ```
 
 ## Quick Start
@@ -74,7 +69,7 @@ arc-principle-validation/
 ```bash
 cd research-toolkits/paper-i
 pip install -r requirements.txt
-python arc_principle_research_toolkit.py
+python code/arc_principle_research_toolkit.py
 ```
 
 ### Paper II Toolkit (Direct Experiment)
@@ -83,7 +78,7 @@ python arc_principle_research_toolkit.py
 cd research-toolkits/paper-ii
 pip install -r requirements.txt
 export DEEPSEEK_API_KEY="your-deepseek-api-key"
-python arc_validation_deepseek.py
+python code/arc_validation_deepseek.py
 ```
 
 ## The ARC Principle
@@ -111,15 +106,6 @@ Where:
 | Paper II | Parallel | **0.0** | Direct experiment |
 
 **Confirmed:** alpha_sequential > 1 > alpha_parallel
-
-## Replication
-
-Paper II experiment used:
-- **Model:** DeepSeek R1 (deepseek-reasoner)
-- **API:** DeepSeek API with visible reasoning tokens
-- **Problems:** 12 AIME-level mathematics problems
-- **Sequential budgets:** 512, 1024, 2048, 4096 tokens
-- **Parallel samples:** N = 1, 2, 4
 
 ## Citation
 

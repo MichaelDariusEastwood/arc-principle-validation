@@ -24,7 +24,7 @@ This toolkit runs controlled experiments using DeepSeek R1 API with visible reas
 cd paper-ii
 pip install -r requirements.txt
 export DEEPSEEK_API_KEY="your-api-key"
-python arc_validation_deepseek.py
+python code/arc_validation_deepseek.py
 ```
 
 **Note:** Requires a DeepSeek API key from [platform.deepseek.com](https://platform.deepseek.com)
@@ -38,6 +38,26 @@ python arc_validation_deepseek.py
 - Directly measures reasoning token counts
 - Calculates alpha = 2.2 (sequential) vs alpha = 0.0 (parallel)
 - Generates 15 publication-quality figures
+
+---
+
+## Folder Structure
+
+```
+paper-ii/
+├── README.md               # This file
+├── requirements.txt        # Python dependencies
+├── LICENCE                 # MIT Licence
+├── code/
+│   └── arc_validation_deepseek.py
+├── results/
+│   └── arc_deepseek_results_20260121_175028.json
+└── figures/
+    ├── figure_1_raw_data.png
+    ├── figure_2_scaling_loglog.png
+    ├── ... (13 more figures)
+    └── figure_15_complete_summary.png
+```
 
 ---
 
@@ -66,24 +86,18 @@ python arc_validation_deepseek.py
 
 ---
 
-## Files
+## Output Files
 
-| File | Description |
-|------|-------------|
-| `arc_validation_deepseek.py` | Main experiment script |
-| `arc_deepseek_results_20260121_175028.json` | Raw experimental data |
-| `figure_1_raw_data.png` | Raw accuracy data |
-| `figure_2_scaling_loglog.png` | Log-log scaling plot |
-| `figure_4_alpha_comparison.png` | Alpha value comparison |
-| `figure_5_error_reduction.png` | Error reduction visualisation |
-| `figure_10_summary.png` | Summary dashboard |
-| `figure_12_combined_scaling.png` | Combined scaling comparison |
-| `figure_13_alpha_summary.png` | Alpha summary across sources |
-| `figure_14_form_vs_amount.png` | Form vs amount comparison |
-| `figure_15_complete_summary.png` | Complete research summary |
-| *(and more...)* | All 15 figures included |
-| `requirements.txt` | Python dependencies |
-| `LICENCE` | MIT Licence |
+| File | Location | Description |
+|------|----------|-------------|
+| `arc_validation_deepseek.py` | `code/` | Main experiment script |
+| `arc_deepseek_results_*.json` | `results/` | Raw experimental data |
+| `figure_1_raw_data.png` | `figures/` | Raw accuracy data |
+| `figure_2_scaling_loglog.png` | `figures/` | Log-log scaling plot |
+| `figure_4_alpha_comparison.png` | `figures/` | Alpha value comparison |
+| `figure_10_summary.png` | `figures/` | Summary dashboard |
+| `figure_15_complete_summary.png` | `figures/` | Complete research summary |
+| *(and 10 more figures)* | `figures/` | All 15 figures included |
 
 ---
 
@@ -105,8 +119,8 @@ E(R) = E_0 x R^(-alpha)
 
 1. **Get API key:** Sign up at platform.deepseek.com
 2. **Set environment variable:** `export DEEPSEEK_API_KEY="your-key"`
-3. **Run experiment:** `python arc_validation_deepseek.py`
-4. **Compare results:** Check output against `arc_deepseek_results_20260121_175028.json`
+3. **Run experiment:** `python code/arc_validation_deepseek.py`
+4. **Compare results:** Check output against `results/arc_deepseek_results_*.json`
 
 **Note:** API costs approximately $2-5 for full replication.
 
