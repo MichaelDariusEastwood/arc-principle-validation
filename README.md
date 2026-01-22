@@ -28,7 +28,7 @@ This repository contains the complete experimental code, raw data, and figures f
 ## Repository Structure
 
 ```
-arc-principle-validation/
+eastwoods-arc-principle/
 ├── README.md                 ← You are here
 ├── code/
 │   └── arc_validation_deepseek.py    ← Complete experiment script
