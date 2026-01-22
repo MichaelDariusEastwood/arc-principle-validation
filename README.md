@@ -6,19 +6,19 @@
 
 ## Overview
 
-This repository contains the complete experimental code, raw data, and figures for validating the ARC Principle (Artificial Recursive Creation).
+This repository contains the complete experimental code, raw data, figures, and research toolkits for validating the ARC Principle (Artificial Recursive Creation).
 
-**Paper:** Eastwood's ARC Principle: Experimental Validation of Super-Linear Error Suppression Through Sequential Recursive Processing
+**Papers:**
+- **Paper I:** Preliminary Evidence for Super-Linear Capability Amplification (17 January 2026)
+- **Paper II:** Experimental Validation of Super-Linear Error Suppression (22 January 2026)
 
 **Author:** Michael Darius Eastwood
 
-**Date:** 22 January 2026
-
 ## Key Findings
 
-| Condition | Accuracy | Error Rate | Tokens | α (scaling exponent) |
-|-----------|----------|------------|--------|---------------------|
-| Sequential (best) | 91.7% | 0.083 | 412 | **2.24** |
+| Condition | Accuracy | Error Rate | Tokens | alpha |
+|-----------|----------|------------|--------|-------|
+| Sequential (best) | 91.7% | 0.083 | 412 | **2.2** |
 | Parallel (best) | 66.7% | 0.333 | 1,101 | **0.0** |
 
 **Core result:** Sequential recursion with 412 tokens outperformed parallel recursion with 1,101 tokens by 25 percentage points.
@@ -29,40 +29,60 @@ This repository contains the complete experimental code, raw data, and figures f
 
 ```
 arc-principle-validation/
-├── README.md                 ← You are here
-├── code/
-│   └── arc_validation_deepseek.py    ← Complete experiment script
-├── data/
-│   └── arc_deepseek_results_20260121_175028.json    ← Raw experimental data
-├── figures/
-│   ├── figure_1_raw_data.png
-│   ├── figure_2_scaling_loglog.png
-│   ├── ... (15 figures total)
-│   └── figure_15_complete_summary.png
-└── paper/
-    ├── WHITEPAPER-I-PRELIMINARY-EVIDENCE.pdf       ← Paper I (17 Jan 2026)
-    ├── WHITEPAPER-II-EXPERIMENTAL-VALIDATION.md    ← Paper II source
-    └── WHITEPAPER-II-EXPERIMENTAL-VALIDATION.pdf   ← Paper II (22 Jan 2026)
+├── README.md                 # You are here
+├── LICENCE                   # MIT Licence
+├── requirements.txt          # Python dependencies
+│
+├── paper/                    # Published papers
+│   ├── EASTWOOD-ARC-PRINCIPLE-PAPER-I-v1.1.pdf
+│   └── EASTWOOD-ARC-PRINCIPLE-PAPER-II-v11.pdf
+│
+├── code/                     # Experiment scripts (legacy location)
+│   └── arc_validation_deepseek.py
+│
+├── data/                     # Raw experimental data (legacy location)
+│   └── arc_deepseek_results_20260121_175028.json
+│
+├── figures/                  # Publication figures (legacy location)
+│   └── figure_1_raw_data.png ... figure_15_complete_summary.png
+│
+└── research-toolkits/        # REPLICATION TOOLKITS
+    ├── README.md             # Toolkit overview
+    ├── paper-i/              # Paper I toolkit
+    │   ├── README.md
+    │   ├── arc_principle_research_toolkit.py
+    │   ├── arc_principle_results.json
+    │   ├── arc_scaling_comparison.png
+    │   ├── arc_sensitivity_analysis.png
+    │   ├── arc_falsification_regions.png
+    │   ├── requirements.txt
+    │   └── LICENCE
+    │
+    └── paper-ii/             # Paper II toolkit
+        ├── README.md
+        ├── arc_validation_deepseek.py
+        ├── arc_deepseek_results_20260121_175028.json
+        ├── figure_1_raw_data.png ... (15 figures)
+        ├── requirements.txt
+        └── LICENCE
 ```
 
 ## Quick Start
 
-### Prerequisites
+### Paper I Toolkit (Published Data Analysis)
 
 ```bash
-pip install openai numpy scipy matplotlib pandas
+cd research-toolkits/paper-i
+pip install -r requirements.txt
+python arc_principle_research_toolkit.py
 ```
 
-### Set API Key
+### Paper II Toolkit (Direct Experiment)
 
 ```bash
+cd research-toolkits/paper-ii
+pip install -r requirements.txt
 export DEEPSEEK_API_KEY="your-deepseek-api-key"
-```
-
-### Run Experiment
-
-```bash
-cd code
 python arc_validation_deepseek.py
 ```
 
@@ -70,20 +90,31 @@ python arc_validation_deepseek.py
 
 **Equation:**
 ```
-E(R) = E₀ × R^(−α)
+E(R) = E_0 x R^(-alpha)
 ```
 
 Where:
 - E(R) = Error rate at recursive depth R
-- E₀ = Baseline error rate
+- E_0 = Baseline error rate
 - R = Recursive depth (tokens or samples)
-- α = Scaling exponent
+- alpha = Scaling exponent
 
-**Core prediction:** α_sequential > 1 > α_parallel
+**Core prediction:** alpha_sequential > 1 > alpha_parallel
+
+## Summary of Results
+
+| Source | Recursion Type | alpha | Method |
+|--------|----------------|-------|--------|
+| Paper I | Parallel (o1) | 0.1-0.3 | Published data analysis |
+| Paper I | Sequential (R1) | ~1.34 | Published data analysis |
+| Paper II | Sequential | **2.2** | Direct experiment |
+| Paper II | Parallel | **0.0** | Direct experiment |
+
+**Confirmed:** alpha_sequential > 1 > alpha_parallel
 
 ## Replication
 
-This experiment used:
+Paper II experiment used:
 - **Model:** DeepSeek R1 (deepseek-reasoner)
 - **API:** DeepSeek API with visible reasoning tokens
 - **Problems:** 12 AIME-level mathematics problems
@@ -93,18 +124,22 @@ This experiment used:
 ## Citation
 
 ```bibtex
-@article{eastwood2026arc,
+@article{eastwood2026arc1,
+  title={Eastwood's ARC Principle: Preliminary Evidence for Super-Linear Capability Amplification Through Sequential Self-Reference},
+  author={Eastwood, Michael Darius},
+  year={2026},
+  note={Paper I}
+}
+
+@article{eastwood2026arc2,
   title={Eastwood's ARC Principle: Experimental Validation of Super-Linear Error Suppression Through Sequential Recursive Processing},
   author={Eastwood, Michael Darius},
   year={2026},
-  month={January},
-  note={Paper II in the ARC Principle series}
+  note={Paper II}
 }
 ```
 
 ## Related Work
-
-- **Paper I:** Eastwood, M.D. (2026). Eastwood's ARC Principle: Preliminary Evidence for Super-Linear Capability Amplification Through Sequential Self-Reference. Published 17 January 2026.
 
 - **Book:** Eastwood, M.D. (2026). *Infinite Architects: Intelligence, Recursion, and the Creation of Everything*. ISBN: 978-1806056200.
 
@@ -122,4 +157,4 @@ If you find evidence that contradicts the ARC Principle, please open an issue or
 
 **Priority Established:** 8 December 2024 (DKIM-verified manuscript submission)
 
-**Copyright © 2026 Michael Darius Eastwood**
+**Copyright 2026 Michael Darius Eastwood**
