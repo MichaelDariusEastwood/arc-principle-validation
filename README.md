@@ -40,8 +40,9 @@ arc-principle-validation/
 │   ├── ... (15 figures total)
 │   └── figure_15_complete_summary.png
 └── paper/
-    ├── EASTWOOD-ARC-PRINCIPLE-PAPER-II-FINAL.md
-    └── EASTWOOD-ARC-PRINCIPLE-PAPER-II-FINAL.pdf
+    ├── WHITEPAPER-I-PRELIMINARY-EVIDENCE.pdf       ← Paper I (17 Jan 2026)
+    ├── WHITEPAPER-II-EXPERIMENTAL-VALIDATION.md    ← Paper II source
+    └── WHITEPAPER-II-EXPERIMENTAL-VALIDATION.pdf   ← Paper II (22 Jan 2026)
 ```
 
 ## Quick Start
