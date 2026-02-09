@@ -11,6 +11,7 @@ This repository contains the complete experimental code, raw data, figures, and 
 **Papers:**
 - **Paper I:** Preliminary Evidence for Super-Linear Capability Amplification (17 January 2026)
 - **Paper II:** Experimental Validation of Super-Linear Error Suppression (22 January 2026)
+- **Paper III:** Cross-Domain Unification Across AI, Quantum Computing, and Physics (9 February 2026) **← NEW**
 
 **Author:** Michael Darius Eastwood
 
@@ -31,10 +32,14 @@ This repository contains the complete experimental code, raw data, figures, and 
 arc-principle-validation/
 ├── README.md                       # You are here
 ├── LICENCE                         # MIT Licence
+├── OSF-PAPER-III-UPLOAD.md         # OSF upload guide for Paper III
 │
-├── paper/                          # Published PDFs
+├── paper/                          # Published Papers
 │   ├── EASTWOOD-ARC-PRINCIPLE-PAPER-I-v1.1.pdf
-│   └── EASTWOOD-ARC-PRINCIPLE-PAPER-II-v11.pdf
+│   ├── EASTWOOD-ARC-PRINCIPLE-PAPER-II-v11.pdf
+│   ├── EASTWOOD-ARC-PRINCIPLE-PAPER-III-v6.1.pdf   ← NEW
+│   ├── EASTWOOD-ARC-PRINCIPLE-PAPER-III-v6.1.html  ← NEW
+│   └── figures/                    # Paper III figures (10 PNGs)
 │
 └── research-toolkits/              # REPLICATION TOOLKITS
     ├── README.md
@@ -107,6 +112,23 @@ Where:
 
 **Confirmed:** alpha_sequential > 1 > alpha_parallel
 
+## Paper III: Cross-Domain Unification (NEW)
+
+Paper III synthesises convergent evidence from **four independent research programmes** that discovered the same structural pattern:
+
+| Domain | System | Key Finding |
+|--------|--------|-------------|
+| AI | DeepSeek R1 | Sequential α ≈ 1.3-2.2, parallel α ≈ 0 |
+| Quantum | Google Willow | Exponential error suppression (Λ = 2.14) |
+| Physics | NYU Time Crystals | Frozen disorder + feedback = temporal order |
+| Neuroscience | COGITATE | Recurrent processing required for consciousness |
+
+**Core Equation:** U = I × R^α (Capability = Base Potential × Recursive Depth^α)
+
+**Key Innovation:** Derives α from first principles as α = 1/(1-β), transforming it from a fitted constant into a testable prediction.
+
+**Falsification:** Specifies 10 explicit ways to prove the framework wrong.
+
 ## Citation
 
 ```bibtex
@@ -122,6 +144,15 @@ Where:
   author={Eastwood, Michael Darius},
   year={2026},
   note={Paper II}
+}
+
+@article{eastwood2026arc3,
+  title={Eastwood's ARC Principle: Cross-Domain Unification of Recursive Amplification Across AI, Quantum Computing, and Physics},
+  author={Eastwood, Michael Darius},
+  year={2026},
+  month={February},
+  day={9},
+  note={Paper III, Version 6.1}
 }
 ```
 
