@@ -129,6 +129,8 @@ Paper III synthesises convergent evidence from **four independent research progr
 
 **Falsification:** Specifies 10 explicit ways to prove the framework wrong.
 
+**Testing Tools:** See [ARC Scaling Challenge](https://github.com/michaeldariuseastwood/arc-scaling-challenge) for standardised measurement protocols.
+
 ## Citation
 
 ```bibtex
@@ -156,9 +158,18 @@ Paper III synthesises convergent evidence from **four independent research progr
 }
 ```
 
-## Related Work
+## Related Resources
 
+- **ARC Scaling Challenge:** [github.com/michaeldariuseastwood/arc-scaling-challenge](https://github.com/michaeldariuseastwood/arc-scaling-challenge) - Standardised measurement protocols and analysis tools for testing the ARC Principle across domains
 - **Book:** Eastwood, M.D. (2026). *Infinite Architects: Intelligence, Recursion, and the Creation of Everything*. ISBN: 978-1806056200.
+
+## OSF DOIs
+
+| Paper | DOI |
+|-------|-----|
+| Paper I | [10.17605/OSF.IO/6C5XB](https://doi.org/10.17605/OSF.IO/6C5XB) |
+| Paper II | [10.17605/OSF.IO/8FJMA](https://doi.org/10.17605/OSF.IO/8FJMA) |
+| Paper III | [10.17605/OSF.IO/HQCGF](https://doi.org/10.17605/OSF.IO/HQCGF) |
 
 ## Licence
 
