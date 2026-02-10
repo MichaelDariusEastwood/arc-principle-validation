@@ -433,73 +433,191 @@
         }
 
         /* Print styles */
+        @page {
+            size: A4;
+            margin: 1.5cm 1.8cm 2cm 1.8cm;
+        }
+
         @media print {
+            html {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
             body {
                 max-width: none;
-                padding: 0.75cm;
+                padding: 0;
+                margin: 0;
                 font-size: 9.5pt;
+                line-height: 1.5;
             }
 
-            h2, h3, h4 {
-                page-break-after: avoid;
-                break-after: avoid;
-                orphans: 3;
-                widows: 3;
+            /* Compact header for print */
+            header {
+                border-bottom-width: 2px;
+                padding-bottom: 0.8em;
+                margin-bottom: 0.8em;
+            }
+
+            header h1 {
+                font-size: 1.6rem;
+                margin-bottom: 0.3em;
+            }
+
+            header .paper-type {
+                font-size: 0.65rem;
+                margin-bottom: 0.3em;
+            }
+
+            header .subtitle {
+                font-size: 1rem;
                 margin-bottom: 0.4em;
-                margin-top: 0.8em;
             }
 
+            header .tagline {
+                font-size: 0.8rem;
+                margin-bottom: 0.6em;
+            }
+
+            header .author-info {
+                font-size: 0.8rem;
+            }
+
+            header .version-date {
+                font-size: 0.7rem;
+                margin-top: 0.3em;
+            }
+
+            /* Core claim - compact */
+            .core-claim {
+                padding: 0.8em 1em;
+                margin: 0.8em 0;
+                font-size: 0.95em;
+            }
+
+            .core-claim strong {
+                font-size: 0.8rem;
+                margin-bottom: 0.3em;
+            }
+
+            /* Headings - MUST stay with following content */
+            h2 {
+                font-size: 1.2rem;
+                margin-top: 1.2em;
+                margin-bottom: 0.5em;
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+
+            h3 {
+                font-size: 1rem;
+                margin-top: 1em;
+                margin-bottom: 0.4em;
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+
+            h4 {
+                font-size: 0.9rem;
+                margin-top: 0.8em;
+                margin-bottom: 0.3em;
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+
+            /* Content after headings must not break before */
             h2 + *, h3 + *, h4 + * {
-                page-break-before: avoid;
-                break-before: avoid;
+                page-break-before: avoid !important;
+                break-before: avoid !important;
+            }
+
+            /* Second element after heading also avoid break */
+            h2 + * + *, h3 + * + *, h4 + * + * {
+                page-break-before: avoid !important;
+                break-before: avoid !important;
             }
 
             p {
                 orphans: 3;
                 widows: 3;
-                margin-bottom: 0.4em;
+                margin-bottom: 0.5em;
             }
 
-            /* Keep tables with their context */
+            /* Tables - allow breaking but keep header with first row */
             table {
-                page-break-inside: avoid;
-                break-inside: avoid;
-                page-break-before: auto;
-                margin-top: 0.4em;
-                margin-bottom: 0.4em;
+                margin-top: 0.5em;
+                margin-bottom: 0.5em;
+                font-size: 8.5pt;
             }
 
-            /* Reduce table font for better fit */
+            thead {
+                display: table-header-group;
+            }
+
             table th, table td {
-                font-size: 8.5pt;
                 padding: 3px 5px;
             }
 
-            .equation-box, .core-claim, .key-findings, .caveat, .important {
+            /* Keep table rows together */
+            tr {
                 page-break-inside: avoid;
                 break-inside: avoid;
+            }
+
+            /* Small boxes - only avoid breaks if they're small */
+            .equation-box {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                padding: 0.6em;
                 margin: 0.5em 0;
             }
 
-            ul, ol {
-                page-break-inside: avoid;
-                break-inside: avoid;
-                margin: 0.4em 0;
+            .equation-box .equation {
+                font-size: 1.1em;
             }
 
-            /* Figures with proper breathing room */
+            .key-findings {
+                padding: 0.8em;
+                margin: 0.5em 0;
+                /* Allow breaking if needed */
+            }
+
+            .caveat, .important {
+                margin: 0.5em 0;
+                padding: 0.6em;
+                /* Allow breaking if needed */
+            }
+
+            /* Lists - allow breaking */
+            ul, ol {
+                margin: 0.4em 0 0.4em 1.2em;
+            }
+
+            li {
+                margin-bottom: 0.3em;
+            }
+
+            /* Abstract - allow breaking */
+            .abstract {
+                padding: 1em;
+                margin: 0.8em 0;
+            }
+
+            .abstract h2 {
+                margin-top: 0;
+                margin-bottom: 0.6em;
+            }
+
+            /* Figures - larger and clearer */
             figure {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-                page-break-before: auto;
-                page-break-after: auto;
-                margin: 1.4em 0;
+                page-break-inside: avoid;
+                break-inside: avoid;
+                margin: 1.2em 0;
                 padding: 0.3em 0;
-                display: block;
             }
 
             figure img {
-                max-height: 260px;
+                max-height: 520px;
                 width: auto;
                 max-width: 100%;
                 display: block;
@@ -510,20 +628,27 @@
             }
 
             figcaption {
-                font-size: 8pt;
+                font-size: 8.5pt;
                 margin-top: 0.8em;
                 padding: 0 0.5em;
-                line-height: 1.4;
+                line-height: 1.45;
             }
 
-            /* Reduce equation box size */
-            .equation-box {
-                padding: 0.8em;
-                margin: 0.5em 0;
+            /* Hide screen-only elements */
+            .no-print {
+                display: none !important;
             }
 
-            .equation-box .equation {
-                font-size: 1.1em;
+            /* Footer styling for print */
+            footer {
+                margin-top: 1.5em;
+                padding-top: 0.8em;
+                border-top-width: 2px;
+                font-size: 8pt;
+            }
+
+            footer p {
+                margin-bottom: 0.3em;
             }
         }
 
@@ -1142,7 +1267,7 @@ When beads are uniform &rarr; "strange effects vanish" (no crystal forms)</p>
 <strong>CAVEAT:</strong> Kleiber's 3/4 exponent is contested (Glazier 2005). Some analyses find variable exponents across taxa. The biological evidence is <strong>suggestive of recursive architecture</strong> but is not confirmatory for the ARC Principle. We include it as a domain where the framework's predictions could be tested, not as validation. The honest status is "structural parallel under investigation."
 </div>
 
-<h2 style="page-break-before: always;">4. FALSIFICATION: TEN WAYS TO PROVE US WRONG</h2>
+<h2>4. FALSIFICATION: TEN WAYS TO PROVE US WRONG</h2>
 
 <p>For this hypothesis to be scientific, it must be falsifiable. We specify ten concrete conditions that would refute or significantly weaken the framework:</p>
 
@@ -1776,9 +1901,20 @@ $$Q(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 </table>
 
 <footer>
-    <p><strong>WHITE PAPER III: Version 6.1</strong></p>
-    <p>&copy; 2026 Michael Darius Eastwood. All Rights Reserved.</p>
-    <p><em>"The predictions are specified. The falsification criteria are public. The data will decide."</em></p>
+    <p><strong>WHITE PAPER III: EASTWOOD'S ARC PRINCIPLE</strong></p>
+    <p>Cross-Domain Unification of Recursive Amplification Across AI, Quantum Computing, and Physics</p>
+    <p style="margin-top: 1em;"><strong>Version 6.1</strong> | Published: 9 February 2026</p>
+    <p style="margin-top: 0.5em;">&copy; 2026 Michael Darius Eastwood. All Rights Reserved.</p>
+    <p style="font-size: 0.8em; color: #888; margin-top: 1em;">
+        This work is protected by copyright. No part of this publication may be reproduced, distributed,
+        or transmitted in any form without prior written permission, except for brief quotations in
+        critical reviews and certain noncommercial uses permitted by copyright law.
+    </p>
+    <p style="font-size: 0.85em; margin-top: 1em;">
+        DOI: <a href="https://doi.org/10.17605/OSF.IO/HQCGF" style="color: var(--accent-blue);">10.17605/OSF.IO/HQCGF</a> |
+        Repository: <a href="https://github.com/MichaelDariusEastwood/arc-scaling-challenge" style="color: var(--accent-blue);">github.com/MichaelDariusEastwood/arc-scaling-challenge</a>
+    </p>
+    <p style="margin-top: 1.5em;"><em>"The predictions are specified. The falsification criteria are public. The data will decide."</em></p>
 </footer>
 
 </body>
