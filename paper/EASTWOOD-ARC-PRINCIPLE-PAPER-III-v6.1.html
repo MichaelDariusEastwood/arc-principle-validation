@@ -437,7 +437,7 @@
             body {
                 max-width: none;
                 padding: 1cm;
-                font-size: 11pt;
+                font-size: 10pt;
             }
 
             h2, h3, h4 {
@@ -445,6 +445,7 @@
                 break-after: avoid;
                 orphans: 3;
                 widows: 3;
+                margin-bottom: 0.5em;
             }
 
             h2 + *, h3 + *, h4 + * {
@@ -455,9 +456,24 @@
             p {
                 orphans: 3;
                 widows: 3;
+                margin-bottom: 0.5em;
             }
 
-            table, .equation-box, .core-claim, .key-findings, .caveat, .important {
+            /* Keep tables with their context */
+            table {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                page-break-before: auto;
+                margin-top: 0.5em;
+            }
+
+            /* Reduce table font for better fit */
+            table th, table td {
+                font-size: 9pt;
+                padding: 4px 6px;
+            }
+
+            .equation-box, .core-claim, .key-findings, .caveat, .important {
                 page-break-inside: avoid;
                 break-inside: avoid;
             }
@@ -465,6 +481,16 @@
             ul, ol {
                 page-break-inside: avoid;
                 break-inside: avoid;
+            }
+
+            figure {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                margin: 1em 0;
+            }
+
+            figcaption {
+                font-size: 9pt;
             }
         }
 
