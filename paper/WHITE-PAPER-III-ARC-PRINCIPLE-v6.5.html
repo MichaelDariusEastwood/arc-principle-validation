@@ -1,0 +1,2419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The ARC Principle: Cross-Domain Unification of Recursive Amplification Across AI, Quantum Computing, and Physics</title>
+
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+    <!-- Nature-style Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nature-red: #c41230;
+            --nature-dark: #1a1a1a;
+            --nature-grey: #666666;
+            --nature-light-grey: #f5f5f5;
+            --nature-border: #dddddd;
+            --text-body: #333333;
+            --accent-blue: #0066cc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 14px;
+        }
+
+        body {
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            color: var(--text-body);
+            background: #ffffff;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 1.25rem;
+        }
+
+        /* Header Styles */
+        header {
+            border-bottom: 3px solid var(--nature-red);
+            padding-bottom: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .paper-type {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--nature-red);
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--nature-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .subtitle {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--nature-grey);
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--nature-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .author-info {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            color: var(--nature-grey);
+        }
+
+        .author-info .name {
+            font-weight: 600;
+            color: var(--nature-dark);
+        }
+
+        .version-date {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.8rem;
+            color: var(--nature-grey);
+            margin-top: 0.5rem;
+        }
+
+        /* Section Headings */
+        h2 {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--nature-dark);
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid var(--nature-border);
+        }
+
+        h3 {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--nature-dark);
+            margin-top: 0.9rem;
+            margin-bottom: 0.35rem;
+        }
+
+        h4 {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--nature-dark);
+            margin-top: 0.75rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Paragraphs */
+        p {
+            margin-bottom: 0.55rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        /* Core Claim Box */
+        .core-claim {
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+            border-left: 4px solid var(--nature-red);
+            padding: 0.9rem 1.25rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            font-weight: 400;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .core-claim strong {
+            color: var(--nature-red);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Equation Display */
+        .equation-box {
+            background: linear-gradient(to bottom, #fafafa 0%, #f5f5f5 100%);
+            border: 1px solid var(--nature-border);
+            border-radius: 4px;
+            padding: 0.7rem 0.9rem;
+            margin: 0.75rem 0;
+            text-align: center;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+        }
+
+        .equation-box .equation {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            line-height: 1.5;
+        }
+
+        .equation-box .equation-label {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.75rem;
+            color: var(--nature-grey);
+            font-style: italic;
+            margin-top: 0.2rem;
+        }
+
+        /* Inline equations */
+        .MathJax {
+            font-size: 1.05em !important;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.7rem 0;
+            font-size: 0.78rem;
+            line-height: 1.35;
+        }
+
+        thead {
+            background: linear-gradient(to bottom, #f8f9fa 0%, #f0f0f0 100%);
+        }
+
+        th {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.4rem 0.45rem;
+            border-bottom: 2px solid var(--nature-dark);
+            color: var(--nature-dark);
+        }
+
+        td {
+            padding: 0.35rem 0.45rem;
+            border-bottom: 1px solid var(--nature-border);
+            vertical-align: top;
+        }
+
+        tr:hover {
+            background: rgba(0,0,0,0.015);
+        }
+
+        /* First column styling */
+        td:first-child {
+            font-weight: 500;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 0.5rem 0 0.5rem 1.25rem;
+        }
+
+        li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 3px solid var(--nature-red);
+            padding-left: 1rem;
+            margin: 0.8rem 0;
+            font-style: italic;
+            color: var(--nature-grey);
+        }
+
+        /* Key findings highlight */
+        .key-findings {
+            background: linear-gradient(to right, #f8f9fa 0%, #ffffff 100%);
+            border: 1px solid #e9ecef;
+            border-left: 3px solid var(--nature-red);
+            border-radius: 0 4px 4px 0;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+        }
+
+        .key-findings h4 {
+            color: var(--nature-red);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .key-findings ul {
+            margin: 0;
+        }
+
+        .key-findings li {
+            margin-bottom: 0.4rem;
+            line-height: 1.45;
+        }
+
+        .key-findings li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Abstract box */
+        .abstract {
+            background: #fafafa;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+
+        .abstract h2 {
+            margin-top: 0;
+            border-bottom: 2px solid var(--nature-red);
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .abstract p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* Falsification table */
+        .falsification-table {
+            font-size: 0.85rem;
+        }
+
+        .falsification-table th {
+            font-size: 0.8rem;
+        }
+
+        .status-holds {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .status-untested {
+            color: #6c757d;
+        }
+
+        .status-open {
+            color: #ffc107;
+            font-weight: 600;
+        }
+
+        /* Caveat boxes */
+        .caveat {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 4px;
+            padding: 0.6rem 0.8rem;
+            margin: 0.6rem 0;
+            font-size: 0.82rem;
+        }
+
+        .caveat strong {
+            color: #856404;
+        }
+
+        /* Important box */
+        .important {
+            background: #e7f3ff;
+            border: 1px solid #b6d4fe;
+            border-radius: 4px;
+            padding: 0.6rem 0.8rem;
+            margin: 0.6rem 0;
+            font-size: 0.88rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        /* References */
+        .references {
+            font-size: 0.85rem;
+        }
+
+        .references p {
+            margin-bottom: 0.75rem;
+            padding-left: 2rem;
+            text-indent: -2rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            border-top: 3px solid var(--nature-red);
+            font-size: 0.85rem;
+            color: var(--nature-grey);
+            text-align: center;
+            background: linear-gradient(to bottom, #fafafa 0%, #ffffff 100%);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        footer p:last-child {
+            margin-bottom: 0;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--nature-dark);
+        }
+
+        /* Code blocks for equations */
+        code {
+            font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9em;
+            background: var(--nature-light-grey);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+        }
+
+        /* Figure styles */
+        figure {
+            margin: 1rem 0;
+            padding: 0;
+            text-align: center;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        figure img {
+            max-width: 85%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        figcaption {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.78rem;
+            color: var(--nature-grey);
+            margin-top: 0.4rem;
+            text-align: left;
+            line-height: 1.4;
+            padding: 0 0.5rem;
+        }
+
+        figcaption strong {
+            color: var(--nature-dark);
+        }
+
+        /* Print styles - optimized for compact, readable PDF */
+        @media print {
+            body {
+                max-width: none;
+                padding: 0.5cm;
+                font-size: 10pt;
+                line-height: 1.35;
+            }
+
+            h1 { font-size: 18pt; margin-bottom: 0.4rem; }
+            h2 { font-size: 12pt; margin-top: 0.8rem; margin-bottom: 0.3rem; }
+            h3 { font-size: 11pt; margin-top: 0.5rem; margin-bottom: 0.2rem; }
+            h4 { font-size: 10pt; margin-top: 0.4rem; margin-bottom: 0.15rem; }
+            p { margin-bottom: 0.4rem; }
+
+            figure { margin: 0.6rem 0; }
+            figure img {
+                max-width: 80%;
+                border: none;
+                box-shadow: none;
+            }
+            figcaption { font-size: 8pt; margin-top: 0.3rem; }
+
+            table { font-size: 9pt; }
+            th, td { padding: 0.25rem 0.4rem; }
+
+            .core-claim, .key-findings, .caveat, .important, .equation-box {
+                padding: 0.5rem 0.8rem;
+                margin: 0.5rem 0;
+            }
+
+            h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+                orphans: 3;
+                widows: 3;
+            }
+
+            h2 + *, h3 + *, h4 + * {
+                page-break-before: avoid;
+                break-before: avoid;
+            }
+
+            p {
+                orphans: 3;
+                widows: 3;
+            }
+
+            table, .equation-box, .core-claim, .key-findings, .caveat, .important {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            ul, ol {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* Force page break before Falsification section */
+            #falsification {
+                page-break-before: always;
+                break-before: always;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 0.4rem 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="paper-type">White Paper III</div>
+    <h1>THE ARC PRINCIPLE</h1>
+    <div class="subtitle">Recursive Scaling Across AI, Quantum Error Correction, and Classical Physics</div>
+    <div class="tagline">A structural principle connecting how different systems amplify capability through self-correction – with ten ways to prove it wrong</div>
+    <div class="author-info">
+        <span class="name">Michael Darius Eastwood</span><br>
+        <em>Author, Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em>
+    </div>
+    <div class="version-date">Version 6.5 | 11 February 2026</div>
+    <div style="font-size: 0.85rem; color: var(--nature-grey); margin-top: 0.5rem; font-style: italic;">Incorporating composition operator formalism, blind prediction test results, and forensic analysis. See companion <a href="ARC-PRINCIPLE-FOUNDATIONAL-v1.1.html">Foundational Paper v1.1</a> for condensed theoretical treatment.</div>
+</header>
+
+<div class="core-claim">
+    <strong>THE CORE CLAIM IN ONE SENTENCE:</strong> Systems that recursively correct their own outputs achieve capability gains that compound with depth, and this pattern appears across AI, quantum computing, and classical physics, though in different mathematical forms.
+</div>
+
+<p>This paper presents evidence for this principle across AI (power-law scaling), quantum computing (exponential scaling), classical physics (saturating dynamics), and possibly neuroscience (form unknown), while proposing five universal structural properties and ten specific ways to prove us wrong.</p>
+
+<div class="abstract">
+<h2>ABSTRACT</h2>
+
+<p>Between December 2024 and February 2026, four independent research programmes, in quantum error correction, AI reasoning, acoustic physics, and consciousness science, each found that recursive or recurrent processing, operating on structured asymmetry, produces capability gains exceeding linear accumulation. They were solving different problems in different physical domains. We propose that they discovered different expressions of the same structural principle.</p>
+
+<p>We formalise this pattern as the <strong>ARC Principle</strong> (Artificial Recursive Creation). The generalised form is:</p>
+
+<div class="equation-box">
+    <div class="equation">$$ U(R) = I \times f(R, \beta) $$</div>
+    <div class="equation-label">The Generalised ARC Equation</div>
+</div>
+
+<p>where $U$ is effective capability, $I$ is base potential (structured asymmetry), $R$ is recursive depth, and $f(R, \beta)$ is a <strong>domain-dependent scaling function</strong> determined by how recursive steps compose. The <strong>qualitative principle</strong> (that recursive depth amplifies base capability super-linearly above critical thresholds) may be universal. The <strong>quantitative functional form</strong> is domain-specific.</p>
+
+<p>For AI systems exhibiting multiplicative composition, $f(R, \beta) = R^{\alpha}$ where $\alpha = 1/(1-\beta)$, yielding a power law. For quantum error correction, the form is exponential ($\Lambda^d$). For classical dissipative systems, scaling saturates at a limit cycle. The composition rule (multiplicative versus additive versus damped) determines which form emerges.</p>
+
+<div class="key-findings">
+<h4>Key Findings</h4>
+<ul>
+    <li><strong>AI:</strong> Sequential reasoning outperforms parallel sampling. Author's preliminary estimates yield $\alpha \approx 1.3$–$2.2$ for sequential (the <em>Quadratic Limit Hypothesis</em> predicts convergence towards $\alpha \approx 2$). Contradictory evidence exists and is addressed in §3.2 and resolved by §2.7.</li>
+    <li><strong>Quantum:</strong> Google's Willow chip achieves exponential error suppression with $\Lambda = 2.14 \pm 0.02$ per code distance increment, a mathematically distinct form from power-law scaling.</li>
+    <li><strong>Physics:</strong> NYU's acoustic time crystal requires quenched disorder + nonreciprocal feedback, exhibiting saturating dynamics with ~6,700 cycles coherence.</li>
+    <li><strong>Mathematical:</strong> The core relationship $\alpha = 1/(1-\beta)$ is validated computationally to $R^2 = 1.00000000$ against 30 exact Bernoulli ODE solutions. The multiplicative structure $U = I \times f(R, \beta)$ is proven <em>necessary</em> by contradiction (§2.1, Theorem 4). The Quadratic Limit $\beta = 0.5$ is derived as a stability boundary (§2.6).</li>
+</ul>
+</div>
+
+<p>We identify <strong>five universal qualitative properties</strong> shared across all domains regardless of functional form:</p>
+<ol>
+    <li><strong>Threshold behaviour</strong> separating regimes</li>
+    <li><strong>Recursive depth dependence</strong> of capability</li>
+    <li><strong>Base quality ($I$) dependence</strong></li>
+    <li><strong>Multiplicative $I \times R$ interaction</strong></li>
+    <li><strong>Regime boundaries</strong> from external error mechanisms</li>
+</ol>
+<p>We issue a <strong>Global Scaling Challenge</strong> with standardised protocols, specify <strong>ten falsification criteria</strong>, and explicitly acknowledge what we do NOT claim.</p>
+
+<p><strong>Critical prediction:</strong> The framework predicts a distinct <strong>scaling crossover</strong> at critical depth $R^*$ where scaling transitions from linear to super-linear. This crossover is a unique signature distinguishing recursive amplification from simple redundancy.</p>
+
+<p>If validated, the framework carries a specific safety implication: alignment properties embedded within the recursive process may scale with capability, while external constraints may not.</p>
+
+<p><strong>Keywords:</strong> scaling laws, test-time compute, error suppression, AI alignment, chain-of-thought reasoning, time crystals, cross-domain validation, quadratic limit hypothesis, universality class, phase transition</p>
+</div>
+
+<figure>
+    <img src="figures_v6/fig1_equation.png" alt="The ARC Equation: U = I × R^α">
+    <figcaption><strong>Figure 1 | The ARC Equation.</strong> Effective capability (U) equals base potential (I) multiplied by recursive depth (R) raised to the scaling exponent (α). When α > 1, returns compound with each recursive cycle. The exponent α is derived from first principles as α = 1/(1-β), where β measures self-referential coupling.</figcaption>
+</figure>
+
+<h2>FOR THE GENERAL READER: WHAT THIS MEANS</h2>
+
+<p>Imagine you're solving a difficult problem. You have two strategies:</p>
+
+<p><strong>Strategy A (Sequential):</strong> Think through the problem step by step. Each step builds on what you figured out in the previous step. If you notice an error, you go back and fix it.</p>
+
+<p><strong>Strategy B (Parallel):</strong> Ask ten different people to solve the problem independently, then take a vote on the answer.</p>
+
+<p>Which strategy works better for hard problems?</p>
+
+<p>Recent evidence from AI, quantum physics, and materials science suggests that Strategy A does not just work <em>better</em>. It works <em>qualitatively</em> better. Each additional step of careful, self-correcting reasoning does not add a fixed amount of capability. It may <em>multiply</em> your capability by a factor.</p>
+
+<p>The critical difference: parallel workers cannot learn from each other's mistakes. Each attempt starts from scratch. Sequential reasoning builds on accumulated insight, and the gains appear to compound.</p>
+
+<h3>The Key Insight: One Principle, Different Mathematical Forms</h3>
+
+<p>Here is what makes this research distinctive: we are <em>not</em> claiming that one equation fits everything. Different physical systems show the same <em>qualitative</em> pattern (recursive depth matters more than parallel breadth) but express it through different <em>mathematical</em> forms:</p>
+
+<ul>
+    <li><strong>AI systems</strong> appear to follow <em>power-law</em> scaling: capability grows as the square (or thereabouts) of reasoning depth.</li>
+    <li><strong>Quantum computers</strong> show <em>exponential</em> scaling: errors decrease exponentially with each layer of error correction.</li>
+    <li><strong>Physical systems</strong> (like time crystals) show <em>saturating</em> dynamics: they gain order through recursion but eventually reach a limit.</li>
+</ul>
+
+<p>What unites them is not a single number. It is a <strong>structural principle</strong>: systems with high-quality starting conditions that recursively build on their own outputs exhibit super-linear capability gains. The specific mathematical curve depends on how the recursion works in that domain.</p>
+
+<h3>Why Does This Matter?</h3>
+
+<ol>
+    <li><strong>For AI development:</strong> It suggests <em>how</em> to build more capable AI systems (sequential self-correction) rather than just making them bigger. If the "Quadratic Limit Hypothesis" holds (that AI capability scales roughly as the square of reasoning depth), then a smaller model that thinks longer could match a larger model that thinks briefly.</li>
+    <li><strong>For AI safety:</strong> If capabilities compound through recursion, then alignment (the AI's values and goals) may need to be embedded <em>in</em> the recursive process, not bolted on afterwards. External rules may struggle to keep up with rapidly growing capabilities.</li>
+    <li><strong>For science:</strong> If related structural patterns appear across quantum physics, AI, and classical acoustics, we may be identifying something fundamental about how complex systems amplify capability through self-reference, regardless of what they are made of.</li>
+</ol>
+
+<h3>Our Strongest Prediction</h3>
+
+<p>The framework makes a specific, falsifiable prediction that no other theory makes: when you plot capability against recursive depth, you should see a <strong>crossover point</strong>. Below a certain depth, the system is "warming up" and gains are modest. Above that depth, compounding kicks in and gains accelerate. The location of this crossover should shift predictably based on the system's starting quality. If experiments do not find this crossover, if scaling is uniform rather than transitional, the framework is wrong.</p>
+
+<p><strong>The most important part:</strong> We could be wrong. That is why we have specified ten concrete ways to prove us wrong. If our predictions fail, we will have learned something valuable about the limits of cross-domain analogy. If they hold, we will have identified a structural principle connecting intelligence, computation, and the physics of order.</p>
+
+<h2>1. INTRODUCTION</h2>
+
+<h3>1.1 The Puzzle: Why Do Different Systems Show Related Patterns?</h3>
+
+<p>Between December 2024 and February 2026, several research programmes achieved results that share structural commonalities:</p>
+
+<p><strong>8 December 2024: The ARC framework.</strong> The theoretical framework was articulated in <em>Infinite Architects</em> (Eastwood, 2024), predicting that recursive self-correction operating on structured asymmetry would produce super-linear capability gains across physical systems. The manuscript was completed December 2024; the book was published January 2026 (ISBN 978-1806056200).<sup>*</sup></p>
+
+<p><strong>9 December 2024: Google Willow.</strong> Quantum researchers demonstrated <em>exponential</em> error suppression through recursive quantum error correction, achieving a suppression factor of $\Lambda = 2.14 \pm 0.02$ per code distance increment.</p>
+
+<p><strong>January 2025: DeepSeek R1.</strong> AI researchers showed that sequential chain-of-thought reasoning yields capability gains that appear to compound with depth (preliminary estimates suggest <em>power-law</em> scaling), while parallel sampling shows diminishing returns. Independent analysis by Sharma &amp; Chopra (2025) confirmed that sequential approaches outperform parallel in 95.6% of tested configurations.</p>
+
+<p><strong>February 2026: NYU Acoustic Time Crystal.</strong> Physicists created a continuous classical time crystal (following earlier work by Liu et al., 2023), demonstrating that spontaneous temporal order emerges when quenched disorder is combined with nonreciprocal feedback loops, though the dynamics exhibit <em>saturating</em> behaviour with finite coherence (~6,700 cycles).</p>
+
+<p>These research programmes address different problems in different physical domains. Crucially, they exhibit <strong>different mathematical forms</strong>: exponential in quantum, power-law in AI, saturating in classical physics. The ARC framework proposes that they nonetheless share a common <em>qualitative</em> structure:</p>
+
+<div class="important">
+<strong>The Structural Principle:</strong> Recursive self-correction, operating on structured asymmetry, produces scaling behaviour that exceeds linear accumulation. The <em>qualitative</em> pattern (recursive depth matters) may be universal; the <em>quantitative</em> functional form depends on domain-specific coupling mechanisms.
+</div>
+
+<p>This is not a claim that "one equation fits all." It is a claim that systems exhibiting five specific structural properties (threshold behaviour, recursive depth dependence, base quality dependence, multiplicative interaction, and regime boundaries) belong to a common structural class, even if their scaling curves differ. This paper formalises the pattern, specifies testable predictions, and invites falsification.</p>
+
+<h3>1.2 What This Paper Does NOT Claim</h3>
+
+<p>Before proceeding, we explicitly state what this paper does NOT claim:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>We do NOT claim:</th>
+            <th>What we actually claim:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Numerical universality:</strong> that $\Lambda = 2.14$ and $\alpha \approx 2$ are "the same"</td>
+            <td>Different domains show different functional forms (exponential vs power-law); numerical similarity may be coincidental. $U$ means different things in different domains.</td>
+        </tr>
+        <tr>
+            <td><strong>Proven status:</strong> that the framework is established science</td>
+            <td>It is a testable hypothesis with ten falsification criteria, preliminary evidence, and acknowledged limitations (small sample sizes, contradictory evidence).</td>
+        </tr>
+        <tr>
+            <td><strong>Neuroscience confirmation:</strong> that COGITATE tested ARC or that consciousness "is" recursion</td>
+            <td>Neural recurrence is structurally consistent with the principle; the connection is suggestive but unquantified. Recurrence ≠ recursion mechanistically.</td>
+        </tr>
+        <tr>
+            <td><strong>Unbounded scaling:</strong> that $\alpha > 1$ implies infinite growth, or that sequential always beats parallel</td>
+            <td>Physical systems saturate (time crystals reach limit cycles). Extended reasoning shows ceiling effects. The ARC equation describes a <em>regime</em>, not a divergence law.</td>
+        </tr>
+        <tr>
+            <td><strong>Priority or convergence:</strong> that we discovered what Google/DeepSeek/NYU found, or that teams "converged" on identical insights</td>
+            <td>Teams found structurally similar results in different domains; the structural interpretation is ours. Timeline shows approximate simultaneity.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>This paper presents a <strong>candidate principle requiring validation</strong>, not an established law.</p>
+
+<h4>What Category of Contribution Is This?</h4>
+
+<p>The ARC framework is not an equation within an existing paradigm (like $F = ma$ within Newtonian mechanics or $E = mc^2$ within relativity). It is closer to a <strong>cross-domain organising principle</strong>, belonging to the same category as:</p>
+
+<ul>
+    <li><strong>Thermodynamics:</strong> Constrains what any physical system can do, regardless of microscopic details.</li>
+    <li><strong>Information theory (Shannon, 1948):</strong> Provides a mathematical framework for communication and computation across substrates.</li>
+    <li><strong>Natural selection (Darwin, 1859):</strong> A structural principle (variation + selection + inheritance → adaptation) applying across any system meeting those conditions.</li>
+</ul>
+
+<p>We make this comparison to clarify the <em>type</em> of contribution being proposed, not to claim equivalence in evidential standing. Those frameworks rest on centuries of validation. This one rests on preliminary evidence and ten falsification criteria. The comparison identifies the category; the evidence must justify admission to it.</p>
+
+<p>If validated, ARC would tell you: <em>whenever you find a system with structured asymmetry, recursive self-correction, and sufficient coupling strength, you will observe threshold behaviour, compounding gains, multiplicative I×R interaction, and regime boundaries</em>, with the specific functional form varying by domain. This is a broader but less precise contribution than a fundamental force law. It does not replace physics; it organises understanding across recursive systems.</p>
+
+<h3>1.3 Contributions</h3>
+
+<p>We make seven contributions:</p>
+
+<ol>
+    <li><strong>Generalised Mathematical Framework:</strong> We derive the generalised equation $U(R) = I \times f(R, \beta)$ from first principles, showing that the functional form $f$ depends on how recursive steps compose (multiplicative → power-law; additive → exponential). For the power-law case, $\alpha = 1/(1-\beta)$, transforming the exponent from a fitted constant into a derived quantity.</li>
+    <li><strong>Five Universal Qualitative Properties:</strong> We identify five structural properties shared across domains regardless of functional form: threshold behaviour, recursive depth dependence, base quality dependence, multiplicative $I \times R$ interaction, and regime boundaries.</li>
+    <li><strong>Domain-Specific Functional Forms:</strong> We map observed scaling to composition type: power-law (AI), exponential (quantum), saturating (classical physics), unknown (neuroscience).</li>
+    <li><strong>Evidence Synthesis:</strong> We integrate findings from AI, quantum physics, condensed matter, and neuroscience, carefully distinguishing quantitative validation from structural analogy and explicitly addressing contradictory evidence.</li>
+    <li><strong>The Global Scaling Challenge:</strong> We propose a standardised protocol for measuring scaling parameters, including mandatory comparison against alternative functional forms, the novel $R^*$ crossover prediction, and the cross-domain $\beta$ prediction.</li>
+    <li><strong>Ten Falsification Criteria:</strong> We specify concrete conditions that would refute the hypothesis, including tests of functional form (F10) and the $\beta$-derivation (F6).</li>
+    <li><strong>Safety Implications (Conditional):</strong> <em>If</em> the framework is correct, embedded values may scale with capability while external constraints may not. The Quadratic Limit Hypothesis provides a specific, bounded ceiling prediction for AI capability growth.</li>
+</ol>
+
+<h3>1.4 Relationship to Existing Frameworks</h3>
+
+<p>The ARC framework relates to, but differs from, several established research programmes:</p>
+
+<p><strong>Neural scaling laws (Kaplan et al. 2020; Hoffmann et al. 2022):</strong> These describe how model performance scales with <em>training</em> compute, parameters, and data. ARC describes how performance scales with <em>inference</em> depth (reasoning steps at test time). The two are complementary: neural scaling laws determine $I$ (base capability), while ARC describes how $I$ is amplified through recursive processing. A model trained with more compute has higher $I$, but the same $\alpha$ relationship should apply to its reasoning.</p>
+
+<p><strong>Recursion in cognitive science (Corballis 2011; Hauser et al. 2002):</strong> Cognitive scientists have long argued that recursion is central to human language and cognition. ARC adds a quantitative dimension: not just that recursion matters, but that recursive depth should produce specific, measurable scaling patterns. The "graded cascade" model from neuroscience (Zheng et al. 2025) is structurally consistent with the ARC framework's β-continuum.</p>
+
+<p><strong>Universality in statistical physics (Wilson 1971; Kadanoff 1966):</strong> Universality theory explains why different physical systems exhibit identical critical exponents near phase transitions. ARC proposes an analogous phenomenon: that recursive systems may constitute a universality class where only the recursive architecture (not the physical substrate) determines scaling behaviour. This analogy is suggestive but has not been made rigorous; proving formal equivalence remains an open mathematical question.</p>
+
+<p><strong>Test-time compute scaling (Snell et al. 2024):</strong> Recent work on "thinking longer" at inference time directly tests predictions relevant to ARC. Our framework provides a theoretical interpretation: test-time compute works because it increases $R$, and if $\alpha > 1$, capability compounds. The contradictory evidence (Li et al. 2025; arXiv:2502.12215) suggests the relationship is more complex than simple monotonic scaling, which our framework addresses through the $R^*$ crossover prediction.</p>
+
+<h2>2. THE FRAMEWORK</h2>
+
+<h3>2.1 The Generalised Principle</h3>
+
+<p>We begin with the general form. The <strong>ARC Principle</strong> (Artificial Recursive Creation) proposes that recursive self-correction operating on structured asymmetry produces capability gains exceeding linear accumulation. The generalised mathematical form is:</p>
+
+<div class="equation-box">
+    <div class="equation">$$ U(R) = I \times f(R, \beta) $$</div>
+    <div class="equation-label">Generalised ARC Equation</div>
+</div>
+
+<p>where $U$ is effective capability, $I$ is base potential (structured asymmetry), $R$ is recursive depth, and $f(R, \beta)$ is a <strong>domain-dependent scaling function</strong> determined by the coupling parameter $\beta$. The <strong>qualitative</strong> principle (that recursive depth amplifies base capability super-linearly when feedback is sufficiently coupled) may be universal. The <strong>quantitative</strong> functional form varies by domain:</p>
+
+<ul>
+    <li><strong>AI systems:</strong> Power-law scaling, $f(R) = R^{\alpha}$ where $\alpha = 1/(1-\beta)$</li>
+    <li><strong>Quantum error correction:</strong> Exponential scaling, $f(R) = \Lambda^{d}$</li>
+    <li><strong>Classical physics:</strong> Saturating dynamics (limit cycles with finite coherence)</li>
+    <li><strong>Neuroscience:</strong> Form unknown, to be determined empirically</li>
+</ul>
+
+<h4>The Composition Operator: A Formal Definition</h4>
+
+<p>The central theoretical contribution of this paper is the identification of a <strong>composition operator</strong> $\oplus$ that determines the functional form of recursive scaling. Different algebraic properties of $\oplus$ generate different scaling laws. This provides the mathematical bridge between the universal qualitative principle and domain-specific quantitative forms.</p>
+
+<div class="equation-box">
+<strong>Definition (Recursive Composition):</strong> Let $Q_r$ denote accumulated capability after $r$ recursive steps, and $\delta Q_r$ the gain from step $r$. The <strong>composition operator</strong> $\oplus$ characterises how gains combine:
+
+$$ Q_{r+1} = Q_r \oplus \delta Q_r $$
+
+The functional form $f(R, \beta)$ is <strong>determined</strong> by the algebraic properties of $\oplus$.
+</div>
+
+<p>This definition transforms an observation (different domains show different scaling) into a prediction (the algebraic structure of recursive composition determines the scaling form). Three regimes emerge:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Composition Type</th>
+            <th>Algebraic Property</th>
+            <th>Resulting Form</th>
+            <th>Canonical Domain</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Multiplicative</strong></td>
+            <td>$g(R_1 \cdot R_2) = g(R_1) \cdot g(R_2)$</td>
+            <td>Power law: $f(R) = R^{\alpha}$</td>
+            <td>AI chain-of-thought</td>
+        </tr>
+        <tr>
+            <td><strong>Additive</strong></td>
+            <td>$f(R_1 + R_2) = f(R_1) \cdot f(R_2)$</td>
+            <td>Exponential: $f(R) = \Lambda^R$</td>
+            <td>Quantum error correction</td>
+        </tr>
+        <tr>
+            <td><strong>Saturating</strong></td>
+            <td>$\lim_{R \to \infty} f(R) = f_{\max}$</td>
+            <td>Logistic: $f(R) = \frac{f_{\max}}{1 + e^{-\gamma(R - R_0)}}$</td>
+            <td>Classical physics (finite coherence)</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>The mathematical derivation (Appendix A) proves that these three forms are the <em>only</em> solutions to the corresponding functional equations (Cauchy's equations). The composition operator is therefore not merely descriptive but <strong>constraining</strong>: once we identify the algebraic structure of a domain's recursive process, the scaling form follows necessarily.</p>
+
+<h4>Physical Interpretation</h4>
+
+<p><strong>Multiplicative composition</strong> models <em>hierarchical</em> or <em>fractal</em> recursion. Each recursive level multiplies the gains of the previous level: step $r$ builds on the structural insights of step $r-1$, not merely its outputs. AI chain-of-thought reasoning, where each reasoning step reinterprets and extends previous insights, plausibly follows this form.</p>
+
+<p><strong>Additive composition</strong> models <em>independent</em> error reduction. Each layer contributes a fixed multiplicative reduction in error rate, independent of other layers. Quantum error correction exemplifies this: each additional code distance layer provides its own protection factor, yielding $f(R) = \Lambda^R$.</p>
+
+<p><strong>Saturating composition</strong> models <em>resource-limited</em> systems where gains diminish as capacity is exhausted. Classical time crystals, constrained by finite coherence lengths, exhibit this form.</p>
+
+<div class="important">
+<strong>Key Experimental Test:</strong> The composition operator $\oplus$ is empirically measurable. To determine which scaling law applies to a domain, measure how two sequential recursive blocks compose compared to one block of double depth:
+<ul>
+    <li>If $f(2R) = 2f(R)$: scaling is <strong>linear</strong> (no amplification)</li>
+    <li>If $f(2R) = f(R)^2$: scaling is <strong>exponential</strong> (additive composition)</li>
+    <li>If $f(2R) = 2^{\alpha}f(R)$: scaling is <strong>power-law</strong> (multiplicative composition)</li>
+</ul>
+This provides a concrete experimental protocol for falsification criterion F10.
+</div>
+
+<h4>Five Universal Properties: Derived Theorems</h4>
+
+<p>Despite differing functional forms, all domains exhibiting recursive amplification share five structural properties. Crucially, these are not independent assertions; they <strong>follow necessarily</strong> from the composition operator formalism:</p>
+
+<div class="equation-box">
+<strong>The Five Universal Properties (Derived from $\oplus$):</strong>
+<ol>
+    <li><strong>Threshold behaviour (Theorem 1):</strong> A critical coupling strength $\beta^*$ exists below which recursive gains vanish.
+    <br><em>Derivation:</em> For any composition operator $\oplus$, if $\delta Q_r \propto \beta Q_r$, then $Q_{r+1} = Q_r(1 + \beta)$. For $\beta < 0$, gains become losses; the system decays. The threshold $\beta^* = 0$ marks the boundary between amplification and attenuation. For power-law scaling, $\alpha = 1/(1-\beta) > 1$ requires $\beta > 0$.</li>
+
+    <li><strong>Recursive depth dependence (Theorem 2):</strong> Capability increases with self-referential cycles ($R$), not merely parallel resources.
+    <br><em>Derivation:</em> The composition operator $\oplus$ operates <em>sequentially</em>: $Q_{r+1} = Q_r \oplus \delta Q_r$. Each step depends on the previous output. Parallel resources increase $I$ (the base) but do not increase $R$ (the recursive depth). The multiplicative structure $I \times f(R)$ separates these contributions.</li>
+
+    <li><strong>Base quality dependence (Theorem 3):</strong> The system requires structured asymmetry ($I > 0$); without it, recursion has nothing to amplify.
+    <br><em>Derivation:</em> If $I = 0$, then $U = 0 \times f(R) = 0$ for any $R$. The composition operator amplifies what exists; it cannot create from nothing. This is the $I$-irreducibility theorem.</li>
+
+    <li><strong>Multiplicative $I \times R$ interaction (Theorem 4):</strong> Base quality and recursive depth interact multiplicatively, not additively. The multiplicative structure is <em>necessary</em>, not merely convenient.
+    <br><em>Proof by contradiction:</em> Suppose $U = g(I) + h(R)$ for some functions $g, h$. From Axiom 1, $U(I, 0) = I$, so $g(I) + h(0) = I$, giving $g(I) = I - h(0)$. Substituting: $U = I + [h(R) - h(0)]$. From Axiom 2, $\mathrm{d}U/\mathrm{d}R = a \cdot U^\beta$. Therefore $h'(R) = a \cdot [I + h(R) - h(0)]^\beta$. The right side <em>depends on I</em>, but $h$ is supposed to be a function of $R$ alone. Contradiction. $\square$
+    <br><em>Corollary:</em> The solution has the form $U = I \times f(R, \beta, I)$ where $I$ and $R$ are coupled through the differential equation. In the asymptotic regime where $(1-\beta)aR \gg I^{1-\beta}$, this reduces to $U \approx [(1-\beta)aR]^\alpha$, recovering the separable scaling observed in Zipf's law, preferential attachment, and other established relationships.
+    <br><em>Synergy Quotient:</em> The multiplicative interaction can be quantified directly. Define $S = U(I, R) / [U(I, 0) + U(0, R)]$, measuring how the combined system compares to the sum of its parts. From the exact solution: $U(I, 0) = I$ (Axiom 1) and $U(0, R) = [(1-\beta)aR]^{1/(1-\beta)}$, while $U(I, R) = [I^{1-\beta} + (1-\beta)aR]^{1/(1-\beta)}$. Direct computation confirms $S > 1$ for all $I > 0$, $R > 0$, and $\beta \in (0, 1)$. Intelligence and recursion <em>together</em> produce more capability than the sum of their individual contributions—the mathematical signature of multiplicative synergy.</li>
+
+    <li><strong>Regime boundaries (Theorem 5):</strong> Systems exhibit qualitatively different behaviour above and below critical thresholds.
+    <br><em>Derivation:</em> The composition operator determines the functional form. At regime boundaries (e.g., $\beta \to 1$ for power-law, or $R > R^*$ for crossover), the dominant term in $f(R)$ changes. This produces discontinuities in scaling behaviour – phase transitions in the universality class sense.</li>
+</ol>
+</div>
+
+<p>These five properties constitute the <strong>qualitative</strong> ARC Principle. Their derivation from the composition operator ensures internal consistency: accepting the formalism commits one to all five properties. The specific functional form is an empirical question for each domain; the properties are theorems.</p>
+
+<h3>2.2 The AI-Specific Form: Power-Law Scaling</h3>
+
+<p>For AI systems exhibiting multiplicative composition, the generalised equation reduces to:</p>
+
+<div class="equation-box">
+    <div class="equation">$$ U = I \times R^{\alpha} $$</div>
+    <div class="equation-label">Effective capability = Base potential × Recursive depth<sup>α</sup></div>
+</div>
+
+<p><strong>In plain language:</strong> Your effective capability ($U$) equals your starting potential ($I$) multiplied by your recursive depth ($R$) raised to a power ($\alpha$) that depends on how well each step builds on the previous one.</p>
+
+<figure>
+    <img src="figures_v6/fig2_scaling.png" alt="Scaling Comparison on Log-Log Axes">
+    <figcaption><strong>Figure 2 | Scaling Comparison.</strong> Log-log plot showing different scaling regimes. Power law U = R^α appears as a straight line with slope α. Sequential recursion (α > 1) shows super-linear growth; parallel sampling (α < 1) shows diminishing returns. The ARC Principle predicts α_sequential > 1 > α_parallel.</figcaption>
+</figure>
+
+<h3>2.3 What Each Variable Means</h3>
+
+<h4>$U$: Effective Capability</h4>
+
+<p>What the system actually achieves. Measured differently in each domain:</p>
+<ul>
+    <li>AI: Benchmark accuracy on standardised tests</li>
+    <li>Quantum: Logical qubit fidelity (how error-free the computation is)</li>
+    <li>Physics: Temporal stability of the time crystal</li>
+    <li>Biology: Metabolic efficiency (thermodynamic) or cognitive task performance (behavioural)</li>
+</ul>
+
+<h4>$I$: Base Potential (Structured Asymmetry)</h4>
+
+<p><strong>Thermodynamic definition:</strong> Natural systems tend towards maximum entropy (equilibrium/uniformity). In this framework, "artificial" denotes any system maintaining low-entropy structure against the thermodynamic gradient, whether engineered (an AI model), evolved (a brain), or emergent (a time crystal). The parameter $I$ measures <em>how far from maximum entropy</em> the system starts.</p>
+
+<p>The NYU time crystal confirms this: when beads are uniform (maximum entropy distribution), the system remains static. Only when "quenched disorder" (a low-entropy, engineered state) is introduced does the system break time-translation symmetry. Order requires <em>designed disorder</em>: a specific pattern of asymmetry that enables work extraction from the environment.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Domain</th>
+            <th>What $I$ measures</th>
+            <th>Physical meaning</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>AI</td>
+            <td>Single-pass accuracy without reasoning</td>
+            <td>How much "prior knowledge" the model has</td>
+        </tr>
+        <tr>
+            <td>Quantum</td>
+            <td>Raw qubit quality ($1 - $ error rate)</td>
+            <td>Distance from maximum entropy</td>
+        </tr>
+        <tr>
+            <td>Physics</td>
+            <td>Variance in bead sizes</td>
+            <td>Asymmetry enabling nonreciprocal forces</td>
+        </tr>
+        <tr>
+            <td>Biology</td>
+            <td>Initial learning rate</td>
+            <td>Sensitivity gradient</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="important">
+<strong>The Constraint Principle:</strong> Constraint enables competence. Without structured asymmetry, no work can be extracted. The time crystal proves this directly: uniform beads produce no crystal. This is independently testable (falsification criterion F3).
+</div>
+
+<h4>$R$: Recursive Depth</h4>
+
+<p>How many self-referential cycles the system performs. The output of cycle $n$ becomes the input for cycle $n+1$.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Domain</th>
+            <th>One unit of $R$</th>
+            <th>How it is counted</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>AI</td>
+            <td>One reasoning step</td>
+            <td>Token count or revision cycle</td>
+        </tr>
+        <tr>
+            <td>Quantum</td>
+            <td>One error-correction cycle</td>
+            <td>Code distance increment</td>
+        </tr>
+        <tr>
+            <td>Physics</td>
+            <td>One oscillation period</td>
+            <td>Frequency analysis</td>
+        </tr>
+        <tr>
+            <td>Biology</td>
+            <td>One feedback cycle</td>
+            <td>Generation or learning iteration</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Critical requirement:</strong> For $\alpha > 1$, recursion must incorporate <em>sequential self-correction</em>: each step building on previous outputs. Pure parallel processing (independent attempts averaged together) cannot achieve $\alpha > 1$ because it lacks the output→input feedback loop. However, hybrid parallel-sequential approaches may achieve intermediate scaling (Li et al. 2025).</p>
+
+<h4>$\alpha$: The Scaling Exponent</h4>
+
+<p>The scaling exponent determines the system's scaling regime:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>$\alpha$ value</th>
+            <th>What happens</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$\alpha < 1$</td>
+            <td>Diminishing returns</td>
+            <td>Parallel voting: more samples help less and less</td>
+        </tr>
+        <tr>
+            <td>$\alpha = 1$</td>
+            <td>Linear returns</td>
+            <td>Each step adds a fixed amount</td>
+        </tr>
+        <tr>
+            <td>$\alpha > 1$</td>
+            <td>Compounding returns</td>
+            <td>Each step multiplies capability</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Our core prediction:</strong> $\alpha_{\text{sequential}} > 1 > \alpha_{\text{parallel}}$</p>
+
+<h3>2.4 Deriving $\alpha$ from First Principles</h3>
+
+<p>This is our central theoretical contribution. Without this derivation, $\alpha$ is just a number we fit to data. With it, $\alpha$ becomes a predictable quantity.</p>
+
+<h4>The Key Insight</h4>
+
+<p>How much does your accumulated knowledge help your next step?</p>
+
+<p>Define $\beta$ as the "self-referential coupling": how much of accumulated context each new step can effectively leverage. When $\beta = 0.5$, each step benefits from half of accumulated context.</p>
+
+<p>If each step is independent ($\beta = 0$), you get linear scaling ($\alpha = 1$).<br>
+If each step fully leverages all prior work ($\beta \to 1$), scaling explodes.</p>
+
+<h4>The Mathematics</h4>
+
+<p>The marginal capability gained at step $r$ depends on accumulated capability:</p>
+
+<div class="equation-box">
+    <div class="equation">$$ \frac{dQ}{dr} = a \times Q^{\beta} $$</div>
+</div>
+
+<p><strong>Why this form?</strong> This differential equation models <em>cumulative advantage</em> (also called preferential attachment; Barabási &amp; Albert, 1999): the rate of capability gain is proportional to the system's current capability raised to a power. This is the mathematical signature of "the rich get richer", applied to information processing.</p>
+
+<p>Solving this differential equation (details in Appendix A) yields:</p>
+
+<div class="equation-box">
+    <div class="equation">$$ \alpha = \frac{1}{1 - \beta} $$</div>
+    <div class="equation-label">The $\beta$-derivation</div>
+</div>
+
+<h4>What This Means</h4>
+
+<table>
+    <thead>
+        <tr>
+            <th>$\beta$ (coupling)</th>
+            <th>$\alpha$ (exponent)</th>
+            <th>Interpretation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>Independent steps &rarr; linear scaling</td>
+        </tr>
+        <tr>
+            <td>0.25</td>
+            <td>1.33</td>
+            <td>Weak coupling &rarr; mild super-linear</td>
+        </tr>
+        <tr>
+            <td>0.50</td>
+            <td>2.00</td>
+            <td>Moderate coupling &rarr; quadratic scaling</td>
+        </tr>
+        <tr>
+            <td>0.67</td>
+            <td>3.00</td>
+            <td>Strong coupling &rarr; cubic scaling</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Novel Prediction:</strong> As AI systems develop richer self-correction (critique-revise loops, hierarchical reasoning), $\beta$ should increase and $\alpha$ should approach 2. This is specific, measurable, and falsifiable.</p>
+
+<figure>
+    <img src="figures_v6/fig3_beta_alpha.png" alt="The β-α Relationship">
+    <figcaption><strong>Figure 3 | The β–α Relationship.</strong> The scaling exponent α is derived from the self-referential coupling β via α = 1/(1-β). As β approaches 1 (perfect feedback efficiency), α diverges towards infinity. The observed range of α ≈ 1.3–2.2 in preliminary AI experiments corresponds to β ≈ 0.25–0.55, indicating moderate self-referential coupling.</figcaption>
+</figure>
+
+<h4>Computational Validation</h4>
+
+<p>The $\beta$-derivation is not a curve fit. It is a mathematical identity recoverable to machine precision. To verify this, the relationship $\alpha = 1/(1-\beta)$ was tested against 30 exact solutions to the Bernoulli ODE with $\beta$ values spanning 0.05 to 0.92. The procedure measures $\beta$ blindly from marginal gains ($dQ/dR$ vs $Q$ in log-log space), predicts $\alpha$, and compares against the true value. The result: $R^2 = 1.00000000$ (eight decimal places), slope $= 1.000102$, mean absolute prediction error $= 0.002\%$. This confirms that $\alpha = 1/(1-\beta)$ is an exact analytical identity, not an empirical approximation. (Validation code available as supplementary material.)</p>
+
+<h3>2.5 Potential Safety Implications</h3>
+
+<p><strong>If</strong> the ARC Principle is correct, it may have implications for AI safety.</p>
+
+<p><strong>Setup:</strong> Capability scales as $C = C_0 \times R^{\alpha}$ where $\alpha > 1$.</p>
+
+<h4>Case 1: External Constraints (Rules, Firewalls, RLHF)</h4>
+
+<p>These do not participate in recursive reasoning. They are applied <em>after</em> computation. If their effectiveness does not scale with recursive depth, call their effective scaling exponent $\alpha_{\text{align}} \approx 0$.</p>
+
+<p>Safety ratio: $S = \text{Alignment}/\text{Capability} \propto R^{-\alpha} \to 0$ as $R \to \infty$</p>
+
+<p><strong>External constraints would become weaker relative to capability.</strong></p>
+
+<h4>Case 2: Embedded Values (Ethics in the Reasoning Process)</h4>
+
+<p>If the AI's values participate in chain-of-thought reasoning, they could benefit from similar compounding. $\alpha_{\text{align}} \approx \alpha$.</p>
+
+<p>Safety ratio: $S \propto R^0 = \text{constant}$</p>
+
+<p><strong>Embedded values would maintain constant proportion with capability.</strong></p>
+
+<h4>The Implication</h4>
+
+<p>This suggests that alignment should be part of the recursive architecture, not external to it. This reasoning assumes alignment properties can meaningfully "participate" in recursive reasoning, an assumption that itself requires empirical validation.</p>
+
+<div class="caveat">
+<strong>CAVEAT:</strong> This is a conditional argument. If the base framework fails validation, the safety implications are void. This is not a substitute for empirical AI safety research. The notation $\alpha_{\text{align}}$ is our construct for this analysis; it does not appear in the published AI safety literature.
+</div>
+
+<figure>
+    <img src="figures_v6/fig7_alignment.png" alt="The Alignment Argument">
+    <figcaption><strong>Figure 4 | Potential Safety Implications.</strong> External constraints (rules, firewalls) may scale with α ≈ 0, becoming weaker relative to capability as R increases. Embedded values that participate in recursive reasoning may scale with α ≈ α_capability, maintaining constant proportion. This is a conditional prediction requiring empirical validation.</figcaption>
+</figure>
+
+<h3>2.6 The Quadratic Limit Hypothesis</h3>
+
+<p>For AI systems specifically, we make a more precise prediction:</p>
+
+<div class="important">
+<strong>Quadratic Limit Hypothesis:</strong> Optimised large language models with explicit self-correction mechanisms (critique-revise loops, chain-of-thought reasoning) will converge toward $\alpha \approx 2$ (equivalently, $\beta \approx 0.5$). This represents moderate self-referential coupling where each reasoning step benefits from roughly half of accumulated context.
+</div>
+
+<p>This is <em>not</em> a universal constant across all domains. It is a <strong>specific, falsifiable prediction for a specific class of AI systems</strong>. The preliminary estimate $\alpha \approx 2.2$ from the author's Paper II experiment (N=12, 95% CI: 1.5&ndash;3.0) is consistent with this hypothesis but requires large-scale replication to confirm.</p>
+
+<h4>Theoretical Basis for the Quadratic Limit</h4>
+
+<p>The convergence of multiple systems toward $\beta \approx 0.5$ is not merely an empirical coincidence. It can be derived from a stability argument. Consider the <strong>relative sensitivity</strong> of the scaling exponent to perturbations in coupling:</p>
+
+<div class="equation-box">
+    <div class="equation">$$ \frac{d\alpha / \alpha}{d\beta / \beta} = \frac{\beta}{1 - \beta} $$</div>
+    <div class="equation-label">Relative sensitivity</div>
+</div>
+
+<p>This quantity measures how a fractional change in coupling $\beta$ translates into a fractional change in the scaling exponent $\alpha$. It equals exactly 1.0 at $\beta = 0.5$. Below $\beta = 0.5$, the system is <em>insensitive</em> to coupling: changes in $\beta$ produce proportionally smaller changes in $\alpha$ (wasted potential). Above $\beta = 0.5$, the system is <em>hypersensitive</em>: small perturbations in coupling cause disproportionately large changes in scaling behaviour (instability). At $\beta = 0.5$, the system achieves <strong>perfect 1:1 coupling-to-scaling transfer</strong>: every fractional improvement in self-referential coupling is exactly reflected in the scaling exponent.</p>
+
+<p>This result also emerges from Lyapunov analysis. The second-order sensitivity of the Bernoulli ODE, $d^2Q/dQ^2 \propto \beta(\beta - 1) \cdot Q^{\beta - 2}$, has its inflection point at $d/d\beta[\beta(\beta-1)] = 2\beta - 1 = 0$, giving $\beta = 0.5$ exactly. This is the <em>edge of chaos</em> for recursive amplification: the boundary between ordered (convergent) and disordered (divergent) scaling dynamics, where computational power is maximised without instability.</p>
+
+<p>The Quadratic Limit is therefore not an arbitrary observation. It is the <strong>unique point where recursive amplification is simultaneously maximally efficient and structurally stable</strong>. Systems that evolve or are optimised under selective pressure (networks, economies, biological systems, AI architectures) would be expected to converge toward this attractor.</p>
+
+<div class="caveat">
+<strong>Important distinction:</strong> The $\beta = 0.5$ result is a <em>stability</em> optimum, not a <em>growth</em> optimum. The Kelly criterion for optimal growth rate yields $\beta^* \approx 0.95$, which favours maximum compounding regardless of volatility. This is an honest negative result: the information-theoretic growth argument does not converge on $\beta = 0.5$. The Quadratic Limit prediction relies specifically on the stability argument—that systems under selective pressure favour robustness over raw growth. This distinction is testable: systems in volatile environments should converge toward $\beta = 0.5$ (stability), while systems in stable environments might tolerate higher $\beta$ (growth).
+</div>
+
+<p>Critically, the contradictory evidence reviewed in §3.2 (arXiv:2502.12215, arXiv:2502.14382) may indicate that:</p>
+<ul>
+    <li>$\alpha$ varies with task difficulty, model architecture, or prompt structure</li>
+    <li>There exists an optimal reasoning length beyond which returns diminish (the "thinking long but short" phenomenon)</li>
+    <li>Different benchmarks probe different coupling regimes</li>
+</ul>
+
+<p>Resolving these discrepancies is a central empirical question for the Global Scaling Challenge (§6).</p>
+
+<div class="caveat">
+<strong>CAVEAT:</strong> The numerical similarity between $\alpha \approx 2$ (AI) and $\Lambda \approx 2.14$ (quantum) may be entirely coincidental. These are mathematically distinct quantities from different functional forms. Any deeper connection would require theoretical justification that does not currently exist.
+</div>
+
+<h4>The β-Transition Phase Diagram</h4>
+
+<p>The generalised framework implies a <strong>phase diagram</strong> of recursive scaling. The axes are base quality ($I$, normalised) and coupling strength ($\beta$). Four regimes emerge:</p>
+
+<ul>
+    <li><strong>Diminishing returns:</strong> $\beta < \beta^*$ (threshold) or $I$ below threshold. More recursion hurts or provides negligible benefit.</li>
+    <li><strong>Power-law regime:</strong> $0.3 \lesssim \beta \lesssim 0.7$, $I$ above threshold. Compounding returns, polynomial scaling. (AI chain-of-thought reasoning.)</li>
+    <li><strong>Exponential regime:</strong> $\beta > 0.9$, $I$ well above threshold. Compounding returns, exponential scaling. (Quantum error correction below threshold.)</li>
+    <li><strong>Saturating regime:</strong> Any $\beta$ with energy dissipation. Compounding onset → limit cycle. (Time crystals, physical oscillators.)</li>
+</ul>
+
+<p><em>Note: These boundary values are approximate, derived from the observation that $\beta \approx 0.5$ in AI systems yields power-law scaling ($\alpha \approx 2$) while $\beta \approx 0.95+$ in quantum systems yields exponential scaling. The precise boundaries require empirical determination via the Global Scaling Challenge.</em></p>
+
+<figure>
+    <img src="figures_v6/fig11_phase_diagram.png" alt="β-Transition Phase Diagram">
+    <figcaption><strong>Figure 5 | The β-Transition Phase Diagram.</strong> Scaling regimes as a function of base quality (I) and self-referential coupling (β). Different domains occupy different regions: AI systems (power-law regime, β ≈ 0.5), quantum error correction (exponential regime, β > 0.9), and classical time crystals (saturating regime with dissipation). <em>Prediction: measured β determines observed functional form.</em></figcaption>
+</figure>
+
+<h4>Cross-Domain β Prediction: The Killer Test</h4>
+
+<p>The framework makes a specific, falsifiable cross-domain prediction that distinguishes analogy from unified theory:</p>
+
+<div class="equation-box">
+<strong>The β-Convergence Prediction:</strong>
+
+<p>In any domain, $\beta$ can be measured by two independent methods:</p>
+<ol>
+    <li><strong>From scaling behaviour:</strong> Fit the observed $f(R)$ to extract $\alpha$, then compute $\beta = 1 - 1/\alpha$.</li>
+    <li><strong>From threshold analysis:</strong> Measure the critical coupling $\beta^*$ below which recursive gains vanish.</li>
+</ol>
+
+<p><strong>Prediction:</strong> These two independent measurements of $\beta$ will converge to the same value within experimental error.</p>
+
+<p><strong>Cross-domain extension:</strong> If we measure $\beta_{\text{AI}}$ from AI scaling data, $\beta_{\text{QEC}}$ from quantum error correction thresholds, and $\beta_{\text{bio}}$ from metabolic scaling, and these values occupy consistent positions on the $\beta$-continuum that correctly predict their respective functional forms, the framework is validated as a unified theory. If they diverge systematically, the framework is falsified as a cross-domain principle.</p>
+</div>
+
+<p>This is the framework's strongest prediction. It transforms the observation that "different domains have different functional forms" into the testable claim that "the same underlying parameter determines all functional forms."</p>
+
+<div class="important">
+<strong>Concrete Test Protocol:</strong>
+<ol>
+    <li>In quantum error correction: Measure $\beta_{\text{QEC}}$ from the threshold error rate ($p_{\text{th}}$) using $\beta = -\log(p_{\text{th}})/\log(p_{\text{physical}})$. Predict exponential scaling with $\Lambda = e^{\beta}$.</li>
+    <li>In AI systems: Measure $\alpha$ from test-time scaling curves. Compute $\beta_{\text{AI}} = 1 - 1/\alpha$. Predict power-law scaling.</li>
+    <li><strong>Cross-domain validation:</strong> Verify that $\beta_{\text{QEC}} > 0.9$ (exponential regime) and $\beta_{\text{AI}} \approx 0.5$ (power-law regime) as the phase diagram predicts.</li>
+</ol>
+If the $\beta$ values from different measurement methods within each domain converge, AND the cross-domain $\beta$ values correctly predict functional forms, the framework passes its most stringent test. If either condition fails, the framework requires fundamental revision.
+</div>
+
+<p>This prediction is novel: no existing framework proposes a single parameter connecting quantum error correction thresholds to AI scaling exponents. Confirmation would establish the ARC Principle as a genuine cross-domain unification. Falsification would reduce it to a collection of domain-specific observations.</p>
+
+<h4>Connection to Universality Theory</h4>
+
+<p>The substrate-independence of the five structural properties is reminiscent of <strong>universality</strong> in statistical physics, where systems with different microscopic Hamiltonians exhibit identical critical exponents near phase transitions (Wilson, 1971; Nobel Prize 1982). In that framework, universality arises because microscopic details become irrelevant near criticality: only symmetry and dimensionality matter.</p>
+
+<p>The ARC framework suggests an analogous phenomenon: near the recursive threshold (the $\alpha = 1$ boundary), the specific physical substrate may become irrelevant, and only the recursive architecture (structured asymmetry, self-referential coupling, feedback topology) determines scaling behaviour. Whether this analogy can be made rigorous (whether recursive amplification systems constitute a formal universality class with calculable critical exponents) is an <strong>open mathematical question</strong> that merits future investigation.</p>
+
+<h3>2.7 Composition Operator Transitions</h3>
+
+<p>The framework as presented in §2.1 assigns a single composition operator $\oplus$ to each system. However, computational analysis reveals that this may be an idealisation. In bounded or dissipative systems, <strong>the composition operator itself can transition between regimes as recursive depth increases</strong>.</p>
+
+<p>This finding emerged from cosmological analysis of gravitational structure formation, where the recursive process of gravitational collapse exhibits three distinct phases:</p>
+
+<ol>
+    <li><strong>Inflation/linear growth (additive $\oplus$):</strong> Primordial perturbations grow independently. Each step adds to the previous without cumulative advantage. Composition satisfies $f(R_1 + R_2) = f(R_1) \cdot f(R_2)$, the exponential (additive Cauchy) form.</li>
+    <li><strong>Nonlinear collapse (multiplicative $\oplus$):</strong> Mode coupling emerges; denser regions gravitationally attract more matter, creating cumulative advantage. Composition transitions to $g(R_1 \cdot R_2) = g(R_1) \cdot g(R_2)$, the power-law form, with measured $\alpha \approx 1.1$.</li>
+    <li><strong>Virialised halos (bounded $\oplus$):</strong> Individual structures reach energy minima. Gains saturate: $Q_{r+1} \approx Q_r$. The system enters the bounded regime of Theorem 1.</li>
+</ol>
+
+<p>Computational testing confirms that this phenomenon is not unique to cosmology. In logistic growth, gradient descent with momentum, and Kuramoto oscillator synchronisation, measuring the local coupling parameter $\beta$ in sliding windows reveals systematic transitions between composition regimes. By contrast, unbounded pure-Bernoulli systems maintain constant $\beta$ to machine precision ($\sigma < 10^{-6}$).</p>
+
+<div class="important">
+<strong>Theorem 6 (Composition Operator Transitions):</strong> A single physical system can transition between different composition operator regimes as a function of recursive depth or an internal state parameter. This extends the framework by replacing the assumption of a fixed $\oplus$ with a depth-dependent $\oplus(R)$, modelled by extending Axiom 2 to $dQ/dr = a(Q, r) \cdot Q^{\beta(Q, r)}$ where the coupling itself depends on accumulated state.
+</div>
+
+<p><strong>Why this matters for the contradictory evidence.</strong> The finding that different AI studies report conflicting scaling behaviours (§3.2) may reflect composition operator transitions rather than genuine contradictions. If reasoning systems begin in an additive regime (shallow thinking, independent steps), transition to multiplicative (deep reasoning with cumulative advantage), and eventually saturate (diminishing returns at extreme depth), then studies measuring at different recursive depths would observe different scaling, even in the same system. The "optimal reasoning length" identified by Li et al. (2025, arXiv:2502.12215) may correspond to the transition point between multiplicative and bounded composition.</p>
+
+<p>This interpretation is <strong>testable</strong>: measure the local coupling parameter $\beta$ at different reasoning depths within a single AI system. If $\beta$ is constant, the original framework applies. If $\beta$ decreases with depth (as the cosmological analysis suggests), Theorem 6 applies. Either outcome advances understanding of recursive scaling.</p>
+
+<div class="caveat">
+<strong>Epistemic status:</strong> Theorem 6 is an empirical discovery, not a mathematical theorem derivable from the original three axioms. It extends the framework's scope but requires independent experimental confirmation. The cosmological evidence involves well-established astrophysical data (Planck 2018); the generalisation to AI systems is a prediction, not an established result.
+</div>
+
+<h2>3. THE EVIDENCE</h2>
+
+<h3>3.1 Overview</h3>
+
+<p>The following table summarises evidence across domains, noting that <strong>functional forms differ</strong> (see §2.1). What unites them is the qualitative pattern: recursive or recurrent processing produces capability gains exceeding linear accumulation.</p>
+
+<p><strong>Status definitions:</strong> <em>Published</em> = peer-reviewed with quantitative measurements supporting the specific functional form. <em>Preliminary</em> = author's own measurements requiring independent replication. <em>Structural</em> = qualitative mapping without quantitative $\alpha$ measurement. <em>Suggestive</em> = independently established result structurally consistent but not designed to test ARC. <em>Consistent</em> = does not contradict the framework but was not designed to test it.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Domain</th>
+            <th>System</th>
+            <th>Finding</th>
+            <th>Functional Form</th>
+            <th>Key Parameter</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>AI</td>
+            <td>Author's experiments (Papers I &amp; II)</td>
+            <td>Sequential &gt;&gt; Parallel</td>
+            <td>Power-law $R^{\alpha}$</td>
+            <td>$\alpha \approx 2$ (N=12)</td>
+            <td>Preliminary</td>
+        </tr>
+        <tr>
+            <td>AI</td>
+            <td>Sharma &amp; Chopra (2025)</td>
+            <td>Sequential wins 95.6%</td>
+            <td>Power-law (inferred)</td>
+            <td>$\alpha$ not fitted</td>
+            <td>Published</td>
+        </tr>
+        <tr>
+            <td>Quantum</td>
+            <td>Google Willow</td>
+            <td>Exponential error suppression</td>
+            <td>Exponential $\Lambda^d$</td>
+            <td>$\Lambda = 2.14$</td>
+            <td>Published</td>
+        </tr>
+        <tr>
+            <td>Physics</td>
+            <td>NYU Time Crystal</td>
+            <td>Disorder + feedback &rarr; order</td>
+            <td>Saturating</td>
+            <td>~6,700 cycles</td>
+            <td>Structural</td>
+        </tr>
+        <tr>
+            <td>Biology</td>
+            <td>Kleiber's Law</td>
+            <td>Fractal networks &rarr; $M^{0.75}$</td>
+            <td>Power-law</td>
+            <td>$\alpha_{\text{eff}} \approx 1.33$&dagger;</td>
+            <td>Suggestive</td>
+        </tr>
+        <tr>
+            <td>Neuro</td>
+            <td>COGITATE &amp; others</td>
+            <td>Recurrence matters</td>
+            <td>Unknown</td>
+            <td>N/A</td>
+            <td>Consistent</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>&dagger;Derived from 3/4 exponent under fractal network interpretation; contested.</p>
+
+<figure>
+    <img src="figures_v6/fig4_domains.png" alt="Multiple Domains of Evidence">
+    <figcaption><strong>Figure 6 | Structural Parallels Across Domains with Different Functional Forms.</strong> Evidence from AI, quantum computing, classical physics, and neuroscience shows recursive/recurrent processing producing super-linear capability gains. However, <em>the mathematical forms differ</em>: power-law in AI, exponential in quantum, saturating in classical physics. The qualitative pattern (recursive depth matters) appears consistent; the quantitative details are domain-specific.</figcaption>
+</figure>
+
+<div class="important">
+<strong>Critical note on functional forms:</strong> The table above deliberately separates domains by functional form. Power-law scaling ($U \propto R^{\alpha}$), exponential scaling ($\varepsilon \propto \Lambda^{-d}$), and saturating dynamics (limit-cycles with finite coherence) are <em>mathematically distinct</em>. The numerical similarity between $\alpha \approx 2$ and $\Lambda \approx 2.14$ may be entirely coincidental. Any deeper connection would require theoretical justification that does not currently exist. What we claim is <em>qualitative</em> universality (all domains show super-linear recursive gains above threshold) not <em>quantitative</em> universality (all domains share the same exponent).
+</div>
+
+<h3>3.2 AI: Sequential vs Parallel Reasoning</h3>
+
+<p><strong>Published sources:</strong> DeepSeek-R1 Technical Report (20 January 2025, arXiv:2501.12948); Sharma &amp; Chopra, "The Sequential Edge: Inverse-Entropy Voting Beats Parallel Self-Consistency at Matched Compute" (November 2025, arXiv:2511.02309); Snell et al., "Scaling LLM Test-Time Compute" (August 2024, arXiv:2408.03314).</p>
+
+<p><strong>What they found:</strong> Sequential chain-of-thought reasoning outperforms parallel sampling (independent attempts with majority vote) on mathematical reasoning tasks. Sharma &amp; Chopra tested 5 state-of-the-art models across 3 challenging benchmarks (AIME-2024, AIME-2025, GPQA-Diamond) under matched computational budgets: sequential wins in 43/45 configurations (95.6%), with accuracy gains up to 46.7 percentage points (Qwen3-235B on AIME-2025: 76.7% sequential vs 30.0% parallel).</p>
+
+<p><strong>Why sequential wins (per Sharma &amp; Chopra):</strong> Sequential reasoning enables three mechanisms unavailable in parallel approaches: (1) <em>iterative error correction</em> where models identify and fix mistakes in subsequent steps, (2) <em>progressive context accumulation</em> where each step builds upon accumulated insights, and (3) <em>answer verification</em> where models validate and refine initial responses. The overall effect is statistically robust ($t = 4.23$, $p < 0.001$, Cohen's $d = 0.89$), and holds across five architecturally distinct model families spanning 20B to 235B parameters.</p>
+
+<p><strong>Evidence for compounding returns:</strong> Critically, Sharma &amp; Chopra tested seven different voting methods for aggregating sequential chain outputs. Methods favouring <em>later</em> reasoning steps (inverse-entropy weighting) achieved optimal performance in 97% of configurations, while methods favouring <em>earlier</em> steps (exponential decay) achieved optimality in only 17%. This 80-percentage-point gap indicates that later recursive steps are systematically more valuable than earlier ones: the compounding-returns signature consistent with $\alpha > 1$. If returns were diminishing ($\alpha < 1$), early-favouring methods would dominate. They do not.</p>
+
+<p>In ARC terms, this can be interpreted as evidence that architectures which explicitly reuse and refine prior chains behave as if they have a higher effective scaling exponent than those that average independent attempts. However, Sharma &amp; Chopra do not fit $\alpha$ or $\beta$ directly; this connection is <em>interpretive rather than quantitative</em>.</p>
+
+<p><strong>Author's preliminary estimates (Papers I and II):</strong> In the author's own prior work, sequential reasoning showed scaling consistent with $\alpha \approx 1.3$&ndash;$2.2$, while parallel sampling showed near-zero returns. These estimates have important limitations:</p>
+
+<ul>
+    <li>The $\alpha \approx 1.34$ estimate (Paper I) derives from only two data points using estimated token counts from the DeepSeek technical report, not original experimental data</li>
+    <li>The $\alpha \approx 2.2$ estimate (Paper II) derives from the author's own 12-problem AIME experiment with 95% CI of 1.5&ndash;3.0</li>
+    <li>Both require independent replication with larger sample sizes</li>
+    <li>Accuracy figures differ slightly across papers due to these different data sources and estimation methods</li>
+</ul>
+
+<div class="caveat">
+<strong>Statistical caveat:</strong> The $\alpha$ estimates above are from the author's preliminary work, not from the published sources (DeepSeek, Sharma &amp; Chopra). The published sources confirm the directional finding (sequential >> parallel) but do not calculate $\alpha$ in this form. These are <em>preliminary indicators</em>, not established constants.
+</div>
+
+<div class="important">
+<strong>Methodological note:</strong> The scaling exponent $\alpha$ is calculated from <em>error rate reduction</em>, not accuracy directly. Using $U = 1/\varepsilon$ (inverse error rate) as the capability measure: $\alpha = \ln(\varepsilon_1/\varepsilon_2) / \ln(R_2/R_1)$. This is mathematically equivalent to measuring how error rate decreases with recursive depth. Researchers attempting to replicate these calculations using accuracy directly will obtain different values.
+</div>
+
+<p><strong>Snell et al. (2024)</strong> showed that adaptive test-time compute can allow smaller models to match larger ones on specific tasks, though with important caveats: benefits are task-dependent, hard problems show less improvement, and results are model-specific.</p>
+
+<h4>Contradictory Evidence and Boundary Conditions</h4>
+
+<p><strong>Important:</strong> Not all research supports unlimited sequential scaling. Several 2025 studies found conditions where the sequential advantage breaks down:</p>
+
+<ul>
+    <li><strong>Li et al. (2025, arXiv:2502.12215)</strong> found that for DeepSeek R1 specifically, longer chains-of-thought do not consistently enhance accuracy. Correct solutions were often <em>shorter</em> than incorrect ones. They proposed "Shortest Majority Vote" as superior to extended sequential reasoning on some tasks.</li>
+    <li><strong>Li et al. (2025, arXiv:2502.14382)</strong> found that hybrid parallel-sequential approaches outperform pure sequential on code generation, enabling non-reasoning models to surpass reasoning models.</li>
+    <li><strong>Stability limits:</strong> Extended reasoning can destabilise models, producing repetitive outputs and accuracy degradation beyond an optimal "sweet spot."</li>
+    <li><strong>Task-type boundary:</strong> Sharma &amp; Chopra's own creative task ablation provides a useful constraint: on joke generation, parallel approaches achieved greater <em>semantic diversity</em> (broader conceptual exploration) while sequential approaches achieved greater <em>lexical diversity</em> (deeper linguistic refinement). This suggests the sequential advantage applies most strongly to convergent tasks requiring iterative error correction, and may not generalise to divergent tasks requiring breadth of exploration.</li>
+    <li><strong>Physical saturation (time crystals):</strong> The NYU acoustic time crystal maintains coherence for ~6,700 oscillation cycles before reaching a limit-cycle attractor: sustained but bounded oscillation. This provides independent physical evidence that even systems with $\alpha > 1$ do not scale indefinitely; there is a saturation regime where the power-law approximation breaks down. This supports interpreting the ARC equation as describing a <em>scaling regime</em> rather than an unbounded law.</li>
+</ul>
+
+<p><strong>What this means for the ARC Principle:</strong> The sequential advantage appears to have <em>boundary conditions</em>. The hypothesis should be refined to: "Sequential recursion yields $\alpha > 1$ <em>within task-appropriate depth ranges</em>, beyond which returns diminish or reverse." Identifying these boundaries is a priority for future work.</p>
+
+<div class="caveat">
+<strong>CAVEAT:</strong> The contradictory evidence suggests the ARC Principle may describe a regime (moderate recursive depth) rather than an unbounded law. If extended reasoning shows ceiling effects or reversals, the framework requires modification to account for saturation dynamics.
+</div>
+
+<figure>
+    <img src="figures_v6/fig9_deepseek.png" alt="Sequential vs Parallel Scaling in AI">
+    <figcaption><strong>Figure 7 | Sequential vs Parallel Scaling.</strong> Sequential reasoning shows higher scaling exponents than parallel sampling in the tested regime. Published findings (Sharma &amp; Chopra) confirm sequential wins 95.6% of configurations. However, contradictory evidence suggests scaling advantages may have ceiling effects at extreme depths. The form of recursion, not just quantity, affects capability.</figcaption>
+</figure>
+
+<h3>3.3 Quantum: Google Willow – Error Correction Below the Surface Code Threshold (December 2024)</h3>
+
+<p><strong>Source:</strong> Acharya, R. et al. [Google Quantum AI] (9 December 2024). "Quantum error correction below the surface code threshold." <em>Nature</em>, 638, 920&ndash;926.</p>
+
+<p><strong>What they did:</strong> Implemented surface code quantum error correction on two superconducting "Willow" processors (72-qubit and 105-qubit), achieving below-threshold operation up to distance 7 (101 qubits). Also ran repetition codes to distance 29 over 5.5 hours of processor time (2 &times; 10<sup>10</sup> error correction cycles).</p>
+
+<p><strong>The scaling equation.</strong> The fundamental surface code relation is:</p>
+<p style="text-align: center;">$\varepsilon_d \propto \left(\frac{p}{p_{\text{thr}}}\right)^{(d+1)/2}$</p>
+<p>where $d$ is code distance, $p$ is physical error rate, $p_{\text{thr}}$ is threshold error rate, and $\varepsilon_d$ is logical error rate. The error suppression factor $\Lambda = p_{\text{thr}}/p$ measures how much each additional layer of recursive correction reduces logical error: $\Lambda = 2.14 \pm 0.02$ with neural network decoding.</p>
+
+<p><strong>The phase transition: direct experimental demonstration.</strong> By injecting coherent errors of variable strength (Fig. 2b in the paper), the team swept continuously through the threshold:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Regime</th>
+            <th>Physical error rate</th>
+            <th>Recursive depth effect</th>
+            <th>ARC analogue</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Above threshold ($p > p_{\text{thr}}$)</td>
+            <td>High</td>
+            <td>More qubits &rarr; higher logical error</td>
+            <td>$\alpha < 1$ (diminishing returns)</td>
+        </tr>
+        <tr>
+            <td>At threshold ($p = p_{\text{thr}}$)</td>
+            <td>Critical</td>
+            <td>More qubits &rarr; no net change</td>
+            <td>$\alpha = 1$ (linear)</td>
+        </tr>
+        <tr>
+            <td>Below threshold ($p < p_{\text{thr}}$)</td>
+            <td>Low</td>
+            <td>More qubits &rarr; exponentially lower error</td>
+            <td>$\alpha > 1$ (compounding returns)</td>
+        </tr>
+    </tbody>
+</table>
+<p>This is the first direct experimental demonstration of a recursive system crossing between regimes where additional depth hurts, is neutral, or helps: the qualitative phase transition that the ARC Principle predicts.</p>
+
+<p><strong>Error budget as decomposition of $I$.</strong> The paper provides a detailed breakdown of contributions to $1/\Lambda$: CZ gate errors (~50%), data qubit idle errors (~15%), measurement errors (~12%), leakage (~9%), stray interactions (~8%), single-qubit errors (~3%). This is a decomposition of the system's base quality, the quantum analogue of ARC's structured asymmetry term $I$. Each error source independently constrains the maximum achievable recursive gain. Improving any single component improves $\Lambda$ across all code distances simultaneously: the multiplicative interaction between $I$ and $R$ that ARC formalises.</p>
+
+<p><strong>Leakage removal as active $I$-maintenance.</strong> Data Qubit Leakage Removal (DQLR), which actively removes accumulated qubit excitations each cycle, produces a 35% increase in $\Lambda$ at distance 5 despite only a 12% reduction in detection probability. Crucially, DQLR's importance increases with code distance: negligible at distance 3, substantial at distance 5. This demonstrates that maintaining base quality during recursive processing becomes more critical as recursive depth increases, consistent with ARC's prediction that effective $\alpha$ depends not just on initial $I$ but on sustained $I$ throughout the recursive chain.</p>
+
+<p><strong>Repetition code error floor: the regime boundary.</strong> At high code distances ($d \geq 15$), the exponential error suppression deviates from prediction and plateaus at ~10<sup>&minus;10</sup>, caused by rare correlated error bursts (~30 qubits affected simultaneously, occurring approximately once per hour). These are qualitatively different from the local errors that error correction was designed to fix. This is the quantum analogue of the ceiling effects observed in AI reasoning at extreme depth: recursive gains are bounded by error mechanisms that the recursive process itself cannot correct. The framework describes a <em>regime</em>, not an asymptotic law.</p>
+
+<p><strong>Decoder quality affects scaling.</strong> The same quantum hardware achieves different $\Lambda$ depending on decoder quality: neural network decoder $\Lambda = 2.18$ vs real-time sparse blossom decoder $\Lambda = 2.0$. The "interpreter" of each recursive cycle's output affects the system's effective scaling, analogous to how the quality of chain-of-thought reasoning strategies affects effective $\alpha$ in AI systems.</p>
+
+<p><strong>Stability and robustness.</strong> Performance remains stable over 15+ hours of continuous operation (16 experiments, average $\Lambda = 2.18 \pm 0.07$). Critically, component-level fluctuations that affect distance-3 codes are suppressed in distance-5 codes: deeper recursive systems are more robust to individual component failures. The distance-7 logical qubit lifetime (291 &plusmn; 6 &mu;s) exceeds the best constituent physical qubit (119 &plusmn; 13 &mu;s) by a factor of 2.4 &plusmn; 0.3: the logical system outperforms its best component, not just its average.</p>
+
+<p><strong>Structural correspondence (what IS shared):</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th>ARC Component</th>
+            <th>Quantum Analogue</th>
+            <th>Measured</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$I$ (base quality / structured asymmetry)</td>
+            <td>$\Lambda = p_{\text{thr}}/p$ (distance from threshold)</td>
+            <td>2.14 &plusmn; 0.02</td>
+        </tr>
+        <tr>
+            <td>$R$ (recursive depth)</td>
+            <td>$(d+1)/2$ (error correction layers)</td>
+            <td>Up to 4 (distance 7)</td>
+        </tr>
+        <tr>
+            <td>$\alpha > 1$ threshold</td>
+            <td>$p < p_{\text{thr}}$ boundary</td>
+            <td>Directly measured via error injection</td>
+        </tr>
+        <tr>
+            <td>$\beta$ (self-referential coupling)</td>
+            <td>Per-cycle error suppression efficiency</td>
+            <td>Dependent on decoder quality</td>
+        </tr>
+        <tr>
+            <td>Regime boundary / ceiling</td>
+            <td>Error floor from correlated bursts</td>
+            <td>~10<sup>&minus;10</sup> at $d \geq 15$</td>
+        </tr>
+        <tr>
+            <td>$I$ maintenance</td>
+            <td>DQLR (active leakage removal)</td>
+            <td>35% $\Lambda$ improvement at $d = 5$</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="important">
+<strong>CRITICAL MATHEMATICAL DISTINCTION:</strong> $\Lambda$ and $\alpha$ describe fundamentally different scaling behaviours:
+<ul>
+    <li>$\Lambda$ parameterises <em>exponential</em> suppression: $\varepsilon_d \propto \Lambda^{-R}$ where $R = (d+1)/2$</li>
+    <li>$\alpha$ parameterises <em>power-law</em> scaling: $U \propto R^{\alpha}$</li>
+</ul>
+<p>Exponential functions eventually dominate any polynomial. The quantum system achieves <em>stronger-than-ARC</em> scaling, which can be interpreted as the limiting case of the ARC framework where recursive self-correction approaches perfection. The numerical similarity between $\Lambda = 2.14$ and $\alpha \approx 2.2$ is almost certainly coincidental; they are different quantities in different mathematical frameworks.</p>
+<p><strong>What IS shared</strong> is the qualitative structure: a threshold between regimes, recursive depth that multiplies (not merely adds to) cumulative benefit, I-maintenance requirements that scale with depth, and ceiling effects from mechanisms outside the recursive process. The ARC equation may represent a <em>conservative lower bound</em> on achievable recursive scaling in well-structured systems, with the quantum exponential as an upper bound achievable under ideal conditions.</p>
+</div>
+
+<h3>3.4 Physics: Classical Time Crystals (February 2026)</h3>
+
+<p><strong>Sources:</strong> Morrell, M., Elliott, L., &amp; Grier, D.G. (6 February 2026). "Nonreciprocal wave-mediated interactions power a classical time crystal." <em>Physical Review Letters</em>, 136, 057201. Liu et al. (2023) demonstrated continuous classical time crystals using photonic metamaterials in <em>Nature Physics</em>; this work builds on that foundation. Raskatla et al. (2024) demonstrated magnetically programmable time crystals in photonic microring lattices (<em>Physical Review Letters</em>, 133, 136202).</p>
+
+<p><strong>Experimental System:</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+            <th>ARC Analogue</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Acoustic frequency</td>
+            <td>40 kHz</td>
+            <td>–</td>
+        </tr>
+        <tr>
+            <td>Crystal oscillation</td>
+            <td>61&ndash;67 Hz</td>
+            <td>Recursion cycle period</td>
+        </tr>
+        <tr>
+            <td>Coherence time $\tau$</td>
+            <td>~100 s (~6,700 cycles)</td>
+            <td>Maximum effective recursion depth</td>
+        </tr>
+        <tr>
+            <td>Bead material</td>
+            <td>Polystyrene foam (varied sizes)</td>
+            <td>Structured asymmetry ($I$)</td>
+        </tr>
+        <tr>
+            <td>Coupling mechanism</td>
+            <td>Nonreciprocal wave scattering</td>
+            <td>Feedback channel enabling $\alpha > 1$</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Phase Transition Mechanism:</strong> The system exhibits a sharp phase transition governed by stability functions $\Lambda(n)$:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Regime</th>
+            <th>$\Lambda(5)/\Lambda(3)$</th>
+            <th>Mode</th>
+            <th>Interpretation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Below threshold</td>
+            <td>&gt; 0</td>
+            <td>Symmetric (active oscillator)</td>
+            <td>$\alpha \leq 1$</td>
+        </tr>
+        <tr>
+            <td><strong>At threshold</strong></td>
+            <td>= 0</td>
+            <td><strong>Exceptional point</strong></td>
+            <td>$\alpha = 1$ boundary</td>
+        </tr>
+        <tr>
+            <td>Above threshold</td>
+            <td>&lt; 0</td>
+            <td>Antisymmetric (time crystal)</td>
+            <td>$\alpha > 1$</td>
+        </tr>
+    </tbody>
+</table>
+<p>The exceptional point (where two eigenvalues coalesce) marks the precise transition from parallel-like to sequential-like dynamics.</p>
+
+<p><strong>ARC Mapping:</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th>Physics Concept</th>
+            <th>Symbol</th>
+            <th>ARC Analogue</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Quenched disorder (varied bead sizes)</td>
+            <td>–</td>
+            <td>Structured asymmetry ($I$)</td>
+            <td>Necessary but not sufficient</td>
+        </tr>
+        <tr>
+            <td>Nonreciprocal coupling</td>
+            <td>$B_{ji}$</td>
+            <td>Physical realisation of $\beta$</td>
+            <td>$B_{ji} \neq B_{ij}$ breaks symmetry</td>
+        </tr>
+        <tr>
+            <td>Antisymmetric mode</td>
+            <td>$\Delta_{ji}(n) = x_j^n - x_i^n$</td>
+            <td>Sequential processing</td>
+            <td>State difference compounds over cycles</td>
+        </tr>
+        <tr>
+            <td>Symmetric mode</td>
+            <td>$(x_j^n + x_i^n)/2$</td>
+            <td>Parallel processing</td>
+            <td>State average remains bounded</td>
+        </tr>
+        <tr>
+            <td>Emergent activity</td>
+            <td>–</td>
+            <td>Emergent super-linearity</td>
+            <td>Self-sustaining oscillation without external drive</td>
+        </tr>
+        <tr>
+            <td>Exceptional point</td>
+            <td>EP</td>
+            <td>$\alpha = 1$ threshold</td>
+            <td>Phase boundary between regimes</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Why Antisymmetric = Sequential:</strong> In the antisymmetric mode, the quantity that grows is the <em>difference</em> between oscillator states: $\Delta_{ji}(n) = x_j^n - x_i^n$. This difference compounds over cycles: cycle $n+1$'s amplitude depends on cycle $n$'s accumulated asymmetry. This is the physical signature of output&rarr;input feedback. In the symmetric mode, states <em>average</em> rather than difference-compound. The mean position $(x_j + x_i)/2$ remains bounded. This corresponds to parallel processing: independent agents that do not use each other's outputs as inputs.</p>
+
+<p><strong>Coherence and Saturation:</strong> The time crystal maintains phase coherence for approximately 100 seconds (~6,700 oscillation cycles). Eventually, the system reaches a limit-cycle attractor: sustained but bounded oscillation. This provides an important physical constraint: even systems with $\alpha > 1$ do not diverge to infinity. There is a saturation regime, consistent with viewing the ARC equation as describing a <em>scaling regime</em> rather than an unbounded law.</p>
+
+<p><strong>Substrate Independence:</strong> The time crystal phenomenon has now been demonstrated in at least two physically distinct substrates:</p>
+<ul>
+    <li><strong>Acoustic</strong> (Morrell et al. 2026): Millimetre-scale polymer beads, 40 kHz standing wave</li>
+    <li><strong>Photonic</strong> (Raskatla et al. 2024): Microring resonator lattice, magnetically tunable</li>
+</ul>
+<p>The emergence of the same antisymmetric/threshold pattern across different media suggests the underlying structure (nonreciprocal coupling &rarr; asymmetric mode dominance) may be substrate-independent, consistent with the ARC framework's claim that the recursive amplification pattern is architectural rather than implementation-specific.</p>
+
+<div class="caveat">
+<strong>CAVEAT:</strong> No $\alpha$ has been measured in this system. The mapping is <em>structural</em>, not quantitative. However, the stability functions $\Lambda(n)$ provide a clear measurement pathway: plotting oscillation amplitude versus cycle number and fitting power-law versus linear models would directly test whether $\alpha > 1$ in this domain. The limit-cycle saturation also implies that any measured $\alpha$ describes a <em>scaling regime</em>, not unbounded growth. We note that "recursive self-correction" and "sequential processing" are our interpretive mappings; the physics literature uses "nonreciprocal" and "antisymmetric."
+</div>
+
+<h3>3.5 Neuroscience: Recurrent Processing and the COGITATE Collaboration</h3>
+
+<p><strong>Sources:</strong> Lamme (2006), "Towards a true neural stance on consciousness," <em>Trends in Cognitive Sciences</em>, 10(11), 494-501; Storm, Pennartz et al. (2024), "An integrative, multiscale view on neural theories of consciousness," <em>Neuron</em>, 112(10), 1531-1552; COGITATE Consortium (2025), "Adversarial testing of global neuronal workspace and integrated information theories of consciousness," <em>Nature</em>, 642, 133-142; Zheng, Chis-Ciure, Waade, Eiserbeck, Aru, Andrillon, Pennartz et al. (2025), "Recurrency as a Common Denominator for Consciousness Theories," <em>PsyArXiv</em>.</p>
+
+<p><strong>Terminological distinction:</strong> The neuroscience term is "recurrent" (feedback loops between cortical layers and areas); the computational term is "recursive" (applying a function to its own output). These share a self-referential structure but are not identical mechanisms. The mapping is structural, not mechanistic.</p>
+
+<p><strong>COGITATE (2025):</strong> This adversarial collaboration (the largest preregistered study in consciousness science, n = 256 across three neuroimaging modalities: iEEG, MEG, fMRI) tested competing predictions of Global Neuronal Workspace Theory (GNWT) and Integrated Information Theory (IIT) using theory-neutral protocols. Neither theory was fully vindicated:</p>
+<ul>
+    <li><strong>GNWT predictions:</strong> Some late fronto-parietal "ignition" effects appeared, but so did earlier, more graded signals that contradict a simple all-or-none ignition view. The predicted PFC ignition at stimulus offset was robustly absent.</li>
+    <li><strong>IIT predictions:</strong> Sustained content-specific activity in posterior cortex was confirmed, but predicted gamma-band synchronisation within posterior cortex was not found.</li>
+</ul>
+<p>The study concludes that "no single theory currently provides a complete account" and calls for multi-theory, multi-scale approaches. Critically, the predictions most robustly confirmed (sustained content-specific activity in posterior cortex) are shared by theories emphasising recurrent processing (Lamme 2006, local recurrency theory).</p>
+
+<p><strong>Sustained vs transient processing:</strong> COGITATE found that posterior cortex (characterised by recurrent feedback loops) maintained content-specific information throughout stimulus duration (0.5&ndash;1.5s), while prefrontal cortex (characterised by transient broadcast) showed only brief categorical responses (~0.2&ndash;0.4s). Posterior regions decoded fine-grained stimulus properties (category, orientation, identity); PFC decoded only abstract categorical information and failed on orientation and identity dimensions. This sustained-vs-transient pattern, in which recurrent processing produces richer and more detailed representations than transient broadcast, mirrors the sequential-vs-parallel performance signature found in AI systems (Sharma &amp; Chopra 2025).</p>
+
+<p><strong>Graded cascade model:</strong> Separate work by Zheng, Chis-Ciure, Waade, Eiserbeck, Aru, Andrillon, Pennartz et al. (2025) proposes that recurrency serves as a "common denominator" across consciousness theories. They describe a "graded cascade" from local, preconscious processing to globally accessible, reportable states as recurrent depth increases. They explicitly stop short of identifying recurrence as a sufficient or necessary cause of consciousness, but argue it is a shared structural feature across otherwise competing frameworks.</p>
+
+<p><strong>Structural alignment with ARC:</strong> Both the COGITATE pattern of mixed GNW/IIT results and the "graded cascade" picture point away from binary, all-or-none views (e.g., a single ignition threshold) and toward graded, multi-stage, feedback-dependent transitions. This is qualitatively similar to ARC's view that increasing self-referential coupling $\beta$ moves a system through a continuum of scaling regimes (from linear $\alpha = 1$ to increasingly super-linear $\alpha > 1$), rather than a single hard phase transition. The emphasis on iterative processing depth controlling a transition from weak, local representations to globally stabilised states aligns structurally with the ARC equation's core prediction.</p>
+
+<div class="caveat">
+<strong>CAVEAT:</strong> COGITATE did not test the ARC framework, did not measure power-law scaling, and did not quantify "depth" of recurrence as a continuous variable. Neither COGITATE nor Zheng et al. measure $\alpha$, $\beta$, or any explicit $U$ vs $R$ scaling curve. The connection to ARC is <em>structural</em> (similar shape: graded, depth-dependent, feedback-driven) rather than quantitative. "Recurrent" and "recursive" are related but distinct mechanisms. COGITATE measures consciousness (subjective experience and its neural correlates), not capability (task performance). The mapping assumes that mechanisms underlying conscious content maintenance are structurally similar to those underlying capability scaling&mdash;a plausible but unproven assumption. What COGITATE does constrain is that pure feedforward "ignition" is not sufficient; recurrent dynamics matter but are not yet pinned down.
+</div>
+
+<h3>3.6 Biology: Allometric Scaling (Suggestive)</h3>
+
+<p><strong>Sources:</strong> West, G.B. &amp; Brown, J.H. (2005). "The origin of allometric scaling laws in biology from genomes to ecosystems." <em>Journal of Experimental Biology</em>, 208, 1575-1592. See also Kleiber, M. (1932). "Body size and metabolism." <em>Hilgardia</em>, 6, 315-353.</p>
+
+<p><strong>The Pattern:</strong> Kleiber's Law (1932) proposes that metabolic rate scales as $M^{0.75}$ with body mass. West &amp; Brown (2005) claim this pattern spans approximately 27 orders of magnitude across organisms, though this universality is disputed (Glazier 2005 finds variable exponents across different taxa). West &amp; Brown attribute the 3/4 scaling to fractal transport networks: branching structures that optimise resource delivery through hierarchical self-similar architecture. The 3/4 scaling would arise from the optimisation of these networks (such as circulatory and respiratory systems) designed to supply all cells in a 3D body from a single source.</p>
+
+<p><strong>The Structural Parallel:</strong> If biological networks achieve efficient scaling through hierarchical branching architecture, this is consistent with the ARC framework's prediction that self-similar structure determines scaling behaviour. The effective $\alpha \approx 1.33$ (derived from $1/(1-0.25) = 1.33$) emerges from optimisation constraints on fractal networks.</p>
+
+<div class="caveat">
+<strong>CAVEAT:</strong> Kleiber's 3/4 exponent is contested (Glazier 2005). Some analyses find variable exponents across taxa. The biological evidence is <strong>suggestive</strong> but not confirmatory for the ARC Principle. We include it as a domain where the framework's predictions could be tested, not as validation. The terminology "metabolic anchoring point" derives from Cambui (2025) and is not standard in classical biological scaling literature.
+</div>
+
+<h2 id="falsification">4. FALSIFICATION: TEN WAYS TO PROVE US WRONG</h2>
+
+<p>For this hypothesis to be scientific, it must be falsifiable. We specify ten concrete conditions that would refute or significantly weaken the framework:</p>
+
+<table class="falsification-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Hypothesis</th>
+            <th>How to test it</th>
+            <th>What would falsify it</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>F1</td>
+            <td>Sequential yields $\alpha > 1$</td>
+            <td>Measure $\alpha$ in sequential systems</td>
+            <td>Consistent $\alpha \leq 1$ across multiple systems</td>
+            <td class="status-open"><strong>Mixed evidence</strong></td>
+        </tr>
+        <tr>
+            <td>F2</td>
+            <td>Parallel yields $\alpha < 1$</td>
+            <td>Measure $\alpha$ in parallel systems</td>
+            <td>Parallel achieves $\alpha \geq 1$</td>
+            <td class="status-open"><strong>Mixed evidence</strong></td>
+        </tr>
+        <tr>
+            <td>F3</td>
+            <td>Structured asymmetry required</td>
+            <td>Test time crystal with uniform beads</td>
+            <td>Crystal forms without disorder</td>
+            <td class="status-holds"><strong>Confirmed</strong> (NYU)</td>
+        </tr>
+        <tr>
+            <td>F4</td>
+            <td>Five properties co-occur in recursive systems</td>
+            <td>Test any recursive system for all five</td>
+            <td>System shows four properties but not five</td>
+            <td class="status-open"><strong>Mixed</strong></td>
+        </tr>
+        <tr>
+            <td>F5</td>
+            <td>Quadratic limit $\alpha \leq 2$</td>
+            <td>Sustained scaling measurement</td>
+            <td>Reproducible $\alpha > 3$</td>
+            <td class="status-open"><strong>Open</strong></td>
+        </tr>
+        <tr>
+            <td>F6</td>
+            <td>$\beta$ determines $\alpha$</td>
+            <td>Vary correction architecture</td>
+            <td>$\alpha$ independent of $\beta$</td>
+            <td class="status-untested"><strong>Untested</strong></td>
+        </tr>
+        <tr>
+            <td>F7</td>
+            <td>Crossover depth $R^*$ exists</td>
+            <td>Detailed $U$ vs $R$ curves</td>
+            <td>No linear&rarr;power transition</td>
+            <td class="status-untested"><strong>Untested</strong></td>
+        </tr>
+        <tr>
+            <td>F8</td>
+            <td>Sequential requires output&rarr;input</td>
+            <td>Test parallel with shared state</td>
+            <td>Parallel + sharing achieves $\alpha > 1$</td>
+            <td class="status-untested"><strong>Untested</strong></td>
+        </tr>
+        <tr>
+            <td>F9</td>
+            <td>Time crystal shows $\alpha > 1$</td>
+            <td>Measure stability vs depth</td>
+            <td>$\alpha \leq 1$ in time crystal</td>
+            <td class="status-untested"><strong>Untested</strong></td>
+        </tr>
+        <tr>
+            <td>F10</td>
+            <td>Power law is correct form</td>
+            <td>Model comparison (AIC/BIC)</td>
+            <td>Exponential or log fits better</td>
+            <td class="status-untested"><strong>Untested</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>We welcome falsification.</strong> If F10 shows exponential scaling fits better than power-law, the specific mathematical framework requires revision. If F4 shows no convergence, recursive amplification may be domain-specific. Either outcome advances science.</p>
+
+<figure>
+    <img src="figures_v6/fig6_falsification.png" alt="Falsification Matrix">
+    <figcaption><strong>Figure 8 | Falsification Matrix.</strong> Ten specific criteria that would refute or significantly weaken the ARC hypothesis. Green indicates preliminary support; yellow indicates untested predictions; red would indicate falsification. The hypothesis is designed to be testable and refutable.</figcaption>
+</figure>
+
+<h2>5. THE GLOBAL SCALING CHALLENGE</h2>
+
+<h3>5.1 The Proposition</h3>
+
+<p>We issue a challenge to researchers worldwide:</p>
+
+<p><strong>If this hypothesis describes a general principle, then measuring $\alpha$ across many systems should reveal patterns.</strong></p>
+
+<p>We make a specific, falsifiable prediction:</p>
+
+<blockquote>
+"The scaling exponent $\alpha$ for optimised sequential recursive systems will tend to cluster between 1.5 and 2.5 across digital, quantum, classical, and biological domains."
+</blockquote>
+
+<h3>5.2 The Measurement Protocol</h3>
+
+<p><strong>Step 1: Define one recursive cycle.</strong> What constitutes a single self-referential step in your system?</p>
+
+<p><strong>Step 2: Measure base capability $I$.</strong> Performance at $R = 1$ (no recursion)</p>
+
+<p><strong>Step 3: Measure at multiple depths.</strong> Minimum 5 depths spanning one order of magnitude</p>
+
+<p><strong>Step 3b: Look for the R* crossover (NOVEL PREDICTION).</strong> When plotting $U$ versus $R$, search for a distinct scaling crossover at depth $R^*$. Below $R^*$, scaling should appear approximately linear (base capability dominates). Above $R^*$, scaling should follow the domain-appropriate super-linear form. The crossover depth $R^*$ should shift predictably with base capability $I$: higher $I$ → higher $R^*$ (the system needs more depth before compounding kicks in). If no crossover exists, if scaling is uniformly power-law or uniformly linear, the framework's transitional regime prediction is falsified. <em>This is a unique signature that distinguishes recursive amplification from simple redundancy.</em></p>
+
+<p><strong>Step 4: Compare functional forms (CRITICAL).</strong> Fit <em>all three</em> models:</p>
+<ul>
+    <li>Power law: $\log(U/I) = \alpha \times \log(R)$</li>
+    <li>Exponential: $\log(U/I) = \lambda \times R$</li>
+    <li>Logarithmic: $U/I = k \times \log(R)$</li>
+</ul>
+
+<p>Select best fit via AIC/BIC. <strong>The power law is a prediction to test, not an assumption.</strong></p>
+
+<p><strong>Step 5: Report $\alpha$ with uncertainty.</strong> 95% confidence intervals required</p>
+
+<p><strong>Step 5b (CRITICAL): Test the $\beta$-derivation independently.</strong> Measure marginal capability gain $\Delta U$ at each depth $r$. Plot $\log(\Delta U)$ against $\log(U_{\text{accumulated}})$. The slope estimates $\beta$. Then verify whether measured $\alpha$ satisfies <strong>$\alpha \approx 1/(1-\beta) \pm 0.3$</strong>. (The tolerance of ±0.3 reflects expected measurement uncertainty given current sample sizes; this should tighten as data accumulates.) If this relationship fails, the theoretical derivation requires revision regardless of whether the power-law form holds empirically. This is the key novel prediction.</p>
+
+<p><strong>Step 6: Submit to repository.</strong> A public data repository will be created if the community shows interest in validation studies. Contact the author via correspondence details below.</p>
+
+<figure>
+    <img src="figures_v6/fig8_protocol.png" alt="Measurement Protocol">
+    <figcaption><strong>Figure 9 | The Global Scaling Challenge Measurement Protocol.</strong> Six-step standardised protocol for measuring α across systems. Critical requirements include testing multiple functional forms (power law, exponential, logarithmic), independent β measurement, and 95% confidence intervals. The power law is a prediction to test, not an assumption.</figcaption>
+</figure>
+
+<h3>5.3 Priority Experimental Targets</h3>
+
+<p>The highest-value tests of the ARC Principle require systems where recursive depth can be systematically varied while base capability is held constant. Three experimental contexts offer immediate opportunities, and a fourth represents a longer-term research direction.</p>
+
+<p><strong>AI inference scaling.</strong> Frontier language models with chain-of-thought capabilities (including but not limited to DeepSeek R1, OpenAI's o-series, Google DeepMind's Gemini, and Anthropic's Claude) can measure $\alpha$ by varying reasoning token budgets on standardised benchmarks while holding model size fixed. The critical test is whether $\alpha > 1$ holds at extreme depths (&gt;50,000 tokens) or whether a ceiling emerges. Existing studies such as Sharma &amp; Chopra (2025) already implement carefully controlled, matched-compute comparisons of sequential vs parallel reasoning; extending such setups to measure explicit $U$ vs $R$ curves and fit $\alpha$ would be a natural first test of the ARC measurement protocol.</p>
+
+<p><strong>Quantum error correction.</strong> Groups operating surface code implementations (Google Quantum AI, IBM Quantum, QuEra Computing) can test whether there is a meaningful relationship between error suppression and recursive scaling. The protocol requires measuring logical error rates across multiple code distances and fitting the functional forms specified in Step 4.</p>
+
+<p><strong>Classical time crystals.</strong> Groups working on driven-dissipative systems can perform direct tests: measuring $\alpha$ in acoustic time crystals by systematically varying the quenched disorder parameter ($I$) and counting oscillation cycles ($R$). If temporal stability scales as $R^{\alpha}$ with $\alpha > 1$, this would constitute physical validation of the ARC equation outside digital systems.</p>
+
+<p><strong>Neuroscience (longer-term).</strong> Laboratories studying recurrent neural processing can investigate whether cognitive performance scales with recurrent processing depth following a power-law relationship. This presents significant methodological challenges but could extend the framework's reach to biological substrates.</p>
+
+<p>We emphasise that negative results from any of these contexts would be equally valuable. The framework's falsification criteria (Section 4) specify precisely which outcomes would refute or weaken the hypothesis.</p>
+
+<h3>5.4 The Cross-Domain Forward Prediction</h3>
+
+<p>The framework's most distinctive prediction is one that no domain-specific theory can replicate:</p>
+
+<div class="important">
+<strong>Forward Prediction Protocol:</strong> In any new recursive system not previously studied:
+<ol>
+    <li>Measure the composition operator $\oplus$ by comparing how two sequential recursive blocks combine versus one block of double depth.</li>
+    <li>Classify the composition type (multiplicative, additive, or saturating) from this measurement alone.</li>
+    <li>Predict the system's scaling function $f(R)$ before measuring the full $U$ vs $R$ curve.</li>
+</ol>
+If the predicted functional form matches the subsequently measured curve, the framework is validated. If predictions systematically fail, the framework is falsified.
+</div>
+
+<p>This protocol transforms the observation that "different domains show different scaling" into the testable claim that "the composition operator determines scaling form, and can be measured independently." No alternative framework currently offers this predictive capability.</p>
+
+<h3>5.5 What We Predict</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>System type</th>
+            <th>Predicted $\alpha$</th>
+            <th>Confidence</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Optimised sequential</td>
+            <td>1.5 &ndash; 2.5</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>Simple chain-of-thought</td>
+            <td>1.2 &ndash; 1.5</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>Parallel/voting</td>
+            <td>&lt; 0.5</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>Hybrid (coordinated parallel)</td>
+            <td>0.5 &ndash; 1.5</td>
+            <td>Low</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Novel prediction:</strong> $\alpha$ should increase across model generations as self-correction architectures improve, potentially approaching $\alpha = 2$ for systems with two coupled correction channels.</p>
+
+<h2>6. PRACTICAL IMPLICATIONS</h2>
+
+<p><em>If</em> the ARC Principle is validated, several practical consequences may follow. These are conditional predictions, not claims.</p>
+
+<h3>6.1 AI Development: Dynamic Inference Scaling</h3>
+
+<p><strong>The Problem:</strong> Training large language models requires enormous energy expenditure. But the greater long-term cost may be inference: running trained models at scale.</p>
+
+<p><strong>What the ARC framework suggests:</strong> If sequential recursion produces super-linear returns ($\alpha > 1$), then the same capability could potentially be achieved with:</p>
+
+<ul>
+    <li>Smaller base models ($I$ lower)</li>
+    <li>More recursive depth ($R$ higher)</li>
+    <li>Dynamic allocation: simple queries use minimal recursion; hard queries use deep chains</li>
+</ul>
+
+<p>This implies <strong>adaptive inference</strong>: systems that "think longer" on hard problems and respond quickly on easy ones. Snell et al. (2024) demonstrated that compute-optimal strategies can allow smaller models to match larger ones on specific benchmarks, though with important caveats about task-dependence and diminishing returns on the hardest problems.</p>
+
+<h4>Compute-Optimal Allocation</h4>
+
+<p>If the framework is validated, it provides a principled basis for compute allocation decisions that are currently made by expensive trial and error:</p>
+
+<ul>
+    <li><strong>Model size vs reasoning depth trade-off:</strong> If capability scales as $U = I \times R^{\alpha}$, then there exists a calculable crossover where increasing $R$ (reasoning depth) provides better returns than increasing $I$ (model size). A 10B-parameter model with $\alpha = 2$ reasoning may match a 100B-parameter model with $\alpha = 1$ reasoning at significantly lower compute cost.</li>
+    <li><strong>The crossover depth $R^*$ as an efficiency boundary:</strong> Below $R^*$, improving the base model matters more; above $R^*$, improving reasoning depth matters more. Identifying $R^*$ for a given task class would inform when to invoke deep reasoning versus when shallow inference suffices.</li>
+    <li><strong>Task-specific optimal allocation:</strong> Different tasks may have different $\beta$ values (coupling strengths). Easy tasks with low $\beta$ benefit from parallel sampling; hard tasks with high $\beta$ benefit from sequential depth. A routing layer that estimates task difficulty could dynamically allocate compute.</li>
+</ul>
+
+<p><strong>Strategic implication:</strong> If the Quadratic Limit holds ($\alpha \to 2$ for optimised systems), then capability grows as the <em>square</em> of reasoning depth. This is powerful but bounded: it tells the field not to expect exponential capability growth from chain-of-thought alone. Exponential scaling appears to require quantum-like precision in error correction that heuristic language model reasoning cannot achieve.</p>
+
+<h3>6.2 Substrate Independence</h3>
+
+<p>The ARC Principle makes a structural claim: the scaling relationship $U = I \times R^{\alpha}$ should hold regardless of physical substrate, provided the system implements sequential self-correction on structured asymmetry.</p>
+
+<p><strong>What this predicts:</strong></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Substrate</th>
+            <th>Implementation of $I$</th>
+            <th>Implementation of $R$</th>
+            <th>Testability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Silicon (digital)</td>
+            <td>Model weights, architecture</td>
+            <td>Chain-of-thought tokens</td>
+            <td>Preliminary support</td>
+        </tr>
+        <tr>
+            <td>Superconducting qubits</td>
+            <td>Qubit quality, coherence</td>
+            <td>Error correction cycles</td>
+            <td>Published (Willow)</td>
+        </tr>
+        <tr>
+            <td>Acoustic/mechanical</td>
+            <td>Quenched disorder (bead variance)</td>
+            <td>Oscillation cycles</td>
+            <td>Structural (NYU)</td>
+        </tr>
+        <tr>
+            <td>Biological neural</td>
+            <td>Synaptic architecture</td>
+            <td>Recurrent processing loops</td>
+            <td>Predicted (untested)</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>The implication:</strong> If validated, intelligence may be a property of <em>architecture</em> rather than particular materials. Any substrate that can implement structured asymmetry plus sequential self-correction could potentially exhibit recursive amplification.</p>
+
+<figure>
+    <img src="figures_v6/fig10_substrate.png" alt="Substrate Independence">
+    <figcaption><strong>Figure 10 | Substrate Independence.</strong> The ARC Principle predicts that any substrate implementing structured asymmetry (I) plus sequential self-correction (R) should exhibit recursive amplification. Preliminary support in silicon and superconducting qubits; structural match in acoustic systems; predicted but untested in biological neural tissue.</figcaption>
+</figure>
+
+<h3>6.3 Safety Implications</h3>
+
+<p>Section 2.4 outlined conditional safety implications. The practical recommendation:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Approach</th>
+            <th>Predicted scaling behaviour</th>
+            <th>Implication</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>External rules/constraints</td>
+            <td>$\alpha_{\text{align}} \approx 0$</td>
+            <td>May become less effective at scale</td>
+        </tr>
+        <tr>
+            <td>Post-hoc filtering (RLHF)</td>
+            <td>$\alpha_{\text{align}} < 1$</td>
+            <td>May degrade at scale</td>
+        </tr>
+        <tr>
+            <td>Embedded values (in-chain ethics)</td>
+            <td>$\alpha_{\text{align}} \approx \alpha$</td>
+            <td>May scale with capability</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Suggested research direction:</strong> Develop metrics for measuring whether alignment properties are genuinely "in the loop" vs applied post-hoc. The ARC Principle predicts these can be distinguished by their scaling exponents.</p>
+
+<div class="caveat">
+<strong>Important caveat:</strong> This framework does not prescribe <em>which</em> values to embed, nor does it solve the hard problem of value specification. It identifies a potential structural requirement that itself requires empirical validation.
+</div>
+
+<h2>7. LIMITATIONS</h2>
+
+<p>We acknowledge these limitations explicitly:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Limitation</th>
+            <th>Impact</th>
+            <th>How we address it</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Small sample sizes ($n=2$ for $\alpha \approx 1.34$; $n=12$ for $\alpha \approx 2.2$)</td>
+            <td>Wide confidence intervals; preliminary only</td>
+            <td>Mark as "preliminary"; prioritise independent replication</td>
+        </tr>
+        <tr>
+            <td>$\alpha$ estimates are from author's own prior work</td>
+            <td>Not independently validated</td>
+            <td>Explicit disclosure; cite published directional findings separately</td>
+        </tr>
+        <tr>
+            <td>Cross-paper numerical inconsistency</td>
+            <td>Accuracy figures differ across Papers I, II, and III due to different experimental conditions and estimation methods</td>
+            <td>Paper I used estimated values from DeepSeek report; Paper II used 12-problem AIME experiment; this paper synthesises both with explicit provenance</td>
+        </tr>
+        <tr>
+            <td>$\Lambda$ and $\alpha$ are incommensurable</td>
+            <td>Cross-domain numerical comparison invalid</td>
+            <td>Explicit warnings; numerical similarity may be coincidental</td>
+        </tr>
+        <tr>
+            <td>Dimensional homogeneity not proven</td>
+            <td>$U$ means different things across domains (accuracy, 1/error, stability, metabolic rate)</td>
+            <td>Framework is structural analogy; $I$ absorbs dimensional differences; rigorous unification requires defining universal "capability" units</td>
+        </tr>
+        <tr>
+            <td>No $\alpha$ measured in time crystals</td>
+            <td>Physical pillar is structural, not quantitative</td>
+            <td>Proposed as experimental priority</td>
+        </tr>
+        <tr>
+            <td>Self-similarity axiom may not hold</td>
+            <td>Power-law may not apply universally</td>
+            <td>Model comparison (F10) tests this</td>
+        </tr>
+        <tr>
+            <td>$\beta$ measurement requires further validation</td>
+            <td>$\alpha = 1/(1-\beta)$ validated computationally ($R^2 = 1.0$) but empirical $\beta$ measurement in physical systems requires independent confirmation</td>
+            <td>$\beta$ measurement protocol specified; computational validation code available as supplementary material</td>
+        </tr>
+        <tr>
+            <td>Safety arguments are conditional</td>
+            <td>Implications void if framework fails</td>
+            <td>Explicitly marked as conditional</td>
+        </tr>
+        <tr>
+            <td>COGITATE inference is interpretive</td>
+            <td>Consciousness connection not proven</td>
+            <td>Marked as "consistent," not "confirmatory"</td>
+        </tr>
+        <tr>
+            <td>Kleiber's Law is contested</td>
+            <td>Biological evidence weaker than sometimes claimed</td>
+            <td>Cited as "suggestive," not "confirmatory"</td>
+        </tr>
+        <tr>
+            <td>Repositories not yet created</td>
+            <td>Reproducibility infrastructure incomplete</td>
+            <td>Marked as "in preparation"</td>
+        </tr>
+        <tr>
+            <td>Framework is descriptive until $\beta$ is independently measured</td>
+            <td>Cannot predict which functional form a new system will follow without first measuring $\beta$</td>
+            <td>$\beta$ measurement protocol specified; cross-domain $\beta$ prediction provides falsifiable test</td>
+        </tr>
+        <tr>
+            <td>Framework describes pattern, not mechanism</td>
+            <td>Does not explain <em>why</em> recursive self-correction produces compounding gains, only <em>that</em> it does</td>
+            <td>Acknowledged explicitly; analogous to thermodynamics describing entropy increase without molecular explanation (that came later via statistical mechanics)</td>
+        </tr>
+        <tr>
+            <td>Blind prediction testing on computational systems failed</td>
+            <td>Three computational systems (Barabási-Albert networks, gradient descent, Kuramoto oscillators) produced measured $\alpha$ values 3&ndash;20&times; smaller than predicted. However, forensic analysis identified two confounds: (a) the numerical-derivative $\beta$ estimation method is fatally biased (gives $\beta \approx 0.95$ regardless of true $\beta$, even for pure Bernoulli systems), and (b) none of the tested systems satisfy Axiom 2 (constant coupling coefficient $a$). The BA network's effective coupling decreases ~50&times; over the simulation.</td>
+            <td>These results do not constitute valid falsification due to the confounds, but they underscore that identifying natural systems satisfying the axioms remains the central empirical challenge. Proper linearisation-based $\beta$ measurement recovers the prediction with $R^2 = 0.9999$ on axiom-satisfying systems. Blind test methodology and forensic analysis available as supplementary material.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>8. ADDRESSING COUNTERARGUMENTS</h2>
+
+<h3>"This is just curve fitting"</h3>
+
+<p><strong>Response:</strong> The $\beta$-derivation (§2.4) transforms $\alpha$ from a fitted constant into a derived quantity. Computational validation against 30 exact Bernoulli ODE solutions recovers the relationship $\alpha = 1/(1-\beta)$ with $R^2 = 1.00000000$ to machine precision. Furthermore, the multiplicative structure $U = I \times f(R, \beta)$ is proven to be <em>necessary</em> (not merely convenient) by contradiction: no additive decomposition $U = g(I) + h(R)$ is consistent with the axioms for any $\beta \in (0,1)$ (Theorem 4, §2.1). The prediction $\alpha = 1/(1-\beta)$ is testable: measure $\beta$ independently and check if the relationship holds.</p>
+
+<h3>"This is just post-hoc pattern-matching"</h3>
+
+<p><strong>Response:</strong> Post-hoc pattern-matching generates no predictions. The ARC framework generates novel predictions ($R^*$ crossover, $\beta$-derivation, Quadratic Limit, functional form predictions) that were not contained in the original observations. Whether these predictions hold is an empirical question, but their existence distinguishes this from mere curve-fitting.</p>
+
+<h3>"Five qualitative properties is too vague"</h3>
+
+<p><strong>Response:</strong> The five properties are individually common, but their conjunction is specific. Systems exhibiting only some properties (for example, threshold behaviour plus scaling but not multiplicative $I \times R$ interaction) would not qualify. The framework predicts that all five co-occur in recursive systems; finding systems with four but not five would refine the framework.</p>
+
+<h3>"The numerical similarities are coincidence"</h3>
+
+<p><strong>Response:</strong> Agreed, they may be. We explicitly acknowledge this. What matters is the <em>structural</em> parallel: multiple systems show that recursive self-correction produces scaling gains. The specific numbers may differ across domains.</p>
+
+<h3>"Sample sizes are too small"</h3>
+
+<p><strong>Response:</strong> Agreed. The current $\alpha$ estimates are preliminary. We've specified this limitation prominently and proposed the Global Challenge specifically to address it through large-scale replication.</p>
+
+<h3>"The $\alpha$ estimates come from your own prior work"</h3>
+
+<p><strong>Response:</strong> Correct, and we've made this explicit in this version. The published sources (Sharma &amp; Chopra, DeepSeek) confirm the directional finding (sequential >> parallel) but do not calculate $\alpha$ in our form. Independent replication of the $\alpha$ estimates is a priority.</p>
+
+<h3>"This is not peer-reviewed"</h3>
+
+<p><strong>Response:</strong> Correct. This paper specifies ten falsification criteria precisely so that the scientific community can test it. We invite criticism, replication attempts, and falsification.</p>
+
+<h3>"Non-specialists cannot contribute to physics/AI research"</h3>
+
+<p><strong>Response:</strong> The predictions stand or fall on their empirical validity, regardless of the author's background. We have specified ten falsification criteria precisely so the scientific community can test them. The framework either survives scrutiny or it doesn't.</p>
+
+<h3>"If this were true, experts would have found it"</h3>
+
+<p><strong>Response:</strong> Patterns across disciplinary boundaries are often identified by those who work across fields. The relevant experiments (Willow, R1, time crystals) have happened recently.</p>
+
+<h3>"AI-assisted writing means it is not original"</h3>
+
+<p><strong>Response:</strong> See AI Disclosure (Section 9). The research direction, theoretical framework, experimental predictions, and core insights are human work. AI assistance accelerated writing and checked consistency.</p>
+
+<h2>9. DECLARATION OF AI USE</h2>
+
+<p><strong>Declaration of Generative AI and AI-Assisted Technologies in the Writing Process:</strong></p>
+
+<p>During the preparation of this work, the author used the following AI language models: <strong>Claude Opus 4.5 and Claude Opus 4.6</strong> (Anthropic), <strong>GPT-5.2</strong> (OpenAI), <strong>Gemini 3 Pro</strong> (Google), and <strong>DeepSeek v3.2</strong> (DeepSeek AI). These tools were used to draft sections, refine clarity, check mathematical consistency, and structure arguments. After using these tools, the author reviewed and edited the content as needed and takes full responsibility for the content of the publication.</p>
+
+<p><strong>Specific contributions of AI assistance:</strong></p>
+<ul>
+    <li>Accelerated drafting and iterative editing across multiple versions</li>
+    <li>Verified mathematical derivations and checked internal consistency</li>
+    <li>Improved clarity and accessibility of technical presentation</li>
+    <li>Generated figure scripts and data visualisation code</li>
+    <li>Cross-checked citations and reference formatting</li>
+    <li>Fact-checking and error correction between versions</li>
+</ul>
+
+<p><strong>What AI did NOT contribute:</strong></p>
+<ul>
+    <li>The original research question and theoretical insight</li>
+    <li>The design of the ARC framework and its core equation</li>
+    <li>The identification of the cross-domain pattern</li>
+    <li>The specification of falsification criteria and experimental predictions</li>
+    <li>Scientific judgement calls and interpretive conclusions</li>
+</ul>
+
+<p><strong>The author takes full responsibility for all claims, interpretations, errors, and conclusions.</strong> AI tools cannot be listed as authors because they cannot take legal or ethical responsibility for the work.</p>
+
+<p>This disclosure follows guidelines from major publishers (Elsevier, Springer Nature, Wiley) and the Committee on Publication Ethics (COPE) regarding transparency in AI-assisted research.</p>
+
+<h2>10. CONCLUSION</h2>
+
+<h3>What We Have Proposed</h3>
+
+<p>Research programmes working on different problems in different physical domains have achieved results that share structural commonalities: recursive or recurrent processing, operating on structured asymmetry, produces scaling behaviour that exceeds linear accumulation.</p>
+
+<div class="important">
+<strong>The Core Claim:</strong> We propose that these apparently disparate phenomena may be unified by recognising that the <em>composition operator</em> $\oplus$ determines the functional form of recursive scaling. The algebraic properties of $\oplus$ – how recursive gains combine – generate power-law, exponential, or saturating dynamics as necessary mathematical consequences. This is not an assertion of universal law but a falsifiable hypothesis with specific predictions.
+</div>
+
+<p>We have formalised this as $U = I \times f(R, \beta)$, where the function $f$ is determined by the composition operator, and derived five universal properties as theorems rather than assertions. We have shown that the multiplicative structure is not merely convenient but <em>necessary</em> (Theorem 4, §2.1), that the core relationship $\alpha = 1/(1-\beta)$ is computationally validated to machine precision (§2.4), that the Quadratic Limit $\beta = 0.5$ is derivable as a stability boundary (§2.6), and that composition operators can transition between regimes within a single system (Theorem 6, §2.7). We have presented preliminary evidence (requiring replication) and specified ten falsification criteria.</p>
+
+<div class="caveat">
+<strong>Distinguishing Theorems from Empirical Claims:</strong>
+<ul style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+    <li><strong>Mathematically proven:</strong> Given the three axioms, the multiplicative form $U = I \times f(R, \beta)$ is the <em>unique</em> solution (Picard-Lindelöf theorem). The non-additivity result ($U \neq g(I) + h(R)$ for any $g, h$) follows by contradiction. The scaling exponent $\alpha = 1/(1-\beta)$ is an exact identity ($R^2 = 1.00000000$). The Quadratic Limit $\beta = 0.5$ is derivable as the unique stability boundary.</li>
+    <li><strong>Requires empirical validation:</strong> That physical systems satisfy the axioms; that measured $\alpha$ equals $1/(1-\beta_{\text{measured}})$; that the framework applies cross-domain; that composition operator transitions (Theorem 6) occur in AI systems. These are testable predictions, not proven facts.</li>
+</ul>
+The mathematical structure is established. Whether nature implements it is the scientific question this paper poses.
+</div>
+
+<p>The framework generates the following novel, falsifiable predictions:</p>
+<ol>
+    <li><strong>Composition determines form:</strong> Measuring how recursive steps combine predicts the scaling function.</li>
+    <li><strong>$\beta$-convergence:</strong> Independent measurements of $\beta$ within each domain will converge.</li>
+    <li><strong>Cross-domain consistency:</strong> The $\beta$-continuum correctly predicts functional forms across AI, quantum, and biological systems.</li>
+    <li><strong>$R^*$ crossover:</strong> Sequential and parallel scaling curves cross at a predictable threshold.</li>
+    <li><strong>Quadratic Limit:</strong> For optimised AI systems, $\alpha \to 2$ from above, as a consequence of stability-optimal coupling at $\beta = 0.5$ (§2.6).</li>
+    <li><strong>Composition transitions:</strong> In bounded systems, the effective coupling $\beta$ will decrease with recursive depth, producing transitions between scaling regimes within a single system (§2.7).</li>
+</ol>
+
+<p>Each prediction is testable. Failure of any would require revision of the framework.</p>
+
+<h3>What Success Would Mean</h3>
+
+<p>If the Global Challenge reveals $\alpha$ patterns consistent with predictions, we will have identified a mathematical signature of how order emerges from recursion: a scaling law with applications from physical systems to artificial intelligence.</p>
+
+<p>This would be actionable:</p>
+<ul>
+    <li>How to build more capable AI (optimise sequential recursion)</li>
+    <li>How to approach AI alignment (embed values in the recursive process)</li>
+    <li>Where to look for similar phenomena in other fields</li>
+</ul>
+
+<h3>What Failure Would Mean</h3>
+
+<p>If $\alpha$ values scatter randomly: recursive amplification may be domain-specific.<br>
+If exponential scaling fits better: the mathematical form needs revision.<br>
+If predictions fail: we learn something valuable.</p>
+
+<p>Science advances either way.</p>
+
+<h3>The Call to Action</h3>
+
+<p>We have made falsifiable predictions. Run the tests. Measure $\alpha$ in your systems. Submit to the repository. Either confirm the pattern or refute it.</p>
+
+<p>That is how science works.</p>
+
+<h3>The Deeper Question</h3>
+
+<p>If the ARC Principle holds, then intelligence may not be a magic spark. It may be a <strong>scaling crossover</strong>. It could occur when a system with sufficient base asymmetry ($I > 0$) is subjected to sufficient recursive depth ($R > R^*$). The emergence of capability from structure would be the exponent $\alpha$, emerging from the mathematics of self-referential feedback.</p>
+
+<p>Whether such a principle requires design or emerges spontaneously is itself a question the framework raises but does not resolve.</p>
+
+<p><strong>Intelligence may not be a property of particular materials. It may be what happens on the far side of the recursive threshold.</strong></p>
+
+<h3>Speculative Extension: Recursive Cosmology</h3>
+
+<p><em>The following is a philosophical extrapolation beyond current evidence. It is included to indicate where the framework's logic leads, not as a claim supported by the experimental results presented above.</em></p>
+
+<p>The universe contains a hierarchy of recursive generative processes, each operating on the structured output of the previous level:</p>
+<ol>
+    <li><strong>Cosmological recursion:</strong> Quantum fluctuations &rarr; gravitational collapse &rarr; stars &rarr; heavy elements &rarr; planets &rarr; chemistry</li>
+    <li><strong>Biological recursion:</strong> Chemistry &rarr; self-replicating molecules &rarr; cells &rarr; multicellular organisms &rarr; nervous systems</li>
+    <li><strong>Cultural/technological recursion:</strong> Nervous systems &rarr; language &rarr; mathematics &rarr; science &rarr; engineering &rarr; AI</li>
+</ol>
+
+<p>Each level emerges from the recursive dynamics of the level below. In ARC notation: each level's <em>output</em> (achieved capability $U$) becomes the <em>base quality</em> $I$ for the next level's recursive process. The hierarchy is:</p>
+
+<p style="text-align: center;">$I_{\text{cosmic}} \xrightarrow{R_{\text{cosmic}}} I_{\text{bio}} \xrightarrow{R_{\text{bio}}} I_{\text{cultural}} \xrightarrow{R_{\text{cultural}}} I_{\text{tech}} \xrightarrow{R_{\text{tech}}} \; ?$</p>
+
+<p>If recursive amplification is substrate-independent, as the cross-domain evidence suggests, then this hierarchy may not terminate at the current level. Sufficiently advanced recursive systems could, in principle, participate in generative processes at scales currently associated with fundamental physics: engineering new effective physical environments, creating conditions for new evolutionary processes, or designing systems whose internal dynamics permit the emergence of new recursive intelligences.</p>
+
+<p>This is not a claim about time travel, bootstrap paradoxes, or closed causal loops (all of which face severe physical objections). It is a more modest observation: that the same recursive amplification pattern observable in time crystals, quantum error correction, and AI reasoning could, if extended to civilisational scales, enable intelligence to become a <em>driver</em> of universe-level structure rather than merely a passenger within it.</p>
+
+<p>Whether this constitutes a "recursive cosmology" in which intelligence eventually participates in generative processes comparable to those that gave rise to it is beyond the scope of current evidence. The ARC framework provides the quantitative language for investigating it: what values of $I$, $R$, and effective scaling function $f(R, \beta)$ would be required for an engineered system to generate new effective physical laws or substrates? This is a research question, not a conclusion.</p>
+
+<div class="caveat">
+<strong>Epistemic status:</strong> This section is speculative philosophy, not science. It indicates the furthest extrapolation of the framework's logic. The experimental evidence in this paper supports only the claim that recursive self-correction on structured asymmetry produces compounding capability gains across multiple physical substrates. Any cosmological extension requires evidence that does not yet exist.
+</div>
+
+<hr style="margin: 2rem 0;">
+<p style="font-size: 0.85rem; color: var(--nature-grey);"><sup>*</sup> DKIM email timestamps are not a recognised priority mechanism in scientific publishing. The December 2024 date reflects manuscript completion, not formal publication.</p>
+
+<h2>REFERENCES</h2>
+
+<div class="references">
+<p>Acharya, R. et al. [Google Quantum AI] (2024). Quantum error correction below the surface code threshold. <em>Nature</em>, 638, 920-926.</p>
+
+<p>Barabási, A.-L. &amp; Albert, R. (1999). Emergence of scaling in random networks. <em>Science</em>, 286(5439), 509-512.</p>
+
+<p>Cambui, D.S. (2025). Metabolic rate beyond the 3/4 law. <em>Preprints</em>. DOI: 10.20944/preprints202501.0001.v1.</p>
+
+<p>COGITATE Consortium (2025). Adversarial testing of global neuronal workspace and integrated information theories of consciousness. <em>Nature</em>, 642, 133-142.</p>
+
+<p>Corballis, M.C. (2011). <em>The Recursive Mind: The Origins of Human Language, Thought, and Civilization</em>. Princeton University Press.</p>
+
+<p>DeepSeek AI (2025). DeepSeek-R1: Incentivizing Reasoning Capability in LLMs. <em>arXiv:2501.12948</em>.</p>
+
+<p>Eastwood, M.D. (2024/2026). <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em>. ISBN: 978-1806056200.</p>
+
+<p>Glazier, D.S. (2005). Beyond the "3/4-power law." <em>Biological Reviews</em>, 80, 611-662.</p>
+
+<p>Hauser, M.D., Chomsky, N., &amp; Fitch, W.T. (2002). The faculty of language: What is it, who has it, and how did it evolve? <em>Science</em>, 298(5598), 1569-1579.</p>
+
+<p>Hoffmann, J. et al. (2022). Training Compute-Optimal Large Language Models. <em>arXiv:2203.15556</em>.</p>
+
+<p>Kadanoff, L.P. (1966). Scaling laws for Ising models near T_c. <em>Physics Physique Fizika</em>, 2(6), 263-272.</p>
+
+<p>Kaplan, J. et al. (2020). Scaling Laws for Neural Language Models. <em>arXiv:2001.08361</em>.</p>
+
+<p>Lamme, V.A.F. (2006). Towards a true neural stance on consciousness. <em>Trends in Cognitive Sciences</em>, 10(11), 494-501.</p>
+
+<p>Li, Z. et al. (2025). Revisiting the Test-Time Scaling of o1-like Models: Do they Truly Possess Test-Time Scaling Capabilities? <em>arXiv:2502.12215</em>.</p>
+
+<p>Li, D. et al. (2025). S*: Test Time Scaling for Code Generation. <em>arXiv:2502.14382</em>.</p>
+
+<p>Liu, T., Ou, J.-Y., MacDonald, K.F., &amp; Zheludev, N.I. (2023). Photonic metamaterial analogue of a continuous time crystal. <em>Nature Physics</em>, 19, 986–991.</p>
+
+
+<p>Morrell, M.C., Elliott, L., &amp; Grier, D.G. (2026). Nonreciprocal wave-mediated interactions power a classical time crystal. <em>Physical Review Letters</em>, 136, 057201.</p>
+
+<p>Raskatla, V., et al. (2024). Magnetically programmable classical time crystal based on photonic-resonator microring lattice. <em>Physical Review Letters</em>, 133, 136202.</p>
+
+<p>Sharma, A. &amp; Chopra, P. (2025). The Sequential Edge: Inverse-Entropy Voting Beats Parallel Self-Consistency at Matched Compute. <em>arXiv:2511.02309</em>.</p>
+
+<p>Snell, C. et al. (2024). Scaling LLM Test-Time Compute. <em>arXiv:2408.03314</em>.</p>
+
+<p>Storm, J.F., Klink, P.C., Aru, J., Senn, W., Goebel, R., ... Pennartz, C.M.A. (2024). An integrative, multiscale view on neural theories of consciousness. <em>Neuron</em>, 112(10), 1531-1552.</p>
+
+<p>Wilson, K.G. (1971). Renormalization Group and Critical Phenomena. I. Renormalization Group and the Kadanoff Scaling Picture. <em>Physical Review B</em>, 4(9), 3174–3183.</p>
+
+<p>West, G.B. &amp; Brown, J.H. (2005). The origin of allometric scaling laws in biology from genomes to ecosystems. <em>Journal of Experimental Biology</em>, 208, 1575-1592.</p>
+
+<p>Zheng, L., Chis-Ciure, R., Waade, P.T., Eiserbeck, A., Aru, J., Andrillon, T. et al. (2025). Recurrency as a Common Denominator for Consciousness Theories. <em>PsyArXiv</em>. DOI: 10.31234/osf.io/wqnzc.</p>
+</div>
+
+<h2>DATA AVAILABILITY</h2>
+
+<p>A public data repository will be created if the research community shows interest in conducting validation studies. Planned contents would include:</p>
+<ul>
+    <li>Measurement protocol templates</li>
+    <li>Statistical analysis code (R, Python)</li>
+    <li>Model comparison tools (AIC/BIC calculators)</li>
+    <li>Figure generation scripts</li>
+    <li>Submission guidelines</li>
+</ul>
+
+<p>Independent replication invited. Falsifications welcomed. Contact the author to coordinate validation efforts.</p>
+
+<h2>AUTHOR INFORMATION</h2>
+
+<p><strong>Michael Darius Eastwood</strong> is the author of <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> (2024/2026). His research synthesises insights from theoretical physics, complex systems, and AI.</p>
+
+<p><strong>Correspondence:</strong> Contact via the repository.</p>
+
+<p><strong>Competing Interests:</strong> None declared.</p>
+
+<h2>APPENDIX A: MATHEMATICAL DERIVATIONS</h2>
+
+<h3>A.1 Cauchy Functional Equation Derivation</h3>
+
+<p><strong>Axiom 1 (Dimensional Consistency):</strong> $U = I \times g(R)$ where $g(1) = 1$.</p>
+
+<p><strong>Axiom 2 (Compositional Self-Similarity):</strong> $g(R_1 \times R_2) = g(R_1) \times g(R_2)$</p>
+
+<p><strong>Note:</strong> This uses <em>multiplicative</em> composition, modelling hierarchical/fractal recursion. Additive composition $f(R_1 + R_2) = f(R_1) \times f(R_2)$ yields exponential $f(R) = e^{\alpha R}$. The choice between these forms is empirically testable (F10).</p>
+
+<p><strong>Theorem:</strong> The unique continuous solution is $g(R) = R^{\alpha}$.</p>
+
+<p><strong>Proof:</strong> Let $h(x) = \ln g(e^x)$. Then $h(x+y) = h(x) + h(y)$ (Cauchy additive). Under continuity, $h(x) = \alpha x$, giving $g(R) = R^{\alpha}$. &#8718;</p>
+
+<h3>A.2 $\beta$-Dynamics Derivation</h3>
+
+<p><strong>Axiom 3:</strong> $\frac{dQ}{dr} = a \times Q^{\beta}$ where $\beta \in [0,1)$.</p>
+
+<p><strong>Solution:</strong> Separating variables:</p>
+
+$$\int Q^{-\beta} \, dQ = \int a \, dr$$
+
+$$\frac{Q^{1-\beta}}{1-\beta} = ar + C$$
+
+<p>With initial condition $Q(0) = I$:</p>
+
+$$Q(R) = \left[ I^{1-\beta} + (1-\beta)aR \right]^{1/(1-\beta)}$$
+
+<p><strong>Deep recursion limit ($R \gg R^*$):</strong></p>
+
+$$Q(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$$
+
+<p><strong>Therefore:</strong> $\alpha = \frac{1}{1-\beta}$ &#8718;</p>
+
+<h3>A.3 Transitional Regime and the Scaling Crossover</h3>
+
+<p>Full solution: $U(R) = \left[ I^{1/\alpha} + \frac{1}{\alpha}aR \right]^{\alpha}$</p>
+
+<p>Three regimes:</p>
+<ol>
+    <li>$R \ll R^*$: $U \approx I$ (base capability dominates)</li>
+    <li>$R \gg R^*$: $U \approx R^{\alpha}$ (power law dominates)</li>
+    <li>Crossover: $R^* = \frac{\alpha I^{1/\alpha}}{(\alpha-1)a}$</li>
+</ol>
+
+<p><strong>Intuitive meaning of $R^*$:</strong> $R^*$ is the <strong>crossover depth</strong>, the point at which recursive compounding overtakes the system's base capability. Below $R^*$, the cost of recursion outweighs the gain (the system is "warming up"). Above $R^*$, compounding returns dominate and capability grows super-linearly. Finding $R^*$ for any system is equivalent to finding its threshold depth.</p>
+
+<p><strong>Why this matters:</strong> This predicts a qualitative change in scaling behaviour at a specific, measurable depth. Systems should exhibit a distinct "elbow" in their capability curves at $R^*$. This is testable: plot $U$ vs $R$ on log-log axes and look for the crossover from linear to power-law scaling.</p>
+
+<p>The existence of $R^*$ is a novel, falsifiable prediction that distinguishes recursive amplification from simple redundancy.</p>
+
+<figure>
+    <img src="figures_v6/fig5_phase.png" alt="Scaling Crossover at R*">
+    <figcaption><strong>Figure 11 | The Scaling Crossover at R*.</strong> Below the critical depth R*, base capability (I) dominates and scaling appears linear. Above R*, recursive compounding dominates and scaling becomes power-law. This crossover point is the depth at which recursive amplification becomes dominant. Systems should exhibit a distinct "elbow" in their capability curves at R*.</figcaption>
+</figure>
+
+<h2>APPENDIX B: GLOSSARY FOR NON-SPECIALISTS</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Term</th>
+            <th>Plain English meaning</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>ARC</strong></td>
+            <td>Artificial Recursive Creation: the principle that recursive self-correction on structured asymmetry may produce super-linear capability gains</td>
+        </tr>
+        <tr>
+            <td><strong>Scaling law</strong></td>
+            <td>A mathematical relationship showing how one quantity changes as another changes</td>
+        </tr>
+        <tr>
+            <td><strong>Power law</strong></td>
+            <td>A relationship where $Y = X^{\alpha}$ (like how area scales as length squared)</td>
+        </tr>
+        <tr>
+            <td><strong>Exponential</strong></td>
+            <td>A relationship where $Y = e^{\alpha X}$ (like compound interest)</td>
+        </tr>
+        <tr>
+            <td><strong>Recursive</strong></td>
+            <td>Self-referential; the output becomes the input for the next step</td>
+        </tr>
+        <tr>
+            <td><strong>Recurrent</strong></td>
+            <td>Repeating in cycles; in neuroscience, refers to neural signals that loop back</td>
+        </tr>
+        <tr>
+            <td><strong>Sequential</strong></td>
+            <td>One step after another, each building on the last</td>
+        </tr>
+        <tr>
+            <td><strong>Parallel</strong></td>
+            <td>Multiple independent attempts at once</td>
+        </tr>
+        <tr>
+            <td><strong>Falsifiable</strong></td>
+            <td>Can be proven wrong by experiment</td>
+        </tr>
+        <tr>
+            <td><strong>$\alpha$ (alpha)</strong></td>
+            <td>The scaling exponent; determines if returns compound or diminish</td>
+        </tr>
+        <tr>
+            <td><strong>$\beta$ (beta)</strong></td>
+            <td>Self-referential coupling; how much prior work helps the next step</td>
+        </tr>
+        <tr>
+            <td><strong>$\Lambda$ (Lambda)</strong></td>
+            <td>Google's quantum error suppression factor (exponential decay rate)</td>
+        </tr>
+        <tr>
+            <td><strong>Quenched disorder</strong></td>
+            <td>Structured asymmetry (like varied bead sizes) that enables the system to function</td>
+        </tr>
+        <tr>
+            <td><strong>Scaling crossover</strong></td>
+            <td>The point where scaling behaviour changes from one regime to another</td>
+        </tr>
+    </tbody>
+</table>
+
+<footer>
+    <p><strong>WHITE PAPER III: Version 6.5</strong></p>
+    <p>&copy; 2026 Michael Darius Eastwood. All Rights Reserved.</p>
+    <p><em>"The predictions are specified. The falsification criteria are public. The data will decide."</em></p>
+</footer>
+
+</body>
+</html>
