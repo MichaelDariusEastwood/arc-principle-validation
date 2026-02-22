@@ -194,13 +194,11 @@ ARC Principle, AI safety, alignment scaling, experimental validation, DeepSeek R
 
 ## 3a. Project Title
 **Current:** The ARC Principle: Cross-Domain Unification Of Recursive Amplification
-**Suggested change:**
+**Change to:**
 
 ```
-The ARC Principle: The Alignment Scaling Problem
+Paper III: The Alignment Scaling Problem
 ```
-
-(The paper was reframed in v9.0. If OSF allows title changes, update it. If not, the wiki text below explains the current version.)
 
 ## 3b. Description (Metadata panel → Edit → Description)
 
@@ -326,7 +324,7 @@ ARC Principle, AI safety, alignment scaling, cross-domain validation, scaling la
 | Paper II (8fjma) | Title | No change needed |
 | Paper II (8fjma) | Description | Rewrite (remove "Eastwood's") |
 | Paper II (8fjma) | Wiki | Rewrite (remove "Eastwood's", update Related links) |
-| Paper III (hqcgf) | Title | "Cross-Domain Unification" → "The Alignment Scaling Problem" |
+| Paper III (hqcgf) | Title | "Cross-Domain Unification" → "Paper III: The Alignment Scaling Problem" |
 | Paper III (hqcgf) | Description | Full rewrite (v6.5 → v9.0, 10 → 13 falsification criteria, alignment framing) |
 | Paper III (hqcgf) | Wiki | Full rewrite (v6.5 → v9.0, alignment argument, updated files list) |
 | All three | Tags | Updated to reflect current framing |
