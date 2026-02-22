@@ -16,7 +16,7 @@ This toolkit provides:
     6. Data import/export utilities
 
 Author: Michael Darius Eastwood
-Paper: "Eastwood's ARC Principle: Preliminary Evidence for Super-Linear 
+Paper: "The ARC Principle: Preliminary Evidence for Super-Linear
         Capability Amplification Through Sequential Self-Reference"
 Date: January 2026
 
@@ -507,7 +507,7 @@ def plot_falsification_regions(save_path: Optional[str] = None):
     ax.set_ylim(0, 1)
     ax.set_xlabel('Scaling Exponent α', fontsize=12)
     ax.set_yticks([])
-    ax.set_title("Eastwood's ARC Principle: Falsification Criteria", fontsize=14)
+    ax.set_title("The ARC Principle: Falsification Criteria", fontsize=14)
     ax.legend(loc='upper right', bbox_to_anchor=(1.0, -0.15), ncol=2)
     
     plt.tight_layout()

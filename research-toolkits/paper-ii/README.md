@@ -1,6 +1,6 @@
 # Paper II Research Toolkit: Direct Experimental Validation
 
-**Eastwood's ARC Principle - Paper II**
+**The ARC Principle — Paper II**
 
 *Run controlled experiments. Measure directly. Verify the findings.*
 
@@ -10,7 +10,7 @@
 
 This toolkit runs controlled experiments using DeepSeek R1 API with visible reasoning tokens, enabling direct measurement of recursive depth rather than estimation.
 
-**Paper:** Eastwood's ARC Principle: Experimental Validation of Super-Linear Error Suppression Through Sequential Recursive Processing
+**Paper:** The ARC Principle: Experimental Validation of Super-Linear Error Suppression Through Sequential Recursive Processing
 
 **Author:** Michael Darius Eastwood
 
@@ -152,7 +152,7 @@ The script generates 15 publication-quality figures:
 
 ```bibtex
 @article{eastwood2026arc2,
-  title={Eastwood's ARC Principle: Experimental Validation of Super-Linear Error Suppression Through Sequential Recursive Processing},
+  title={The ARC Principle: Experimental Validation of Super-Linear Error Suppression Through Sequential Recursive Processing},
   author={Eastwood, Michael Darius},
   year={2026},
   note={Paper II}

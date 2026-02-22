@@ -1,6 +1,6 @@
 # Paper I Research Toolkit: Preliminary Evidence Analysis
 
-**Eastwood's ARC Principle - Paper I**
+**The ARC Principle — Paper I**
 
 *Test the equation yourself. Verify the data. Challenge the findings.*
 
@@ -10,7 +10,7 @@
 
 This toolkit analyses publicly available data from OpenAI o1 and DeepSeek R1 technical reports to calculate scaling exponents for the ARC Principle.
 
-**Paper:** Eastwood's ARC Principle: Preliminary Evidence for Super-Linear Capability Amplification Through Sequential Self-Reference
+**Paper:** The ARC Principle: Preliminary Evidence for Super-Linear Capability Amplification Through Sequential Self-Reference
 
 **Author:** Michael Darius Eastwood
 
@@ -125,7 +125,7 @@ Where:
 
 ```bibtex
 @article{eastwood2026arc1,
-  title={Eastwood's ARC Principle: Preliminary Evidence for Super-Linear Capability Amplification Through Sequential Self-Reference},
+  title={The ARC Principle: Preliminary Evidence for Super-Linear Capability Amplification Through Sequential Self-Reference},
   author={Eastwood, Michael Darius},
   year={2026},
   note={Paper I}
