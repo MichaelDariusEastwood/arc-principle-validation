@@ -85,7 +85,7 @@ arc-principle-validation/
 │
 ├── paper/FINAL-SUITE/                  # AUTHORITATIVE DOCUMENT SUITE
 │   ├── README.md                       # Reading order and cross-references
-│   ├── 01-White-Paper-v9.0.html        # Primary document (+ PDF)
+│   ├── Paper-III-White-Paper-v9.0.html        # Primary document (+ PDF)
 │   ├── 02-Foundational-v2.1.html       # Foundational paper (+ PDF)
 │   ├── 03-Eden-Engineering-v4.0.html   # Eden Engineering (+ PDF)
 │   ├── 04-Eden-Vision-v1.0.html        # Eden Vision (+ PDF)

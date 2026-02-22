@@ -403,21 +403,19 @@
 <p><strong>Keywords:</strong> recursive amplification, composition operator, scaling laws, test-time compute, quantum error correction, time crystals, universality, falsification</p>
 
 <div class="important" style="border-left: 4px solid var(--red); background: #fff8f0;">
-<h4 style="color: var(--red); margin-top: 0;">Author's Note: Mathematical Refinements Following Peer Review</h4>
+<h4 style="color: var(--red); margin-top: 0;">Author's Note: Mathematical Corrections (v2.1)</h4>
 
-<p>Following rigorous mathematical review (documented in White Paper III v9.0), this version preserves the original derivations but readers should be aware of the following corrections applied to the broader framework:</p>
+<p>Following rigorous mathematical review using multiple AI systems (documented in White Paper III v9.0), this version incorporates the following corrections to the broader framework. These papers have not undergone formal human peer review.</p>
 
-<p><strong>1. Axiom Resolution:</strong> The Cumulative Advantage ODE (Axiom 2) is here applied to accumulated capability $Q$ with $Q(0) = I$. White Paper III v9.0 reformulates the ODE to operate on the amplification factor $g(R) = U/I$ with $g(0) = 1$, yielding the cleaner crossover formula $R^* = \alpha/a$. The formulation here, operating on accumulated capability $Q$, is mathematically equivalent but produces an $I$-dependent crossover $R^* = \alpha I^{1/\alpha}/[(\alpha-1)a]$, reflecting the physically sensible result that higher base capability requires greater recursive depth before compounding dominates.</p>
+<p><strong>1. Axiom 2 Correction:</strong> The Cumulative Advantage ODE now operates on the amplification factor $g(R)$ with $g(0) = 1$, matching White Paper III v9.0. Previous versions applied the ODE to accumulated capability $Q$ with $Q(0) = I$, which coupled the base potential $I$ into the recursive dynamics and violated the separability asserted in Axiom 1 ($U = I \times g(R)$). The corrected formulation yields the simpler crossover formula $R^* = \alpha/a$, independent of $I$.</p>
 
-<p><strong>2. Quadratic Limit Regrounding:</strong> The derivation of $\alpha \leq 2$ from stability analysis, elasticity, and Lyapunov/edge-of-chaos arguments (§5.4 of the original text) has been <strong>withdrawn</strong> as these arguments contained category errors (elasticity $> 1$ does not imply dynamical instability; 1D autonomous ODEs cannot exhibit chaos by the Poincar&eacute;-Bendixson theorem). The corrected justification is information-theoretic: transformer self-attention creates at most $O(N^2)$ pairwise information pathways, imposing a quadratic ceiling on information density per recursive step. This is proven for attention-based architectures and conjectured for classical sequential systems generally. See §5.4 below for the corrected derivation.</p>
+<p><strong>2. Quadratic Limit Regrounding:</strong> The derivation of $\alpha \leq 2$ from stability analysis, elasticity, and Lyapunov/edge-of-chaos arguments has been <strong>withdrawn</strong> as these arguments contained category errors (elasticity $> 1$ does not imply dynamical instability; 1D autonomous ODEs cannot exhibit chaos by the Poincar&eacute;-Bendixson theorem). The corrected justification is information-theoretic: transformer self-attention creates at most $O(N^2)$ pairwise information pathways, imposing a quadratic ceiling on information density per recursive step. This is proven for attention-based architectures and conjectured for classical sequential systems generally.</p>
 
 <p><strong>3. Kleiber Reframing:</strong> Kleiber's Law ($M^{0.75}$, implying $\alpha \approx 1.33$) is now explained through thermodynamic drag, the physical costs of pumping fluids through three-dimensional fractal networks, dissipating heat, and distributing resources against gravity, rather than as a geometric constraint preventing a stability-limited maximum.</p>
 
 <p><strong>4. Epistemic Status:</strong> The equation $U_{\max} = I \times R^2$ is explicitly an <em>information-theoretic upper bound</em> on classical sequential computation, analogous to Shannon's channel capacity or Landauer's limit, not a physical stability law.</p>
 
-<p>Crucially, these refinements preserve all core predictions: the $\beta$-to-$\alpha$ derivation, the five structural properties, the composition operator classification, and the falsification criteria remain unchanged (a thirteenth criterion, F13, on alignment scaling, is introduced in White Paper III v9.0).</p>
-
-<p><em>I am grateful to the reviewers who identified these errors. Their rigorous mathematical critique strengthened the framework substantially.</em></p>
+<p>These refinements preserve all core predictions: the $\beta$-to-$\alpha$ derivation, the five structural properties, the composition operator classification, and the falsification criteria remain unchanged (a thirteenth criterion, F13, on alignment scaling, is introduced in White Paper III v9.0).</p>
 </div>
 
 <!-- ============================================================ -->
@@ -461,12 +459,10 @@
 
 <div class="axiom-box">
 <div class="box-label">Axiom 2  – Cumulative Advantage</div>
-<p>The marginal capability gained at recursive step $r$ depends on accumulated capability: $\frac{dQ}{dr} = a \cdot Q^{\beta}$, where $a > 0$ is a rate constant and $\beta \in [0, 1)$ is the self-referential coupling parameter.</p>
+<p>The amplification factor grows according to accumulated amplification: $\frac{dg}{dr} = a \cdot g^{\beta}$, where $g(0) = 1$, $a > 0$ is a rate constant and $\beta \in [0, 1)$ is the self-referential coupling parameter.</p>
 </div>
 
-<p>This axiom captures the essential feature of recursive processing: each step benefits from what came before. When $\beta = 0$, steps are independent and gains are constant (linear scaling). When $\beta > 0$, accumulated capability accelerates future gains (super-linear scaling). The parameter $\beta$ measures how much of accumulated context each new step can effectively leverage.</p>
-
-<p><em><strong>Note on variable convention:</strong> White Paper III v9.0 reformulates this ODE to operate on the amplification factor $g(R) = U/I$ (with $g(0) = 1$), yielding the cleaner crossover formula $R^* = \alpha/a$. The formulation here, operating on accumulated capability $Q$ (with $Q(0) = I$), is mathematically equivalent but produces an $I$-dependent crossover $R^* = \alpha I^{1/\alpha}/[(\alpha - 1)a]$, reflecting the physically sensible result that higher base capability requires greater recursive depth before compounding dominates. Both formulations yield the same $\alpha = 1/(1-\beta)$ relationship and the same asymptotic power-law behaviour.</em></p>
+<p>This axiom captures the essential feature of recursive processing: each step's marginal amplification depends on accumulated amplification. When $\beta = 0$, steps are independent and amplification grows linearly. When $\beta > 0$, accumulated amplification accelerates future gains (super-linear scaling). The parameter $\beta$ measures how much of accumulated context each new step can effectively leverage. Operating on the amplification factor $g$ rather than on absolute capability $Q = I \cdot g$ preserves the separability asserted in Axiom 1: the amplification function depends only on recursive depth, not on base potential.</p>
 
 <div class="axiom-box">
 <div class="box-label">Axiom 3  – Continuity</div>
@@ -511,23 +507,23 @@
 <p>Under Axiom 2, the power-law exponent is: $$\alpha = \frac{1}{1 - \beta}$$</p>
 </div>
 
-<p><em>Proof.</em> Separating variables in $dQ/dr = a Q^{\beta}$:</p>
+<p><em>Proof.</em> Separating variables in $dg/dr = a g^{\beta}$:</p>
 
-$$\int Q^{-\beta}\, dQ = \int a\, dr \quad \Longrightarrow \quad \frac{Q^{1-\beta}}{1-\beta} = ar + C$$
+$$\int g^{-\beta}\, dg = \int a\, dr \quad \Longrightarrow \quad \frac{g^{1-\beta}}{1-\beta} = ar + C$$
 
-<p>With initial condition $Q(0) = I$:</p>
+<p>With initial condition $g(0) = 1$: $C = 1/(1-\beta)$.</p>
 
-$$Q(R) = \left[ I^{1-\beta} + (1-\beta)aR \right]^{1/(1-\beta)}$$
+$$g(R) = \left[ 1 + (1-\beta)aR \right]^{1/(1-\beta)}$$
 
 <p>In the deep recursion limit ($R \gg R^*$, defined below):</p>
 
-$$Q(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$$
+$$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$$
 
 <p>Therefore $\alpha = 1/(1-\beta)$. $\blacksquare$</p>
 
 <p>This transforms $\alpha$ from a fitted constant into a derived quantity. The derivation makes a specific, testable prediction: measure $\beta$ independently (by observing how marginal gains depend on accumulated capability), compute the predicted $\alpha$, and compare with the observed $\alpha$. If the relationship fails, the theoretical derivation is wrong regardless of whether the power-law form holds empirically.</p>
 
-<p><strong>Computational validation.</strong> To verify that this is an exact identity rather than an approximation, the relationship was tested against 30 exact Bernoulli ODE solutions with $\beta$ values spanning 0.05 to 0.92. The procedure measures $\beta$ blindly from marginal gains ($dQ/dR$ vs $Q$ in log-log space), predicts $\alpha$, and compares against the true value. Result: $R^2 = 1.00000000$ (eight decimal places), regression slope $= 1.000102$, mean absolute prediction error $= 0.002\%$. Full validation code is available as supplementary material.</p>
+<p><strong>Computational validation.</strong> To verify that this is an exact identity rather than an approximation, the relationship was tested against 30 exact Bernoulli ODE solutions with $\beta$ values spanning 0.05 to 0.92. The procedure measures $\beta$ blindly from marginal gains ($dg/dR$ vs $g$ in log-log space), predicts $\alpha$, and compares against the true value. Result: $R^2 = 1.00000000$ (eight decimal places), regression slope $= 1.000102$, mean absolute prediction error $= 0.002\%$. Full validation code is available as supplementary material.</p>
 
 <h4>The Multiplicative Structure Is Necessary</h4>
 
@@ -538,7 +534,7 @@ $$Q(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 <p>Under Axioms 1–3 with $\beta \in (0, 1)$, the solution $U(I, R)$ cannot be decomposed as $U = g(I) + h(R)$ for any functions $g$ and $h$. The multiplicative interaction is essential.</p>
 </div>
 
-<p><em>Proof.</em> Suppose $U(I, R) = g(I) + h(R)$. By Axiom 1 ($U(I, 0) = I$): $g(I) + h(0) = I$, so $g(I) = I - h(0)$. Therefore $U = I + [h(R) - h(0)]$, and $dU/dR = h'(R)$. But by Axiom 2: $h'(R) = a \cdot [I + h(R) - h(0)]^{\beta}$. This depends on $I$, contradicting the assumption that $h$ is a function of $R$ alone. $\blacksquare$</p>
+<p><em>Proof.</em> Suppose $U(I, R) = f(I) + h(R)$. By Axiom 1: $U = I \times g(R)$ with $g(0) = 1$. At $R = 0$: $f(I) + h(0) = I$, so $f(I) = I - h(0)$. Substituting: $I \times g(R) = I + [h(R) - h(0)]$, giving $g(R) = 1 + [h(R) - h(0)]/I$. Since $g$ depends only on $R$ (Axiom 1), but the right side depends on $I$, we require $h(R) = h(0)$ for all $R$, giving $g(R) = 1$ (no amplification). But Axiom 2 with $\beta > 0$ guarantees $dg/dr = a \cdot g^{\beta} = a > 0$ at $r = 0$, so $g$ is non-constant. Contradiction. $\blacksquare$</p>
 
 <p>This result has a concrete interpretation. A recursive system with zero base quality ($I = 0$) produces zero capability regardless of depth, and a system with zero depth ($R = 0$) produces only its initial quality regardless of base potential. Complexity emerges from the interaction between structured input and recursive processing (neither alone is sufficient).</p>
 
@@ -565,17 +561,17 @@ $$Q(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 
 <div class="theorem">
 <div class="box-label">Theorem 3  – The Scaling Crossover</div>
-<p>The full solution $U(R) = \left[ I^{1/\alpha} + \frac{1}{\alpha}aR \right]^{\alpha}$ exhibits three regimes:</p>
+<p>The full solution $g(R) = \left[ 1 + (1-\beta)aR \right]^{1/(1-\beta)}$ exhibits three regimes:</p>
 <ol>
-    <li>$R \ll R^*$: $\;U \approx I$ &emsp; (base capability dominates; scaling appears linear)</li>
-    <li>$R \gg R^*$: $\;U \propto R^{\alpha}$ &emsp; (compounding dominates; power-law scaling)</li>
-    <li>Crossover at: $\;R^* = \dfrac{\alpha\, I^{1/\alpha}}{(\alpha - 1)\,a}$</li>
+    <li>$R \ll R^*$: $\;g \approx 1 + aR$ &emsp; (approximately linear amplification)</li>
+    <li>$R \gg R^*$: $\;g \propto R^{\alpha}$ &emsp; (compounding dominates; power-law scaling)</li>
+    <li>Crossover at: $\;R^* = \dfrac{\alpha}{a}$</li>
 </ol>
 </div>
 
-<p>$R^*$ is the <strong>crossover depth</strong>: the recursive depth at which compounding overtakes base capability. Below $R^*$, additional recursion provides marginal benefit. Above $R^*$, returns compound and capability grows super-linearly.</p>
+<p>$R^*$ is the <strong>crossover depth</strong>: the recursive depth at which compounding overtakes linear gains. Below $R^*$, additional recursion provides approximately constant marginal benefit. Above $R^*$, returns compound and capability grows super-linearly.</p>
 
-<p>Critically, $R^*$ is a <em>derived quantity</em>. It depends on measurable parameters ($I$, $\alpha$, $a$) and is not a free parameter to be fitted. This provides an independent consistency check: measure $I$, $\alpha$, and $a$ separately, compute the predicted $R^*$, and verify that the observed crossover matches. If the framework is correct, $R^*$ shifts predictably with $I$: higher base quality requires greater recursive depth before compounding dominates.</p>
+<p>Critically, $R^*$ is a <em>derived quantity</em>. It depends on measurable parameters ($\alpha$ and $a$) and is not a free parameter to be fitted. This provides an independent consistency check: measure $\alpha$ and $a$ separately, compute the predicted $R^*$, and verify that the observed crossover matches. Since $R^*$ depends only on the scaling exponent and rate constant (not on base potential $I$), the crossover depth is a property of the recursive architecture itself, not of the input quality.</p>
 
 <p>The existence of $R^*$ is a novel prediction that no other scaling framework makes. It distinguishes recursive amplification from simple redundancy: redundant systems show uniform (typically logarithmic) improvement with repetition; recursive systems show a qualitative transition at a specific, predictable depth.</p>
 
@@ -721,7 +717,7 @@ $$Q(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 
 <p>In chain-of-thought reasoning, each step builds hierarchically on accumulated insight. Step $r+1$ does not merely add new information; it <em>restructures</em> the problem representation using everything accumulated through step $r$. This is multiplicative composition: the gain at each step is proportional to the quality of the accumulated representation.</p>
 
-<p>The $\beta$-dynamics equation $dQ/dr = aQ^{\beta}$ models this directly. With $\beta \approx 0.5$ (moderate coupling, indicating each step leverages roughly half of accumulated context), Theorem 2 gives $\alpha \approx 2$: the ARC Bound.</p>
+<p>The $\beta$-dynamics equation $dg/dr = ag^{\beta}$ models this directly. With $\beta \approx 0.5$ (moderate coupling, indicating each step leverages roughly half of accumulated context), Theorem 2 gives $\alpha \approx 2$: the ARC Bound.</p>
 
 <div class="prediction">
 <strong>ARC Bound Prediction:</strong> Optimised large language models with explicit self-correction mechanisms will converge toward $\alpha \approx 2$ ($\beta \approx 0.5$). Systems with explicit critique-revise architecture will show $\beta \approx 0.45$&ndash;$0.55$ ($\alpha \approx 1.8$&ndash;$2.2$), while systems with simple chain-of-thought will show $\beta \approx 0.2$&ndash;$0.3$ ($\alpha \approx 1.25$&ndash;$1.4$). This is testable within current model generations.
@@ -799,7 +795,7 @@ $$Q(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 
 <div class="theorem">
 <div class="box-label">Theorem 5  – Composition Operator Transitions</div>
-<p>A single physical system can transition between different composition operator regimes as a function of recursive depth or an internal state parameter. This extends the framework from fixed $\oplus$ to depth-dependent $\oplus(R)$, modelled by generalising Axiom 2 to $dQ/dr = a(Q, r) \cdot Q^{\beta(Q, r)}$ where the coupling itself depends on accumulated state.</p>
+<p>A single physical system can transition between different composition operator regimes as a function of recursive depth or an internal state parameter. This extends the framework from fixed $\oplus$ to depth-dependent $\oplus(R)$, modelled by generalising Axiom 2 to $dg/dr = a(g, r) \cdot g^{\beta(g, r)}$ where the coupling itself depends on accumulated amplification.</p>
 </div>
 
 <p><em>Evidence.</em> Gravitational structure formation exhibits three distinct composition phases: (1) inflation/linear growth (additive $\oplus$: perturbations grow independently), (2) nonlinear collapse (multiplicative $\oplus$: mode coupling produces cumulative advantage, measured $\alpha \approx 1.1$), and (3) virialised halos (bounded $\oplus$: structures reach energy minima). Computational testing confirms that logistic growth, gradient descent with momentum, and Kuramoto oscillator synchronisation all exhibit analogous transitions when measuring local $\beta$ in sliding windows. By contrast, unbounded pure-Bernoulli systems maintain constant $\beta$ to machine precision ($\sigma < 10^{-6}$).</p>
@@ -834,7 +830,7 @@ $$Q(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 
 <h3>5.3 The $R^*$ Crossover</h3>
 
-<p>When plotting capability against recursive depth, there should exist a distinct crossover at depth $R^*$ (Theorem 3). Below $R^*$, scaling appears approximately linear. Above $R^*$, scaling follows the domain-appropriate super-linear form. The crossover depth should shift predictably with base capability $I$: higher $I$ $\to$ higher $R^*$.</p>
+<p>When plotting capability against recursive depth, there should exist a distinct crossover at depth $R^* = \alpha/a$ (Theorem 3). Below $R^*$, scaling appears approximately linear. Above $R^*$, scaling follows the domain-appropriate super-linear form. Since $R^*$ depends only on the architecture ($\alpha$ and $a$), it should be consistent across different input qualities for the same system.</p>
 
 <p>If no crossover exists (if scaling is uniformly power-law or uniformly linear), the framework's transitional regime prediction is falsified. $R^*$ is a unique signature that distinguishes recursive amplification from simple redundancy.</p>
 
@@ -983,43 +979,41 @@ $$h(x + y) = \ln g(e^{x+y}) = \ln g(e^x \cdot e^y) = \ln[g(e^x) \cdot g(e^y)] = 
 
 <h3>A.2 Proof of Theorem 2 (Scaling Exponent)</h3>
 
-<p>From Axiom 2: $dQ/dr = aQ^{\beta}$, $\beta \in [0,1)$, $Q(0) = I$.</p>
+<p>From Axiom 2: $dg/dr = ag^{\beta}$, $\beta \in [0,1)$, $g(0) = 1$.</p>
 
 <p>Separating variables:</p>
 
-$$\int_I^{Q} q^{-\beta}\, dq = \int_0^R a\, dr$$
+$$\int_1^{g} s^{-\beta}\, ds = \int_0^R a\, dr$$
 
-$$\frac{Q^{1-\beta} - I^{1-\beta}}{1-\beta} = aR$$
+$$\frac{g^{1-\beta} - 1}{1-\beta} = aR$$
 
-$$Q(R) = \left[ I^{1-\beta} + (1-\beta)aR \right]^{1/(1-\beta)}$$
+$$g(R) = \left[ 1 + (1-\beta)aR \right]^{1/(1-\beta)}$$
 
-<p>For $R \gg R^*$ (where $(1-\beta)aR \gg I^{1-\beta}$):</p>
+<p>For $R \gg R^*$ (where $(1-\beta)aR \gg 1$):</p>
 
-$$Q(R) \approx \left[(1-\beta)aR\right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$$
+$$g(R) \approx \left[(1-\beta)aR\right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$$
 
 <p>Therefore $\alpha = 1/(1-\beta)$. $\blacksquare$</p>
 
 <h3>A.3 Proof of Theorem 3 (Crossover Depth)</h3>
 
-<p>The full solution $Q(R) = [I^{1-\beta} + (1-\beta)aR]^{1/(1-\beta)}$ can be written as:</p>
+<p>The full solution $g(R) = [1 + (1-\beta)aR]^{1/(1-\beta)}$ can be analysed by defining $\rho = (1-\beta)aR$:</p>
 
-$$U(R) = I \left[ 1 + \frac{(1-\beta)aR}{I^{1-\beta}} \right]^{1/(1-\beta)}$$
+$$g(R) = (1+\rho)^{1/(1-\beta)}$$
 
-<p>Define $\rho = (1-\beta)aR / I^{1-\beta}$. Then $U = I(1+\rho)^{1/(1-\beta)}$.</p>
+<p>For $\rho \ll 1$ (small $R$): $g \approx 1 + \rho/(1-\beta) = 1 + aR$, approximately linear in $R$.</p>
 
-<p>For $\rho \ll 1$ (small $R$): $U \approx I(1 + \rho/(1-\beta)) \approx I + aR \cdot I^{\beta}$, approximately linear in $R$.</p>
-
-<p>For $\rho \gg 1$ (large $R$): $U \approx I \cdot \rho^{1/(1-\beta)} \propto R^{\alpha}$, power law.</p>
+<p>For $\rho \gg 1$ (large $R$): $g \approx \rho^{1/(1-\beta)} \propto R^{\alpha}$, power law.</p>
 
 <p>The crossover occurs at $\rho \approx 1$, giving:</p>
 
-$$R^* = \frac{I^{1-\beta}}{(1-\beta)a} = \frac{\alpha I^{1/\alpha}}{(\alpha-1)a}$$
+$$R^* = \frac{1}{(1-\beta)a} = \frac{\alpha}{a}$$
 
-<p>$R^*$ depends on $I$, $\alpha$, and $a$ –all independently measurable. $\blacksquare$</p>
+<p>$R^*$ depends only on $\alpha$ and $a$, both independently measurable. It is independent of base potential $I$, consistent with the separability of Axiom 1. $\blacksquare$</p>
 
 <h3>A.4 Uniqueness of Axiom 2</h3>
 
-<p>Why $dQ/dr = aQ^{\beta}$ and not some other functional form? This is the Bernoulli-type ODE for cumulative advantage (also known as preferential attachment). The exponent $\beta$ parameterises the degree of self-reference: $\beta = 0$ gives constant growth (no feedback); $\beta \to 1$ gives explosive growth (maximal feedback). The choice $\beta \in [0,1)$ is the minimal model for a system where accumulated capability accelerates future gains without divergence at finite $R$. More complex models (e.g., $dQ/dr = aQ^{\beta} - bQ^{\gamma}$ with damping) would introduce additional parameters; we adopt the minimal form and test it against observation.</p>
+<p>Why $dg/dr = ag^{\beta}$ and not some other functional form? This is the Bernoulli-type ODE for cumulative advantage (also known as preferential attachment), applied to the amplification factor $g$ rather than absolute capability. The exponent $\beta$ parameterises the degree of self-reference: $\beta = 0$ gives constant growth (no feedback); $\beta \to 1$ gives explosive growth (maximal feedback). The choice $\beta \in [0,1)$ is the minimal model for a system where accumulated amplification accelerates future gains without divergence at finite $R$. More complex models (e.g., $dg/dr = ag^{\beta} - bg^{\gamma}$ with damping) would introduce additional parameters; we adopt the minimal form and test it against observation.</p>
 
 <!-- ============================================================ -->
 <!-- APPENDIX B -->
@@ -1069,9 +1063,9 @@ $$R^* = \frac{I^{1-\beta}}{(1-\beta)a} = \frac{\alpha I^{1/\alpha}}{(\alpha-1)a}
 
 <h3>C.4 Theorem 3 Validation ($R^*$ Crossover)</h3>
 
-<p>The crossover depth $R^* = I^{1-\beta}/[(1-\beta)a]$ was tested by comparing the predicted crossover with the numerically measured transition point (where $\rho = 1$).</p>
+<p>The crossover depth $R^* = 1/[(1-\beta)a] = \alpha/a$ was tested by comparing the predicted crossover with the numerically measured transition point (where $\rho = 1$).</p>
 
-<p><strong>Result:</strong> Functional form confirmed. Absolute $R^*$ values show 2–7% error, attributable to the approximation of "crossover at $\rho \approx 1$." The $I$-dependence of $R^*$ (higher $I$ increases crossover depth) is confirmed.</p>
+<p><strong>Result:</strong> Functional form confirmed. Absolute $R^*$ values show 2&ndash;7% error, attributable to the approximation of "crossover at $\rho \approx 1$." The $R^*$ independence from $I$ is confirmed: varying base potential does not shift the crossover depth, consistent with the separability of Axiom 1.</p>
 
 <h3>C.5 Theorem 4 Validation (Five Properties)</h3>
 
@@ -1158,7 +1152,7 @@ $$R^* = \frac{I^{1-\beta}}{(1-\beta)a} = \frac{\alpha I^{1/\alpha}}{(\alpha-1)a}
 <footer>
     <p>&copy; 2026 Michael Darius Eastwood. All Rights Reserved.</p>
     <p><em>The predictions are specified. The falsification criteria are public. The data will decide.</em></p>
-    <p style="margin-top: 0.5rem; font-size: 0.75rem;">Companion documents: <a href="01-White-Paper-v9.0.html">White Paper III v9.0</a> (extended evidence, experimental protocols, blind prediction test results) | <a href="03-Eden-Engineering-v4.0.html">Eden Protocol v4.0</a> (alignment architecture specification).</p>
+    <p style="margin-top: 0.5rem; font-size: 0.75rem;">Companion documents: <a href="Paper-III-White-Paper-v9.0.html">White Paper III v9.0</a> (extended evidence, experimental protocols, blind prediction test results) | <a href="03-Eden-Engineering-v4.0.html">Eden Protocol v4.0</a> (alignment architecture specification).</p>
 </footer>
 
 </body>

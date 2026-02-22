@@ -96,14 +96,14 @@ FINAL-SUITE/
 ├── README.md                              (this file)
 │
 │   Reading copies (PDF)
-├── 01-White-Paper-v9.0.pdf
+├── Paper-III-White-Paper-v9.0.pdf
 ├── 02-Foundational-v2.1.pdf
 ├── 03-Eden-Engineering-v4.0.pdf
 ├── 04-Eden-Vision-v1.0.pdf
 ├── 05-Executive-Summary-v1.0.pdf
 │
 │   Source files (HTML + MathJax)
-├── 01-White-Paper-v9.0.html
+├── Paper-III-White-Paper-v9.0.html
 ├── 02-Foundational-v2.1.html
 ├── 03-Eden-Engineering-v4.0.html
 ├── 04-Eden-Vision-v1.0.html
