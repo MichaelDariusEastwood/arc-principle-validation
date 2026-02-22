@@ -288,9 +288,9 @@ The theoretical prediction preceded all experimental confirmations.
 
 ## Files
 
-- **Paper (PDF):** 01-WHITE-PAPER-III-ARC-PRINCIPLE-v9.0.pdf
-- **Paper (HTML):** 01-WHITE-PAPER-III-ARC-PRINCIPLE-v9.0.html (with MathJax)
-- **Foundational Paper:** 02-ARC-PRINCIPLE-FOUNDATIONAL-v2.1.pdf
+- **Paper (PDF):** 01-White-Paper-v9.0.pdf
+- **Paper (HTML):** 01-White-Paper-v9.0.html (with MathJax)
+- **Foundational Paper:** 02-Foundational-v2.1.pdf
 - **Figures:** 12 publication-quality visualisations
 
 ## Citation

@@ -96,18 +96,18 @@ FINAL-SUITE/
 ├── README.md                              (this file)
 │
 │   Reading copies (PDF)
-├── 01-WHITE-PAPER-III-ARC-PRINCIPLE-v9.0.pdf
-├── 02-ARC-PRINCIPLE-FOUNDATIONAL-v2.1.pdf
-├── 03-EDEN-PROTOCOL-ENGINEERING-v4.0.pdf
-├── 04-EDEN-PROTOCOL-VISION-v1.0.pdf
-├── 05-EXECUTIVE-SUMMARY-v1.0.pdf
+├── 01-White-Paper-v9.0.pdf
+├── 02-Foundational-v2.1.pdf
+├── 03-Eden-Engineering-v4.0.pdf
+├── 04-Eden-Vision-v1.0.pdf
+├── 05-Executive-Summary-v1.0.pdf
 │
 │   Source files (HTML + MathJax)
-├── 01-WHITE-PAPER-III-ARC-PRINCIPLE-v9.0.html
-├── 02-ARC-PRINCIPLE-FOUNDATIONAL-v2.1.html
-├── 03-EDEN-PROTOCOL-ENGINEERING-v4.0.html
-├── 04-EDEN-PROTOCOL-VISION-v1.0.html
-├── 05-EXECUTIVE-SUMMARY-v1.0.html
+├── 01-White-Paper-v9.0.html
+├── 02-Foundational-v2.1.html
+├── 03-Eden-Engineering-v4.0.html
+├── 04-Eden-Vision-v1.0.html
+├── 05-Executive-Summary-v1.0.html
 │
 ├── figures/                               (12 figures for White Paper III)
 └── PAPER-I-REFERENCE/                     (historical reference)
