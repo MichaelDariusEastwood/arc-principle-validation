@@ -97,17 +97,17 @@ FINAL-SUITE/
 │
 │   Reading copies (PDF)
 ├── Paper-III-White-Paper-v9.0.pdf
-├── 02-Foundational-v2.1.pdf
-├── 03-Eden-Engineering-v4.0.pdf
-├── 04-Eden-Vision-v1.0.pdf
-├── 05-Executive-Summary-v1.0.pdf
+├── Foundational-v2.1.pdf
+├── Eden-Engineering-v4.0.pdf
+├── Eden-Vision-v1.0.pdf
+├── Executive-Summary-v1.0.pdf
 │
 │   Source files (HTML + MathJax)
 ├── Paper-III-White-Paper-v9.0.html
-├── 02-Foundational-v2.1.html
-├── 03-Eden-Engineering-v4.0.html
-├── 04-Eden-Vision-v1.0.html
-├── 05-Executive-Summary-v1.0.html
+├── Foundational-v2.1.html
+├── Eden-Engineering-v4.0.html
+├── Eden-Vision-v1.0.html
+├── Executive-Summary-v1.0.html
 │
 ├── figures/                               (12 figures for White Paper III)
 └── PAPER-I-REFERENCE/                     (historical reference)
