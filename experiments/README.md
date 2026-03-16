@@ -1,58 +1,67 @@
 # Experiments
 
-All experimental scripts, results, and data for the ARC/Eden research programme.
+All experimental scripts, results, and data for the ARC/Eden research programme. Each directory is labelled with the paper(s) it supports.
 
 ## Structure
 
-### paper-i-foundational/
+### paper-i-foundational__Paper-I/
 - `scripts/arc_principle_research_toolkit.py` - Original ARC Principle validation toolkit
-- Papers: Foundational v3-v4
+- **Paper:** Paper I: The ARC Principle (v1.1, January 2026)
+- **Evidence tier:** Canonical
 
-### paper-ii-compute/
+### paper-ii-compute__Paper-II/
 - `scripts/arc_paper_ii_validation_v1_deepseek.py` - Original single-model DeepSeek validation
-- `scripts/arc_paper_ii_validation_v2.py` - Multi-model validation (DeepSeek, Gemini, Grok, Groq, OpenAI)
+- `scripts/arc_paper_ii_validation_v2.py` - Multi-model validation (6 models)
 - `results/` - Final JSON results for 6 models + combined analysis
-- Papers: Paper II v12
+- **Paper:** Paper II: Experimental Validation (v12)
+- **Evidence tier:** Canonical
 
-### alignment-scaling/
-- `scripts/arc_alignment_scaling_v1.py` through `v5.py` - Progressive refinement of alignment scaling benchmark
-- `scripts/arc_eden_v6_runner.py` - Combined alignment + Eden runner (not yet run)
+### alignment-scaling__Papers-IV-a-b-c-d/
+- `scripts/arc_alignment_scaling_v1.py` through `v5.py` - Progressive refinement
+- `scripts/arc_eden_v6_runner.py` - Combined alignment + Eden runner (NOT YET RUN)
 - `results/v1/` through `v5-final/` - Results from each version
-- Papers: Papers IV.a, IV.b, IV.c, IV.d
+- **Papers:** Paper IV.a (Response Classes), IV.b (Saturation), IV.c (Benchmark), IV.d (Blinding)
+- **Evidence tier:** Canonical (v5 blind benchmark)
 
-### eden-intervention/
-- `scripts/eden_protocol_scaling_test.py` - v1 Eden intervention test
-- `scripts/eden_protocol_scaling_test_v2.py` - v2 with expanded scoring
-- `scripts/eden_protocol_scaling_test_v3.py` - v3 with blind multi-scorer evaluation (NOT YET RUN)
-- `results/` - 6 model final JSONs (v1/v2 protocol, single-scorer, pilot-grade)
-- Papers: Paper V
+### eden-intervention__Paper-V/
+- `scripts/eden_protocol_scaling_test.py` - v1 Eden intervention
+- `scripts/eden_protocol_scaling_test_v2.py` - v2 expanded scoring
+- `scripts/eden_protocol_scaling_test_v3.py` - v3 blind multi-scorer (NOT YET RUN)
+- `results/` - 6 model final JSONs (v1/v2 protocol, single-scorer)
+- **Paper:** Paper V: The Stewardship Gene (v2)
+- **Evidence tier:** Pilot (nonblind, single-scorer)
 
-### honey-architecture/
-- `scripts/eden_honey_simulation.py` - Mathematical simulation of honey architecture
-- `scripts/eden_honey_tests.py` - Comprehensive API-backed honey test battery
-- `scripts/eden_honey_dashboard.jsx` - React dashboard for honey results
-- `scripts/eden_self_modifying_ai.py` - v1 self-modifying AI experiment
-- `scripts/eden_self_modifying_ai_v2.py` - v2 multi-seed robustness (fair test)
-- `scripts/eden_self_modifying_ai_v3.py` - v3 adversarial conflicting tasks
-- `scripts/eden_self_modifying_ai_v4.py` - v4 complexity scaling
-- `results/` - Fresh JSON + PNG outputs from all simulations (generated 16 March 2026)
-- Papers: Paper VI
+### honey-architecture__Paper-VI/
+- `scripts/eden_honey_simulation.py` - Mathematical simulation
+- `scripts/eden_honey_tests.py` - API-backed honey test battery
+- `scripts/eden_honey_dashboard.jsx` - React dashboard
+- `scripts/eden_self_modifying_ai.py` through `v4.py` - Self-modifying AI v1-v4
+- `results/` - Fresh JSON + PNG outputs from all simulations
+- **Paper:** Paper VI: The Honey Architecture (v1)
+- **Evidence tier:** Mechanistic (toy systems) + Exploratory (live API)
 
-### domain-validation/
-- 13 physics and cross-domain validation scripts testing ARC Principle predictions
-- Covers: 1D prediction, 20-domain universal test, acoustic time crystals, Einstein verification, and more
+### domain-validation__Foundational-and-Origin/
+- 13 physics and cross-domain validation scripts
+- **Papers:** Foundational (v4) + On the Origin of Scaling Laws (v2)
+- **Evidence tier:** Supporting (mathematical validation)
 
-### blind-prediction-test/
+### blind-prediction-test__Paper-IV-d/
 - Pre-registered blind prediction test with forensic analysis
+- **Paper:** Paper IV.d: The Effect of Blinding (supports metascience finding)
+- **Evidence tier:** Canonical
 
-### analysis-tools/
-- `analyze_alpha_align_v5.py` - Alpha-align analysis tool
+### analysis-tools__Cross-Programme/
+- `analyze_alpha_align_v5.py` - Alpha-align analysis
 - `per_scorer_check.py` - Per-scorer validation
+- **Papers:** Used across Papers II, IV.a-d, V
+- **Evidence tier:** Tooling (not results)
 
-## Key Notes
+## Evidence Tier Key
 
-- The v5-final alignment results are the canonical dataset (6 models, 4-layer blind evaluation)
-- Eden intervention results are pilot-grade (single-scorer, nonblind) until v3 is run
-- Honey architecture results are toy-system simulations, not frontier-model evidence
-- Paper II has two scripts: v1 (DeepSeek only) and v2 (multi-model)
-- The v6 runner and Eden v3 test have not been run yet
+| Tier | Meaning | Methodology |
+|------|---------|-------------|
+| Canonical | Publishable, defensible in peer review | 4-layer blind, multi-scorer, laundered |
+| Pilot | Real data, methodological caveats | Nonblind, single-scorer |
+| Exploratory | Pattern-finding, not canonical | Nonblind, single-scorer, non-laundered |
+| Mechanistic | Demonstrates mechanism in toy systems | Local simulation, no API |
+| Supporting | Mathematical/computational validation | Domain-specific tests |
