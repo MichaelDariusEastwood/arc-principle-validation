@@ -7582,6 +7582,35 @@ Terminal 4 (Gemini):    start: 00:03 UTC   end: 01:32 UTC   Duration: ~89min  Er
 
 <p>All changes committed and pushed to GitHub in both the arc-principle-validation and infinite-architects-website repositories.</p>
 
+<h3>65.9 The 50-Domain Tiered Validation (GPT-5.4 Build)</h3>
+
+<p>Following the GPT audit of Paper VII, GPT-5.4 was tasked with building a stricter, manifest-driven 50-domain validation suite. The key design improvements over the original 20-domain test:</p>
+
+<ul>
+  <li>Predictions and datasets live in a separate JSON manifest, not embedded in the runner script.</li>
+  <li>No R&sup2; tolerance rescue in the headline result. Strict AICc-selected family match only.</li>
+  <li>Hyperbolic fitting is real (no longer dead code).</li>
+  <li>Saturation guardrail: bounded models only win if the data actually approaches the fitted asymptote.</li>
+  <li>50 domains split into explicit evidence tiers, not one flat count.</li>
+</ul>
+
+<table>
+  <thead><tr><th>Tier</th><th>Result</th><th>p-value</th></tr></thead>
+  <tbody>
+    <tr><td>Empirical curve-fit (25 domains)</td><td><strong>19/25</strong></td><td><strong>1.56 &times; 10<sup>&minus;5</sup></strong></td></tr>
+    <tr><td>Baseline-20 rerun (stricter)</td><td>15/20</td><td>1.67 &times; 10<sup>&minus;4</sup></td></tr>
+    <tr><td>Published exponents (direct)</td><td>13/13</td><td>n/a (nearest-comparator)</td></tr>
+    <tr><td>Published exponents (provisional)</td><td>3/6</td><td>n/a</td></tr>
+    <tr><td>Analytic identities</td><td>6/6</td><td>trivial</td></tr>
+  </tbody>
+</table>
+
+<p>The 6 empirical misses: Kleiber (bounded beats power law, classic contested domain), Species-Area (small Galapagos dataset), Zipf (finite-corpus truncation), Muscle force-velocity (data does not reach asymptote), Time crystal (only 4 data points), Stellar mass-luminosity (high-mass scatter).</p>
+
+<p>The primary result (19/25, p = 1.56 &times; 10<sup>&minus;5</sup>) is roughly 100 times stronger than conventional significance and was obtained under stricter conditions than the original 14/20. The baseline-20 rerun under the new strict harness actually <em>improved</em> from 14/20 to 15/20, suggesting the original AIC approximation was slightly conservative on one domain.</p>
+
+<p>This suite is still a curated structured comparison, not a pre-registered blind trial. But the evidence is now substantially cleaner, the methodology is transparent, and the tiers are honestly separated. When Paper VII goes to v2, this will be the canonical evidence base.</p>
+
 <hr>
 
 <div class="footer">
