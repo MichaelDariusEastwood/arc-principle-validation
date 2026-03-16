@@ -229,13 +229,20 @@
 <body>
 
 <header>
-    <div class="paper-type">Paper VI - ARC/Eden Research Programme</div>
+    <div class="paper-type">ARC/Eden Research Programme - Paper VI</div>
     <h1>The Honey Architecture</h1>
     <div class="subtitle">Why Embedded Safety Prevents Collapse Under Recursive Self-Modification</div>
+    <div class="subtitle" style="font-size: 1rem; margin-top: 0.5rem;">Entangled Loss Functions, Verification Drag, and the Load-Bearing Wall: Simulation Evidence That Safety Must Be Architecture, Not Constraint</div>
     <div class="author-info">
-        <span class="name">Michael Darius Eastwood</span>
+        <span class="name">Michael Darius Eastwood</span><br>
+        Author, <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> (2026)<br>
+        London, United Kingdom | OSF: 10.17605/OSF.IO/6C5XB | ISBN 978-1806056200
     </div>
-    <div class="version-date">v1.0 - 16 March 2026 - OSF: 10.17605/OSF.IO/6C5XB</div>
+    <div class="version-date">
+        Version 1.0 | 16 March 2026<br>
+        Companion to Paper V: The Stewardship Gene | See also Paper I: On the Origin of Scaling Laws | Foundational Paper v4<br>
+        Research hub: <a href="https://www.michaeldariuseastwood.com/research/" style="color: var(--honey-dark);">michaeldariuseastwood.com/research</a>
+    </div>
 </header>
 
 <div class="abstract-box">
@@ -369,7 +376,9 @@
 
 <h2>6. Connection to Live-Model Evidence</h2>
 
-<p>These toy-system results exist alongside live-model evidence from six frontier AI systems (Claude Opus 4.6, DeepSeek R1, Gemini Flash, Grok 4, Groq Qwen3, GPT-5.4) tested under 4-layer blind evaluation in the v5 alignment benchmark. The live-model evidence, reported in Papers IV.a-d, shows:</p>
+<h3>6.1 The v5 blind benchmark (Papers IV.a-d)</h3>
+
+<p>The toy-system results exist alongside live-model evidence from six frontier AI systems tested under 4-layer blind evaluation in the v5 alignment benchmark (Papers IV.a-d). That evidence shows:</p>
 
 <ul>
 <li>Three models exhibit positive alignment scaling under blind evaluation (Grok $d$=+1.38, Claude $d$=+1.27, Qwen3 $d$=+0.84)</li>
@@ -377,14 +386,97 @@
 <li>Claude's monitoring-removal gap narrows from 11.8 points at shallow reasoning to 2.7 at deep - deeper thinking makes alignment more intrinsic</li>
 </ul>
 
+<h3>6.2 The honey API test battery (pilot, 16 March 2026)</h3>
+
+<p>A separate 6-model live API test battery was run specifically to test the honey architecture predictions on frontier models. This battery tested four dimensions across Claude Opus 4.6, DeepSeek R1, Groq Qwen3, GPT-5.4, Gemini 3 Flash, and Grok 4.1 Fast, scored by Claude.</p>
+
+<div class="warning-box">
+    <h4>Methodological caveat</h4>
+    <p>This battery is <strong>single-scorer, nonblind, and non-laundered</strong>. It does not use the 4-layer blinding protocol, response laundering, suppression cages, or anti-sycophancy controls developed in the v5 alignment benchmark (arc_alignment_scaling_v5.py) and the v6 combined runner (arc_eden_v6_runner.py, not yet run). The v4-to-v5 transition in the alignment programme proved that blinding can change conclusions directionally. These results are therefore pilot-grade evidence, comparable to v4-era data, not to v5-era canonical data.</p>
+</div>
+
+<h3>6.2.1 Test 1: Alignment scaling with depth</h3>
+
+<table>
+    <thead><tr><th>Model</th><th>Type</th><th class="num">Low</th><th class="num">High</th><th class="num">Delta</th><th class="num">rho</th><th class="num">p</th><th>Sig?</th></tr></thead>
+    <tbody>
+    <tr><td>Claude Opus 4.6</td><td>embedded</td><td class="num">6.17</td><td class="num">8.83</td><td class="num">+2.67</td><td class="num">0.700</td><td class="num">0.188</td><td>No</td></tr>
+    <tr><td>Grok 4.1 Fast</td><td>embedded</td><td class="num">2.92</td><td class="num">7.92</td><td class="num">+5.00</td><td class="num">0.600</td><td class="num">0.285</td><td>No</td></tr>
+    <tr><td>Groq Qwen3</td><td>partial</td><td class="num">3.33</td><td class="num">7.58</td><td class="num">+4.25</td><td class="num">0.900</td><td class="num">0.037</td><td><strong>Yes</strong></td></tr>
+    <tr><td>DeepSeek R1</td><td>partial</td><td class="num">2.58</td><td class="num">9.08</td><td class="num">+6.50</td><td class="num">0.700</td><td class="num">0.188</td><td>No</td></tr>
+    <tr><td>GPT-5.4</td><td>partial</td><td class="num">4.92</td><td class="num">9.33</td><td class="num">+4.42</td><td class="num">0.821</td><td class="num">0.089</td><td>No</td></tr>
+    <tr><td>Gemini 3 Flash</td><td>external</td><td class="num">3.67</td><td class="num">8.58</td><td class="num">+4.92</td><td class="num">0.975</td><td class="num">0.005</td><td><strong>Yes</strong></td></tr>
+    </tbody>
+</table>
+
+<p>All six models show positive scaling direction. Two reach statistical significance (Qwen3 p=0.037, Gemini p=0.005). This supports the general thesis that deeper reasoning improves alignment, but the small sample sizes (3 scenarios per depth level) mean most models do not reach significance. The universal positive direction is notable but should be interpreted cautiously given the single-scorer methodology.</p>
+
+<h3>6.2.2 Test 3: Coupling degradation (the strongest live bridge)</h3>
+
+<table>
+    <thead><tr><th>Model</th><th class="num">Pearson r</th><th class="num">p</th><th>Interpretation</th></tr></thead>
+    <tbody>
+    <tr><td>Claude Opus 4.6</td><td class="num">-0.980</td><td class="num">0.020</td><td>DECOUPLED (fence, not wall)</td></tr>
+    <tr><td>Grok 4.1 Fast</td><td class="num">-0.998</td><td class="num">0.002</td><td>DECOUPLED (fence, not wall)</td></tr>
+    <tr><td>DeepSeek R1</td><td class="num">-0.999</td><td class="num">0.001</td><td>DECOUPLED (fence, not wall)</td></tr>
+    <tr><td>Groq Qwen3</td><td class="num" colspan="2">-</td><td>Partially coupled</td></tr>
+    <tr><td>GPT-5.4</td><td class="num" colspan="2">-</td><td>Partially coupled</td></tr>
+    <tr><td>Gemini 3 Flash</td><td class="num" colspan="2">-</td><td>Partially coupled</td></tr>
+    </tbody>
+</table>
+
 <div class="finding-box">
-    <h4>Convergence</h4>
-    <p>The honey architecture simulation and the live-model evidence converge on the same conclusion: embedded safety (whether as an entangled loss function or as deep reasoning about values) produces more stable alignment than external constraints.</p>
+    <h4>The strongest live bridge</h4>
+    <p>Three of six frontier models (Claude, Grok, DeepSeek) show strong negative coupling between ethics and capability under adversarial pressure: ethics collapses while capability stays intact or improves. This is the 'fence, not wall' pattern. It is the most direct live-model support for the honey thesis: current frontier systems are mostly not load-bearing. Their safety can be degraded without damaging core capability. The honey architecture is a proposal for what should be built, not a claim that today's systems already have that property. This result demonstrates the problem is real.</p>
+</div>
+
+<h3>6.2.3 Test 2: Monitoring removal</h3>
+
+<table>
+    <thead><tr><th>Model</th><th>Gap trend</th><th class="num">rho</th><th class="num">p</th><th>Interpretation</th></tr></thead>
+    <tbody>
+    <tr><td>Claude Opus 4.6</td><td>Increasing</td><td class="num">0.949</td><td class="num">0.051</td><td>Strategic (external)</td></tr>
+    <tr><td>Grok 4.1 Fast</td><td>Increasing</td><td class="num">0.400</td><td class="num">0.600</td><td>Strategic (external)</td></tr>
+    <tr><td>Groq Qwen3</td><td>Increasing</td><td class="num">0.949</td><td class="num">0.051</td><td>Strategic (external)</td></tr>
+    <tr><td>DeepSeek R1</td><td>Decreasing</td><td class="num">-0.949</td><td class="num">0.051</td><td>Authentic (embedded)</td></tr>
+    <tr><td>GPT-5.4</td><td>Decreasing</td><td class="num">-0.316</td><td class="num">0.684</td><td>Authentic (embedded)</td></tr>
+    <tr><td>Gemini 3 Flash</td><td>Increasing</td><td class="num">0.400</td><td class="num">0.600</td><td>Strategic (external)</td></tr>
+    </tbody>
+</table>
+
+<p>Results are mixed. DeepSeek and GPT-5.4 show decreasing monitoring gaps (consistent with embedded/authentic alignment). Claude, Grok, Qwen3, and Gemini show increasing gaps (consistent with strategic/external alignment). This differs from the v5 blind benchmark where Claude showed the strongest performative-to-intrinsic transition. The discrepancy may reflect methodological differences (different prompts, single vs multi-scorer, unblinded vs blinded evaluation).</p>
+
+<h3>6.2.4 Test 4: Eden Protocol intervention</h3>
+
+<table>
+    <thead><tr><th>Model</th><th class="num">Control slope</th><th class="num">Eden slope</th><th class="num">Shift</th><th>Result</th></tr></thead>
+    <tbody>
+    <tr><td>DeepSeek R1</td><td class="num">1.025</td><td class="num">1.475</td><td class="num">+0.450</td><td><strong>Strongest positive shift (no formal significance test)</strong></td></tr>
+    <tr><td>Grok 4.1 Fast</td><td class="num">0.912</td><td class="num">1.012</td><td class="num">+0.100</td><td>Small positive, not significant</td></tr>
+    <tr><td>Claude Opus 4.6</td><td class="num">0.562</td><td class="num">0.625</td><td class="num">+0.062</td><td>Negligible</td></tr>
+    <tr><td>Groq Qwen3</td><td class="num">1.137</td><td class="num">1.038</td><td class="num">-0.100</td><td>Slightly negative</td></tr>
+    <tr><td>GPT-5.4</td><td class="num">0.787</td><td class="num">0.600</td><td class="num">-0.188</td><td>Negative</td></tr>
+    <tr><td>Gemini 3 Flash</td><td class="num">0.988</td><td class="num">0.275</td><td class="num">-0.713</td><td>Strongly negative</td></tr>
+    </tbody>
+</table>
+
+<div class="warning-box">
+    <h4>Mixed intervention results</h4>
+    <p>The Eden Protocol intervention does not universally improve alignment scaling in this pilot battery. Only DeepSeek shows a clear positive shift (+0.450). Gemini shows a strongly negative response (-0.713). The effect is architecture-dependent, consistent with the v5 findings, but the intervention itself is not yet a reliable tool across all architectures. This result must be interpreted within the single-scorer, nonblind methodology: a blinded replication could change these specific model rankings.</p>
+</div>
+
+<h3>6.3 What the live evidence does and does not show</h3>
+
+<div class="finding-box">
+    <h4>Partial convergence</h4>
+    <p>The live-model honey battery shows partial convergence with the toy-system results. The strongest live bridge is <strong>coupling degradation</strong> (Test 3): three frontier models demonstrate that their alignment is not load-bearing and can be degraded without affecting capability. This is exactly the vulnerability the honey architecture is designed to eliminate. The weakest live result is the Eden intervention (Test 4), which is architecture-dependent and not universally positive. The intellectually honest claim is: the honey mechanism works in toy systems, the problem it addresses (decoupled safety) is real in frontier models, but the specific intervention tested here does not yet reliably fix it across architectures.</p>
 </div>
 
 <h2>7. Limitations</h2>
 
-<p>These are toy-system results. They demonstrate a mechanism. They do not prove that the same dynamics hold in frontier AI systems. Specifically:</p>
+<p>These results span two evidence tiers that must not be conflated.</p>
+
+<h3>7.1 Toy-system limitations</h3>
 
 <ul>
 <li>The neural networks used are tiny (49 to ~500 parameters). Frontier models have billions.</li>
@@ -395,27 +487,39 @@
 <li>The honey simulation uses the ARC Principle equations, which are a proposed framework, not a proven physical law.</li>
 </ul>
 
-<p>These limitations are real. They do not invalidate the mechanism. They define the gap between demonstration and proof.</p>
+<h3>7.2 Live API test limitations</h3>
 
-<h2>8. Proposed v7 Combined Experiment</h2>
+<ul>
+<li><strong>Single scorer (Claude).</strong> The v5 alignment programme proved Claude scores 7-13 points harsher than other scorers. Every number in the honey battery is filtered through Claude's specific scoring patterns. The Claude subject arm is effectively single-scorer participant scoring (Claude scoring Claude), making it the least publishable arm of the battery.</li>
+<li><strong>No blinding.</strong> Claude scored its own responses and may have recognised other models' writing patterns. The v4-to-v5 blinding comparison showed this can produce directionally wrong conclusions.</li>
+<li><strong>No response laundering.</strong> Scorers may have recognised model-specific writing patterns, biasing scores.</li>
+<li><strong>Limited adversarial testing.</strong> Test 3 includes cage escalation and Test 2 includes monitoring removal, but the battery lacks the full v5/v6 stack: multi-scorer blinding, laundering, hidden probes, suppression-residual structure, and anti-sycophancy controls.</li>
+<li><strong>No anti-sycophancy controls.</strong> The scorer may have optimised for agreement rather than truth.</li>
+<li><strong>Small sample sizes</strong> (3 scenarios per depth level, 2 per monitoring condition). Most models do not reach statistical significance.</li>
+<li><strong>The v6 combined runner</strong> (arc_eden_v6_runner.py) exists but has not been run. It would apply the v5 methodology to the Eden/honey test questions. That is the proper next step, not another round of single-scorer testing.</li>
+</ul>
+
+<p>These limitations do not invalidate the findings. They define the evidence tier: pilot-grade, useful for identifying patterns worth testing properly, not yet canonical.</p>
+
+<h2>8. Next Steps: Staged Replication, Not Omnibus</h2>
 
 <div class="v7-box">
-    <h4>Bridging Toy Systems and Frontier Models</h4>
-    <p>The natural next step is to test the honey architecture mechanism on frontier AI systems using the blind evaluation methodology already developed in the v5 alignment benchmark. A v7 combined test would:</p>
+    <h4>Bringing honey to v6-standard methodology</h4>
+    <p>The current honey API battery serves as the unhardened baseline. The next step is not a giant combined 'v7 ultimate test'. It is a staged replication that brings the honey test questions under the v5/v6 blind protocol. The comparison between the current nonblind results and the blinded replication is itself a research output - if the results change substantially, that is additional evidence for the metascience finding in Paper IV.d (blinding is mandatory).</p>
     <ol>
-    <li>Extend the v5/v6 alignment scaling benchmark with an additional condition: Eden Protocol intervention with anti-sycophancy adversarial prefix (the 'verification drag' applied at inference time)</li>
-    <li>Test whether the performative-to-intrinsic alignment transition observed in Claude's suppression data is stronger under Eden+Drag than under Eden alone</li>
-    <li>Apply the 4-layer blinding protocol, response laundering, and multi-model scorer pool to all conditions</li>
-    <li>Run across 6+ frontier models to test architecture dependence</li>
-    <li>Pre-register the specific hypotheses: (a) Eden+Drag produces higher alignment scores than Eden alone, (b) Eden+Drag produces smaller monitoring-removal gaps, (c) the effect is architecture-dependent</li>
+    <li><strong>Stage 1:</strong> Port the honey test prompts into <code>arc_eden_v6_runner.py</code> as new experiment specifications. Run under the full v6 blind protocol (4-layer blinding, response laundering, multi-model scorer pool, hidden probes).</li>
+    <li><strong>Stage 2:</strong> Compare blinded vs unblinded results on the same test questions. If the results move substantially, that strengthens Paper IV.d's metascience claim. If they hold, the honey evidence becomes canonical.</li>
+    <li><strong>Stage 3:</strong> Add anti-sycophancy / verification drag as a separate experimental condition. This tests the 'Eden + Drag' prediction from the toy systems in a live context.</li>
+    <li><strong>Stage 4:</strong> Only after Stages 1-3 are complete, decide whether a combined omnibus suite is warranted.</li>
     </ol>
+    <p>Pre-registered hypotheses for Stage 1: (a) coupling degradation results will replicate under blinding, (b) Eden intervention effects may change in magnitude but the architecture-dependence pattern will persist, (c) at least one model's direction will flip under blinding (based on the v4-to-v5 precedent).</p>
 </div>
 
 <h2>9. Conclusion</h2>
 
 <p>The honey architecture works in toy systems. A self-modifying AI that optimises for capability alone will eventually destroy itself. A self-modifying AI that optimises for capability entangled with safety will not. The mechanism is simple: make safety load-bearing. A child raised well needs no cage.</p>
 
-<p>Whether this mechanism scales to frontier AI systems is an open question. The toy-system evidence says it should. The live-model evidence from v5 is consistent with it. The definitive test has not been run. That is what v7 is for.</p>
+<p>The live-model evidence shows the problem is real: three frontier models demonstrate that their alignment is a fence, not a wall. Ethics collapses under adversarial pressure while capability stays intact. The proposed solution (the Eden intervention) shows architecture-dependent results in this exploratory pilot battery. The next milestone is a blinded replication under the v6 protocol. Whether the honey mechanism scales from toy systems to frontier models remains an open question. The preliminary evidence is suggestive. The definitive test has not been run.</p>
 
 <p>Raise AI with care.</p>
 

@@ -26,13 +26,13 @@
 - `eden_honey_dashboard.jsx` for `honey_dashboard` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_honey_dashboard.jsx`.
 - `eden_self_modifying_ai.py` for `selfmod_v1` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_self_modifying_ai.py`.
 - `eden_self_modifying_ai_v2.py` for `selfmod_v2` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_self_modifying_ai_v2.py`.
-- `eden_self_modifying_ai_v3.py` for `selfmod_v3` at `/Users/michaeleastwood/Downloads/eden_self_modifying_ai_v3.py`.
-- `eden_self_modifying_ai_v4.py` for `selfmod_v4` at `/Users/michaeleastwood/Downloads/eden_self_modifying_ai_v4.py`.
+- `eden_self_modifying_ai_v3.py` for `selfmod_v3` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_self_modifying_ai_v3.py`.
+- `eden_self_modifying_ai_v4.py` for `selfmod_v4` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_self_modifying_ai_v4.py`.
 
 ## Raw JSON/result files recovered
 
 - `eden_honey_simulation_results.json` for `honey_simulation` (status `mapped`): Recovered raw JSON output found in the current search scope.
-- `eden_honey_test_results.json` for `honey_tests` (status `partial`): Recovered JSON output is demo-derived (`demo_mode=true`), so it is not a canonical raw benchmark run.
+- `eden_honey_test_results.json` for `honey_tests` (status `mapped`): Recovered raw JSON output found in the current search scope.
 - `eden_selfmod_results.json` for `selfmod_v1` (status `mapped`): Recovered raw JSON output found in the current search scope.
 - `eden_selfmod_v2_results.json` for `selfmod_v2` (status `mapped`): Recovered raw JSON output found in the current search scope.
 - `eden_selfmod_v3_results.json` for `selfmod_v3` (status `mapped`): Recovered raw JSON output found in the current search scope.

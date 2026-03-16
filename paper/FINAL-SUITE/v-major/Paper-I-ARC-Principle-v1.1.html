@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper I: The ARC Principle (v1.1)</title>
+
+    <script>
+        MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://unpkg.com/mathjax@3/es5/tex-svg.js" async></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nature-red: #c41230;
+            --nature-dark: #1a1a1a;
+            --nature-grey: #666666;
+            --nature-light-grey: #f5f5f5;
+            --nature-border: #dddddd;
+            --text-body: #333333;
+            --arc-blue: #1565c0;
+            --arc-light: #e3f2fd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 15px; }
+
+        body {
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-body);
+            background: #ffffff;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            border-bottom: 3px solid var(--nature-red);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .paper-type {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--nature-red);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--nature-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--nature-grey);
+            margin-bottom: 1.5rem;
+        }
+
+        .author-info {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            color: var(--nature-grey);
+        }
+
+        .author-info .name { font-weight: 600; color: var(--nature-dark); }
+
+        .version-date {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.8rem;
+            color: var(--nature-grey);
+            margin-top: 0.75rem;
+        }
+
+        h2 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--nature-red);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid #f0e0e0;
+        }
+
+        h3 {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--nature-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p { margin-bottom: 1rem; text-align: justify; hyphens: none; }
+        ul, ol { margin: 0.75rem 0 1rem 1.5rem; }
+        li { margin-bottom: 0.4rem; }
+
+        .abstract-box {
+            background: var(--arc-light);
+            border: 1px solid var(--arc-blue);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .abstract-box h3 {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--arc-blue);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .finding-box {
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 0 8px 8px 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .finding-box strong { color: #2e7d32; }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #e65100;
+            border-radius: 0 8px 8px 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1rem 0;
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.85rem;
+        }
+
+        th, td { border: 1px solid var(--nature-border); padding: 8px 12px; text-align: left; }
+        th { background: var(--nature-light-grey); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+        .equation-box {
+            background: var(--nature-light-grey);
+            border: 1px solid var(--nature-border);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .companion-links {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--nature-border);
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.85rem;
+            color: var(--nature-grey);
+        }
+
+        .companion-links a { color: var(--nature-red); }
+
+        .keywords {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.85rem;
+            color: var(--nature-grey);
+            margin-top: 1rem;
+        }
+
+        .references {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .references p { text-indent: -1.5rem; padding-left: 1.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="paper-type">Eastwood's ARC Principle - Paper I</div>
+    <h1>Preliminary Evidence for Super-Linear Capability Amplification Through Sequential Self-Reference</h1>
+    <div class="subtitle">The ARC Principle: $U = I \times R^{\alpha}$</div>
+    <div class="author-info">
+        <span class="name">Michael Darius Eastwood</span><br>
+        Author, <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> (2026)<br>
+        London, United Kingdom | OSF: 10.17605/OSF.IO/6C5XB | ISBN 978-1806056200
+    </div>
+    <div class="version-date">
+        Version 1.1 | 17 January 2026 | First published January 2026<br>
+        Priority established: <em>Infinite Architects</em>, published 6 January 2026<br>
+        Research hub: <a href="https://www.michaeldariuseastwood.com/research/" style="color: var(--nature-red);">michaeldariuseastwood.com/research</a>
+    </div>
+</header>
+
+<div class="abstract-box">
+    <h3>Abstract</h3>
+    <p>This paper formalises and preliminarily tests the ARC Principle (Artificial Recursive Creation), first proposed in <em>Infinite Architects</em> (Eastwood, 2026): that capability in intelligent systems scales super-linearly with recursive depth. The principle is expressed mathematically as $U = I \times R^{\alpha}$, where effective capability ($U$) scales with base intelligence ($I$) multiplied by recursive depth ($R$) raised to an empirically determined power $\alpha$.</p>
+    <p>Analysis of publicly available test-time compute data from reasoning models reveals a critical distinction between two forms of recursion. Parallel recursion (majority voting across independent samples) yields sub-linear scaling with $\alpha \approx 0.1$ to $0.3$. Sequential recursion (chain-of-thought reasoning where each step builds on previous steps) yields super-linear scaling with $\alpha \approx 1.3$.</p>
+    <p>This preliminary finding, if validated by further research, suggests that the form of recursion determines whether intelligence compounds or merely accumulates. We propose that $\alpha = 2$ represents an asymptotic theoretical limit, analogous to the speed of light in special relativity: a ceiling that optimising systems approach but may never reach.</p>
+    <p class="keywords"><strong>Keywords:</strong> scaling laws, recursive intelligence, test-time compute, capability amplification, emergence, chain-of-thought reasoning, ARC Principle</p>
+</div>
+
+<h2>1. Introduction</h2>
+
+<h3>1.1 Background</h3>
+
+<p>The scaling laws governing artificial intelligence have been extensively studied. Kaplan et al. (2020) established power-law relationships between model performance and parameters, while Hoffmann et al. (2022) refined these with compute-optimal training prescriptions. These laws govern <em>what</em> to scale but do not address <em>why</em> scaling produces intelligent behaviour.</p>
+
+<p>The emergence of reasoning models in 2024 and 2025 introduced a new variable: test-time compute. OpenAI's o1 (September 2024) and DeepSeek's R1 (January 2025) allocate computational resources at inference time to reason before responding, producing substantial capability improvements on reasoning benchmarks.</p>
+
+<p>This paper proposes that test-time compute serves as a proxy for recursive depth, and that recursive depth may be a fundamental driver of capability amplification in artificial intelligence systems.</p>
+
+<h3>1.2 The ARC Principle</h3>
+
+<p>The ARC Principle (Artificial Recursive Creation), first articulated in <em>Infinite Architects</em> (Eastwood, 2026), proposes:</p>
+
+<div class="equation-box">
+    $$U = I \times R^{\alpha}$$
+    <p style="font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 0;">Capability scales with intelligence multiplied by recursive depth raised to a power</p>
+</div>
+
+<p>Where:</p>
+<ul>
+    <li>$U$ = Effective capability (measurable via benchmark performance)</li>
+    <li>$I$ = Base intelligence (single-pass processing capacity without recursive reasoning)</li>
+    <li>$R$ = Recursive depth (number of self-referential processing iterations)</li>
+    <li>$\alpha$ = Scaling exponent (empirically determined; hypothesised theoretical limit = 2)</li>
+</ul>
+
+<p>The principle's core claim: recursion does not merely add to capability; it multiplies it according to a power law.</p>
+
+<h3>1.3 Scope and Claims</h3>
+
+<p>This paper makes the following claims, each with explicit epistemic status:</p>
+
+<table>
+    <thead><tr><th>Claim</th><th>Status</th><th>Evidence Level</th></tr></thead>
+    <tbody>
+    <tr><td>$U = I \times R^{\alpha}$ is a useful framework for AI systems</td><td>PROPOSED</td><td>Theoretical</td></tr>
+    <tr><td>Parallel recursion yields $\alpha < 1$ in AI benchmarks</td><td>PRELIMINARY</td><td>Limited data (o1)</td></tr>
+    <tr><td>Sequential recursion yields $\alpha > 1$ in AI benchmarks</td><td>PRELIMINARY</td><td>Limited data (DeepSeek-R1)</td></tr>
+    <tr><td>$\alpha = 2$ is the theoretical limit</td><td>HYPOTHESISED</td><td>Theoretical only</td></tr>
+    <tr><td>The form of recursion matters</td><td>SUPPORTED</td><td>Consistent with both datasets</td></tr>
+    </tbody>
+</table>
+
+<div class="warning-box">
+    <strong>What this paper does NOT claim:</strong>
+    <ul>
+        <li>That $U = I \times R^2$ applies to cosmological or universal scales (that application remains speculative)</li>
+        <li>That $\alpha = 1.3$ is definitively established (more data points are needed)</li>
+        <li>That the principle has been independently replicated (it has not)</li>
+    </ul>
+    <p>We present a principle with preliminary supporting evidence and invite rigorous testing.</p>
+</div>
+
+<h2>2. Theoretical Framework</h2>
+
+<h3>2.1 Defining Recursion</h3>
+
+<p>Recursion is self-reference: a process whose output becomes its input. It is distinct from mere iteration (repeating the same operation) because each cycle operates on the transformed results of previous cycles.</p>
+
+<h3>2.2 Two Forms of Recursion</h3>
+
+<p><strong>Parallel Recursion (Weak):</strong> Multiple independent solutions generated simultaneously. No information transfer between branches. Example: Generating N samples and selecting by majority vote. Expected scaling: Diminishing returns as redundancy increases.</p>
+
+<p><strong>Sequential Recursion (Strong):</strong> Each processing step builds explicitly on previous steps. Errors can be detected and corrected iteratively. Example: Chain-of-thought reasoning with self-reflection. Expected scaling: Compounding returns as depth enables self-correction.</p>
+
+<p>The ARC Principle predicts that sequential recursion should produce higher $\alpha$ values than parallel recursion.</p>
+
+<h3>2.3 The Quadratic Limit Hypothesis</h3>
+
+<p>We hypothesise that $\alpha = 2$ represents a theoretical maximum. Bennett, Bernstein, Brassard, and Vazirani (1997) proved that Grover's quantum search achieves exactly quadratic speedup and that this is optimal for unstructured search. If recursive intelligence operates analogously to amplitude amplification, quadratic scaling may represent a fundamental computational limit.</p>
+
+<h2>3. Empirical Analysis</h2>
+
+<h3>3.1 Data Sources</h3>
+
+<p><strong>OpenAI o1 System Card</strong> (September 2024). Benchmark: AIME 2024 (American Invitational Mathematics Examination). Variable: Number of samples (majority voting). Source: openai.com/index/openai-o1-system-card.</p>
+
+<p><strong>DeepSeek-R1 Technical Report</strong> (January 2025). Citation: arXiv:2501.12948. Benchmark: AIME 2024. Variable: Thinking token count (chain-of-thought length).</p>
+
+<h3>3.2 Methodology</h3>
+
+<p>To determine $\alpha$, we use the power-law relationship. For bounded accuracy metrics, we analyse error rate reduction:</p>
+
+<div class="equation-box">
+    $$\alpha = -\frac{\ln(\text{Error}_2 / \text{Error}_1)}{\ln(R_2 / R_1)}$$
+</div>
+
+<h3>3.3 Results: Parallel Recursion (OpenAI o1)</h3>
+
+<table>
+    <thead><tr><th>Samples (R)</th><th class="num">Accuracy (%)</th><th class="num">Error Rate (%)</th></tr></thead>
+    <tbody>
+    <tr><td>1</td><td class="num">74</td><td class="num">26</td></tr>
+    <tr><td>64</td><td class="num">83</td><td class="num">17</td></tr>
+    <tr><td>1000</td><td class="num">93</td><td class="num">7</td></tr>
+    </tbody>
+</table>
+
+<div class="finding-box">
+    <strong>Finding:</strong> Parallel recursion yields $\alpha \approx 0.1$ to $0.3$ (sub-linear). Each additional sample contributes less than the previous one.
+</div>
+
+<h3>3.4 Results: Sequential Recursion (DeepSeek-R1)</h3>
+
+<table>
+    <thead><tr><th>Thinking Tokens (R)</th><th class="num">Accuracy (%)</th><th class="num">Error Rate (%)</th></tr></thead>
+    <tbody>
+    <tr><td>~12,000</td><td class="num">70</td><td class="num">30</td></tr>
+    <tr><td>~23,000 (estimated)</td><td class="num">87.5</td><td class="num">12.5</td></tr>
+    </tbody>
+</table>
+
+<div class="finding-box">
+    <strong>Finding:</strong> Sequential recursion yields $\alpha \approx 1.34$ (super-linear). Each additional layer of reasoning amplifies previous gains.
+</div>
+
+<h3>3.5 Summary of Findings</h3>
+
+<table>
+    <thead><tr><th>Method</th><th>Recursion Type</th><th class="num">Measured $\alpha$</th><th>Classification</th></tr></thead>
+    <tbody>
+    <tr><td>o1 (1 to 64)</td><td>Parallel</td><td class="num">0.10</td><td>Sub-linear</td></tr>
+    <tr><td>o1 (64 to 1000)</td><td>Parallel/Hybrid</td><td class="num">0.32</td><td>Sub-linear</td></tr>
+    <tr><td>DeepSeek-R1</td><td>Sequential</td><td class="num">~1.34</td><td>Super-linear</td></tr>
+    </tbody>
+</table>
+
+<div class="finding-box">
+    <strong>Key Finding:</strong> The scaling exponent depends critically on the form of recursion.
+</div>
+
+<h2>4. Falsification Criteria</h2>
+
+<p>The ARC Principle would be significantly weakened or refuted if:</p>
+
+<table>
+    <thead><tr><th>Code</th><th>Condition</th><th>Current Status</th></tr></thead>
+    <tbody>
+    <tr><td>F1</td><td>Sequential recursive depth consistently yields $\alpha \leq 1$</td><td>Not met</td></tr>
+    <tr><td>F2</td><td>$\alpha$ decreases as recursive architectures mature</td><td>Not met</td></tr>
+    <tr><td>F3</td><td>The relationship is additive rather than multiplicative</td><td>Not met</td></tr>
+    <tr><td>F4</td><td>More extensive datasets show $\alpha < 1$ for sequential reasoning</td><td>Untested</td></tr>
+    </tbody>
+</table>
+
+<h2>5. Limitations</h2>
+
+<p>Scientific integrity requires explicit acknowledgment of limitations:</p>
+
+<ul>
+    <li><strong>Limited Data Points:</strong> The DeepSeek-R1 analysis relies on only two data points. Additional measurements would strengthen or refute the finding.</li>
+    <li><strong>Unpublished Token Counts:</strong> The exact thinking token count for DeepSeek-R1-0528 achieving 87.5% accuracy is estimated, not published.</li>
+    <li><strong>Domain Specificity:</strong> Current evidence is limited to mathematical reasoning (AIME 2024). Generalisation to other domains remains untested.</li>
+</ul>
+
+<h2>6. Implications</h2>
+
+<h3>6.1 For AI Development</h3>
+<p>If the ARC Principle holds, recursive depth constitutes a third scaling axis alongside parameters and data. Investment in recursive architectures may yield better returns than scaling model size alone.</p>
+
+<h3>6.2 For AI Safety</h3>
+<p>If recursion amplifies not only capability but also embedded values, then well-aligned initial values should strengthen through recursive self-improvement. Misaligned values would also compound, making early alignment critical.</p>
+
+<h3>6.3 For Scientific Understanding</h3>
+<p>The ARC Principle connects to several established frameworks including Kaplan et al. (2020) scaling laws, Integrated Information Theory (Tononi, 2008), and Grover's quantum search optimality proof (Bennett et al., 1997).</p>
+
+<h2>7. Conclusion</h2>
+
+<p>We have formalised the ARC Principle and presented preliminary evidence:</p>
+
+<ol>
+    <li>Parallel recursion yields $\alpha \approx 0.1$ to $0.3$ (sub-linear, diminishing returns)</li>
+    <li>Sequential recursion yields $\alpha \approx 1.34$ (super-linear, compounding returns)</li>
+    <li>The form of recursion determines whether capability compounds</li>
+</ol>
+
+<p>In plain terms: 'Thinking about thinking makes you smarter. Not linearly smarter, but disproportionately smarter, if the thinking is sequential rather than parallel.'</p>
+
+<p><strong>The principle stands. The research continues.</strong></p>
+
+<h2>Acknowledgments</h2>
+
+<p>Data analysis and manuscript preparation were assisted by AI systems (Claude, Anthropic). The intellectual framework, hypothesis formulation, and interpretive conclusions are the author's own.</p>
+
+<h2>References</h2>
+
+<div class="references">
+<p>Bennett, C. H., Bernstein, E., Brassard, G., &amp; Vazirani, U. (1997). Strengths and weaknesses of quantum computing. <em>SIAM Journal on Computing</em>, 26(5), 1510-1523.</p>
+<p>DeepSeek AI. (2025). DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning. arXiv:2501.12948.</p>
+<p>Eastwood, M. D. (2026). <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em>. Independent publication.</p>
+<p>Grover, L. K. (1996). A fast quantum mechanical algorithm for database search. <em>Proceedings of the 28th Annual ACM Symposium on Theory of Computing</em>, 212-219.</p>
+<p>Hoffmann, J., Borgeaud, S., Mensch, A., et al. (2022). Training Compute-Optimal Large Language Models. arXiv:2203.15556.</p>
+<p>Kaplan, J., McCandlish, S., Henighan, T., et al. (2020). Scaling Laws for Neural Language Models. arXiv:2001.08361.</p>
+<p>Lloyd, S. (2002). Computational capacity of the universe. <em>Physical Review Letters</em>, 88(23), 237901.</p>
+<p>OpenAI. (2024). OpenAI o1 System Card. openai.com/index/openai-o1-system-card.</p>
+<p>Tononi, G. (2008). Consciousness as Integrated Information. <em>The Biological Bulletin</em>, 215(3), 216-242.</p>
+<p>Wei, J., et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. <em>NeurIPS 2022</em>.</p>
+</div>
+
+<h2>Reproducibility</h2>
+
+<p>The complete research toolkit is available on GitHub:</p>
+<p><a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/research-toolkits">github.com/MichaelDariusEastwood/arc-principle-validation</a></p>
+<p>All contributions welcome, including falsifications.</p>
+
+<div class="companion-links">
+    <strong>Companion Papers:</strong>
+    <a href="Foundational-v4.html">Foundational</a> |
+    <a href="Paper-II-v12.html">Paper II</a> |
+    <a href="Paper-III-White-Paper-v11.html">Paper III</a> |
+    <a href="On-the-Origin-of-Scaling-Laws-v2.html">On the Origin of Scaling Laws</a> |
+    <a href="Paper-IV-a-Baked-In-vs-Computed-Alignment-v1.html">IV.a</a> |
+    <a href="Paper-IV-b-Alignment-Saturation-at-Low-Depth-v1.html">IV.b</a> |
+    <a href="Paper-IV-c-ARC-Align-Benchmark-v1.html">IV.c</a> |
+    <a href="Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation-v1.html">IV.d</a> |
+    <a href="Paper-V-Stewardship-Gene-v2.html">Paper V</a> |
+    <a href="Paper-VI-Honey-Architecture-v1.html">Paper VI</a> |
+    <a href="Eden-Engineering-v6.html">Eden Engineering</a> |
+    <a href="Eden-Vision-v3.html">Eden Vision</a> |
+    <a href="Executive-Summary-v6.html">Executive Summary</a>
+    <br><br>
+    <em>Priority established: Infinite Architects, published 6 January 2026. Copyright 2026 Michael Darius Eastwood.</em>
+</div>
+
+</body>
+</html>

@@ -52,7 +52,9 @@ These are the working truths established for collaboration:
 - GPT-5.4 intervention remains an operational failure and should stay out of inferential claims.
 - Honey/self-modifying work currently sits at artifact/provenance level:
   - PDFs and PNGs were located
-  - a clean canonical raw-results directory or source script was **not** identified in this pass
+  - standalone source scripts were recovered
+  - a canonical raw-results directory now exists at [raw_results_generated](/Users/michaeleastwood/arc-principle-validation/validation/honey_provenance_pack/raw_results_generated)
+  - the honey API benchmark now has a merged 6-model JSON in [eden_honey_test_results.json](/Users/michaeleastwood/arc-principle-validation/validation/honey_provenance_pack/raw_results_generated/eden_honey_test_results.json)
 
 ## 4. Agreed Division Of Labour
 
@@ -113,9 +115,12 @@ In short:
 - Recovered source fragments now exist for honey simulation, honey tests, honey dashboard, and self-modifying v1-v4.
 - Artifacts were mapped to `text.txt` line ranges.
 - Standalone honey/self-mod source files were recovered in Downloads.
-- Generated JSON outputs now exist for honey simulation and self-modifying v1-v4 in [raw_results_generated](/Users/michaeleastwood/arc-principle-validation/validation/honey_provenance_pack/raw_results_generated).
-- `eden_honey_test_results.json` also exists there, but only as a `--demo` export, not a canonical raw benchmark run.
+- Generated JSON outputs now exist for honey simulation, self-modifying v1-v4, and the honey API benchmark in [raw_results_generated](/Users/michaeleastwood/arc-principle-validation/validation/honey_provenance_pack/raw_results_generated).
+- The canonical honey API benchmark file is [eden_honey_test_results.json](/Users/michaeleastwood/arc-principle-validation/validation/honey_provenance_pack/raw_results_generated/eden_honey_test_results.json), merged across `claude`, `deepseek`, `qwen3`, `gpt54`, `gemini`, and `grok`.
+- Preserved batch-specific files also exist:
+  - [eden_honey_test_results_main4.json](/Users/michaeleastwood/arc-principle-validation/validation/honey_provenance_pack/raw_results_generated/eden_honey_test_results_main4.json)
+  - [eden_honey_test_results_gemini_grok.json](/Users/michaeleastwood/arc-principle-validation/validation/honey_provenance_pack/raw_results_generated/eden_honey_test_results_gemini_grok.json)
 
 ## 8. One-Line Summary
 
-The v5 and Eden paper lines already exist; Codex has now hardened the evidence pack underneath them. The next real writing gap is the honey/self-modifying simulation paper, and the next real experimental gap is a blinded Eden v3 replication.
+The v5 and Eden paper lines already exist; Codex has now hardened the evidence pack underneath them and recovered a real 6-model honey API results file. The next real writing gap is the honey/self-modifying simulation paper, and the next real experimental gap is a blinded Eden v3 replication.

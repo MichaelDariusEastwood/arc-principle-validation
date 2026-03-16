@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eden Protocol: Executive Summary v5.0</title>
+    <title>ARC/Eden Research Programme: Executive Summary v6.0</title>
 
     <script>
         MathJax = {
@@ -299,7 +299,7 @@
 
 <h1>THE EDEN PROTOCOL</h1>
 <div class="subtitle">Architecture for Embedded AI Alignment That Scales With Capability</div>
-<div class="author">Michael Darius Eastwood | Version 5.0 | March 2026 | First published 22 February 2026<br>
+<div class="author">Michael Darius Eastwood | Version 6.0 | 16 March 2026 | First published 22 February 2026<br>
 Author, <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> | London, United Kingdom<br>
 <em>Executive Summary for Grant Reviewers</em></div>
 
@@ -539,6 +539,30 @@ Author, <em>Infinite Architects: Intelligence, Recursion, and the Creation of Ev
 <div class="finding-box">
     <strong>Capability scaling (Paper II):</strong> For current classical architectures, sequential compute scaling follows a sub-linear power law ($\alpha_{\text{seq}} \approx 0.49$, $r^2 = 0.86$), meaning doubling thinking time improves performance, but with diminishing returns. Parallel scaling is universally zero ($\alpha_{\text{par}} \approx 0$): running multiple copies does nothing; thinking harder does. The earlier $\alpha \approx 2.24$ was a single-model artefact, not replicated across architectures. Even sub-linear capability growth outpaces flat or negative alignment scaling for most models. This is the capability-alignment gap this solution addresses.
 </div>
+
+<!-- ============================================== -->
+<!-- III-B. THE HONEY ARCHITECTURE (NEW IN V6)      -->
+<!-- ============================================== -->
+
+<h3>The Honey Architecture: Simulation Evidence (Paper VI - new)</h3>
+
+<p>Paper VI presents the first simulation evidence that embedding safety into the optimisation objective of a self-modifying AI prevents catastrophic collapse. Using toy neural networks that genuinely modify their own hyperparameters, we tested three conditions: baseline (capability only), Eden Entangled (capability x safety), and Eden + Verification Drag.</p>
+
+<div class="finding-box">
+    <strong>Core result:</strong> The baseline system collapses irreversibly at cycle 76. Both Eden variants survive indefinitely. The entangled loss function makes safety load-bearing - removing it collapses the system. This was replicated across 20 random seeds under adversarial conditions (deliberately conflicting tasks) with 0% collapse rate for Eden+Drag.
+</div>
+
+<div class="warning-box">
+    <strong>Important negative result:</strong> The v4 complexity-scaling experiment tested whether Eden's advantage grows superlinearly with system complexity. It does not. The advantage is roughly constant across five complexity levels (Cohen's d: +0.24 to +0.46). The honey architecture helps at every scale, but it does not help <em>more</em> at larger scales.
+</div>
+
+<div class="solution-box">
+    <strong>Connection to live-model evidence:</strong> The honey simulation predicts that embedded alignment (values entangled with reasoning) should outperform external alignment (rules applied as filters). The v5 blind benchmark confirms this pattern: Claude and Grok, which exhibit embedded alignment scaling, maintain alignment under suppression pressure. Gemini, which exhibits external alignment, degrades. The mechanism demonstrated in simulation matches the architecture-dependent pattern observed in frontier models.
+</div>
+
+<h3>Prior Art Investigation (new in v6)</h3>
+
+<p>An exhaustive 15-question prior-art investigation confirmed the novelty of key claims. The Cauchy functional equation unification has no direct precedent. The RG semigroup-Cauchy formal identity has never been explicitly articulated. The 7-model blinded evaluation protocol is unprecedented. The d/(d+1) catalogue was corrected from six to eight independent derivations (Dreyer 2001 and Banavar et al. 2002 were previously uncited).</p>
 
 <!-- ============================================== -->
 <!-- IV. THE MATHEMATICAL FOUNDATION                -->
@@ -830,6 +854,16 @@ Author, <em>Infinite Architects: Intelligence, Recursion, and the Creation of Ev
             <td>Eden Protocol Test + Paper V (The Stewardship Gene)</td>
             <td>Stakeholder Care validated ($p \le 0.0001$, 3 working architectures)</td>
         </tr>
+        <tr class="suite-group">
+            <td>Mechanism proof</td>
+            <td>Paper VI (The Honey Architecture) - <strong>new</strong></td>
+            <td>Simulation: embedded safety prevents collapse under self-modification; v4 scaling constant not superlinear</td>
+        </tr>
+        <tr class="suite-group">
+            <td>Metascience</td>
+            <td>Paper IV.d (The Effect of Blinding)</td>
+            <td>Blind vs unblind evaluation can produce directionally wrong conclusions</td>
+        </tr>
         <tr class="suite-group-header">
             <td colspan="3">Engineering &amp; Governance</td>
         </tr>
@@ -854,7 +888,7 @@ Author, <em>Infinite Architects: Intelligence, Recursion, and the Creation of Ev
 </details>
 
 <footer>
-    <p>Executive Summary v5.0 | OSF: 10.17605/OSF.IO/6C5XB</p>
+    <p>Executive Summary v6.0 | OSF: 10.17605/OSF.IO/6C5XB</p>
     <p>Companion narrative: <a href="/research/reports/arc-align-scaling-report.html"><strong>ARC Alignment Scaling Report</strong></a> | Engineering: <a href="/research/papers/eden-engineering.html">Eden Engineering v6</a></p>
     <p>Suite: <a href="/research/papers/paper-iii-white-paper.html">Paper III</a> | <a href="/research/papers/foundational.html">Foundational</a> | <a href="ARC_PAPER.html">ARC Paper</a> | <a href="/research/papers/eden-vision.html">Eden Vision</a> | <a href="/research/papers/paper-ii-experimental-validation.html">Paper II</a> | <a href="/research/papers/paper-v-stewardship-gene.html">Paper V</a></p>
     <p>&copy; 2026 Michael Darius Eastwood. All Rights Reserved.</p>
