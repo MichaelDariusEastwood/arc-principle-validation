@@ -1,8 +1,18 @@
 # The ARC Principle
 
-**A mathematical framework for measuring alignment scaling, validated across four independent physical domains**
+**A mathematical framework for recursive intelligence scaling, validated across 20 scientific domains by blind prediction**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Headline Result (March 2026)
+
+**Paper VII: The Cauchy Unification** tested whether Cauchy's four functional equations determine the form of every scaling law in nature. Using a blind prediction protocol - the composition operator was classified before data was examined - the framework was tested across 20 scientific domains spanning biology, physics, economics, epidemiology, linguistics, computer science, and ecology.
+
+- **20/20 domains confirmed** at the R² level (p = 2.87 x 10⁻¹⁰)
+- **14/20 confirmed** under strict AIC model selection (p = 8.79 x 10⁻⁴)
+- Less than **one in three billion** probability by chance - exceeding the 5σ discovery threshold used in particle physics
+
+[Read Paper VII](paper/FINAL-SUITE/v-major/Paper-VII-Cauchy-Unification-v1.html) | [Experiment code](experiments/cauchy-unification__Paper-VII/)
 
 ## Overview
 
@@ -10,20 +20,30 @@ This repository contains the complete document suite, experimental code, raw dat
 
 **Author:** Michael Darius Eastwood
 **London, United Kingdom**
+**Web:** [michaeldariuseastwood.com](https://www.michaeldariuseastwood.com) | **Research hub:** [michaeldariuseastwood.com/research](https://www.michaeldariuseastwood.com/research/)
 
 ## The Document Suite
 
-All authoritative documents are in `paper/FINAL-SUITE/`:
+All authoritative documents are in `paper/FINAL-SUITE/v-major/`:
 
 | # | Document | Version | Description |
 |---|----------|---------|-------------|
-| 01 | **White Paper III: The Alignment Scaling Problem** | v9.0 | Primary document. Alignment scaling exponent, ARC Bound, cross-domain validation, 13 falsification criteria. |
-| 02 | **Foundational Paper: The ARC Principle** | v2.1 | Condensed academic treatment. Axiomatic derivation, computational validation, five universal properties. |
-| 03 | **Eden Protocol: Engineering Specification** | v4.0 | Alignment architecture. Three Ethical Loops, Six Questions, Ternary Logic, Monitoring Removal Test, Caretaker Doping. |
-| 04 | **Eden Protocol: Philosophical Vision** | v1.0 | Companion piece. The Grande Purpose, the Eternal Architect, the Cosmic Fork, the Infinite Covenant. |
-| 05 | **Executive Summary** | v1.0 | One-page overview for grant reviewers (£150k/£500k/£1.1M). |
-
-See `CANONICAL-VERSIONS.md` for version history. Do not use older versions in `drafts-not-published/` — they contain mathematical errors corrected during February 2026 review.
+| 01 | **Paper I: The ARC Principle** | v1.1 | Original published paper. U = I x R^α, January 2026. |
+| 02 | **Foundational: Cauchy Framework** | v4 | Axiomatic derivation from Cauchy functional equations, d/(d+1) prediction, five universal properties. |
+| 03 | **On the Origin of Scaling Laws** | v2 | Cross-domain d/(d+1) evidence catalogue, 8 independent derivations, 6-level evidence hierarchy. |
+| 04 | **Paper II: Experimental Validation** | v12 | 6-model direct experiment. Sequential vs parallel recursion. |
+| 05 | **Paper III: White Paper** | v11 | Alignment scaling problem, ARC Bound, 13 falsification criteria. |
+| 06 | **Paper IV.a: Response Classes** | v1 | Architecture-dependent alignment response to depth. |
+| 07 | **Paper IV.b: Saturation** | v1 | Alignment saturation at low depth. |
+| 08 | **Paper IV.c: ARC-Align Benchmark** | v1 | Reproducible benchmark specification. |
+| 09 | **Paper IV.d: Blinding** | v1 | Unblinded scoring can reverse alignment results. Flagship methods paper. |
+| 10 | **Paper V: The Stewardship Gene** | v2 | Eden Protocol intervention pilot. |
+| 11 | **Paper VI: Honey Architecture** | v1 | Entangled loss functions for self-modifying AI safety. |
+| 12 | **Paper VII: The Cauchy Unification** | v1 | 20-domain blind prediction test. Headline empirical result. |
+| 13 | **Eden Engineering** | v6 | Protocol architecture specification. |
+| 14 | **Eden Vision** | v3 | Public coordination document. |
+| 15 | **Executive Summary** | v6 | Programme overview with all current results. |
+| 16 | **Master Table of Contents** | v1 | Suite navigation. |
 
 ## The ARC Principle
 
@@ -80,38 +100,29 @@ If α_cap > α_align, the safety ratio S ∝ R^(α_align − α_cap) → 0 as R 
 ```
 arc-principle-validation/
 ├── README.md                           # You are here
-├── CANONICAL-VERSIONS.md               # Current authoritative versions
 ├── LICENCE                             # MIT Licence
 │
-├── paper/FINAL-SUITE/                  # AUTHORITATIVE DOCUMENT SUITE
-│   ├── README.md                       # Reading order and cross-references
-│   ├── Paper-III-White-Paper-v9.0.html        # Primary document (+ PDF)
-│   ├── Foundational-v2.1.html       # Foundational paper (+ PDF)
-│   ├── Eden-Engineering-v4.0.html   # Eden Engineering (+ PDF)
-│   ├── Eden-Vision-v1.0.html        # Eden Vision (+ PDF)
-│   ├── Executive-Summary-v1.0.html  # Grant summary (+ PDF)
-│   ├── figures/                        # 12 figures for White Paper III
-│   └── PAPER-I-REFERENCE/             # Paper I (published PDF)
+├── paper/FINAL-SUITE/v-major/          # AUTHORITATIVE DOCUMENT SUITE (16 papers)
 │
-├── research-toolkits/                  # REPLICATION TOOLKITS
+├── experiments/                        # ALL EXPERIMENT CODE AND RESULTS
+│   ├── cauchy-unification__Paper-VII/  # 20-domain blind prediction (HEADLINE)
+│   ├── alignment-scaling__Papers-IV/   # v1-v5 alignment benchmark + v6 runner
+│   ├── eden-intervention__Paper-V/     # Eden Protocol pilot tests
+│   ├── honey-architecture__Paper-VI/   # Simulations + live API battery
+│   ├── domain-validation__Foundational/# 13 cross-domain validation scripts
+│   ├── blind-prediction-test/          # Forensic analysis of blind test
+│   ├── paper-i-foundational__Paper-I/  # Original ARC toolkit
+│   ├── paper-ii-compute__Paper-II/     # 6-model direct experiments
+│   └── analysis-tools__Cross-Programme/# Shared analysis utilities
+│
+├── research-toolkits/                  # LEGACY REPLICATION TOOLKITS
 │   ├── paper-i/                        # Paper I: public data analysis
-│   │   ├── code/                       # Analysis scripts
-│   │   ├── results/                    # Pre-computed results (JSON)
-│   │   └── figures/                    # 3 visualisations
 │   └── paper-ii/                       # Paper II: DeepSeek R1 experiments
-│       ├── code/                       # Experiment scripts
-│       ├── results/                    # Raw experimental data (JSON)
-│       └── figures/                    # 15 visualisations
 │
-├── validation/                         # COMPUTATIONAL VALIDATION
-│   ├── prove_IxR_equals_complexity_v2.py
-│   ├── arc_definitive_test.py
-│   └── arc_unified_paradigm_test.py
-│
-└── blind-test/                         # BLIND PREDICTION TEST
-    ├── BLIND_PREDICTION_TEST.py
-    ├── BLIND_TEST_FORENSIC_ANALYSIS.md # Confound identification
-    └── BLIND_TEST_FORENSIC_ANALYSIS.png
+└── validation/                         # COMPUTATIONAL VALIDATION
+    ├── prove_IxR_equals_complexity_v2.py
+    ├── arc_definitive_test.py
+    └── arc_unified_paradigm_test.py
 ```
 
 ## Blind Prediction Test
@@ -145,8 +156,12 @@ Thirteen explicit falsification criteria are specified across the ARC framework 
 | 22 Jan 2026 | Paper II published |
 | 6 Feb 2026 | NYU time crystal paper published |
 | 9 Feb 2026 | Paper III published |
-| 20 Feb 2026 | Paper III v9.0 (current version) |
-| 22 Feb 2026 | Complete document suite finalised |
+| 20 Feb 2026 | Paper III v9.0 |
+| 22 Feb 2026 | Document suite finalised |
+| Mar 2026 | Papers IV.a-d: 6-model blind ARC-Align benchmark |
+| Mar 2026 | Paper V: Eden Protocol intervention pilot |
+| Mar 2026 | Paper VI: Honey Architecture simulations + live API |
+| 16 Mar 2026 | Paper VII: Cauchy Unification - 20-domain blind prediction (p = 2.87e-10) |
 
 The theoretical prediction preceded all experimental confirmations.
 

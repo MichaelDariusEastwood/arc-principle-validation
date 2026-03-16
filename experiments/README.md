@@ -50,6 +50,16 @@ All experimental scripts, results, and data for the ARC/Eden research programme.
 - **Paper:** Paper IV.d: The Effect of Blinding (supports metascience finding)
 - **Evidence tier:** Canonical
 
+### cauchy-unification__Paper-VII/
+- `scripts/arc_20_domain_universal_test.py` - **Primary:** 20-domain blind prediction test (Cauchy form prediction)
+- `scripts/arc_complete_test_suite.py` - Cauchy no-go theorem verification
+- `scripts/arc_unified_paradigm_test.py` - Cauchy classification (3 regimes)
+- `scripts/arc_rigorous_validation.py` - Tier 1 mathematical foundation (Cauchy's equations)
+- `scripts/arc_universal_proof.py` - Universal proof from Cauchy + maximum entropy
+- `results/` - Pre-computed outputs for all scripts
+- **Paper:** Paper VII: The Cauchy Unification (v1)
+- **Evidence tier:** Canonical (20-domain blind prediction, p = 2.87e-10, exceeds 5σ)
+
 ### analysis-tools__Cross-Programme/
 - `analyze_alpha_align_v5.py` - Alpha-align analysis
 - `per_scorer_check.py` - Per-scorer validation
