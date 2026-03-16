@@ -1,0 +1,2631 @@
+{
+  "metadata": {
+    "suite_name": "ARC Cauchy Unification Tiered 50-Domain Validation",
+    "version": "2026-03-16",
+    "primary_endpoint": "Strict family match on empirical_curve_fit domains only, using AICc-selected best model without tolerance rescue",
+    "notes": [
+      "This suite supersedes the permissive headline logic of the legacy 20-domain script.",
+      "The 50-domain expansion is tiered. Do not collapse it into a single blended p-value.",
+      "Published exponent and analytic identity domains are secondary evidence, not part of the primary empirical endpoint."
+    ],
+    "tier_counts": {
+      "empirical_curve_fit": 25,
+      "published_exponent_direct": 13,
+      "published_exponent_provisional": 6,
+      "analytic_identity": 6
+    }
+  },
+  "summary": {
+    "empirical_curve_fit": {
+      "matches": 19,
+      "total": 25,
+      "p_value": 1.5645921415979815e-05
+    },
+    "baseline20_curve_fit": {
+      "matches": 15,
+      "total": 20,
+      "p_value": 0.00016736595466947536
+    },
+    "expanded25_curve_fit": {
+      "matches": 19,
+      "total": 25,
+      "p_value": 1.5645921415979815e-05
+    },
+    "published_exponent_direct": {
+      "nearest_matches": 13,
+      "total": 13,
+      "ci_matches": 13,
+      "ci_total": 13
+    },
+    "published_exponent_provisional": {
+      "nearest_matches": 3,
+      "total": 6,
+      "ci_matches": 2,
+      "ci_total": 3
+    },
+    "analytic_identity": {
+      "matches": 6,
+      "total": 6
+    }
+  },
+  "results": [
+    {
+      "domain_id": 1,
+      "name": "Kleiber's Law (Metabolic Scaling)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "saturation_exp",
+      "best_family": "bounded",
+      "family_match": false,
+      "model_match": false,
+      "n_points": 13,
+      "source": "Kleiber (1932), reproduced in Dodds et al. (2001)",
+      "top_fits": [
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9991925741751533,
+          "aicc": 40.233969460850794,
+          "bic": 40.163868175773864,
+          "params": {
+            "y_max": 461.5057855440001,
+            "k": 0.0029773751717250734
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9990198981236874,
+          "aicc": 46.220105399057,
+          "bic": 45.24828680477494,
+          "params": {
+            "y_max": 592.3866215441485,
+            "K": 345.11470167760535,
+            "n": 1.0940918062453122
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.998657163799637,
+          "aicc": 46.84691385740476,
+          "bic": 46.77681257232783,
+          "params": {
+            "L": 675.5753898635573,
+            "K": 453.4585543900431
+          }
+        },
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9860983646189161,
+          "aicc": 77.2308069021928,
+          "bic": 77.16070561711587,
+          "params": {
+            "a": 3.5651430239864443,
+            "b": 0.7373842417351016
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 2,
+      "name": "Urban Scaling (GDP vs Population)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 25,
+      "source": "Bettencourt et al. (2007) PNAS; BEA + Census 2006",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9684447375333142,
+          "aicc": 533.6663764710971,
+          "bic": 535.558673575379,
+          "params": {
+            "a": 0.011108208530096352,
+            "b": 1.1005676485596192
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.49221899618941933,
+          "aicc": 603.1241236464728,
+          "bic": 605.0164207507546,
+          "params": {
+            "a": 94370.17867882256,
+            "b": 1.576438739886769e-07
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.21471075829006414,
+          "aicc": 616.6215725170023,
+          "bic": 619.1353428487498,
+          "params": {
+            "K": 388207.61447503214,
+            "r": 0.10000000000015374,
+            "x0": 4007206.7934933333
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 3,
+      "name": "Species-Area Relationship (Galapagos)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "hill",
+      "best_family": "bounded",
+      "family_match": false,
+      "model_match": false,
+      "n_points": 30,
+      "source": "Johnson & Raven (1973) Science; R faraway::gala dataset",
+      "top_fits": [
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.7683961755176429,
+          "aicc": 246.52839063327835,
+          "bic": 249.80890585518787,
+          "params": {
+            "y_max": 487.7950075398951,
+            "K": 528.9306261753105,
+            "n": 0.544723786523344
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.7455678601941806,
+          "aicc": 246.8699351645314,
+          "bic": 249.22788548341126,
+          "params": {
+            "L": 340.2312036596394,
+            "K": 147.3387174674216
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.7224920145276934,
+          "aicc": 249.47440166597897,
+          "bic": 251.83235198485883,
+          "params": {
+            "y_max": 289.62413322613264,
+            "k": 0.006388081968357928
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.7371632121885413,
+          "aicc": 250.32354069339843,
+          "bic": 253.60405591530795,
+          "params": {
+            "K": 282.6551440374889,
+            "r": 0.018945528571141984,
+            "x0": 116.38156953515528
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 4,
+      "name": "Wright's Law (Solar PV Learning Curve)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 15,
+      "source": "Nemet (2009), Farmer & Lafond (2016), IRENA, Our World in Data",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.8436743965618552,
+          "aicc": 77.67711432420674,
+          "bic": 78.09321472641116,
+          "params": {
+            "a": 73.37207918232181,
+            "b": -0.40124501100956084
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 1.1102230246251565e-16,
+          "aicc": 105.51432800498131,
+          "bic": 105.93042840718573,
+          "params": {
+            "L": 14.040666508346575,
+            "K": 7.66453640636523e-21
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": -4.440892098500626e-15,
+          "aicc": 105.51432800498138,
+          "bic": 105.9304284071858,
+          "params": {
+            "y_max": 14.0406647343931,
+            "k": 35.5584022864866
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": -0.07685430797377935,
+          "aicc": 106.62498970348071,
+          "bic": 107.04109010568513,
+          "params": {
+            "a": 5.609872177408405,
+            "b": -3.5628993897221066e-06
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 5,
+      "name": "Heap's Law (Vocabulary Growth)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 5,
+      "source": "Manning, Raghavan, Schutze (2008); Reuters RCV1 corpus",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9997065541476801,
+          "aicc": 63.816760494093984,
+          "bic": 57.03563631896218,
+          "params": {
+            "a": 22.676454131303625,
+            "b": 0.537314708298859
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.9797110910515604,
+          "aicc": 84.99744312306942,
+          "bic": 78.21631894793762,
+          "params": {
+            "L": 55588.7429394677,
+            "K": 470590.66449681437
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9737666603042137,
+          "aicc": 86.28222677190864,
+          "bic": 79.50110259677685,
+          "params": {
+            "y_max": 41556.695438197254,
+            "k": 2.448199600914509e-06
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.7960462004026687,
+          "aicc": 96.53653870363344,
+          "bic": 89.75541452850165,
+          "params": {
+            "a": 6042.37772326109,
+            "b": 2.0469098801790137e-06
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 6,
+      "name": "Zipf's Law (Word Frequency)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "michaelis_menten",
+      "best_family": "bounded",
+      "family_match": false,
+      "model_match": false,
+      "n_points": 30,
+      "source": "Kucera & Francis (1967), Brown Corpus",
+      "top_fits": [
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.0,
+          "aicc": 577.9777904658973,
+          "bic": 580.3357407847772,
+          "params": {
+            "L": 11199.966610395666,
+            "K": 1.4183367095982867e-18
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": -1.2878587085651816e-14,
+          "aicc": 577.9777904658977,
+          "bic": 580.3357407847775,
+          "params": {
+            "y_max": 11199.96503592634,
+            "k": 962.4439862988017
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": -2.220446049250313e-16,
+          "aicc": 580.4564229445298,
+          "bic": 583.7369381664394,
+          "params": {
+            "y_max": 11199.966867575855,
+            "K": 8.260734818676873e-09,
+            "n": 3.56478148154606
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": -9.103828801926284e-14,
+          "aicc": 580.4564229445325,
+          "bic": 583.7369381664421,
+          "params": {
+            "K": 11199.966642580615,
+            "r": 0.05201543433015608,
+            "x0": -558.3327623600394
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 7,
+      "name": "Learning Curve (Cigar Rolling)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 9,
+      "source": "Crossman (1959); Newell & Rosenbloom (1981) reanalysis",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9862431963406757,
+          "aicc": -4.835340978792281,
+          "bic": -6.440891824119842,
+          "params": {
+            "a": 55.93149373096228,
+            "b": -0.17421723084809523
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.260549573595234,
+          "aicc": 31.024022590694212,
+          "bic": 29.418471745366652,
+          "params": {
+            "a": 8.95034811671914,
+            "b": -1.0545015309318096e-07
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.0,
+          "aicc": 33.740654912158696,
+          "bic": 32.13510406683113,
+          "params": {
+            "L": 8.677777756713908,
+            "K": 3.360632500425121e-17
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": -5.24691401437849e-12,
+          "aicc": 33.74065491220592,
+          "bic": 32.135104066878355,
+          "params": {
+            "y_max": 8.677767080751881,
+            "k": 0.24175019482844823
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 8,
+      "name": "Moore's Law (Transistor Count)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "best_model": "exponential",
+      "best_family": "exponential",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 20,
+      "source": "Wikipedia transistor count; public vendor specs",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.6403373506571417,
+          "aicc": 901.1824068647959,
+          "bic": 902.4679890589626,
+          "params": {
+            "a": 1.6306664106161754e-277,
+            "b": 0.3273336491647629
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.4332067464356133,
+          "aicc": 913.0730864742359,
+          "bic": 914.5602832948979,
+          "params": {
+            "K": 39991040880.46634,
+            "r": 0.10876360251049874,
+            "x0": 2026.4442399722632
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.00265814805022091,
+          "aicc": 921.5809485614084,
+          "bic": 922.8665307555751,
+          "params": {
+            "L": 52377098445.05193,
+            "K": 29274.998869754112
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": -0.13126179735751453,
+          "aicc": 926.8949728440634,
+          "bic": 928.3821696647254,
+          "params": {
+            "y_max": 41582512476.32345,
+            "K": 3670.6172865294284,
+            "n": 11.396285669422042
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 9,
+      "name": "Radioactive Decay (P-32)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "best_model": "exponential",
+      "best_family": "exponential",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 18,
+      "source": "NIST Nuclear Data Center",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.9999975533287168,
+          "aicc": -267.76205920634317,
+          "bic": -266.78131569055085,
+          "params": {
+            "a": 0.9990062865571794,
+            "b": -0.04849491406155623
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": -8.881784197001252e-16,
+          "aicc": -32.27369538407127,
+          "bic": -31.31686582466849,
+          "params": {
+            "K": 0.661945314732601,
+            "r": 1.4939169965310585e-24,
+            "x0": -488.88932379781824
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": -0.2695147270802236,
+          "aicc": -30.89255608816092,
+          "bic": -29.91181257236859,
+          "params": {
+            "L": 0.2916181176425148,
+            "K": 1.0324989267314143e-16
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": -0.26951473430208317,
+          "aicc": -30.892555985764727,
+          "bic": -29.911812469972396,
+          "params": {
+            "y_max": 0.29161811469760823,
+            "k": 8.526736520795646
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 10,
+      "name": "Gutenberg-Richter Law (Earthquakes)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "best_model": "exponential",
+      "best_family": "exponential",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 9,
+      "source": "USGS Earthquake Hazards Program; IRIS compilation",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.9979260962294779,
+          "aicc": 99.93248994573037,
+          "bic": 98.32693910040281,
+          "params": {
+            "a": 155668559.25229982,
+            "b": -2.3372093776670213
+          }
+        },
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.49760562547693976,
+          "aicc": 149.34206431022096,
+          "bic": 147.7365134648934,
+          "params": {
+            "a": 2833822950903.187,
+            "b": -13.483086181603053
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.0,
+          "aicc": 155.53739306010405,
+          "bic": 153.93184221477648,
+          "params": {
+            "L": 2124.11107300302,
+            "K": 4.204724883674317e-16
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": -1.1102230246251565e-15,
+          "aicc": 155.53739306010408,
+          "bic": 153.9318422147765,
+          "params": {
+            "y_max": 2124.1109658647847,
+            "k": 358.275082026264
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 11,
+      "name": "Bacterial Growth (E. coli Logistic)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "logistic",
+      "best_model": "logistic",
+      "best_family": "bounded",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 17,
+      "source": "Sezonov et al. (2007) J Bacteriol; E. coli K-12 in LB at 37C",
+      "top_fits": [
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9997139729679995,
+          "aicc": -122.47730080898717,
+          "bic": -121.82381462297235,
+          "params": {
+            "K": 3.1668016525877305,
+            "r": 1.304785647005593,
+            "x0": 4.483797140013083
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9987297362820983,
+          "aicc": -97.13211154784659,
+          "bic": -96.47862536183177,
+          "params": {
+            "y_max": 3.2421790670271005,
+            "K": 4.457275346014278,
+            "n": 5.489096069671107
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.8011061429343326,
+          "aicc": -14.210827446153896,
+          "bic": -13.401543615184321,
+          "params": {
+            "y_max": 4.0024456677893685,
+            "k": 0.12193731357192636
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.7767192620761094,
+          "aicc": -12.244631360014964,
+          "bic": -11.435347529045389,
+          "params": {
+            "L": 5.877627541427883,
+            "K": 11.50353271270813
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 12,
+      "name": "O2-Hemoglobin Curve (Hill Equation)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "hill",
+      "best_model": "hill",
+      "best_family": "bounded",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 19,
+      "source": "Severinghaus (1979) J Appl Physiol",
+      "top_fits": [
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9984512788200955,
+          "aicc": 18.732164114001,
+          "bic": 19.96548105150032,
+          "params": {
+            "y_max": 102.73297362282803,
+            "K": 26.337061670628184,
+            "n": 2.173405651348257
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.989125125269107,
+          "aicc": 55.7636488560413,
+          "bic": 56.99696579354062,
+          "params": {
+            "K": 95.76775982696165,
+            "r": 0.10253031916493525,
+            "x0": 26.374012014802524
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9734207012395046,
+          "aicc": 69.89352349930549,
+          "bic": 71.03240145763837,
+          "params": {
+            "y_max": 106.84289563910372,
+            "k": 0.025185156969427767
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.9577926788960616,
+          "aicc": 78.68028290128692,
+          "bic": 79.8191608596198,
+          "params": {
+            "L": 143.83958857623182,
+            "K": 46.883054785516904
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 13,
+      "name": "Epidemic SIR (2014 Ebola)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "logistic",
+      "best_model": "hill",
+      "best_family": "bounded",
+      "family_match": true,
+      "model_match": false,
+      "n_points": 29,
+      "source": "WHO/CDC Situation Reports (2014-2015); NEJM Ebola Response Team",
+      "top_fits": [
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9984910815413718,
+          "aicc": 347.2663311915048,
+          "bic": 350.40821868146423,
+          "params": {
+            "y_max": 28599.268759249422,
+            "K": 242.83099714544463,
+            "n": 4.907946991513834
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9967310724383796,
+          "aicc": 369.6853271651979,
+          "bic": 372.8272146551574,
+          "params": {
+            "K": 27206.39976056178,
+            "r": 0.023605169406222436,
+            "x0": 240.62262305348884
+          }
+        },
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.7880048561672643,
+          "aicc": 488.17780621658346,
+          "bic": 490.45085941501793,
+          "params": {
+            "a": 0.5003014763834126,
+            "b": 1.7642087415928127
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": -41.33548822059539,
+          "aicc": 641.7855169171837,
+          "bic": 644.0585701156182,
+          "params": {
+            "a": 238.1599613743567,
+            "b": 0.01319963229833475
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 14,
+      "name": "Amdahl's Law (CPU Multi-Core Scaling)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": null,
+      "best_model": "michaelis_menten",
+      "best_family": "bounded",
+      "family_match": true,
+      "model_match": null,
+      "n_points": 11,
+      "source": "Amdahl (1967); Hill & Marty (2008) IEEE Computer",
+      "top_fits": [
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.9999993591847525,
+          "aicc": -125.58545773825153,
+          "bic": -126.28966719265479,
+          "params": {
+            "L": 9.998627796887902,
+            "K": 8.991565997112708
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9999994294134054,
+          "aicc": -122.93372500219881,
+          "bic": -125.16861061237513,
+          "params": {
+            "y_max": 9.999831058432779,
+            "K": 8.994522055001138,
+            "n": 0.9992980930633952
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9795859776001176,
+          "aicc": -11.526552279922786,
+          "bic": -12.230761734326045,
+          "params": {
+            "y_max": 9.386702532088352,
+            "k": 0.079100479257062
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9641048195477205,
+          "aicc": -1.3897898515631444,
+          "bic": -3.6246754617394608,
+          "params": {
+            "K": 9.321548083284533,
+            "r": 0.14140434340428673,
+            "x0": 10.360798571273937
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 15,
+      "name": "Muscle Force-Velocity (Hill 1938)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "hyperbolic_decay",
+      "best_model": "exponential",
+      "best_family": "exponential",
+      "family_match": false,
+      "model_match": false,
+      "n_points": 15,
+      "source": "Hill (1938) Proc Royal Soc B 126:136-195",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.9385728914849355,
+          "aicc": -25.12561681409783,
+          "bic": -24.70951641189341,
+          "params": {
+            "a": 6.019750554473034,
+            "b": -0.058974225703762186
+          }
+        },
+        {
+          "name": "hyperbolic_decay",
+          "family": "bounded",
+          "r2": 0.9018253802101024,
+          "aicc": -18.092169566103,
+          "bic": -17.67606916389858,
+          "params": {
+            "a": 48.44458086805219,
+            "b": 9.22438952360684
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.0,
+          "aicc": 19.9047618852873,
+          "bic": 19.847094306775748,
+          "params": {
+            "K": 2.9093333241891206,
+            "r": 9.044884637921278e-18,
+            "x0": -388.4204025422704
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": -0.3445544480796745,
+          "aicc": 21.16388409554469,
+          "bic": 21.579984497749113,
+          "params": {
+            "L": 1.2085714371027345,
+            "K": 2.7526539871245306e-16
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 16,
+      "name": "Network Growth Rate (Facebook MAU)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": null,
+      "best_model": "logistic",
+      "best_family": "bounded",
+      "family_match": true,
+      "model_match": null,
+      "n_points": 12,
+      "source": "Meta SEC filings; Zhang, Liu, Xu (2015)",
+      "top_fits": [
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9829273864246231,
+          "aicc": 118.43157078377226,
+          "bic": 116.88629073313626,
+          "params": {
+            "K": 2620.9642609571397,
+            "r": 0.3948184143105183,
+            "x0": 2013.4436850853722
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.3750336808889324,
+          "aicc": 157.96756961107698,
+          "bic": 157.60404957731964,
+          "params": {
+            "a": 7.94382922791038e-266,
+            "b": 0.30659052363558204
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 17,
+      "name": "Diffusion (Brownian MSD)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 16,
+      "source": "Catipovic et al. (2013) Am J Physics 81:485",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9999996452115978,
+          "aicc": -202.51941227804923,
+          "bic": -201.89731175664662,
+          "params": {
+            "a": 1.9598068517027878,
+            "b": 0.9997203504930804
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9816116919693165,
+          "aicc": -25.75122479030049,
+          "bic": -25.433458623581146,
+          "params": {
+            "K": 10.207816035141319,
+            "r": 1.1481237031836062,
+            "x0": 2.539038419605687
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": -1.733669072336991,
+          "aicc": 51.19881115449096,
+          "bic": 51.820911675893605,
+          "params": {
+            "a": 0.34555183940856465,
+            "b": 0.8678960162435251
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 18,
+      "name": "Horton's Law (Stream Numbers)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "best_model": "exponential",
+      "best_family": "exponential",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 6,
+      "source": "Singh et al. (2021) Applied Water Science 11:151",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.996045399927207,
+          "aicc": 54.45001218564954,
+          "bic": 50.03353112410565,
+          "params": {
+            "a": 10050.48581005985,
+            "b": -1.5014642495134345
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.0,
+          "aicc": 87.64726699927176,
+          "bic": 83.23078593772787,
+          "params": {
+            "L": 461.33332978415746,
+            "K": 3.1470988936176416e-18
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": -1.735565025029473e-10,
+          "aicc": 87.64726700031311,
+          "bic": 83.23078593876922,
+          "params": {
+            "y_max": 461.34338531149996,
+            "k": 92.09856285539404
+          }
+        },
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": -0.7805648182151446,
+          "aicc": 91.10885076471993,
+          "bic": 86.69236970317604,
+          "params": {
+            "a": 4604.411786023208,
+            "b": -4.080572713443869
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 19,
+      "name": "Neural Scaling Laws (LLM Loss vs Params)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 12,
+      "source": "Kaplan et al. (2020) arXiv:2001.08361",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9905647541933925,
+          "aicc": -72.66680996295186,
+          "bic": -73.03032999670918,
+          "params": {
+            "a": 7.740253367158014,
+            "b": -0.05112130026408829
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.4694770365247445,
+          "aicc": -24.313877813228384,
+          "bic": -24.677397846985716,
+          "params": {
+            "a": 3.351486647331999,
+            "b": -1.9708333414564213e-10
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": -2.220446049250313e-16,
+          "aicc": -16.707173388555265,
+          "bic": -17.070693422312598,
+          "params": {
+            "L": 3.210833333934716,
+            "K": 4.104281099382649e-15
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": -8.149037000748649e-13,
+          "aicc": -16.70717338854549,
+          "bic": -17.07069342230282,
+          "params": {
+            "y_max": 3.2108329729846097,
+            "k": 0.033176595327629906
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 20,
+      "name": "Time Crystal Order Parameter (Rydberg Gas)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": null,
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": false,
+      "model_match": null,
+      "n_points": 4,
+      "source": "Shen et al. (2025) Nature Communications",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9143685723855574,
+          "aicc": -2.049807389106455,
+          "bic": -15.277218666866673,
+          "params": {
+            "a": 0.10603469351231942,
+            "b": 1.527133790812968
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.828404072070329,
+          "aicc": 0.730552994748507,
+          "bic": -12.496858283011711,
+          "params": {
+            "a": 0.13686487553915952,
+            "b": 0.4538954861746181
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9999205661160367,
+          "aicc": Infinity,
+          "bic": Infinity,
+          "params": {
+            "y_max": 0.9781837078116874,
+            "K": 2.503372456380766,
+            "n": 6.126546720945471
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9987504744602028,
+          "aicc": Infinity,
+          "bic": Infinity,
+          "params": {
+            "K": 0.9542529217026339,
+            "r": 2.622360524998582,
+            "x0": 2.501486887080423
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 21,
+      "name": "Stellar Mass-Luminosity (Main Sequence)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "logistic",
+      "best_family": "bounded",
+      "family_match": false,
+      "model_match": false,
+      "n_points": 19,
+      "source": "Torres et al. (2010) A&ARv; Eker et al. (2018) MNRAS; IAU 2015",
+      "top_fits": [
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.999555377028565,
+          "aicc": 18.925062404953927,
+          "bic": 20.158379342453244,
+          "params": {
+            "K": 290.6978348398322,
+            "r": 3.9569710244200875,
+            "x0": 2.6188654808772593
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.999412032739321,
+          "aicc": 24.234509793377008,
+          "bic": 25.467826730876325,
+          "params": {
+            "y_max": 312.5192980145456,
+            "K": 2.7654647703976045,
+            "n": 7.75321385486851
+          }
+        },
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.5677865282804151,
+          "aicc": 146.7845786768023,
+          "bic": 147.92345663513518,
+          "params": {
+            "a": 1.2095952181348684,
+            "b": 3.358228699635932
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": -673.2765520273845,
+          "aicc": 286.48162280270856,
+          "bic": 287.62050076104146,
+          "params": {
+            "a": 0.007306035402192969,
+            "b": 3.6432393782836807
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 22,
+      "name": "Heart Rate vs Body Mass (Allometry)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 15,
+      "source": "Stahl (1967); Calder (1984); Schmidt-Nielsen (1984)",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9602602728910776,
+          "aicc": 120.2293744967104,
+          "bic": 120.64547489891483,
+          "params": {
+            "a": 213.20920816595208,
+            "b": -0.26223416856657156
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": -4.440892098500626e-16,
+          "aicc": 168.6104331286191,
+          "bic": 169.0265335308235,
+          "params": {
+            "L": 221.20000061600837,
+            "K": 3.9219823504559445e-19
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": -1.665958926366784e-09,
+          "aicc": 168.61043315360845,
+          "bic": 169.02653355581288,
+          "params": {
+            "y_max": 221.1999984871699,
+            "k": 6369.778781711824
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": -0.06834783750446882,
+          "aicc": 169.60213379951315,
+          "bic": 170.01823420171758,
+          "params": {
+            "a": 148.1122221101931,
+            "b": -2.9886515308287725e-05
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 23,
+      "name": "Rent's Rule (VLSI Pin Count vs Gates)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 9,
+      "source": "Landman & Russo (1971); Christie (2000); Stroobandt (2001)",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9996200904540685,
+          "aicc": 44.01780891099734,
+          "bic": 42.412258065669775,
+          "params": {
+            "a": 1.9677414840308987,
+            "b": 0.47218496854950315
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.9788924462927298,
+          "aicc": 80.17488648377005,
+          "bic": 78.5693356384425,
+          "params": {
+            "L": 1700.2088012631114,
+            "K": 290632.8713787523
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.970692756645374,
+          "aicc": 83.12872002602451,
+          "bic": 81.52316918069695,
+          "params": {
+            "y_max": 1374.35722519665,
+            "k": 3.3412969336964994e-06
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.5707573980824793,
+          "aicc": 112.08640811809795,
+          "bic": 107.87808185010661,
+          "params": {
+            "K": 710.0,
+            "r": 1.6394114382831901,
+            "x0": 10000.803432841969
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 24,
+      "name": "Taylor's Power Law (Variance vs Mean)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 11,
+      "source": "Taylor (1961) Nature; Taylor & Woiwod (1980) J Anim Ecol",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9980448219307765,
+          "aicc": 202.9093320575644,
+          "bic": 202.20512260316113,
+          "params": {
+            "a": 1.0495823852055837,
+            "b": 1.917589713115303
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.7802789518204539,
+          "aicc": 258.77855604879005,
+          "bic": 256.54367043861373,
+          "params": {
+            "K": 344417.1049609066,
+            "r": 0.014224992763168994,
+            "x0": 496.74272601061034
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": -112.57548229637341,
+          "aicc": 323.5764903596782,
+          "bic": 322.8722809052749,
+          "params": {
+            "a": 50.24809313979513,
+            "b": 0.011833543951572751
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 25,
+      "name": "Hack's Law (Stream Length vs Basin Area)",
+      "tier": "empirical_curve_fit",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 11,
+      "source": "Hack (1957) USGS; Mueller (1973); Rigon et al. (1996) Water Resour Res",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9999511269330682,
+          "aicc": 15.992214238329536,
+          "bic": 15.288004783926278,
+          "params": {
+            "a": 0.981337092591427,
+            "b": 0.6195979401531355
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.9961353045665463,
+          "aicc": 64.06674283367013,
+          "bic": 63.362533379266864,
+          "params": {
+            "L": 1288.0899629639105,
+            "K": 30706.689968513296
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9955064559537293,
+          "aicc": 65.72508999148955,
+          "bic": 65.0208805370863,
+          "params": {
+            "y_max": 901.6397025538319,
+            "k": 4.3379353087860476e-05
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.980412135732743,
+          "aicc": 85.84861485567221,
+          "bic": 83.61372924549589,
+          "params": {
+            "K": 798.2180637511111,
+            "r": 0.00027532774471858076,
+            "x0": 11461.601807474308
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 26,
+      "name": "Mammals metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d3",
+      "predicted_exponent": 0.75,
+      "published_exponent": 0.737,
+      "published_se": 0.02,
+      "ci_low": 0.6978,
+      "ci_high": 0.7762,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d3",
+        "value": 0.75,
+        "abs_error": 0.013000000000000012
+      },
+      "nearest_match": true,
+      "transport_status": "direct_3d_transport",
+      "source": "White et al. (2006) PNAS 103:3178",
+      "ranked_comparators": [
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.013000000000000012
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.07033333330000002
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.237
+        }
+      ]
+    },
+    {
+      "domain_id": 27,
+      "name": "Birds metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d3",
+      "predicted_exponent": 0.75,
+      "published_exponent": 0.72,
+      "published_se": 0.025,
+      "ci_low": 0.6709999999999999,
+      "ci_high": 0.769,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d3",
+        "value": 0.75,
+        "abs_error": 0.030000000000000027
+      },
+      "nearest_match": true,
+      "transport_status": "direct_3d_transport",
+      "source": "Lasiewski & Dawson (1967) Condor 69:13",
+      "ranked_comparators": [
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.030000000000000027
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.05333333330000001
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.21999999999999997
+        }
+      ]
+    },
+    {
+      "domain_id": 28,
+      "name": "Fish metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d3",
+      "predicted_exponent": 0.75,
+      "published_exponent": 0.8,
+      "published_se": 0.03,
+      "ci_low": 0.7412000000000001,
+      "ci_high": 0.8588,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d3",
+        "value": 0.75,
+        "abs_error": 0.050000000000000044
+      },
+      "nearest_match": true,
+      "transport_status": "direct_3d_transport",
+      "source": "Clarke & Johnston (1999) J Anim Ecol 68:893",
+      "ranked_comparators": [
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.050000000000000044
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.13333333330000008
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.30000000000000004
+        }
+      ]
+    },
+    {
+      "domain_id": 29,
+      "name": "Reptiles metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d3",
+      "predicted_exponent": 0.75,
+      "published_exponent": 0.76,
+      "published_se": 0.025,
+      "ci_low": 0.711,
+      "ci_high": 0.809,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d3",
+        "value": 0.75,
+        "abs_error": 0.010000000000000009
+      },
+      "nearest_match": true,
+      "transport_status": "direct_3d_transport",
+      "source": "Andrews & Pough (1985) Physiol Zool 58:214",
+      "ranked_comparators": [
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.010000000000000009
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.09333333330000004
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.26
+        }
+      ]
+    },
+    {
+      "domain_id": 30,
+      "name": "Insects metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d3",
+      "predicted_exponent": 0.75,
+      "published_exponent": 0.75,
+      "published_se": 0.02,
+      "ci_low": 0.7108,
+      "ci_high": 0.7892,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d3",
+        "value": 0.75,
+        "abs_error": 0.0
+      },
+      "nearest_match": true,
+      "transport_status": "direct_3d_transport",
+      "source": "Chown et al. (2007) PNAS 104:3563",
+      "ranked_comparators": [
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.0
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.08333333330000003
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.25
+        }
+      ]
+    },
+    {
+      "domain_id": 31,
+      "name": "Amphibians metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d3",
+      "predicted_exponent": 0.75,
+      "published_exponent": 0.74,
+      "published_se": 0.025,
+      "ci_low": 0.691,
+      "ci_high": 0.789,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d3",
+        "value": 0.75,
+        "abs_error": 0.010000000000000009
+      },
+      "nearest_match": true,
+      "transport_status": "direct_3d_transport",
+      "source": "Gatten et al. (1992) in Feder & Burggren",
+      "ranked_comparators": [
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.010000000000000009
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.07333333330000003
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.24
+        }
+      ]
+    },
+    {
+      "domain_id": 32,
+      "name": "Crustaceans metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d3",
+      "predicted_exponent": 0.75,
+      "published_exponent": 0.73,
+      "published_se": 0.03,
+      "ci_low": 0.6712,
+      "ci_high": 0.7888,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d3",
+        "value": 0.75,
+        "abs_error": 0.020000000000000018
+      },
+      "nearest_match": true,
+      "transport_status": "direct_3d_transport",
+      "source": "Glazier (2005) Biol Rev 80:611",
+      "ranked_comparators": [
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.020000000000000018
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.06333333330000002
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.22999999999999998
+        }
+      ]
+    },
+    {
+      "domain_id": 33,
+      "name": "Jellyfish metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d2",
+      "predicted_exponent": 0.6666666667,
+      "published_exponent": 0.68,
+      "published_se": 0.03,
+      "ci_low": 0.6212000000000001,
+      "ci_high": 0.7388,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d2",
+        "value": 0.6666666667,
+        "abs_error": 0.013333333300000083
+      },
+      "nearest_match": true,
+      "transport_status": "direct_2d_transport",
+      "source": "Larson (1987) Limnol Oceanogr 32:128",
+      "ranked_comparators": [
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.013333333300000083
+        },
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.06999999999999995
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.18000000000000005
+        }
+      ]
+    },
+    {
+      "domain_id": 34,
+      "name": "Cnidarians metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d2",
+      "predicted_exponent": 0.6666666667,
+      "published_exponent": 0.7,
+      "published_se": 0.035,
+      "ci_low": 0.6314,
+      "ci_high": 0.7686,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d2",
+        "value": 0.6666666667,
+        "abs_error": 0.03333333329999999
+      },
+      "nearest_match": true,
+      "transport_status": "direct_2d_transport",
+      "source": "Glazier (2005) Biol Rev 80:611",
+      "ranked_comparators": [
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.03333333329999999
+        },
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.050000000000000044
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.19999999999999996
+        }
+      ]
+    },
+    {
+      "domain_id": 35,
+      "name": "Ctenophores metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d2",
+      "predicted_exponent": 0.6666666667,
+      "published_exponent": 0.66,
+      "published_se": 0.03,
+      "ci_low": 0.6012000000000001,
+      "ci_high": 0.7188,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d2",
+        "value": 0.6666666667,
+        "abs_error": 0.006666666699999935
+      },
+      "nearest_match": true,
+      "transport_status": "direct_2d_transport",
+      "source": "Glazier (2006) Biol Rev",
+      "ranked_comparators": [
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.006666666699999935
+        },
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.08999999999999997
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.16000000000000003
+        }
+      ]
+    },
+    {
+      "domain_id": 36,
+      "name": "Ectomycorrhizal fungi metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d1",
+      "predicted_exponent": 0.5,
+      "published_exponent": 0.58,
+      "published_se": 0.15,
+      "ci_low": 0.286,
+      "ci_high": 0.8739999999999999,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d1",
+        "value": 0.5,
+        "abs_error": 0.07999999999999996
+      },
+      "nearest_match": true,
+      "transport_status": "direct_1d_transport",
+      "source": "Wilkinson et al. (2012)",
+      "ranked_comparators": [
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.07999999999999996
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.0866666667
+        },
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.17000000000000004
+        }
+      ]
+    },
+    {
+      "domain_id": 37,
+      "name": "Marine fungi metabolic scaling",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d1",
+      "predicted_exponent": 0.5,
+      "published_exponent": 0.53,
+      "published_se": 0.09,
+      "ci_low": 0.3536,
+      "ci_high": 0.7064,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d1",
+        "value": 0.5,
+        "abs_error": 0.030000000000000027
+      },
+      "nearest_match": true,
+      "transport_status": "direct_1d_transport",
+      "source": "Fuentes et al. (2015)",
+      "ranked_comparators": [
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.030000000000000027
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.13666666669999994
+        },
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.21999999999999997
+        }
+      ]
+    },
+    {
+      "domain_id": 38,
+      "name": "Saprotrophic fungi metabolic scaling (20C)",
+      "tier": "published_exponent_direct",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d1",
+      "predicted_exponent": 0.5,
+      "published_exponent": 0.53,
+      "published_se": 0.07,
+      "ci_low": 0.39280000000000004,
+      "ci_high": 0.6672,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d1",
+        "value": 0.5,
+        "abs_error": 0.030000000000000027
+      },
+      "nearest_match": true,
+      "transport_status": "direct_1d_transport",
+      "source": "Wilson & Griffin (1975)",
+      "ranked_comparators": [
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.030000000000000027
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.13666666669999994
+        },
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.21999999999999997
+        }
+      ]
+    },
+    {
+      "domain_id": 39,
+      "name": "Flatworm Schmidtea metabolic scaling",
+      "tier": "published_exponent_provisional",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d2",
+      "predicted_exponent": 0.6666666667,
+      "published_exponent": 0.75,
+      "published_se": null,
+      "ci_low": null,
+      "ci_high": null,
+      "ci_includes_prediction": null,
+      "nearest_comparator": {
+        "label": "d3",
+        "value": 0.75,
+        "abs_error": 0.0
+      },
+      "nearest_match": false,
+      "transport_status": "contested_2d_surface_limited",
+      "source": "Thommen et al. (2019) Cell Rep 27:18",
+      "ranked_comparators": [
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.0
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.08333333330000003
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.25
+        }
+      ]
+    },
+    {
+      "domain_id": 40,
+      "name": "Bryozoans metabolic scaling",
+      "tier": "published_exponent_provisional",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d2",
+      "predicted_exponent": 0.6666666667,
+      "published_exponent": 1.0,
+      "published_se": null,
+      "ci_low": null,
+      "ci_high": null,
+      "ci_includes_prediction": null,
+      "nearest_comparator": {
+        "label": "d3",
+        "value": 0.75,
+        "abs_error": 0.25
+      },
+      "nearest_match": false,
+      "transport_status": "contested_colonial_transport",
+      "source": "Peck & Barnes (2004) Funct Ecol",
+      "ranked_comparators": [
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.25
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.33333333330000003
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.5
+        }
+      ]
+    },
+    {
+      "domain_id": 41,
+      "name": "Marphysa sanguinea (polychaete) metabolic scaling",
+      "tier": "published_exponent_provisional",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d1",
+      "predicted_exponent": 0.5,
+      "published_exponent": 0.56,
+      "published_se": 0.09,
+      "ci_low": 0.38360000000000005,
+      "ci_high": 0.7364,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d1",
+        "value": 0.5,
+        "abs_error": 0.06000000000000005
+      },
+      "nearest_match": true,
+      "transport_status": "proxy_surface_limited",
+      "source": "MDPI Fishes (2021)",
+      "ranked_comparators": [
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.06000000000000005
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.10666666669999991
+        },
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.18999999999999995
+        }
+      ]
+    },
+    {
+      "domain_id": 42,
+      "name": "Praeacanthonchus punctatus (nematode) metabolic scaling",
+      "tier": "published_exponent_provisional",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d1",
+      "predicted_exponent": 0.5,
+      "published_exponent": 0.55,
+      "published_se": null,
+      "ci_low": null,
+      "ci_high": null,
+      "ci_includes_prediction": null,
+      "nearest_comparator": {
+        "label": "d1",
+        "value": 0.5,
+        "abs_error": 0.050000000000000044
+      },
+      "nearest_match": true,
+      "transport_status": "proxy_surface_limited",
+      "source": "Warwick & Price (1979) J Mar Biol Assoc",
+      "ranked_comparators": [
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.050000000000000044
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.11666666669999992
+        },
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.19999999999999996
+        }
+      ]
+    },
+    {
+      "domain_id": 43,
+      "name": "Planktonic foraminifera metabolic scaling",
+      "tier": "published_exponent_provisional",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d1",
+      "predicted_exponent": 0.5,
+      "published_exponent": 0.51,
+      "published_se": 0.18,
+      "ci_low": 0.1572,
+      "ci_high": 0.8628,
+      "ci_includes_prediction": true,
+      "nearest_comparator": {
+        "label": "d1",
+        "value": 0.5,
+        "abs_error": 0.010000000000000009
+      },
+      "nearest_match": true,
+      "transport_status": "proxy_diffusion_limited",
+      "source": "Burke & Hull (2025)",
+      "ranked_comparators": [
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.010000000000000009
+        },
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.15666666669999996
+        },
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.24
+        }
+      ]
+    },
+    {
+      "domain_id": 44,
+      "name": "Glass eels metabolic scaling",
+      "tier": "published_exponent_provisional",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_label": "d1",
+      "predicted_exponent": 0.5,
+      "published_exponent": 0.6,
+      "published_se": 0.05,
+      "ci_low": 0.502,
+      "ci_high": 0.698,
+      "ci_includes_prediction": false,
+      "nearest_comparator": {
+        "label": "d2",
+        "value": 0.6666666667,
+        "abs_error": 0.06666666669999999
+      },
+      "nearest_match": false,
+      "transport_status": "proxy_elongated_but_rtn3d",
+      "source": "Forlenza et al. (2022) Physiol Biochem Zool 95:430",
+      "ranked_comparators": [
+        {
+          "label": "d2",
+          "value": 0.6666666667,
+          "abs_error": 0.06666666669999999
+        },
+        {
+          "label": "d1",
+          "value": 0.5,
+          "abs_error": 0.09999999999999998
+        },
+        {
+          "label": "d3",
+          "value": 0.75,
+          "abs_error": 0.15000000000000002
+        }
+      ]
+    },
+    {
+      "domain_id": 45,
+      "name": "E = mc^2",
+      "tier": "analytic_identity",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 30,
+      "source": "Einstein (1905), exact identity",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 1.0,
+          "aicc": 661.4175932363719,
+          "bic": 663.7755435552517,
+          "params": {
+            "a": 8.999999999999989e+16,
+            "b": 0.9999999999999998
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.8793029610559248,
+          "aicc": 2608.235111392166,
+          "bic": 2611.5156266140752,
+          "params": {
+            "K": 5.832860824160229e+19,
+            "r": 0.008812100777479966,
+            "x0": 297.68429904301837
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.8665515803353431,
+          "aicc": 2608.7694220590906,
+          "bic": 2611.1273723779705,
+          "params": {
+            "y_max": 5.753003694222674e+19,
+            "k": 0.0027229567592566306
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.8298334750837345,
+          "aicc": 2618.5399290067185,
+          "bic": 2621.820444228628,
+          "params": {
+            "y_max": 1.0441743679723294e+20,
+            "K": 738.5511485459573,
+            "n": 0.6710991644390185
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 46,
+      "name": "Hydrogen energy levels",
+      "tier": "analytic_identity",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 20,
+      "source": "Bohr / hydrogen spectrum identity",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 1.0,
+          "aicc": -547.9145399656297,
+          "bic": -546.628957771463,
+          "params": {
+            "a": 13.600000000000001,
+            "b": -2.0
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.25224225233288966,
+          "aicc": 42.45748358405577,
+          "bic": 43.74306577822258,
+          "params": {
+            "a": 2.89558847994087,
+            "b": -0.2558743065039804
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": -6.661338147750939e-16,
+          "aicc": 48.27100798843626,
+          "bic": 49.55659018260307,
+          "params": {
+            "L": 1.0853910296924942,
+            "K": 2.567973871208758e-15
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": -7.873306451244844e-10,
+          "aicc": 48.27100800418286,
+          "bic": 49.55659019834967,
+          "params": {
+            "y_max": 1.0853909196722638,
+            "k": 19.090369573905548
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 47,
+      "name": "Arrhenius kinetics",
+      "tier": "analytic_identity",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "best_model": "exponential",
+      "best_family": "exponential",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 50,
+      "source": "Arrhenius law, exact analytic form in inverse temperature",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 1.0,
+          "aicc": -1377.2957366474911,
+          "bic": -1373.727009785571,
+          "params": {
+            "a": 10000000000.000004,
+            "b": -6.013952369497234
+          }
+        },
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.11430481974074047,
+          "aicc": 1416.9313956323824,
+          "bic": 1420.5001224943026,
+          "params": {
+            "a": 173708481.78932163,
+            "b": -12.23561518568871
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.0,
+          "aicc": 1423.0005170279796,
+          "bic": 1426.5692438898998,
+          "params": {
+            "y_max": 968042.444119222,
+            "k": 48.62392072446385
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": -2.220446049250313e-16,
+          "aicc": 1423.0005170279796,
+          "bic": 1426.5692438898998,
+          "params": {
+            "L": 968042.4383294894,
+            "K": 5.0256805681731164e-20
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 48,
+      "name": "Michaelis-Menten enzyme kinetics",
+      "tier": "analytic_identity",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "michaelis_menten",
+      "best_model": "michaelis_menten",
+      "best_family": "bounded",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 50,
+      "source": "Michaelis-Menten, exact analytic form",
+      "top_fits": [
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 1.0,
+          "aicc": -1377.2957366474911,
+          "bic": -1373.727009785571,
+          "params": {
+            "L": 100.0,
+            "K": 4.999999999999999
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 1.0,
+          "aicc": -1375.0293166659926,
+          "bic": -1369.8149867801428,
+          "params": {
+            "y_max": 100.0,
+            "K": 5.0,
+            "n": 1.0
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9815487283613578,
+          "aicc": 101.45527592483775,
+          "bic": 105.02400278675788,
+          "params": {
+            "y_max": 87.44686281507018,
+            "k": 0.14939535604252588
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9519314539171561,
+          "aicc": 151.5964331063935,
+          "bic": 156.81076299224316,
+          "params": {
+            "K": 86.71101434528913,
+            "r": 0.23032143059886448,
+            "x0": 4.948650332229439
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 49,
+      "name": "Cosmic expansion (matter era)",
+      "tier": "analytic_identity",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 100,
+      "source": "Friedmann matter-era solution a(t) ~ t^(2/3)",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 1.0,
+          "aicc": -2758.9784002526485,
+          "bic": -2753.8917712208786,
+          "params": {
+            "a": 1.0,
+            "b": 0.6666666667
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.9942739763672097,
+          "aicc": -781.5095261347244,
+          "bic": -776.4228971029545,
+          "params": {
+            "L": 1.9446929077106756,
+            "K": 1.0029999821876439
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9921226038407237,
+          "aicc": -749.6119182668517,
+          "bic": -744.5252892350818,
+          "params": {
+            "y_max": 1.2703583564529655,
+            "k": 1.4287270820199856
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9873060900723923,
+          "aicc": -699.7731363501634,
+          "bic": -692.2076257921991,
+          "params": {
+            "K": 1.0260316675826742,
+            "r": 4.279532733540579,
+            "x0": 0.3885571864775012
+          }
+        }
+      ]
+    },
+    {
+      "domain_id": 50,
+      "name": "Cosmic expansion (dark energy era)",
+      "tier": "analytic_identity",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "best_model": "exponential",
+      "best_family": "exponential",
+      "family_match": true,
+      "model_match": true,
+      "n_points": 100,
+      "source": "de Sitter / dark-energy expansion a(t) ~ exp(Ht)",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 1.0,
+          "aicc": -2758.9784002526485,
+          "bic": -2753.8917712208786,
+          "params": {
+            "a": 1.0,
+            "b": 0.9999999999999998
+          }
+        },
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.8090548427916261,
+          "aicc": -302.3320665715434,
+          "bic": -297.2454375397734,
+          "params": {
+            "a": 2.172820203130346,
+            "b": 0.280050172764117
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.7057427956328297,
+          "aicc": -259.0852687824898,
+          "bic": -253.99863975071978,
+          "params": {
+            "L": 3.0381704598974464,
+            "K": 0.3155123469112363
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.6464889110591103,
+          "aicc": -240.73920636533109,
+          "bic": -235.6525773335611,
+          "params": {
+            "y_max": 2.481292437275174,
+            "k": 2.7892972599200156
+          }
+        }
+      ]
+    }
+  ]
+}
