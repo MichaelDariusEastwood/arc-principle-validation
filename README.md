@@ -1,16 +1,16 @@
 # The ARC Principle
 
-**A mathematical framework for recursive intelligence scaling, validated across 20 scientific domains by blind prediction**
+**A mathematical framework for recursive intelligence scaling, tested across 20 scientific domains**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Headline Result (March 2026)
 
-**Paper VII: The Cauchy Unification** tested whether Cauchy's four functional equations determine the form of every scaling law in nature. Using a blind prediction protocol - the composition operator was classified before data was examined - the framework was tested across 20 scientific domains spanning biology, physics, economics, epidemiology, linguistics, computer science, and ecology.
+**Paper VII: The Cauchy Unification** tested whether Cauchy's four functional equations constrain the form of scaling laws across scientific domains. The composition operator was classified from known physics before fitting, then compared against independent model fits across 20 domains spanning biology, physics, economics, epidemiology, linguistics, computer science, and ecology.
 
-- **20/20 domains confirmed** at the R² level (p = 2.87 x 10⁻¹⁰)
-- **14/20 confirmed** under strict AIC model selection (p = 8.79 x 10⁻⁴)
-- Less than **one in three billion** probability by chance - exceeding the 5σ discovery threshold used in particle physics
+- **14/20 domains preferred** the predicted family under AIC-based model selection (p = 8.79 x 10⁻⁴)
+- **20/20 confirmed** under permissive R² tolerance (p = 2.87 x 10⁻¹⁰)
+- Exploratory structured comparison; **pre-registered replication with expanded domain coverage in preparation**
 
 [Read Paper VII](paper/FINAL-SUITE/v-major/Paper-VII-Cauchy-Unification-v1.html) | [Experiment code](experiments/cauchy-unification__Paper-VII/)
 
