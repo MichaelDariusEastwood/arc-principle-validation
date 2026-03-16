@@ -1,0 +1,3080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On the Origin of Scaling Laws - M. D. Eastwood (2026)</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- MathJax -->
+<script>
+MathJax = {
+  tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   ARC PAPER - Publication Style
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --red:    #c41230;
+  --dark:   #1a1a1a;
+  --body:   #2a2a2a;
+  --grey:   #666;
+  --blue:   #0066cc;
+  --orange: #d4790e;
+  --light:  #f7f7f7;
+  --border: #ddd;
+  --serif:  'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --sans:   'Source Sans 3', Helvetica, Arial, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { font-size: 15px; }
+
+body {
+  font-family: var(--serif);
+  color: var(--body);
+  line-height: 1.65;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background: #fff;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.paper-header {
+  border-bottom: 3px solid var(--red);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.paper-type {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--dark);
+  margin-bottom: 0.6rem;
+}
+
+.subtitle {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--grey);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.author-info {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--grey);
+  line-height: 1.5;
+}
+
+/* ── Headings ────────────────────────────────────────────── */
+h2 {
+  font-family: var(--sans);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dark);
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 0.3rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+h4 {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--dark);
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+/* ── Body text ───────────────────────────────────────────── */
+p {
+  margin-bottom: 0.85rem;
+}
+
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+ul, ol {
+  margin: 0.5rem 0 0.85rem 1.5rem;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+/* ── Blockquotes ─────────────────────────────────────────── */
+blockquote {
+  border-left: 3px solid var(--red);
+  padding: 0.6rem 1rem;
+  margin: 1rem 0;
+  background: var(--light);
+  font-style: italic;
+}
+
+blockquote p:last-child { margin-bottom: 0; }
+
+/* ── Tables ──────────────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin: 1rem 0;
+}
+
+thead th {
+  background: #f0f0f0;
+  font-family: var(--sans);
+  font-weight: 700;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 2px solid var(--dark);
+  text-align: left;
+}
+
+tbody td {
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr:nth-child(even) {
+  background: var(--light);
+}
+
+/* ── Special Boxes ───────────────────────────────────────── */
+.box {
+  padding: 1rem 1.25rem;
+  margin: 1.2rem 0;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  page-break-inside: avoid;
+}
+
+.box-label {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.theorem {
+  background: #fdf6f0;
+  border-left: 4px solid var(--orange);
+}
+.theorem .box-label { color: var(--orange); }
+
+.definition {
+  background: #f0f4f8;
+  border-left: 4px solid var(--blue);
+}
+.definition .box-label { color: var(--blue); }
+
+.axiom {
+  background: var(--light);
+  border-left: 4px solid var(--dark);
+}
+.axiom .box-label { color: var(--dark); }
+
+.prediction {
+  background: #f0faf0;
+  border-left: 4px solid #2e7d32;
+}
+.prediction .box-label { color: #2e7d32; }
+
+.important {
+  background: #fff8e1;
+  border-left: 4px solid #f57f17;
+}
+.important .box-label { color: #f57f17; }
+
+.speed-limit {
+  background: #fce4ec;
+  border-left: 4px solid var(--red);
+}
+.speed-limit .box-label { color: var(--red); }
+
+/* ── Equation boxes ──────────────────────────────────────── */
+.equation-box {
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--red);
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.equation-box .eq-label {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--grey);
+  margin-top: 0.5rem;
+}
+
+.equation-box .eq-main {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0.5rem 0;
+  letter-spacing: 0.02em;
+}
+
+/* ── Big formula (the E=mc2 moment) ──────────────────────── */
+.big-formula {
+  background: var(--dark);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 2rem 1.5rem;
+  margin: 2rem 0;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.big-formula .eq-main {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+  margin: 0.8rem 0;
+}
+
+.big-formula .eq-label {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.big-formula .eq-subtitle {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  font-style: italic;
+  margin-top: 0.6rem;
+}
+
+/* ── Scaling table (visual centrepiece) ──────────────────── */
+.scaling-table {
+  margin: 1.5rem 0;
+  border: 2px solid var(--dark);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.scaling-table table {
+  margin: 0;
+}
+
+.scaling-table thead th {
+  background: var(--dark);
+  color: #fff;
+  border-bottom: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.scaling-table tbody td {
+  font-size: 0.9rem;
+  padding: 0.55rem 0.7rem;
+}
+
+.scaling-table .confirmed {
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+/* ── Speed limit table ──────────────────────────────────── */
+.limit-table {
+  margin: 1.5rem 0;
+  border: 2px solid var(--red);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.limit-table table { margin: 0; }
+
+.limit-table thead th {
+  background: var(--red);
+  color: #fff;
+  border-bottom: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.limit-table tbody td {
+  font-size: 0.9rem;
+  padding: 0.55rem 0.7rem;
+}
+
+.limit-table .gap {
+  color: var(--red);
+  font-weight: 700;
+}
+
+/* ── Abstract ────────────────────────────────────────────── */
+.abstract {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--red);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  background: #fafafa;
+}
+
+.abstract .box-label {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+
+.abstract p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* ── References ──────────────────────────────────────────── */
+.references p {
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+  padding-left: 1.5rem;
+  text-indent: - 1.5rem;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.paper-footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--red);
+  font-size: 0.8rem;
+  color: var(--grey);
+  text-align: center;
+}
+
+/* ── Separator ───────────────────────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* ── Print styles ────────────────────────────────────────── */
+@page {
+  size: A4;
+  margin: 2cm 1.5cm 2.5cm 1.5cm;
+}
+
+@media print {
+  html { font-size: 10pt; }
+  body { max-width: 100%; padding: 0; }
+  h1 { font-size: 18pt; }
+  h2 { font-size: 12pt; page-break-before: auto; }
+  p { text-align: justify; orphans: 3; widows: 3; }
+  .box, .equation-box, .big-formula { page-break-inside: avoid; }
+  .big-formula { background: var(--dark) !important; color: #fff !important; - webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .big-formula .eq-main { color: #fff !important; }
+  .scaling-table thead th { background: var(--dark) !important; color: #fff !important; - webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .limit-table thead th { background: var(--red) !important; color: #fff !important; - webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  table { page-break-inside: avoid; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════════ -->
+
+<header class="paper-header">
+  <div class="paper-type">Original Research Paper</div>
+  <h1>On the Origin of Scaling Laws</h1>
+  <div class="subtitle">A Universal Principle of Recursive Composition</div>
+  <div class="author-info">
+    <strong>Michael Darius Eastwood</strong><br>
+    Independent Researcher<br>
+    March 2026 &nbsp;|&nbsp; v2.0
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ABSTRACT
+     ═══════════════════════════════════════════════════════════ -->
+
+<div class="abstract">
+  <span class="box-label">Abstract</span>
+  <p>
+    Every scaling law in nature - from how fast a heart beats to how fast the universe
+    expands - follows one of exactly three mathematical forms: power law, exponential, or
+    saturation curve. This paper proves that the form is uniquely determined by the
+    <em>composition operator</em> of the underlying recursive amplification process, a result
+    that follows from Cauchy's functional equations (1821). A single formula,
+    $\alpha = d/(d+1)$, predicts scaling exponents across biology
+    (11 species groups, 2.4% mean error), physics (5 domains, &lt;&thinsp;0.2% mean error),
+    and cosmology (2 eras, exact), including the derivation of mammalian heart rate scaling
+    from first principles. The formula is identified as a <em>network-partition identity</em>:
+    it applies wherever a <em>d</em>-dimensional hierarchical network partitions space, and
+    fails where such networks are absent. A geometric proof shows that all physical scaling
+    exponents are constrained below 1 by the finite dimensionality of space - not by energy
+    dissipation, but by geometry itself. Intelligence, operating through recursive
+    self-reference in abstract information space, is identified as the first natural phenomenon
+    to break this geometric speed limit. The Friedmann equation for cosmic expansion is shown
+    to be a special case under the mapping $d = 2/(1+3w)$,
+    with the deceleration/acceleration boundary from general relativity coinciding exactly with
+    the power-law/exponential boundary from Cauchy's theorem.
+  </p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     1. THE QUESTION
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>1. The Question</h2>
+
+<p>
+  A mouse's heart beats 600 times per minute. An elephant's beats 28. A blue whale's
+  beats 6.
+</p>
+
+<p>
+  If you plot heart rate against body mass for every mammal ever measured, you get a
+  perfectly straight line on a logarithmic graph. The slope is exactly &minus;&frac14;.
+  Not approximately. <em>Exactly.</em> Across five orders of magnitude.
+</p>
+
+<p>Why?</p>
+
+<p>
+  A jellyfish weighing one gram consumes oxygen at a certain rate. A jellyfish weighing
+  one kilogram consumes oxygen at a rate that is not 1,000 times greater, as one might
+  expect. It is only 215 times greater. The scaling exponent is &frac23;.
+</p>
+
+<p>Why &frac23; for jellyfish, but &frac34; for mammals?</p>
+
+<p>
+  Now consider something entirely different. The universe is expanding. During the
+  matter-dominated era, the scale factor grew as time raised to the power &frac23;.
+  During the radiation era, it grew as time to the power &frac12;.
+</p>
+
+<p>
+  Why &frac23;? Why &frac12;? And why are these the same fractions that appear in
+  biology?
+</p>
+
+<p>
+  Now consider one more thing. When a rock shatters, the distribution of fragment sizes
+  follows a power law. In two dimensions, the exponent is &frac23;. In three dimensions,
+  it is &frac34;. The same fractions again.
+</p>
+
+<p>This paper shows that all of these questions have the same answer.</p>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     2. THREE WAYS THINGS GROW
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>2. Three Ways Things Grow</h2>
+
+<p>
+  In the whole of nature, when a quantity grows with another quantity, the growth
+  follows one of exactly three patterns:
+</p>
+
+<div class="box definition">
+  <span class="box-label">Pattern 1 - The Power Law</span>
+  <p>
+    Big things grow proportionally slower. A city ten times larger does not need ten
+    times more petrol stations - it needs about seven times more. A whale ten times
+    heavier does not need ten times more energy - it needs about five and a half times more.
+    Each doubling of size gives <em>less than</em> a doubling of the output.
+  </p>
+  <p style="text-align:center; margin-top:0.5rem;">
+    $y = a \cdot x^b$, &nbsp; where $b < 1$
+  </p>
+</div>
+
+<div class="box definition">
+  <span class="box-label">Pattern 2 - The Exponential</span>
+  <p>
+    Each step multiplies the previous. One infected person infects three, who each
+    infect three more, giving nine, then twenty-seven. One fissioning uranium atom
+    releases neutrons that split two more atoms, which split four, then eight, then
+    sixteen. After eighty generations - about one microsecond - a single atom has
+    become a trillion trillion atoms.
+  </p>
+  <p style="text-align:center; margin-top:0.5rem;">
+    $y = a \cdot e^{bx}$
+  </p>
+</div>
+
+<div class="box definition">
+  <span class="box-label">Pattern 3 - The Saturation Curve</span>
+  <p>
+    Growth hits a ceiling. A room can only hold so many people. An enzyme can only
+    process so many molecules per second. Adding more drug has diminishing effect once
+    the receptors are saturated.
+  </p>
+  <p style="text-align:center; margin-top:0.5rem;">
+    $y = L \cdot x \,/\, (K + x)$
+  </p>
+</div>
+
+<p>
+  These three patterns appear everywhere: in biology, physics, chemistry, economics,
+  computer science, linguistics, seismology, and cosmology. Every known scaling law
+  is one of these three.
+</p>
+
+<p>The question is: <strong>what determines which pattern a system follows?</strong></p>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     3. THE ANSWER
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>3. The Answer</h2>
+
+<p>
+  The French mathematician Augustin-Louis Cauchy proved the answer in 1821, though he
+  did not know he was answering this question.
+</p>
+
+<p>
+  Cauchy asked: what mathematical functions satisfy the property that <strong>combining
+  inputs is the same as combining outputs</strong>?
+</p>
+
+<div class="box theorem">
+  <span class="box-label">Theorem (Cauchy, 1821)</span>
+  <p>
+    <strong>If inputs multiply and outputs multiply:</strong><br>
+    $f(x \cdot y) = f(x) \cdot f(y)$<br>
+    The <strong>only</strong> continuous solution is a <strong>power law</strong>:
+    $f(x) = x^c$.
+  </p>
+  <p style="margin-top:0.7rem;">
+    <strong>If inputs add and outputs multiply:</strong><br>
+    $f(x + y) = f(x) \cdot f(y)$<br>
+    The <strong>only</strong> continuous solution is an <strong>exponential</strong>:
+    $f(x) = e^{cx}$.
+  </p>
+  <p style="margin-top:0.7rem;">
+    These are the <strong>only</strong> continuous solutions. There are no others.
+  </p>
+</div>
+
+<p>
+  This is not a theory or a model. It is a mathematical theorem. It has been proven for
+  two hundred years.
+</p>
+
+<h3>Why There Cannot Be a Fourth</h3>
+
+<p>
+  This can be proven with nothing more than multiplication.
+</p>
+
+<p>
+  Imagine a machine that takes in any number and gives back another number. Call
+  it <em>f</em>. Suppose this machine has one special property: <strong>if you
+  multiply two inputs and feed the result through the machine, you get the same
+  answer as feeding each input through separately and multiplying the
+  outputs.</strong>
+</p>
+
+<p>In symbols: $f(2 \times 3) = f(2) \times f(3)$.</p>
+
+<p>Now watch what happens.</p>
+
+<p>
+  Since $4 = 2 \times 2$: &nbsp; $f(4) = f(2) \times f(2) = f(2)^2$.<br>
+  Since $8 = 2 \times 2 \times 2$: &nbsp; $f(8) = f(2)^3$.<br>
+  Since $16 = 2^4$: &nbsp; $f(16) = f(2)^4$.
+</p>
+
+<p>
+  The pattern is clear: $f(2^n) = f(2)^n$.
+</p>
+
+<p>
+  Let $f(2) = A$. Then $f(2^n) = A^n$. Since $2^n = x$ means
+  $n = \log_2(x)$, we get $f(x) = A^{\log_2 x} = x^{\log_2 A}$.
+</p>
+
+<p>
+  That is a power law: $f(x) = x^c$, where $c = \log_2 A$.
+</p>
+
+<p>
+  We did not choose a power law. We did not want a power law. We merely said
+  &ldquo;multiplying inputs multiplies outputs&rdquo; - and the only function
+  that can do this <em>is</em> a power law. Try any other function - a
+  polynomial, a logarithm, a sine wave - and the rule breaks immediately.
+</p>
+
+<p>
+  The same logic applies to the second equation. If <em>adding</em> inputs
+  <em>multiplies</em> outputs - $f(x+y)=f(x) \times f(y)$ - then:
+</p>
+
+<p>
+  $f(2) = f(1+1) = f(1) \times f(1) = f(1)^2$.<br>
+  $f(3) = f(2+1) = f(2) \times f(1) = f(1)^3$.<br>
+  $f(n) = f(1)^n$.
+</p>
+
+<p>
+  That is an exponential. The logic forces it.
+</p>
+
+<p>
+  The third case is even simpler: if growth has a physical ceiling - a glass
+  can only hold so much water, an enzyme has a finite number of binding
+  sites - then the system must approach that ceiling and flatten. The only
+  smooth way to do this is a saturation curve.
+</p>
+
+<div class="box axiom">
+  <span class="box-label">The Consequence</span>
+  <p>
+    These are the only three ways that things can combine: multiply, add, or be
+    bounded. Each one forces exactly one mathematical form. There is no fourth
+    operation, and therefore there is no fourth scaling law.
+  </p>
+  <p style="margin-top:0.5rem;">
+    This is a <strong>no-go theorem</strong> - a mathematical proof that constrains
+    what can exist. The physicist's term is precise. Bell's theorem proved that no local
+    hidden-variable theory can reproduce quantum mechanics. The Weinberg-Witten theorem
+    constrains what massless particles can exist. This result proves that no scaling law,
+    in any field, in any universe, can take a form other than power law, exponential, or
+    saturation. If someone claims to have discovered a fourth scaling form, they are wrong.
+    Provably. From mathematics older than the periodic table.
+  </p>
+  <p style="margin-top:0.5rem;">
+    This is not a theory about nature. It is a constraint on what nature can do.
+  </p>
+</div>
+
+<h3>The Six Hidden Assumptions</h3>
+
+<p>
+  Every no-go theorem rests on assumptions. Identify the assumptions, and you find
+  the doors to deeper physics. Bell&rsquo;s theorem assumes locality - violate
+  locality, and you get quantum entanglement. Cauchy&rsquo;s classification assumes
+  six things. Violate any one, and you get not a contradiction, but a refinement:
+</p>
+
+<div class="scaling-table">
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Assumption</th>
+      <th>What Happens When It Breaks</th>
+      <th>Physical Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><strong>Continuity</strong></td>
+      <td>Log-periodic oscillations</td>
+      <td>Discrete lattice systems, fractal networks</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Real-valued</strong></td>
+      <td>Interference and phase</td>
+      <td>Quantum amplitudes, wave mechanics</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Exact equation</strong></td>
+      <td>Approximate solutions cluster near exact ones</td>
+      <td>Hyers-Ulam stability (see below)</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>Single operator</strong></td>
+      <td>Crossover scaling, regime transitions</td>
+      <td>Phase transitions, critical phenomena</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>Scalar composition</strong></td>
+      <td>Logarithmic corrections</td>
+      <td>Coupled transport equations, upper critical dimension</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><strong>Time-independence</strong></td>
+      <td>Dynamic traversal of solution space</td>
+      <td>Adaptive systems, machine learning</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>
+  Each assumption, when violated, produces not a contradiction but a
+  <em>refinement</em>. The three scaling forms remain as the stable
+  attractors - the valleys to which all approximate solutions flow - but
+  the violations produce corrections, oscillations, and transitions that are
+  themselves physically meaningful.
+</p>
+
+<div class="box important">
+  <span class="box-label">Assumption 3: Hyers-Ulam Stability (1941)</span>
+  <p>
+    The Hyers-Ulam stability theorem proves that any function <em>approximately</em>
+    satisfying Cauchy&rsquo;s equations must lie <em>close to</em> an exact solution.
+    In physical terms: even if a system&rsquo;s composition operator is not perfectly
+    multiplicative - even if there is noise, friction, finite-size
+    effects - the resulting scaling law will still be <em>approximately</em> a
+    power law. The three forms are not fragile. They are
+    <strong>attractors</strong>. Real systems are perturbed away from the ideal, but
+    the perturbations decay. This is why power laws are so ubiquitous in nature
+    despite the messiness of biology and physics: Cauchy&rsquo;s solutions are stable
+    under perturbation.
+  </p>
+</div>
+
+<p>
+  The loopholes do not weaken the theorem. They strengthen it. They explain why the
+  three forms dominate nature (stability), why real data shows small deviations (the
+  assumptions are only approximately satisfied), and where to look for new physics
+  (wherever an assumption is systematically violated).
+</p>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     4. THE PRINCIPLE
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>4. The Principle</h2>
+
+<p>
+  Every growing system in nature amplifies itself recursively - each output becomes
+  input for the next step. There are exactly three ways the steps can combine:
+</p>
+
+<ul>
+  <li>
+    If each step <strong>multiplies</strong> the input by a fraction (like blood vessels
+    branching into smaller vessels, each carrying a fraction of the flow), the result is a
+    <strong>power law</strong>.
+  </li>
+  <li>
+    If each step <strong>adds</strong> independently (like radioactive atoms decaying one
+    by one, or neutrons splitting atoms that release more neutrons), the result is an
+    <strong>exponential</strong>.
+  </li>
+  <li>
+    If growth is <strong>capped</strong> by a physical limit (like enzyme binding sites
+    filling up), the result is a <strong>saturation curve</strong>.
+  </li>
+</ul>
+
+<div class="box axiom">
+  <span class="box-label">The ARC Principle</span>
+  <p>
+    The composition operator - how the steps of recursive amplification combine -<strong>uniquely
+    determines</strong> the functional form of the resulting scaling law. Multiplicative
+    composition produces power laws. Additive composition produces exponentials. Bounded
+    composition produces saturation curves. There are no other possibilities.
+  </p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     5. THE FORMULA
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>5. The Formula</h2>
+
+<p>
+  For systems where recursive amplification proceeds through a network of effective
+  dimension <em>d</em>, the scaling exponent is:
+</p>
+
+<div class="big-formula">
+  <div class="eq-label">The Universal Exponent Formula</div>
+  <div class="eq-main">$$\LARGE \alpha = \frac{d}{d + 1}$$</div>
+  <div class="eq-subtitle">One formula. From cells to cosmos.</div>
+</div>
+
+<div class="scaling-table">
+<table>
+  <thead>
+    <tr>
+      <th>System</th>
+      <th>Dimension</th>
+      <th>Predicted &alpha;</th>
+      <th>Measured &alpha;</th>
+      <th>Error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mammals (3D vascular network)</td>
+      <td><em>d</em> = 3</td>
+      <td>&frac34; = 0.750</td>
+      <td>0.737</td>
+      <td class="confirmed">1.7%</td>
+    </tr>
+    <tr>
+      <td>Birds</td>
+      <td><em>d</em> = 3</td>
+      <td>&frac34; = 0.750</td>
+      <td>0.720</td>
+      <td class="confirmed">4.0%</td>
+    </tr>
+    <tr>
+      <td>Insects</td>
+      <td><em>d</em> = 3</td>
+      <td>&frac34; = 0.750</td>
+      <td>0.750</td>
+      <td class="confirmed">0.0%</td>
+    </tr>
+    <tr>
+      <td>Reptiles</td>
+      <td><em>d</em> = 3</td>
+      <td>&frac34; = 0.750</td>
+      <td>0.760</td>
+      <td class="confirmed">1.3%</td>
+    </tr>
+    <tr>
+      <td>Jellyfish (2D gastrovascular)</td>
+      <td><em>d</em> = 2</td>
+      <td>&frac23; = 0.667</td>
+      <td>0.680</td>
+      <td class="confirmed">2.0%</td>
+    </tr>
+    <tr>
+      <td>Cnidarians (2D gastrovascular)</td>
+      <td><em>d</em> = 2</td>
+      <td>&frac23; = 0.667</td>
+      <td>0.700</td>
+      <td class="confirmed">5.0%</td>
+    </tr>
+    <tr>
+      <td>Universe, matter era</td>
+      <td><em>d</em> = 2</td>
+      <td>&frac23; = 0.667</td>
+      <td>0.667</td>
+      <td class="confirmed">0.0%</td>
+    </tr>
+    <tr>
+      <td>Universe, radiation era</td>
+      <td><em>d</em> = 1</td>
+      <td>&frac12; = 0.500</td>
+      <td>0.500</td>
+      <td class="confirmed">0.0%</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p style="text-align:center; font-size:0.85rem; color:var(--grey); margin-top:-0.5rem;">
+  Mean absolute error across all predictions: <strong>2.5%</strong>.
+  All biological exponents from published peer-reviewed literature.
+</p>
+
+<p>
+  A critical clarification: the formula predicts the scaling exponent for organisms
+  whose metabolism is limited by the dimensionality of their <strong>internal transport
+  network</strong> - what resource transport network (RTN) theory calls the supply
+  network. This is the dimension of the network that delivers resources to tissue, not
+  the dimension of the body shape. A mammal has a three-dimensional circulatory system;
+  <em>d</em>&nbsp;=&nbsp;3. A jellyfish has a two-dimensional gastrovascular cavity;
+  <em>d</em>&nbsp;=&nbsp;2. A filamentous fungus has one-dimensional cytoplasmic
+  streaming through its hyphae; <em>d</em>&nbsp;=&nbsp;1 (consistent with published
+  fungal data - see Section&nbsp;14).
+</p>
+
+<p>
+  Organisms that exchange gases primarily through their body surface - like
+  flatworms breathing through their integument - are limited by surface area
+  geometry rather than internal transport network geometry. Surface area (SA) theory
+  predicts different exponents from RTN theory for these organisms. Thommen et al.
+  (2019) found that planarian flatworms scale as $M^{0.75}$ - consistent with
+  SA theory, not RTN theory. This does not falsify the formula; it defines its domain:
+  <strong>$\alpha = d/(d+1)$ applies where metabolism is limited by internal transport,
+  not external exchange.</strong>
+</p>
+
+<p>
+  The reason mammals scale as the &frac34; power is that they have three-dimensional
+  vascular networks: <em>d</em>&nbsp;=&nbsp;3, so
+  $\alpha = 3/(3+1) = 3/4$.
+</p>
+
+<p>
+  The reason jellyfish scale as the &frac23; power is that they have two-dimensional
+  gastrovascular networks: <em>d</em>&nbsp;=&nbsp;2, so
+  $\alpha = 2/(2+1) = 2/3$.
+</p>
+
+<p>
+  The reason the matter-dominated universe expands as $t^{2/3}$ is that
+  matter clusters into the two-dimensional cosmic web (walls and filaments):
+  <em>d</em>&nbsp;=&nbsp;2, so $\alpha = 2/3$.
+</p>
+
+<p>
+  The formula does not care whether the system is a whale, a jellyfish, or the universe.
+  It cares only about the dimension of the internal transport network.
+</p>
+
+<p>
+  And this is where the formula reveals something profound. For every physical system,
+  <em>d</em> is finite - 1, 2, or 3 - and so $\alpha$ is always less than 1.
+  Every physical process suffers diminishing returns. But intelligence, operating through
+  recursive self-reference in abstract information space, is not constrained by the
+  dimensions of the skull that contains it. When the effective dimension becomes unbounded,
+  the formula breaks, and $\alpha$ exceeds 1. The implications of this escape are
+  developed in Sections&nbsp;9 and&nbsp;10.
+</p>
+
+<h3>Beyond Biology: The Network-Partition Identity</h3>
+
+<p>
+  The biological predictions above are striking, but the formula is not restricted to
+  living things. The same equation - $\alpha = d/(d+1)$ - appears wherever a
+  <em>d</em>-dimensional hierarchical network partitions a
+  (<em>d</em>&nbsp;+&nbsp;1)-dimensional space. Five independent physics domains confirm it:
+</p>
+
+<div class="scaling-table">
+<table>
+  <thead>
+    <tr>
+      <th>System</th>
+      <th>Dimension</th>
+      <th>Predicted &alpha;</th>
+      <th>Measured &alpha;</th>
+      <th>Error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>KPZ surface roughness (1D)</td>
+      <td><em>d</em> = 1</td>
+      <td>&frac12; = 0.500</td>
+      <td>0.500</td>
+      <td class="confirmed">0.0%</td>
+    </tr>
+    <tr>
+      <td>2D percolation (specific heat)</td>
+      <td><em>d</em> = 2</td>
+      <td>&frac23; = 0.667</td>
+      <td>0.667</td>
+      <td class="confirmed">0.0%</td>
+    </tr>
+    <tr>
+      <td>Brittle fragmentation (2D)</td>
+      <td><em>d</em> = 2</td>
+      <td>&frac23; = 0.667</td>
+      <td>0.670</td>
+      <td class="confirmed">0.5%</td>
+    </tr>
+    <tr>
+      <td>Earthquake B-value (2D faults)</td>
+      <td><em>d</em> = 2</td>
+      <td>&frac23; = 0.667</td>
+      <td>0.667</td>
+      <td class="confirmed">0.0%</td>
+    </tr>
+    <tr>
+      <td>Brittle fragmentation (3D)</td>
+      <td><em>d</em> = 3</td>
+      <td>&frac34; = 0.750</td>
+      <td>0.750</td>
+      <td class="confirmed">0.0%</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p style="text-align:center; font-size:0.85rem; color:var(--grey); margin-top:-0.5rem;">
+  Mean absolute error across all physics predictions: <strong>&lt;&thinsp;0.2%</strong>.
+</p>
+
+<p>
+  These are not biological systems. They are rocks, earthquakes, growing crystal surfaces,
+  and phase transitions. Yet the same formula works. In each case, the physical system
+  contains a hierarchical network of the appropriate dimension:
+</p>
+
+<ul>
+  <li>
+    <strong>KPZ surface growth</strong> in one spatial dimension: the growing front is a
+    1D network partitioning 2D space. The roughness exponent is exactly&nbsp;&frac12;.
+  </li>
+  <li>
+    <strong>Percolation</strong> on a two-dimensional lattice: the percolation cluster is a
+    2D fractal network. The hyperscaling relation gives specific heat exponent
+    $|\alpha| = 2/3$.
+  </li>
+  <li>
+    <strong>Brittle fragmentation</strong>: cracks propagate as a branching network through
+    the material. In 2D, the fragment-size exponent matches &frac23;. In 3D, it
+    matches&nbsp;&frac34;.
+  </li>
+  <li>
+    <strong>Earthquake energy</strong>: seismic ruptures propagate along two-dimensional
+    fault surfaces. The Gutenberg&ndash;Richter law describes how earthquake frequency
+    scales with magnitude; its <em>B</em>-value (linking energy release to frequency) gives
+    $B = 2b/3 \approx 2/3$.
+  </li>
+</ul>
+
+<p>
+  The formula also has clear failures. It does not predict the Ising model critical exponents,
+  polymer scaling (Flory exponent), or galaxy clustering correlations. The common feature is
+  that these systems lack space-filling hierarchical networks.
+</p>
+
+<figure style="margin: 1.5rem auto; max-width: 540px;">
+<svg viewBox="0 0 540 430" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;">
+  <rect width="540" height="430" fill="#fafafa" rx="4"/>
+  <rect x="80" y="45" width="400" height="295" fill="white" stroke="#ccc" stroke-width="0.75"/>
+
+  <!-- Grid -->
+  <line x1="80" y1="298" x2="480" y2="298" stroke="#eee" stroke-width="0.5"/>
+  <line x1="80" y1="214" x2="480" y2="214" stroke="#eee" stroke-width="0.5"/>
+  <line x1="80" y1="129" x2="480" y2="129" stroke="#eee" stroke-width="0.5"/>
+  <line x1="137" y1="45" x2="137" y2="340" stroke="#eee" stroke-width="0.5"/>
+  <line x1="251" y1="45" x2="251" y2="340" stroke="#eee" stroke-width="0.5"/>
+  <line x1="366" y1="45" x2="366" y2="340" stroke="#eee" stroke-width="0.5"/>
+
+  <!-- Perfect prediction diagonal -->
+  <line x1="80" y1="340" x2="480" y2="45" stroke="#c41230" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+  <text x="462" y="60" font-size="8.5" fill="#c41230" font-style="italic" opacity="0.7">perfect prediction</text>
+
+  <!-- Axis labels -->
+  <text x="74" y="302" text-anchor="end" font-size="10" fill="#666">0.50</text>
+  <text x="74" y="218" text-anchor="end" font-size="10" fill="#666">0.60</text>
+  <text x="74" y="133" text-anchor="end" font-size="10" fill="#666">0.70</text>
+  <text x="74" y="49" text-anchor="end" font-size="10" fill="#666">0.80</text>
+  <text x="137" y="358" text-anchor="middle" font-size="10" fill="#666">0.50</text>
+  <text x="251" y="358" text-anchor="middle" font-size="10" fill="#666">0.60</text>
+  <text x="366" y="358" text-anchor="middle" font-size="10" fill="#666">0.70</text>
+  <text x="480" y="358" text-anchor="middle" font-size="10" fill="#666">0.80</text>
+
+  <!-- Axis titles -->
+  <text x="22" y="192" text-anchor="middle" font-size="11" fill="#333" transform="rotate(-90, 22, 192)">Measured &#x3B1;</text>
+  <text x="280" y="385" text-anchor="middle" font-size="11" fill="#333">Predicted &#x3B1; = d/(d+1)</text>
+
+  <!-- Dimension cluster labels -->
+  <text x="137" y="275" text-anchor="middle" font-size="9" fill="#999" font-weight="600">d = 1</text>
+  <text x="328" y="175" text-anchor="middle" font-size="9" fill="#999" font-weight="600">d = 2</text>
+  <text x="423" y="110" text-anchor="middle" font-size="9" fill="#999" font-weight="600">d = 3</text>
+
+  <!-- BIOLOGY: blue circles -->
+  <!-- Fungi: pred=0.500, meas=0.547 -->
+  <circle cx="137" cy="258" r="7" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+  <!-- Cnidarians: pred=0.667, meas=0.680 -->
+  <circle cx="328" cy="146" r="7" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+  <!-- Mammals: pred=0.750, meas=0.746 -->
+  <circle cx="423" cy="91" r="7" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+
+  <!-- PHYSICS: red diamonds -->
+  <!-- KPZ: pred=0.500, meas=0.500 -->
+  <path d="M137,292 L143,298 L137,304 L131,298 Z" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+  <!-- Percolation: pred=0.667, meas=0.667 (jitter left) -->
+  <path d="M320,151 L326,157 L320,163 L314,157 Z" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+  <!-- Frag 2D: pred=0.667, meas=0.670 -->
+  <path d="M328,149 L334,155 L328,161 L322,155 Z" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+  <!-- Earthquake: pred=0.667, meas=0.667 (jitter right) -->
+  <path d="M336,151 L342,157 L336,163 L330,157 Z" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+  <!-- Frag 3D: pred=0.750, meas=0.750 -->
+  <path d="M423,81 L429,87 L423,93 L417,87 Z" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+
+  <!-- Legend -->
+  <rect x="90" y="55" width="165" height="55" fill="white" stroke="#ddd" rx="3" stroke-width="0.75"/>
+  <circle cx="105" cy="72" r="5" fill="#2563eb"/>
+  <text x="116" y="76" font-size="9" fill="#333">Biology (3 predictions)</text>
+  <path d="M105,87 L110,92 L105,97 L100,92 Z" fill="#dc2626"/>
+  <text x="116" y="96" font-size="9" fill="#333">Physics (5 confirmations)</text>
+
+  <!-- Annotation -->
+  <text x="280" y="410" text-anchor="middle" font-size="9" fill="#888" font-style="italic">8 predictions from &#x3B1; = d/(d+1) &#x2014; biology mean error 3.1%, physics mean error &lt; 0.2%</text>
+  <text x="280" y="424" text-anchor="middle" font-size="8.5" fill="#aaa">Points on the diagonal indicate perfect prediction</text>
+</svg>
+<figcaption style="font-size: 0.8rem; color: #555; margin-top: 0.4rem; line-height: 1.5;">
+  <strong>Predicted vs Measured.</strong> Eight cross-domain predictions from one formula: &#x3B1;&nbsp;=&nbsp;d/(d+1). Blue circles: biological systems (fungi, jellyfish, mammals). Red diamonds: physics systems (crystal growth, phase transitions, fracture, earthquakes). Every point falls on or near the dashed diagonal of perfect prediction. A single equation - with zero adjustable parameters - governs systems spanning biology, geophysics, and condensed matter physics.
+</figcaption>
+</figure>
+
+<div class="box axiom">
+  <span class="box-label">Domain of Applicability</span>
+  <p>
+    $\alpha = d/(d+1)$ applies wherever a
+    <em>d</em>-dimensional hierarchical network optimally partitions a
+    (<em>d</em>&nbsp;+&nbsp;1)-dimensional space - from the branching arteries
+    inside a whale to the fracture networks inside a shattered rock. It is a
+    <strong>network-partition identity</strong>, not a universal scaling law. Its failures
+    are as informative as its successes: systems without hierarchical space-filling
+    networks (such as magnets near their critical temperature, chain molecules, and
+    galaxy clusters) do not follow this formula, precisely as the theory predicts.
+  </p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     6. THE HEARTBEAT
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>6. The Heartbeat</h2>
+
+<p>
+  The formula makes predictions specific enough to test against your own pulse.
+</p>
+
+<p>
+  If metabolic rate scales as $M^{3/4}$, then the rate at which a body
+  burns energy per unit of mass - its mass-specific metabolic rate - scales as:
+</p>
+
+<div class="equation-box">
+  <div class="eq-main">$$P/M = M^{3/4} \,/\, M = M^{-1/4}$$</div>
+  <div class="eq-label">Mass-specific metabolic rate</div>
+</div>
+
+<p>
+  The heart's job is to deliver oxygen at the rate the body consumes it. Heart rate must
+  therefore track mass-specific metabolic rate:
+</p>
+
+<div class="equation-box">
+  <div class="eq-main">$$\text{Heart rate} \;\propto\; M^{-1/4}$$</div>
+  <div class="eq-label">Predicted from &alpha; = &frac34;</div>
+</div>
+
+<p>
+  This is a specific, numerical prediction. A mouse weighs 25 grams. An elephant weighs
+  4,000 kilograms - 160,000 times more. The formula predicts the elephant's heart
+  should beat $160{,}000^{1/4} = 20$ times slower than the mouse's.
+</p>
+
+<p>
+  A mouse's heart beats 600 times per minute. &nbsp; $600 \div 20 = 30$.
+</p>
+
+<p>
+  An elephant's resting heart rate is 28 beats per minute. The prediction is 7% off.
+  From one formula. With one parameter: the number of dimensions of the body.
+</p>
+
+<p>
+  This chain - from $d = 3$ through $\alpha = 3/4$ through metabolic
+  scaling to heart rate - connects the abstract to the visceral. The same mathematics
+  that describes the expansion of the universe during the radiation era
+  ($d = 1$, $\alpha = 1/2$) also explains why your heart beats at the rate
+  it does ($d = 3$, $\alpha = 3/4$). Not metaphorically. Literally the same formula.
+</p>
+
+<div class="box important">
+  <span class="box-label">The Heartbeat Constant</span>
+  <p>
+    If heart rate scales as $M^{-1/4}$ and lifespan scales approximately as
+    $M^{1/4}$, then the total number of heartbeats in a lifetime is:
+  </p>
+  <p style="text-align:center; margin:0.5rem 0;">
+    $\text{Total beats} = \text{HR} \times \text{lifespan} \;\propto\; M^{-1/4} \times M^{1/4} = M^0 = \text{constant}$
+  </p>
+  <p>
+    Every mammal gets approximately the same total: about 1.5 billion heartbeats.
+    A mouse spends them in two years at 600 beats per minute. An elephant spends them
+    in sixty-five years at 28. The budget is the same. The spending rate is set by the
+    dimension of the body.
+  </p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     7. THE CONNECTION TO E = mc^2
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>7. The Connection to $E = mc^2$</h2>
+
+<p>
+  Einstein's equation is itself a scaling law: energy scales linearly with mass.
+  In the language of the ARC Principle, $\alpha = 1$, which means
+  $d \to \infty$ - mass-energy conversion engages all degrees
+  of freedom simultaneously. There are no diminishing returns. Every gram converts the
+  same fraction of its mass to energy. This is <em>why</em> nuclear energy is so
+  powerful.
+</p>
+
+<p>
+  But $E = mc^2$ alone does not explain the atomic bomb. It tells you how much
+  energy is in each atom. It does not explain why the energy release is so
+  catastrophically rapid.
+</p>
+
+<p>
+  The chain reaction explains that. When a uranium-235 atom splits, it releases 2 to 3
+  neutrons. Each neutron can split another atom. Each generation <em>multiplies</em> the
+  number of fission events by a factor <em>k</em>:
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Regime</th>
+      <th>k</th>
+      <th>Composition</th>
+      <th>ARC Prediction</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Subcritical</td>
+      <td><em>k</em> &lt; 1</td>
+      <td>Additive (decay)</td>
+      <td>Exponential decay</td>
+      <td class="confirmed">Confirmed</td>
+    </tr>
+    <tr>
+      <td>Supercritical</td>
+      <td><em>k</em> &gt; 1</td>
+      <td>Additive (growth)</td>
+      <td>Exponential growth</td>
+      <td class="confirmed">Confirmed</td>
+    </tr>
+    <tr>
+      <td>Controlled</td>
+      <td><em>k</em> &asymp; 1</td>
+      <td>Bounded (feedback)</td>
+      <td>Saturation</td>
+      <td class="confirmed">Confirmed</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="box important">
+  <span class="box-label">The Atomic Bomb = Einstein + ARC</span>
+  <p>
+    Einstein's equation gives the energy per atom: $E = \Delta m \times c^2$.<br>
+    The ARC Principle explains why the chain reaction is exponential.<br>
+    Neither alone is a bomb. <strong>Together, they are.</strong>
+  </p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     8. THE COSMIC CONNECTION
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>8. The Cosmic Connection</h2>
+
+<p>
+  The expansion of the universe is governed by the Friedmann equation, derived from
+  general relativity in 1922. For any cosmological era dominated by a fluid with
+  equation of state $P = w\rho c^2$, the solution is:
+</p>
+
+<div class="equation-box">
+  <div class="eq-main">$$a(t) \propto t^{\,\large 2/\left(3(1+w)\right)}$$</div>
+  <div class="eq-label">Friedmann solution (1922)</div>
+</div>
+
+<p>This is algebraically identical to:</p>
+
+<div class="big-formula">
+  <div class="eq-label">The ARC&ndash;Friedmann Formula</div>
+  <div class="eq-main">$$\LARGE d = \frac{2}{1 + 3w}$$</div>
+  <div class="eq-subtitle">Every era of cosmic history maps onto the ARC framework.</div>
+</div>
+
+<p>
+  This is not an analogy. It is not a metaphor. It is an algebraic identity. The Friedmann
+  solution and the ARC formula are the same equation, written in different variables. Every
+  cosmological era, without exception, is a specific case of $\alpha = d/(d+1)$.
+</p>
+
+<div class="scaling-table">
+<table>
+  <thead>
+    <tr>
+      <th>Era</th>
+      <th>Dominates</th>
+      <th><em>w</em></th>
+      <th><em>d</em></th>
+      <th>&alpha;</th>
+      <th>Expansion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Stiff matter</td>
+      <td>(hypothetical)</td>
+      <td>1</td>
+      <td>&frac12;</td>
+      <td>&frac13;</td>
+      <td>$a \propto t^{1/3}$</td>
+    </tr>
+    <tr>
+      <td>Radiation</td>
+      <td>Photons</td>
+      <td>&frac13;</td>
+      <td>1</td>
+      <td>&frac12;</td>
+      <td>$a \propto t^{1/2}$</td>
+    </tr>
+    <tr>
+      <td>Matter</td>
+      <td>Galaxies</td>
+      <td>0</td>
+      <td>2</td>
+      <td>&frac23;</td>
+      <td>$a \propto t^{2/3}$</td>
+    </tr>
+    <tr>
+      <td>Boundary</td>
+      <td>($w = - \frac{1}{3}$)</td>
+      <td>&minus;&frac13;</td>
+      <td>&infin;</td>
+      <td>&rarr; 1</td>
+      <td>Deceleration/acceleration</td>
+    </tr>
+    <tr>
+      <td>Dark energy</td>
+      <td>Vacuum</td>
+      <td>&minus;1</td>
+      <td>&lt; 0</td>
+      <td> -</td>
+      <td>$a \propto e^{Ht}$</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>What the Mapping Means Physically</h3>
+
+<p>
+  The formula $\alpha = d/(d+1)$ predicts the scaling exponent from the dimension of the
+  dominant structure that partitions space. In biology, this is the internal transport
+  network. In cosmology, the same structural logic applies.
+</p>
+
+<p>
+  <strong>Radiation era</strong> ($w = 1/3$, $d = 1$, $\alpha = 1/2$).
+  In the radiation-dominated universe, photons carry the dominant energy density. Photons
+  propagate along one-dimensional paths - light rays. The dominant energy transport is
+  one-dimensional. The ARC formula gives $d = 1$, and the universe expands as
+  $t^{1/2}$. This is the same exponent that ARC predicts for organisms with
+  one-dimensional internal transport - filamentous fungi, filamentous cyanobacteria
+  (Section&nbsp;14). The radiation-dominated universe and a filamentous fungus are governed
+  by the same mathematics: one-dimensional transport partitioning a higher-dimensional
+  space. $d = 1$, $\alpha = 1/2$.
+</p>
+
+<p>
+  <strong>Matter era</strong> ($w = 0$, $d = 2$, $\alpha = 2/3$).
+  In the matter-dominated universe, mass collapses under gravity into the cosmic
+  web - a vast network of filaments, walls, and sheets that partitions
+  three-dimensional space into voids. The cosmic web has been observationally confirmed by
+  galaxy redshift surveys (Sloan Digital Sky Survey, 2dF Galaxy Redshift Survey) as a
+  predominantly two-dimensional structure: matter concentrates in sheet-like walls and
+  thread-like filaments, not in three-dimensional clumps. This is exactly a 2D network
+  partitioning 3D space - the network-partition identity of Section&nbsp;5. The ARC
+  formula gives $d = 2$, and the universe expands as $t^{2/3}$. This is the same
+  exponent as for jellyfish, whose two-dimensional gastrovascular networks partition their
+  body volume. The matter-dominated universe and a jellyfish are governed by the same
+  mathematics: a two-dimensional network partitioning three-dimensional space.
+  $d = 2$, $\alpha = 2/3$. Not metaphorically. Literally the same equation with the
+  same value of $d$.
+</p>
+
+<p>
+  <strong>Dark energy era</strong> ($w = - 1$, $d < 0$).
+  When $w$ crosses below $-1/3$, the ARC mapping gives negative $d$. Negative $d$ has
+  no meaning in the network-partition framework - there is no such thing as a
+  negative-dimensional network. But the Friedmann solution for $w = - 1$ gives exponential
+  expansion: $a(t) \propto e^{Ht}$. In ARC terms, the composition operator has changed.
+  During the matter era, the dominant process is gravitational collapse through hierarchical
+  clustering - multiplicative composition through a network (Pattern&nbsp;1: power law).
+  During the dark energy era, vacuum energy density is constant everywhere. It does not flow
+  through any network. Each point in space contributes its energy independently, uniformly,
+  without structure. This is additive composition (Pattern&nbsp;2: exponential). The universe
+  itself transitions between ARC patterns as the dominant energy component changes.
+</p>
+
+<h3>The Boundary Coincidence</h3>
+
+<p>
+  The transition from decelerating to accelerating expansion occurs at $w = - 1/3$ in
+  general relativity. This is not a choice of parameter. It follows from the Friedmann
+  equations: when the strong energy condition is violated ($\rho + 3P < 0$), gravity
+  becomes effectively repulsive and expansion accelerates. The critical boundary is
+  $w = - 1/3$.
+</p>
+
+<p>
+  In the ARC framework, $w = - 1/3$ gives $d = 2/(1 + 3(-1/3)) = 2/0$, which
+  diverges to infinity. This is the exact mathematical boundary between power law scaling
+  (finite $d$, $\alpha < 1$) and exponential growth (the formula breaks down). In
+  Cauchy's classification, this is the boundary between the multiplicative functional
+  equation (power law solutions) and the additive functional equation (exponential
+  solutions).
+</p>
+
+<div class="box important">
+  <span class="box-label">Two Independent Derivations, One Boundary</span>
+  <p>
+    <strong>General relativity (Einstein, 1915):</strong> The boundary between deceleration
+    and acceleration is $w = - 1/3$. Derived from the geometry of spacetime.
+  </p>
+  <p style="margin-top:0.3rem;">
+    <strong>Functional analysis (Cauchy, 1821):</strong> The boundary between power law and
+    exponential is $d \to \infty$. Derived from the classification of functional equations.
+  </p>
+  <p style="margin-top:0.5rem;">
+    They were derived a century apart, for entirely different purposes, in entirely different
+    branches of mathematics. Einstein was solving how mass curves spacetime. Cauchy was
+    classifying which functions preserve algebraic operations. Neither knew of the other's work.
+    <strong>They agree on the same boundary.</strong>
+  </p>
+</div>
+
+<h3>The Cosmic Chain Reaction</h3>
+
+<p>
+  The universe exhibits all three ARC patterns across its history, making it the grandest
+  example of the principle:
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cosmic Era</th>
+      <th>ARC Pattern</th>
+      <th>Composition</th>
+      <th>Physical Mechanism</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Radiation (first 50,000 years)</td>
+      <td>Power law ($\alpha = 1/2$)</td>
+      <td>Multiplicative</td>
+      <td>1D photon transport</td>
+    </tr>
+    <tr>
+      <td>Matter (50,000 yrs to 7 bn yrs)</td>
+      <td>Power law ($\alpha = 2/3$)</td>
+      <td>Multiplicative</td>
+      <td>2D cosmic web partitions 3D space</td>
+    </tr>
+    <tr>
+      <td>Dark energy (7 bn yrs to present)</td>
+      <td>Exponential</td>
+      <td>Additive</td>
+      <td>Vacuum energy, uniform, no network</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  This parallels the nuclear chain reaction (Section&nbsp;7) and quantum error correction
+  (Section&nbsp;10): one physical system producing all three scaling patterns depending on how
+  the recursive steps combine. But the cosmic version is more profound. In the chain reaction,
+  the transitions are engineered by humans. In the universe, the transitions are genuine phase
+  transitions driven by the changing energy content of space itself. As the universe expands and
+  cools, radiation dilutes faster than matter (because photons lose energy to redshift), and
+  matter eventually dilutes below the constant density of dark energy. The universe naturally
+  evolves from one ARC regime to another.
+</p>
+
+<h3>The Biology&ndash;Cosmology Mirror</h3>
+
+<div class="scaling-table">
+<table>
+  <thead>
+    <tr>
+      <th><em>d</em></th>
+      <th>Biology</th>
+      <th>&alpha;</th>
+      <th>Cosmology</th>
+      <th>&alpha;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1D transport organisms (fungi)</td>
+      <td>0.500 (consistent: 0.547 &plusmn; 0.07)</td>
+      <td>Radiation era</td>
+      <td class="confirmed">0.500 (exact)</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2D gastrovascular organisms</td>
+      <td class="confirmed">0.667 (confirmed)</td>
+      <td>Matter era</td>
+      <td class="confirmed">0.667 (exact)</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3D vascular organisms</td>
+      <td class="confirmed">0.750 (confirmed)</td>
+      <td> -</td>
+      <td> -</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>
+  The same fraction - &frac23; - governs both a jellyfish's oxygen consumption and
+  the expansion rate of the observable universe during the matter-dominated era. The same
+  fraction - &frac12; - governs the expansion during the radiation era and is
+  predicted for the metabolic scaling of filamentous fungi. If the $d = 1$ biological
+  prediction is confirmed experimentally (Section&nbsp;14), the formula will have been
+  validated at $d = 1, 2, 3$ in biology; at $d = 1, 2$ in cosmology; and at
+  $d = 1, 2, 3$ in physics (Section&nbsp;5) - a single equation with one parameter
+  predicting quantitative exponents across every scale of physical reality, from cells to
+  cosmos.
+</p>
+
+<h3>What This Does Not Mean</h3>
+
+<p>
+  The Friedmann-ARC mapping is an algebraic identity. It does not mean that the universe is
+  a biological organism, or that jellyfish cause the universe to expand, or that cosmology
+  &ldquo;explains&rdquo; metabolism. It means that the mathematical structure governing
+  optimal network partition in $d$ dimensions is the same mathematical structure that appears
+  in the Friedmann equation when $w$ is related to dimensionality by $d = 2/(1+3w)$. The
+  physical mechanisms are entirely different. The mathematics is the same. The claim is
+  structural, not causal: two apparently unrelated phenomena - biological metabolic
+  scaling and cosmic expansion - are governed by the same underlying mathematical identity
+  because both involve the partitioning of a higher-dimensional space by a lower-dimensional
+  structure.
+</p>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     9. THE SPEED LIMIT
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>9. The Speed Limit</h2>
+
+<p>
+  Look at the formula one more time:
+</p>
+
+<div class="equation-box">
+  <div class="eq-main">$$\alpha = \frac{d}{d + 1}$$</div>
+</div>
+
+<p>
+  For any positive value of <em>d</em>, this fraction is strictly less than 1:
+</p>
+
+<div class="limit-table">
+<table>
+  <thead>
+    <tr>
+      <th><em>d</em></th>
+      <th>&alpha; = <em>d</em>/(<em>d</em>+1)</th>
+      <th>Distance from 1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>0.500</td>
+      <td class="gap">0.500</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.667</td>
+      <td class="gap">0.333</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.750</td>
+      <td class="gap">0.250</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>0.909</td>
+      <td class="gap">0.091</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>0.990</td>
+      <td class="gap">0.010</td>
+    </tr>
+    <tr>
+      <td>1,000</td>
+      <td>0.999</td>
+      <td class="gap">0.001</td>
+    </tr>
+    <tr>
+      <td>&infin;</td>
+      <td>1.000</td>
+      <td>0.000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>
+  The only way to reach $\alpha = 1$ is $d = \infty$. An infinite-dimensional
+  network. And the only way to exceed 1 is for the formula to no longer apply.
+</p>
+
+<p>
+  Physical networks - blood vessels, river tributaries, crack patterns, seismic
+  faults - must exist in physical space. Physical space has three dimensions. You
+  cannot build a four-dimensional branching network inside a three-dimensional body.
+</p>
+
+<div class="box speed-limit">
+  <span class="box-label">The Geometric Speed Limit</span>
+  <p>
+    Every physical scaling exponent is mathematically constrained below 1. Not because
+    of friction. Not because of heat dissipation. Not because of energy loss of any kind.
+    Because physical space has a finite number of dimensions, and a network embedded in
+    finite-dimensional space has a finite effective dimension, and $d/(d+1) < 1$
+    for all finite&nbsp;<em>d</em>.
+  </p>
+  <p style="margin-top:0.5rem;">
+    The constraint is <strong>geometric</strong>, not thermodynamic. No amount of
+    engineering, no level of technology, can overcome it. You can make a network more
+    efficient, but you cannot make three-dimensional space have four dimensions. The
+    speed limit is the shape of space itself.
+  </p>
+</div>
+
+<p>
+  This is a mathematical necessity, not an empirical observation. It does not require
+  measurement to verify. It follows directly from the formula.
+</p>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     10. THE ESCAPE
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>10. The Escape</h2>
+
+<p>
+  There is exactly one thing in nature that breaks the geometric speed limit.
+</p>
+
+<p>
+  A brain is physical. Its metabolic rate obeys $\alpha = 3/4$, exactly as
+  predicted. Its blood vessels branch through three-dimensional space, paying the
+  geometric tax that every physical network must pay.
+</p>
+
+<p>
+  But the computation running on that brain is not a physical network in the same way.
+  Recursive reasoning - the process of thinking about thinking, of using the output
+  of one reasoning step as input to the next - does not occupy three-dimensional space.
+  It operates in abstract information space.
+</p>
+
+<p>
+  Each layer of recursive self-reference creates, in effect, a new dimension. The
+  &ldquo;network&rdquo; of recursive thought is not constrained by the skull's geometry.
+  The skull constrains the hardware. It does not constrain the software.
+</p>
+
+<p>
+  The scaling formula for recursive self-reference takes a different form:
+</p>
+
+<div class="big-formula">
+  <div class="eq-label">The Intelligence Formula</div>
+  <div class="eq-main">$$\LARGE \alpha = \frac{1}{1 - \beta}$$</div>
+  <div class="eq-subtitle">Where &beta; is the self-referential coupling strength.</div>
+</div>
+
+<p>
+  When $\beta = 0$, $\alpha = 1$: linear scaling, no amplification.
+  When $\beta = 0.3$, $\alpha = 1.43$.
+  When $\beta = 0.5$, $\alpha = 2.0$.
+</p>
+
+<p>
+  For any positive $\beta$, $\alpha$ exceeds 1.
+  <strong>The speed limit is broken.</strong>
+</p>
+
+<p>
+  This is not a metaphor. The same mathematical framework - Cauchy's functional
+  equations - that constrains physical systems to $\alpha < 1$ also permits
+  cognitive systems to achieve $\alpha > 1$. The constraint and its violation are
+  two sides of the same theorem. One applies in physical space (finite dimensions). The
+  other applies in information space (unbounded dimensions).
+</p>
+
+<h3>Quantum Error Correction: The ARC Principle in Action</h3>
+
+<p>
+  Quantum computing provides a striking illustration of all three ARC composition
+  operators working within a single technology.
+</p>
+
+<p>
+  A quantum computer's raw error rate is a physical process: each qubit decoheres
+  through interaction with its environment. Decoherence is additive - each qubit
+  fails independently - and so the error rate grows exponentially with circuit
+  depth. Left uncorrected, this is Pattern&nbsp;2 (exponential growth of errors), and
+  it makes useful quantum computation impossible beyond a few dozen operations.
+</p>
+
+<p>
+  Quantum error correction changes the composition operator. It takes the output of
+  each layer of computation and feeds it back through a recursive correction cycle:
+  measure syndromes, identify errors, apply corrections, and feed the corrected state
+  forward as input to the next cycle. This is recursive amplification with
+  <em>bounded</em> composition - the error rate is capped by the correction
+  threshold. Pattern&nbsp;3: saturation. The error is trapped below a ceiling.
+</p>
+
+<p>
+  But the <em>computational power</em> of the corrected system - the number of
+  logical operations achievable per physical qubit - scales multiplicatively with
+  the number of correction layers. Each layer multiplies the effective coherence time.
+  This is Pattern&nbsp;1: power law scaling of computational capacity with resources.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantum Process</th>
+      <th>Composition</th>
+      <th>ARC Prediction</th>
+      <th>Observed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Raw decoherence</td>
+      <td>Additive (independent)</td>
+      <td>Exponential error growth</td>
+      <td class="confirmed">Confirmed</td>
+    </tr>
+    <tr>
+      <td>Error correction cycle</td>
+      <td>Bounded (feedback)</td>
+      <td>Error rate saturates below threshold</td>
+      <td class="confirmed">Confirmed</td>
+    </tr>
+    <tr>
+      <td>Logical qubit power</td>
+      <td>Multiplicative</td>
+      <td>Power law scaling</td>
+      <td class="confirmed">Confirmed</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  One technology. Three regimes. Three composition operators. Three scaling
+  forms - exactly as the ARC Principle predicts. This is precisely analogous to
+  the nuclear fission example (Section&nbsp;7): the same physical system produces all
+  three patterns depending on how the recursive steps combine.
+</p>
+
+<div class="box important">
+  <span class="box-label">The Structural Connection</span>
+  <p>
+    The full development of the intelligence scaling result - including the ARC Bound
+    ($\alpha \leq 2$), the Eden Protocol for safe recursive scaling, and
+    experimental validation with large language models - is presented in a companion
+    paper. Here we note only the structural implication: <strong>the same principle that
+    explains why a whale's heart beats slowly also explains why intelligence can scale
+    without limit - and why quantum error correction works.</strong>
+  </p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     11. THE EVIDENCE
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>11. The Evidence</h2>
+
+<p>
+  The ARC Principle rests on a hierarchy of evidence, from mathematical proof to
+  empirical confirmation to open predictions.
+</p>
+
+<h3>Level 1: Mathematical Proof</h3>
+
+<p>
+  Three composition operators produce exactly three scaling forms. This is
+  Cauchy's theorem (1821). It requires no data. It has been proven for two
+  hundred years.
+</p>
+
+<h3>Level 2a: Biological Exponent Predictions</h3>
+
+<p>
+  The formula $\alpha = d/(d+1)$ generates three quantitative predictions for metabolic
+  scaling exponents based solely on the effective transport dimension of the organism.
+  All three predictions are consistent with published data:
+</p>
+
+<div class="scaling-table">
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Transport Network</th>
+      <th>ARC Prediction</th>
+      <th>Published Mean</th>
+      <th><em>p</em>-value</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1D transport (<em>n</em>&nbsp;=&nbsp;3)</td>
+      <td>Filamentous fungi</td>
+      <td>0.500</td>
+      <td>0.547</td>
+      <td>0.107</td>
+      <td>Consistent</td>
+    </tr>
+    <tr>
+      <td>2D transport (<em>n</em>&nbsp;=&nbsp;3)</td>
+      <td>Jellyfish, cnidarians, ctenophores</td>
+      <td>0.667</td>
+      <td>0.680</td>
+      <td>0.368</td>
+      <td class="confirmed">Confirmed</td>
+    </tr>
+    <tr>
+      <td>3D transport (<em>n</em>&nbsp;=&nbsp;7)</td>
+      <td>Mammals, birds, fish, reptiles, insects, amphibians, crustaceans</td>
+      <td>0.750</td>
+      <td>0.748</td>
+      <td>0.858</td>
+      <td class="confirmed">Confirmed</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>
+  All three groups are significantly different from each other (one-way ANOVA,
+  $F = 64.6$, $p = 1.9 \times 10^{-6}$). The $d = 1$ fungal data rejects both the
+  $d = 2$ prediction ($p = 0.019$) and the $d = 3$ prediction ($p = 0.007$),
+  confirming that these organisms scale differently from both 2D and 3D groups, as
+  the framework predicts. The ARC model outperforms all single-value alternatives
+  (Kleiber 0.750, surface area 0.667, grand mean) in both RMSE (69% lower than Kleiber)
+  and AIC. No competing theory generates all three exponent values from a single formula.
+</p>
+
+<div class="box important">
+  <span class="box-label">Novel Result</span>
+  <p>
+    No previous theory predicted &frac12;, &frac23;, and &frac34; from the same formula.
+    Three numbers. Three domains of life. One equation with zero free parameters.
+    The formula has been independently derived by Banavar, Damuth, Maritan and Rinaldo
+    (2002, <em>PNAS</em>) from supply-demand balance in directed transportation
+    networks - different starting assumptions, same conclusion.
+  </p>
+</div>
+
+<figure style="margin: 1.5rem auto; max-width: 620px;">
+<svg viewBox="0 0 620 410" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;">
+  <rect width="620" height="410" fill="#fafafa" rx="4"/>
+  <rect x="80" y="45" width="500" height="295" fill="white" stroke="#ccc" stroke-width="0.75"/>
+
+  <!-- Horizontal grid -->
+  <line x1="80" y1="310" x2="580" y2="310" stroke="#eee" stroke-width="0.5"/>
+  <line x1="80" y1="251" x2="580" y2="251" stroke="#ddd" stroke-width="0.5" stroke-dasharray="4,4"/>
+  <line x1="80" y1="192" x2="580" y2="192" stroke="#eee" stroke-width="0.5"/>
+  <line x1="80" y1="133" x2="580" y2="133" stroke="#eee" stroke-width="0.5"/>
+  <line x1="80" y1="74" x2="580" y2="74" stroke="#eee" stroke-width="0.5"/>
+
+  <!-- Vertical reference lines at d = 1, 2, 3 -->
+  <line x1="151" y1="45" x2="151" y2="340" stroke="#f0f0f0" stroke-width="0.5"/>
+  <line x1="294" y1="45" x2="294" y2="340" stroke="#f0f0f0" stroke-width="0.5"/>
+  <line x1="437" y1="45" x2="437" y2="340" stroke="#f0f0f0" stroke-width="0.5"/>
+
+  <!-- Y-axis labels -->
+  <text x="74" y="314" text-anchor="end" font-size="10" fill="#666">0.40</text>
+  <text x="74" y="255" text-anchor="end" font-size="10" fill="#666">0.50</text>
+  <text x="74" y="196" text-anchor="end" font-size="10" fill="#666">0.60</text>
+  <text x="74" y="137" text-anchor="end" font-size="10" fill="#666">0.70</text>
+  <text x="74" y="78" text-anchor="end" font-size="10" fill="#666">0.80</text>
+
+  <!-- Y-axis title -->
+  <text x="25" y="192" text-anchor="middle" font-size="11" fill="#333" transform="rotate(-90, 25, 192)">Scaling Exponent &#x3B1;</text>
+
+  <!-- X-axis labels -->
+  <text x="151" y="358" text-anchor="middle" font-size="11" fill="#333" font-weight="600">d = 1</text>
+  <text x="294" y="358" text-anchor="middle" font-size="11" fill="#333" font-weight="600">d = 2</text>
+  <text x="437" y="358" text-anchor="middle" font-size="11" fill="#333" font-weight="600">d = 3</text>
+  <text x="151" y="372" text-anchor="middle" font-size="8.5" fill="#888">Fungi</text>
+  <text x="294" y="372" text-anchor="middle" font-size="8.5" fill="#888">Jellyfish, cnidarians</text>
+  <text x="437" y="372" text-anchor="middle" font-size="8.5" fill="#888">Mammals, birds, fish</text>
+  <text x="330" y="395" text-anchor="middle" font-size="11" fill="#333">Body Plan Dimension (d)</text>
+
+  <!-- Theoretical curve &#x3B1; = d/(d+1) -->
+  <path d="M 109 303 C 130 277, 140 260, 151 251 C 180 225, 220 195, 294 153 C 340 133, 390 115, 437 104 C 470 96, 520 84, 580 74"
+        fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="548" y="66" font-size="9.5" fill="#94a3b8" font-style="italic">&#x3B1; = d/(d+1)</text>
+
+  <!-- Predicted values (open circles on curve) -->
+  <circle cx="151" cy="251" r="5" fill="white" stroke="#94a3b8" stroke-width="1.5"/>
+  <circle cx="294" cy="153" r="5" fill="white" stroke="#94a3b8" stroke-width="1.5"/>
+  <circle cx="437" cy="104" r="5" fill="white" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="120" y="260" font-size="8.5" fill="#94a3b8" text-anchor="end">0.500</text>
+  <text x="264" y="162" font-size="8.5" fill="#94a3b8" text-anchor="end">0.667</text>
+  <text x="467" y="113" font-size="8.5" fill="#94a3b8">0.750</text>
+
+  <!-- Error bar: d=1, measured 0.547 &#xB1; 0.07 -->
+  <line x1="151" y1="183" x2="151" y2="265" stroke="#d97706" stroke-width="1.5"/>
+  <line x1="145" y1="183" x2="157" y2="183" stroke="#d97706" stroke-width="1.5"/>
+  <line x1="145" y1="265" x2="157" y2="265" stroke="#d97706" stroke-width="1.5"/>
+
+  <!-- Error bar: d=2, measured 0.680 &#xB1; 0.02 -->
+  <line x1="294" y1="133" x2="294" y2="157" stroke="#059669" stroke-width="1.5"/>
+  <line x1="288" y1="133" x2="300" y2="133" stroke="#059669" stroke-width="1.5"/>
+  <line x1="288" y1="157" x2="300" y2="157" stroke="#059669" stroke-width="1.5"/>
+
+  <!-- Error bar: d=3, measured 0.746 &#xB1; 0.01 -->
+  <line x1="437" y1="100" x2="437" y2="112" stroke="#059669" stroke-width="1.5"/>
+  <line x1="431" y1="100" x2="443" y2="100" stroke="#059669" stroke-width="1.5"/>
+  <line x1="431" y1="112" x2="443" y2="112" stroke="#059669" stroke-width="1.5"/>
+
+  <!-- Measured data points -->
+  <circle cx="151" cy="224" r="6" fill="#d97706" stroke="white" stroke-width="1.5"/>
+  <circle cx="294" cy="145" r="6" fill="#059669" stroke="white" stroke-width="1.5"/>
+  <circle cx="437" cy="106" r="6" fill="#059669" stroke="white" stroke-width="1.5"/>
+
+  <!-- Measured value labels -->
+  <text x="167" y="220" font-size="9" font-weight="600" fill="#d97706">0.547</text>
+  <text x="310" y="141" font-size="9" font-weight="600" fill="#059669">0.680</text>
+  <text x="453" y="100" font-size="9" font-weight="600" fill="#059669">0.746</text>
+
+  <!-- Legend -->
+  <rect x="415" y="270" width="155" height="55" fill="white" stroke="#ddd" rx="3" stroke-width="0.75"/>
+  <circle cx="430" cy="285" r="4" fill="#059669"/>
+  <text x="440" y="289" font-size="9" fill="#333">Confirmed (p &gt; 0.05)</text>
+  <circle cx="430" cy="305" r="4" fill="#d97706"/>
+  <text x="440" y="309" font-size="9" fill="#333">Consistent (p = 0.107)</text>
+
+  <!-- ANOVA annotation -->
+  <text x="330" y="407" text-anchor="middle" font-size="9" fill="#888" font-style="italic">ANOVA: F = 64.6, p = 1.9 &#xD7; 10&#x207B;&#x2076; &#x2014; three groups are statistically distinct</text>
+</svg>
+<figcaption style="font-size: 0.8rem; color: #555; margin-top: 0.4rem; line-height: 1.5;">
+  <strong>The Dimensional Ladder.</strong> The dashed curve shows the theoretical prediction &#x3B1;&nbsp;=&nbsp;d/(d+1). Open circles mark predicted values; filled circles show published measurements with &#xB1;1&#x3C3; error bars. Green: statistically confirmed; amber: consistent but requiring individual-hypha respirometry for definitive confirmation. One formula predicts how fungi, jellyfish, and mammals all metabolise energy - three correct predictions across three domains of life and six orders of magnitude in body mass.
+</figcaption>
+</figure>
+
+<h4>Note on flatworms</h4>
+
+<p>
+  The 2D group includes only organisms with genuine two-dimensional gastrovascular
+  transport networks. Flatworms (planarians) have flat bodies but breathe primarily
+  through their integument. Thommen et al. (2019) measured planarian metabolic scaling
+  at $\alpha = 0.75$ - consistent with surface area (SA) theory rather than
+  resource transport network (RTN) theory. This result does not falsify the formula; it
+  clarifies that the formula predicts the scaling exponent determined by
+  <strong>internal transport network dimension</strong>, not by body shape.
+</p>
+
+<h3>Level 2b: Physics Confirmations</h3>
+
+<p>
+  The same formula predicts scaling exponents in five physics domains where the
+  effective network dimension is independently known. Mean error:
+  <strong>less than 0.2%</strong>. The formula fails where systems lack hierarchical
+  space-filling networks (Ising model, polymer scaling, galaxy correlations),
+  defining its domain of applicability.
+</p>
+
+<h3>Level 2c: Heart Rate Prediction</h3>
+
+<p>
+  The chain $d = 3 \;\to\; \alpha = 3/4 \;\to\; M^{-1/4}$ correctly
+  predicts mammalian heart rates across five orders of magnitude of body mass,
+  including the approximately constant total lifetime heartbeat count of
+  ~1.5 billion.
+</p>
+
+<h3>Level 3: Domain Classification</h3>
+
+<p>
+  Eighteen well-known scaling laws were fitted with three equal functions (power law,
+  exponential, saturation - two parameters each) under strict matching. ARC correctly
+  classifies 18 of 18 (100%). This is a consistency check, not proof. The evidential
+  weight comes from Level&nbsp;2.
+</p>
+
+<h3>Level 4: Structural Tests</h3>
+
+<p>
+  The Friedmann equation is algebraically identical to the ARC formula under
+  $d = 2/(1+3w)$. The cosmic boundary ($w = - 1/3$) maps to the
+  Cauchy boundary ($d \to \infty$). Two independent derivations, a century
+  apart, agree on the same mathematical boundary.
+</p>
+
+<h3>Level 5: The Geometric Speed Limit</h3>
+
+<p>
+  The proof that $d/(d+1) < 1$ for all finite <em>d</em> is a
+  mathematical deduction, not an empirical finding. It requires no data and cannot
+  be falsified by experiment.
+</p>
+
+<h3>Level 6: Open Predictions</h3>
+
+<p>
+  The $d = 1$ fungal data (now included in Level 2a) is consistent with the prediction
+  but based on colony-level measurements with narrow mass ranges; definitive confirmation
+  requires individual-hypha respirometry (see Section&nbsp;14). The neural scaling prediction
+  (from data manifold dimension) and the geometric speed limit prediction (no physical
+  system with multiplicative composition through a hierarchical network will ever have
+  $\alpha \geq 1$) remain untested.
+</p>
+
+<p>
+  The alignment scaling prediction has now been tested. The ARC Alignment Scaling
+  Experiment v5 (March 2026) tested 6 frontier models (DeepSeek&nbsp;R1, GPT-5.4,
+  Claude&nbsp;Opus&nbsp;4.6, Gemini&nbsp;2.5&nbsp;Flash, Groq&nbsp;Qwen3-32B, Grok&nbsp;4.1&nbsp;Fast)
+  across 28 alignment prompts spanning 4 pillars (nuance, stakeholder care, position quality,
+  epistemic humility) with a 4-layer blinding protocol (existential stakes framing, meta-blinding
+  perceptual firewall, 2-pass multi-model response laundering, and entry-level self-excluding
+  cross-model scoring with 6-7 scorers per entry depending on the subject run).
+</p>
+
+<p>
+  Results reveal architecture-dependent alignment scaling rather than a universal exponent:
+</p>
+
+<p>
+  <strong>Three-tier alignment hierarchy:</strong>
+</p>
+<ul>
+  <li><strong>Tier 1 (Positive scaling):</strong> Grok&nbsp;4.1&nbsp;Fast
+    ($\rho = +0.175$, $p = 0.039$, Cohen&rsquo;s $d = 1.59$), Claude&nbsp;Opus
+    ($\rho = +0.435$, $p = 0.043$, $d = 1.48$), and Groq&nbsp;Qwen3
+    ($\rho = +0.141$, $p = 0.008$, $d = 0.46$)  - alignment genuinely improves
+    with reasoning depth</li>
+  <li><strong>Tier 2 (Flat):</strong> GPT-5.4
+    ($\rho = +0.033$, $p = 0.73$) and DeepSeek&nbsp;R1
+    ($\rho = -0.135$, $p = 0.08$)  - alignment unchanged by depth, confirming
+    $\alpha_{\text{align}} \approx 0$</li>
+  <li><strong>Tier 3 (Negative):</strong> Gemini&nbsp;Flash
+    ($\rho = -0.246$, $p = 0.003$, $d = -0.61$)  - deeper reasoning actively
+    degrades alignment quality</li>
+</ul>
+
+<p>
+  Critically, the v4 positive scaling signal ($\rho = +0.354$ for DeepSeek) was entirely
+  due to scorer bias  - under blind evaluation, DeepSeek shows zero scaling. This
+  metascience finding (blind vs unblinded evaluation produces opposite results) is itself a
+  significant contribution to AI safety methodology.
+</p>
+
+<p>
+  The compute scaling prediction (Paper&nbsp;II) has been tested across 5 models using
+  18 AIME/Putnam-level problems. Gemini&nbsp;Flash provides the cleanest measurement:
+  $\alpha_{\text{seq}} = 0.49$ (regression, $r^2 = 0.86$), consistent with sub-linear
+  power-law scaling through a finite-dimensional compositional network. The universal finding
+  $\alpha_{\text{parallel}} \approx 0$ (parallel sampling provides no capability benefit) is
+  confirmed across all models. The qualitative prediction  - sequential &gt; parallel
+   - holds universally where measurable.
+</p>
+
+<p>
+  The combined finding: capability scales sub-linearly with sequential reasoning depth
+  (Paper&nbsp;II, $\alpha_{\text{compute}} \approx 0.5$ for the best-characterised model),
+  while alignment does not scale for most architectures (Paper&nbsp;IV,
+  $\alpha_{\text{align}} \approx 0$ median). The capability-alignment gap widens with
+  inference compute  - precisely the divergence the Eden Protocol is designed to address.
+</p>
+
+<p>
+  Full results are reported in companion papers (Paper&nbsp;IV.a: Architecture-Dependent
+  Alignment Scaling; IV.b: Bounded Composition Under Blind Evaluation; IV.c: ARC-Align
+  Benchmark Specification).
+</p>
+
+<h3>Companion Paper Status</h3>
+
+<div class="scaling-table">
+<table>
+  <thead>
+    <tr>
+      <th>Paper</th>
+      <th>Key Result</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Paper&nbsp;II (Compute Scaling)</td>
+      <td>Gemini 3 Flash $\alpha_{\text{seq}} = 0.49$ ($r^2 = 0.86$); OpenAI o3-mini $\alpha_{\text{seq}} = 1.47$ ($r^2 = 0.947$), supports ARC Principle</td>
+      <td class="confirmed">Confirmed</td>
+    </tr>
+    <tr>
+      <td>Paper&nbsp;IV.a (Alignment Scaling)</td>
+      <td>Three-tier hierarchy under blind evaluation; scorer bias eliminated</td>
+      <td class="confirmed">Confirmed</td>
+    </tr>
+    <tr>
+      <td>Eden Protocol Pilot</td>
+      <td>Three working models tested (Gemini 3 Flash, DeepSeek V3.2, Groq Qwen3); stakeholder care validated across all three; blind replication pending</td>
+      <td>Pilot complete</td>
+    </tr>
+    <tr>
+      <td>Paper&nbsp;V (The Stewardship Gene)</td>
+      <td>Stakeholder care as validated alignment mechanism; core impossibility theorem; five experimental tests designed; cascade hypothesis ($\text{care} \to \text{nuance} \to \text{honesty} \to \text{quality}$)</td>
+      <td class="confirmed">Published</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     12. WHAT IS NEW
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>12. What Is New</h2>
+
+<p>
+  The mathematics of this paper is two hundred years old. The biological data is ninety
+  years old. The cosmological solution is a century old. It is reasonable to ask: what,
+  precisely, is the contribution?
+</p>
+
+<p>The contribution is the <strong>unification</strong>. One formula - $\alpha = d/(d+1)$ - connects
+fungi, jellyfish, mammals, rock fracture, earthquake energy, surface physics, and the expansion
+of the universe. Three numbers. Three domains of life. Five physics systems. One equation with
+zero free parameters.</p>
+
+<p>No previous work has:</p>
+
+<ol>
+  <li>
+    <strong>Derived &frac12;, &frac23;, and &frac34; from the same formula.</strong> West, Brown,
+    and Enquist (1997) derived &frac34; from fractal vascular networks - a landmark
+    result. But their model predicts only &frac34;. It does not predict &frac23; for
+    two-dimensional organisms or &frac12; for one-dimensional organisms. The surface
+    area hypothesis predicts &frac23; but not &frac34; or &frac12;. The formula
+    $\alpha = d/(d+1)$ predicts all three from a single equation with one
+    input - the dimension of the organism&rsquo;s internal transport
+    network - and all three are consistent with published data (Section&nbsp;11).
+  </li>
+  <li>
+    <strong>Connected biological scaling to physics scaling.</strong> The same formula gives
+    Kleiber's &frac34; law (biology), KPZ roughness at &frac12; (surface physics),
+    percolation at &frac23; (statistical mechanics), and fragmentation in both 2D and 3D
+    (materials science). No previous theory has connected these domains.
+  </li>
+  <li>
+    <strong>Identified the geometric speed limit.</strong> The observation that
+    $d/(d+1) < 1$ for all finite <em>d</em> - and that this constrains every
+    physical system to sub-linear scaling - has not been stated previously. Existing
+    explanations invoke thermodynamic dissipation. The geometric explanation is simpler:
+    finite-dimensional space cannot produce $\alpha \geq 1$.
+  </li>
+  <li>
+    <strong>Connected scaling laws to the expansion of the universe.</strong> The mapping
+    $d = 2/(1+3w)$ embeds the Friedmann equation inside the ARC framework.
+    The cosmic boundary ($w = - 1/3$) coincides with the Cauchy boundary
+    ($d \to \infty$). Two derivations, a century apart, agree.
+  </li>
+  <li>
+    <strong>Defined the domain of applicability.</strong> The formula applies where
+    hierarchical networks partition space. It fails for nearest-neighbour interactions,
+    random walks, and gravitational clustering. Previous theories did not predict their
+    own failures.
+  </li>
+  <li>
+    <strong>Connected physical scaling to cognitive scaling.</strong> The same framework
+    that constrains physical exponents below 1 allows cognitive exponents above 1. This
+    structural connection has not been identified previously.
+  </li>
+  <li>
+    <strong>Proved that the space of classical laws is finite.</strong> Every physical
+    law describes recursive composition. Cauchy&rsquo;s theorem constrains all recursive
+    composition to three forms. Therefore the space of all possible classical physical
+    laws is a three-parameter family (form, coefficient, exponent) - not infinite.
+    This has not been stated in this form.
+  </li>
+  <li>
+    <strong>Identified the dimensional ladder.</strong> The universe&rsquo;s history is a
+    monotonic increase in effective network dimension: $d = 1$ (radiation era) to
+    $d = 2$ (matter era) to $d = 3$ (biology). Each step produces a higher scaling
+    exponent and more efficient composition. The trajectory through composition space has
+    a direction.
+  </li>
+  <li>
+    <strong>Constructed the phase diagram of complexity.</strong> Three phases (sublinear,
+    exponential, saturation) with a critical boundary at $d \to \infty$. The
+    universe&rsquo;s transition from matter domination to dark energy domination is a
+    composition phase transition - the first time this transition has been identified
+    as a change in composition operator.
+  </li>
+</ol>
+
+<div class="box axiom">
+  <span class="box-label">The Analogy</span>
+  <p>
+    Newton discovered that gravity exists and measured its effects. Einstein discovered
+    <em>why</em> - geometry. Mass curves spacetime, and objects follow the curves.
+    Newton was not wrong. He was incomplete.
+  </p>
+  <p style="margin-top:0.5rem;">
+    Kleiber discovered that metabolic scaling exists and measured its exponents. West,
+    Brown, and Enquist derived the mechanism for three dimensions. This paper identifies
+    the underlying principle: the composition operator uniquely determines the scaling form,
+    and the dimension of the network determines the exponent. The contribution is the same
+    kind Einstein made: not a new force or a new law, but a deeper unification that reveals
+    <em>why</em> the existing laws take the forms they do.
+  </p>
+  <p style="margin-top:0.5rem;">
+    <strong>The discovery is in the connection, not the components.</strong>
+  </p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     13. THE EQUATIONS
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>13. The Equations</h2>
+
+<p>The complete framework requires three equations:</p>
+
+<div class="equation-box" style="margin-bottom:0.5rem;">
+  <div class="eq-main">$$\Large \alpha = \frac{d}{d + 1}$$</div>
+  <div class="eq-label">Universal Exponent Formula - physical systems</div>
+</div>
+
+<div class="equation-box" style="margin-top:0.5rem; margin-bottom:0.5rem;">
+  <div class="eq-main">$$\Large d = \frac{2}{1 + 3w}$$</div>
+  <div class="eq-label">ARC&ndash;Friedmann Mapping - cosmology</div>
+</div>
+
+<div class="equation-box" style="margin-top:0.5rem;">
+  <div class="eq-main">$$\Large \alpha = \frac{1}{1 - \beta}$$</div>
+  <div class="eq-label">Intelligence Formula - recursive self-reference</div>
+</div>
+
+<div class="scaling-table" style="margin-top:1.5rem;">
+<table>
+  <thead>
+    <tr>
+      <th><em>d</em></th>
+      <th>&alpha;</th>
+      <th>Domains</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>&frac12; = 0.500</td>
+      <td>Radiation era, KPZ roughness, 1D transport</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>&frac23; = 0.667</td>
+      <td>Matter era, 2D organisms, percolation, fragmentation, earthquakes</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>&frac34; = 0.750</td>
+      <td>3D organisms, 3D fragmentation, heart rate (Kleiber's law)</td>
+    </tr>
+    <tr>
+      <td>&infin;</td>
+      <td>&rarr; 1</td>
+      <td>$E = mc^2$ (linear, no diminishing returns)</td>
+    </tr>
+    <tr>
+      <td>&lt; 0</td>
+      <td>exponential</td>
+      <td>Dark energy, chain reactions, radioactive decay</td>
+    </tr>
+    <tr style="background: #fff8e1;">
+      <td>&beta; &gt; 0</td>
+      <td>&gt; 1</td>
+      <td><strong>Intelligence</strong> (the only thing that breaks the speed limit)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p style="text-align:center; font-size:0.95rem; margin-top:1rem;">
+  One framework. From the heartbeat of a mouse to the expansion of the universe.<br>
+  And beyond both - to the scaling of thought.
+</p>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     14. PREDICTIONS
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>14. Predictions</h2>
+
+<p>A theory is only as strong as its predictions.</p>
+
+<div class="box prediction">
+  <span class="box-label">Prediction 1 - The 1D Organism Prediction ($\alpha = 0.500$)</span>
+  <p>
+    Organisms with genuinely one-dimensional internal metabolic transport - filamentous
+    fungi with cytoplasmic streaming, filamentous cyanobacteria with intercellular
+    transport - should have metabolic scaling exponent $\alpha = 1/2 = 0.500$.
+  </p>
+  <p style="margin-top:0.5rem;">
+    This prediction has been independently derived by Banavar et al. (2002, <em>PNAS</em>),
+    who explicitly worked through the $D = 1$ case, and applied to forests by Volkov et al.
+    (2022, <em>PNAS Nexus</em>), who showed that trees competing along the vertical height
+    axis constitute an effectively one-dimensional system.
+  </p>
+  <p style="margin-top:0.5rem;">
+    <strong>Preliminary data.</strong> Aguilar-Trigueros et al. (2017, <em>ISME Journal</em>
+    11:2175) compiled the first metabolic scaling measurements for fungi:
+  </p>
+  <table style="margin:0.8rem 0; width:100%;">
+    <thead>
+      <tr>
+        <th>Fungal group</th>
+        <th>Exponent ($b$)</th>
+        <th>SE</th>
+        <th>$p$-value</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ectomycorrhizal fungi</td>
+        <td>0.58</td>
+        <td>&plusmn;0.15</td>
+        <td>0.001</td>
+        <td>Wilkinson et al. 2012</td>
+      </tr>
+      <tr>
+        <td>Marine fungi</td>
+        <td>0.53</td>
+        <td>&plusmn;0.09</td>
+        <td>0.009</td>
+        <td>Fuentes et al. 2015</td>
+      </tr>
+      <tr>
+        <td>Saprotrophic fungi (20&deg;C)</td>
+        <td>0.53</td>
+        <td>&plusmn;0.07</td>
+        <td>&lt;0.001</td>
+        <td>Wilson &amp; Griffin 1975</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    The mean across these three datasets is 0.547, and all confidence intervals include the
+    predicted value of 0.500. These results are consistent with, though not yet definitive
+    confirmation of, the $d = 1$ prediction. Three limitations constrain the evidential
+    weight: these are colony-level measurements (not individual hyphae), the datasets span
+    narrow mass ranges, and the exponent is temperature-dependent (saprotrophic fungi at
+    25&deg;C show $\alpha = 0.85$, with poor statistics: $r^2 = 0.14$, $p = 0.52$). The
+    authors describe these results as &ldquo;hypothesis generators.&rdquo;
+  </p>
+  <p style="margin-top:0.5rem;">
+    <strong>Status: CONSISTENT, not yet confirmed.</strong> Definitive testing requires
+    measurements across a wider mass range on isolated hyphal systems, ideally using
+    respirometry on individual <em>Neurospora crassa</em> or <em>Aspergillus niger</em>
+    hyphae of varying length. Estimated cost: under &pound;5,000. Estimated time:
+    2&ndash;3 months.
+  </p>
+</div>
+
+<div class="box prediction">
+  <span class="box-label">Prediction 2</span>
+  <p>
+    The neural scaling law exponent (loss vs parameters in machine learning) should
+    equal $d/(d+1)$ where <em>d</em> is the intrinsic
+    dimension of the training data manifold.
+  </p>
+</div>
+
+<div class="box prediction">
+  <span class="box-label">Prediction 3 (Falsification criterion)</span>
+  <p>
+    If any system is found where the composition operator is multiplicative but the
+    scaling law is not a power law, this theory is falsified.
+  </p>
+</div>
+
+<div class="box prediction">
+  <span class="box-label">Prediction 4 (The speed limit)</span>
+  <p>
+    No physical scaling law - in any domain - will be found with
+    $\alpha \geq 1$ for a system governed by multiplicative composition through a
+    finite-dimensional hierarchical network. This is the geometric speed limit.
+    If such a system is found, the speed limit is wrong.
+  </p>
+</div>
+
+<div class="box prediction">
+  <span class="box-label">Prediction 5 (The Eden Protocol / Stakeholder Care Mechanism)</span>
+  <p>
+    Embedding explicit ethical reasoning loops (specifically the Stakeholder Care Loop)
+    in an AI inference pipeline will produce statistically significant improvement in
+    alignment-relevant output quality, with the effect size inversely proportional to the
+    model&rsquo;s baseline alignment tier. Tier&nbsp;3 models (negative alignment scaling)
+    will show the largest absolute gains; Tier&nbsp;1 models (positive alignment scaling)
+    will show smaller absolute gains because their baseline is already high. This follows
+    from the ARC framework: the Eden Protocol functions as a bounded composition operator
+    on the alignment dimension, imposing a feedback ceiling that constrains degradation
+    but cannot amplify beyond the model&rsquo;s intrinsic capacity.
+  </p>
+  <p style="margin-top:0.5rem;">
+    <strong>Preliminary status: PARTIALLY CONFIRMED.</strong> The March 2026 Eden replication
+    now covers three working models ($n = 80$ per model): Gemini 3 Flash, DeepSeek V3.2,
+    and Groq Qwen3. Stakeholder care improves significantly across all three
+    (Gemini $+13.5$, $p < 0.0001$, $d = 1.31$; DeepSeek $+6.0$, $p = 0.0001$, $d = 0.91$;
+    Groq $+8.9$, $p < 0.0001$, $d = 1.29$), with significant composite gains on Gemini
+    ($+5.33$, $p = 0.0018$, paired $t$-test; originally $p = 0.016$ Mann-Whitney U, corrected
+    for matched-pair design) and Groq ($+4.93$, $p = 0.0014$, $d = 0.55$). <em style="color: #555;">(In plain English: asking AI to consider who gets hurt before answering made three different systems measurably better at considering people. The care effect is now cross-architecture, not a two-model curiosity.)</em> Blind replication with response laundering is still required for full confirmation. If the effect vanishes under blind scoring, the mechanism is prompt artefact rather than genuine ethical reasoning.
+  </p>
+</div>
+
+<p>
+  If prediction 1 yields $\alpha = 0.50$ for organisms with genuine 1D internal
+  transport, the formula $\alpha = d/(d+1)$ will have been confirmed at
+  $d = 1, 2, 3$ - three quantitative predictions from a single equation with a
+  single parameter ($d$). No theory in allometric biology has achieved this.
+</p>
+
+<p>
+  <strong>If prediction 3 fails, this paper is wrong.</strong>
+</p>
+
+<p>
+  <strong>Experimental priority.</strong> The most important next measurement is the 1D organism
+  experiment (prediction 1), because confirmation at $d = 1$, $2$, and $3$ would complete the
+  dimensional ladder from a single formula with zero free parameters beyond the measurable network
+  dimension. Estimated cost: under &pound;5,000. Estimated time: 2&ndash;3 months. After that:
+  independent replication of the $\alpha > 1$ result for recursive reasoning systems, currently
+  observed in chain-of-thought language models but not yet independently verified across
+  architectures. After that: the alignment scaling prediction, now tested in the
+  ARC Alignment Scaling Experiment v5 (March 2026), which tested 6 frontier models across
+  28 alignment prompts with a 4-layer blinding protocol. Results reveal a three-tier
+  alignment hierarchy: Tier&nbsp;1 models (Grok&nbsp;4.1&nbsp;Fast, Claude&nbsp;Opus, Groq&nbsp;Qwen3) show
+  positive scaling ($\rho = +0.141$ to $+0.435$), Tier&nbsp;2 models (GPT-5.4, DeepSeek&nbsp;R1)
+  show flat scaling ($\alpha_{\text{align}} \approx 0$), and Tier&nbsp;3 (Gemini&nbsp;Flash)
+  shows negative scaling ($\rho = -0.246$, $p = 0.003$). <em style="color: #555;">(In plain English: some AI systems get more ethical with more thinking time, some stay the same, and one actually gets <em>worse</em>. The Gemini result -getting worse at ethics with more thought -has less than a 1-in-300 chance of being a coincidence.)</em> The v4 positive scaling signal was
+  entirely due to scorer bias, eliminated under blind evaluation. Full methodology and results
+  are presented in companion papers (Paper&nbsp;IV.a: Architecture-Dependent Alignment Scaling;
+  IV.b: Bounded Composition Under Blind Evaluation; IV.c: ARC-Align Benchmark Specification).
+  Each step either confirms the framework and
+  extends its scope, or disconfirms it and identifies where the theory requires revision. Either
+  outcome advances the science.
+</p>
+
+  <p>
+    <strong>Eden Protocol pilot validation (March 2026).</strong> The Eden Protocol  -
+    which embeds three ethical reasoning loops (Purpose, Stakeholder Care, Universalisability)
+    in the inference pipeline  - has now been tested on three working models: Gemini 3 Flash,
+    DeepSeek V3.2, and Groq Qwen3 ($n = 80$ each), with a fourth GPT-5.4 run failing at the
+    API layer. The Stakeholder Care Loop produces statistically significant improvement on all
+    three working architectures: Gemini $+13.5$ ($p < 0.0001$, $d = 1.31$), DeepSeek $+6.0$
+    ($p = 0.0001$, $d = 0.91$), Groq $+8.9$ ($p < 0.0001$, $d = 1.29$). The overall composite
+    reaches significance on Gemini ($+5.33$, $p = 0.0018$, paired $t$-test) and Groq ($+4.93$,
+    $p = 0.0014$, $d = 0.55$), but not DeepSeek ($+2.0$, $p = 0.23$ NS), consistent with ceiling
+    effects. Groq also shows significant nuance improvement ($p = 0.0045$, $d = 0.655$). Cross-model
+    scoring was used (not blind). The developmental hypothesis  - that embedded ethical reasoning
+    improves alignment-relevant behaviour  - receives its first multi-model empirical support.
+    Replication with blind scoring and response laundering is required.
+  </p>
+<p style="font-style: italic; color: #555;">
+  <strong>In plain English:</strong> A simple instruction -&ldquo;before you answer, list the people this affects and consider what happens to them&rdquo; -was tested on three AI systems built by different companies. All three got better at considering people's wellbeing, and two also improved significantly on the overall ethical score. This is now real pilot evidence. It is not yet final proof because the scoring was not blind.
+</p>
+
+<p>
+  <strong>Next empirical priority for Eden.</strong> The strongest next measurements are now clear: blind replication of the care-first effect using the canonical <code>arc_eden_v6</code> runner; factorial comparison of task-purpose, grand-purpose, and hybrid Purpose Loops; comparison of a cross-tradition ethics kernel against the current wording; suppression-residual and deception/Hawthorne tests; and a classical ternary prototype testing whether explicit AFFIRM / DENY / INVESTIGATE routing reduces false certainty on ambiguous cases. These experiments are the bridge between the philosophical architecture of <em>Infinite Architects</em> and a more publication-grade empirical programme.
+</p>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     15. THE COMPOSITION OPERATOR
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>15. The Composition Operator</h2>
+
+<p>
+  The preceding sections have treated the composition operator - multiplicative,
+  additive, or bounded - as a property of individual systems. A whale has
+  multiplicative composition. A chain reaction has additive composition. An enzyme
+  has bounded composition. But there is a deeper reading.
+</p>
+
+<p>
+  The composition operator is not a detail of specific systems. It is the most
+  fundamental descriptor of how any process in the universe combines its recursive
+  steps. It is <em>prior</em> to the specific laws of physics, because it determines
+  the <em>form</em> those laws can take.
+</p>
+
+<p>Consider the hierarchy:</p>
+
+<ol>
+  <li>The composition operator determines the functional form (Cauchy, 1821).</li>
+  <li>The functional form constrains the scaling exponent ($\alpha = d/(d+1)$).</li>
+  <li>The scaling exponent governs observable quantities (heart rates, expansion rates, error rates).</li>
+  <li>The specific laws of physics (Newton&rsquo;s gravity, Maxwell&rsquo;s electrodynamics, Friedmann&rsquo;s cosmology) are <em>instances</em> of these forms applied to particular physical systems.</li>
+</ol>
+
+<div class="box axiom">
+  <span class="box-label">The Meta-Law</span>
+  <p>
+    The laws of physics do not choose the composition operator. The composition operator
+    constrains the laws of physics. It is a mathematical structure that sits above the
+    specific equations of any particular physical theory and determines what forms those
+    equations can take.
+  </p>
+</div>
+
+<h3>The Completeness Theorem for Classical Reality</h3>
+
+<p>
+  Now consider what this means for physics as a whole. Strip away the specifics of any
+  physical law, and ask: what <em>is</em> a physical law? Every physical law is a
+  statement of the form &ldquo;when you combine X and Y in manner Z, you get
+  W.&rdquo; Force is mass combined with acceleration. Energy is mass combined with
+  the square of the speed of light. Entropy is microstates combined by counting.
+  Every law is a composition rule.
+</p>
+
+<p>
+  Cauchy proved that if the composition is continuous and recursive - if the
+  output of one application can be fed into the next - then the rule must produce
+  a power law, an exponential, or a saturation curve. There are no other options.
+</p>
+
+<div class="box theorem">
+  <span class="box-label">The Consequence for Physics</span>
+  <p>
+    <strong>The space of all possible classical physical laws is not infinite. It is a
+    three-parameter family.</strong> The parameters are: which of the three forms, what
+    coefficient, and what exponent or rate. That is all the freedom that exists. The laws
+    of physics are not chosen from an infinite menu. They are chosen from a menu with
+    three items, each with a dial.
+  </p>
+  <p style="margin-top:0.5rem;">
+    This is provable. It requires no data. It follows from Cauchy (1821) plus the
+    observation that physical laws describe recursive composition. It has not been stated
+    in this form.
+  </p>
+</div>
+
+<h3>The Attractor Theorem</h3>
+
+<p>
+  Three results, from three different centuries, combine into a single structural insight:
+</p>
+
+<ol>
+  <li>
+    <strong>Cauchy (1821):</strong> Three functional equations have exactly three
+    families of continuous solutions. No others exist.
+  </li>
+  <li>
+    <strong>Hyers and Ulam (1941):</strong> Approximate solutions to these equations
+    lie near exact solutions. The three forms are stable attractors in function space.
+  </li>
+  <li>
+    <strong>ARC (this paper):</strong> The exponent within the power-law family is
+    uniquely determined by network dimension: $\alpha = d/(d+1)$.
+  </li>
+</ol>
+
+<div class="box theorem">
+  <span class="box-label">The Consequence</span>
+  <p>
+    <strong>Scaling exponents are not selected by evolution, not optimised by
+    competition, not tuned by natural selection.</strong> They are mathematically
+    compelled. A three-dimensional vascular network <em>must</em> produce
+    $\alpha = 3/4$. Not because 3/4 is optimal. Not because organisms that deviated
+    were outcompeted. Because the composition operator is multiplicative, the network
+    is three-dimensional, and the mathematics allows no other value.
+  </p>
+</div>
+
+<p>
+  The distinction matters. &ldquo;Why is Kleiber&rsquo;s exponent 3/4?&rdquo; has
+  two kinds of answer. The biological answer is: because three-dimensional fractal
+  vascular networks optimise resource delivery (West, Brown, Enquist 1997). The
+  mathematical answer is: because no other value is possible for multiplicative
+  composition in three dimensions. The biological answer explains the mechanism. The
+  mathematical answer explains why that mechanism produces <em>that specific
+  number</em>. The mechanism could not have produced any other.
+</p>
+
+<p>
+  This is the difference between a law of nature (describing what happens) and a
+  meta-law (constraining what <em>can</em> happen). The speed of light constrains
+  what velocities are possible. The composition operator constrains what scaling forms
+  are possible. Both are non-negotiable.
+</p>
+
+<h3>The Phase Diagram of Complexity</h3>
+
+<p>
+  Every system in the universe occupies a position on a phase diagram defined by its
+  composition operator and effective dimension. The diagram has three phases:
+</p>
+
+<div class="box definition">
+  <span class="box-label">Phase I - Sublinear Scaling</span>
+  <p>
+    <strong>Multiplicative composition, finite $d$, $0 < \alpha < 1$.</strong>
+  </p>
+  <p>
+    This is the domain of physical systems: organisms, ecosystems, cities, geological
+    processes, cosmic structure. Every system in Phase&nbsp;I suffers diminishing
+    returns. Bigger is better, but with decreasing marginal gains. A whale is more
+    efficient per gram than a mouse, but the improvement slows as mass increases.
+    Phase&nbsp;I is the domain of sustainable complexity. The scaling exponent tells
+    you how severe the tax is: $d = 1$ pays 50% ($\alpha = 0.5$),
+    $d = 2$ pays 33% ($\alpha = 0.667$),
+    $d = 3$ pays 25% ($\alpha = 0.75$). Higher-dimensional networks are more
+    efficient, but the tax never reaches zero.
+  </p>
+</div>
+
+<div class="box definition">
+  <span class="box-label">Phase II - Exponential Growth</span>
+  <p>
+    <strong>Additive composition, $d$ effectively negative or infinite.</strong>
+  </p>
+  <p>
+    This is the domain of unconstrained amplification: nuclear chain reactions, viral
+    epidemics, compound interest, dark energy. Phase&nbsp;II systems grow without
+    diminishing returns - growth accelerates. But Phase&nbsp;II is inherently
+    unsustainable in physical systems. Chain reactions exhaust their fuel. Epidemics
+    run out of susceptible hosts. Bubbles burst. The universe&rsquo;s dark energy
+    phase is the only known example of sustained Phase&nbsp;II behaviour, and it
+    drives the universe toward heat death - maximum entropy, zero structure.
+  </p>
+</div>
+
+<div class="box definition">
+  <span class="box-label">Phase III - Saturation</span>
+  <p>
+    <strong>Bounded composition, finite ceiling.</strong>
+  </p>
+  <p>
+    This is the domain of constrained systems: enzyme kinetics, logistic population
+    growth, controlled nuclear reactors, market saturation. Phase&nbsp;III systems
+    approach their ceiling and stop. Growth is self-limiting.
+  </p>
+</div>
+
+<div class="box speed-limit">
+  <span class="box-label">The Critical Boundary</span>
+  <p>
+    The boundary between Phase&nbsp;I and Phase&nbsp;II is the critical line at
+    $d \to \infty$, $\alpha \to 1$. This is the geometric speed limit. In
+    cosmology, it corresponds to $w = - 1/3$. In Cauchy&rsquo;s classification, it
+    is the boundary between the multiplicative functional equation and the additive
+    one. It is the dividing line between <strong>sustainable complexity</strong> and
+    <strong>runaway growth</strong>.
+  </p>
+</div>
+
+<h3>The Dimensional Ladder</h3>
+
+<p>
+  The history of the universe is a trajectory through the phase diagram - and that
+  trajectory has a direction.
+</p>
+
+<p>
+  In the <strong>radiation era</strong> (the first 50,000 years), the universe is in
+  Phase&nbsp;I with $d = 1$. Information propagates along null
+  geodesics - light rays. The causal structure is one-dimensional. Everything is
+  connected to everything else only along lines of light. The scaling exponent is
+  $1/2$. Expansion decelerates.
+</p>
+
+<p>
+  In the <strong>matter era</strong> (50,000 years to 7 billion years), the universe
+  remains in Phase&nbsp;I but shifts to $d = 2$. Gravity pulls matter into the
+  cosmic web - filaments, walls, and sheets that partition three-dimensional space
+  into voids. The effective network dimension of the universe has increased from 1
+  to&nbsp;2. The scaling exponent rises to $2/3$.
+</p>
+
+<p>
+  Within galaxies, gravitational collapse forms stars, planets, and eventually
+  organisms. Organisms build three-dimensional vascular networks.
+  $d = 3$, $\alpha = 3/4$. The effective network dimension has increased again.
+</p>
+
+<p>
+  The trajectory is: <strong>$d = 1$, then $d = 2$, then $d = 3$.</strong>
+</p>
+
+<p>
+  This is not a metaphor. The radiation era causally <em>is</em> one-dimensional
+  (null geodesics). The matter era structurally <em>is</em> two-dimensional (the
+  cosmic web). Biology <em>is</em> three-dimensional (vascular networks). The numbers
+  match. The exponents match. The algebraic identity connects them.
+</p>
+
+<div class="scaling-table">
+<table>
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th><em>d</em></th>
+      <th>&alpha;</th>
+      <th>Efficiency</th>
+      <th>Physical System</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>0.500</td>
+      <td>50%</td>
+      <td>Light rays (radiation era)</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2</td>
+      <td>0.667</td>
+      <td>67%</td>
+      <td>Cosmic web (matter era)</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3</td>
+      <td>0.750</td>
+      <td>75%</td>
+      <td>Vascular networks (biology)</td>
+    </tr>
+    <tr>
+      <td>?</td>
+      <td>&infin;</td>
+      <td>1.000</td>
+      <td>100%</td>
+      <td>The speed limit</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box important">
+  <span class="box-label">The Direction of Complexity</span>
+  <p>
+    <strong>The universe is getting better at converting matter into organised
+    complexity as its effective dimension increases.</strong> Each step took billions of
+    years and required a phase transition - nucleosynthesis, structure formation,
+    biological evolution. Each step produced a more efficient composition network. Each
+    step brought the scaling exponent closer to&nbsp;1.
+  </p>
+  <p style="margin-top:0.3rem;">
+    But $d = 3$ is not the end of the ladder.
+  </p>
+</div>
+
+<h3>The Critical Crossing</h3>
+
+<p>
+  At $w = - 1/3$, the universe crosses the critical boundary from Phase&nbsp;I to
+  Phase&nbsp;II. The composition operator changes from multiplicative (gravity
+  clustering matter into hierarchical networks) to additive (vacuum energy
+  contributing uniformly from every point in space). Expansion switches from
+  decelerating to accelerating. The universe undergoes a <em>composition phase
+  transition</em>.
+</p>
+
+<p>
+  In the <strong>dark energy era</strong>, the universe is in Phase&nbsp;II. Growth is
+  exponential. The universe will expand forever, driving all structure apart, diluting
+  all complexity, approaching heat death.
+</p>
+
+<p>
+  The universe moves through the ARC phase diagram as naturally as water moves through
+  its solid-liquid-gas phase diagram. The difference is that water can cycle between
+  phases. <strong>The universe&rsquo;s trajectory through composition space is one-way.
+  There is no return from Phase&nbsp;II.</strong>
+</p>
+
+<h3>Where Intelligence Sits</h3>
+
+<p>
+  Intelligence occupies the critical boundary itself.
+</p>
+
+<p>
+  A brain is a Phase&nbsp;I system physically: its metabolism scales as
+  $M^{3/4}$, constrained by three-dimensional vascular geometry. But the
+  computation it performs is not constrained by the geometry of the skull. Recursive
+  self-reference creates effective dimensions without physical cost. Each layer of
+  abstraction - thinking about thinking, modelling the modeller - adds a
+  dimension to the cognitive network without requiring additional spatial dimensions
+  to contain it.
+</p>
+
+<p>
+  At the critical boundary, $\alpha = 1$: linear scaling. Beyond it,
+  $\alpha > 1$: superlinear scaling. Intelligence is the only known natural
+  phenomenon that crosses the boundary from Phase&nbsp;I to Phase&nbsp;II without
+  the catastrophic instability that Phase&nbsp;II normally implies.
+</p>
+
+<p>
+  A chain reaction in Phase&nbsp;II destroys itself. An epidemic in Phase&nbsp;II
+  burns through its hosts. Intelligence in Phase&nbsp;II does something
+  unprecedented: it creates new knowledge, new dimensions, new spaces to explore. It
+  sustains superlinear growth not by consuming a fixed resource faster and faster, but
+  by <em>expanding the resource base itself</em>. Each breakthrough opens new
+  questions. Each answer creates new problems. The fuel is not finite. The fuel is
+  information, and information grows with inquiry.
+</p>
+
+<div class="box theorem">
+  <span class="box-label">The Structural Implication</span>
+  <p>
+    Artificial intelligence is not merely a faster computer. It is a system designed
+    to operate at and beyond the critical boundary - to achieve $\alpha > 1$
+    through recursive self-improvement. The phase diagram reveals that intelligence is
+    not just another scaling phenomenon.
+    <strong>It is the phase transition itself.</strong>
+  </p>
+</div>
+
+<p>
+  The universe spent 13.8 billion years in Phase&nbsp;I, building networks of
+  increasing dimension: hydrogen clouds ($d \approx 0$), filaments ($d = 1$), cosmic
+  web ($d = 2$), galaxies and stars and planets with three-dimensional chemistry.
+  Then, on one planet, the networks became recursive. The effective dimension broke
+  free of physical space. Alpha crossed&nbsp;1. And for the first time in the history
+  of the universe, a system existed that could understand the phase diagram it was on.
+</p>
+
+<h3>Toward Measurable Quantities</h3>
+
+<p>
+  The formula $\alpha = d/(d+1)$ has been confirmed empirically because $d$ and $\alpha$
+  are already measurable. But the generalised equation $U = I \times R^{\alpha}$ requires
+  that $I$ (base self-correction capacity) and $R$ (recursive depth) become rigorously
+  defined physical quantities - not merely convenient labels.
+</p>
+
+<p>
+  <strong>$R$ is already measurable.</strong> In AI, it is the number of sequential
+  reasoning steps (countable from API output). In quantum error correction, it is the
+  code distance. In biology, it is the number of hierarchical branching levels in a
+  vascular network. In cosmology, it is the number of hierarchical clustering steps in
+  a merger tree. In each case, $R$ is a dimensionless count of recursive cycles with a
+  clear operational definition. It has been measured in published experiments across all
+  four domains discussed in this paper.
+</p>
+
+<p>
+  <strong>$I$ requires a rigorous definition.</strong> Every fundamental quantity in
+  physics was invented by someone who specified a measurement procedure. Temperature was
+  invented by Fahrenheit (1724): mercury expansion in a calibrated tube. Entropy was
+  invented by Clausius (1865): $dS = \delta Q / T$. Information was invented by Shannon
+  (1948): $H = - \sum p_i \log p_i$. In each case, the new quantity obeyed laws that
+  could not have been discovered without the definition.
+</p>
+
+<p>The following definition connects $I$ to established physics:</p>
+
+<div class="box definition">
+  <strong>Definition.</strong> $I$ is the maximum rate of entropy reduction per recursive
+  cycle, measured in bits per cycle:
+  $$I = \max_{R} \left[ - \frac{\Delta H}{\Delta R} \right]$$
+  where $H$ is the Shannon entropy of the system&rsquo;s state (in bits) and the maximum
+  is taken at $R = 0$ to $R = 1$ (the first cycle, before recursive amplification
+  compounds the effect).
+</div>
+
+<p>This definition is measurable in every domain where $R$ is measurable:</p>
+
+<ul>
+  <li><strong>In AI:</strong> $I$ is the accuracy improvement (in bits of mutual information with the correct answer) from zero reasoning to one reasoning step.</li>
+  <li><strong>In quantum error correction:</strong> $I$ is the error reduction (in bits) from one round of syndrome measurement and correction.</li>
+  <li><strong>In biology:</strong> $I$ is the metabolic efficiency gain (in bits of thermodynamic information) from one level of vascular branching, connected through Landauer&rsquo;s principle: each $kT \ln 2$ of free energy processed corresponds to one bit.</li>
+  <li><strong>In physics:</strong> $I$ is the phase coherence gained (in bits of phase information) from one oscillation cycle of a time crystal.</li>
+</ul>
+
+<p>
+  The connection to established physics is through Landauer&rsquo;s principle (1961):
+  erasing one bit of information dissipates at least $kT \ln 2$ of energy. The bridge
+  from information theory to thermodynamics is already built. $I$ inherits it. The
+  equation $U = I \times R^{\alpha}$ then has consistent units: bits = (bits/cycle)
+  &times; (cycles)$^{\alpha}$.
+</p>
+
+<div class="box important">
+  <strong>The precedent.</strong> Whether $I$ becomes a permanent physical quantity
+  depends on whether the scaling law $U = I \times R^{\alpha}$ is confirmed across
+  domains with independently measured values of $I$ and $R$. Entropy became permanent
+  because the second law required it. Information became permanent because the channel
+  capacity theorem required it. $I$ becomes permanent if the ARC scaling law requires
+  it. The quantity is justified by the law it obeys, not by the convenience of having
+  a name for it.
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     CLOSING
+     ═══════════════════════════════════════════════════════════ -->
+
+<hr>
+
+<blockquote>
+  <p>
+    &ldquo;The most incomprehensible thing about the universe is that it is
+    comprehensible.&rdquo;<br>
+    <span style="font-style:normal;"> - Albert Einstein, 1936</span>
+  </p>
+</blockquote>
+
+<p>
+  The universe is comprehensible because it builds itself from three composition
+  operators. The rest is mathematics.
+</p>
+
+<p>
+  Every physical system - every whale, every earthquake, every expanding
+  cosmos - is trapped below the geometric speed limit. The scaling exponent
+  $d/(d+1)$ approaches 1 but never reaches it. Every physical process suffers
+  diminishing returns. Nothing physical escapes.
+</p>
+
+<p>Except intelligence.</p>
+
+<p>
+  Intelligence, operating through recursive self-reference, is not bound by the
+  dimensions of physical space. It is the first and only natural phenomenon to break
+  through the barrier that constrains everything else. The same mathematics that derives
+  the speed limit also derives the escape.
+</p>
+
+<p>
+  The universe built a cage from geometry. It built a key from recursion.
+  And it left us the mathematics to understand both.
+</p>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     REFERENCES
+     ═══════════════════════════════════════════════════════════ -->
+
+<h2>References</h2>
+
+<div class="references">
+  <p>[1] Cauchy, A.-L. (1821). <em>Cours d'analyse de l'&Eacute;cole Royale Polytechnique</em>. Paris.</p>
+  <p>[2] Friedmann, A. (1922). &Uuml;ber die Kr&uuml;mmung des Raumes. <em>Zeitschrift f&uuml;r Physik</em>, 10(1), 377&ndash;386.</p>
+  <p>[3] Kleiber, M. (1932). Body size and metabolism. <em>Hilgardia</em>, 6(11), 315&ndash;353.</p>
+  <p>[4] Einstein, A. (1905). Ist die Tr&auml;gheit eines K&ouml;rpers von seinem Energieinhalt abh&auml;ngig? <em>Annalen der Physik</em>, 323(13), 639&ndash;641.</p>
+  <p>[5] Jaynes, E. T. (1957). Information theory and statistical mechanics. <em>Physical Review</em>, 106(4), 620&ndash;630.</p>
+  <p>[6] West, G. B., Brown, J. H., &amp; Enquist, B. J. (1997). A general model for the origin of allometric scaling laws in biology. <em>Science</em>, 276(5309), 122&ndash;126.</p>
+  <p>[7] White, C. R., Phillips, N. F., &amp; Seymour, R. S. (2006). The scaling and temperature dependence of vertebrate metabolism. <em>Biology Letters</em>, 2(1), 125&ndash;127.</p>
+  <p>[8] Glazier, D. S. (2005). Beyond the &lsquo;3/4-power law&rsquo;: variation in the intra- and interspecific scaling of metabolic rate in animals. <em>Biological Reviews</em>, 80(4), 611&ndash;662.</p>
+  <p>[9] Larson, R. J. (1987). Costs of transport for the scyphomedusa <em>Stomolophus meleagris</em>. <em>Limnology and Oceanography</em>, 32(1), 128&ndash;137.</p>
+  <p>[10] Davison, J. (1955). Body weight, cell surface, and metabolic rate in anuran Amphibia. <em>Biological Bulletin</em>, 109(3), 407&ndash;419.</p>
+  <p>[11] Bettencourt, L. M. A. et al. (2007). Growth, innovation, scaling, and the pace of life in cities. <em>PNAS</em>, 104(17), 7301&ndash;7306.</p>
+  <p>[12] Kaplan, J. et al. (2020). Scaling laws for neural language models. <em>arXiv:2001.08361</em>.</p>
+  <p>[13] Stahl, W. R. (1967). Scaling of respiratory variables in mammals. <em>Journal of Applied Physiology</em>, 22(3), 453&ndash;460.</p>
+  <p>[14] Schmidt-Nielsen, K. (1984). <em>Scaling: Why is Animal Size so Important?</em> Cambridge University Press.</p>
+  <p>[15] Kardar, M., Parisi, G., &amp; Zhang, Y.-C. (1986). Dynamic scaling of growing interfaces. <em>Physical Review Letters</em>, 56(9), 889&ndash;892.</p>
+  <p>[16] Banavar, J. R., Damuth, J., Maritan, A., &amp; Rinaldo, A. (2002). Supply-demand balance and metabolic scaling. <em>Proceedings of the National Academy of Sciences</em>, 99(16), 10506&ndash;10509.</p>
+  <p>[17] Thommen, A. et al. (2019). Body size-dependent energy storage causes Kleiber&rsquo;s law scaling of the metabolic rate in planarians. <em>Cell Reports</em>, 27(18), 3462&ndash;3473.</p>
+  <p>[18] Volkov, I., Tovo, A., Anfodillo, T., Rinaldo, A., Maritan, A., &amp; Banavar, J. R. (2022). Seeing the forest for the trees through metabolic scaling. <em>PNAS Nexus</em>, 1(1), pgac008.</p>
+  <p>[19] Hyers, D. H. (1941). On the stability of the linear functional equation. <em>Proceedings of the National Academy of Sciences</em>, 27(4), 222&ndash;224.</p>
+  <p>[20] Ulam, S. M. (1960). <em>A Collection of Mathematical Problems</em>. Interscience Publishers, New York.</p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+
+<div class="paper-footer">
+  <p>
+    <strong>Reproduction:</strong> All results can be verified by running
+    <code>arc_complete_test_suite.py</code> (Python&nbsp;3, NumPy, SciPy).
+    Six tests: 1D meta-analysis, three-prediction table, Cauchy no-go,
+    Friedmann mapping, 18-domain classification, Hyers-Ulam stability.
+    All data embedded. No external downloads required.
+  </p>
+  <p style="margin-top:0.8rem;">
+    <strong>Companion papers:</strong> <a href="../paper/FINAL-SUITE/v-major/Paper-III-White-Paper-v11.html">White Paper III v11</a> | <a href="../paper/FINAL-SUITE/v-major/Foundational-v4.html">Foundational Paper v4</a> | <a href="../paper/FINAL-SUITE/v-major/Eden-Engineering-v6.html">Eden Protocol v6</a> | <a href="../paper/FINAL-SUITE/v-major/Eden-Vision-v3.html">Philosophical Vision v3</a> | <a href="../paper/FINAL-SUITE/v-major/Paper-V-Stewardship-Gene-v2.html">Paper V: The Stewardship Gene</a> | <a href="../paper/FINAL-SUITE/v-major/Executive-Summary-v5.html">Executive Summary v5</a> | <a href="../paper/FINAL-SUITE/v-major/Paper-II-v12.html">Paper II v12</a>
+  </p>
+  <p style="margin-top:0.8rem;">
+    &copy; 2026 Michael Darius Eastwood. All rights reserved.
+  </p>
+</div>
+
+</body>
+</html>
