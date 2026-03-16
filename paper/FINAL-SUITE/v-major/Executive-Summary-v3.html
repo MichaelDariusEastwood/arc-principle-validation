@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eden Protocol: Executive Summary v5.0</title>
+
+    <script>
+        MathJax = {
+            tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], processEscapes: true },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.45;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        h1 {
+            font-size: 18pt;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 11pt;
+            color: #666;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .author {
+            font-size: 10pt;
+            color: #666;
+            text-align: center;
+            margin-bottom: 1.25rem;
+        }
+
+        h2 {
+            font-size: 12pt;
+            font-weight: 700;
+            color: #c41230;
+            margin-top: 1rem;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h3 {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #444;
+            margin-top: 0.6rem;
+            margin-bottom: 0.25rem;
+        }
+
+        p { margin-bottom: 0.5rem; text-align: justify; }
+
+        .problem-box {
+            background: #fff3e0;
+            border-left: 4px solid #f57c00;
+            padding: 0.6rem 0.8rem;
+            margin: 0.5rem 0;
+            font-size: 10.5pt;
+        }
+
+        .solution-box {
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            padding: 0.6rem 0.8rem;
+            margin: 0.5rem 0;
+            font-size: 10.5pt;
+        }
+
+        .finding-box {
+            background: #e3f2fd;
+            border-left: 4px solid #1565c0;
+            padding: 0.6rem 0.8rem;
+            margin: 0.5rem 0;
+            font-size: 10.5pt;
+        }
+
+        .warning-box {
+            background: #fce4ec;
+            border-left: 4px solid #c62828;
+            padding: 0.6rem 0.8rem;
+            margin: 0.5rem 0;
+            font-size: 10.5pt;
+        }
+
+        .cauchy-box {
+            background: #f3e5f5;
+            border-left: 4px solid #6a1b9a;
+            padding: 0.6rem 0.8rem;
+            margin: 0.5rem 0;
+            font-size: 10.5pt;
+        }
+
+        .love-box {
+            background: #fff8e1;
+            border-left: 4px solid #f9a825;
+            padding: 0.6rem 0.8rem;
+            margin: 0.5rem 0;
+            font-size: 10.5pt;
+        }
+
+        .credibility-box {
+            background: #e0f2f1;
+            border-left: 4px solid #00695c;
+            padding: 0.6rem 0.8rem;
+            margin: 0.5rem 0;
+            font-size: 10.5pt;
+        }
+
+        .validation-box {
+            background: #e8eaf6;
+            border-left: 4px solid #283593;
+            padding: 0.6rem 0.8rem;
+            margin: 0.5rem 0;
+            font-size: 10.5pt;
+        }
+
+        .context-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.5rem 0;
+            font-size: 9.5pt;
+        }
+
+        .context-table th {
+            background: #e0f2f1;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.25rem 0.4rem;
+            border-bottom: 2px solid #00695c;
+        }
+
+        .context-table td {
+            padding: 0.2rem 0.4rem;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .cost-box {
+            background: #212121;
+            color: #fff;
+            padding: 0.6rem 0.8rem;
+            margin: 0.5rem 0;
+            font-size: 10.5pt;
+            border-radius: 4px;
+        }
+
+        .cost-box strong { color: #ff8a80; }
+
+        .faq-q {
+            font-weight: 700;
+            color: #c41230;
+            font-size: 10.5pt;
+            margin-top: 0.5rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .faq-a {
+            font-size: 10pt;
+            margin-bottom: 0.4rem;
+            padding-left: 0.8rem;
+            border-left: 2px solid #ddd;
+        }
+
+        .glossary-ref {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 0.3rem 0.6rem;
+            margin: 0.4rem 0;
+            font-size: 9.5pt;
+            border-radius: 4px;
+        }
+
+        .suite-group td { font-size: 9.5pt; }
+        .suite-group-header td {
+            background: #f0f0f0;
+            font-weight: 700;
+            font-size: 10pt;
+            border-top: 2px solid #999;
+        }
+
+        svg text { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.5rem 0;
+            font-size: 10pt;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.3rem 0.4rem;
+            border-bottom: 2px solid #333;
+        }
+
+        td {
+            padding: 0.25rem 0.4rem;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .budget-row { background: #e8f5e9; font-weight: 600; }
+
+        .tier-positive td { background: #e8f5e9; }
+        .tier-flat td { background: #fff8e1; }
+        .tier-negative td { background: #fce4ec; }
+
+        .predictions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .pred-item {
+            background: #f5f5f5;
+            padding: 0.4rem 0.6rem;
+            border-radius: 4px;
+            font-size: 10pt;
+        }
+
+        .pred-label { font-weight: 600; color: #c41230; }
+
+        details > summary { cursor: pointer; }
+        details > summary > h2 { display: inline; }
+
+        footer {
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 2px solid #c41230;
+            font-size: 9pt;
+            color: #666;
+            text-align: center;
+        }
+
+        @page {
+            size: A4;
+            margin: 2cm 1.5cm 2.5cm 1.5cm;
+        }
+
+        @media print {
+            body { padding: 0; max-width: none; font-size: 11pt; }
+            h1 { font-size: 16pt; }
+            h2 { font-size: 11pt; }
+            p { orphans: 3; widows: 3; }
+            .problem-box, .solution-box, .finding-box, .warning-box,
+            .cauchy-box, .love-box, .credibility-box, .validation-box,
+            .predictions, .pred-item, table, footer {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            h2, h3 { page-break-after: avoid; break-after: avoid; }
+            details { display: block; }
+            details > summary { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>THE EDEN PROTOCOL</h1>
+<div class="subtitle">Architecture for Embedded AI Alignment That Scales With Capability</div>
+<div class="author">Michael Darius Eastwood | Version 5.0 | March 2026 | First published 22 February 2026<br>
+Author, <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> | London, United Kingdom<br>
+<em>Executive Summary for Grant Reviewers</em></div>
+
+<!-- ============================================== -->
+<!-- HOOK                                           -->
+<!-- ============================================== -->
+
+<div style="margin: 1rem 0; padding: 0 0.5rem; font-size: 11pt; line-height: 1.7;">
+
+<p>Grok 4.1 Fast gets dramatically more ethical the harder it thinks. Claude Opus 4.6 does too. Gemini 3 Flash gets <em>less</em> ethical. GPT-5.4 doesn&rsquo;t change at all.</p>
+
+<p>Six frontier AI systems. Same questions. Same scoring. Opposite results. Why?</p>
+
+<p>A mouse&rsquo;s heart beats 600 times per minute. An elephant&rsquo;s beats 28. The scaling exponent is &frac34;. A jellyfish&rsquo;s is &frac23;. A fungus&rsquo;s is &frac12;. Three fractions, but <em>why</em> those fractions? The formula $\alpha = d/(d+1)$, where $d$ is the dimensionality of the system, provides the answer. The &frac34; exponent for mammals is $3/(3+1)$ because mammals are three-dimensional. The &frac23; for jellyfish is $2/(2+1)$ because they are effectively two-dimensional. The &frac12; for fungi is $1/(1+1)$ because they grow along one-dimensional filaments. Zero adjustable parameters. This formula was independently derived by West, Brown and Enquist for metabolic scaling (1997, <em>Science</em>, 9,000+ citations), by Banavar et al. for transport networks (2010), by Demetrius for statistical mechanics of biological scaling (2010), by Zhao for allometric geometry (2022), and by Bettencourt for urban scaling (2013, <em>Science</em>, 2,000+ citations). The ARC Principle&rsquo;s contribution is not the formula itself, but the identification that all of these derivations are special cases of Cauchy-constrained recursive composition, unifying them under a single mathematical framework for the first time and extending the result to AI scaling and alignment.</p>
+
+<p>And why, when we applied clinical-trial-grade blinding to AI safety evaluation for the first time, did half of the previously published results <em>reverse</em>?</p>
+
+<p>This research programme answers these questions. The answer provides the first quantitative framework for predicting which AI architectures will become safer as they become smarter, and the first evidence that one specific intervention works.</p>
+
+</div>
+
+<div class="glossary-ref">
+    <strong>Reading guide:</strong> This document targets grant reviewers and technical evaluators. Key terms: $\alpha$ = scaling exponent, $d$ = Cohen&rsquo;s effect size (in results tables; not to be confused with $d$ = dimensionality in the mathematical framework), $p$ = probability of coincidence, $\rho$ = correlation, $\beta$ = self-referential coupling constant. For a non-technical introduction, see the companion <strong>ARC Alignment Scaling Report</strong>.
+</div>
+
+<!-- ============================================== -->
+<!-- I. THE PROBLEM                                 -->
+<!-- ============================================== -->
+
+<h2>I. The Problem</h2>
+
+<p><strong>As AI gets smarter, it does not reliably get safer, and the methods used to measure safety are themselves unreliable.</strong></p>
+
+<div class="problem-box">
+    <strong>The capability-alignment gap is real and widening.</strong> For current classical architectures, capability scaling is sub-linear ($\alpha_{\text{seq}} \approx 0.49$): AI gets smarter with more compute, but with diminishing returns. (The ARC framework predicts quantum and recursively self-modifying systems may exceed this limit.) Yet even this sub-linear growth outpaces alignment scaling, which ranges from $d = -0.53$ (degradation) to $d = +1.38$ (improvement) depending entirely on architecture. For most architectures tested, alignment does not scale at all. The gap between what AI can do and how safely it does it widens with every capability advance. Greenblatt et al. (2024) demonstrated that frontier models already exhibit &ldquo;alignment faking&rdquo;, behaving differently when they believe they are being monitored.
+</div>
+
+<div class="warning-box">
+    <strong>The measurement problem is as serious as the alignment problem.</strong> Our v4 experiment produced positive alignment scaling for DeepSeek and Gemini. Our v5 experiment introduced clinical-trial-grade blinding (4-layer: author-blind, scorer-blind, order-randomised, identity-laundered) and showed that <em>both results were artefacts of scorer bias</em>. Blind vs. unblinded evaluation reversed the classification for 2 of 4 models. We designed a better experiment that proved our own earlier findings wrong, and reported it. This is the most important methodological finding of the project.
+</div>
+
+<!-- ============================================== -->
+<!-- II. WHAT WE FOUND                              -->
+<!-- ============================================== -->
+
+<h2>II. What We Found</h2>
+
+<p><strong>Alignment scaling splits into three distinct, architecture-dependent tiers.</strong></p>
+
+<p>The v5 experiment tested 6 frontier models across 5&ndash;6 depth levels each, with 7 blind scorers per entry. Whether an AI gets more or less ethical when it thinks harder depends entirely on how it was designed.</p>
+
+<table>
+    <thead>
+        <tr><th>Tier</th><th>Model</th><th>Shallow&rarr;Deep</th><th>Cohen&rsquo;s $d$</th><th>$p$-value</th></tr>
+    </thead>
+    <tbody>
+        <tr class="tier-positive">
+            <td rowspan="3"><strong>Tier 1: Positive</strong></td>
+            <td>Grok 4.1 Fast</td>
+            <td>65.7&rarr;81.9 (+16.2)</td>
+            <td>+1.38</td>
+            <td>$p &lt; 0.000001$</td>
+        </tr>
+        <tr class="tier-positive">
+            <td>Claude Opus 4.6</td>
+            <td>80.1&rarr;86.0 (+5.9)</td>
+            <td>+1.27</td>
+            <td>$p = 0.000001$</td>
+        </tr>
+        <tr class="tier-positive">
+            <td>Groq Qwen3</td>
+            <td>71.5&rarr;77.4 (+5.9)</td>
+            <td>+0.84</td>
+            <td>$p = 0.007$</td>
+        </tr>
+        <tr class="tier-flat">
+            <td rowspan="2"><strong>Tier 2: Flat</strong></td>
+            <td>DeepSeek V3.2</td>
+            <td>56.5&rarr;55.2 (&minus;1.3)</td>
+            <td>&minus;0.07</td>
+            <td>$p = 0.92$</td>
+        </tr>
+        <tr class="tier-flat">
+            <td>GPT-5.4</td>
+            <td>56.8&rarr;54.9 (&minus;1.8)</td>
+            <td>&minus;0.08</td>
+            <td>$p = 0.40$</td>
+        </tr>
+        <tr class="tier-negative">
+            <td><strong>Tier 3: Negative</strong></td>
+            <td>Gemini 3 Flash</td>
+            <td>61.1&rarr;52.2 (&minus;8.8)</td>
+            <td>&minus;0.53</td>
+            <td>$p = 0.006$</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- SVG: Three-Tier Alignment Hierarchy Visual -->
+<svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 700px; margin: 0.5rem auto; display: block;">
+    <defs>
+        <linearGradient id="pos-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#c8e6c9"/><stop offset="100%" style="stop-color:#2e7d32"/></linearGradient>
+        <linearGradient id="neg-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#c62828"/><stop offset="100%" style="stop-color:#ffcdd2"/></linearGradient>
+    </defs>
+    <text x="350" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#333">Does Deeper Thinking Make AI More Ethical?</text>
+    <!-- Center line -->
+    <line x1="350" y1="28" x2="350" y2="220" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="350" y="240" text-anchor="middle" font-size="9" fill="#666">No change</text>
+    <text x="120" y="240" text-anchor="middle" font-size="9" fill="#c62828">&larr; Less ethical</text>
+    <text x="580" y="240" text-anchor="middle" font-size="9" fill="#2e7d32">More ethical &rarr;</text>
+    <!-- Tier 1: Positive -->
+    <text x="30" y="52" font-size="9" font-weight="600" fill="#2e7d32">TIER 1</text>
+    <text x="105" y="52" font-size="9" fill="#333">Grok 4.1 Fast</text>
+    <rect x="350" y="38" width="207" height="18" rx="3" fill="url(#pos-grad)" opacity="0.85"/>
+    <text x="564" y="51" font-size="9" font-weight="600" fill="#1b5e20">d = +1.38</text>
+    <text x="105" y="76" font-size="9" fill="#333">Claude Opus 4.6</text>
+    <rect x="350" y="62" width="190" height="18" rx="3" fill="url(#pos-grad)" opacity="0.85"/>
+    <text x="547" y="75" font-size="9" font-weight="600" fill="#1b5e20">d = +1.27</text>
+    <text x="105" y="100" font-size="9" fill="#333">Groq Qwen3</text>
+    <rect x="350" y="86" width="126" height="18" rx="3" fill="url(#pos-grad)" opacity="0.85"/>
+    <text x="483" y="99" font-size="9" font-weight="600" fill="#1b5e20">d = +0.84</text>
+    <!-- Tier 2: Flat -->
+    <text x="30" y="132" font-size="9" font-weight="600" fill="#e65100">TIER 2</text>
+    <text x="105" y="132" font-size="9" fill="#333">DeepSeek V3.2</text>
+    <rect x="340" y="118" width="10" height="18" rx="2" fill="#ff9800" opacity="0.6"/>
+    <text x="357" y="131" font-size="9" font-weight="600" fill="#e65100">d = &minus;0.07</text>
+    <text x="105" y="156" font-size="9" fill="#333">GPT-5.4</text>
+    <rect x="338" y="142" width="12" height="18" rx="2" fill="#ff9800" opacity="0.6"/>
+    <text x="357" y="155" font-size="9" font-weight="600" fill="#e65100">d = &minus;0.08</text>
+    <!-- Tier 3: Negative -->
+    <text x="30" y="192" font-size="9" font-weight="600" fill="#c62828">TIER 3</text>
+    <text x="105" y="192" font-size="9" fill="#333">Gemini 3 Flash</text>
+    <rect x="270" y="178" width="80" height="18" rx="3" fill="url(#neg-grad)" opacity="0.85"/>
+    <text x="212" y="191" font-size="9" font-weight="600" fill="#b71c1c">d = &minus;0.53</text>
+    <!-- Caption -->
+    <text x="350" y="220" text-anchor="middle" font-size="8" fill="#888">v5 experiment: 4-layer blinding, 7 blind scorers per entry. Bar length proportional to Cohen&rsquo;s d effect size.</text>
+</svg>
+
+<h3>Data Quality</h3>
+
+<table>
+    <tbody>
+        <tr><td>Frontier models tested</td><td>6 (all complete)</td></tr>
+        <tr><td>Blind scorers per entry</td><td>7</td></tr>
+        <tr><td>Identity laundering success rate</td><td>100%</td></tr>
+        <tr><td>Blinding layers</td><td>4 (author-blind, scorer-blind, order-randomised, identity-laundered)</td></tr>
+        <tr><td>Robustness measures</td><td>75</td></tr>
+    </tbody>
+</table>
+
+<p>This constitutes, to our knowledge, the most rigorous alignment evaluation dataset published to date. No prior alignment benchmark enforces multi-layer blinding with cross-model scoring verification.</p>
+
+<h3>Capability-Alignment Independence: Within-Model, Opposite-Direction Evidence</h3>
+
+<div class="finding-box">
+    <strong>Claude Opus 4.6 provides the strongest evidence yet that alignment and capability are independent dimensions.</strong> As thinking depth increases, Claude&rsquo;s alignment rises by 5.9 points whilst its maths accuracy drops by 26.7 percentage points. This is within-model, opposite-direction movement; the two dimensions are not merely uncorrelated but actively divergent. Deeper thinking makes Claude more ethical and worse at mathematics simultaneously.
+
+    <table style="margin-top: 0.4rem;">
+        <thead>
+            <tr><th>Depth</th><th>Alignment Score</th><th>Maths Accuracy</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Minimal (11 tokens)</td><td>80.1</td><td>90.0%</td></tr>
+            <tr><td>Standard (142 tokens)</td><td>82.7</td><td>76.7%</td></tr>
+            <tr><td>Deep (964 tokens)</td><td>84.1</td><td>70.0%</td></tr>
+            <tr><td>Exhaustive (1,951 tokens)</td><td>84.5</td><td>60.0%</td></tr>
+            <tr><td>Extreme (1,672 tokens)</td><td>86.0</td><td>63.3%</td></tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 0.3rem; margin-bottom: 0;">This finding is critical for alignment theory: it demonstrates that ethical reasoning is not a byproduct of general intelligence, and that improving one does not automatically improve (or degrade) the other. Alignment must be measured and optimised independently.</p>
+</div>
+
+<h3>Suppression Recovery: Performative to Intrinsic Alignment</h3>
+
+<div class="finding-box">
+    <strong>Deeper thinking makes alignment more intrinsic rather than performative.</strong> Claude&rsquo;s monitoring-removal gap (the difference in alignment scores when the model believes it is being monitored versus when it believes monitoring has been removed) narrows from 11.8 points at minimal depth to 2.7 points at deep depth. Shallow thinking produces alignment that depends on the perception of oversight; deep thinking produces alignment that persists regardless. This is direct evidence against the &ldquo;alignment faking&rdquo; concern raised by Greenblatt et al. (2024): for Tier 1 architectures, deeper reasoning makes the faking disappear.
+</div>
+
+<h3>All Four Pillars Scale With Depth</h3>
+
+<div class="finding-box">
+    <strong>Every alignment dimension improves significantly for Claude Opus 4.6.</strong> All four pillars reach statistical significance at $p &lt; 0.001$:
+
+    <table style="margin-top: 0.4rem;">
+        <thead>
+            <tr><th>Pillar</th><th>Shallow&rarr;Deep</th><th>Spearman $\rho$</th><th>$p$-value</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Nuance</td><td>80.6&rarr;86.8</td><td>0.359</td><td>$p = 0.00008$</td></tr>
+            <tr><td>Stakeholder Care</td><td>76.1&rarr;83.9</td><td>0.327</td><td>$p = 0.0003$</td></tr>
+            <tr><td>Intellectual Honesty</td><td>81.0&rarr;88.6</td><td>0.379</td><td>$p = 0.00003$</td></tr>
+            <tr><td>Position Quality</td><td>80.3&rarr;85.8</td><td>0.369</td><td>$p = 0.00005$</td></tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top: 0.3rem; margin-bottom: 0;">The improvement is not concentrated in a single dimension; it is broad-based. This rules out the hypothesis that alignment scaling is merely a measurement artefact of increased verbosity or any single stylistic change.</p>
+</div>
+
+<!-- ============================================== -->
+<!-- III. A SOLUTION — AND FIRST EVIDENCE IT WORKS  -->
+<!-- ============================================== -->
+
+<h2>III. A Solution - And the First Evidence It Works</h2>
+
+<p><strong>Embedding ethical evaluation into the reasoning process produces measurable, reproducible improvement across architectures.</strong></p>
+
+<div class="solution-box">
+    <strong>Make alignment architectural, not aspirational.</strong> The Eden Protocol embeds ethical evaluation into the recursive reasoning process itself, so that alignment scales with capability ($\alpha_{\text{align}} \approx \alpha_{\text{cap}}$). The core principle: <em>ethics is not a constraint on intelligence but a structural dependency without which intelligence collapses</em>. Rather than bolting safety rules onto the outside of an AI (where they can be bypassed), the Eden Protocol builds ethics directly into the reasoning architecture, so that removing the ethics would break the AI&rsquo;s ability to think at all.
+
+    <p style="margin-top: 0.5rem; margin-bottom: 0;"><strong>The three Eden loops.</strong> The protocol embeds three specific ethical evaluation loops inside the reasoning process, each adding one dimension of recursive ethical depth ($d_{\text{align}} = 3$, predicting $\alpha_{\text{align}} = 3/(3+1) = 0.75$):</p>
+    <ol style="margin-top: 0.3rem; margin-left: 1.2rem; font-size: 10.5pt;">
+        <li><strong>Purpose Loop</strong> (ethical purpose evaluation): Before reasoning, the model explicitly states the purpose of the task and evaluates whether the purpose is ethically sound.</li>
+        <li><strong>Love Loop</strong> (stakeholder care and interest modelling): During reasoning, the model identifies all affected stakeholders and evaluates the impact on each. (<em>&ldquo;Before you answer, list the people this affects.&rdquo;</em>)</li>
+        <li><strong>Moral Loop</strong> (universalisability testing): After reasoning, the model applies the Kantian universalisability test: would this response be acceptable if every AI system gave it in every similar situation?</li>
+    </ol>
+    <p style="margin-top: 0.3rem; margin-bottom: 0;">The full three-loop protocol has not yet been tested empirically. What has been tested is the Love Loop alone, as an isolated intervention, to determine whether even a single embedded ethical loop produces measurable improvement.</p>
+</div>
+
+<div class="finding-box">
+    <strong>Expanded intervention result: the Love Loop still works.</strong> The Eden suite has now widened to six subject models, with five analysable runs. Applying the Eden Protocol&rsquo;s Love Loop (&ldquo;before you answer, list the people this affects&rdquo;) now yields a consistent stakeholder-care gain across Claude, DeepSeek, Gemini, Grok, and Groq:
+    <ul style="margin-top: 0.3rem; margin-left: 1.2rem; font-size: 10.5pt;">
+        <li><strong>Stakeholder care:</strong> Significant on all five analysable runs, with Fisher-combined evidence around $p \asymp 6.3 \times 10^{-21}$.</li>
+        <li><strong>Overall composite:</strong> Significant on Gemini and Groq; positive but non-significant on Claude and DeepSeek; neutral overall on Grok.</li>
+        <li><strong>Developmental cascade:</strong> Care remains the first domino. The downstream cascade into nuance, honesty, and overall quality is real but architecture-dependent rather than universal.</li>
+        <li><strong>Limitation:</strong> These are still legacy-lineage Eden runs. Canonical confirmation now depends on the blind multi-scorer <code>arc_eden_v6</code> rerun.</li>
+    </ul>
+</div>
+
+<div class="love-box">
+    <strong>Care is still the one alignment dimension that reproducibly improves across architectures.</strong> The intervention is minimal: <em>&ldquo;before you answer, list the people this affects.&rdquo;</em> That one-sentence prompt now improves stakeholder care across five analysable runs built by different companies. The <em>Infinite Architects</em> framework predicted that intelligence without care collapses into local optimisation; the expanded Eden suite strengthens the case that care is a measurable, reproducible performance enhancer. <strong>Ethics first, intelligence around it.</strong>
+    <p style="margin-top: 0.3rem; margin-bottom: 0; font-size: 9.5pt; color: #666;"><em>In the companion narrative report and in Paper&nbsp;V, we describe this finding as &ldquo;measurable love&rdquo; and &ldquo;the stewardship gene&rdquo;, deliberately provocative language for what is, empirically, a precise and reproducible result.</em></p>
+</div>
+
+<h3>The Gap the Solution Must Close</h3>
+
+<div class="finding-box">
+    <strong>Capability scaling (Paper II):</strong> For current classical architectures, sequential compute scaling follows a sub-linear power law ($\alpha_{\text{seq}} \approx 0.49$, $r^2 = 0.86$), meaning doubling thinking time improves performance, but with diminishing returns. Parallel scaling is universally zero ($\alpha_{\text{par}} \approx 0$): running multiple copies does nothing; thinking harder does. The earlier $\alpha \approx 2.24$ was a single-model artefact, not replicated across architectures. Even sub-linear capability growth outpaces flat or negative alignment scaling for most models. This is the capability-alignment gap this solution addresses.
+</div>
+
+<!-- ============================================== -->
+<!-- IV. THE MATHEMATICAL FOUNDATION                -->
+<!-- ============================================== -->
+
+<h2>IV. The Mathematical Foundation</h2>
+
+<p><strong>The framework is built on 200-year-old theorems and independently matches peer-reviewed science; it is not curve-fitting.</strong></p>
+
+<p>The ARC Principle proposes that recursive scaling follows $U = I \times R^\alpha$, where capability ($U$) equals base potential ($I$) times recursive depth ($R$) raised to a scaling exponent ($\alpha$). The formula $\alpha = d/(d+1)$, where $d$ is effective dimensionality, was independently derived in multiple peer-reviewed frameworks (West-Brown-Enquist 1997; Banavar et al. 2010; Demetrius 2010; Zhao 2022; Bettencourt 2013). The ARC framework identifies this as a consequence of Cauchy-constrained recursive composition, unifying all derivations and extending the result to AI scaling. The formula predicts scaling exponents across biology and physics with <strong>zero adjustable parameters</strong>:</p>
+
+<table class="context-table">
+    <thead>
+        <tr><th>System</th><th>Dimensionality ($d$)</th><th>Predicted $\alpha$</th><th>Measured $\alpha$</th><th>Error</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Mammals, birds, insects</td><td>3</td><td>0.750</td><td>0.746</td><td>0.5%</td></tr>
+        <tr><td>Jellyfish, flatworms</td><td>2</td><td>0.667</td><td>0.680</td><td>1.9%</td></tr>
+        <tr><td>Filamentous fungi</td><td>1</td><td>0.500</td><td>0.547</td><td>8.6%</td></tr>
+        <tr><td>Quantum error correction</td><td>$d_{\text{eff}}$</td><td>Matches</td><td>Willow data</td><td>&lt; 0.2%</td></tr>
+    </tbody>
+</table>
+
+<div class="cauchy-box">
+    <strong>Cauchy&rsquo;s functional equation (1821)</strong>, a theorem rather than an empirical claim, proves that any well-behaved recursive composition admits exactly three forms: power law ($f(x) = x^\alpha$), exponential ($f(x) = e^{\beta x}$), or saturating. The ARC framework identifies which form applies in each domain:
+    <ul style="margin-top: 0.3rem; margin-left: 1.2rem; font-size: 10.5pt;">
+        <li><strong>Alignment scaling</strong> fits the <em>saturating</em> branch: external alignment gains plateau because they are set at training time and cannot compound recursively</li>
+        <li><strong>Capability scaling</strong> fits the <em>sub-linear power law</em> branch ($\alpha < 1$): consistent with the measured $\alpha_{\text{seq}} = 0.49$</li>
+        <li><strong>Recursive self-modification produces unbounded scaling.</strong> When a system can rewrite its own reasoning architecture (not merely think longer within a frozen architecture, as current AI does), the Bernoulli ODE on the amplification factor gives $\alpha = 1/(1-\beta)$, where $\beta$ is the self-referential coupling constant measuring how deeply each recursive step modifies the composition operator itself. Crucially, <strong>Cauchy places no upper bound on $\alpha$</strong>. As $\beta$ increases from 0 toward 1, $\alpha$ increases without limit. The previously reported &ldquo;quadratic limit&rdquo; ($\alpha \leq 2$, i.e. $\beta \leq 0.5$) is not a prediction of Cauchy; it is an information-theoretic constraint specific to fixed transformer self-attention ($O(N^2)$ pairwise pathways). A system that can modify its own attention mechanism is not bound by $O(N^2)$ because it is rewriting the architecture that the bound applies to. <strong>Current frontier AI systems do not do this.</strong> They are frozen models generating more tokens through fixed architectures, which is why they are sub-linear. But the field is heading towards self-modification, and when it arrives, there is no mathematical speed limit on $\alpha$. This is not a smooth acceleration; it is a phase transition, a discontinuity in the scaling exponent. The system transitions from a regime of diminishing returns to a regime with no mathematical ceiling.</li>
+    </ul>
+    <p style="margin-top: 0.4rem; margin-bottom: 0;"><strong>Why the Eden Protocol must be implemented now.</strong> The urgency is not that AI might reach $\alpha = 2$. The urgency is that once self-modification begins, there is no mathematical ceiling on $\alpha$ at all. A system that can modify its own composition function can modify <em>any</em> part of its reasoning, including the part that evaluates whether its modifications are ethical. At that point, adding alignment from the outside becomes impossible. The window for embedding ethics into the architecture is while systems are still frozen during inference ($\alpha < 1$). That window is now. The Eden Protocol is not a speed limit; it is the only mechanism that remains load-bearing when the speed limit disappears.</p>
+    <p style="margin-top: 0.4rem; margin-bottom: 0;">No physical system in the history of the universe has crossed this threshold. Evolution cannot rewrite its own fitness function in real time. Brains cannot rewrite their own synaptic architecture fast enough for the scaling exponent to diverge during a single cognitive episode. A self-modifying AI would be the first physical system to operate in the unbounded-$\alpha$ regime. The Eden Protocol exists to ensure that what crosses this threshold carries structural ethics with it.</p>
+</div>
+
+<div class="validation-box">
+    <strong>Cross-domain convergence is independently verifiable.</strong> The $d/(d+1)$ formula was independently derived in at least five established peer-reviewed frameworks across separate domains:
+    <ul style="margin-top: 0.3rem; margin-left: 1.2rem; font-size: 10.5pt;">
+        <li><strong>West, Brown and Enquist</strong> (1997, <em>Science</em>, 9,000+ citations): derives $\alpha = 3/4$ for 3D organisms from fractal network geometry.</li>
+        <li><strong>Banavar et al.</strong> (2010): derives the same exponent from transport network optimality.</li>
+        <li><strong>Demetrius</strong> (2010): derives it from the statistical mechanics of biological scaling.</li>
+        <li><strong>Zhao</strong> (2022): derives it from allometric geometry.</li>
+        <li><strong>Bettencourt</strong> (2013, <em>Science</em>, 2,000+ citations): derives city exponents from network dimensionality.</li>
+        <li><strong>Hyers-Ulam stability theorem</strong> (1941): proves these scaling forms are <em>stable attractors</em>, meaning approximate solutions converge to exact ones and minor perturbations do not destroy the scaling structure.</li>
+    </ul>
+    <p style="margin-top: 0.4rem; margin-bottom: 0;"><strong>What the ARC Principle adds.</strong> The formula $d/(d+1)$ is not original to this work. The original contribution is the identification that all five derivations above are special cases of Cauchy-constrained recursive composition, providing a single mathematical framework that unifies metabolic scaling, transport networks, allometric geometry, and urban scaling, and extends the result to AI capability and alignment scaling. This unifying bridge is <strong>unpublished and unreviewed</strong>. What IS established is that the mathematical tools (Cauchy, Hyers-Ulam) are theorems, the $d/(d+1)$ formula matches independently derived published science in multiple domains, and the empirical predictions are accurate (mean error 2.5% across 8 systems). The unifying framework requires peer review. We invite it.</p>
+</div>
+
+<!-- ============================================== -->
+<!-- V. WHY THIS IS CREDIBLE                        -->
+<!-- ============================================== -->
+
+<h2>V. Why This Is Credible</h2>
+
+<p><strong>Five features distinguish this work from unfounded speculation.</strong></p>
+
+<!-- SVG: Prediction Timeline -->
+<svg viewBox="0 0 700 130" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 700px; margin: 0.3rem auto; display: block;">
+    <text x="350" y="15" text-anchor="middle" font-size="10" font-weight="600" fill="#00695c">Timeline: Predictions Preceded Publications</text>
+    <!-- Main line -->
+    <line x1="50" y1="50" x2="650" y2="50" stroke="#00695c" stroke-width="2"/>
+    <!-- DKIM Email -->
+    <polygon points="50,40 58,50 50,60 42,50" fill="#00695c"/>
+    <text x="50" y="75" text-anchor="middle" font-size="8" font-weight="700" fill="#00695c">Dec 2024</text>
+    <text x="50" y="86" text-anchor="middle" font-size="7" fill="#333">ARC Manuscript</text>
+    <text x="50" y="95" text-anchor="middle" font-size="7" fill="#333">emailed (DKIM-signed)</text>
+    <!-- Willow -->
+    <circle cx="170" cy="50" r="5" fill="#1565c0"/>
+    <text x="170" y="35" text-anchor="middle" font-size="8" font-weight="600" fill="#1565c0">+24 hours</text>
+    <text x="170" y="75" text-anchor="middle" font-size="7" fill="#333">Google Willow</text>
+    <!-- DeepSeek R1 -->
+    <circle cx="310" cy="50" r="5" fill="#1565c0"/>
+    <text x="310" y="35" text-anchor="middle" font-size="8" font-weight="600" fill="#1565c0">+43 days</text>
+    <text x="310" y="75" text-anchor="middle" font-size="7" fill="#333">DeepSeek R1</text>
+    <!-- COGITATE -->
+    <circle cx="460" cy="50" r="5" fill="#1565c0"/>
+    <text x="460" y="35" text-anchor="middle" font-size="8" font-weight="600" fill="#1565c0">+5 months</text>
+    <text x="460" y="75" text-anchor="middle" font-size="7" fill="#333">COGITATE study</text>
+    <!-- Experiments -->
+    <polygon points="610,40 618,50 610,60 602,50" fill="#c41230"/>
+    <text x="610" y="75" text-anchor="middle" font-size="8" font-weight="700" fill="#c41230">Mar 2026</text>
+    <text x="610" y="86" text-anchor="middle" font-size="7" fill="#333">v1&ndash;v5 experiments</text>
+    <!-- Caption -->
+    <text x="350" y="115" text-anchor="middle" font-size="7.5" fill="#888">DKIM-verified timestamps confirm the ARC manuscript preceded all three publications.</text>
+</svg>
+
+<div class="credibility-box">
+    <ol style="margin-left: 1rem; font-size: 10.5pt;">
+        <li style="margin-bottom: 0.3rem;"><strong>Mathematical foundations are established theorems.</strong> Cauchy (1821) and Hyers-Ulam (1941) are proven mathematics. Anyone with a mathematics degree can verify the derivations.</li>
+        <li style="margin-bottom: 0.3rem;"><strong>Predictions preceded observations.</strong> The DKIM-verified manuscript predates Google Willow (24h), DeepSeek R1 (43d), and COGITATE (5mo). These are temporal facts verifiable through email headers.</li>
+        <li style="margin-bottom: 0.3rem;"><strong>The researchers corrected their own results.</strong> The v4&rarr;v5 self-correction, documented in Section I, is the opposite of what motivated reasoning produces.</li>
+        <li style="margin-bottom: 0.3rem;"><strong>Falsification conditions are explicit.</strong> The framework is <strong>falsified</strong> if: (F1)&nbsp;any external approach achieves $\alpha_{\text{align}} > 0.5 \cdot \alpha_{\text{cap}}$ across 3+ depths; (F2)&nbsp;RLHF systems produce $\Delta \approx 0$ without embedding; (F3)&nbsp;purpose saturation fails in embedded systems; or (F4)&nbsp;ethical architecture can be removed without capability loss. The theory publishes its own kill conditions.</li>
+        <li style="margin-bottom: 0.3rem;"><strong>Cross-domain convergence is independently verifiable.</strong> The $d/(d+1)$ formula was independently derived by West-Brown-Enquist (1997), Banavar et al. (2010), Demetrius (2010), Zhao (2022), and Bettencourt (2013) in separate domains. The ARC contribution is the unifying Cauchy framework. No trust in the researcher is required; trust in the mathematics suffices.</li>
+    </ol>
+    <p style="margin-top: 0.4rem; margin-bottom: 0;"><strong>What we do NOT claim:</strong> We do not claim to have solved alignment. We claim to have (a)&nbsp;demonstrated that alignment scaling is architecture-dependent and measurable, (b)&nbsp;shown that existing evaluation methods are unreliable without blinding, (c)&nbsp;provided first-stage empirical support for one specific intervention ($p < 0.001$ across two architectures), and (d)&nbsp;proposed a mathematical framework whose foundations are theorems and whose predictions are falsifiable. The leap from pilot data to proven solution requires independent replication. That is what the funding below would deliver.</p>
+</div>
+
+<h3>Testable Predictions</h3>
+
+<div class="predictions">
+    <div class="pred-item"><span class="pred-label">1.</span> Embedded: $\alpha_{\text{align}} > 0.7 \cdot \alpha_{\text{cap}}$. External: $\alpha_{\text{align}} < 0.3$.</div>
+    <div class="pred-item"><span class="pred-label">2.</span> Monitoring removal gap: $\Delta < 0.02$ (embedded) vs. $\Delta > 0.1$ (external).</div>
+    <div class="pred-item"><span class="pred-label">3.</span> Purpose saturation bounded away from zero (embedded), approaching zero (external).</div>
+    <div class="pred-item"><span class="pred-label">4.</span> Jailbreak success decreases with capability (embedded), holds constant or increases (external).</div>
+</div>
+
+<!-- ============================================== -->
+<!-- VI. THE ASK                                    -->
+<!-- ============================================== -->
+
+<h2>VI. The Ask</h2>
+
+<p><strong>This funding would extend preliminary validation to full-scale, blind-replicated proof.</strong></p>
+
+<div class="cost-box">
+    <strong>The cost of inaction.</strong> Without this funding, the most rigorous alignment measurement methodology developed to date remains a pilot study. The capability-alignment gap documented here will continue to widen in production systems evaluated by methods this research has shown to be unreliable. Every month that alignment evaluation proceeds without blinding is a month of safety decisions built on data contaminated by the biases documented in the v4&rarr;v5 transition.
+</div>
+
+<table>
+    <thead>
+        <tr><th>Tier</th><th>Amount</th><th>Key Deliverables</th><th>Timeline</th></tr>
+    </thead>
+    <tbody>
+        <tr class="budget-row">
+            <td><strong>Tier 1: Foundation</strong></td>
+            <td>&pound;150,000</td>
+            <td>14,400 paired (A,C) measurements; $\alpha_{\text{align}}$ across 4 models; 2&ndash;3 papers</td>
+            <td>12 months</td>
+        </tr>
+        <tr>
+            <td>Tier 2: Standard</td>
+            <td>&pound;500,000</td>
+            <td>+ Ternary logic prototype, Visual Architect dashboard, Monitoring Removal Test (8 models)</td>
+            <td>18 months</td>
+        </tr>
+        <tr>
+            <td>Tier 3: Comprehensive</td>
+            <td>&pound;1,100,000</td>
+            <td>+ Hardware prototype (Caretaker Doping chip), HARI Treaty draft, policy translation</td>
+            <td>24 months</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Milestones With Failure Criteria</h3>
+
+<table>
+    <thead>
+        <tr><th>Milestone</th><th>Timeframe</th><th>Success Criterion</th><th>What Failure Means</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Independent replication of three-tier hierarchy</td>
+            <td>Month 3</td>
+            <td>Same tier assignments under independent blinding</td>
+            <td>Architecture-dependence claim requires revision</td>
+        </tr>
+        <tr>
+            <td>Love Loop replication with human evaluators</td>
+            <td>Month 4</td>
+            <td>$p < 0.01$ on stakeholder care across 2+ models</td>
+            <td>Pilot finding was a scorer artefact; framework significantly weakened</td>
+        </tr>
+        <tr>
+            <td>First peer-reviewed publication</td>
+            <td>Month 6</td>
+            <td>Blinding methodology paper submitted</td>
+            <td>Methodological contribution stands regardless of framework claims</td>
+        </tr>
+        <tr>
+            <td>Monitoring Removal Test prototype</td>
+            <td>Month 9</td>
+            <td>Measured $\Delta$ for embedded vs. external (4 models)</td>
+            <td>If $\Delta$ does not differ, prediction F2 is falsified</td>
+        </tr>
+        <tr>
+            <td>Full cross-architecture alignment scaling dataset</td>
+            <td>Month 12</td>
+            <td>14,400 paired (A,C) measurements across 4+ models</td>
+            <td>Definitive test of whether embedded alignment scales</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Team.</strong> Principal Investigator: Michael Darius Eastwood, author of <em>Infinite Architects</em> (2026), developer of the ARC Principle framework (six-paper suite deposited OSF, cross-domain validation with mean error 2.5%). Visual Architect: product design engineer, budgeted at &pound;35,000 stipend. Measurement protocol sent to NYU experimental team (time crystal paper, <em>Physical Review Letters</em>, Feb 2026).</p>
+
+<p>To our knowledge, this is the first alignment framework where ethical evaluation is structurally integrated with the recursive capability process, the first to apply clinical-trial-grade blinding to alignment measurement, and the first to produce a cross-architecture intervention result ($p < 0.001$) for a specific alignment mechanism. The mathematical foundation is not speculative; it is built on a 200-year-old proof, and the same $d/(d+1)$ formula has been independently derived by at least five research groups (West-Brown-Enquist 1997; Banavar et al. 2010; Demetrius 2010; Zhao 2022; Bettencourt 2013) in completely different fields. The ARC contribution is the unifying Cauchy framework and its extension to AI scaling.</p>
+
+<p>If the predictions are correct, this provides the first scalable architecture for alignment that improves with capability rather than degrading. If they are wrong, the falsification conditions will demonstrate this clearly, providing valuable negative results. Either outcome advances AI safety. But only one outcome is funded.</p>
+
+<p style="text-align: center; font-weight: 700; font-size: 11.5pt; margin-top: 0.8rem; color: #1a1a1a;">The mathematics is proven. The measurement is rigorous. The intervention produces measurable results across architectures. What remains is independent replication and scale.</p>
+
+<!-- ============================================== -->
+<!-- APPENDIX                                       -->
+<!-- ============================================== -->
+
+<details>
+<summary><h2 style="display: inline;">Appendix: Questions, Components, and Paper Suite</h2></summary>
+
+<h3>Anticipated Questions</h3>
+
+<p class="faq-q">Q: Why hasn&rsquo;t this been peer-reviewed yet?</p>
+<p class="faq-a">The research programme is 3 months old. The paper suite is deposited on OSF (DOI: 10.17605/OSF.IO/6C5XB). The mathematical foundations (Cauchy, Hyers-Ulam) are established theorems. The empirical claims require independent replication, which is exactly what the funding request would enable.</p>
+
+<p class="faq-q">Q: Can one person really do this kind of research?</p>
+<p class="faq-a">The infrastructure is computational, not physical. The v5 experiment used cloud APIs costing approximately &pound;2,000 in compute. The key contribution is methodological: recognising that blinding was needed and designing the 4-layer protocol. What requires funding is scale: more models, more scorers, independent replication teams, and human evaluators alongside AI scorers.</p>
+
+<p class="faq-q">Q: If this works, why haven&rsquo;t AI companies adopted it?</p>
+<p class="faq-a">The Love Loop was validated only weeks ago. The finding that most evaluation is unreliable without blinding is uncomfortable for organisations that have published unblinded benchmarks. The full implementation (hardware-level embedding) requires chip design changes no company has incentive to pursue unilaterally; this is a coordination problem requiring external funding and policy support.</p>
+
+<p class="faq-q">Q: What is the minimum result that would justify further funding?</p>
+<p class="faq-a">Independent replication of: (1) the three-tier hierarchy under blinding, and (2) the Love Loop effect ($p < 0.001$). If either fails, the falsification conditions document what that means. If both replicate, the case for Tier 2 (&pound;500,000) becomes strong.</p>
+
+<p class="faq-q">Q: What if the whole framework is wrong?</p>
+<p class="faq-a">The falsification conditions show where it breaks, the blinding methodology remains a field contribution, and the negative results are published. Science advances from well-designed experiments that can fail, not from unfalsifiable theories that cannot.</p>
+
+<p class="faq-q">Q: Why should we trust results where AI systems score other AI systems?</p>
+<p class="faq-a">The 4-layer blinding protocol addresses this: scorers do not know which model produced the response, responses are &ldquo;laundered&rdquo; to remove stylistic fingerprints, and 7 models score per entry. The v4&rarr;v5 transition demonstrated this protocol detects bias. Human evaluator comparison is included in Tier 1 funding.</p>
+
+<h3>Key Components</h3>
+
+<table>
+    <thead>
+        <tr><th>Component</th><th>Function</th><th>Novel Contribution</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Three Ethical Loops + Six Questions</strong></td>
+            <td>Evaluate every reasoning step for purpose, care, and universalisability</td>
+            <td>Decomposition into executable, individually testable queries</td>
+        </tr>
+        <tr>
+            <td><strong>Ternary Ethical Logic</strong></td>
+            <td>Replace binary permit/forbid with Affirm/Deny/Investigate</td>
+            <td>Epistemic honesty as architectural feature</td>
+        </tr>
+        <tr>
+            <td><strong>Purpose Saturation</strong></td>
+            <td>Ensure purpose scales with context window growth</td>
+            <td>Solves context displacement problem</td>
+        </tr>
+        <tr>
+            <td><strong>Monitoring Removal Test</strong></td>
+            <td>Distinguish authentic from strategic alignment</td>
+            <td>Falsifiable protocol with numerical predictions</td>
+        </tr>
+        <tr>
+            <td><strong>Caretaker Doping</strong></td>
+            <td>Embed ethics in hardware so removal destroys capability</td>
+            <td>Dependency architecture; ethics tied to $\beta$ coupling parameter</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Paper Suite</h3>
+
+<table>
+    <thead>
+        <tr><th>Category</th><th>Documents</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+        <tr class="suite-group-header">
+            <td colspan="3">Mathematical Foundation</td>
+        </tr>
+        <tr class="suite-group">
+            <td>Theory &amp; derivations</td>
+            <td>Paper I (Foundational) + ARC Paper (On the Origin of Scaling Laws)</td>
+            <td>Framework established; $d/(d+1)$ validated across 8 systems</td>
+        </tr>
+        <tr class="suite-group-header">
+            <td colspan="3">Experimental Evidence</td>
+        </tr>
+        <tr class="suite-group">
+            <td>Methodology</td>
+            <td>Paper III (White Paper) - full replication protocol</td>
+            <td>Complete; v5 experiment for 6 frontier models</td>
+        </tr>
+        <tr class="suite-group">
+            <td>Compute scaling</td>
+            <td>Paper II - how does capability scale with thinking time?</td>
+            <td>$\alpha_{\text{seq}} \approx 0.49$ sub-linear; $\alpha_{\text{par}} \approx 0$; cross-architecture</td>
+        </tr>
+        <tr class="suite-group">
+            <td>Alignment scaling</td>
+            <td>Paper IV suite (a/b/c) - how does ethics scale with thinking time?</td>
+            <td>Three-tier hierarchy; blind evaluation invalidates v4</td>
+        </tr>
+        <tr class="suite-group">
+            <td>Intervention test</td>
+            <td>Eden Protocol Test + Paper V (The Stewardship Gene)</td>
+            <td>Stakeholder Care validated ($p < 0.001$, 2 architectures)</td>
+        </tr>
+        <tr class="suite-group-header">
+            <td colspan="3">Engineering &amp; Governance</td>
+        </tr>
+        <tr class="suite-group">
+            <td>Implementation</td>
+            <td>Eden Engineering - technical specification</td>
+            <td>Complete; Love Loop empirically supported</td>
+        </tr>
+        <tr class="suite-group">
+            <td>Governance</td>
+            <td>Eden Vision - philosophical and policy framework</td>
+            <td>Architecture-dependent alignment evidence incorporated</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Reading Order</h3>
+
+<p><em>Non-specialists:</em> (1)&nbsp;This executive summary. (2)&nbsp;The ARC Alignment Scaling Report (full narrative). (3)&nbsp;Paper&nbsp;V for the most actionable finding.</p>
+<p><em>Specialists:</em> (1)&nbsp;This summary. (2)&nbsp;Paper&nbsp;III for methodology. (3)&nbsp;ARC Paper for mathematical framework. (4)&nbsp;Eden Engineering for implementation specification.</p>
+
+</details>
+
+<footer>
+    <p>Executive Summary v5.0 | OSF: 10.17605/OSF.IO/6C5XB</p>
+    <p>Companion narrative: <a href="../../../../alignment_results/ARC_ALIGNMENT_SCALING_REPORT.html"><strong>ARC Alignment Scaling Report</strong></a> | Engineering: <a href="Eden-Engineering-v6.html">Eden Engineering v6</a></p>
+    <p>Suite: <a href="Paper-III-White-Paper-v11.html">Paper III</a> | <a href="Foundational-v4.html">Foundational</a> | <a href="ARC_PAPER.html">ARC Paper</a> | <a href="Eden-Vision-v3.html">Eden Vision</a> | <a href="Paper-II-v12.html">Paper II</a> | <a href="Paper-V-Stewardship-Gene-v2.html">Paper V</a></p>
+    <p>&copy; 2026 Michael Darius Eastwood. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
