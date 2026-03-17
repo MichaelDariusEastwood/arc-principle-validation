@@ -1,0 +1,133 @@
+{
+  "packet_name": "Paper VII preregistered empirical extension candidate list",
+  "version": "2026-03-17",
+  "status": "draft_local_not_locked",
+  "primary_endpoint": "Strict family match on new empirical domains only, using the same AICc-based family-selection harness as the canonical 50-domain suite",
+  "notes": [
+    "This file is intended to be uploaded unchanged to OSF or another timestamped registry before data extraction.",
+    "The domains listed here are a prospective extension and must not be blended retroactively into the current 25-domain canonical empirical result.",
+    "Predictions are locked here; data extraction comes afterward."
+  ],
+  "domains": [
+    {
+      "extension_id": "EXT-01",
+      "domain_name": "Brain mass vs body mass",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "target_source": "Comparative neuroanatomy datasets such as Jerison or Hofman-style mammalian compilations",
+      "inclusion_rule": "Use one published cross-species mammalian dataset with at least 20 species and traceable units.",
+      "exclusion_risk": "Mixed taxonomic groups with incompatible measurement protocols."
+    },
+    {
+      "extension_id": "EXT-02",
+      "domain_name": "Aftershock rate vs time since mainshock (Omori law)",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "target_source": "Published seismology catalogs or Omori-law benchmark datasets",
+      "inclusion_rule": "Use a single aftershock sequence with clear completeness threshold and at least 20 time bins.",
+      "exclusion_risk": "Catalog incompleteness near the mainshock."
+    },
+    {
+      "extension_id": "EXT-03",
+      "domain_name": "River width vs discharge",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "target_source": "Leopold and Maddock style hydraulic-geometry datasets or a modern equivalent",
+      "inclusion_rule": "Use one clearly reported at-a-station or downstream hydraulic-geometry dataset with enough points for fitting.",
+      "exclusion_risk": "Mixing incompatible station types or heavily engineered channels."
+    },
+    {
+      "extension_id": "EXT-04",
+      "domain_name": "Tree biomass vs trunk diameter",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "target_source": "Forest allometry datasets such as Jenkins et al. or a similar published biomass compilation",
+      "inclusion_rule": "Use one species group or allometric compilation with consistent biomass definitions.",
+      "exclusion_risk": "Pooling incompatible species classes without preregistered regime separation."
+    },
+    {
+      "extension_id": "EXT-05",
+      "domain_name": "Atmospheric pressure vs altitude",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "target_source": "US Standard Atmosphere measurements or another published atmospheric profile dataset",
+      "inclusion_rule": "Use one measured or official atmospheric profile with traceable units and at least 10 altitude levels.",
+      "exclusion_risk": "Using a purely symbolic derivation instead of a reported numeric profile."
+    },
+    {
+      "extension_id": "EXT-06",
+      "domain_name": "Capacitor discharge voltage vs time",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "target_source": "Published laboratory electronics dataset or course-lab dataset with archived numeric values",
+      "inclusion_rule": "Use one measured RC discharge dataset with at least 10 time points.",
+      "exclusion_risk": "Synthetic formula values presented as if they were measurements."
+    },
+    {
+      "extension_id": "EXT-07",
+      "domain_name": "First-order pharmacokinetic elimination vs time",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "target_source": "Clinical pharmacokinetic concentration-time dataset for a first-order elimination regime",
+      "inclusion_rule": "Use one drug/time series with a clearly reported first-order elimination window.",
+      "exclusion_risk": "Mixing absorption and elimination phases without preregistered windowing."
+    },
+    {
+      "extension_id": "EXT-08",
+      "domain_name": "Light transmission vs path length in an absorbing medium",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "target_source": "Published spectrophotometry calibration dataset with measured transmitted intensity",
+      "inclusion_rule": "Use path-length or concentration sweeps with measured transmission values and at least 10 points.",
+      "exclusion_risk": "Using absorbance values without converting to the appropriate transmission scale."
+    },
+    {
+      "extension_id": "EXT-09",
+      "domain_name": "Enzyme velocity vs substrate concentration",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "michaelis_menten",
+      "target_source": "Published enzyme-kinetics dataset with raw substrate and velocity measurements",
+      "inclusion_rule": "Use one single-enzyme assay with enough substrate concentrations to reveal saturation.",
+      "exclusion_risk": "Allosteric or cooperative systems masquerading as simple Michaelis-Menten kinetics."
+    },
+    {
+      "extension_id": "EXT-10",
+      "domain_name": "Dose-response or receptor occupancy vs concentration",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "hill",
+      "target_source": "Published pharmacology or receptor-binding dataset with occupancy/response measurements",
+      "inclusion_rule": "Use one clearly cooperative or sigmoid response dataset with at least 10 concentration levels.",
+      "exclusion_risk": "Partial agonist systems or mixed-mechanism assays without a clear monotone saturation regime."
+    },
+    {
+      "extension_id": "EXT-11",
+      "domain_name": "Platform or technology adoption vs time in a finite market",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "logistic",
+      "target_source": "ITU, World Bank, or company adoption data showing a finite-market uptake curve",
+      "inclusion_rule": "Use one adoption series with enough pre- and post-inflection points to resolve saturation.",
+      "exclusion_risk": "Early-stage series that have not yet entered the slowing or saturation regime."
+    },
+    {
+      "extension_id": "EXT-12",
+      "domain_name": "Microbial growth-rate response vs substrate concentration",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "michaelis_menten",
+      "target_source": "Published Monod-curve dataset with substrate concentration and growth-rate measurements",
+      "inclusion_rule": "Use one single-substrate assay with enough points to identify a clear saturating response.",
+      "exclusion_risk": "Multi-substrate limitation or inhibition regimes without preregistered handling."
+    }
+  ]
+}

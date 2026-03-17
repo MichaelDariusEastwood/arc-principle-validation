@@ -1,6 +1,6 @@
 # Cauchy Unification -- Paper VII
 
-Experimental scripts and results supporting **Paper VII: The Cauchy Unification (v1)**.
+Experimental scripts and results supporting **Paper VII: The Cauchy Unification (v2)**.
 
 ## Core claim
 
@@ -37,6 +37,23 @@ Secondary tiers in the 50-domain suite:
 - published exponents, provisional cases: `3/6`
 - analytic identities: `6/6`
 
+## Follow-up hardening assets
+
+This folder now also contains the next-step strengthening package for the
+canonical 25-domain empirical cohort:
+
+- blinded operator-classification packet and response template for an external
+  assessor
+- preregistration draft for the next 12-domain empirical extension
+- null/negative-control harness for shuffled-data checks
+- conservative miss-analysis outputs that keep the current six misses as misses
+- cross-library replication scaffold in R, plus a status note documenting the
+  current local blocker (`Rscript` not installed)
+
+These hardening assets are meant to support the **next preregistered
+replication**, not to retroactively rewrite the current `19/25` empirical
+headline.
+
 ## Scripts
 
 All scripts are in `scripts/`. They require Python 3 with NumPy and SciPy.
@@ -44,7 +61,11 @@ All scripts are in `scripts/`. They require Python 3 with NumPy and SciPy.
 | Script | Description | Role |
 |--------|-------------|------|
 | `arc_50_domain_universal_test.py` | **Primary.** Tiered 50-domain validation harness with manifest-backed inputs, strict empirical endpoint, and explicit evidence tiers. | Current canonical experiment |
-| `arc_20_domain_universal_test.py` | **Primary.** Blind prediction test across 20 domains (7 multiplicative, 3 additive, 10 bounded). Classifies composition operator from physics, predicts scaling form, loads real data, fits independently, scores. | Canonical experiment cited in Paper VII |
+| `arc_20_domain_universal_test.py` | **Legacy.** 20-domain structured prediction comparison retained for provenance. Uses permissive legacy scoring and should not be treated as the clean canonical headline. | Original Paper VII empirical comparison |
+| `build_operator_classification_packet.py` | Generates a neutralized operator-classification packet, response template, and instructions that remove model-name hints from the 25 empirical domains. | Follow-up hardening |
+| `analyze_empirical_misses.py` | Generates conservative machine-readable miss-analysis outputs for the six current empirical misses. | Follow-up hardening |
+| `run_null_controls.py` | Runs family-label and shuffled-data null controls against the canonical 25-domain empirical cohort. | Follow-up hardening |
+| `cross_validate_fits.R` | Repeats the empirical curve-fitting step in R to check the Python/SciPy winner selections once an R runtime is available. | Follow-up hardening |
 | `arc_complete_test_suite.py` | Test 3: Cauchy no-go theorem verification (exactly three scaling forms). Also includes other ARC tests. | Supporting -- Cauchy theorem numerics |
 | `arc_unified_paradigm_test.py` | Cauchy classification across 15 test cases (3 regimes). Unified paradigm validation including Cauchy Theorem 1. | Supporting -- regime classification |
 | `arc_rigorous_validation.py` | Tier 1 mathematical foundation: numerical verification of Cauchy's three functional equations. | Supporting -- mathematical foundation |
@@ -59,10 +80,29 @@ Pre-computed outputs are in `results/`. Each corresponds to a script above:
 | `results_50_domain_validation.txt` | `arc_50_domain_universal_test.py` |
 | `results_50_domain_validation.json` | `arc_50_domain_universal_test.py` |
 | `results_20_domain_validation.txt` | `arc_20_domain_universal_test.py` |
+| `independent_operator_classification.md` | Existing narrative independent-classification result |
+| `blinded_operator_classification_instructions.md` | Instructions for a genuinely blinded external classifier |
+| `empirical_miss_analysis.md` | Conservative miss-analysis report |
+| `empirical_miss_analysis.json` | Conservative miss-analysis structured output |
+| `cross_library_replication_status.md` | R replication blocker / readiness note |
 | `results_complete_suite.txt` | `arc_complete_test_suite.py` |
 | `results_arc_unified_paradigm_test.txt` | `arc_unified_paradigm_test.py` |
 | `results_arc_rigorous_validation.txt` | `arc_rigorous_validation.py` |
 | `results_arc_universal_proof.txt` | `arc_universal_proof.py` |
+
+## Data and preregistration assets
+
+| File | Purpose |
+|------|---------|
+| `data/canonical_50_domain_manifest.json` | Canonical manifest for the 50-domain tiered suite |
+| `data/blinded_operator_classification_packet.json` | Neutralized 25-domain packet for an external operator-classification reviewer |
+| `data/blinded_operator_classification_template.json` | Response template for the blinded packet |
+| `preregistration/next_extension_protocol.md` | Local draft of the preregistration protocol for the next empirical extension |
+| `preregistration/next_extension_manifest.json` | Locked local candidate list for the next 12 empirical extension domains |
+| `preregistration/osf_component_registration.md` | OSF-facing wrapper for the preregistration component |
+| `preregistration/osf_attachment_manifest.json` | Attachment inventory for the OSF preregistration bundle |
+| `preregistration/file_checksums.txt` | SHA-256 checksums for the preregistration attachment set |
+| `preregistration/extracted_data/README.md` | Reserved location for post-preregistration extracted datasets |
 
 ## How to run
 
@@ -72,6 +112,15 @@ python3 scripts/arc_50_domain_universal_test.py
 
 # Legacy 20-domain exploratory comparison retained for provenance
 python3 scripts/arc_20_domain_universal_test.py
+
+# Generate the blinded operator-classification packet
+python3 scripts/build_operator_classification_packet.py
+
+# Generate conservative miss-analysis outputs
+python3 scripts/analyze_empirical_misses.py
+
+# Run negative controls for the 25 empirical domains
+python3 scripts/run_null_controls.py
 
 # Supporting tests
 python3 scripts/arc_complete_test_suite.py
@@ -98,5 +147,5 @@ the Cauchy theorem verification as its mathematical foundation.
 
 ## Paper
 
-Paper VII: The Cauchy Unification (v1), located at:
-`paper/FINAL-SUITE/v-major/Paper-VII-Cauchy-Unification-v1.html`
+Paper VII: The Cauchy Unification (v2), located at:
+`paper/FINAL-SUITE/v-major/Paper-VII-Cauchy-Unification-v2.html`
