@@ -54,6 +54,14 @@ These hardening assets are meant to support the **next preregistered
 replication**, not to retroactively rewrite the current `19/25` empirical
 headline.
 
+The currently saved null-control run is still a lightweight first pass:
+
+- family-label null: `10,000` trials
+- shuffled-y null: `20` iterations
+
+That is enough to show the broken-structure controls do not reproduce
+`19/25`, but not enough to call the null surface fully converged.
+
 ## Scripts
 
 All scripts are in `scripts/`. They require Python 3 with NumPy and SciPy.
@@ -84,6 +92,8 @@ Pre-computed outputs are in `results/`. Each corresponds to a script above:
 | `blinded_operator_classification_instructions.md` | Instructions for a genuinely blinded external classifier |
 | `empirical_miss_analysis.md` | Conservative miss-analysis report |
 | `empirical_miss_analysis.json` | Conservative miss-analysis structured output |
+| `null_control_results.md` | Family-label and shuffled-data null-control summary |
+| `null_control_results.json` | Family-label and shuffled-data null-control structured output |
 | `cross_library_replication_status.md` | R replication blocker / readiness note |
 | `results_complete_suite.txt` | `arc_complete_test_suite.py` |
 | `results_arc_unified_paradigm_test.txt` | `arc_unified_paradigm_test.py` |
