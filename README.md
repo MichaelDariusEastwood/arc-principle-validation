@@ -8,11 +8,12 @@
 
 **Paper VII: The Cauchy Unification** tested whether Cauchy's four functional equations constrain the form of scaling laws across scientific domains. The composition operator was classified from known physics before fitting, then compared against independent model fits across 20 domains spanning biology, physics, economics, epidemiology, linguistics, computer science, and ecology.
 
-- **14/20 domains preferred** the predicted family under AIC-based model selection (p = 8.79 x 10⁻⁴)
-- **20/20 confirmed** under permissive R² tolerance (p = 2.87 x 10⁻¹⁰)
-- Exploratory structured comparison; **pre-registered replication with expanded domain coverage in preparation**
+- **19/25 empirical domains preferred** the predicted family under strict AICc model selection (p = 1.56 x 10⁻⁵)
+- **25/25 independent operator classification** agreement (physics-based, no data access)
+- **0/6 genuine framework failures** in miss analysis (4 fitting artifacts, 2 data quality)
+- Structured prediction comparison; **pre-registered 12-domain extension staged for OSF upload**
 
-[Read Paper VII](paper/FINAL-SUITE/v-major/Paper-VII-Cauchy-Unification-v1.html) | [Experiment code](experiments/cauchy-unification__Paper-VII/)
+[Read Paper VII v2](paper/FINAL-SUITE/v-major/Paper-VII-Cauchy-Unification-v2.html) | [Experiment code](experiments/cauchy-unification__Paper-VII/)
 
 ## Overview
 
@@ -39,7 +40,7 @@ All authoritative documents are in `paper/FINAL-SUITE/v-major/`:
 | 09 | **Paper IV.d: Blinding** | v1 | Unblinded scoring can reverse alignment results. Flagship methods paper. |
 | 10 | **Paper V: The Stewardship Gene** | v2 | Eden Protocol intervention pilot. |
 | 11 | **Paper VI: Honey Architecture** | v1 | Entangled loss functions for self-modifying AI safety. |
-| 12 | **Paper VII: The Cauchy Unification** | v1 | 20-domain blind prediction test. Headline empirical result. |
+| 12 | **Paper VII: The Cauchy Unification** | v2 | 50-domain tiered validation. 19/25 empirical strict (p = 1.56e-5). |
 | 13 | **Eden Engineering** | v6 | Protocol architecture specification. |
 | 14 | **Eden Vision** | v3 | Public coordination document. |
 | 15 | **Executive Summary** | v6 | Programme overview with all current results. |
