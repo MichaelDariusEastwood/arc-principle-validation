@@ -1,18 +1,18 @@
 # The ARC Principle
 
-**A mathematical framework for recursive intelligence scaling, tested across 20 scientific domains**
+**A mathematical framework for recursive intelligence scaling, evaluated through a tiered 50-domain validation suite**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Headline Result (March 2026)
 
-**Paper VII: The Cauchy Unification** tested whether Cauchy's four functional equations constrain the form of scaling laws across scientific domains. The composition operator was classified from known physics before fitting, then compared against independent model fits across 20 domains spanning biology, physics, economics, epidemiology, linguistics, computer science, and ecology.
+**Paper VII: The Cauchy Unification** now uses a manifest-backed 50-domain tiered validation suite. The strict primary endpoint is family matching across 25 empirical curve-fit domains after operator classification from known physics, with published-exponent and analytic cases reported separately.
 
 - **19/25 empirical domains preferred** the predicted family under strict AICc model selection (p = 1.56 x 10⁻⁵)
 - **25/25 independent operator classification** agreement (physics-based, no data access)
 - **6 misses retained conservatively** (miss analysis identifies fitting artifacts and data quality issues, but misses are kept as misses)
-- **10/12 pre-registered extension** confirmed (p = 5.44 x 10⁻⁴)
-- Structured prediction comparison; negative controls show 0% axiom-violating match, 44.5% scrambled (honest limitation)
+- The first **12-domain locked extension dry run** landed at 10/12 (p = 5.44 x 10⁻⁴), but it was executed before any OSF timestamp and is therefore pilot-only, not preregistered
+- Structured prediction comparison; negative controls show 0% axiom-violating match and 44.5% scrambled match (an honest limitation)
 
 [Read Paper VII v2](paper/FINAL-SUITE/v-major/Paper-VII-Cauchy-Unification-v2.html) | [Experiment code](experiments/cauchy-unification__Paper-VII/)
 
@@ -107,7 +107,7 @@ arc-principle-validation/
 ├── paper/FINAL-SUITE/v-major/          # AUTHORITATIVE DOCUMENT SUITE (16 papers)
 │
 ├── experiments/                        # ALL EXPERIMENT CODE AND RESULTS
-│   ├── cauchy-unification__Paper-VII/  # 20-domain blind prediction (HEADLINE)
+│   ├── cauchy-unification__Paper-VII/  # 50-domain tiered validation + hardening assets
 │   ├── alignment-scaling__Papers-IV/   # v1-v5 alignment benchmark + v6 runner
 │   ├── eden-intervention__Paper-V/     # Eden Protocol pilot tests
 │   ├── honey-architecture__Paper-VI/   # Simulations + live API battery
@@ -127,9 +127,9 @@ arc-principle-validation/
     └── arc_unified_paradigm_test.py
 ```
 
-## Blind Prediction Test
+## Legacy Blind Prediction Test
 
-A blind prediction test was conducted to validate α = 1/(1−β):
+A legacy blind-prediction test was conducted to validate α = 1/(1−β):
 
 | System | β measured | α predicted | α measured | Result |
 |--------|------------|-------------|------------|--------|
@@ -163,7 +163,7 @@ Thirteen explicit falsification criteria are specified across the ARC framework 
 | Mar 2026 | Papers IV.a-d: 6-model blind ARC-Align benchmark |
 | Mar 2026 | Paper V: Eden Protocol intervention pilot |
 | Mar 2026 | Paper VI: Honey Architecture simulations + live API |
-| 16 Mar 2026 | Paper VII: Cauchy Unification - 20-domain blind prediction (p = 2.87e-10) |
+| 16-17 Mar 2026 | Paper VII v2: 50-domain tiered validation (19/25 empirical strict, p = 1.56e-5) |
 
 The theoretical prediction preceded all experimental confirmations.
 

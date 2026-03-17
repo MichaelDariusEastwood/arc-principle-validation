@@ -26,66 +26,115 @@
     "chance_rate": 0.3333333333333333,
     "above_chance": true,
     "pass": false,
+    "family_stratified": {
+      "bounded_n": 4,
+      "bounded_match_rate": 0.925,
+      "non_bounded_n": 6,
+      "non_bounded_match_rate": 0.05833333333333333
+    },
+    "note": "Bounded domains often match after shuffling because shuffled positive data frequently produces concave shapes that the fitter classifies as bounded. The non-bounded match rate is the more informative diagnostic.",
     "per_domain_rates": [
       {
         "domain_id": 13,
         "name": "Epidemic SIR (2014 Ebola)",
         "predicted_family": "bounded",
-        "scrambled_match_rate": 1.0
+        "scrambled_match_rate": 1.0,
+        "scrambled_family_distribution": {
+          "bounded": 1.0
+        }
       },
       {
         "domain_id": 11,
         "name": "Bacterial Growth (E. coli Logistic)",
         "predicted_family": "bounded",
-        "scrambled_match_rate": 1.0
+        "scrambled_match_rate": 1.0,
+        "scrambled_family_distribution": {
+          "bounded": 1.0
+        }
       },
       {
         "domain_id": 14,
         "name": "Amdahl's Law (CPU Multi-Core Scaling)",
         "predicted_family": "bounded",
-        "scrambled_match_rate": 0.85
+        "scrambled_match_rate": 0.85,
+        "scrambled_family_distribution": {
+          "bounded": 0.85,
+          "exponential": 0.1,
+          "power_law": 0.05
+        }
       },
       {
         "domain_id": 15,
         "name": "Muscle Force-Velocity (Hill 1938)",
         "predicted_family": "bounded",
-        "scrambled_match_rate": 0.85
+        "scrambled_match_rate": 0.85,
+        "scrambled_family_distribution": {
+          "bounded": 0.85,
+          "exponential": 0.15
+        }
       },
       {
         "domain_id": 19,
         "name": "Neural Scaling Laws (LLM Loss vs Params)",
         "predicted_family": "power_law",
-        "scrambled_match_rate": 0.2
+        "scrambled_match_rate": 0.2,
+        "scrambled_family_distribution": {
+          "exponential": 0.5,
+          "bounded": 0.3,
+          "power_law": 0.2
+        }
       },
       {
         "domain_id": 18,
         "name": "Horton's Law (Stream Numbers)",
         "predicted_family": "exponential",
-        "scrambled_match_rate": 0.05
+        "scrambled_match_rate": 0.05,
+        "scrambled_family_distribution": {
+          "power_law": 0.1,
+          "bounded": 0.85,
+          "exponential": 0.05
+        }
       },
       {
         "domain_id": 4,
         "name": "Wright's Law (Solar PV Learning Curve)",
         "predicted_family": "power_law",
-        "scrambled_match_rate": 0.05
+        "scrambled_match_rate": 0.05,
+        "scrambled_family_distribution": {
+          "bounded": 0.8,
+          "exponential": 0.15,
+          "power_law": 0.05
+        }
       },
       {
         "domain_id": 23,
         "name": "Rent's Rule (VLSI Pin Count vs Gates)",
         "predicted_family": "power_law",
-        "scrambled_match_rate": 0.05
+        "scrambled_match_rate": 0.05,
+        "scrambled_family_distribution": {
+          "bounded": 0.85,
+          "exponential": 0.1,
+          "power_law": 0.05
+        }
       },
       {
         "domain_id": 24,
         "name": "Taylor's Power Law (Variance vs Mean)",
         "predicted_family": "power_law",
-        "scrambled_match_rate": 0.0
+        "scrambled_match_rate": 0.0,
+        "scrambled_family_distribution": {
+          "bounded": 1.0
+        }
       },
       {
         "domain_id": 22,
         "name": "Heart Rate vs Body Mass (Allometry)",
         "predicted_family": "power_law",
-        "scrambled_match_rate": 0.0
+        "scrambled_match_rate": 0.0,
+        "scrambled_family_distribution": {
+          "bounded": 0.8,
+          "exponential": 0.2
+        }
       }
     ]
   },

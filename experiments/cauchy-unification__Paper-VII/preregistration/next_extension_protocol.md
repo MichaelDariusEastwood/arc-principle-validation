@@ -1,8 +1,14 @@
 # Preregistered Extension Packet for Paper VII
 
-Status: `draft_local_not_locked`
+Status: `archived_local_packet_exercised_before_timestamp`
 
-This packet is the next-step strengthening protocol for the Cauchy-unification empirical programme. It is ready to upload unchanged to OSF or a comparable timestamped registry before data extraction.
+This packet was originally drafted as the next-step strengthening protocol for the Cauchy-unification empirical programme. However, local data extraction and a dry-run execution were performed on 17 March 2026 before any OSF timestamp. It can no longer serve as a clean prospective preregistration and should be treated as an archived locked pilot extension instead.
+
+## Integrity note
+
+- Do not upload this packet unchanged as a preregistration.
+- Use it only as an audit trail for the first locked 12-domain dry run.
+- Create a fresh packet with new domains before any future OSF-timestamped extension.
 
 ## Purpose
 
@@ -64,7 +70,7 @@ The same saturation guardrail must remain active:
 
 - minimum publishable signal: new extension empirical cohort beats chance at `p < 0.01`
 - strong reinforcement: new extension empirical cohort beats chance at `p < 0.001`
-- decisive reinforcement: preregistered extension plus independent operator agreement plus cross-library replication all succeed
+- decisive reinforcement: a fresh preregistered extension plus independent operator agreement plus cross-library replication all succeed
 
 ## Interpretation guardrails
 
@@ -77,4 +83,3 @@ The same saturation guardrail must remain active:
 The locked candidate list for the next extension is in:
 
 - `preregistration/next_extension_manifest.json`
-

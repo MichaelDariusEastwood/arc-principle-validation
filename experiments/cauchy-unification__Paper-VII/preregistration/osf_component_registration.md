@@ -2,11 +2,11 @@
 
 Title: `Preregistered empirical extension for Paper VII: next-domain structured comparison under the ARC/Cauchy scaling framework`
 
-Status: `draft_local_ready_for_upload`
+Status: `superseded_local_packet_not_for_upload`
 
 ## Short description
 
-This OSF component is the preregistration wrapper for the next empirical extension of the Paper VII Cauchy-unification programme. It does **not** preregister the current 50-domain run retroactively. Instead, it locks a fresh extension domain set, operator classifications, predicted families, fitter set, inclusion/exclusion rules, and the primary endpoint **before** new data extraction begins.
+This file was originally drafted as the OSF preregistration wrapper for the next empirical extension of the Paper VII Cauchy-unification programme. It does **not** preregister the current 50-domain run retroactively. It also can no longer serve as a clean wrapper for the first 12-domain extension packet, because local data extraction and execution already occurred before any OSF timestamp.
 
 ## Contribution claim
 
@@ -41,16 +41,14 @@ Supporting attachments:
 
 ## Data location once collection begins
 
-Extracted numeric datasets for the preregistered extension should be placed in:
+Extracted numeric datasets for the first exercised extension packet were placed in:
 
 - `experiments/cauchy-unification__Paper-VII/preregistration/extracted_data/`
 
-Do not modify the preregistration packet after OSF timestamping. New data should be added only under `extracted_data/` and referenced from a separate execution log.
+Because this packet has already been exercised locally before timestamping, do not upload it unchanged as a preregistration. If you want an OSF preregistration, create a fresh packet with new domains and new checksums before any new extraction or execution.
 
 ## Upload instructions
 
-1. Upload this wrapper and the scientific packet files unchanged.
-2. Use the title above or an equivalent title with the same scope.
-3. Mark the component as a preregistered extension of the Paper VII empirical programme.
-4. Do not paste older parent-project OSF update text into this component.
-5. Timestamp the packet before collecting or transcribing any new extension-domain data.
+1. Do not upload this wrapper unchanged as a preregistration.
+2. If you archive this packet on OSF, label it as a superseded local draft / exercised pilot extension.
+3. For a real preregistration, mint a new packet with fresh domains before collecting or transcribing any new extension-domain data.

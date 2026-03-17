@@ -19,6 +19,11 @@
   Max matches in any iteration: 6/10
   PASS: NO — ABOVE CHANCE — investigate
 
+  Family-stratified breakdown:
+    Bounded domains (n=4): match rate = 0.925
+    Non-bounded domains (n=6): match rate = 0.058
+    NOTE: Bounded domains often match after shuffling because shuffled positive data frequently produces concave shapes that the fitter classifies as bounded. The non-bounded match rate is the more informative diagnostic.
+
   Per-domain scrambled match rates (highest first):
     Domain 13 Epidemic SIR (2014 Ebola)                rate=1.000  predicted=bounded
     Domain 11 Bacterial Growth (E. coli Logistic)      rate=1.000  predicted=bounded
@@ -107,11 +112,13 @@
 
   Real data match rate:            19/25 = 76.0%
   Scrambled data match rate:        44.5%
+    (non-bounded only:              5.8%)
   Random monotone match rate:       30.0%
   Axiom-violating match rate:       0.0%
   Chance baseline:                  33.3%
 
   Discrimination ratio (real / scrambled): 1.7x
+  Discrimination ratio (real / scrambled non-bounded): 13.0x
 
   VERDICT: SOME NEGATIVE CONTROLS FAILED — investigate.
     - Scrambled data matched above chance.

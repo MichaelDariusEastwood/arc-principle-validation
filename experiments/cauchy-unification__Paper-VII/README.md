@@ -44,15 +44,16 @@ canonical 25-domain empirical cohort:
 
 - blinded operator-classification packet and response template for an external
   assessor
-- preregistration draft for the next 12-domain empirical extension
+- archived 12-domain locked extension packet plus its local dry-run execution
 - null/negative-control harness for shuffled-data checks
 - conservative miss-analysis outputs that keep the current six misses as misses
 - cross-library replication scaffold in R, plus a status note documenting the
   current local blocker (`Rscript` not installed)
 
-These hardening assets are meant to support the **next preregistered
-replication**, not to retroactively rewrite the current `19/25` empirical
-headline.
+These hardening assets are meant to support the **next genuinely preregistered
+replication**. The first 12-domain packet in this folder was already exercised
+locally before any OSF timestamp, so it must be treated as a locked pilot
+extension rather than a preregistered confirmation batch.
 
 The currently saved null-control run is still a lightweight first pass:
 
@@ -74,6 +75,7 @@ All scripts are in `scripts/`. They require Python 3 with NumPy and SciPy.
 | `analyze_empirical_misses.py` | Generates conservative machine-readable miss-analysis outputs for the six current empirical misses. | Follow-up hardening |
 | `run_null_controls.py` | Runs family-label and shuffled-data null controls against the canonical 25-domain empirical cohort. | Follow-up hardening |
 | `cross_validate_fits.R` | Repeats the empirical curve-fitting step in R to check the Python/SciPy winner selections once an R runtime is available. | Follow-up hardening |
+| `run_preregistered_extension.py` | Replays the first locked 12-domain extension packet against locally extracted data. Useful for audit and sourcing, but noncanonical because execution preceded any OSF timestamp. | Locked pilot dry run |
 | `arc_complete_test_suite.py` | Test 3: Cauchy no-go theorem verification (exactly three scaling forms). Also includes other ARC tests. | Supporting -- Cauchy theorem numerics |
 | `arc_unified_paradigm_test.py` | Cauchy classification across 15 test cases (3 regimes). Unified paradigm validation including Cauchy Theorem 1. | Supporting -- regime classification |
 | `arc_rigorous_validation.py` | Tier 1 mathematical foundation: numerical verification of Cauchy's three functional equations. | Supporting -- mathematical foundation |
@@ -95,6 +97,8 @@ Pre-computed outputs are in `results/`. Each corresponds to a script above:
 | `null_control_results.md` | Family-label and shuffled-data null-control summary |
 | `null_control_results.json` | Family-label and shuffled-data null-control structured output |
 | `cross_library_replication_status.md` | R replication blocker / readiness note |
+| `results_preregistered_extension.txt` | First locked 12-domain extension dry run (pilot-only; not preregistered) |
+| `results_preregistered_extension.json` | Structured output for the same pilot-only dry run |
 | `results_complete_suite.txt` | `arc_complete_test_suite.py` |
 | `results_arc_unified_paradigm_test.txt` | `arc_unified_paradigm_test.py` |
 | `results_arc_rigorous_validation.txt` | `arc_rigorous_validation.py` |
@@ -107,12 +111,13 @@ Pre-computed outputs are in `results/`. Each corresponds to a script above:
 | `data/canonical_50_domain_manifest.json` | Canonical manifest for the 50-domain tiered suite |
 | `data/blinded_operator_classification_packet.json` | Neutralized 25-domain packet for an external operator-classification reviewer |
 | `data/blinded_operator_classification_template.json` | Response template for the blinded packet |
-| `preregistration/next_extension_protocol.md` | Local draft of the preregistration protocol for the next empirical extension |
-| `preregistration/next_extension_manifest.json` | Locked local candidate list for the next 12 empirical extension domains |
-| `preregistration/osf_component_registration.md` | OSF-facing wrapper for the preregistration component |
-| `preregistration/osf_attachment_manifest.json` | Attachment inventory for the OSF preregistration bundle |
-| `preregistration/file_checksums.txt` | SHA-256 checksums for the preregistration attachment set |
-| `preregistration/extracted_data/README.md` | Reserved location for post-preregistration extracted datasets |
+| `preregistration/next_extension_protocol.md` | Archived draft for the first 12-domain extension packet; now marked as exercised locally and not valid as a prospective preregistration |
+| `preregistration/next_extension_manifest.json` | Locked local candidate list used by that exercised 12-domain extension dry run |
+| `preregistration/osf_component_registration.md` | Archived OSF wrapper for the first packet, now marked not for unchanged upload as a preregistration |
+| `preregistration/osf_attachment_manifest.json` | Attachment inventory for the archived first-packet bundle |
+| `preregistration/file_checksums.txt` | SHA-256 checksums for the archived packet files |
+| `preregistration/extracted_data/README.md` | Notes for the extracted-data folder, which now contains the exercised local extension datasets |
+| `preregistration/extracted_data/extension_data.json` | Extracted datasets used by the exercised local 12-domain extension dry run |
 
 ## How to run
 
@@ -131,6 +136,9 @@ python3 scripts/analyze_empirical_misses.py
 
 # Run negative controls for the 25 empirical domains
 python3 scripts/run_null_controls.py
+
+# Replay the first locked 12-domain extension dry run (pilot-only)
+python3 scripts/run_preregistered_extension.py
 
 # Supporting tests
 python3 scripts/arc_complete_test_suite.py

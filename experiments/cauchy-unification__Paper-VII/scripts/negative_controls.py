@@ -134,24 +134,43 @@ def run_scrambled_controls(
 
     # Per-domain stability: run once more, tracking per domain
     per_domain_hits = {d["id"]: 0 for d in selected}
+    per_domain_best_families: dict[int, list[str]] = {d["id"]: [] for d in selected}
     for _ in range(iterations):
         for domain in selected:
             shuffled = copy.deepcopy(domain)
             y_arr = np.array(domain["dataset"]["y"], dtype=float)
             shuffled["dataset"]["y"] = rng.permutation(y_arr).tolist()
             result = runner.evaluate_curve_domain(shuffled)
+            per_domain_best_families[domain["id"]].append(result.get("best_family", "unknown"))
             if result.get("family_match", False):
                 per_domain_hits[domain["id"]] += 1
 
-    per_domain_rates = [
-        {
+    per_domain_rates = []
+    for d in selected:
+        families_seen = per_domain_best_families[d["id"]]
+        family_dist = {}
+        for f in families_seen:
+            family_dist[f] = family_dist.get(f, 0) + 1
+        family_dist = {k: v / iterations for k, v in family_dist.items()}
+        per_domain_rates.append({
             "domain_id": d["id"],
             "name": d["name"],
             "predicted_family": d["predicted_family"],
             "scrambled_match_rate": per_domain_hits[d["id"]] / iterations,
-        }
-        for d in selected
-    ]
+            "scrambled_family_distribution": family_dist,
+        })
+
+    # Family-stratified analysis: separate bounded vs non-bounded
+    bounded_domains = [d for d in selected if d["predicted_family"] == "bounded"]
+    non_bounded = [d for d in selected if d["predicted_family"] != "bounded"]
+    bounded_rate = (
+        float(np.mean([per_domain_hits[d["id"]] / iterations for d in bounded_domains]))
+        if bounded_domains else 0.0
+    )
+    non_bounded_rate = (
+        float(np.mean([per_domain_hits[d["id"]] / iterations for d in non_bounded]))
+        if non_bounded else 0.0
+    )
 
     return {
         "test": "scrambled_data",
@@ -165,6 +184,18 @@ def run_scrambled_controls(
         "chance_rate": CHANCE_RATE,
         "above_chance": mean_rate > CHANCE_RATE + 0.05,
         "pass": mean_rate <= CHANCE_RATE + 0.10,
+        "family_stratified": {
+            "bounded_n": len(bounded_domains),
+            "bounded_match_rate": bounded_rate,
+            "non_bounded_n": len(non_bounded),
+            "non_bounded_match_rate": non_bounded_rate,
+        },
+        "note": (
+            "Bounded domains often match after shuffling because shuffled "
+            "positive data frequently produces concave shapes that the fitter "
+            "classifies as bounded. The non-bounded match rate is the more "
+            "informative diagnostic."
+        ),
         "per_domain_rates": sorted(per_domain_rates, key=lambda x: x["scrambled_match_rate"], reverse=True),
     }
 
@@ -571,6 +602,13 @@ def build_text_report(payload: dict[str, Any]) -> str:
     lines.append(f"  Max matches in any iteration: {sc['max_matches_in_any_iter']}/{sc['n_domains']}")
     lines.append(f"  PASS: {'YES' if sc['pass'] else 'NO'} — {'at or near chance' if sc['pass'] else 'ABOVE CHANCE — investigate'}")
     lines.append("")
+    fs = sc.get("family_stratified", {})
+    if fs:
+        lines.append(f"  Family-stratified breakdown:")
+        lines.append(f"    Bounded domains (n={fs['bounded_n']}): match rate = {fs['bounded_match_rate']:.3f}")
+        lines.append(f"    Non-bounded domains (n={fs['non_bounded_n']}): match rate = {fs['non_bounded_match_rate']:.3f}")
+        lines.append(f"    NOTE: {sc.get('note', '')}")
+    lines.append("")
     lines.append("  Per-domain scrambled match rates (highest first):")
     for entry in sc["per_domain_rates"][:5]:
         lines.append(
@@ -641,6 +679,9 @@ def build_text_report(payload: dict[str, Any]) -> str:
     lines.append(f"  Real data match rate:            {payload['observed_matches']}/{payload['observed_total']} "
                  f"= {payload['observed_matches']/payload['observed_total']:.1%}")
     lines.append(f"  Scrambled data match rate:        {sc['mean_match_rate']:.1%}")
+    fs = sc.get("family_stratified", {})
+    if fs:
+        lines.append(f"    (non-bounded only:              {fs['non_bounded_match_rate']:.1%})")
     lines.append(f"  Random monotone match rate:       {rm['match_rate']:.1%}")
     lines.append(f"  Axiom-violating match rate:       {av['match_rate']:.1%}")
     lines.append(f"  Chance baseline:                  {CHANCE_RATE:.1%}")
@@ -648,12 +689,19 @@ def build_text_report(payload: dict[str, Any]) -> str:
 
     real_rate = payload["observed_matches"] / payload["observed_total"]
     scrambled_rate = sc["mean_match_rate"]
+    non_bounded_scrambled = fs.get("non_bounded_match_rate", scrambled_rate) if fs else scrambled_rate
     if scrambled_rate > 0:
         discrimination_ratio = real_rate / scrambled_rate
     else:
         discrimination_ratio = float("inf")
+    if non_bounded_scrambled > 0:
+        discrimination_ratio_nb = real_rate / non_bounded_scrambled
+    else:
+        discrimination_ratio_nb = float("inf")
 
     lines.append(f"  Discrimination ratio (real / scrambled): {discrimination_ratio:.1f}x")
+    if fs:
+        lines.append(f"  Discrimination ratio (real / scrambled non-bounded): {discrimination_ratio_nb:.1f}x")
     lines.append("")
 
     all_pass = sc["pass"] and rm["pass"] and av["pass"]

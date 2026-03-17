@@ -28,7 +28,7 @@ PAPER_II_DIR = RESULTS_ROOT / "arc_paper_ii_results"
 PAPERS_DIR = PROJECT_ROOT / "paper" / "FINAL-SUITE" / "v-major"
 
 LATEST_PAPER_FILES = {
-    "executive_summary": PAPERS_DIR / "Executive-Summary-v5.html",
+    "executive_summary": PAPERS_DIR / "Executive-Summary-v6.html",
     "foundational": PAPERS_DIR / "Foundational-v4.html",
     "paper_ii": PAPERS_DIR / "Paper-II-v12.html",
     "paper_iii": PAPERS_DIR / "Paper-III-White-Paper-v11.html",

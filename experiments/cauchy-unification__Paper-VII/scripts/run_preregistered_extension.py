@@ -1,22 +1,24 @@
 #!/usr/bin/env python3
 """
 ================================================================================
-ARC PRINCIPLE: 12-DOMAIN PRE-REGISTERED EXTENSION
+ARC PRINCIPLE: 12-DOMAIN LOCKED EXTENSION DRY RUN
 Cauchy Unification Test (Paper VII)
 ================================================================================
 
 Purpose:
-  Run the locked 12-domain pre-registered extension for the Cauchy unification
-  test. Uses EXACTLY the same fitting protocol as the canonical 50-domain suite
+  Replay the first locked 12-domain extension packet for the Cauchy
+  unification test. Uses EXACTLY the same fitting protocol as the canonical
+  50-domain suite
   (arc_50_domain_universal_test.py): same candidate models, same AICc selection,
   same family labels, same saturation guard.
 
 Primary endpoint:
-  Strict family match -- AICc-best model's family vs pre-registered predicted
+  Strict family match -- AICc-best model's family vs locked predicted
   family -- with NO tolerance rescue.
 
 Design:
-  - Predictions locked in next_extension_manifest.json BEFORE data extraction.
+  - Predictions were locked in next_extension_manifest.json before the local
+    dry run, but the packet was exercised before any OSF timestamp.
   - Empirical data sourced from published literature and stored in
     extension_data.json.
   - Misses reported honestly; no retroactive prediction changes.
@@ -377,7 +379,7 @@ def main() -> None:
     # Build output lines
     lines = []
     lines.append("=" * 100)
-    lines.append("  ARC PRINCIPLE: 12-DOMAIN PRE-REGISTERED EXTENSION")
+    lines.append("  ARC PRINCIPLE: 12-DOMAIN LOCKED EXTENSION DRY RUN")
     lines.append("  Cauchy Unification Test (Paper VII)")
     lines.append("=" * 100)
     lines.append(f"  Date:     {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
@@ -443,7 +445,7 @@ def main() -> None:
     # Write JSON output
     payload = {
         "metadata": {
-            "test_name": "12-domain pre-registered extension",
+            "test_name": "12-domain locked extension dry run",
             "paper": "Paper VII (Cauchy unification)",
             "date": datetime.now(timezone.utc).isoformat(),
             "manifest_path": str(MANIFEST_PATH),
