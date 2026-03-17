@@ -10,8 +10,9 @@
 
 - **19/25 empirical domains preferred** the predicted family under strict AICc model selection (p = 1.56 x 10⁻⁵)
 - **25/25 independent operator classification** agreement (physics-based, no data access)
-- **0/6 genuine framework failures** in miss analysis (4 fitting artifacts, 2 data quality)
-- Structured prediction comparison; **pre-registered 12-domain extension staged for OSF upload**
+- **6 misses retained conservatively** (miss analysis identifies fitting artifacts and data quality issues, but misses are kept as misses)
+- **10/12 pre-registered extension** confirmed (p = 5.44 x 10⁻⁴)
+- Structured prediction comparison; negative controls show 0% axiom-violating match, 44.5% scrambled (honest limitation)
 
 [Read Paper VII v2](paper/FINAL-SUITE/v-major/Paper-VII-Cauchy-Unification-v2.html) | [Experiment code](experiments/cauchy-unification__Paper-VII/)
 
