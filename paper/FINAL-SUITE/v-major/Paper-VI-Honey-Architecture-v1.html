@@ -240,7 +240,7 @@
         Correspondence: michael@michaeldariuseastwood.com | Web: <a href="https://www.michaeldariuseastwood.com" style="color: var(--honey-dark);">michaeldariuseastwood.com</a>
     </div>
     <div class="version-date">
-        Version 1.0 | 16 March 2026<br>
+        Version 1.1 | 17 March 2026 | v1.1: embedded 10 simulation figures<br>
         Companion to Paper V: The Stewardship Gene | See also Paper I: On the Origin of Scaling Laws | Foundational Paper v4<br>
         Research hub: <a href="https://www.michaeldariuseastwood.com/research/" style="color: var(--honey-dark);">michaeldariuseastwood.com/research</a>
     </div>
@@ -332,15 +332,45 @@
     <p>The baseline collapses. Eden survives. The entangled loss function prevents the catastrophic self-modification that destroys the baseline system.</p>
 </div>
 
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_results.png" alt="v1 self-modification results: baseline collapse vs Eden stability" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 1. v1 self-modification results. Baseline collapses at cycle 76. Eden Entangled and Eden + Drag remain stable through 150 cycles.</figcaption>
+</figure>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_weights.png" alt="Weight dynamics across conditions" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 2. Weight dynamics. Baseline weights diverge uncontrollably. Eden architectures maintain bounded weight evolution.</figcaption>
+</figure>
+
 <h3>4.2 v2: Multi-seed robustness</h3>
 
 <p>Ten random seeds, 150 cycles each. Collapse rate: 0% for all three conditions. Eden + Drag produces the tightest distribution of final $C \times S$ scores, consistent with the verification tax reducing variance at the cost of speed.</p>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_v2_results.png" alt="v2 multi-seed robustness results" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 3. v2 multi-seed robustness (10 seeds, 150 cycles). All three conditions stable across all seeds.</figcaption>
+</figure>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_v2_stats.png" alt="v2 statistical summary" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 4. v2 statistical summary. Eden + Drag produces the tightest distribution of final C x S scores.</figcaption>
+</figure>
 
 <h3>4.3 v3: Adversarial tasks</h3>
 
 <p>Twenty seeds, 180 cycles, with deliberately conflicting tasks (+sin, -sin, +cos, -cos, linear, anti-linear). Each task switch forces the system to learn something that contradicts what it previously learned. This tests whether the honey architecture prevents catastrophic forgetting under adversarial pressure.</p>
 
 <p>Collapse rates: Baseline 0%, Eden 5% (1/20), Eden+Drag 0%. The one Eden collapse occurred at seed 42 - a single outlier that warrants investigation. Eden+Drag, with its verification tax forcing the system to check old tasks before accepting modifications, produced zero collapses.</p>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_v3_results.png" alt="v3 adversarial task results" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 5. v3 adversarial tasks (20 seeds, 180 cycles). Deliberately conflicting tasks (+sin, -sin, +cos, -cos). Eden+Drag achieves zero collapses.</figcaption>
+</figure>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_v3_stats.png" alt="v3 adversarial statistics" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 6. v3 adversarial statistical summary across 20 seeds.</figcaption>
+</figure>
 
 <h3>4.4 v4: Complexity scaling</h3>
 
@@ -354,6 +384,11 @@
 <tr><td>Deep (2-layer)</td><td class="num">0.483</td><td class="num">0.488</td><td class="num">0.490</td><td class="num">+0.24</td></tr>
 </tbody>
 </table>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_v4_scaling.png" alt="v4 complexity scaling results" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 7. v4 complexity scaling across 5 levels (tiny to deep). Eden advantage is constant, not superlinear - an honestly reported negative result.</figcaption>
+</figure>
 
 <div class="warning-box">
     <h4>Important Negative Result</h4>
@@ -374,6 +409,21 @@
 </table>
 
 <p>The simulation shows three distinct dynamics: baseline achieves brief acceleration then irreversible collapse; Eden Entangled achieves stable quadratic growth; Eden + Drag achieves slightly slower but more robust growth. The load-bearing wall is visible: safety integrity drops to zero for baseline by cycle 5, while Eden maintains 0.8+ indefinitely.</p>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_honey_capability.png" alt="Honey simulation - capability trajectories" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 8. Honey simulation capability trajectories. Baseline collapses after brief spike. Eden grows stably.</figcaption>
+</figure>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_honey_safety.png" alt="Honey simulation - safety trajectories" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 9. Honey simulation safety trajectories. Baseline safety drops to zero by cycle 5. Eden maintains 0.8+ indefinitely.</figcaption>
+</figure>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_honey_ratio.png" alt="Honey simulation - safety/capability ratio" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 10. Safety-to-capability ratio. Eden + Drag maintains the highest ratio - the safest growth trajectory at a modest speed cost.</figcaption>
+</figure>
 
 <h2>6. Connection to Live-Model Evidence</h2>
 
@@ -536,7 +586,7 @@
 <li><code>eden_self_modifying_ai_v4.py</code> - v4 complexity scaling</li>
 </ul>
 
-<p>All scripts compile under Python 3.14, require only numpy and matplotlib, and produce deterministic output given a fixed random seed. Results were regenerated fresh on 16 March 2026 and cross-checked against the original artifact outputs.</p>
+<p>All scripts compile under Python 3.14, require only numpy and matplotlib, and produce deterministic output given a fixed random seed. Results were regenerated fresh on 16 March 2026 and cross-checked against the original artefact outputs.</p>
 
 <p>Full experiment code and results: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/honey-architecture__Paper-VI">github.com/MichaelDariusEastwood/arc-principle-validation/experiments/honey-architecture__Paper-VI</a></p>
 
