@@ -402,7 +402,14 @@
         /* Print styles - world-class PDF export */
         @page {
             size: A4;
-            margin: 20mm 15mm 25mm 15mm;
+            margin: 10mm 15mm 10mm 15mm;
+            /* Kill Chrome PDF headers/footers permanently */
+            @top-left { content: none; }
+            @top-center { content: none; }
+            @top-right { content: none; }
+            @bottom-left { content: none; }
+            @bottom-center { content: none; }
+            @bottom-right { content: none; }
         }
 
         @media print {

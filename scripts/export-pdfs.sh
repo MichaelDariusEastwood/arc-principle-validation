@@ -76,6 +76,7 @@ for paper_dir in "${PAPER_DIRS[@]}"; do
         --virtual-time-budget=10000 \
         --print-to-pdf="$pdf_file" \
         --print-to-pdf-no-header \
+        --no-pdf-header-footer \
         "file://$html_file" 2>/dev/null
 
     if [ -f "$pdf_file" ]; then
