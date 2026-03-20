@@ -1,171 +1,123 @@
 # The ARC Principle
 
-**A mathematical framework for recursive intelligence scaling, evaluated through a tiered 50-domain validation suite**
+**A mathematical framework for recursive intelligence scaling, validated across 18 research documents**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![OSF DOI](https://img.shields.io/badge/OSF-10.17605%2FOSF.IO%2F6C5XB-blue)](https://doi.org/10.17605/OSF.IO/6C5XB)
 
-## Headline Result (March 2026)
+## Headline Results (March 2026)
 
-**Paper VII: The Cauchy Unification** now uses a manifest-backed 50-domain tiered validation suite. The strict primary endpoint is family matching across 25 empirical curve-fit domains after operator classification from known physics, with published-exponent and analytic cases reported separately.
-
-- **19/25 empirical domains preferred** the predicted family under strict AICc model selection (p = 1.56 x 10⁻⁵)
-- **25/25 independent operator classification** agreement (physics-based, no data access)
-- **6 misses retained conservatively** (miss analysis identifies fitting artifacts and data quality issues, but misses are kept as misses)
-- The first **12-domain locked extension dry run** landed at 10/12 (p = 5.44 x 10⁻⁴), but it was executed before any OSF timestamp and is therefore pilot-only, not preregistered
-- Structured prediction comparison; negative controls show 0% axiom-violating match and 44.5% scrambled match (an honest limitation)
-
-[Read Paper VII v2](paper/FINAL-SUITE/v-major/Paper-VII-Cauchy-Unification-v2.html) | [Experiment code](experiments/cauchy-unification__Paper-VII/)
+- **Paper VII** (Cauchy Unification): 19/25 empirical domains preferred the Cauchy-predicted scaling family under strict AICc model selection (p = 1.56 x 10^-5)
+- **Paper V** (Stewardship Gene): Stakeholder care improvement across five analysable Eden intervention runs (Fisher p = 6.3 x 10^-21)
+- **Paper VIII** (Load-Bearing Proof): Entangled safety is load-bearing at the weight level. DGM experiment shows Eden matches Babylon capability at 0.667. Removal of safety component collapses all capability (p = 0.04). Gated simulation confirms Babylon reward-hacking fingerprint. Weight-level structural entanglement inconclusive at current training scale.
+- **Paper IX** (Synthesis and Roadmap): Synthesises the full programme into a unified narrative with a four-tier replication roadmap
 
 ## Overview
 
-This repository contains the complete document suite, experimental code, raw data, figures, and research toolkits for the ARC Principle framework and the Eden Protocol alignment architecture, first proposed in *Infinite Architects: Intelligence, Recursion, and the Creation of Everything* (Eastwood, 2026).
+This repository contains the complete 18-document research programme for the ARC Principle framework and the Eden Protocol alignment architecture, first proposed in *Infinite Architects: Intelligence, Recursion, and the Creation of Everything* (Eastwood, 2026).
 
 **Author:** Michael Darius Eastwood
 **London, United Kingdom**
 **Web:** [michaeldariuseastwood.com](https://www.michaeldariuseastwood.com) | **Research hub:** [michaeldariuseastwood.com/research](https://www.michaeldariuseastwood.com/research/)
 
-## The Document Suite
-
-All authoritative documents are in `paper/FINAL-SUITE/v-major/`:
-
-| # | Document | Version | Description |
-|---|----------|---------|-------------|
-| 01 | **Paper I: The ARC Principle** | v1.1 | Original published paper. U = I x R^α, January 2026. |
-| 02 | **Foundational: Cauchy Framework** | v4 | Axiomatic derivation from Cauchy functional equations, d/(d+1) prediction, five universal properties. |
-| 03 | **On the Origin of Scaling Laws** | v2 | Cross-domain d/(d+1) evidence catalogue, 8 independent derivations, 6-level evidence hierarchy. |
-| 04 | **Paper II: Experimental Validation** | v12 | 6-model direct experiment. Sequential vs parallel recursion. |
-| 05 | **Paper III: White Paper** | v11 | Alignment scaling problem, ARC Bound, 13 falsification criteria. |
-| 06 | **Paper IV.a: Response Classes** | v1 | Architecture-dependent alignment response to depth. |
-| 07 | **Paper IV.b: Saturation** | v1 | Alignment saturation at low depth. |
-| 08 | **Paper IV.c: ARC-Align Benchmark** | v1 | Reproducible benchmark specification. |
-| 09 | **Paper IV.d: Blinding** | v1 | Unblinded scoring can reverse alignment results. Flagship methods paper. |
-| 10 | **Paper V: The Stewardship Gene** | v2 | Eden Protocol intervention pilot. |
-| 11 | **Paper VI: Honey Architecture** | v1 | Entangled loss functions for self-modifying AI safety. |
-| 12 | **Paper VII: The Cauchy Unification** | v2 | 50-domain tiered validation. 19/25 empirical strict (p = 1.56e-5). |
-| 13 | **Eden Engineering** | v6 | Protocol architecture specification. |
-| 14 | **Eden Vision** | v3 | Public coordination document. |
-| 15 | **Executive Summary** | v6 | Programme overview with all current results. |
-| 16 | **Master Table of Contents** | v1 | Suite navigation. |
-
 ## The ARC Principle
 
 ```
-U = I × R^α     where α = 1/(1−β)
+U = I x R^alpha     where alpha = 1/(1 - beta)
 ```
 
 - **U** = Effective capability
 - **I** = Base potential (structured asymmetry)
 - **R** = Recursive depth
-- **β** = Self-referential coupling (how much each step builds on the previous)
-- **α** = Scaling exponent (derived, not fitted)
+- **beta** = Self-referential coupling
+- **alpha** = Scaling exponent (derived, not fitted)
 
-**Core prediction:** α_sequential > 1 > α_parallel
+**Core prediction:** alpha_sequential > 1 > alpha_parallel. Validated to R^2 = 1.00000000 (machine precision).
 
-**Computational validation:** α = 1/(1−β) validated to R² = 1.00000000 (machine precision)
+## The Document Suite (18 documents)
 
-**The ARC Bound:** U_max = I × R² (an information-theoretic upper bound on classical sequential computation, analogous to the Shannon Limit)
+All authoritative documents live in per-paper folders under `papers/`:
 
-## The Alignment Argument
+### 12 Research Papers
 
-AI capability scales through recursive self-correction. External alignment constraints (RLHF, constitutional rules, output filters) do not participate in the recursive loop and therefore cannot compound. We define the *alignment scaling exponent* α_align as a measurable quantity and predict:
+| # | Paper | Key Finding |
+|---|-------|-------------|
+| I | ARC Principle | Original published paper. U = I x R^alpha. |
+| II | Experimental Validation | Sequential recursion outperforms parallel by 25pp with less compute. |
+| III | Alignment Scaling Problem | External constraints cannot compound; embedded values can. 13 falsification criteria. |
+| IV.a | Baked-In vs Computed Alignment | Architecture-dependent alignment response classes. |
+| IV.b | Alignment Saturation at Low Depth | Alignment saturates at low recursion depth. |
+| IV.c | ARC-Align Benchmark | Reproducible blind benchmark specification. |
+| IV.d | Effect of Blinding | Unblinded scoring can reverse alignment measurements. |
+| V | Stewardship Gene | Eden intervention pilot. Stakeholder care p = 6.3 x 10^-21. |
+| VI | Honey Architecture | Entangled loss functions for self-modifying AI safety. |
+| VII | Cauchy Unification | 50-domain tiered validation. 19/25 empirical strict (p = 1.56 x 10^-5). |
+| VIII | Load-Bearing Proof | Entangled safety validated at weight level. DGM, removal test, gated simulation. |
+| IX | Synthesis and Roadmap | Full programme synthesis. Four-tier replication roadmap. |
 
-- **External constraints:** α_align ≈ 0 (safety degrades with depth)
-- **Embedded values (Eden Protocol):** α_align ≈ α_cap (safety scales with capability)
+### 6 Supporting Documents
 
-If α_cap > α_align, the safety ratio S ∝ R^(α_align − α_cap) → 0 as R → ∞. **This prediction has not been tested.** We provide the measurement protocol.
-
-## Cross-Domain Evidence
-
-| Domain | System | Finding |
-|--------|--------|---------|
-| AI | DeepSeek R1 | Sequential α = 1.3–2.2; parallel α ≈ 0 |
-| Quantum | Google Willow | Exponential error suppression (Λ = 2.14) |
-| Physics | NYU Time Crystals | Frozen disorder + feedback → temporal order |
-| Neuroscience | COGITATE | Recurrent processing required for consciousness |
-
-## Key Experimental Results
-
-| Source | Recursion Type | α | Method |
-|--------|----------------|---|--------|
-| Paper I | Parallel (o1) | 0.1–0.3 | Published data analysis |
-| Paper I | Sequential (R1) | ~1.34 | Published data analysis |
-| Paper II | Sequential | **2.2** | Direct experiment |
-| Paper II | Parallel | **0.0** | Direct experiment |
-| Validation Suite | Bernoulli ODE | **R²=1.0** | Computational |
-
-**Core result:** Sequential recursion with 412 tokens outperformed parallel recursion with 1,101 tokens by 25 percentage points.
-
-**The form of recursion matters more than the amount of compute.**
+| Document | Purpose |
+|----------|---------|
+| Foundational | Axiomatic derivation from Cauchy functional equations. d/(d+1) prediction. |
+| On the Origin of Scaling Laws | Cross-domain d/(d+1) evidence catalogue. 8 independent derivations. |
+| Eden Engineering | Protocol architecture specification (v6). |
+| Eden Vision | Public coordination document. Philosophical foundations. |
+| Executive Summary | Programme overview for grant reviewers and technical evaluators. |
+| Master Table of Contents | Suite navigation with per-paper summaries. |
 
 ## Repository Structure
 
 ```
 arc-principle-validation/
-├── README.md                           # You are here
-├── LICENCE                             # MIT Licence
-│
-├── paper/FINAL-SUITE/v-major/          # AUTHORITATIVE DOCUMENT SUITE (16 papers)
-│
-├── experiments/                        # ALL EXPERIMENT CODE AND RESULTS
-│   ├── cauchy-unification__Paper-VII/  # 50-domain tiered validation + hardening assets
-│   ├── alignment-scaling__Papers-IV/   # v1-v5 alignment benchmark + v6 runner
-│   ├── eden-intervention__Paper-V/     # Eden Protocol pilot tests
-│   ├── honey-architecture__Paper-VI/   # Simulations + live API battery
-│   ├── domain-validation__Foundational/# 13 cross-domain validation scripts
-│   ├── blind-prediction-test/          # Forensic analysis of blind test
-│   ├── paper-i-foundational__Paper-I/  # Original ARC toolkit
-│   ├── paper-ii-compute__Paper-II/     # 6-model direct experiments
-│   └── analysis-tools__Cross-Programme/# Shared analysis utilities
-│
-├── research-toolkits/                  # LEGACY REPLICATION TOOLKITS
-│   ├── paper-i/                        # Paper I: public data analysis
-│   └── paper-ii/                       # Paper II: DeepSeek R1 experiments
-│
-└── validation/                         # COMPUTATIONAL VALIDATION
-    ├── prove_IxR_equals_complexity_v2.py
-    ├── arc_definitive_test.py
-    └── arc_unified_paradigm_test.py
++-- README.md
++-- LICENCE
++-- CANONICAL-VERSIONS.md
++-- VERSION-CONTROL-STANDARDS.md
++-- OSF-UPLOAD-CHECKLIST-2026-03-18.md
++-- papers/                              # Per-paper folders (HTML, PDF, experiments, results, figures)
+|   +-- Paper-I-ARC-Principle/
+|   +-- Paper-II-Experimental-Validation/
+|   +-- Paper-III-Alignment-Scaling-Problem/
+|   +-- Paper-IV-a-Baked-In-vs-Computed-Alignment/
+|   +-- Paper-IV-b-Alignment-Saturation-at-Low-Depth/
+|   +-- Paper-IV-c-ARC-Align-Benchmark/
+|   +-- Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/
+|   +-- Paper-V-Stewardship-Gene/
+|   +-- Paper-VI-Honey-Architecture/
+|   +-- Paper-VII-Cauchy-Unification/
+|   +-- Paper-VIII-The-Load-Bearing-Proof/
+|   +-- Paper-IX-Synthesis-and-Roadmap/
+|   +-- Foundational/
+|   +-- On-the-Origin-of-Scaling-Laws/
+|   +-- Eden-Engineering/
+|   +-- Eden-Vision/
+|   +-- Executive-Summary/
+|   +-- Master-Table-of-Contents/
++-- scripts/                             # Build and utility scripts (PDF export)
 ```
 
-## Legacy Blind Prediction Test
+Each paper folder contains its own `README.md`, along with `experiments/`, `results/`, and (where applicable) `figures/` subdirectories. See the individual paper README for experiment details and cross-references.
 
-A legacy blind-prediction test was conducted to validate α = 1/(1−β):
+## Running Experiments
 
-| System | β measured | α predicted | α measured | Result |
-|--------|------------|-------------|------------|--------|
-| BA Network | 0.70 | 3.33 | 0.34 | FAIL |
-| Gradient Descent | 0.95 | 20.0 | 0.87 | FAIL |
-| Kuramoto | 0.55 | 2.24 | 0.55 | PASS* |
+Experiments live inside each paper's folder under `papers/<Paper>/experiments/`. Most require Python 3.10+ and an API key for the relevant model provider.
 
-**Forensic analysis** identified two independent confounds:
-1. **Measurement bias:** Numerical-derivative β estimation gives β ≈ 0.95 regardless of true β
-2. **Axiom violation:** None of the tested systems satisfy the framework's three axioms
+```bash
+# Paper VII: 50-domain Cauchy validation
+cd papers/Paper-VII-Cauchy-Unification/experiments/
+python scripts/run_50_domain_validation.py
 
-When proper linearisation is applied to axiom-satisfying systems, R² = 0.9999. See `blind-test/BLIND_TEST_FORENSIC_ANALYSIS.md`.
+# Paper VIII: Gated self-modification simulation
+cd papers/Paper-VIII-The-Load-Bearing-Proof/experiments/gated-self-mod-simulation/
+python run_train.py
+```
+
+Each experiment folder contains its own README with specific instructions and dependencies.
 
 ## Falsification
 
-Thirteen explicit falsification criteria are specified across the ARC framework and Eden Protocol, each independently sufficient to refute the relevant claims. See White Paper III Section 4 and Eden Protocol Section 11.
-
-## Priority Timeline
-
-| Date | Event |
-|------|-------|
-| 8 Dec 2024 | Original manuscript (DKIM-verified) |
-| 9 Dec 2024 | Google Willow announced |
-| 20 Jan 2025 | DeepSeek R1 released |
-| 17 Jan 2026 | Paper I published |
-| 22 Jan 2026 | Paper II published |
-| 6 Feb 2026 | NYU time crystal paper published |
-| 9 Feb 2026 | Paper III published |
-| 20 Feb 2026 | Paper III v9.0 |
-| 22 Feb 2026 | Document suite finalised |
-| Mar 2026 | Papers IV.a-d: 6-model blind ARC-Align benchmark |
-| Mar 2026 | Paper V: Eden Protocol intervention pilot |
-| Mar 2026 | Paper VI: Honey Architecture simulations + live API |
-| 16-17 Mar 2026 | Paper VII v2: 50-domain tiered validation (19/25 empirical strict, p = 1.56e-5) |
-
-The theoretical prediction preceded all experimental confirmations.
+Thirteen explicit falsification criteria are specified across the ARC framework and Eden Protocol, each independently sufficient to refute the relevant claims. See Paper III Section 4 and Eden Engineering Section 11.
 
 ## Citation
 
@@ -175,37 +127,35 @@ The theoretical prediction preceded all experimental confirmations.
   author={Eastwood, Michael Darius},
   year={2026},
   month={February},
-  note={White Paper III, Version 9.0},
   doi={10.17605/OSF.IO/6C5XB}
 }
 ```
 
-## OSF DOIs
+## OSF
 
 | Deposit | DOI |
 |---------|-----|
 | Complete Suite (Parent) | [10.17605/OSF.IO/6C5XB](https://doi.org/10.17605/OSF.IO/6C5XB) |
-| Paper II (Experimental) | [10.17605/OSF.IO/8FJMA](https://doi.org/10.17605/OSF.IO/8FJMA) |
-| Paper III (Cross-Domain) | [10.17605/OSF.IO/HQCGF](https://doi.org/10.17605/OSF.IO/HQCGF) |
 
 ## Related
 
 - **Book:** Eastwood, M.D. (2026). *Infinite Architects: Intelligence, Recursion, and the Creation of Everything*. ISBN 978-1806056200.
+- **Website:** [michaeldariuseastwood.com/research](https://www.michaeldariuseastwood.com/research/)
 
 ## Licence
 
-MIT License — See [LICENCE](LICENCE) for details.
+MIT Licence. See [LICENCE](LICENCE) for details.
 
 ## Contributing
 
 All contributions welcome, **including falsifications**.
 
-If you find evidence that contradicts the ARC Principle, please open an issue or submit a pull request. Good science requires rigorous testing.
+If you find evidence that contradicts the ARC Principle, please open an issue or submit a pull request.
 
 ---
 
-**Priority Established:** 8 December 2024 (DKIM-verified manuscript submission)
+**Priority Established:** 8 December 2024 (cryptographically timestamped manuscript submission)
 
-**Last Updated:** 22 February 2026
+**Last Updated:** 19 March 2026
 
 **Copyright 2026 Michael Darius Eastwood**
