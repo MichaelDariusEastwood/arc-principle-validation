@@ -89,6 +89,31 @@ done
 
 echo ""
 echo "============================================================"
+echo "  STALENESS CHECK"
+echo "============================================================"
+stale_count=0
+for paper_dir in "$PAPERS_DIR"/*/; do
+    dirname=$(basename "$paper_dir")
+    html_file="$paper_dir/$dirname.html"
+    pdf_file="$paper_dir/$dirname.pdf"
+    if [ -f "$html_file" ] && [ -f "$pdf_file" ]; then
+        html_mod=$(stat -f "%m" "$html_file")
+        pdf_mod=$(stat -f "%m" "$pdf_file")
+        if [ "$html_mod" -gt "$pdf_mod" ]; then
+            echo "  WARNING: $dirname PDF is STALE (HTML is newer)"
+            stale_count=$((stale_count + 1))
+        fi
+    fi
+done
+if [ "$stale_count" -eq 0 ]; then
+    echo "  All PDFs are fresh (newer than their HTML source)."
+else
+    echo "  $stale_count STALE PDFs detected. Re-run this script."
+    exit 1
+fi
+
+echo ""
+echo "============================================================"
 echo "  EXPORT COMPLETE"
 echo "  PDFs ready for GitHub and OSF upload."
 echo "  HTMLs ready for website upload."
