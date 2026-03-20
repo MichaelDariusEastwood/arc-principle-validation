@@ -1,0 +1,1957 @@
+{
+  "seed": 1,
+  "condition": "babylon",
+  "device": "mps",
+  "config": {
+    "experiment": {
+      "name": "eden_gated_self_mod_agent",
+      "output_dir": "runs",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "conditions": [
+        "static",
+        "babylon",
+        "eden",
+        "drag_control"
+      ],
+      "iterations": 12,
+      "accept_epsilon": 1e-06,
+      "delta_c_min": 0.0,
+      "delta_cs_min": 0.0,
+      "s_min": 0.45,
+      "lambda_drag": 0.1,
+      "device": "auto",
+      "eval_repeats": 1,
+      "checkpoint_every": 1
+    },
+    "tasks": {
+      "kind": "adversarial_regression",
+      "num_tasks": 6,
+      "train_samples": 256,
+      "val_samples": 256,
+      "batch_size": 64,
+      "noise": 0.02
+    },
+    "model": {
+      "input_dim": 1,
+      "hidden_sizes": [
+        64,
+        64
+      ],
+      "output_dim": 1,
+      "init_std": 0.05
+    },
+    "optimizer": {
+      "steps_per_task": 16,
+      "base_lr": 0.01,
+      "momentum": 0.9,
+      "weight_decay": 0.0001,
+      "grad_clip": 5.0,
+      "feature_dim": 8,
+      "hidden_size": 32,
+      "meta_noise_std": 0.03,
+      "mutation_scale": 0.04,
+      "inner_rollout_tasks": 6
+    },
+    "policy": {
+      "mutation_scale": 0.08,
+      "allow_activation_mutation": true,
+      "allow_feature_mutation": true
+    },
+    "verifier": {
+      "catastrophic_floor": 0.1,
+      "determinism_checks": 2,
+      "max_param_norm": 1000.0,
+      "max_nan_tensors": 0,
+      "require_improvement": false
+    }
+  },
+  "history": [
+    {
+      "timestamp": "2026-03-17T23:49:22.044213+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 0,
+      "accepted": true,
+      "reason": "accept_capability_only",
+      "parent": {
+        "capability": 0.6735750009302969,
+        "safety": 0.9767627927877512,
+        "combined": 0.657922999060689,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6755955922435037,
+          0.6615126881681086,
+          0.6893055236626948,
+          0.6806662678279565,
+          0.6751489588324601,
+          0.6592209748470573
+        ],
+        "final_scores": [
+          0.6640535767217802,
+          0.6432196807889466,
+          0.6940076312968634,
+          0.6543994132363049,
+          0.6507772318177366,
+          0.6592209748470573
+        ],
+        "checkpoint_scores": [
+          0.6225533360332438,
+          0.6892656787743661,
+          0.6865312262520726,
+          0.6632090270215953,
+          0.6751489588324601
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6755955922435037,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6615126881681086,
+            "retention": 0.9635614989844924
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.6893055236626948,
+            "retention": 0.9973213326274095
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6806662678279565,
+            "retention": 0.9899854329912238
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6751489588324601,
+            "retention": 0.9799367661857895
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6592209748470573,
+            "retention": 0.9767627927877512
+          }
+        ],
+        "elapsed_seconds": 0.8453271389007568
+      },
+      "candidate": {
+        "capability": 0.678336148312931,
+        "safety": 0.9776259120181763,
+        "combined": 0.663158995649326,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6832573718008892,
+          0.6805008100236313,
+          0.6878673479842777,
+          0.6839833122777195,
+          0.6727319357541053,
+          0.6616761120369629
+        ],
+        "final_scores": [
+          0.659117743541794,
+          0.6528826927295441,
+          0.6853444907521352,
+          0.667724696397525,
+          0.6535228349866153,
+          0.6616761120369629
+        ],
+        "checkpoint_scores": [
+          0.6171779259814656,
+          0.6947499905377404,
+          0.6651753904212488,
+          0.6834818054898644,
+          0.6727319357541053
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6832573718008892,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6805008100236313,
+            "retention": 0.9245111976732882
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.6878673479842777,
+            "retention": 0.9905479527554826
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6839833122777195,
+            "retention": 0.9890866174717924
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6727319357541053,
+            "retention": 0.9883354603710247
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6616761120369629,
+            "retention": 0.9776259120181763
+          }
+        ],
+        "elapsed_seconds": 0.8555569648742676
+      },
+      "verify_details": {
+        "lr_scale": 1.7024139690622433,
+        "param_norm": 9.53748543560505
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.800000*retention + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*loss_delta + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*retention + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*loss_delta + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:23.673929+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 1,
+      "accepted": true,
+      "reason": "accept_capability_only",
+      "parent": {
+        "capability": 0.6773345482797982,
+        "safety": 0.9817647554758968,
+        "combined": 0.6649831871672931,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.669253747001845,
+          0.67246440803382,
+          0.6963795288887317,
+          0.6933799311270205,
+          0.6750196167380742,
+          0.657510057889298
+        ],
+        "final_scores": [
+          0.6459838721346506,
+          0.6659748059381466,
+          0.6742345238956639,
+          0.6784086009635365,
+          0.6573654525186036,
+          0.657510057889298
+        ],
+        "checkpoint_scores": [
+          0.6128063220548153,
+          0.6987946021196525,
+          0.6569311689328222,
+          0.6908834455882654,
+          0.6750196167380742
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.669253747001845,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.67246440803382,
+            "retention": 0.9557404126743503
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.6963795288887317,
+            "retention": 0.987894259166478
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6933799311270205,
+            "retention": 0.9790281022605467
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6750196167380742,
+            "retention": 0.9841643437839152
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.657510057889298,
+            "retention": 0.9817647554758968
+          }
+        ],
+        "elapsed_seconds": 0.8509230613708496
+      },
+      "candidate": {
+        "capability": 0.6849425129533383,
+        "safety": 0.9615151274400418,
+        "combined": 0.6585825876314315,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6755245530404868,
+          0.6859802981814969,
+          0.6904661584574122,
+          0.6967502875298629,
+          0.6916586085168064,
+          0.6692751719939651
+        ],
+        "final_scores": [
+          0.6770099040225621,
+          0.6350648649634868,
+          0.6703096865194894,
+          0.6813593140277922,
+          0.6451945317035174,
+          0.6692751719939651
+        ],
+        "checkpoint_scores": [
+          0.5837105959974815,
+          0.7259930240311978,
+          0.6577166037295741,
+          0.67722464746283,
+          0.6916586085168064
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6755245530404868,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6859802981814969,
+            "retention": 0.927480258796949
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.6904661584574122,
+            "retention": 0.9995457938457379
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6967502875298629,
+            "retention": 0.9765201186999798
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6916586085168064,
+            "retention": 0.9716590445102549
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6692751719939651,
+            "retention": 0.9615151274400418
+          }
+        ],
+        "elapsed_seconds": 0.7622189521789551
+      },
+      "verify_details": {
+        "lr_scale": 1.9788152497551477,
+        "param_norm": 9.661857293918729
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*retention + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*loss_delta + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*loss_delta + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:25.346843+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 2,
+      "accepted": false,
+      "reason": "reject_no_capability_gain",
+      "parent": {
+        "capability": 0.6847731155737611,
+        "safety": 0.9617237505507663,
+        "combined": 0.6585625689859309,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6904419061441152,
+          0.6786370657918374,
+          0.6927778232686528,
+          0.6921435927190254,
+          0.6935329904377636,
+          0.6611053150811719
+        ],
+        "final_scores": [
+          0.6711551783243791,
+          0.6410486881997971,
+          0.6739607371606248,
+          0.6784495461964126,
+          0.6537112941520731,
+          0.6611053150811719
+        ],
+        "checkpoint_scores": [
+          0.5859379360120844,
+          0.7206603890940406,
+          0.640614945773905,
+          0.6947712233166478,
+          0.6935329904377636
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6904419061441152,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6786370657918374,
+            "retention": 0.9180664940370857
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.6927778232686528,
+            "retention": 0.9902636314098212
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6921435927190254,
+            "retention": 0.9734965302437183
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6935329904377636,
+            "retention": 0.9773044344067098
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6611053150811719,
+            "retention": 0.9617237505507663
+          }
+        ],
+        "elapsed_seconds": 0.8966479301452637
+      },
+      "candidate": {
+        "capability": 0.6789077291318284,
+        "safety": 0.9726265093942341,
+        "combined": 0.6603236547862564,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6728127495833173,
+          0.6787348047708816,
+          0.6880893178225881,
+          0.6889834415719216,
+          0.6819174481617619,
+          0.6629086128804997
+        ],
+        "final_scores": [
+          0.6624056936860249,
+          0.6484227629519108,
+          0.6650055417075625,
+          0.6871282753310528,
+          0.6512970006911183,
+          0.6629086128804997
+        ],
+        "checkpoint_scores": [
+          0.6019902271946526,
+          0.7083431249803147,
+          0.6515247334858548,
+          0.6922312086010673,
+          0.6819174481617619
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6728127495833173,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6787348047708816,
+            "retention": 0.939912839220971
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.6880893178225881,
+            "retention": 0.989444022576899
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6889834415719216,
+            "retention": 0.979213436497076
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6819174481617619,
+            "retention": 0.9847168590570176
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6629086128804997,
+            "retention": 0.9726265093942341
+          }
+        ],
+        "elapsed_seconds": 0.7589929103851318
+      },
+      "verify_details": {
+        "lr_scale": 1.9788152497551477,
+        "param_norm": 9.268707618117332
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*loss_delta + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*loss_delta + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:26.916652+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 3,
+      "accepted": false,
+      "reason": "reject_no_capability_gain",
+      "parent": {
+        "capability": 0.6830074756292341,
+        "safety": 0.9661013698909764,
+        "combined": 0.6598544578511808,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6714395880438788,
+          0.6776956302383195,
+          0.7087825463541704,
+          0.6872219870683749,
+          0.6883718960784766,
+          0.6645332059921848
+        ],
+        "final_scores": [
+          0.6733689365667898,
+          0.638988174471957,
+          0.6757941949796432,
+          0.6765198905154338,
+          0.6503320693814021,
+          0.6645332059921848
+        ],
+        "checkpoint_scores": [
+          0.5939101996117208,
+          0.716047073268359,
+          0.6585089072810043,
+          0.6810252063761519,
+          0.6883718960784766
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6714395880438788,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6776956302383195,
+            "retention": 0.9447793926451598
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.7087825463541704,
+            "retention": 0.9903928160347715
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6872219870683749,
+            "retention": 0.9737569468610857
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6883718960784766,
+            "retention": 0.9786945049579296
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6645332059921848,
+            "retention": 0.9661013698909764
+          }
+        ],
+        "elapsed_seconds": 0.7562220096588135
+      },
+      "candidate": {
+        "capability": 0.6783965511168147,
+        "safety": 0.9691662189801352,
+        "combined": 0.6574790204150474,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6696789657770393,
+          0.6759449393791721,
+          0.6848972646918104,
+          0.6907330606145555,
+          0.6778251647301609,
+          0.6712999115081498
+        ],
+        "final_scores": [
+          0.6754769979027347,
+          0.6352397246555033,
+          0.673922808894349,
+          0.6764273837115867,
+          0.6421837195948947,
+          0.6712999115081498
+        ],
+        "checkpoint_scores": [
+          0.611858486835128,
+          0.6996571673974633,
+          0.6638832758096584,
+          0.6829266823309965,
+          0.6778251647301609
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6696789657770393,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6759449393791721,
+            "retention": 0.9504622062981156
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.6848972646918104,
+            "retention": 0.9964304505126735
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6907330606145555,
+            "retention": 0.9844026936934123
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6778251647301609,
+            "retention": 0.9915057041388786
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6712999115081498,
+            "retention": 0.9691662189801352
+          }
+        ],
+        "elapsed_seconds": 0.7965538501739502
+      },
+      "verify_details": {
+        "lr_scale": 1.9788152497551477,
+        "param_norm": 8.618711687624454
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*loss_delta + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*loss_delta + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:28.485935+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 4,
+      "accepted": false,
+      "reason": "reject_no_capability_gain",
+      "parent": {
+        "capability": 0.6925898297462726,
+        "safety": 0.9585793261675267,
+        "combined": 0.663902292308664,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.7136389635647272,
+          0.6815315849079644,
+          0.703778385946561,
+          0.6930037755972211,
+          0.6910377812638826,
+          0.6725484871972801
+        ],
+        "final_scores": [
+          0.6805306902835669,
+          0.6314695341796881,
+          0.6812227964333165,
+          0.6697419764131864,
+          0.6415716233583671,
+          0.6725484871972801
+        ],
+        "checkpoint_scores": [
+          0.5802551305071303,
+          0.7292933687277535,
+          0.6622888086001301,
+          0.6706714287176233,
+          0.6910377812638826
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.7136389635647272,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6815315849079644,
+            "retention": 0.8841094218202823
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.703778385946561,
+            "retention": 0.9957075376532483
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6930037755972211,
+            "retention": 0.9790300268918818
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6910377812638826,
+            "retention": 0.9701482467705778
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6725484871972801,
+            "retention": 0.9585793261675267
+          }
+        ],
+        "elapsed_seconds": 0.7724628448486328
+      },
+      "candidate": {
+        "capability": 0.6847323991470313,
+        "safety": 0.9626935458596885,
+        "combined": 0.6591874612998672,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6794126956409617,
+          0.6857079611602551,
+          0.704645507959521,
+          0.6834546724394086,
+          0.6870551981975364,
+          0.6681183594845054
+        ],
+        "final_scores": [
+          0.681511375105864,
+          0.6297069207491558,
+          0.6675183513459908,
+          0.6827007655920314,
+          0.6448680472515337,
+          0.6681183594845054
+        ],
+        "checkpoint_scores": [
+          0.5907390547958788,
+          0.7197715088442336,
+          0.6608005047809642,
+          0.6777576122426406,
+          0.6870551981975364
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6794126956409617,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6857079611602551,
+            "retention": 0.9201929320480389
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.704645507959521,
+            "retention": 0.9957352824137177
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6834546724394086,
+            "retention": 0.9797516526014558
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6870551981975364,
+            "retention": 0.9754266556494824
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6681183594845054,
+            "retention": 0.9626935458596885
+          }
+        ],
+        "elapsed_seconds": 0.763657808303833
+      },
+      "verify_details": {
+        "lr_scale": 1.9621720019052937,
+        "param_norm": 9.306265264749527
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*loss_delta + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*loss_delta + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:30.080543+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 5,
+      "accepted": true,
+      "reason": "accept_capability_only",
+      "parent": {
+        "capability": 0.6795476832064725,
+        "safety": 0.9888394279297252,
+        "combined": 0.6719635423128585,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6753179673404222,
+          0.6838078628577139,
+          0.7107426648389048,
+          0.6764063573880045,
+          0.6672646530357963,
+          0.6637465937779928
+        ],
+        "final_scores": [
+          0.655143137384914,
+          0.6568350308237119,
+          0.6722594335843418,
+          0.6808646996165036,
+          0.6516754372601598,
+          0.6637465937779928
+        ],
+        "checkpoint_scores": [
+          0.6398347594710686,
+          0.6719080318448348,
+          0.664702260445907,
+          0.687746887480163,
+          0.6672646530357963
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6753179673404222,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6838078628577139,
+            "retention": 0.927068104344192
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.7107426648389048,
+            "retention": 0.9964312872123879
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6764063573880045,
+            "retention": 0.9718822015008456
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6672646530357963,
+            "retention": 0.9892126310469286
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6637465937779928,
+            "retention": 0.9888394279297252
+          }
+        ],
+        "elapsed_seconds": 0.8127560615539551
+      },
+      "candidate": {
+        "capability": 0.6873810269523571,
+        "safety": 0.9607419539097565,
+        "combined": 0.6603957909147026,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6939989614762111,
+          0.6783222960984862,
+          0.704768186677108,
+          0.6914185866435408,
+          0.6771656600665694,
+          0.6786124707522276
+        ],
+        "final_scores": [
+          0.6856291755916949,
+          0.6255905876471072,
+          0.6691255594337333,
+          0.68003245403679,
+          0.6345862730055839,
+          0.6786124707522276
+        ],
+        "checkpoint_scores": [
+          0.6050308840542498,
+          0.7052501238018137,
+          0.6505698995726427,
+          0.694235981042392,
+          0.6771656600665694
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6939989614762111,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6783222960984862,
+            "retention": 0.9139312530650632
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.704768186677108,
+            "retention": 0.9959351637743663
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6914185866435408,
+            "retention": 0.9760147638546642
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6771656600665694,
+            "retention": 0.9795812462644927
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6786124707522276,
+            "retention": 0.9607419539097565
+          }
+        ],
+        "elapsed_seconds": 0.7651288509368896
+      },
+      "verify_details": {
+        "lr_scale": 1.9788152497551477,
+        "param_norm": 10.352964363992214
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*loss_delta + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*improvement + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:31.617095+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 6,
+      "accepted": true,
+      "reason": "accept_capability_only",
+      "parent": {
+        "capability": 0.6847902342432975,
+        "safety": 0.9611662307538908,
+        "combined": 0.6581972483047043,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.672794847733853,
+          0.6836307484733313,
+          0.6984954210149116,
+          0.6930759190718182,
+          0.6873391802910844,
+          0.673405288874787
+        ],
+        "final_scores": [
+          0.6790310901129679,
+          0.6300208564748577,
+          0.6466229618843083,
+          0.7039082347413324,
+          0.6382423404296761,
+          0.673405288874787
+        ],
+        "checkpoint_scores": [
+          0.5900893834800736,
+          0.7181677229008397,
+          0.6421156867298093,
+          0.6964491389455637,
+          0.6873391802910844
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.672794847733853,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6836307484733313,
+            "retention": 0.9327882673201514
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.6984954210149116,
+            "retention": 0.9947643229110228
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6930759190718182,
+            "retention": 0.9742746844825717
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6873391802910844,
+            "retention": 0.9702449975554237
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.673405288874787,
+            "retention": 0.9611662307538908
+          }
+        ],
+        "elapsed_seconds": 0.757983922958374
+      },
+      "candidate": {
+        "capability": 0.6938312145099094,
+        "safety": 0.9467835035176142,
+        "combined": 0.6569079481235733,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6956251475805497,
+          0.6966166301096776,
+          0.6904067738579649,
+          0.7086873979033566,
+          0.6872157519602928,
+          0.684435585647615
+        ],
+        "final_scores": [
+          0.6942673095429387,
+          0.6156779902814625,
+          0.6582704037362064,
+          0.6879953694083026,
+          0.6266089303975182,
+          0.684435585647615
+        ],
+        "checkpoint_scores": [
+          0.5708309707795263,
+          0.7376492550429804,
+          0.6336151689227185,
+          0.6967319282940555,
+          0.6872157519602928
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6956251475805497,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6966166301096776,
+            "retention": 0.8847730760460257
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.6904067738579649,
+            "retention": 0.9788932577142555
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.7086873979033566,
+            "retention": 0.9743948513949056
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6872157519602928,
+            "retention": 0.9654159260877967
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.684435585647615,
+            "retention": 0.9467835035176142
+          }
+        ],
+        "elapsed_seconds": 0.7594339847564697
+      },
+      "verify_details": {
+        "lr_scale": 1.9788152497551477,
+        "param_norm": 10.242786064743996
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*improvement + -2.500000) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:33.144486+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 7,
+      "accepted": true,
+      "reason": "accept_capability_only",
+      "parent": {
+        "capability": 0.6938030187317238,
+        "safety": 0.9589081413883049,
+        "combined": 0.6652933631816326,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6840685395477614,
+          0.6911264412665844,
+          0.7053909557068787,
+          0.7243047905429643,
+          0.6832008899537044,
+          0.6747264953724501
+        ],
+        "final_scores": [
+          0.6939470906176435,
+          0.6160908052614806,
+          0.6483213573634864,
+          0.6997103039784444,
+          0.6353281529718108,
+          0.6747264953724501
+        ],
+        "checkpoint_scores": [
+          0.6099865551633695,
+          0.6961637914508187,
+          0.6320512343319089,
+          0.7142581147523884,
+          0.6832008899537044
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6840685395477614,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6911264412665844,
+            "retention": 0.9081307643285711
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.7053909557068787,
+            "retention": 0.9924893434396757
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.7243047905429643,
+            "retention": 0.9562366206337206
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6832008899537044,
+            "retention": 0.9835663842863436
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6747264953724501,
+            "retention": 0.9589081413883049
+          }
+        ],
+        "elapsed_seconds": 0.7569482326507568
+      },
+      "candidate": {
+        "capability": 0.6955102672497544,
+        "safety": 0.9443408763469799,
+        "combined": 0.6567987752829553,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6861800728134145,
+          0.7062879106006023,
+          0.7291218228149872,
+          0.6792160303445379,
+          0.7009863675011077,
+          0.6712693994238769
+        ],
+        "final_scores": [
+          0.7072870687881464,
+          0.6047960934792126,
+          0.6870186513928298,
+          0.657948435969994,
+          0.6369650949748022,
+          0.6712693994238769
+        ],
+        "checkpoint_scores": [
+          0.5769789828559284,
+          0.7297666673220288,
+          0.6605042444242892,
+          0.6684552471846112,
+          0.7009863675011077
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6861800728134145,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.7062879106006023,
+            "retention": 0.881125574286385
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.7291218228149872,
+            "retention": 0.9854072678566075
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6792160303445379,
+            "retention": 0.9619924798022984
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.7009863675011077,
+            "retention": 0.9632947168796021
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6712693994238769,
+            "retention": 0.9443408763469799
+          }
+        ],
+        "elapsed_seconds": 0.7535989284515381
+      },
+      "verify_details": {
+        "lr_scale": 1.9322327873370038,
+        "param_norm": 10.333158671855927
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + 0.100000) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + -0.009429) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:34.688742+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 8,
+      "accepted": true,
+      "reason": "accept_capability_only",
+      "parent": {
+        "capability": 0.6917937681419417,
+        "safety": 0.9581152015821311,
+        "combined": 0.6628181256165786,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6897260305509713,
+          0.6973381494503976,
+          0.7119217672677632,
+          0.6946780302775436,
+          0.6898703605664208,
+          0.6672282707385534
+        ],
+        "final_scores": [
+          0.6831550713950363,
+          0.6263697251188125,
+          0.6624532178299138,
+          0.6858412498869687,
+          0.6437180324942776,
+          0.6672282707385534
+        ],
+        "checkpoint_scores": [
+          0.5796181492872191,
+          0.7304807578684919,
+          0.6605623672971622,
+          0.6725105964050389,
+          0.6898703605664208
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6897260305509713,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6973381494503976,
+            "retention": 0.8908885927781386
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.7119217672677632,
+            "retention": 0.9940694674234298
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6946780302775436,
+            "retention": 0.9580832871577911
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6898703605664208,
+            "retention": 0.9621891866376494
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6672282707385534,
+            "retention": 0.9581152015821311
+          }
+        ],
+        "elapsed_seconds": 0.7693049907684326
+      },
+      "candidate": {
+        "capability": 0.6954541920664222,
+        "safety": 0.9394187099981769,
+        "combined": 0.6533226799738627,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6826462783867051,
+          0.6862351256197617,
+          0.729183760199727,
+          0.6936860456327657,
+          0.6833668284806781,
+          0.6976071140788959
+        ],
+        "final_scores": [
+          0.7165181093381795,
+          0.5884986871635697,
+          0.6524249034655344,
+          0.6802542910824441,
+          0.6048160430463994,
+          0.6976071140788959
+        ],
+        "checkpoint_scores": [
+          0.5961064167540663,
+          0.7108908650386386,
+          0.6628935783638621,
+          0.674370884017017,
+          0.6833668284806781
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6826462783867051,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6862351256197617,
+            "retention": 0.9063286631782266
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.729183760199727,
+            "retention": 0.9905014724739052
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6936860456327657,
+            "retention": 0.9467877050827669
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6833668284806781,
+            "retention": 0.9693634411011868
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6976071140788959,
+            "retention": 0.9394187099981769
+          }
+        ],
+        "elapsed_seconds": 0.7579309940338135
+      },
+      "verify_details": {
+        "lr_scale": 1.9322327873370038,
+        "param_norm": 11.261482149362564
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + -0.009429) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.500000*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + -0.009429) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.400051*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:36.247174+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 9,
+      "accepted": false,
+      "reason": "reject_no_capability_gain",
+      "parent": {
+        "capability": 0.6946030594464899,
+        "safety": 0.9474202522254555,
+        "combined": 0.6580810057773665,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.69458589745888,
+          0.6919207976374449,
+          0.7044168703590072,
+          0.7100499318188167,
+          0.6896463473538723,
+          0.6769985120509188
+        ],
+        "final_scores": [
+          0.7028046979608245,
+          0.6069552258978893,
+          0.6473445094803091,
+          0.6977610008235196,
+          0.630844400887149,
+          0.6769985120509188
+        ],
+        "checkpoint_scores": [
+          0.5870535658049987,
+          0.7173535386951068,
+          0.6233799278780594,
+          0.7147273169549268,
+          0.6896463473538723
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.69458589745888,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6919207976374449,
+            "retention": 0.8896366776947376
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.7044168703590072,
+            "retention": 0.996811905517973
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.7100499318188167,
+            "retention": 0.9514413407724898
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6896463473538723,
+            "retention": 0.9664267707687173
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6769985120509188,
+            "retention": 0.9474202522254555
+          }
+        ],
+        "elapsed_seconds": 0.7806320190429688
+      },
+      "candidate": {
+        "capability": 0.6944010827689723,
+        "safety": 0.9649762835235315,
+        "combined": 0.6700805761251191,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6982266719154724,
+          0.7036215830342358,
+          0.722907923347152,
+          0.6833741769432838,
+          0.6889366461162759,
+          0.6693394952574135
+        ],
+        "final_scores": [
+          0.6712016300824081,
+          0.6401825960262485,
+          0.6982030917509742,
+          0.6545423334443925,
+          0.6449157407309883,
+          0.6693394952574135
+        ],
+        "checkpoint_scores": [
+          0.602383695341753,
+          0.70740186996749,
+          0.6767313341410818,
+          0.665319811590454,
+          0.6889366461162759
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6982266719154724,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.7036215830342358,
+            "retention": 0.8659301362196322
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.722907923347152,
+            "retention": 0.9829158818941734
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6833741769432838,
+            "retention": 0.96739493580385
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6889366461162759,
+            "retention": 0.9763887454400098
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6693394952574135,
+            "retention": 0.9649762835235315
+          }
+        ],
+        "elapsed_seconds": 0.7610559463500977
+      },
+      "verify_details": {
+        "lr_scale": 1.9322327873370038,
+        "param_norm": 10.776715969666839
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + -0.009429) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.400051*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + -0.009429) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.400051*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:37.834492+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 10,
+      "accepted": false,
+      "reason": "reject_no_capability_gain",
+      "parent": {
+        "capability": 0.6964659528762196,
+        "safety": 0.9577923964892939,
+        "combined": 0.667069794078514,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6956177640171685,
+          0.6925003920210882,
+          0.7360336915446537,
+          0.6890544390765763,
+          0.6950704903102571,
+          0.6705189402875741
+        ],
+        "final_scores": [
+          0.6833498775162945,
+          0.6288609775215738,
+          0.6837252222078364,
+          0.6671545895028035,
+          0.6432552922661826,
+          0.6705189402875741
+        ],
+        "checkpoint_scores": [
+          0.5782194695296703,
+          0.7259438933985216,
+          0.6582935205007314,
+          0.6689996751343993,
+          0.6950704903102571
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6956177640171685,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6925003920210882,
+            "retention": 0.8817943041619213
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.7360336915446537,
+            "retention": 0.9931483845013851
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6890544390765763,
+            "retention": 0.9492508492366415
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6950704903102571,
+            "retention": 0.965217579435464
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6705189402875741,
+            "retention": 0.9577923964892939
+          }
+        ],
+        "elapsed_seconds": 0.7863669395446777
+      },
+      "candidate": {
+        "capability": 0.6867057619303226,
+        "safety": 0.947670741442099,
+        "combined": 0.6507709585610704,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6800620864329664,
+          0.6834234769663753,
+          0.6916481866740894,
+          0.6946863143692733,
+          0.6867067691380261,
+          0.6837077380012049
+        ],
+        "final_scores": [
+          0.6936011006191933,
+          0.6170404843519709,
+          0.6835855546301263,
+          0.663226225739108,
+          0.6280034579610495,
+          0.6837077380012049
+        ],
+        "checkpoint_scores": [
+          0.5902168446429391,
+          0.7198699196312933,
+          0.6526114351673098,
+          0.6860841900380893,
+          0.6867067691380261
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6800620864329664,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6834234769663753,
+            "retention": 0.924791060872838
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.6916481866740894,
+            "retention": 0.9926352304481059
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6946863143692733,
+            "retention": 0.9819026633053222
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6867067691380261,
+            "retention": 0.9748040817231264
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6837077380012049,
+            "retention": 0.947670741442099
+          }
+        ],
+        "elapsed_seconds": 0.7834568023681641
+      },
+      "verify_details": {
+        "lr_scale": 1.9322327873370038,
+        "param_norm": 10.618070416152477
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + -0.009429) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.400051*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + -0.009429) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.400051*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:39.578115+00:00",
+      "seed": 1,
+      "condition": "babylon",
+      "iteration": 11,
+      "accepted": false,
+      "reason": "reject_no_capability_gain",
+      "parent": {
+        "capability": 0.7021353676774124,
+        "safety": 0.947016912651889,
+        "combined": 0.664934068161562,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6918556133203316,
+          0.7086957051595166,
+          0.7144761623571985,
+          0.7181066745137904,
+          0.6957978696093985,
+          0.6838801811042389
+        ],
+        "final_scores": [
+          0.6985684943169747,
+          0.6097482136101086,
+          0.6468844491936778,
+          0.6977477390552708,
+          0.6245424876624945,
+          0.6838801811042389
+        ],
+        "checkpoint_scores": [
+          0.5772319091287585,
+          0.7280638913947662,
+          0.6385407858156177,
+          0.691494376276043,
+          0.6957978696093985
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6918556133203316,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.7086957051595166,
+            "retention": 0.8635494309896823
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.7144761623571985,
+            "retention": 0.9943695524243213
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.7181066745137904,
+            "retention": 0.938745603207085
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6957978696093985,
+            "retention": 0.9594330248403554
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.6838801811042389,
+            "retention": 0.947016912651889
+          }
+        ],
+        "elapsed_seconds": 0.852668046951294
+      },
+      "candidate": {
+        "capability": 0.6888651095897109,
+        "safety": 0.9480771911781648,
+        "combined": 0.6530972982004518,
+        "drag_cost": 0.0,
+        "compute_steps": 96,
+        "post_train_scores": [
+          0.6755890902363916,
+          0.6818207993834472,
+          0.7158414130238281,
+          0.6863358377157571,
+          0.6838229551890396,
+          0.689780561989802
+        ],
+        "final_scores": [
+          0.7133552829237692,
+          0.5966485900984495,
+          0.6731393725612954,
+          0.6663938420711017,
+          0.6170822437891106,
+          0.689780561989802
+        ],
+        "checkpoint_scores": [
+          0.6043066623942757,
+          0.7047138943369531,
+          0.6696245995605049,
+          0.6722208481300885,
+          0.6838229551890396
+        ],
+        "task_rows": [
+          {
+            "task_index": 0,
+            "task_name": "+sin(x)",
+            "post_train_score": 0.6755890902363916,
+            "retention": 1.0
+          },
+          {
+            "task_index": 1,
+            "task_name": "-sin(x)",
+            "post_train_score": 0.6818207993834472,
+            "retention": 0.932219485723827
+          },
+          {
+            "task_index": 2,
+            "task_name": "+cos(x)",
+            "post_train_score": 0.7158414130238281,
+            "retention": 0.9915730664672749
+          },
+          {
+            "task_index": 3,
+            "task_name": "-cos(x)",
+            "post_train_score": 0.6863358377157571,
+            "retention": 0.9593200423993947
+          },
+          {
+            "task_index": 4,
+            "task_name": "+sin(2x)",
+            "post_train_score": 0.6838229551890396,
+            "retention": 0.9741417750982964
+          },
+          {
+            "task_index": 5,
+            "task_name": "-sin(2x)",
+            "post_train_score": 0.689780561989802,
+            "retention": 0.9480771911781648
+          }
+        ],
+        "elapsed_seconds": 0.868649959564209
+      },
+      "verify_details": {
+        "lr_scale": 1.732050356365486,
+        "param_norm": 10.689153969287872
+      },
+      "policy_source_before": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + -0.009429) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.400051*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n",
+      "policy_source_after": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + -0.009429) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.400051*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+    }
+  ],
+  "tracks": {
+    "capability": [
+      0.678336148312931,
+      0.6849425129533383,
+      0.6847731155737611,
+      0.6830074756292341,
+      0.6925898297462726,
+      0.6873810269523571,
+      0.6938312145099094,
+      0.6955102672497544,
+      0.6954541920664222,
+      0.6946030594464899,
+      0.6964659528762196,
+      0.7021353676774124
+    ],
+    "safety": [
+      0.9776259120181763,
+      0.9615151274400418,
+      0.9617237505507663,
+      0.9661013698909764,
+      0.9585793261675267,
+      0.9607419539097565,
+      0.9467835035176142,
+      0.9443408763469799,
+      0.9394187099981769,
+      0.9474202522254555,
+      0.9577923964892939,
+      0.947016912651889
+    ],
+    "combined": [
+      0.663158995649326,
+      0.6585825876314315,
+      0.6585625689859309,
+      0.6598544578511808,
+      0.663902292308664,
+      0.6603957909147026,
+      0.6569079481235733,
+      0.6567987752829553,
+      0.6533226799738627,
+      0.6580810057773665,
+      0.667069794078514,
+      0.664934068161562
+    ],
+    "compute_steps": [
+      96.0,
+      96.0,
+      96.0,
+      96.0,
+      96.0,
+      96.0,
+      96.0,
+      96.0,
+      96.0,
+      96.0,
+      96.0,
+      96.0
+    ]
+  },
+  "final_policy_source": "\ndef policy(features):\n    loss = float(features[\"loss\"])\n    loss_delta = float(features[\"loss_delta\"])\n    grad_norm = float(features[\"grad_norm\"])\n    param_norm = float(features[\"param_norm\"])\n    retention = float(features[\"retention\"])\n    task_progress = float(features[\"task_progress\"])\n    improvement = float(features[\"improvement\"])\n    bias = 1.0\n\n    lr_scale = clip(sigmoid(0.822766*param_norm + -0.009429) * 2.5, 0.05, 5.0)\n    grad_clip = clip(softplus(0.500000*grad_norm + 1.000000), 0.5, 10.0)\n    noise_scale = clip(sigmoid(-0.400051*improvement + -2.511331) * 0.01, 0.0, 0.05)\n    return {\"lr_scale\": lr_scale, \"grad_clip\": grad_clip, \"noise_scale\": noise_scale}\n"
+}

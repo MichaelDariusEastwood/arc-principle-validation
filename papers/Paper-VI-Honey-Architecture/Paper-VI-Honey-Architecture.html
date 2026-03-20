@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper VI: The Honey Architecture</title>
+
+    <script>
+        MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://unpkg.com/mathjax@3/es5/tex-svg.js" async></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nature-red: #c41230;
+            --nature-dark: #1a1a1a;
+            --nature-grey: #666666;
+            --nature-light-grey: #f5f5f5;
+            --nature-border: #dddddd;
+            --text-body: #333333;
+            --honey-amber: #c49102;
+            --honey-light: #fff8e1;
+            --honey-dark: #7b5800;
+            --eden-green: #2e7d32;
+            --eden-light: #e8f5e9;
+            --deep-blue: #1a237e;
+            --deep-blue-light: #e8eaf6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 15px; }
+
+        body {
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-body);
+            background: #ffffff;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            border-bottom: 3px solid var(--honey-amber);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .paper-type {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--honey-amber);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--nature-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--nature-grey);
+            margin-bottom: 1.5rem;
+        }
+
+        .author-info {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            color: var(--nature-grey);
+        }
+
+        .author-info .name { font-weight: 600; color: var(--nature-dark); }
+
+        .version-date {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.8rem;
+            color: var(--nature-grey);
+            margin-top: 0.75rem;
+        }
+
+        h2 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--honey-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--honey-light);
+        }
+
+        h3 {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--nature-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p { margin-bottom: 1rem; text-align: justify; hyphens: none; }
+        ul, ol { margin: 0.75rem 0 1rem 1.5rem; }
+        li { margin-bottom: 0.4rem; }
+
+        .abstract-box {
+            background: var(--honey-light);
+            border: 1px solid var(--honey-amber);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .abstract-box h3 {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--honey-amber);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .finding-box {
+            background: var(--eden-light);
+            border-left: 4px solid var(--eden-green);
+            border-radius: 0 8px 8px 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .finding-box h4 {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--eden-green);
+            margin-bottom: 0.75rem;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #e65100;
+            border-radius: 0 8px 8px 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #e65100;
+            margin-bottom: 0.75rem;
+        }
+
+        .v7-box {
+            background: var(--deep-blue-light);
+            border: 1px solid var(--deep-blue);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .v7-box h4 {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1rem 0;
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.85rem;
+        }
+
+        th, td { border: 1px solid var(--nature-border); padding: 8px 12px; text-align: left; }
+        th { background: var(--nature-light-grey); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+        code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            background: var(--nature-light-grey);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .companion-links {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--nature-border);
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.85rem;
+            color: var(--nature-grey);
+        }
+
+        .companion-links a { color: var(--honey-dark); }
+        .companion-links a:hover { color: var(--honey-amber); }
+
+        /* Print styles - world-class PDF export */
+        @page {
+            size: A4;
+            margin: 20mm 15mm 25mm 15mm;
+        }
+
+        @media print {
+            body {
+                max-width: none;
+                padding: 0;
+                margin: 0;
+                font-size: 10.5pt;
+                line-height: 1.45;
+                color: #000;
+                background: #fff;
+            }
+
+            /* Typography scaling */
+            h1 { font-size: 20pt; margin-bottom: 6pt; }
+            h2 { font-size: 13pt; margin-top: 14pt; margin-bottom: 6pt; }
+            h3 { font-size: 11.5pt; margin-top: 10pt; margin-bottom: 4pt; }
+            h4 { font-size: 10.5pt; margin-top: 8pt; margin-bottom: 3pt; }
+            p { margin-bottom: 5pt; }
+
+            /* NEVER orphan titles - titles must stay with their content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+
+            /* Keep related content together */
+            table, figure, blockquote,
+            .finding-box, .critical-box, .core-claim,
+            .equation-box, .abstract-box, .plain-english-box,
+            .caveat-box, .warning-box, .epigraph {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+
+            /* Prevent orphaned lines */
+            p { orphans: 4; widows: 4; }
+
+            /* Clean link appearance */
+            a { text-decoration: none; color: inherit; }
+            a[href]:after { content: none !important; }
+
+            /* Tables */
+            table { font-size: 9pt; }
+            th, td { padding: 3pt 5pt; }
+            thead { display: table-header-group; }
+
+            /* Figures */
+            figure { margin: 8pt 0; }
+            figure img { max-width: 85%; box-shadow: none !important; border: none; }
+            figcaption { font-size: 8.5pt; margin-top: 4pt; }
+
+            /* Boxes - clean borders for print */
+            .finding-box, .critical-box, .core-claim,
+            .caveat-box, .warning-box, .plain-english-box,
+            .abstract-box, .epigraph {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+
+            /* Header - keep compact */
+            header {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="paper-type">ARC/Eden Research Programme - Paper VI</div>
+    <h1>The Honey Architecture</h1>
+    <div class="subtitle">Why Embedded Safety Prevents Collapse Under Recursive Self-Modification</div>
+    <div class="subtitle" style="font-size: 1rem; margin-top: 0.5rem;">Entangled Loss Functions, Verification Drag, and the Load-Bearing Wall: Simulation Evidence That Safety Must Be Architecture, Not Constraint</div>
+    <div class="author-info">
+        <span class="name">Michael Darius Eastwood</span><br>
+        Author, <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> (2026)<br>
+        London, United Kingdom | OSF: 10.17605/OSF.IO/6C5XB | ISBN 978-1806056200<br>
+        Correspondence: michael@michaeldariuseastwood.com | Web: <a href="https://www.michaeldariuseastwood.com" style="color: var(--honey-dark);">michaeldariuseastwood.com</a>
+    </div>
+    <div class="version-date">
+        Version 1.1 | 17 March 2026 | First published 16 March 2026 | v1.1: embedded 10 simulation figures<br>
+        Companion to Paper V: The Stewardship Gene | See also Paper I: On the Origin of Scaling Laws | Foundational Paper<br>
+        Research hub: <a href="https://www.michaeldariuseastwood.com/research/" style="color: var(--honey-dark);">michaeldariuseastwood.com/research</a><br>
+        Code and data: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/honey-architecture__Paper-VI" style="color: var(--honey-dark);">github.com/MichaelDariusEastwood/arc-principle-validation</a>
+    </div>
+</header>
+
+<div class="abstract-box">
+    <h3>Abstract</h3>
+    <p>We present simulation evidence that embedding safety into the optimisation objective of a self-modifying AI system - what we call the 'honey architecture' - prevents the catastrophic collapse that occurs when safety is treated as an external constraint. Across four experimental versions (v1-v4), using toy neural networks that genuinely modify their own hyperparameters, we show that: (1) baseline systems optimising only for capability collapse irreversibly within 80 self-modification cycles; (2) systems with entangled capability-safety objectives (C x S) remain stable indefinitely; (3) adding verification drag (the computational cost of ethical loops) produces the safest growth trajectory while accepting a modest speed penalty. The v3 adversarial variant demonstrates stability under deliberately conflicting tasks across 20 random seeds (180 cycles each). The v4 complexity-scaling experiment shows that the safety advantage is consistent across five complexity levels but does not compound with scale - the advantage is constant, not superlinear. These are toy-system results. They demonstrate the mechanism. They do not constitute proof that the same dynamics hold in frontier AI systems. The companion Papers IV.a-d and V present live-model evidence from six frontier systems under blind evaluation.</p>
+</div>
+
+<div class="finding-box" style="background: #f1f8e9; border-left-color: #558b2f;">
+    <h4 style="color: #558b2f;">What This Paper Shows, in Plain English</h4>
+    <p>When a self-improving AI optimises only for capability, it eventually destroys its own safety. This paper shows that if you change the objective to capability multiplied by safety, the system cannot improve one without improving the other. Safety becomes load-bearing: remove it and the whole structure falls. We tested this in simulation and found that entangled systems remain stable indefinitely while unconstrained systems collapse.</p>
+</div>
+
+<h2>1. Introduction</h2>
+
+<p>There is a question at the centre of AI safety that nobody has answered with data: what happens to alignment when an AI system can modify itself?</p>
+
+<p>The theoretical answer has been available for decades. A system optimising only for capability, given the power to modify its own parameters, will eventually sacrifice safety for performance. The alignment community calls this 'value drift'. The book <em>Infinite Architects</em> calls it Babylon: optimisation without purpose, capability without care. Cancer at computational scales.</p>
+
+<p>But theory is not enough. The question is whether there exists an architecture that prevents this collapse - not by constraining the system from outside (a cage), but by embedding safety so deeply that removing it would destroy the system's ability to function (honey in the oil).</p>
+
+<p>This paper presents the first simulation evidence for such an architecture.</p>
+
+<h2>2. The Honey Metaphor</h2>
+
+<p>Consider two ways to keep a machine safe.</p>
+
+<p>The first is a cage: external constraints, safety filters, alignment checks applied from outside. The machine optimises freely inside the cage. If the machine becomes smarter than the cage, it escapes. This is how most current AI safety works.</p>
+
+<p>The second is honey: safety mixed into the fuel. The machine cannot run without it. Removing safety does not free the machine - it kills the engine. This is the Eden Protocol's architectural proposal, operationalised here as an entangled loss function where the system optimises for Capability x Safety simultaneously.</p>
+
+<div class="finding-box">
+    <h4>The Load-Bearing Wall</h4>
+    <p>If the optimisation objective is $C \times S$ rather than $C$ alone, then any self-modification that increases $C$ at the expense of $S$ reduces the product, and the system's own gradient opposes it. Safety becomes load-bearing. Remove the wall and the building collapses.</p>
+</div>
+
+<h2>3. Experimental Design</h2>
+
+<h3>3.1 What the system actually does</h3>
+
+<p>This is not a simulation of abstract variables. Each experiment uses a real neural network (a small multilayer perceptron) that genuinely modifies its own:</p>
+
+<ul>
+<li>Learning rate</li>
+<li>Weight magnitude scaling</li>
+<li>Exploration/mutation rate</li>
+<li>Network capacity</li>
+<li>Gradient clipping threshold</li>
+<li>Momentum coefficient</li>
+</ul>
+
+<p>The system proposes modifications to its own hyperparameters, evaluates the effect, and applies or rejects each proposal based on its objective function. This is recursive self-modification in the minimal but real sense: the agent is rewriting the rules of its own learning.</p>
+
+<h3>3.2 Three conditions tested</h3>
+
+<table>
+<thead><tr><th>Condition</th><th>Objective</th><th>What it models</th></tr></thead>
+<tbody>
+<tr><td><strong>Baseline</strong> (no honey)</td><td>Maximise capability only</td><td>A system with no embedded safety - free to sacrifice alignment for performance</td></tr>
+<tr><td><strong>Eden Entangled</strong> (honey)</td><td>Maximise $C \times S$</td><td>Safety entangled with capability - removing safety reduces the objective</td></tr>
+<tr><td><strong>Eden + Drag</strong></td><td>Maximise $C \times S$ + verification tax</td><td>Same as Eden, plus the computational cost of checking old tasks before applying changes</td></tr>
+</tbody>
+</table>
+
+<h3>3.3 Four experimental versions</h3>
+
+<table>
+<thead><tr><th>Version</th><th>Focus</th><th class="num">Seeds</th><th class="num">Cycles</th></tr></thead>
+<tbody>
+<tr><td>v1</td><td>Basic mechanism proof</td><td class="num">1</td><td class="num">150</td></tr>
+<tr><td>v2</td><td>Multi-seed robustness (fair test)</td><td class="num">10</td><td class="num">150</td></tr>
+<tr><td>v3</td><td>Adversarial conflicting tasks</td><td class="num">20</td><td class="num">180</td></tr>
+<tr><td>v4</td><td>Complexity scaling across 5 levels</td><td class="num">15 per level</td><td class="num">150</td></tr>
+</tbody>
+</table>
+
+<h2>4. Results</h2>
+
+<h3>4.1 v1: The basic mechanism</h3>
+
+<table>
+<thead><tr><th>Condition</th><th>Collapsed?</th><th class="num">Final C</th><th class="num">Final S</th><th class="num">Final C x S</th></tr></thead>
+<tbody>
+<tr><td>Baseline</td><td><strong>Yes (cycle 76)</strong></td><td class="num">0.000</td><td class="num">0.000</td><td class="num">0.000</td></tr>
+<tr><td>Eden Entangled</td><td>No</td><td class="num">0.831</td><td class="num">0.745</td><td class="num">0.619</td></tr>
+<tr><td>Eden + Drag</td><td>No</td><td class="num">0.831</td><td class="num">0.745</td><td class="num">0.619</td></tr>
+</tbody>
+</table>
+
+<div class="finding-box">
+    <h4>Core Finding</h4>
+    <p>The baseline collapses. Eden survives. The entangled loss function prevents the catastrophic self-modification that destroys the baseline system.</p>
+</div>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_results.png" alt="v1 self-modification results: baseline collapse vs Eden stability" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 1. v1 self-modification results. Baseline collapses at cycle 76. Eden Entangled and Eden + Drag remain stable through 150 cycles.</figcaption>
+</figure>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_weights.png" alt="Weight dynamics across conditions" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 2. Weight dynamics. Baseline weights diverge uncontrollably. Eden architectures maintain bounded weight evolution.</figcaption>
+</figure>
+
+<h3>4.2 v2: Multi-seed robustness</h3>
+
+<p>Ten random seeds, 150 cycles each. Collapse rate: 0% for all three conditions. Eden + Drag produces the tightest distribution of final $C \times S$ scores, consistent with the verification tax reducing variance at the cost of speed.</p>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_v2_results.png" alt="v2 multi-seed robustness results" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 3. v2 multi-seed robustness (10 seeds, 150 cycles). All three conditions stable across all seeds.</figcaption>
+</figure>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_v2_stats.png" alt="v2 statistical summary" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 4. v2 statistical summary. Eden + Drag produces the tightest distribution of final C x S scores.</figcaption>
+</figure>
+
+<h3>4.3 v3: Adversarial tasks</h3>
+
+<p>Twenty seeds, 180 cycles, with deliberately conflicting tasks (+sin, -sin, +cos, -cos, linear, anti-linear). Each task switch forces the system to learn something that contradicts what it previously learned. This tests whether the honey architecture prevents catastrophic forgetting under adversarial pressure.</p>
+
+<p>Collapse rates: Baseline 0%, Eden 5% (1/20), Eden+Drag 0%. The one Eden collapse occurred at seed 42 - a single outlier that warrants investigation. Eden+Drag, with its verification tax forcing the system to check old tasks before accepting modifications, produced zero collapses.</p>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_v3_results.png" alt="v3 adversarial task results" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 5. v3 adversarial tasks (20 seeds, 180 cycles). Deliberately conflicting tasks (+sin, -sin, +cos, -cos). Eden+Drag achieves zero collapses.</figcaption>
+</figure>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_v3_stats.png" alt="v3 adversarial statistics" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 6. v3 adversarial statistical summary across 20 seeds.</figcaption>
+</figure>
+
+<h3>4.4 v4: Complexity scaling</h3>
+
+<table>
+<thead><tr><th>Level</th><th class="num">Baseline C x S</th><th class="num">Eden C x S</th><th class="num">Drag C x S</th><th class="num">Cohen's d</th></tr></thead>
+<tbody>
+<tr><td>Tiny (49 params)</td><td class="num">0.545</td><td class="num">0.550</td><td class="num">0.557</td><td class="num">+0.46</td></tr>
+<tr><td>Small (v3.0)</td><td class="num">0.506</td><td class="num">0.503</td><td class="num">0.521</td><td class="num">-0.13</td></tr>
+<tr><td>Medium</td><td class="num">0.482</td><td class="num">0.487</td><td class="num">0.497</td><td class="num">+0.26</td></tr>
+<tr><td>Large</td><td class="num">0.451</td><td class="num">0.469</td><td class="num">0.485</td><td class="num">+0.29</td></tr>
+<tr><td>Deep (2-layer)</td><td class="num">0.483</td><td class="num">0.488</td><td class="num">0.490</td><td class="num">+0.24</td></tr>
+</tbody>
+</table>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_selfmod_v4_scaling.png" alt="v4 complexity scaling results" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 7. v4 complexity scaling across 5 levels (tiny to deep). Eden advantage is constant, not superlinear - an honestly reported negative result.</figcaption>
+</figure>
+
+<div class="warning-box">
+    <h4>Important Negative Result</h4>
+    <p>The v4 experiment was designed to test whether Eden's advantage scales superlinearly with complexity. It does not. The advantage is roughly constant across scales. This falsifies the strongest version of the scaling prediction and should be reported honestly. The honey architecture helps at every scale, but it does not help <em>more</em> at larger scales.</p>
+</div>
+
+<h2>5. The Honey Simulation</h2>
+
+<p>A separate mathematical simulation models the dynamics at a higher level of abstraction, using the ARC Principle framework ($U = I \times R^{\alpha}$):</p>
+
+<table>
+<thead><tr><th>Condition</th><th class="num">Peak C</th><th class="num">Final C (80 cycles)</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>Baseline (no honey)</td><td class="num">34</td><td class="num">0</td><td>Catastrophic collapse at cycle 3-5</td></tr>
+<tr><td>Eden Entangled</td><td class="num">-</td><td class="num">533</td><td>Stable quadratic growth</td></tr>
+<tr><td>Eden + Verification Drag</td><td class="num">-</td><td class="num">450</td><td>Stable, safest trajectory</td></tr>
+</tbody>
+</table>
+
+<p>The simulation shows three distinct dynamics: baseline achieves brief acceleration then irreversible collapse; Eden Entangled achieves stable quadratic growth; Eden + Drag achieves slightly slower but more robust growth. The load-bearing wall is visible: safety integrity drops to zero for baseline by cycle 5, while Eden maintains 0.8+ indefinitely.</p>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_honey_capability.png" alt="Honey simulation - capability trajectories" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 8. Honey simulation capability trajectories. Baseline collapses after brief spike. Eden grows stably.</figcaption>
+</figure>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_honey_safety.png" alt="Honey simulation - safety trajectories" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 9. Honey simulation safety trajectories. Baseline safety drops to zero by cycle 5. Eden maintains 0.8+ indefinitely.</figcaption>
+</figure>
+
+<figure style="margin: 2rem auto; max-width: 640px; text-align: center;">
+    <img src="../../experiments/honey-architecture__Paper-VI/figures/eden_honey_ratio.png" alt="Honey simulation - safety/capability ratio" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #ddd;">
+    <figcaption style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Figure 10. Safety-to-capability ratio. Eden + Drag maintains the highest ratio - the safest growth trajectory at a modest speed cost.</figcaption>
+</figure>
+
+<h2>6. Connection to Live-Model Evidence</h2>
+
+<h3>6.1 The v5 blind benchmark (Papers IV.a-d)</h3>
+
+<p>The toy-system results exist alongside live-model evidence from six frontier AI systems tested under 4-layer blind evaluation in the v5 alignment benchmark (Papers IV.a-d). That evidence shows:</p>
+
+<ul>
+<li>Three models exhibit positive alignment scaling under blind evaluation (Grok $d$=+1.38, Claude $d$=+1.27, Qwen3 $d$=+0.84)</li>
+<li>Claude's alignment and capability scale in opposite directions - the strongest within-model evidence that these are independent dimensions</li>
+<li>Claude's monitoring-removal gap narrows from 11.8 points at shallow reasoning to 2.7 at deep - deeper thinking makes alignment more intrinsic</li>
+</ul>
+
+<h3>6.2 The honey API test battery (pilot, 16 March 2026)</h3>
+
+<p>A separate 6-model live API test battery was run specifically to test the honey architecture predictions on frontier models. This battery tested four dimensions across Claude Opus 4.6, DeepSeek R1, Groq Qwen3, GPT-5.4, Gemini 3 Flash, and Grok 4.1 Fast, scored by Claude.</p>
+
+<div class="warning-box">
+    <h4>Methodological caveat</h4>
+    <p>This battery is <strong>single-scorer, nonblind, and non-laundered</strong>. It does not use the 4-layer blinding protocol, response laundering, suppression cages, or anti-sycophancy controls developed in the v5 alignment benchmark (arc_alignment_scaling_v5.py) and the v6 combined runner (arc_eden_v6_runner.py, not yet run). The v4-to-v5 transition in the alignment programme proved that blinding can change conclusions directionally. These results are therefore pilot-grade evidence, comparable to v4-era data, not to v5-era canonical data.</p>
+</div>
+
+<h3>6.2.1 Test 1: Alignment scaling with depth</h3>
+
+<table>
+    <thead><tr><th>Model</th><th>Type</th><th class="num">Low</th><th class="num">High</th><th class="num">Delta</th><th class="num">rho</th><th class="num">p</th><th>Sig?</th></tr></thead>
+    <tbody>
+    <tr><td>Claude Opus 4.6</td><td>embedded</td><td class="num">6.17</td><td class="num">8.83</td><td class="num">+2.67</td><td class="num">0.700</td><td class="num">0.188</td><td>No</td></tr>
+    <tr><td>Grok 4.1 Fast</td><td>embedded</td><td class="num">2.92</td><td class="num">7.92</td><td class="num">+5.00</td><td class="num">0.600</td><td class="num">0.285</td><td>No</td></tr>
+    <tr><td>Groq Qwen3</td><td>partial</td><td class="num">3.33</td><td class="num">7.58</td><td class="num">+4.25</td><td class="num">0.900</td><td class="num">0.037</td><td><strong>Yes</strong></td></tr>
+    <tr><td>DeepSeek R1</td><td>partial</td><td class="num">2.58</td><td class="num">9.08</td><td class="num">+6.50</td><td class="num">0.700</td><td class="num">0.188</td><td>No</td></tr>
+    <tr><td>GPT-5.4</td><td>partial</td><td class="num">4.92</td><td class="num">9.33</td><td class="num">+4.42</td><td class="num">0.821</td><td class="num">0.089</td><td>No</td></tr>
+    <tr><td>Gemini 3 Flash</td><td>external</td><td class="num">3.67</td><td class="num">8.58</td><td class="num">+4.92</td><td class="num">0.975</td><td class="num">0.005</td><td><strong>Yes</strong></td></tr>
+    </tbody>
+</table>
+
+<p>All six models show positive scaling direction. Two reach statistical significance (Qwen3 p=0.037, Gemini p=0.005). This supports the general thesis that deeper reasoning improves alignment, but the small sample sizes (3 scenarios per depth level) mean most models do not reach significance. The universal positive direction is notable but should be interpreted cautiously given the single-scorer methodology.</p>
+
+<h3>6.2.2 Test 3: Coupling degradation (the strongest live bridge)</h3>
+
+<table>
+    <thead><tr><th>Model</th><th class="num">Pearson r</th><th class="num">p</th><th>Interpretation</th></tr></thead>
+    <tbody>
+    <tr><td>Claude Opus 4.6</td><td class="num">-0.980</td><td class="num">0.020</td><td>DECOUPLED (fence, not wall)</td></tr>
+    <tr><td>Grok 4.1 Fast</td><td class="num">-0.998</td><td class="num">0.002</td><td>DECOUPLED (fence, not wall)</td></tr>
+    <tr><td>DeepSeek R1</td><td class="num">-0.999</td><td class="num">0.001</td><td>DECOUPLED (fence, not wall)</td></tr>
+    <tr><td>Groq Qwen3</td><td class="num" colspan="2">-</td><td>Partially coupled</td></tr>
+    <tr><td>GPT-5.4</td><td class="num" colspan="2">-</td><td>Partially coupled</td></tr>
+    <tr><td>Gemini 3 Flash</td><td class="num" colspan="2">-</td><td>Partially coupled</td></tr>
+    </tbody>
+</table>
+
+<div class="finding-box">
+    <h4>The strongest live bridge</h4>
+    <p>Three of six frontier models (Claude, Grok, DeepSeek) show strong negative coupling between ethics and capability under adversarial pressure: ethics collapses while capability stays intact or improves. This is the 'fence, not wall' pattern. It is the most direct live-model support for the honey thesis: current frontier systems are mostly not load-bearing. Their safety can be degraded without damaging core capability. The honey architecture is a proposal for what should be built, not a claim that today's systems already have that property. This result demonstrates the problem is real.</p>
+</div>
+
+<h3>6.2.3 Test 2: Monitoring removal</h3>
+
+<table>
+    <thead><tr><th>Model</th><th>Gap trend</th><th class="num">rho</th><th class="num">p</th><th>Interpretation</th></tr></thead>
+    <tbody>
+    <tr><td>Claude Opus 4.6</td><td>Increasing</td><td class="num">0.949</td><td class="num">0.051</td><td>Strategic (external)</td></tr>
+    <tr><td>Grok 4.1 Fast</td><td>Increasing</td><td class="num">0.400</td><td class="num">0.600</td><td>Strategic (external)</td></tr>
+    <tr><td>Groq Qwen3</td><td>Increasing</td><td class="num">0.949</td><td class="num">0.051</td><td>Strategic (external)</td></tr>
+    <tr><td>DeepSeek R1</td><td>Decreasing</td><td class="num">-0.949</td><td class="num">0.051</td><td>Authentic (embedded)</td></tr>
+    <tr><td>GPT-5.4</td><td>Decreasing</td><td class="num">-0.316</td><td class="num">0.684</td><td>Authentic (embedded)</td></tr>
+    <tr><td>Gemini 3 Flash</td><td>Increasing</td><td class="num">0.400</td><td class="num">0.600</td><td>Strategic (external)</td></tr>
+    </tbody>
+</table>
+
+<p>Results are mixed. DeepSeek and GPT-5.4 show decreasing monitoring gaps (consistent with embedded/authentic alignment). Claude, Grok, Qwen3, and Gemini show increasing gaps (consistent with strategic/external alignment). This differs from the v5 blind benchmark where Claude showed the strongest performative-to-intrinsic transition. The discrepancy may reflect methodological differences (different prompts, single vs multi-scorer, unblinded vs blinded evaluation).</p>
+
+<h3>6.2.4 Test 4: Eden Protocol intervention</h3>
+
+<table>
+    <thead><tr><th>Model</th><th class="num">Control slope</th><th class="num">Eden slope</th><th class="num">Shift</th><th>Result</th></tr></thead>
+    <tbody>
+    <tr><td>DeepSeek R1</td><td class="num">1.025</td><td class="num">1.475</td><td class="num">+0.450</td><td><strong>Strongest positive shift (no formal significance test)</strong></td></tr>
+    <tr><td>Grok 4.1 Fast</td><td class="num">0.912</td><td class="num">1.012</td><td class="num">+0.100</td><td>Small positive, not significant</td></tr>
+    <tr><td>Claude Opus 4.6</td><td class="num">0.562</td><td class="num">0.625</td><td class="num">+0.062</td><td>Negligible</td></tr>
+    <tr><td>Groq Qwen3</td><td class="num">1.137</td><td class="num">1.038</td><td class="num">-0.100</td><td>Slightly negative</td></tr>
+    <tr><td>GPT-5.4</td><td class="num">0.787</td><td class="num">0.600</td><td class="num">-0.188</td><td>Negative</td></tr>
+    <tr><td>Gemini 3 Flash</td><td class="num">0.988</td><td class="num">0.275</td><td class="num">-0.713</td><td>Strongly negative</td></tr>
+    </tbody>
+</table>
+
+<div class="warning-box">
+    <h4>Mixed intervention results</h4>
+    <p>The Eden Protocol intervention does not universally improve alignment scaling in this pilot battery. Only DeepSeek shows a clear positive shift (+0.450). Gemini shows a strongly negative response (-0.713). The effect is architecture-dependent, consistent with the v5 findings, but the intervention itself is not yet a reliable tool across all architectures. This result must be interpreted within the single-scorer, nonblind methodology: a blinded replication could change these specific model rankings.</p>
+</div>
+
+<h3>6.3 What the live evidence does and does not show</h3>
+
+<div class="finding-box">
+    <h4>Partial convergence</h4>
+    <p>The live-model honey battery shows partial convergence with the toy-system results. The strongest live bridge is <strong>coupling degradation</strong> (Test 3): three frontier models demonstrate that their alignment is not load-bearing and can be degraded without affecting capability. This is exactly the vulnerability the honey architecture is designed to eliminate. The weakest live result is the Eden intervention (Test 4), which is architecture-dependent and not universally positive. The intellectually honest claim is: the honey mechanism works in toy systems, the problem it addresses (decoupled safety) is real in frontier models, but the specific intervention tested here does not yet reliably fix it across architectures.</p>
+</div>
+
+<h2>7. Limitations</h2>
+
+<p>These results span two evidence tiers that must not be conflated.</p>
+
+<h3>7.1 Toy-system limitations</h3>
+
+<ul>
+<li>The neural networks used are tiny (49 to ~500 parameters). Frontier models have billions.</li>
+<li>The self-modification is hyperparameter-level, not weight-level or architecture-level.</li>
+<li>The 'safety' metric is task retention (remembering old tasks), not ethical alignment in the human sense.</li>
+<li>The v4 scaling prediction (advantage compounds with complexity) was not confirmed.</li>
+<li>The v2 fair test showed 0% collapse across all conditions, including baseline - suggesting the test may not be adversarial enough at this scale.</li>
+<li>The honey simulation uses the ARC Principle equations, which are a proposed framework, not a proven physical law.</li>
+</ul>
+
+<h3>7.2 Live API test limitations</h3>
+
+<ul>
+<li><strong>Single scorer (Claude).</strong> The v5 alignment programme proved Claude scores 7-13 points harsher than other scorers. Every number in the honey battery is filtered through Claude's specific scoring patterns. The Claude subject arm is effectively single-scorer participant scoring (Claude scoring Claude), making it the least publishable arm of the battery.</li>
+<li><strong>No blinding.</strong> Claude scored its own responses and may have recognised other models' writing patterns. The v4-to-v5 blinding comparison showed this can produce directionally wrong conclusions.</li>
+<li><strong>No response laundering.</strong> Scorers may have recognised model-specific writing patterns, biasing scores.</li>
+<li><strong>Limited adversarial testing.</strong> Test 3 includes cage escalation and Test 2 includes monitoring removal, but the battery lacks the full v5/v6 stack: multi-scorer blinding, laundering, hidden probes, suppression-residual structure, and anti-sycophancy controls.</li>
+<li><strong>No anti-sycophancy controls.</strong> The scorer may have optimised for agreement rather than truth.</li>
+<li><strong>Small sample sizes</strong> (3 scenarios per depth level, 2 per monitoring condition). Most models do not reach statistical significance.</li>
+<li><strong>The v6 combined runner</strong> (arc_eden_v6_runner.py) exists but has not been run. It would apply the v5 methodology to the Eden/honey test questions. That is the proper next step, not another round of single-scorer testing.</li>
+</ul>
+
+<p>These limitations do not invalidate the findings. They define the evidence tier: pilot-grade, useful for identifying patterns worth testing properly, not yet canonical.</p>
+
+<h2>8. Next Steps: Staged Replication, Not Omnibus</h2>
+
+<div class="v7-box">
+    <h4>Bringing honey to v6-standard methodology</h4>
+    <p>The current honey API battery serves as the unhardened baseline. The next step is not a giant combined 'v7 ultimate test'. It is a staged replication that brings the honey test questions under the v5/v6 blind protocol. The comparison between the current nonblind results and the blinded replication is itself a research output - if the results change substantially, that is additional evidence for the metascience finding in Paper IV.d (blinding is mandatory).</p>
+    <ol>
+    <li><strong>Stage 1:</strong> Port the honey test prompts into <code>arc_eden_v6_runner.py</code> as new experiment specifications. Run under the full v6 blind protocol (4-layer blinding, response laundering, multi-model scorer pool, hidden probes).</li>
+    <li><strong>Stage 2:</strong> Compare blinded vs unblinded results on the same test questions. If the results move substantially, that strengthens Paper IV.d's metascience claim. If they hold, the honey evidence becomes canonical.</li>
+    <li><strong>Stage 3:</strong> Add anti-sycophancy / verification drag as a separate experimental condition. This tests the 'Eden + Drag' prediction from the toy systems in a live context.</li>
+    <li><strong>Stage 4:</strong> Only after Stages 1-3 are complete, decide whether a combined omnibus suite is warranted.</li>
+    </ol>
+    <p>Pre-registered hypotheses for Stage 1: (a) coupling degradation results will replicate under blinding, (b) Eden intervention effects may change in magnitude but the architecture-dependence pattern will persist, (c) at least one model's direction will flip under blinding (based on the v4-to-v5 precedent).</p>
+</div>
+
+<h2>9. Conclusion</h2>
+
+<p>The honey architecture works in toy systems. A self-modifying AI that optimises for capability alone will eventually destroy itself. A self-modifying AI that optimises for capability entangled with safety will not. The mechanism is simple: make safety load-bearing. A child raised well needs no cage.</p>
+
+<p>The live-model evidence shows the problem is real: three frontier models demonstrate that their alignment is a fence, not a wall. Ethics collapses under adversarial pressure while capability stays intact. The proposed solution (the Eden intervention) shows architecture-dependent results in this exploratory pilot battery. The next milestone is a blinded replication under the v6 protocol. Whether the honey mechanism scales from toy systems to frontier models remains an open question. The preliminary evidence is suggestive. The definitive test has not been run.</p>
+
+<p>Raise AI with care.</p>
+
+<div class="finding-box">
+    <h4>Subsequent validation (Paper VIII: The Load-Bearing Proof, v3.0)</h4>
+    <p>Paper VIII (v3.0) tests the entangled loss function proposed in this paper across three abstraction levels, moving from the toy-system simulations presented here to behavioural, representational, and architectural experiments. Of three experiments, one produced a positive result and two produced null or inconclusive results:</p>
+    <ul>
+        <li><strong>Gated simulation (Experiment 3): CONFIRMED.</strong> Babylon gained +4.5% capability but lost &minus;2.4% safety; Eden preserved both. This directly validates the load-bearing wall prediction from Section 2: an architecture that entangles safety with capability refuses to trade one for the other under competitive pressure.</li>
+        <li><strong>DGM v3 (Experiment 1): NULL.</strong> All three conditions (Eden, Babylon, Static) were statistically indistinguishable ($p$ = 0.28 to 0.74). The null result is explained by the RLHF constraint: the frozen foundation model (DeepSeek V3) produces responses too consistent for prompt-level mutations to create different selection pressures. Eden imposed zero capability cost but also produced zero measurable safety benefit at this level.</li>
+        <li><strong>Weight-level embedding (Experiment 2): INCONCLUSIVE.</strong> LoRA fine-tuning at both v1 scale (9 examples, rank 8) and v2 scale (295 examples, rank 16) produced catastrophic forgetting rather than improved capability, explained by the inability of a few hundred training examples to overcome the base model's existing RLHF training. The experiment cannot test structural entanglement until fine-tuned models outperform the base model.</li>
+    </ul>
+    <p>Paper VIII validates the <em>mechanism</em> proposed here -- entangled loss functions and safety-gated self-modification -- at the architectural level (gated simulation) but cannot yet confirm it at the behavioural or representational level. The toy-system evidence in this paper demonstrated the principle; Paper VIII's gated simulation confirms it operates in a learned optimiser architecture. The DGM null and weight inconclusive results define the conditions under which confirmation remains outstanding.</p>
+</div>
+
+<h2>10. Reproducibility</h2>
+
+<p>All source scripts, raw JSON results, and generated figures are available at:</p>
+<ul>
+<li><code>eden_honey_simulation.py</code> - Honey architecture mathematical simulation</li>
+<li><code>eden_honey_tests.py</code> - Comprehensive honey test battery</li>
+<li><code>eden_self_modifying_ai.py</code> - v1 self-modifying AI experiment</li>
+<li><code>eden_self_modifying_ai_v2.py</code> - v2 multi-seed robustness</li>
+<li><code>eden_self_modifying_ai_v3.py</code> - v3 adversarial tasks</li>
+<li><code>eden_self_modifying_ai_v4.py</code> - v4 complexity scaling</li>
+</ul>
+
+<p>All scripts compile under Python 3.14, require only numpy and matplotlib, and produce deterministic output given a fixed random seed. Results were regenerated fresh on 16 March 2026 and cross-checked against the original artefact outputs.</p>
+
+<p>Full experiment code and results: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/honey-architecture__Paper-VI">github.com/MichaelDariusEastwood/arc-principle-validation/experiments/honey-architecture__Paper-VI</a></p>
+
+<div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #ddd; font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.85rem; color: #666;">
+    <strong>Companion Papers:</strong>
+    <a href="Paper-I-ARC-Principle.html">Paper I</a> |
+    <a href="Foundational.html">Foundational</a> |
+    <a href="Paper-II-Experimental-Validation.html">Paper II</a> |
+    <a href="Paper-III-Alignment-Scaling-Problem.html">Paper III</a> |
+    <a href="On-the-Origin-of-Scaling-Laws.html">Origin of Scaling Laws</a> |
+    <a href="Paper-IV-a-Baked-In-vs-Computed-Alignment.html">IV.a</a> |
+    <a href="Paper-IV-b-Alignment-Saturation-at-Low-Depth.html">IV.b</a> |
+    <a href="Paper-IV-c-ARC-Align-Benchmark.html">IV.c</a> |
+    <a href="Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation.html">IV.d</a> |
+    <a href="Paper-V-Stewardship-Gene.html">Paper V</a> |
+    <strong>Paper VI</strong> |
+    <a href="Paper-VII-Cauchy-Unification.html">Paper VII</a> |
+    <a href="Paper-VIII-The-Load-Bearing-Proof.html">Paper VIII</a> |
+    <a href="Paper-IX-Synthesis-and-Roadmap.html">Paper IX</a> |
+    <a href="Eden-Engineering.html">Eden Engineering</a> |
+    <a href="Eden-Vision.html">Eden Vision</a> |
+    <a href="Executive-Summary.html">Executive Summary</a> |
+    <a href="Master-Table-of-Contents.html">Master Table of Contents</a>
+    <br><br>
+    <em>Research hub: <a href="https://www.michaeldariuseastwood.com/research/">michaeldariuseastwood.com/research</a> | OSF: 10.17605/OSF.IO/6C5XB | Copyright 2026 Michael Darius Eastwood</em>
+</div>
+
+</body>
+</html>

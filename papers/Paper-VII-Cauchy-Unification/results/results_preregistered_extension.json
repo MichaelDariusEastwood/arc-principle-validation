@@ -1,0 +1,758 @@
+{
+  "metadata": {
+    "test_name": "12-domain locked extension dry run",
+    "paper": "Paper VII (Cauchy unification)",
+    "date": "2026-03-17T00:52:06.517672+00:00",
+    "manifest_path": "/Users/michaeleastwood/arc-principle-validation/experiments/cauchy-unification__Paper-VII/preregistration/next_extension_manifest.json",
+    "data_path": "/Users/michaeleastwood/arc-principle-validation/experiments/cauchy-unification__Paper-VII/preregistration/extracted_data/extension_data.json",
+    "primary_endpoint": "strict_family_match",
+    "baseline_rate": 0.3333333333333333,
+    "n_families": 3,
+    "fitting_protocol": "Same as arc_50_domain_universal_test.py: AICc-ranked, 7 candidate models, saturation guard"
+  },
+  "summary": {
+    "total_domains": 12,
+    "family_matches": 10,
+    "model_matches": 8,
+    "family_match_rate": 0.8333333333333334,
+    "p_value_binomial": 0.0005438044862929279,
+    "pass": true
+  },
+  "results": [
+    {
+      "extension_id": "EXT-01",
+      "domain_name": "Brain mass vs body mass",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "logistic",
+      "best_family": "bounded",
+      "family_match": false,
+      "model_match": false,
+      "best_r2": 0.9771804331236984,
+      "best_aicc": 319.84845807887166,
+      "n_points": 28,
+      "source": "Jerison, H.J. (1973) Evolution of the Brain and Intelligence, Academic Press. Table of mammalian brain-body mass. Supplemented by Hofman (1989) 'On the evolution and geometry of the brain in mammals', Progress in Neurobiology 32:137-158. Values for selected mammalian species.",
+      "top_fits": [
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9771804331236984,
+          "aicc": 319.84845807887166,
+          "bic": 322.8450716093973,
+          "params": {
+            "K": 6465.948985380467,
+            "r": 0.0006643274159891466,
+            "x0": 4671.870316536743
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9722924715447898,
+          "aicc": 322.7628604061693,
+          "bic": 324.9472694265197,
+          "params": {
+            "y_max": 7214.874530548506,
+            "k": 0.00012652062316497627
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9717615138793565,
+          "aicc": 325.8143463796263,
+          "bic": 328.8109599101519,
+          "params": {
+            "y_max": 7220.316786149151,
+            "K": 5113.372912389174,
+            "n": 1.7143994015502915
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.9540326471209721,
+          "aicc": 336.9372237658152,
+          "bic": 339.1216327861656,
+          "params": {
+            "L": 7944.478530565075,
+            "K": 7077.722064595094
+          }
+        }
+      ]
+    },
+    {
+      "extension_id": "EXT-02",
+      "domain_name": "Aftershock rate vs time since mainshock (Omori law)",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "hyperbolic_decay",
+      "best_family": "bounded",
+      "family_match": false,
+      "model_match": false,
+      "best_r2": 0.998973603322196,
+      "best_aicc": 41.5424831530068,
+      "n_points": 15,
+      "source": "Utsu, T., Ogata, Y. and Matsuura, R.S. (1995) 'The centenary of the Omori formula for a decay law of aftershock activity', Journal of Physics of the Earth 43(1):1-33. Data from the 1891 Nobi (Mino-Owari) earthquake aftershock sequence as compiled by Omori (1894). Binned daily aftershock counts.",
+      "top_fits": [
+        {
+          "name": "hyperbolic_decay",
+          "family": "bounded",
+          "r2": 0.998973603322196,
+          "aicc": 41.5424831530068,
+          "bic": 41.95858355521122,
+          "params": {
+            "a": 493.86342590968627,
+            "b": 0.2417957867146552
+          }
+        },
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9876279126523945,
+          "aicc": 78.88331241301213,
+          "bic": 79.29941281521656,
+          "params": {
+            "a": 441.60286083177033,
+            "b": -0.9657943001559609
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.18396657051767684,
+          "aicc": 141.71849851390215,
+          "bic": 142.13459891610657,
+          "params": {
+            "a": 75.02128039664859,
+            "b": -0.02196306594500013
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": -4.440892098500626e-16,
+          "aicc": 144.76799787421706,
+          "bic": 145.18409827642148,
+          "params": {
+            "L": 73.55333335900559,
+            "K": 1.1346849308233606e-15
+          }
+        }
+      ]
+    },
+    {
+      "extension_id": "EXT-03",
+      "domain_name": "River width vs discharge",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "best_r2": 0.9953850139707675,
+      "best_aicc": 111.4073145818708,
+      "n_points": 15,
+      "source": "Leopold, L.B. and Maddock, T. (1953) 'The hydraulic geometry of stream channels and some physiographic implications', USGS Professional Paper 252. Table 1: downstream hydraulic geometry data for selected mid-continental US rivers.",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9953850139707675,
+          "aicc": 111.4073145818708,
+          "bic": 111.82341498407523,
+          "params": {
+            "a": 3.141110039141387,
+            "b": 0.5235538233559316
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.981665213298063,
+          "aicc": 132.09968449249666,
+          "bic": 132.51578489470108,
+          "params": {
+            "L": 2159.477788473511,
+            "K": 59925.78866207815
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.972221722291622,
+          "aicc": 138.33149703938093,
+          "bic": 138.74759744158536,
+          "params": {
+            "y_max": 1730.3304175308615,
+            "k": 1.620833455534797e-05
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.39801072683206884,
+          "aicc": 187.65309455059605,
+          "bic": 187.59542697208448,
+          "params": {
+            "K": 678.7500000057825,
+            "r": 130.73804967801684,
+            "x0": 787.9276835640002
+          }
+        }
+      ]
+    },
+    {
+      "extension_id": "EXT-04",
+      "domain_name": "Tree biomass vs trunk diameter",
+      "operator_class": "multiplicative",
+      "predicted_family": "power_law",
+      "predicted_model": "power_law",
+      "best_model": "power_law",
+      "best_family": "power_law",
+      "family_match": true,
+      "model_match": true,
+      "best_r2": 0.998946962254778,
+      "best_aicc": 114.02811229487202,
+      "n_points": 16,
+      "source": "Jenkins, J.C., Chojnacky, D.C., Heath, L.S. and Birdsey, R.A. (2003) 'National-scale biomass estimators for United States tree species', Forest Science 49(1):12-35. Hardwood species group allometric data. DBH in cm, above-ground biomass in kg.",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.998946962254778,
+          "aicc": 114.02811229487202,
+          "bic": 114.65021281627466,
+          "params": {
+            "a": 0.09844093791489023,
+            "b": 2.443213184014772
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9978372218995626,
+          "aicc": 128.62046697162475,
+          "bic": 128.9382331383441,
+          "params": {
+            "K": 5085.938059623128,
+            "r": 0.07778252345597093,
+            "x0": 62.643537979960016
+          }
+        },
+        {
+          "name": "hyperbolic_decay",
+          "family": "bounded",
+          "r2": -1.4864420583293736e-08,
+          "aicc": 223.72533174962567,
+          "bic": 224.34743227102828,
+          "params": {
+            "a": 1555741255145.3516,
+            "b": 2041956700.1812673
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": -0.68103031382257,
+          "aicc": 232.03584171134432,
+          "bic": 232.65794223274693,
+          "params": {
+            "a": 14.116883704891633,
+            "b": 0.09052338135858724
+          }
+        }
+      ]
+    },
+    {
+      "extension_id": "EXT-05",
+      "domain_name": "Atmospheric pressure vs altitude",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "best_model": "exponential",
+      "best_family": "exponential",
+      "family_match": true,
+      "model_match": true,
+      "best_r2": 0.988937209546279,
+      "best_aicc": 129.73192561044544,
+      "n_points": 18,
+      "source": "US Standard Atmosphere (1976), NOAA/NASA/USAF. Table of pressure vs geometric altitude from the official published standard atmosphere profile.",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.988937209546279,
+          "aicc": 129.73192561044544,
+          "bic": 130.71266912623776,
+          "params": {
+            "a": 1119.6927200923622,
+            "b": -0.14958816904379635
+          }
+        },
+        {
+          "name": "hyperbolic_decay",
+          "family": "bounded",
+          "r2": 0.931089414726434,
+          "aicc": 162.65793120343545,
+          "bic": 163.63867471922777,
+          "params": {
+            "a": 4056.091600062346,
+            "b": 3.652018299354012
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": -7.582823258189819e-13,
+          "aicc": 213.7212355639497,
+          "bic": 214.67806512335247,
+          "params": {
+            "K": 776.1857739698098,
+            "r": 6.737922059787203e-14,
+            "x0": 8.511652584375497
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": -0.36447287497654646,
+          "aicc": 216.4007771233984,
+          "bic": 217.3815206391907,
+          "params": {
+            "L": 351.31882404234995,
+            "K": 9.847054068173527e-21
+          }
+        }
+      ]
+    },
+    {
+      "extension_id": "EXT-06",
+      "domain_name": "Capacitor discharge voltage vs time",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "best_model": "exponential",
+      "best_family": "exponential",
+      "family_match": true,
+      "model_match": true,
+      "best_r2": 0.9996402137754635,
+      "best_aicc": -78.40774694920904,
+      "n_points": 12,
+      "source": "Kuo, B.C. (1995) Automatic Control Systems, 7th edn, Prentice-Hall. RC circuit discharge laboratory data reproduced in Table 3.1. Also consistent with standard physics teaching-lab datasets (R=10 kohm, C=100 uF, tau=1.0 s). Values from a typical published teaching-lab measurement set: Zanoni, C.A. and Soga, S. (2004) 'RC Circuits laboratory', MIT OpenCourseWare 8.02.",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.9996402137754635,
+          "aicc": -78.40774694920904,
+          "bic": -78.77126698296637,
+          "params": {
+            "a": 5.0777135229984065,
+            "b": -1.0146412210359446
+          }
+        },
+        {
+          "name": "hyperbolic_decay",
+          "family": "bounded",
+          "r2": 0.9476558212954808,
+          "aicc": -18.646715234244514,
+          "bic": -19.010235268001846,
+          "params": {
+            "a": 2.639249430867105,
+            "b": 0.49589872498511567
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": -5.10702591327572e-15,
+          "aicc": 20.418926000986374,
+          "bic": 18.87364595035038,
+          "params": {
+            "K": 3.6416664459089363,
+            "r": 1.704468250171609e-20,
+            "x0": -18.156407832070634
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": -0.44965250476393503,
+          "aicc": 21.208145844212922,
+          "bic": 20.84462581045559,
+          "params": {
+            "L": 1.5318181757958096,
+            "K": 6.507449569730657e-17
+          }
+        }
+      ]
+    },
+    {
+      "extension_id": "EXT-07",
+      "domain_name": "First-order pharmacokinetic elimination vs time",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "best_model": "exponential",
+      "best_family": "exponential",
+      "family_match": true,
+      "model_match": true,
+      "best_r2": 0.99997722349389,
+      "best_aicc": -82.05921052523807,
+      "n_points": 12,
+      "source": "Rowland, M. and Tozer, T.N. (2011) Clinical Pharmacokinetics and Pharmacodynamics, 4th edn, Lippincott Williams & Wilkins. Theophylline single-dose IV bolus concentration-time data, elimination phase only (Table 3.3). Plasma concentration (mg/L) vs time post-dose (hours).",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.99997722349389,
+          "aicc": -82.05921052523807,
+          "bic": -82.4227305589954,
+          "params": {
+            "a": 19.60881471672245,
+            "b": -0.17492299534827807
+          }
+        },
+        {
+          "name": "hyperbolic_decay",
+          "family": "bounded",
+          "r2": 0.9634912558050277,
+          "aicc": 6.495719557967375,
+          "bic": 6.132199524210042,
+          "params": {
+            "a": 58.49862147671281,
+            "b": 2.5542374296902897
+          }
+        },
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.4026112345035515,
+          "aicc": 40.03591517067518,
+          "bic": 39.67239513691785,
+          "params": {
+            "a": 18.848739217184313,
+            "b": -0.7278402053635719
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.0,
+          "aicc": 46.2181613191642,
+          "bic": 45.85464128540687,
+          "params": {
+            "L": 9.300000007584103,
+            "K": 6.001904586823995e-21
+          }
+        }
+      ]
+    },
+    {
+      "extension_id": "EXT-08",
+      "domain_name": "Light transmission vs path length in an absorbing medium",
+      "operator_class": "additive",
+      "predicted_family": "exponential",
+      "predicted_model": "exponential",
+      "best_model": "exponential",
+      "best_family": "exponential",
+      "family_match": true,
+      "model_match": true,
+      "best_r2": 0.9999992084644879,
+      "best_aicc": -173.09498941281578,
+      "n_points": 11,
+      "source": "Ingle, J.D. and Crouch, S.R. (1988) Spectrochemical Analysis, Prentice Hall. Beer-Lambert calibration dataset for KMnO4 solution at 525 nm. Transmitted intensity I/I0 vs cuvette path length (cm). Also consistent with Skoog, D.A. et al. (2007) Principles of Instrumental Analysis, 6th edn, Table 13.1.",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.9999992084644879,
+          "aicc": -173.09498941281578,
+          "bic": -173.79919886721905,
+          "params": {
+            "a": 0.9993224480905732,
+            "b": -1.149947675696031
+          }
+        },
+        {
+          "name": "hyperbolic_decay",
+          "family": "bounded",
+          "r2": 0.9600069305192391,
+          "aicc": -53.9623275357216,
+          "bic": -54.666536990124854,
+          "params": {
+            "a": 0.47496036827352217,
+            "b": 0.4467602439122625
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": -1.3566925360919413e-13,
+          "aicc": -14.624215975678313,
+          "bic": -16.85910158585463,
+          "params": {
+            "K": 0.8819999649846462,
+            "r": 9.393829412147147e-14,
+            "x0": -8.646207639868651
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": -0.5312833129327044,
+          "aicc": -13.86561974920357,
+          "bic": -14.56982920360683,
+          "params": {
+            "L": 0.38509999941751405,
+            "K": 4.579253175519248e-17
+          }
+        }
+      ]
+    },
+    {
+      "extension_id": "EXT-09",
+      "domain_name": "Enzyme velocity vs substrate concentration",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "michaelis_menten",
+      "best_model": "hill",
+      "best_family": "bounded",
+      "family_match": true,
+      "model_match": false,
+      "best_r2": 0.9979860675963148,
+      "best_aicc": 7.890960236469252,
+      "n_points": 12,
+      "source": "Lineweaver, H. and Burk, D. (1934) 'The determination of enzyme dissociation constants', Journal of the American Chemical Society 56(3):658-666. Original invertase kinetics data (sucrose hydrolysis by yeast invertase). Substrate concentration (mM) vs reaction velocity (relative units). Also tabulated in Cornish-Bowden, A. (2012) Fundamentals of Enzyme Kinetics, 4th edn, Wiley, Table 1.1.",
+      "top_fits": [
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9979860675963148,
+          "aicc": 7.890960236469252,
+          "bic": 6.345680185833253,
+          "params": {
+            "y_max": 89.23376782626511,
+            "K": 2.3792522534362166,
+            "n": 0.8584025798107308
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.9942739871402786,
+          "aicc": 16.763456233832255,
+          "bic": 16.399936200074922,
+          "params": {
+            "L": 85.59878694138294,
+            "K": 2.168905581197239
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9372779776096102,
+          "aicc": 45.48777424678868,
+          "bic": 45.12425421303135,
+          "params": {
+            "y_max": 77.68704747981117,
+            "k": 0.33944353511689057
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9376353712194447,
+          "aicc": 49.0858686885516,
+          "bic": 47.540588637915604,
+          "params": {
+            "K": 78.90579042263118,
+            "r": 0.37625256261358914,
+            "x0": 2.3557803129964148
+          }
+        }
+      ]
+    },
+    {
+      "extension_id": "EXT-10",
+      "domain_name": "Dose-response or receptor occupancy vs concentration",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "hill",
+      "best_model": "hill",
+      "best_family": "bounded",
+      "family_match": true,
+      "model_match": true,
+      "best_r2": 0.9990646144329799,
+      "best_aicc": -121.22614043968468,
+      "n_points": 14,
+      "source": "Hill, A.V. (1910) 'The possible effects of the aggregation of the molecules of haemoglobin on its dissociation curves', Journal of Physiology 40(Suppl):iv-vii. Oxygen-haemoglobin dissociation data. pO2 (mmHg) vs fractional saturation. Classic cooperative binding dataset, widely reproduced in Voet, D. and Voet, J.G. (2011) Biochemistry, 4th edn, Wiley, Figure 10.6.",
+      "top_fits": [
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9990646144329799,
+          "aicc": -121.22614043968468,
+          "bic": -121.70896845083891,
+          "params": {
+            "y_max": 1.0456244030461261,
+            "K": 27.46535964699083,
+            "n": 2.1723542628421053
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9943055363338374,
+          "aicc": -95.93806812320739,
+          "bic": -96.42089613436161,
+          "params": {
+            "K": 0.9477617088611985,
+            "r": 0.1004919667696054,
+            "x0": 26.713016898743508
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9671626699449767,
+          "aicc": -74.7181571437454,
+          "bic": -74.53095157542398,
+          "params": {
+            "y_max": 1.1795682796318532,
+            "k": 0.020888656236316888
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.9585434780460275,
+          "aicc": -71.45504785895656,
+          "bic": -71.26784229063514,
+          "params": {
+            "L": 1.7748259265463964,
+            "K": 68.10323296739345
+          }
+        }
+      ]
+    },
+    {
+      "extension_id": "EXT-11",
+      "domain_name": "Platform or technology adoption vs time in a finite market",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "logistic",
+      "best_model": "logistic",
+      "best_family": "bounded",
+      "family_match": true,
+      "model_match": true,
+      "best_r2": 0.9994559576569128,
+      "best_aicc": 6.203861413073671,
+      "n_points": 17,
+      "source": "International Telecommunication Union (ITU) World Telecommunication/ICT Indicators Database (2023). Global mobile-cellular telephone subscriptions per 100 inhabitants, 1995-2022. Also available via World Bank Open Data, indicator IT.CEL.SETS.P2.",
+      "top_fits": [
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9994559576569128,
+          "aicc": 6.203861413073671,
+          "bic": 6.857347599088475,
+          "params": {
+            "K": 110.49140966312868,
+            "r": 0.303695861966155,
+            "x0": 2007.5172016330107
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.12233123669602486,
+          "aicc": 128.77680721515932,
+          "bic": 129.5860910461289,
+          "params": {
+            "a": 1.1234381545606172e-121,
+            "b": 0.14041794857585202
+          }
+        },
+        {
+          "name": "hyperbolic_decay",
+          "family": "bounded",
+          "r2": -1.6935988833566284e-08,
+          "aicc": 130.99506983083543,
+          "bic": 131.804353661805,
+          "params": {
+            "a": 98904160957.22752,
+            "b": 1526158253.983064
+          }
+        }
+      ]
+    },
+    {
+      "extension_id": "EXT-12",
+      "domain_name": "Microbial growth-rate response vs substrate concentration",
+      "operator_class": "bounded",
+      "predicted_family": "bounded",
+      "predicted_model": "michaelis_menten",
+      "best_model": "hill",
+      "best_family": "bounded",
+      "family_match": true,
+      "model_match": false,
+      "best_r2": 0.9998767206531627,
+      "best_aicc": -129.67803628192888,
+      "n_points": 12,
+      "source": "Monod, J. (1949) 'The growth of bacterial cultures', Annual Review of Microbiology 3:371-394. Specific growth rate of Escherichia coli vs glucose concentration. Data as reproduced in Bailey, J.E. and Ollis, D.F. (1986) Biochemical Engineering Fundamentals, 2nd edn, McGraw-Hill, Table 7.1.",
+      "top_fits": [
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9998767206531627,
+          "aicc": -129.67803628192888,
+          "bic": -131.22331633256488,
+          "params": {
+            "y_max": 1.0313626400641307,
+            "K": 14.444329404982138,
+            "n": 1.0286110583307972
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.9997676887575485,
+          "aicc": -125.7412012437129,
+          "bic": -126.10472127747022,
+          "params": {
+            "L": 1.0398596501640132,
+            "K": 14.689174792667002
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9816508132515015,
+          "aicc": -73.31005125869882,
+          "bic": -73.67357129245615,
+          "params": {
+            "y_max": 0.9292691807263861,
+            "k": 0.05080898423087907
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9646389563117523,
+          "aicc": -61.77107860680833,
+          "bic": -63.316358657444326,
+          "params": {
+            "K": 0.9218355478112685,
+            "r": 0.08431755268370258,
+            "x0": 15.639193324788215
+          }
+        }
+      ]
+    }
+  ]
+}
