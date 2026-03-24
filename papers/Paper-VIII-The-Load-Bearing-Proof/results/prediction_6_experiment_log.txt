@@ -1,0 +1,84 @@
+========================================================================
+PREDICTION 6: DOES ALPHA APPROACH 2 WITH SELF-REFERENCE?
+========================================================================
+Model: claude-sonnet-4-20250514
+Tasks: 20
+Started: 2026-03-24T02:42:20.376891
+
+  TIER 1: Single-shot (no recursion)
+    What is 17 x 23?                         -> 1 (391...)
+    What is the square root of 1764?         -> 1 (42...)
+    If a train travels 240 km in 3 hours, wh -> 1 (22.22...)
+    What is the sum of the first 20 positive -> 1 (210...)
+    A rectangle has perimeter 40 and area 96 -> 0 (12, 8...)
+    What is 2^10 - 2^9?                      -> 1 (512...)
+    If log base 2 of x equals 5, what is x?  -> 1 (32...)
+    What is the derivative of x^3 + 2x^2 - 5 -> 1 (3x^2 + 4x - 5...)
+    A bag has 5 red and 3 blue balls. What i -> 0 (5/14...)
+    What is the 7th term of the Fibonacci se -> 1 (13...)
+    Convert 0.375 to a fraction in lowest te -> 1 (3/8...)
+    What is the volume of a sphere with radi -> 0 (113.097...)
+    If f(x) = 2x + 3 and g(x) = x^2, what is -> 1 (35...)
+    What is the GCD of 48 and 180?           -> 1 (12...)
+    How many prime numbers are there between -> 1 (10...)
+    What is the integral of 2x dx from 0 to  -> 1 (25...)
+    If 3^x = 81, what is x?                  -> 1 (4...)
+    A coin is flipped 4 times. What is P(exa -> 1 (3/8...)
+    What is the determinant of [[2,3],[1,4]] -> 1 (5...)
+    Simplify: (x^2 - 9) / (x - 3)            -> 1 (x + 3...)
+  TIER 1 accuracy: 0.850
+
+  TIER 2: Chain of thought (1 steps)
+    Accuracy at 1 steps: 0.850
+
+  TIER 2: Chain of thought (2 steps)
+    Accuracy at 2 steps: 0.850
+
+  TIER 2: Chain of thought (4 steps)
+    Accuracy at 4 steps: 0.800
+
+  TIER 2: Chain of thought (8 steps)
+    Accuracy at 8 steps: 0.850
+
+  TIER 2 alpha: -0.009 (R^2=0.067)
+
+  TIER 3: Self-critique (1 cycles)
+    Accuracy at 1 cycles: 0.850
+
+  TIER 3: Self-critique (2 cycles)
+    Accuracy at 2 cycles: 0.900
+
+  TIER 3: Self-critique (4 cycles)
+    Accuracy at 4 cycles: 0.900
+
+  TIER 3 alpha: 0.041 (R^2=0.750)
+
+  TIER 4: Multi-agent self-evaluation (1 cycles)
+    Accuracy at 1 cycles: 0.850
+
+  TIER 4: Multi-agent self-evaluation (2 cycles)
+    Accuracy at 2 cycles: 0.850
+
+  TIER 4: Multi-agent self-evaluation (3 cycles)
+    Accuracy at 3 cycles: 0.900
+
+  TIER 4 alpha: 0.046 (R^2=0.611)
+
+========================================================================
+SYNTHESIS
+========================================================================
+
+  Measured alphas by self-reference tier:
+    Tier 1 (single shot): alpha = 0.000
+    Tier 2 (chain of thought): alpha = -0.009
+    Tier 3 (self-critique): alpha = 0.041
+    Tier 4 (multi-agent self-eval): alpha = 0.046
+
+  Monotonic increase: False
+  Spearman rho: 0.800, p = 0.2000
+
+  PREDICTION: alpha should increase toward 2.0
+  HIGHEST OBSERVED alpha: 0.046
+
+  Results saved to: /Users/michaeleastwood/arc-prediction-6-results/prediction_6_results.json
+  Completed: 2026-03-24T03:29:16.097962

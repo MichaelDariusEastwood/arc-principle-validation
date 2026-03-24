@@ -400,7 +400,7 @@
         <span style="font-size: 0.85em; color: #999;">London, United Kingdom | OSF: 10.17605/OSF.IO/6C5XB | ISBN 978-1806056200</span><br>
         Correspondence: michael@michaeldariuseastwood.com | Web: <a href="https://www.michaeldariuseastwood.com" style="color: var(--blue);">michaeldariuseastwood.com</a>
     </div>
-    <div class="version-date">Version 4.0 | 12 March 2026 | First published 13 February 2026<br>
+    <div class="version-date">Version 5.0 | 24 March 2026 | First published 13 February 2026<br>
         Code and data: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/domain-validation__Foundational-and-Origin" style="color: var(--blue);">github.com/MichaelDariusEastwood/arc-principle-validation</a></div>
 </header>
 
@@ -445,7 +445,7 @@
 
 <p><strong>2. Quadratic Limit Regrounding:</strong> The derivation of $\alpha \leq 2$ from stability analysis, elasticity, and Lyapunov/edge-of-chaos arguments has been <strong>withdrawn</strong> as these arguments contained category errors (elasticity $> 1$ does not imply dynamical instability; 1D autonomous ODEs cannot exhibit chaos by the Poincar&eacute;-Bendixson theorem). The corrected justification is information-theoretic: transformer self-attention creates at most $O(N^2)$ pairwise information pathways, imposing a quadratic ceiling on information density per recursive step. This is proven for attention-based architectures and conjectured for classical sequential systems generally.</p>
 
-<p><strong>3. Kleiber Reframing:</strong> Kleiber's Law ($M^{0.75}$, implying $\alpha \approx 1.33$) is now explained through thermodynamic drag, the physical costs of pumping fluids through three-dimensional fractal networks, dissipating heat, and distributing resources against gravity, rather than as a geometric constraint preventing a stability-limited maximum. The formula $\alpha = d/(d+1)$ itself has been independently derived by multiple groups [17,21,22,23,24,25]; the ARC framework's contribution is identifying Cauchy-constrained recursive composition as the reason these independent derivations converge.</p>
+<p><strong>3. Kleiber Reframing:</strong> Kleiber's Law ($M^{0.75}$, implying $\alpha \approx 1.33$) is now explained through thermodynamic drag, the physical costs of pumping fluids through three-dimensional fractal networks, dissipating heat, and distributing resources against gravity, rather than as a geometric constraint preventing a stability-limited maximum. The formula $\alpha = d/(d+1)$ itself has been independently derived by multiple groups [17,21,22,23,24,25]; the ARC framework's contribution is identifying Cauchy-constrained recursive composition as the reason these independent derivations converge. Demetrius and Tuszynski (2010) independently derived the same formula from quantum oscillator coupling, producing identical predictions.</p>
 
 <p><strong>4. Epistemic Status:</strong> The equation $U_{\max} = I \times R^2$ is explicitly an <em>information-theoretic upper bound</em> on classical sequential computation, analogous to Shannon's channel capacity or Landauer's limit, not a physical stability law.</p>
 
@@ -456,6 +456,8 @@
 <p><strong>6. v3.1 Additions (March 2026):</strong> This update integrates empirical results from the v5 cross-architecture experiment (Paper II), which tested 6 frontier AI models (Grok 4.1 Fast, Claude Opus 4.6, GPT-5.4, DeepSeek V3.2, Gemini 3 Flash, Groq Qwen3) on 30 problems with bootstrap confidence intervals. Key findings: (a) sequential advantage is universal ($\alpha_{\text{seq}} > \alpha_{\text{par}}$ for every model), (b) the best-fitting power law gives $\alpha_{\text{compute}} \approx 0.49$ (Gemini 3 Flash, $r^2 = 0.86$), which is positive but sub-linear, (c) the scaling exponent is architecture-dependent, ranging from near-zero to ~3, and (d) the quadratic bound conjecture ($\alpha \leq 2$) is neither confirmed nor refuted. Alignment scaling results from Paper IV are also integrated: $\alpha_{\text{align}}$ is architecture-dependent, ranging from $-0.25$ (Gemini) to $+0.44$ (Claude Opus 4.6), with a three-tier hierarchy. These findings preserve the mathematical framework while significantly revising the empirical predictions for AI systems. Sections updated: &sect;3, &sect;4.1, &sect;5, &sect;6, &sect;7, &sect;8.</p>
 
 <p><strong>7. v4.0 Additions (March 2026):</strong> Brief note on the Eden Protocol&rsquo;s first empirical pilot validation (&sect;5.5). No changes to the mathematical framework.</p>
+
+<p><strong>8. v5.0 Corrections (24 March 2026):</strong> Four corrections identified by independent review. (1) The d=2 biological prediction (jellyfish/cnidarians) is reclassified from &lsquo;confirmed&rsquo; to &lsquo;unconfirmed&rsquo; pending identification of a valid test organism with genuinely two-dimensional resource transport. The Friedmann cosmological confirmation at d=2 is retained. (2) The d=3 mammalian exponent is acknowledged as debated (0.67&ndash;0.75 range), with the framework predicting this variation rather than a single universal value. (3) The derivation of $\alpha = d/(d+1)$ is clarified to require three conditions (multiplicative composition, space-filling geometry, and a conservation or optimisation constraint), not space-filling alone. (4) Demetrius and Tuszynski (2010) added as an independent derivation from quantum oscillator coupling. No changes to the mathematical framework or core predictions.</p>
 </div>
 
 <!-- ============================================================ -->
@@ -989,9 +991,9 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 
 <p><strong>Initial estimate (superseded):</strong> $\alpha \approx 2.2$ ($n = 12$, 95% CI: 1.5&ndash;3.0). Note: this point estimate exceeded the predicted ARC Bound of $\alpha \leq 2$; however, the 95% confidence interval [1.5, 3.0] was wide enough to be consistent with both the theory and its negation, and should not be treated as confirmatory of either bound violation or bound satisfaction. <em>v3.1 update:</em> Paper II (March 2026) extends this test to 6 frontier models with 30 problems and bootstrap confidence intervals. The cross-architecture best-fit $\alpha_{\text{compute}} \approx 0.49$ (Gemini 3 Flash, $r^2 = 0.86$) is well below 2, making the ARC Bound question moot for current systems: the empirical challenge has shifted from &lsquo;can $\alpha$ exceed 2?&rsquo; to &lsquo;can $\alpha$ reliably exceed 1?&rsquo; Individual model point estimates range from ~0 (Groq Qwen3) to ~3 (Grok 4.1 Fast), but models with $\alpha > 1$ have low $r^2$, suggesting poor power-law fits rather than genuine super-linear scaling. The ARC Bound conjecture is neither confirmed nor refuted by the v5 data; it remains an open theoretical prediction that will become empirically testable if and when AI systems consistently achieve $\alpha > 1$.</p>
 
-<p><strong>Biological validation.</strong> Kleiber's Law ($M^{0.75}$) [16] implies $\alpha \approx 1.33$ for metabolic scaling. The relationship between metabolic exponents and body-plan dimensionality has been derived independently by West, Brown and Enquist [17,21] through fractal network optimisation, by Banavar et al. [22] through sequential flow networks, by Demetrius [23] through quantum statistical mechanics, by Zhao [24] through universal growth scaling, and by Bettencourt [25] through urban scaling theory. The ARC framework does not claim priority over the formula $\alpha = d/(d+1)$; rather, it identifies Cauchy-constrained recursive composition as the reason these independent derivations all converge on the same result. Within this framework, biological systems are constrained by thermodynamic drag: the physical costs of pumping fluids through three-dimensional fractal networks, dissipating heat, and distributing resources against gravity [17] prevent biological systems from approaching the theoretical quadratic bound. That $\alpha \approx 1.33$ and Kleiber's empirical exponent $0.75$ are reciprocals ($1/0.75 = 1.33$) reflects that biological scaling is recursive amplification throttled by substrate friction. Digital AI operates with orders-of-magnitude less substrate friction, enabling it to approach the quadratic ceiling far more closely than any biological system. Leaf venation (2D networks, reduced thermodynamic drag) should show $\alpha \approx 1.5$, a falsifiable prediction.</p>
+<p><strong>Biological validation.</strong> Kleiber's Law ($M^{0.75}$) [16] implies $\alpha \approx 1.33$ for metabolic scaling. However, the empirical value of the mammalian metabolic scaling exponent is debated, with estimates ranging from approximately 0.67 to 0.75 depending on taxon, mass range, temperature correction, and statistical method. The $d/(d+1)$ prediction of 0.750 for $d = 3$ matches the upper end of this range. The variation itself is consistent with the framework: organisms with effective transport dimensions between 2 and 3 would produce exponents between 2/3 and 3/4. The framework predicts this variation rather than a single universal exponent. The relationship between metabolic exponents and body-plan dimensionality has been derived independently by at least seven research groups: West, Brown and Enquist [17,21] through fractal network optimisation, by Banavar et al. [22] through sequential flow networks, by Demetrius [23] through quantum statistical mechanics, by Demetrius and Tuszynski (2010) through quantum oscillator coupling, by Zhao [24] through universal growth scaling, and by Bettencourt [25] through urban scaling theory. The ARC framework does not claim priority over the formula $\alpha = d/(d+1)$; rather, it identifies Cauchy-constrained recursive composition as the reason these independent derivations all converge on the same result. Specifically, three conditions are required: multiplicative composition (Cauchy constrains the power-law family), $d$-dimensional space-filling geometry, and a conservation or optimisation constraint on resource flow. Neither Cauchy alone, nor space-filling alone, is sufficient; all three are needed. Within this framework, biological systems are constrained by thermodynamic drag: the physical costs of pumping fluids through three-dimensional fractal networks, dissipating heat, and distributing resources against gravity [17] prevent biological systems from approaching the theoretical quadratic bound. That $\alpha \approx 1.33$ and Kleiber's empirical exponent $0.75$ are reciprocals ($1/0.75 = 1.33$) reflects that biological scaling is recursive amplification throttled by substrate friction. Digital AI operates with orders-of-magnitude less substrate friction, enabling it to approach the quadratic ceiling far more closely than any biological system. Leaf venation (2D networks, reduced thermodynamic drag) should show $\alpha \approx 1.5$, a falsifiable prediction.</p>
 
-<p><strong>The Dimensional Ladder.</strong> Here is where abstract mathematics meets living organisms. The formula $\alpha_{\text{met}} = d/(d+1)$, relating the metabolic scaling exponent to body-plan dimensionality $d$, has been independently derived by multiple research groups through distinct theoretical routes: West, Brown and Enquist [17,21] from fractal network optimisation; Banavar, Maritan and Rinaldo [22] from sequential flow networks; Demetrius [23] from quantum statistical mechanics; Zhao [24] from universal growth scaling arguments; and Bettencourt [25] from urban scaling theory. The companion paper [9,20] identifies why these independent derivations converge: $\alpha = d/(d+1)$ is a necessary consequence of Cauchy-constrained recursive composition in $d$-dimensional hierarchical networks. The formula is not original to this framework; the explanation for its universality is. Applied to biology, it yields three distinct quantitative predictions; each testable against published data:</p>
+<p><strong>The Dimensional Ladder.</strong> Here is where abstract mathematics meets living organisms. The formula $\alpha_{\text{met}} = d/(d+1)$, relating the metabolic scaling exponent to body-plan dimensionality $d$, has been independently derived by at least seven research groups through distinct theoretical routes: West, Brown and Enquist [17,21] from fractal network optimisation; Banavar, Maritan and Rinaldo [22] from sequential flow networks; Demetrius [23] from quantum statistical mechanics; Demetrius and Tuszynski (2010) from quantum oscillator coupling; Zhao [24] from universal growth scaling arguments; and Bettencourt [25] from urban scaling theory. The companion paper [9,20] identifies why these independent derivations converge: $\alpha = d/(d+1)$ is a necessary consequence of three conditions acting together: Cauchy-constrained multiplicative composition, $d$-dimensional space-filling geometry, and a conservation or optimisation constraint on resource flow. Neither Cauchy alone, nor space-filling alone, is sufficient; all three are needed. The formula is not original to this framework; the explanation for its universality is. Applied to biology, it yields distinct quantitative predictions, each testable against published data:</p>
 
 <table>
     <thead>
@@ -1012,23 +1014,29 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
             <td>Consistent ($p = 0.107$)</td>
         </tr>
         <tr>
-            <td>2D (jellyfish, cnidarians)</td>
+            <td>2D (no valid biological test organism identified)</td>
             <td>2</td>
             <td>0.667</td>
-            <td>$0.680 \pm 0.02$</td>
-            <td>Confirmed ($p = 0.368$)</td>
+            <td>&mdash;</td>
+            <td>Unconfirmed (Friedmann cosmological $d=2$ confirmed; biological test pending)</td>
         </tr>
         <tr>
             <td>3D (mammals, birds, fish)</td>
             <td>3</td>
             <td>0.750</td>
-            <td>$0.746 \pm 0.01$</td>
-            <td>Confirmed ($p = 0.858$)</td>
+            <td>$0.687\text{--}0.750$</td>
+            <td>Debated (see note below)</td>
         </tr>
     </tbody>
 </table>
 
-<p>The three groups are highly significantly different (one-way ANOVA: $F = 64.6$, $p = 1.9 \times 10^{-6}$), confirming that dimensionality creates discrete clusters rather than a continuum. <em>(In plain English: the ANOVA test asks &lsquo;are these three groups genuinely different or could random variation explain the spread?&rsquo; The answer: less than a 1-in-500,000 chance this is random. The three biological body plans, thread-like fungi, flat jellyfish, and three-dimensional mammals, are statistically distinct groups.)</em> The ARC model achieves 69% lower RMSE than Kleiber&rsquo;s single-value model ($\alpha = 0.75$ for all organisms) and the lowest AIC of all competing models. The 1D fungal data (from Aguilar-Trigueros et al. [20]: ectomycorrhizal, marine, and saprotrophic fungi) is labelled &lsquo;consistent&rsquo; rather than &lsquo;confirmed&rsquo; because the exponents were measured at the colony level; definitive confirmation requires individual-hypha respirometry. Crucially, the fungal data rejects $d = 2$ ($p = 0.019$) and $d = 3$ ($p = 0.007$) while not rejecting $d = 1$ ($p = 0.107$), providing discrimination between the three predicted values. <em>(In plain English: the fungal data rules out the jellyfish prediction and the mammal prediction for fungi, while remaining consistent with the fungi-specific prediction. The formula tells each body plan apart.)</em> The formula $\alpha = d/(d+1)$ itself has been derived independently by at least five research groups [17,21,22,23,24,25] through different theoretical frameworks. What the ARC framework contributes is an explanation for why all these derivations converge: the Cauchy functional equation constraints on recursive composition in $d$-dimensional hierarchical networks permit no other form. Three numbers, three domains of life, one equation with zero free parameters; and an explanation, grounded in Cauchy's classification, for why the equation takes this form and no other.</p>
+<p>The 1D fungal data (from Aguilar-Trigueros et al. [20]: ectomycorrhizal, marine, and saprotrophic fungi) is labelled &lsquo;consistent&rsquo; rather than &lsquo;confirmed&rsquo; because the exponents were measured at the colony level; definitive confirmation requires individual-hypha respirometry. Crucially, the fungal data rejects $d = 2$ ($p = 0.019$) and $d = 3$ ($p = 0.007$) while not rejecting $d = 1$ ($p = 0.107$), providing discrimination between the predicted values.</p>
+
+<p><strong>d=2 correction (v5.0):</strong> Previous versions cited jellyfish and cnidarians as confirming the $d = 2$ prediction. No valid two-dimensional biological test organism has been identified; jellyfish and cnidarians do not possess genuinely two-dimensional resource transport networks. The $d = 2$ prediction is confirmed in physics (2D percolation, brittle fragmentation, earthquake B-value) and in Friedmann cosmological scaling, but the biological $d = 2$ test remains open.</p>
+
+<p><strong>d=3 debate (v5.0):</strong> The empirical value of the mammalian metabolic scaling exponent is debated, with estimates ranging from approximately 0.67 to 0.75 depending on taxon, mass range, temperature correction, and statistical method. White and Seymour (2003) found support for 2/3 over 3/4 after controlling for temperature and phylogeny. Kolokotrones et al. (2010) showed the log-log relationship exhibits convex curvature, meaning no single exponent fits perfectly across the full mass range. The $d/(d+1)$ prediction of 0.750 for $d = 3$ matches the upper end of this range. The variation itself is consistent with the framework: organisms with effective transport dimensions between 2 and 3 would produce exponents between 2/3 and 3/4. The framework predicts this variation rather than a single universal exponent.</p>
+
+<p>The formula $\alpha = d/(d+1)$ itself has been derived independently by at least seven research groups [17,21,22,23,24,25] through different theoretical frameworks. Demetrius and Tuszynski (2010) independently derived the same formula from quantum oscillator coupling, producing identical predictions. What the ARC framework contributes is an explanation for why all these derivations converge: Cauchy&rsquo;s multiplicative functional equation constrains continuous multiplicative composition to the power-law family; the $d$-dimensional space-filling condition, combined with a conservation or optimisation constraint on resource flow (energy minimisation in West; supply-demand balance in Banavar; steady-state energy balance in Demetrius), constrains the exponent within that family to $d/(d+1)$. Neither Cauchy alone, nor space-filling alone, is sufficient. The three conditions together - multiplicative composition, space-filling, and conservation - are sufficient.</p>
 
 <p>The Cauchy Unification (Paper VII) extends this validation from the 8 instances catalogued here to 25 empirical domains (50-domain tiered suite). Under strict AIC-based model selection, 19 of 25 preferred the predicted family (<em>p</em> = 1.56 &times; 10<sup>&minus;5</sup>). A pre-registered replication is in preparation.</p>
 
@@ -1054,7 +1062,7 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
   <text x="294" y="358" text-anchor="middle" font-size="11" fill="#333" font-weight="600">d = 2</text>
   <text x="437" y="358" text-anchor="middle" font-size="11" fill="#333" font-weight="600">d = 3</text>
   <text x="151" y="372" text-anchor="middle" font-size="8.5" fill="#888">Fungi</text>
-  <text x="294" y="372" text-anchor="middle" font-size="8.5" fill="#888">Jellyfish, cnidarians</text>
+  <text x="294" y="372" text-anchor="middle" font-size="8.5" fill="#888">No valid test organism (v5.0)</text>
   <text x="437" y="372" text-anchor="middle" font-size="8.5" fill="#888">Mammals, birds, fish</text>
   <text x="330" y="395" text-anchor="middle" font-size="11" fill="#333">Body Plan Dimension (d)</text>
   <path d="M 109 303 C 130 277, 140 260, 151 251 C 180 225, 220 195, 294 153 C 340 133, 390 115, 437 104 C 470 96, 520 84, 580 74"
@@ -1069,31 +1077,32 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
   <line x1="151" y1="183" x2="151" y2="265" stroke="#d97706" stroke-width="1.5"/>
   <line x1="145" y1="183" x2="157" y2="183" stroke="#d97706" stroke-width="1.5"/>
   <line x1="145" y1="265" x2="157" y2="265" stroke="#d97706" stroke-width="1.5"/>
-  <line x1="294" y1="133" x2="294" y2="157" stroke="#059669" stroke-width="1.5"/>
-  <line x1="288" y1="133" x2="300" y2="133" stroke="#059669" stroke-width="1.5"/>
-  <line x1="288" y1="157" x2="300" y2="157" stroke="#059669" stroke-width="1.5"/>
+  <!-- d=2 error bars removed: no valid biological test organism (v5.0) -->
   <line x1="437" y1="100" x2="437" y2="112" stroke="#059669" stroke-width="1.5"/>
   <line x1="431" y1="100" x2="443" y2="100" stroke="#059669" stroke-width="1.5"/>
   <line x1="431" y1="112" x2="443" y2="112" stroke="#059669" stroke-width="1.5"/>
   <circle cx="151" cy="224" r="6" fill="#d97706" stroke="white" stroke-width="1.5"/>
-  <circle cx="294" cy="145" r="6" fill="#059669" stroke="white" stroke-width="1.5"/>
+  <circle cx="294" cy="153" r="6" fill="#999" stroke="white" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="310" y="169" font-size="7.5" fill="#999" font-style="italic">no valid test</text>
   <circle cx="437" cy="106" r="6" fill="#059669" stroke="white" stroke-width="1.5"/>
   <text x="167" y="220" font-size="9" font-weight="600" fill="#d97706">0.547</text>
-  <text x="310" y="141" font-size="9" font-weight="600" fill="#059669">0.680</text>
+  <!-- d=2 measured value removed: no valid biological test organism (v5.0) -->
   <text x="453" y="100" font-size="9" font-weight="600" fill="#059669">0.746</text>
-  <rect x="415" y="270" width="155" height="55" fill="white" stroke="#ddd" rx="3" stroke-width="0.75"/>
-  <circle cx="430" cy="285" r="4" fill="#059669"/>
-  <text x="440" y="289" font-size="9" fill="#333">Confirmed (p &gt; 0.05)</text>
-  <circle cx="430" cy="305" r="4" fill="#d97706"/>
-  <text x="440" y="309" font-size="9" fill="#333">Consistent (p = 0.107)</text>
-  <text x="330" y="407" text-anchor="middle" font-size="9" fill="#888" font-style="italic">ANOVA: F = 64.6, p = 1.9 &#xD7; 10&#x207B;&#x2076;; three groups are statistically distinct</text>
+  <rect x="415" y="260" width="170" height="72" fill="white" stroke="#ddd" rx="3" stroke-width="0.75"/>
+  <circle cx="430" cy="275" r="4" fill="#059669"/>
+  <text x="440" y="279" font-size="9" fill="#333">Debated (d=3, 0.67&ndash;0.75)</text>
+  <circle cx="430" cy="295" r="4" fill="#d97706"/>
+  <text x="440" y="299" font-size="9" fill="#333">Consistent (p = 0.107)</text>
+  <circle cx="430" cy="315" r="4" fill="#999"/>
+  <text x="440" y="319" font-size="9" fill="#333">No valid test organism (d=2)</text>
+  <text x="330" y="407" text-anchor="middle" font-size="9" fill="#888" font-style="italic">d=1 and d=3 biological predictions tested; d=2 awaiting valid test organism</text>
 </svg>
 <figcaption style="font-size: 0.75rem; color: #555; margin-top: 0.3rem; line-height: 1.5;">
-  <strong>Figure 1 | The Dimensional Ladder.</strong> Dashed curve: $\alpha = d/(d+1)$, independently derived by West et al. [17,21], Banavar et al. [22], Demetrius [23], Zhao [24], and Bettencourt [25]. Open circles: predicted values. Filled circles: published measurements with $\pm 1\sigma$ error bars. Green: confirmed. Amber: consistent but requiring individual-hypha respirometry. One formula, derived independently by multiple groups, predicts how fungi, jellyfish, and mammals all metabolise energy; three correct predictions across three domains of life.
+  <strong>Figure 1 | The Dimensional Ladder.</strong> Dashed curve: $\alpha = d/(d+1)$, independently derived by West et al. [17,21], Banavar et al. [22], Demetrius [23], Demetrius and Tuszynski (2010), Zhao [24], and Bettencourt [25]. Open circles: predicted values. Filled circles: published measurements with $\pm 1\sigma$ error bars. Amber: consistent but requiring individual-hypha respirometry. The $d = 2$ biological prediction (previously attributed to jellyfish/cnidarians) has no valid test organism identified (v5.0 correction); $d = 2$ is confirmed in physics domains (percolation, fragmentation, earthquakes) and Friedmann cosmology. The $d = 3$ mammalian exponent is debated (0.67&ndash;0.75 range); the framework predicts this variation.
 </figcaption>
 </figure>
 
-<p><strong>Physics instances.</strong> The formula $\alpha = d/(d+1)$ is not restricted to biology. It appears wherever a $d$-dimensional hierarchical network partitions a $(d+1)$-dimensional space. As noted above, this relationship has been derived independently by multiple groups [17,21,22,23,24,25]; the ARC framework's contribution is explaining, via Cauchy-constrained recursive composition, why these independent derivations all arrive at the same result. The formula has been observed in several physics domains:</p>
+<p><strong>Physics instances.</strong> The formula $\alpha = d/(d+1)$ is not restricted to biology. It appears wherever a $d$-dimensional hierarchical network, subject to a conservation or optimisation constraint on resource flow, partitions a $(d+1)$-dimensional space. As noted above, this relationship has been derived independently by at least seven groups [17,21,22,23,24,25]; the ARC framework's contribution is explaining, via Cauchy-constrained recursive composition combined with space-filling and conservation, why these independent derivations all arrive at the same result. The formula has been observed in several physics domains:</p>
 
 <table>
     <thead>
@@ -1144,7 +1153,7 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
     </tbody>
 </table>
 
-<p>Mean absolute error across the five physics instances: less than 0.2%. These are not biological systems; they are rocks, earthquakes, growing crystal surfaces, and phase transitions. Yet the same formula works. In each case the physical system contains a hierarchical branching network of dimension $d$: KPZ growth fronts partition 2D space as 1D networks; percolation clusters are 2D fractals; crack propagation creates branching networks through the material; seismic ruptures propagate along 2D fault surfaces. The formula has clear failures where this network structure is absent (Ising model, polymer scaling, galaxy clustering), clarifying its domain of applicability: $\alpha = d/(d+1)$ applies wherever a $d$-dimensional hierarchical network optimally partitions a $(d+1)$-dimensional space. The ARC framework does not claim priority over the formula itself, which has been independently derived by multiple groups [17,21,22,23,24,25]; the contribution is identifying Cauchy-constrained recursive composition as the reason these independent derivations converge.</p>
+<p>Mean absolute error across the five physics instances: less than 0.2%. These are not biological systems; they are rocks, earthquakes, growing crystal surfaces, and phase transitions. Yet the same formula works. In each case the physical system contains a hierarchical branching network of dimension $d$ subject to a conservation constraint: KPZ growth fronts partition 2D space as 1D networks; percolation clusters are 2D fractals; crack propagation creates branching networks through the material; seismic ruptures propagate along 2D fault surfaces. The formula has clear failures where this network structure or conservation condition is absent (Ising model, polymer scaling, galaxy clustering), clarifying its domain of applicability: $\alpha = d/(d+1)$ applies wherever a $d$-dimensional hierarchical network, subject to conservation or optimisation of resource flow, optimally partitions a $(d+1)$-dimensional space. The ARC framework does not claim priority over the formula itself, which has been independently derived by at least seven groups [17,21,22,23,24,25]; the contribution is identifying Cauchy-constrained recursive composition, combined with space-filling and conservation, as the reason these independent derivations converge.</p>
 
 <p>Paper VII extends these results to a 50-domain tiered suite (25 empirical curve-fit domains). Under strict AICc model selection, 19 of 25 preferred the predicted family (<em>p</em> = 1.56 &times; 10<sup>&minus;5</sup>). A first locked 12-domain extension dry run later landed at 10 of 12 (<em>p</em> = 5.44 &times; 10<sup>&minus;4</sup>), but it was executed before any OSF timestamp and is therefore pilot-only rather than preregistered confirmation. See Paper VII for limitations including the scrambled-data negative control result.</p>
 
@@ -1174,7 +1183,7 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
   <text x="328" y="175" text-anchor="middle" font-size="9" fill="#999" font-weight="600">d = 2</text>
   <text x="423" y="110" text-anchor="middle" font-size="9" fill="#999" font-weight="600">d = 3</text>
   <circle cx="137" cy="258" r="7" fill="#2563eb" stroke="white" stroke-width="1.5"/>
-  <circle cx="328" cy="146" r="7" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+  <circle cx="328" cy="146" r="7" fill="#999" stroke="white" stroke-width="1.5" stroke-dasharray="3,2"/>
   <circle cx="423" cy="91" r="7" fill="#2563eb" stroke="white" stroke-width="1.5"/>
   <path d="M137,292 L143,298 L137,304 L131,298 Z" fill="#dc2626" stroke="white" stroke-width="1.5"/>
   <path d="M320,151 L326,157 L320,163 L314,157 Z" fill="#dc2626" stroke="white" stroke-width="1.5"/>
@@ -1183,14 +1192,14 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
   <path d="M423,81 L429,87 L423,93 L417,87 Z" fill="#dc2626" stroke="white" stroke-width="1.5"/>
   <rect x="90" y="55" width="165" height="55" fill="white" stroke="#ddd" rx="3" stroke-width="0.75"/>
   <circle cx="105" cy="72" r="5" fill="#2563eb"/>
-  <text x="116" y="76" font-size="9" fill="#333">Biology (3 predictions)</text>
+  <text x="116" y="76" font-size="9" fill="#333">Biology (2 tested, 1 pending)</text>
   <path d="M105,87 L110,92 L105,97 L100,92 Z" fill="#dc2626"/>
   <text x="116" y="96" font-size="9" fill="#333">Physics (5 confirmations)</text>
   <text x="280" y="410" text-anchor="middle" font-size="9" fill="#888" font-style="italic">8 instances of &#x3B1; = d/(d+1); biology mean error 3.1%, physics mean error &lt; 0.2%</text>
   <text x="280" y="424" text-anchor="middle" font-size="8.5" fill="#aaa">Points on the diagonal indicate perfect prediction</text>
 </svg>
 <figcaption style="font-size: 0.75rem; color: #555; margin-top: 0.3rem; line-height: 1.5;">
-  <strong>Figure 2 | Predicted vs Measured.</strong> Eight cross-domain instances of one independently derived formula: $\alpha = d/(d+1)$ [17,21,22,23,24,25]. Blue circles: biological systems (fungi, jellyfish, mammals). Red diamonds: physics systems (crystal growth, phase transitions, fracture, earthquakes). Every point falls on or near the diagonal of perfect prediction. A single equation, with zero adjustable parameters, governs systems spanning biology, geophysics, and condensed matter physics. The ARC framework explains the convergence of independent derivations via Cauchy-constrained recursive composition.
+  <strong>Figure 2 | Predicted vs Measured.</strong> Cross-domain instances of one independently derived formula: $\alpha = d/(d+1)$ [17,21,22,23,24,25]. Blue circles: biological systems (fungi, mammals; $d = 2$ biological test organism not yet identified). Red diamonds: physics systems (crystal growth, phase transitions, fracture, earthquakes). Points on or near the diagonal indicate accurate prediction. A single equation, with zero adjustable parameters, governs systems spanning biology, geophysics, and condensed matter physics. The ARC framework explains the convergence of at least seven independent derivations via Cauchy-constrained recursive composition combined with space-filling geometry and conservation.
 </figcaption>
 </figure>
 
@@ -1542,7 +1551,7 @@ $$R^* = \frac{1}{(1-\beta)a} = \frac{\alpha}{a}$$
 
 <p>[22] Banavar, J.R., Maritan, A. &amp; Rinaldo, A. (2010). Size and form in efficient transportation networks. <em>Nature</em>, 399(6732), 130&ndash;132. See also: Banavar, J.R. et al. (2010). A general basis for quarter-power scaling in animals. <em>Proceedings of the National Academy of Sciences</em>, 107(36), 15816&ndash;15820.</p>
 
-<p>[23] Demetrius, L. (2010). Quantum metabolism and allometric scaling relations in biology. <em>Proceedings of the Royal Society A</em>, 466(2124), 3543&ndash;3561.</p>
+<p>[23] Demetrius, L. (2010). Quantum metabolism and allometric scaling relations in biology. <em>Proceedings of the Royal Society A</em>, 466(2124), 3543&ndash;3561. See also: Demetrius, L. &amp; Tuszynski, J.A. (2010). Quantum metabolism explains the allometric scaling of metabolic rates. <em>Journal of the Royal Society Interface</em>, 7(44), 507&ndash;514.</p>
 
 <p>[24] Zhao, J. (2022). Universal growth scaling law determined by dimensionality. <em>arXiv:2206.08094</em>.</p>
 
@@ -1574,7 +1583,7 @@ $$R^* = \frac{1}{(1-\beta)a} = \frac{\alpha}{a}$$
 <!-- ============================================================ -->
 
 <footer>
-    <p><strong>THE ARC PRINCIPLE: FOUNDATIONAL PAPER - Version 4.0</strong></p>
+    <p><strong>THE ARC PRINCIPLE: FOUNDATIONAL PAPER - Version 5.0</strong></p>
     <p>&copy; 2026 Michael Darius Eastwood. All Rights Reserved.</p>
     <p><em>The predictions are specified. The falsification criteria are public. The data will decide.</em></p>
     <p style="margin-top: 0.5rem; font-size: 0.75rem;">Companion documents: <a href="ARC_PAPER.html">On the Origin of Scaling Laws</a> (accessible cross-domain paper) | <a href="/research/papers/paper-iii-white-paper.html">Paper III</a> (extended evidence, experimental protocols, blind prediction test results) | <a href="/research/papers/eden-engineering.html">Eden Protocol</a> (alignment architecture specification) | <a href="/research/papers/eden-vision.html">Philosophical Vision</a> | <a href="/research/papers/paper-ii-experimental-validation.html">Paper II</a> | <a href="/research/papers/paper-v-stewardship-gene.html">Paper V: The Stewardship Gene</a> | <a href="/research/papers/executive-summary.html">Executive Summary</a>.</p>

@@ -319,9 +319,10 @@
         Correspondence: michael@michaeldariuseastwood.com | Web: <a href="https://www.michaeldariuseastwood.com" style="color: var(--cauchy-blue);">michaeldariuseastwood.com</a>
     </div>
     <div class="version-date">
-        Version 2.0 | 17 March 2026 | First published 16 March 2026<br>
+        Version 3.0 | 24 March 2026 | First published 16 March 2026<br>
+        v3.0: corrected space-filling overstatement (added conservation/optimisation constraint as third necessary condition); added 3/4 exponent debate acknowledgement (White &amp; Seymour 2003; Glazier 2005, 2022); corrected cnidarian/jellyfish d=2 status to 'nearest-comparator match, not dimensional confirmation'; added new references<br>
         v2.0: expanded to 50 domains across five evidence tiers; replaced permissive R&sup2; criterion with proper AICc; honest miss analysis; tiered reporting<br>
-        Supersedes: v1.1 (16 March 2026)<br>
+        Supersedes: v2.0 (17 March 2026)<br>
         Extends: On the Origin of Scaling Laws | Foundational Paper<br>
         Validation code: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/cauchy-unification__Paper-VII" style="color: var(--cauchy-blue);">GitHub (experiment)</a> |
         <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/experiments/cauchy-unification__Paper-VII/data/canonical_50_domain_manifest.json" style="color: var(--cauchy-blue);">Manifest</a><br>
@@ -489,7 +490,12 @@
 
 <h3>7.1 Direct published exponents (13/13)</h3>
 
-<p>Thirteen taxa with well-established metabolic scaling exponents were tested against the ARC/Cauchy dimensional prediction: organisms with three-dimensional vascular transport should scale as $M^{3/4}$, those with two-dimensional surface transport as $M^{2/3}$, and those with one-dimensional filamentous transport as $M^{1/2}$.</p>
+<p>Thirteen taxa with well-established metabolic scaling exponents were tested against the ARC/Cauchy dimensional prediction. The prediction requires three conditions: (a) multiplicative composition (Cauchy's equation constrains the form to a power law), (b) $d$-dimensional space-filling transport geometry, and (c) a conservation or optimisation constraint on resource flow (energy minimisation in West et al.; supply-demand balance in Banavar et al.; steady-state energy balance in Demetrius). Under all three conditions, the exponent is constrained to $d/(d+1)$. Neither Cauchy alone, nor space-filling alone, is sufficient. Organisms with three-dimensional vascular transport and conserved flow should scale as $M^{3/4}$, those with two-dimensional transport as $M^{2/3}$, and those with one-dimensional filamentous transport as $M^{1/2}$.</p>
+
+<div class="warning-box">
+    <h4>Note on the 3/4 exponent</h4>
+    <p>The empirical value of the mammalian metabolic scaling exponent is debated, with estimates ranging from approximately 0.67 to 0.75 depending on taxon, mass range, temperature correction, and statistical method (White &amp; Seymour 2003; Glazier 2005, 2022). The largest modern dataset (619 species) gives a maximum-likelihood estimate of 0.687 (95% CI 0.674-0.701), which excludes 0.750. The $d/(d+1)$ prediction of 0.750 for $d = 3$ matches the upper end of the empirical range. The variation itself is consistent with the framework: organisms with effective transport dimensions between 2 and 3 would produce exponents between 2/3 and 3/4. The framework predicts this variation rather than a single universal exponent.</p>
+</div>
 
 <table>
     <thead><tr><th>#</th><th>Taxon</th><th>Predicted</th><th>Observed</th><th>Nearest</th><th>CI includes?</th></tr></thead>
@@ -501,9 +507,9 @@
         <tr class="confirmed"><td>30</td><td>Insects</td><td class="num">0.750</td><td class="num">0.750</td><td>$d=3$</td><td>Yes</td></tr>
         <tr class="confirmed"><td>31</td><td>Amphibians</td><td class="num">0.750</td><td class="num">0.740</td><td>$d=3$</td><td>Yes</td></tr>
         <tr class="confirmed"><td>32</td><td>Crustaceans</td><td class="num">0.750</td><td class="num">0.730</td><td>$d=3$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>33</td><td>Jellyfish</td><td class="num">0.667</td><td class="num">0.680</td><td>$d=2$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>34</td><td>Cnidarians</td><td class="num">0.667</td><td class="num">0.700</td><td>$d=2$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>35</td><td>Ctenophores</td><td class="num">0.667</td><td class="num">0.660</td><td>$d=2$</td><td>Yes</td></tr>
+        <tr class="provisional"><td>33</td><td>Jellyfish</td><td class="num">0.667</td><td class="num">0.680</td><td>$d=2$</td><td>Yes</td></tr>
+        <tr class="provisional"><td>34</td><td>Cnidarians</td><td class="num">0.667</td><td class="num">0.700</td><td>$d=2$</td><td>Yes</td></tr>
+        <tr class="provisional"><td>35</td><td>Ctenophores</td><td class="num">0.667</td><td class="num">0.660</td><td>$d=2$</td><td>Yes</td></tr>
         <tr class="confirmed"><td>36</td><td>Ectomycorrhizal fungi</td><td class="num">0.500</td><td class="num">0.580</td><td>$d=1$</td><td>Yes</td></tr>
         <tr class="confirmed"><td>37</td><td>Marine fungi</td><td class="num">0.500</td><td class="num">0.530</td><td>$d=1$</td><td>Yes</td></tr>
         <tr class="confirmed"><td>38</td><td>Saprotrophic fungi (20&deg;C)</td><td class="num">0.500</td><td class="num">0.530</td><td>$d=1$</td><td>Yes</td></tr>
@@ -511,6 +517,11 @@
 </table>
 
 <p>All 13 published exponents fall nearest to the predicted dimensional comparator ($d/(d+1)$), and all 13 confidence intervals include the predicted value. This is strong corroborating evidence, but it tests a different claim (specific exponent) than the primary result (functional family), so it is reported separately.</p>
+
+<div class="warning-box">
+    <h4>Caveat on d=2 biological entries</h4>
+    <p>The jellyfish, cnidarian, and ctenophore entries (rows 33-35) are classified as nearest-comparator matches to $d = 2$, meaning their observed exponents fall closer to 2/3 than to either 1/2 or 3/4. However, the $d = 2$ biological prediction remains untested in the strong sense because no known organism possesses a genuinely two-dimensional hierarchical space-filling transport network with conserved flow. These organisms lack the vascular architecture that the $d/(d+1)$ derivation assumes. The $d = 2$ confirmation exists in cosmology (Friedmann matter-era solution, exact) and physics (percolation, fragmentation), not in biology. These rows should be understood as empirical proximity to the $d = 2$ comparator, not as dimensional confirmation.</p>
+</div>
 
 <h3>7.2 Provisional published exponents (3/6)</h3>
 
@@ -588,6 +599,10 @@
 <p>[29] Demetrius, L. (2010). Quantum metabolism and allometric scaling relations in biology. <em>Proceedings of the Royal Society A</em> 466(2124):3543-3561.</p>
 <p>[30] Zhao, J. (2022). Universal growth scaling law determined by dimensionality. <em>arXiv:2206.08094</em>.</p>
 <p>[31] Bettencourt, L. M. A. (2013). The origins of scaling in cities. <em>Science</em> 340(6139):1438-1441.</p>
+<p>[32] White, C. R. &amp; Seymour, R. S. (2003). Mammalian basal metabolic rate is proportional to body mass<sup>2/3</sup>. <em>Proceedings of the National Academy of Sciences</em> 100(7):4046-4049.</p>
+<p>[33] Glazier, D. S. (2005). Beyond the '3/4-power law': variation in the intra- and interspecific scaling of metabolic rate in animals. <em>Biological Reviews</em> 80(4):611-662.</p>
+<p>[34] Glazier, D. S. (2022). Variable metabolic scaling breaks the law: a large-scale data synthesis. <em>Biological Reviews</em> 97(3):1056-1067.</p>
+<p>[35] Kolokotrones, T., Savage, V., Deeds, E. J. &amp; Fontana, W. (2010). Curvature in metabolic scaling. <em>Nature</em> 464(7289):753-756.</p>
 </div>
 
 <h2>11. Prior Art</h2>
@@ -598,16 +613,19 @@
 
 <ul>
     <li><strong>Bingham &amp; Ostaszewski (2015):</strong> connect Cauchy's equation to regular variation theory. Pure mathematics. No cross-domain physical science application.</li>
-    <li><strong>West, Brown &amp; Enquist (1997):</strong> derive the 3/4 metabolic exponent from fractal vascular networks. Domain-specific. Does not predict other domains.</li>
-    <li><strong>Banavar, Maritan &amp; Rinaldo (1999, 2010):</strong> derive the same $d/(d+1)$ form from geometric constraints on transportation networks, without requiring fractal geometry. Independently confirmed the quarter-power exponent from different starting assumptions.</li>
+    <li><strong>West, Brown &amp; Enquist (1997):</strong> derive a 3/4 metabolic exponent from fractal vascular networks with energy-minimised flow. Domain-specific. Does not predict other domains. Note that the empirical exponent is debated (see Warning box in Section 7.1).</li>
+    <li><strong>Banavar, Maritan &amp; Rinaldo (1999, 2010):</strong> derive the same $d/(d+1)$ form from geometric constraints on transportation networks combined with supply-demand conservation, without requiring fractal geometry. Independently confirmed the quarter-power exponent from different starting assumptions. Banavar et al. (2010) showed that the exponent ranges from 2/3 to 3/4 depending on how velocity scales, with 3/4 as the optimised maximum - demonstrating that space-filling geometry alone is insufficient without a conservation or optimisation constraint.</li>
     <li><strong>Demetrius (2010):</strong> derives equivalent scaling from quantum statistical mechanics of metabolic processes. A third independent route to the same exponent.</li>
     <li><strong>Bettencourt (2013):</strong> derives city scaling exponents from network dimensionality, extending the $d/(d+1)$ form beyond biology to urban systems.</li>
-    <li><strong>Zhao (2022):</strong> derives the formula as a universal growth scaling law from network optimisation, providing a fifth independent derivation.</li>
+    <li><strong>Zhao (2022):</strong> derives the formula as a universal growth scaling law from network optimisation, providing another independent derivation.</li>
+    <li><strong>He &amp; Chen (2003):</strong> derive metabolic scaling exponents from optimal vascular network geometry with flow conservation constraints.</li>
+    <li><strong>He &amp; Zhang (2004):</strong> extend the derivation to heterogeneous branching networks, recovering the $d/(d+1)$ form under energy-minimisation assumptions.</li>
+    <li><strong>Maino et al. (2014):</strong> derive metabolic scaling from thermodynamic first principles applied to ontogenetic growth, independently obtaining the same exponent family.</li>
     <li><strong>Geoffrey West, <em>Scale</em> (2017):</strong> discusses scaling across biology and cities. No mention of Cauchy's functional equations.</li>
     <li><strong>Acz&eacute;l (1966):</strong> standard reference for all four Cauchy equations. Applications to information theory but not to cross-domain scaling.</li>
 </ul>
 
-<p>The gap is genuine. The $d/(d+1)$ formula has been independently derived by at least five research groups through different mathematical frameworks - fractal networks, geometric constraints, quantum metabolism, urban scaling, and network optimisation. The mathematical theorems are 200 years old. The biological data is 90 years old. The novel contribution is not the $d/(d+1)$ formula itself (which is well established), nor Cauchy's mathematics, but the claim that Cauchy-type functional equations explain <em>why</em> these independent derivations converge on the same form, and that the Cauchy constraint has a physically testable consequence for scaling-law classification across domains.</p>
+<p>The gap is genuine. The $d/(d+1)$ formula has been independently derived by at least seven research groups through different mathematical frameworks - fractal networks, geometric constraints with supply-demand balance, quantum metabolism, urban scaling, network optimisation, optimal vascular geometry, and thermodynamic first principles. Every known derivation requires three conditions: multiplicative composition (which Cauchy constrains to the power-law family), $d$-dimensional space-filling geometry, and a conservation or optimisation constraint on resource flow. The mathematical theorems are 200 years old. The biological data is 90 years old. The novel contribution is not the $d/(d+1)$ formula itself (which is well established), nor Cauchy's mathematics, but the claim that Cauchy-type functional equations explain <em>why</em> these independent derivations converge on the same form, and that the Cauchy constraint has a physically testable consequence for scaling-law classification across domains.</p>
 
 <h2>12. Limitations</h2>
 
