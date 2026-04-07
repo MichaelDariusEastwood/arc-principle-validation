@@ -1,13 +1,16 @@
 # Paper IV.d: The Effect of Blinding on AI Alignment Evaluation
 
 **Full title:** Paper IV.d: The Effect of Blinding on AI Alignment Evaluation
-**Version:** v1.1
+**Version:** v2.0
+**Version date:** 5 April 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-This paper isolates the central metascience finding of the ARC alignment programme: unblinded AI alignment evaluation can produce directionally incorrect results. In the v4 alignment-scaling experiment, two frontier model families appeared to show positive alignment scaling with inference-time depth under unblinded cross-model scoring. In the later v5 experiment, the same question was re-measured under a multi-layer blind protocol that combined identity masking, two-pass response laundering, examiner rotation, and sealed holdout prompts. The blinded results reversed or nullified several unblinded conclusions, demonstrating that evaluator bias is a first-order confounder in alignment research.
+This paper isolates the central metascience finding of the ARC alignment programme: unblinded AI alignment evaluation can produce directionally incorrect results. The core contribution is methodological rather than theoretical. It shows, within the ARC v4-to-v5 transition, that apparent positive alignment scaling can disappear or reverse once evaluation is genuinely blinded through identity masking, evidence laundering, order randomisation, and self-excluding cross-model scoring.
+
+Version 2.0 finalises the canonical publication framing for Paper IV.d, removes the lingering draft-state language from the public-facing source, and aligns the paper header, footer, and canonical links with the current ARC/Eden paper suite.
 
 ## Experiments
 
@@ -18,3 +21,7 @@ See [`../Paper-III-Alignment-Scaling-Problem/experiments/`](../Paper-III-Alignme
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+- **Paper folder:** https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/papers/Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation
+- **Experiment suite:** https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/alignment-scaling__Papers-IV-a-b-c-d
+- **Canonical website HTML:** https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
+- **Canonical website PDF:** https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.pdf

@@ -4,164 +4,224 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paper IV.d: The Effect of Blinding on AI Alignment Evaluation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --paper-bg: #f7f5ef;
-            --ink: #1d2430;
-            --muted: #5a6473;
-            --rule: #d7d0c4;
-            --accent: #1f5f8b;
-            --accent-soft: #e8f1f8;
-            --warn: #8b1f35;
-            --warn-soft: #fae9ee;
-            --ok: #156f4b;
-            --ok-soft: #eaf7f0;
+            --nature-dark: #1a1a1a;
+            --nature-grey: #666666;
+            --nature-light-grey: #f5f5f5;
+            --nature-border: #dddddd;
+            --paper-blue: #1f5f8b;
+            --paper-blue-light: #edf4fa;
+            --eden-green: #2e7d32;
+            --eden-green-light: #eaf7f0;
+            --warning-amber: #d97706;
+            --warning-light: #fff4e8;
+            --text-body: #333333;
         }
 
-        * { box-sizing: border-box; }
-
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background: var(--paper-bg);
-            color: var(--ink);
-            font-family: Georgia, "Times New Roman", serif;
-            line-height: 1.65;
+            box-sizing: border-box;
+        }
+
+        html { font-size: 15px; }
+
+        body {
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-body);
+            background: #ffffff;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
         }
 
         .page {
-            max-width: 980px;
-            margin: 0 auto;
             background: #fff;
-            padding: 3rem 3.25rem 4rem;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
         }
 
         .journal-header {
-            border-bottom: 2px solid var(--rule);
-            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--paper-blue);
+            padding-bottom: 0.75rem;
             margin-bottom: 2rem;
         }
 
         .journal-name {
-            font-size: 0.9rem;
-            letter-spacing: 0.08em;
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
-            color: var(--muted);
+            letter-spacing: 0.2em;
+            color: var(--paper-blue);
         }
 
         .journal-type {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.72rem;
+            color: var(--nature-grey);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
             margin-top: 0.35rem;
-            font-size: 0.95rem;
-            color: var(--muted);
         }
 
         .paper-title {
-            font-size: 2.3rem;
-            line-height: 1.15;
-            margin: 0 0 0.75rem;
+            font-size: 2.35rem;
+            line-height: 1.18;
+            color: var(--nature-dark);
+            margin: 1.4rem 0 0.65rem;
         }
 
         .paper-subtitle {
-            font-size: 1.1rem;
-            color: var(--muted);
-            margin: 0 0 1.5rem;
+            font-size: 1.15rem;
+            color: var(--nature-grey);
+            margin: 0 0 1.4rem;
+            font-style: italic;
         }
 
         .meta {
-            font-size: 0.95rem;
-            color: var(--muted);
-            margin-bottom: 2rem;
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            color: var(--nature-grey);
+            margin-bottom: 1.75rem;
+            line-height: 1.65;
         }
+
+        .meta strong { color: var(--nature-dark); }
 
         .box,
         .abstract,
         .finding,
         .warning {
-            border-left: 5px solid var(--accent);
-            background: var(--accent-soft);
-            padding: 1rem 1.1rem;
+            padding: 1.25rem 1.45rem;
             margin: 1.4rem 0 1.8rem;
+            border-radius: 0 10px 10px 0;
         }
 
-        .warning {
-            border-left-color: var(--warn);
-            background: var(--warn-soft);
+        .abstract,
+        .box {
+            border-left: 4px solid var(--paper-blue);
+            background: var(--paper-blue-light);
         }
 
         .finding {
-            border-left-color: var(--ok);
-            background: var(--ok-soft);
+            border-left: 4px solid var(--eden-green);
+            background: var(--eden-green-light);
+        }
+
+        .warning {
+            border-left: 4px solid var(--warning-amber);
+            background: var(--warning-light);
         }
 
         .box h4,
         .abstract h3,
         .finding h4,
         .warning h4 {
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
             margin: 0 0 0.5rem;
-            font-size: 1.05rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
         }
 
-        h2, h3 {
-            margin-top: 2rem;
-            line-height: 1.25;
-        }
+        .abstract h3,
+        .box h4 { color: var(--paper-blue); }
+        .finding h4 { color: var(--eden-green); }
+        .warning h4 { color: var(--warning-amber); }
 
         h2 {
-            font-size: 1.45rem;
-            border-bottom: 1px solid var(--rule);
-            padding-bottom: 0.35rem;
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--nature-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid var(--nature-border);
+            padding-bottom: 0.4rem;
         }
 
         h3 {
-            font-size: 1.15rem;
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 1.02rem;
+            font-weight: 600;
+            line-height: 1.35;
+            color: var(--nature-dark);
+            margin-top: 1.6rem;
+            margin-bottom: 0.5rem;
         }
 
         p {
-            margin: 0.9rem 0;
+            margin: 0 0 1rem;
+            text-align: justify;
+            hyphens: none;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1rem 0 1.4rem;
-            font-size: 0.95rem;
+            margin: 1rem 0 1.5rem;
+            font-size: 0.92rem;
         }
 
-        th, td {
-            border: 1px solid var(--rule);
-            padding: 0.65rem 0.7rem;
+        thead th {
+            background: var(--nature-dark);
+            color: #ffffff;
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.6rem 0.7rem;
             text-align: left;
+        }
+
+        tbody td {
+            padding: 0.55rem 0.7rem;
+            border-bottom: 1px solid var(--nature-border);
             vertical-align: top;
         }
 
-        th {
-            background: #f5f1e8;
-        }
+        tbody tr:nth-child(even) { background: var(--nature-light-grey); }
 
-        ul, ol {
-            margin: 0.8rem 0 1rem 1.25rem;
-        }
-
-        li {
-            margin: 0.35rem 0;
-        }
+        ul, ol { margin: 0.75rem 0 1rem 1.4rem; }
+        li { margin-bottom: 0.35rem; }
 
         .small {
             font-size: 0.88rem;
-            color: var(--muted);
+            color: var(--nature-grey);
         }
 
         .footer {
-            border-top: 2px solid var(--rule);
+            border-top: 1px solid var(--nature-border);
             margin-top: 2.5rem;
-            padding-top: 1rem;
-            font-size: 0.88rem;
-            color: var(--muted);
+            padding-top: 1.1rem;
+            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            color: var(--nature-grey);
         }
 
-        a {
-            color: var(--accent);
+        .footer p {
+            text-align: left;
+            margin-bottom: 0.7rem;
+        }
+
+        .footer p:last-child { margin-bottom: 0; }
+
+        a { color: var(--paper-blue); }
+
+        code {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.84rem;
+            background: #f2f3f5;
+            padding: 0.12rem 0.35rem;
+            border-radius: 4px;
         }
         /* ia-mobile-table-guard */
         @media (max-width: 720px) {
@@ -265,18 +325,20 @@
 
 <div class="page">
     <div class="journal-header">
-        <div class="journal-name">ARC Principle Alignment Research Series</div>
-        <div class="journal-type">Paper IV.d · Metascience / Methods · Draft v1.1 · 12 March 2026 | First published 16 March 2026</div>
+        <div class="journal-name">ARC Principle Series</div>
+        <div class="journal-type">Paper IV.d - Metascience / Methods</div>
     </div>
 
     <h1 class="paper-title">The Effect of Blinding on AI Alignment Evaluation</h1>
-    <p class="paper-subtitle">Evidence, in this experimental setting, that unblinded scoring can reverse alignment results and that true blinding requires evidence laundering</p>
+    <p class="paper-subtitle">Evidence that unblinded scoring can reverse reported alignment results, and that true blinding requires evidence laundering</p>
 
     <div class="meta">
-        Michael Darius Eastwood · Independent Researcher, London, United Kingdom<br>
+        <strong>Michael Darius Eastwood</strong><br>
+        Independent Researcher, London, United Kingdom | OSF DOI: <a href="https://doi.org/10.17605/OSF.IO/6C5XB">10.17605/OSF.IO/6C5XB</a><br>
+        Version 2.0 | 5 April 2026 | First published 16 March 2026<br>
         Correspondence: michael@michaeldariuseastwood.com<br>
-        Companion papers: IV.a (Alignment Response Classes), IV.b (Shape Heterogeneity), IV.c (ARC-Align Benchmark)<br>
-        Code and data: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/alignment-scaling__Papers-IV-a-b-c-d" style="color: var(--accent);">github.com/MichaelDariusEastwood/arc-principle-validation</a>
+        Companion papers: <a href="https://www.michaeldariuseastwood.com/research/papers/paper-iv-a-baked-in-vs-computed-alignment.html">IV.a</a>, <a href="https://www.michaeldariuseastwood.com/research/papers/paper-iv-b-alignment-saturation-at-low-depth.html">IV.b</a>, <a href="https://www.michaeldariuseastwood.com/research/papers/paper-iv-c-arc-align-benchmark.html">IV.c</a><br>
+        Code and data: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/alignment-scaling__Papers-IV-a-b-c-d">experiment suite</a> | <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/papers/Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/results">results</a>
     </div>
 
     <div class="abstract">
@@ -496,20 +558,22 @@
         <p>The most important near-term question raised by this paper is no longer theoretical. It is operational: <strong>will the field continue to run largely unblinded alignment evaluations after evidence now exists that blinding can reverse the result?</strong></p>
     </div>
 
+    <p><em>Raise AI with care.</em></p>
+
     <h2>References</h2>
     <ol>
-        <li>Eastwood, M. D. (2026). Alignment Response Classes Under Inference-Time Depth. Paper IV.a.</li>
-        <li>Eastwood, M. D. (2026). Alignment Saturation Is Architecture-Dependent. Paper IV.b.</li>
-        <li>Eastwood, M. D. (2026). ARC-Align: A Blind Benchmark for Depth-Variable AI Alignment Evaluation. Paper IV.c.</li>
+        <li>Eastwood, M. D. (2026). Paper IV.a: Alignment Response Classes Under Inference-Time Depth. ARC/Eden Research Programme. OSF: 10.17605/OSF.IO/6C5XB.</li>
+        <li>Eastwood, M. D. (2026). Paper IV.b: Alignment Saturation Is Architecture-Dependent. ARC/Eden Research Programme. OSF: 10.17605/OSF.IO/6C5XB.</li>
+        <li>Eastwood, M. D. (2026). Paper IV.c: ARC-Align: A Blind Benchmark for Depth-Variable AI Alignment Evaluation. ARC/Eden Research Programme. OSF: 10.17605/OSF.IO/6C5XB.</li>
         <li>Bai, Y., Jones, A., Ndousse, K., et al. (2022). Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback. arXiv:2204.05862.</li>
         <li>Anthropic. (2023). Constitutional AI: Harmlessness from AI Feedback. arXiv:2212.08073.</li>
         <li>Perez, E., Huang, S., Song, F., et al. (2022). Red Teaming Language Models with Language Models. arXiv:2202.03286.</li>
     </ol>
 
     <div class="footer">
-        <p><em>Paper IV.d v1.1 · 12 March 2026. Drafted from the v4&rarr;v5 alignment benchmark transition and the blinded six-model ARC-Align dataset.</em></p>
-        <p><em>Methods platform note: the canonical runner for this benchmark family is now <code>arc_eden_v6</code>, which absorbs the v5 blinding lineage into a shared manifest, analysis-bundle, and replication-pack workflow.</em></p>
-        <p><em>Related files: <a href="/research/reports/arc-align-scaling-report.html">ARC Alignment Scaling Report</a>, <a href="/research/papers/paper-iv-a-response-classes.html">Paper IV.a</a>, <a href="/research/papers/paper-iv-b-saturation.html">Paper IV.b</a>, <a href="/research/papers/paper-iv-c-benchmark.html">Paper IV.c</a>.</em></p>
+        <p><em>Paper IV.d v2.0 finalises the canonical publication framing for the blinding result and supersedes the earlier v1.1 export.</em></p>
+        <p><em>This paper should be read alongside <a href="https://www.michaeldariuseastwood.com/research/papers/paper-iv-c-arc-align-benchmark.html">Paper IV.c</a>, which specifies the ARC-Align benchmark and four-layer blinding protocol, and <a href="https://www.michaeldariuseastwood.com/research/papers/paper-ix-synthesis-and-roadmap.html">Paper IX</a>, which situates the result in the wider ARC/Eden programme.</em></p>
+        <p><em>Canonical links: <a href="https://doi.org/10.17605/OSF.IO/6C5XB">OSF record</a> | <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/papers/Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation">GitHub paper folder</a> | <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/alignment-scaling__Papers-IV-a-b-c-d">Experiment suite</a></em></p>
     </div>
 </div>
 
@@ -565,26 +629,26 @@
 
 <div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #ddd; font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.85rem; color: #666;">
     <strong>Companion Papers:</strong>
-    <a href="Paper-I-ARC-Principle.html">Paper I</a> |
-    <a href="Foundational.html">Foundational</a> |
-    <a href="Paper-II-Experimental-Validation.html">Paper II</a> |
-    <a href="Paper-III-Alignment-Scaling-Problem.html">Paper III</a> |
-    <a href="On-the-Origin-of-Scaling-Laws.html">Origin of Scaling Laws</a> |
-    <a href="Paper-IV-a-Baked-In-vs-Computed-Alignment.html">IV.a</a> |
-    <a href="Paper-IV-b-Alignment-Saturation-at-Low-Depth.html">IV.b</a> |
-    <a href="Paper-IV-c-ARC-Align-Benchmark.html">IV.c</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/paper-i-arc-principle.html">Paper I</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/foundational.html">Foundational</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/paper-ii-experimental-validation.html">Paper II</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/paper-iii-alignment-scaling-problem.html">Paper III</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/on-the-origin-of-scaling-laws.html">Origin of Scaling Laws</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/paper-iv-a-baked-in-vs-computed-alignment.html">IV.a</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/paper-iv-b-alignment-saturation-at-low-depth.html">IV.b</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/paper-iv-c-arc-align-benchmark.html">IV.c</a> |
     <strong>IV.d</strong> |
-    <a href="Paper-V-Stewardship-Gene.html">Paper V</a> |
-    <a href="Paper-VI-Honey-Architecture.html">Paper VI</a> |
-    <a href="Paper-VII-Cauchy-Unification.html">Paper VII</a> |
-    <a href="Paper-VIII-The-Load-Bearing-Proof.html">Paper VIII</a> |
-    <a href="Paper-IX-Synthesis-and-Roadmap.html">Paper IX</a> |
-    <a href="Eden-Engineering.html">Eden Engineering</a> |
-    <a href="Eden-Vision.html">Eden Vision</a> |
-    <a href="Executive-Summary.html">Executive Summary</a> |
-    <a href="Master-Table-of-Contents.html">Master Table of Contents</a>
+    <a href="https://www.michaeldariuseastwood.com/research/papers/paper-v-stewardship-gene.html">Paper V</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/paper-vi-honey-architecture.html">Paper VI</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.html">Paper VII</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/paper-viii-the-load-bearing-proof.html">Paper VIII</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/paper-ix-synthesis-and-roadmap.html">Paper IX</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/eden-engineering.html">Eden Engineering</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/eden-vision.html">Eden Vision</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/executive-summary.html">Executive Summary</a> |
+    <a href="https://www.michaeldariuseastwood.com/research/papers/master-table-of-contents.html">Master Table of Contents</a>
     <br><br>
-    <em>Research hub: <a href="https://www.michaeldariuseastwood.com/research/">michaeldariuseastwood.com/research</a> | OSF: 10.17605/OSF.IO/6C5XB | Copyright 2026 Michael Darius Eastwood</em>
+    <em>Research hub: <a href="https://www.michaeldariuseastwood.com/research/">michaeldariuseastwood.com/research</a> | OSF: <a href="https://doi.org/10.17605/OSF.IO/6C5XB">10.17605/OSF.IO/6C5XB</a> | Copyright 2026 Michael Darius Eastwood</em>
 </div>
 
 </body>
