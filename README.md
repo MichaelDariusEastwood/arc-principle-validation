@@ -5,6 +5,38 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OSF DOI](https://img.shields.io/badge/OSF-10.17605%2FOSF.IO%2F6C5XB-blue)](https://doi.org/10.17605/OSF.IO/6C5XB)
 
+## Citation & Prior Art
+
+This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitHub, use the **"Cite this repository"** button in the sidebar (top right of the repository page) to export the citation in APA or BibTeX directly from that file.
+
+**Cite this work as:**
+
+> Eastwood, M.D. (2026). *The ARC Principle and Eden Protocol: Recursive Intelligence Scaling and Embedded AI Alignment.* OSF. https://doi.org/10.17605/OSF.IO/6C5XB
+
+```bibtex
+@misc{eastwood2026arc,
+  author       = {Eastwood, Michael Darius},
+  title        = {The ARC Principle and Eden Protocol: Recursive Intelligence
+                  Scaling and Embedded AI Alignment},
+  year         = {2026},
+  publisher    = {OSF},
+  doi          = {10.17605/OSF.IO/6C5XB},
+  url          = {https://doi.org/10.17605/OSF.IO/6C5XB}
+}
+```
+
+### Independent corroboration (sequential > parallel)
+
+The programme's sequential-recursion result (`alpha_sequential > 1 > alpha_parallel`) is independently corroborated by:
+
+> Sharma, A. & Chopra, P. (2025). *The Sequential Edge: Inverse-Entropy Voting Beats Parallel Self-Consistency at Matched Compute.* arXiv:2511.02309 (4 November 2025). https://arxiv.org/abs/2511.02309
+
+Their work reports, on independent systems and at matched compute, that sequential reasoning outperforms parallel self-consistency. **No priority is claimed for that result here** — it is cited as corroborating prior/parallel art, and the credit for that specific finding belongs to its authors.
+
+### Acknowledged prior art (the geometric exponent)
+
+The geometric scaling exponent `alpha = d/(d+1)` is **acknowledged prior art**. It follows the dimensional-scaling tradition of West, Brown & Enquist (allometric quarter-power scaling) and related derivations across physics and biology; this programme does not claim to have originated `d/(d+1)`. The contribution claimed here is the **Cauchy unification** — deriving the family of admissible scaling laws from the Cauchy functional equations and showing that a single framework accounts for the observed cross-domain exponents (see Paper VII and the Foundational document).
+
 ## Headline Results (March 2026)
 
 - **Paper VII** (Cauchy Unification): 19/25 empirical domains preferred the Cauchy-predicted scaling family under strict AICc model selection (p = 1.56 x 10^-5)
@@ -102,6 +134,12 @@ Each paper folder contains its own `README.md`, along with `experiments/`, `resu
 ## Running Experiments
 
 Experiments live inside each paper's folder under `papers/<Paper>/experiments/`. Most require Python 3.10+ and an API key for the relevant model provider.
+Active experiment paths should prefer the shared Eden gateway when available:
+
+- `EDEN_GATEWAY_URL`
+- `EDEN_GATEWAY_API_KEY`
+
+Legacy direct-provider keys are only for older standalone runs that have not yet been moved behind Eden.
 
 ```bash
 # Paper VII: 50-domain Cauchy validation
