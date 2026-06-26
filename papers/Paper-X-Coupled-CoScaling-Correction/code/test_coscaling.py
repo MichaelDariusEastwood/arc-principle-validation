@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-CI-grade assertion suite for the Coupled Co-Scaling Law (Paper X).
+Internal-consistency + integrator test suite for the Coupled Co-Scaling Law (Paper X).
 
-Each test encodes a theorem or a pre-registered falsification condition as a
-hard assertion. `pytest` returns 0 iff the theory holds: a falsifier firing is
-a test failure. This is the executable form of the falsification table (Paper,
-Section 7) -- a reader who believes the framework is wrong is invited to make a
-test fail.
+Each test encodes a theorem or a derivation-consistency condition as a hard
+assertion. `pytest` returns 0 iff the closed-form predictions are correctly
+derived from the model and correctly reproduced numerically. These are
+derivation-consistency and integrator-accuracy checks -- they verify the code
+matches the maths. They do NOT test whether the model describes any real AI
+system; that is the open empirical problem stated in the paper's Limitations.
 
 Run:  pytest test_coscaling.py -q
 """
@@ -130,3 +131,18 @@ def test_p2_speed_does_not_decide():
     assert fate(1.0, 0.5) > 1.0 and fate(1.0, 5.0) > 1.0
     # coupled (ratio>2) bounded regardless of speed
     assert fate(3.0, 0.5) < 1.0 and fate(3.0, 5.0) < 1.0
+
+
+# ---- §3.6 / F5: residual drift at rest ------------------------------------- #
+def test_f5_residual_drift_at_rest():
+    """A frozen (r=0) capable system relaxes to d* = gamma2/A0 when gamma2>0
+    (pausing growth is not correction), and to 0 when gamma2=0."""
+    A0, g2, dt = 0.1, 0.02, 0.01
+    d = 0.05
+    for _ in range(50000):                 # 500 time units; fully relaxed
+        d += (g2 - A0 * d) * dt
+    assert abs(d - g2 / A0) < 1e-3          # residual floor gamma2/A0 > 0
+    d = 0.05
+    for _ in range(50000):
+        d += (0.0 - A0 * d) * dt
+    assert d < 1e-3                          # gamma2=0 -> d -> 0

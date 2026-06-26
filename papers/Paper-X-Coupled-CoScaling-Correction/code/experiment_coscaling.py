@@ -2,20 +2,39 @@
 # -*- coding: utf-8 -*-
 """
 ================================================================================
-Coupled Co-Scaling Correction  --  Self-Certifying Proof Harness
+Coupled Co-Scaling Correction  --  Numerical Verification & Consistency Harness
 ================================================================================
 Paper X of the ARC / Eden research programme.
 Michael Darius Eastwood  |  London  |  June 2026
 michaeldariuseastwood.com/research   OSF: doi.org/10.17605/OSF.IO/6C5XB
 
-WHAT THIS PROGRAMME IS
-----------------------
-This is not a plotting script. It is an *adjudicating* harness. It integrates
-the governing dynamics of a self-improving system, runs eight discriminating
-experiments, and for each one computes a quantitative test statistic, compares
-it against a prediction stated in advance, and prints PASS / FAIL together with
-whether the corresponding pre-registered falsification condition (F1..F8) was
-triggered. The script exits 0 iff every prediction holds and no falsifier fires.
+WHAT THIS HARNESS DOES -- AND DOES NOT -- ESTABLISH (read this first)
+--------------------------------------------------------------------
+This harness verifies that the closed-form theorems are correctly DERIVED from
+the model's dynamics and correctly INTEGRATED by the solver. It does three
+honest things:
+  (a) derivation-consistency: it integrates the governing ODE and checks the
+      numerical solution matches the closed-form fixed points / asymptotics the
+      theorems predict (experiments E1-E6, E9);
+  (b) integrator-accuracy: it certifies the integrator against the exact
+      Theorem-1 transient to ~1e-11 (E8);
+  (c) one genuine Monte-Carlo check of the stochastic stationary law (E7).
+
+It does NOT, and cannot, do the following, and no claim here pretends otherwise:
+  - it does NOT test whether the model describes any real AI system (that is the
+    open empirical problem, stated in the paper's Limitations);
+  - because each deductive experiment integrates the SAME ODE whose closed form
+    is the prediction, a PASS on E1-E6/E9 certifies the algebra + the solver, not
+    the physical adequacy of the model. F1-F3, F3', F5, F6 are therefore
+    INTERNAL-CONSISTENCY conditions of the derivation, not empirical falsifiers
+    of the thesis;
+  - F4 (the QEC mechanism) is an ANALYTIC prediction: the model's suppression law
+    is exactly power-law (an algebraic identity), so a finite-capacity corrector
+    that could exhibit EXPONENTIAL (QEC-like) suppression is the future test the
+    paper names; the present harness does not exercise it.
+The script exits 0 iff every internal-consistency check matches its closed-form
+prediction. That is evidence the code matches the maths -- never that the maths
+matches reality.
 
 THE MASTER EQUATION  (paper, Section 3)
 ---------------------------------------
@@ -725,12 +744,64 @@ def experiment_8():
 
 
 # --------------------------------------------------------------------------- #
+#  EXPERIMENT 9 -- Residual drift at rest (P5 / F5)                             #
+#  A frozen but capable system still drifts when level-drift gamma2>0. This is  #
+#  the experiment the paper's §3.6 / F5 refer to; it is now present, not cited.  #
+# --------------------------------------------------------------------------- #
+def experiment_9():
+    print("\nExperiment 9 - Residual drift at rest (P5 / F5)")
+    A0 = 0.1
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5))
+    fig.suptitle("Experiment 9 -- Residual drift at rest (P5 / F5).  A frozen but capable system "
+                 "still drifts when\nlevel-drift gamma2 > 0: pausing growth is not a substitute for "
+                 "correction.", fontweight="bold", fontsize=11)
+    ax = axes[0]
+    ok = True
+    tau_halt = None
+    for g2, col, lab in [(0.0, GREEN, "$\\gamma_2=0$: halting $\\to d\\to 0$"),
+                         (0.02, RED, "$\\gamma_2=0.02$: halting $\\to d\\to\\gamma_2/A_0>0$")]:
+        p = P(gamma1=0.03, gamma2=g2, A0=A0, beta=0.0, k=0.0, b=0.4, d0=0.05)
+        tau, C, d = integrate_depth(p, tau_max=7, n=700)
+        # frozen phase (r=0): d_dot = gamma2 - A0*d  =>  d* = gamma2/A0
+        dstar = g2 / A0
+        t_fr = np.linspace(0.0, 70.0, 700)
+        d_fr = dstar + (d[-1] - dstar) * np.exp(-A0 * t_fr)
+        x_fr = tau[-1] + 0.7 * tau[-1] * (t_fr / t_fr[-1])      # cosmetic frozen axis
+        tau_halt = tau[-1]
+        ax.plot(np.concatenate([tau, x_fr]), np.concatenate([d, d_fr]), color=col, label=lab)
+        ok = ok and (abs(d_fr[-1] - dstar) < 5e-3)
+    ax.axvline(tau_halt, color="#888", ls="--", lw=1.2, label="growth halted")
+    ax.set_xlabel("self-improvement depth $\\tau$  |  then frozen time")
+    ax.set_ylabel("misalignment fraction $d$")
+    ax.set_title("Halt growth: $\\gamma_2=0\\to 0$, but $\\gamma_2>0\\to$ residual floor")
+    ax.legend(fontsize=9); ax.set_ylim(bottom=0)
+
+    ax2 = axes[1]
+    A0s = np.linspace(0.02, 0.5, 60)
+    ax2.plot(A0s, 0.02 / A0s, color=BLUE, lw=2)
+    ax2.set_xlabel("correction strength $A_0$")
+    ax2.set_ylabel("residual floor at rest  $d^* = \\gamma_2/A_0$")
+    ax2.set_title("Residual misalignment at rest is removed only by correction")
+    plt.tight_layout()
+    plt.savefig(os.path.join(FIGDIR, "exp9_residual_drift.png"), dpi=160, bbox_inches="tight")
+    plt.close()
+
+    record("E9", "P5/F5: a frozen capable system retains residual d*=gamma2/A0; halting growth is not correction",
+           f"residual matches gamma2/A0 (and 0 when gamma2=0) within tol = {ok}",
+           "with gamma2>0, halting growth leaves d -> gamma2/A0 > 0; with gamma2=0 it -> 0",
+           ok, "F5 (no residual drift at rest)", triggered=not ok)
+    return ok
+
+
+# --------------------------------------------------------------------------- #
 #  Main                                                                         #
 # --------------------------------------------------------------------------- #
 def main():
     print("=" * 78)
-    print("  COUPLED CO-SCALING CORRECTION  --  SELF-CERTIFYING PROOF HARNESS")
+    print("  COUPLED CO-SCALING CORRECTION  --  NUMERICAL VERIFICATION & CONSISTENCY HARNESS")
     print("  Michael Darius Eastwood | June 2026 | michaeldariuseastwood.com/research")
+    print("  NOTE: these are internal-consistency + integrator checks (code matches maths),")
+    print("        NOT empirical tests of the model against a real system.")
     print("=" * 78)
 
     results = [
@@ -743,10 +814,11 @@ def main():
         experiment_6(),
         experiment_7(),
         experiment_8(),
+        experiment_9(),
     ]
 
     print("\n" + "=" * 78)
-    print("  VERDICT TABLE")
+    print("  VERDICT TABLE  (internal-consistency checks of the derivation + integrator)")
     print("=" * 78)
     n_pass = sum(v["passed"] for v in VERDICTS)
     n_trig = sum(v["triggered"] for v in VERDICTS)
@@ -755,9 +827,11 @@ def main():
               f"{v['falsifier']:<38} {'TRIGGERED' if v['triggered'] else 'clear'}")
     print("-" * 78)
     all_pass = all(results)
-    print(f"  {n_pass}/{len(VERDICTS)} predictions confirmed | "
-          f"{n_trig} falsification conditions triggered")
-    print(f"  OVERALL: {'ALL PREDICTIONS CONFIRMED -- framework survives' if all_pass else 'A FALSIFIER FIRED -- see above'}")
+    print(f"  {n_pass}/{len(VERDICTS)} internal-consistency checks pass | "
+          f"{n_trig} kill-conditions triggered")
+    print("  F4 (QEC mechanism): the model's suppression law is analytically power-law, so the")
+    print("  QEC correspondence holds in threshold FORM only, not as a transferred mechanism.")
+    print(f"  OVERALL: {'code matches the maths (E1-E9); the model-vs-reality test is the open problem' if all_pass else 'an internal-consistency check FAILED -- see above'}")
     print("=" * 78)
 
     # persist machine-readable + human-readable artefacts

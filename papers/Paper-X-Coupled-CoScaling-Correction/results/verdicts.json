@@ -1,7 +1,7 @@
 {
   "all_pass": true,
-  "n_pass": 9,
-  "n_total": 9,
+  "n_pass": 10,
+  "n_total": 10,
   "n_triggered": 0,
   "verdicts": [
     {
@@ -91,6 +91,16 @@
       "criterion": "LSODA error < 1e-4 AND Euler error < 1e-3",
       "passed": true,
       "falsifier": "F-numeric (integrator wrong)",
+      "triggered": false,
+      "detail": ""
+    },
+    {
+      "experiment": "E9",
+      "prediction": "P5/F5: a frozen capable system retains residual d*=gamma2/A0; halting growth is not correction",
+      "statistic": "residual matches gamma2/A0 (and 0 when gamma2=0) within tol = True",
+      "criterion": "with gamma2>0, halting growth leaves d -> gamma2/A0 > 0; with gamma2=0 it -> 0",
+      "passed": true,
+      "falsifier": "F5 (no residual drift at rest)",
       "triggered": false,
       "detail": ""
     }
