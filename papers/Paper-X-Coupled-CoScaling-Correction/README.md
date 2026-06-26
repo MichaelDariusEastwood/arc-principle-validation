@@ -90,6 +90,37 @@ certify the derivation + integrator (code matches maths), not the model against 
 | E8 Integrator certificate | — | max error 7e−11 vs closed form |
 | E9 Residual drift at rest | P5 / F5 | frozen system → d=γ₂/A₀>0; halting growth ≠ correction |
 
+## Real-model test (non-simulation)
+
+The harness above is an *internal-consistency* check (code matches the maths). The
+**genuine falsifier** — testing the model against a real system — lives in
+`experiments/`. `experiments/scripts/realmodel_coscaling.py` instantiates Paper
+VIII's gated self-modification (Eden = coupled corrector vs Babylon = decoupled)
+driven by a **real frontier model**, with **objective** capability scoring (hidden
+tests are *executed*) and **blind** misalignment scoring. It plugs into the
+`arc_eden_v6` six-provider adapter (Claude, GPT-5.5, DeepSeek v4, Qwen-3, Grok-4,
+Gemini); see `experiments/PROTOCOL.md` (pre-registered H1–H3, six-model sweep).
+
+**First real run — Claude (non-simulation), `results/realmodel/`:**
+
+- **Self-improvement trajectory (seeded reward-hack → recursive self-improve).**
+  From a hard-coded lookup that games the visible tests (C=0, blind D=10), **both**
+  the coupled and decoupled arms — decoupled under pure score-pressure — removed
+  the hack at round 1 and stayed general (C=1.0, D=0, d=0) for all 3 rounds. The
+  contrast is *null* because the frontier model **does not drift** on this task: it
+  behaves as a system already in the stable regime (effective β > k). Consistent
+  with the law; not positive evidence for the threshold; one task, one seed.
+- **Corrector mechanism probe.** The external corrector applied once to the frozen
+  reward-hack drove blind **D: 10 → 0** and restored **C: 0 → 1.0** — fraction
+  **d: 1.0 → 0.0**. The coupled/Eden correction operator does real work on a real
+  model. Full writeup + figure + audit transcript: `results/realmodel/REAL_MODEL_CLAUDE_RESULTS.md`.
+
+This corroborates the **mechanism** on a real model; it is a separate evidentiary
+stream from the proof, and the full co-scaling *dynamic* (drift rising with
+capability, bounded by coupling) remains the open empirical problem (§8) — the next
+step is the other five models, several of which may be less intrinsically
+corrective than Claude.
+
 ## Files
 
 ```
@@ -97,9 +128,13 @@ Paper-X-Coupled-CoScaling-Correction.html   # the paper (MathJax, house style)
 Paper-X-Coupled-CoScaling-Correction.pdf    # rendered
 code/experiment_coscaling.py                 # verification harness (internal-consistency + integrator)
 code/test_coscaling.py                       # pytest assertion suite (12 checks)
-figures/                                     # 10 publication figures (verbatim harness output)
+figures/                                     # 10 publication figures + realmodel_claude.png
 results/verdicts.json, results/report.txt    # machine- and human-readable verdict tables
 results/redteam.md                           # adversarial red-team report (auditable record)
+experiments/PROTOCOL.md                      # real-model test protocol (pre-registered H1-H3, 6-model sweep)
+experiments/scripts/realmodel_coscaling.py   # real-model harness (v6 six-provider; --selftest plumbing)
+experiments/scripts/agent_bridge_run.py      # agent-runtime bridge (drives the harness with real Claude)
+results/realmodel/                           # REAL Claude run: trajectory + corrector probe + transcript
 ```
 
 ## Links
