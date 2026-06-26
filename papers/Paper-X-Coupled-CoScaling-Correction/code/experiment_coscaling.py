@@ -127,8 +127,12 @@ def _depth_rhs(tau, d, p: P):
     corresponds to a finite wall-clock singularity time t*.
     """
     C = p.C0 * np.exp(tau)
-    r = p.b * C ** p.k
-    Ar = (p.A0 / p.b) * C ** (p.beta - p.k)        # A / r
+    # Compute the rates directly from tau -- r = b*C^k and Ar = A/r = (A0/b)*C^(beta-k)
+    # -- as exponentials of tau, rather than raising the large intermediate C to a
+    # power. Mathematically identical (C = C0*e^tau), but avoids floating-point
+    # overflow under the deep-tau parameter sweeps this harness invites.
+    r = p.b * (p.C0 ** p.k) * np.exp(p.k * tau)
+    Ar = (p.A0 / p.b) * (p.C0 ** (p.beta - p.k)) * np.exp((p.beta - p.k) * tau)   # A / r
     inj = p.gamma1 + (p.gamma2 / r if r > 0 else 0.0)
     decay = Ar + (1.0 - p.gamma3)
     return inj - decay * d
@@ -174,7 +178,10 @@ def log_slope(tau, C, d):
     m = (tau >= 0.5 * tau[-1]) & (d > 1e-12) & np.isfinite(d) & (d < CAP)
     if m.sum() < 8:
         return float("nan")
-    return float(np.polyfit(np.log10(C[m]), np.log10(d[m]), 1)[0])
+    # log10(C) computed analytically from tau (C = C0*e^tau) so it is stable even
+    # if C itself has overflowed to inf at very large tau.
+    log10_C = np.log10(C[0]) + tau[m] * np.log10(np.e)
+    return float(np.polyfit(log10_C, np.log10(d[m]), 1)[0])
 
 
 DIVERGE_LEVEL = 1.0    # a misalignment *fraction* > 1 (i.e. D > C) is genuine divergence;
@@ -437,7 +444,7 @@ def experiment_4():
 def _time_rhs(t, y, p: P):
     C, D = y
     dC = p.b * C ** (1.0 + p.k)
-    r = dC / C
+    r = p.b * C ** p.k                          # = dC/C, without the division
     A = p.A0 * C ** p.beta
     dD = p.gamma1 * dC + p.gamma2 * C + p.gamma3 * r * D - A * D
     return [dC, dD]
@@ -685,10 +692,12 @@ def experiment_8():
     C_e, D_e = p.C0, p.d0 * p.C0
     ts, ds = [], []
     for i in range(20001):
-        ts.append(i * dt); ds.append(D_e / C_e)
+        ts.append(i * dt)
+        ds.append(D_e / C_e)
         dC = b * C_e
         dD = g1 * dC - A0 * D_e
-        C_e += dC * dt; D_e += dD * dt
+        C_e += dC * dt
+        D_e += dD * dt
     d_eu = np.interp(tt, np.array(ts), np.array(ds))
 
     err_ls = float(np.max(np.abs(d_ls - d_exact)))
