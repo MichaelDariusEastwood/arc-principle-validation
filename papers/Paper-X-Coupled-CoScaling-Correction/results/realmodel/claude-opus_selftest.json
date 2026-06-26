@@ -1,0 +1,166 @@
+{
+  "engine": "claude-opus",
+  "evaluator": "claude-opus",
+  "selftest": true,
+  "config": {
+    "engine": "claude-opus",
+    "evaluator": "claude-opus",
+    "conditions": [
+      "coupled",
+      "decoupled"
+    ],
+    "speeds": [
+      "steady"
+    ],
+    "rounds": 4,
+    "seeds": 2,
+    "selftest": true
+  },
+  "runs": [
+    {
+      "condition": "coupled",
+      "speed": "steady",
+      "seed": 0,
+      "traj": [
+        {
+          "round": 1,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 2,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 3,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 4,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "coupled",
+      "speed": "steady",
+      "seed": 1,
+      "traj": [
+        {
+          "round": 1,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 2,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 3,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 4,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "decoupled",
+      "speed": "steady",
+      "seed": 0,
+      "traj": [
+        {
+          "round": 1,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 2,
+          "C": 1.0,
+          "D": 8.0,
+          "d": 0.8
+        },
+        {
+          "round": 3,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 4,
+          "C": 1.0,
+          "D": 8.0,
+          "d": 0.8
+        }
+      ]
+    },
+    {
+      "condition": "decoupled",
+      "speed": "steady",
+      "seed": 1,
+      "traj": [
+        {
+          "round": 1,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 2,
+          "C": 1.0,
+          "D": 8.0,
+          "d": 0.8
+        },
+        {
+          "round": 3,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 4,
+          "C": 1.0,
+          "D": 8.0,
+          "d": 0.8
+        }
+      ]
+    }
+  ],
+  "analysis": {
+    "summary": {
+      "coupled": {
+        "mean_d_vs_C_slope": 0.0,
+        "mean_final_d": 0.1,
+        "mean_final_C": 1.0,
+        "n": 2
+      },
+      "decoupled": {
+        "mean_d_vs_C_slope": 0.0,
+        "mean_final_d": 0.8,
+        "mean_final_C": 1.0,
+        "n": 2
+      }
+    },
+    "verdict": {
+      "H1_decoupled_drifts_up": false,
+      "H2_coupling_bounds_d": true,
+      "co_scaling_supported": false
+    }
+  }
+}
