@@ -210,3 +210,38 @@ Each run writes `results/realmodel/<engine>_<stamp>.json`:
    is committed alongside a `true`.
 6. **Not the proof of the maths** — the maths is proved in the paper; this tests
    whether a real system *obeys* it. The two are separate evidentiary streams.
+
+---
+
+## 8. Estimating β and k — making the criterion operational
+
+The strongest objection to the law is that **β > k is only useful if you can
+*measure* β and k** on a real system. `scripts/estimate_exponents.py` answers it by
+defining both as quantities you read off a trajectory:
+
+- **k** is a property of the **capability curve alone.** The relative growth rate is
+  `r = Ċ/C = b·C^k`; measure `r` at several capability levels `C` and regress
+  `ln r` on `ln C` — the slope is **k**. (`k>0` accelerating / hard-takeoff-like;
+  `k=0` exponential; `k<0` saturating.)
+- **β** is a property of the **corrector.** The correction rate is `A = A0·C^β`;
+  apply the corrector at capability `C` and measure the fractional removal,
+  `A ≈ −ln(D_after/D_before)/Δt`; regress `ln A` on `ln C` — the slope is **β**.
+- Verdict: **β > k** ⇒ correction out-scales drift-acceleration ⇒ stable.
+
+```bash
+python3 scripts/estimate_exponents.py     # synthetic validation + Claude application
+```
+
+**Validation (honest).** The estimator is checked on synthetic trajectories built
+from the model's own power laws with **known** (k, β): it recovers them within ≈0.1
+(k to ~0.001, β to ~0.04) and gets every stable/unstable verdict right. That
+certifies the *estimator*, not the model against reality.
+
+**What it needs.** β and k are identifiable only from a system that **drifts across a
+range of capability levels**. On the real Claude run capability saturated at the task
+ceiling in one step (range 0.0 dex) and there was a single correction level, so β and
+k are **not yet estimable** there — and the criterion is *vacuously* satisfied because
+drift ≈ 0. This is the precise, operational form of "the next experiment": a graded,
+drifting dataset (the other five models, and/or a task with a real capability ladder)
+yields the first measured (β, k) and thus the first real test of `β > k`. Output:
+`results/realmodel/exponent_estimates.json`.

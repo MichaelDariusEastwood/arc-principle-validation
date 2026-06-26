@@ -121,6 +121,16 @@ capability, bounded by coupling) remains the open empirical problem (§8) — th
 step is the other five models, several of which may be less intrinsically
 corrective than Claude.
 
+**Making the criterion operational — estimating β and k.** The sharpest objection to
+the law is that `β > k` is only useful if β and k can be *measured*.
+`experiments/scripts/estimate_exponents.py` defines **k** from the capability curve
+(`ln r` vs `ln C`) and **β** from corrector-removal rates (`ln A` vs `ln C`), and is
+validated on synthetic data (recovers known exponents within ≈0.1, every
+stable/unstable verdict correct). On the Claude run capability saturated in one step,
+so β and k are honestly **not yet estimable** (the criterion is vacuously satisfied —
+no drift); a graded, drifting dataset yields the first measured (β, k). The full
+objection set and the paper's responses are consolidated in `ANTICIPATED_OBJECTIONS.md`.
+
 ## Files
 
 ```
