@@ -42,6 +42,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | VII | [Cauchy Unification](Paper-VII-Cauchy-Unification/) | v3.0 | 16 Mar 2026 | 50-domain validation, null controls, temporal OOS, preregistered extension | `experiments/results/` |
 | VIII | [The Load-Bearing Proof](Paper-VIII-The-Load-Bearing-Proof/) | v3.0 | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
 | IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v3.0 | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
+| X | [The Coupled Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v4.0 | 26 Jun 2026 | Self-certifying proof-harness, 9 experiments (9/9 confirmed, 0 falsifiers) | `Paper-X-Coupled-CoScaling-Correction/results/` |
 
 ## Infrastructure Papers (Unnumbered)
 

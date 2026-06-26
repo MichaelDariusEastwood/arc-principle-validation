@@ -1,0 +1,66 @@
+COUPLED CO-SCALING CORRECTION -- VERDICT REPORT
+Michael Darius Eastwood | June 2026
+======================================================================
+
+[E1] PASS
+  Prediction: P1: sharp phase boundary in compounding channel; smooth in additive
+  Statistic : A0*_meas=2.00 (pred 2.00); additive_smooth=True
+  Criterion : knee within 0.15 of (gamma3-1)b AND additive shows no divergence
+  F1 (no boundary anywhere): not triggered
+
+[E2] PASS
+  Prediction: P2: coupling (A0/b), not speed b, determines convergence vs divergence
+  Statistic : coupled bounded at both speeds AND decoupled divergent at both speeds = True
+  Criterion : outcome matches coupling for all four cells
+  F2 (outcome tracks raw speed): not triggered
+
+[E3] PASS
+  Prediction: P3: beta>0 -> 0; beta=0 -> gamma1*r/(A0+r); beta<0 -> gamma1 (bounded)
+  Statistic : all four asymptotes match analytic predictions = True
+  Criterion : each long-run d within tolerance of closed form
+  F3 (regimes do not match): not triggered
+
+[E4] PASS
+  Prediction: P4: stability boundary lies at beta=k under accelerating growth
+  Statistic : all 9 cells match sign(beta-k) classification = True
+  Criterion : converge iff beta>k; floor iff beta<=k; across the 3x3 grid
+  F3' (boundary not at beta=k): not triggered
+
+[E4b] PASS
+  Prediction: P4: depth-clock and wall-clock agree; d controlled through finite-time singularity
+  Statistic : max_rel_disagreement=9.85e-05; d_controlled=True
+  Criterion : trajectories agree (<5%) AND d remains < 0.06 and decreasing
+  F-coordinate (singularity uncontrollable): not triggered
+
+[E5] PASS
+  Prediction: P5/P8: divergence iff A0<(gamma3-1)b; suppression slope = -(beta-k)
+  Statistic : meas_threshold=3.03 (pred 3.0); slopes={0.5: -0.469, 1.0: -0.997}
+  Criterion : threshold within 0.2 AND each slope within 0.08 of -(beta-k)
+  F4 (suppression not power-law / no threshold): not triggered
+
+[E6] PASS
+  Prediction: P6: threshold is a spectral condition; the operator's null axis stays misaligned
+  Statistic : d_monitored=3.01e-07 (pred ~0); d_blind=0.050 (pred 0.050)
+  Criterion : monitored axis driven to 0 AND blind axis floors at gamma1 (>5x larger)
+  F6 (blind axis also suppressed): not triggered
+
+[E7] PASS
+  Prediction: P7: stationary mean=g1/kappa, variance=sigma^2/(2 kappa) ~ 1/(A+r); tail suppressed
+  Statistic : mean 0.033/0.033; var 1.4e-04/1.3e-04; var-slope -1.00
+  Criterion : mean & variance match OU theory AND variance scales as 1/kappa
+  F7 (variance does not scale as 1/(A+r)): not triggered
+
+[E8] PASS
+  Prediction: Numerics reproduce the exact transient (Theorem 1) to machine-relevant tolerance
+  Statistic : max|LSODA-exact|=7.1e-11; max|Euler-exact|=8.0e-07
+  Criterion : LSODA error < 1e-4 AND Euler error < 1e-3
+  F-numeric (integrator wrong): not triggered
+
+[E9] PASS
+  Prediction: P5/F5: a frozen capable system retains residual d*=gamma2/A0; halting growth is not correction
+  Statistic : residual matches gamma2/A0 (and 0 when gamma2=0) within tol = True
+  Criterion : with gamma2>0, halting growth leaves d -> gamma2/A0 > 0; with gamma2=0 it -> 0
+  F5 (no residual drift at rest): not triggered
+
+----------------------------------------------------------------------
+10/10 confirmed; 0 falsifiers triggered; OVERALL ALL CONFIRMED
