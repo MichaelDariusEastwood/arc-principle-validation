@@ -386,6 +386,7 @@
   <li><strong>Simulation, not frontier systems.</strong> The protocol uses toy self-modifying dynamics. A positive result demonstrates the <em>mechanism</em> in a controlled setting; it does not establish that frontier systems occupy any particular regime. Whether real systems sit below threshold is an empirical question the model does not answer.</li>
   <li><strong>Estimating $\gamma$ and $A$ on real systems.</strong> In simulation they are set by construction. Independently estimating them — especially $\beta$ and $k$ — for a deployed model is the step that would make the criterion operationally useful for governance, and it is unsolved. It is the natural next problem.</li>
 </ul>
+<p><strong>Adversarial audit.</strong> The positioning of this paper was developed under adversarial audit rather than asserted. A prior-art and novelty audit located the closest precedent for each component and narrowed the originality claims accordingly (Appendix C); and the falsification conditions of §7 are encoded as executable assertions that fail the build if any kill-condition fires (§10). This is a deliberate posture: the contribution is offered as ambitious <em>and</em> audited, with the boundary of what is claimed new made explicit and checkable.</p>
 
 <h2 id="implications">9. Implications for AI safety</h2>
 <p>If the framework survives its tests, the design implication is concrete and differs from the prevailing reflex.</p>
@@ -418,6 +419,21 @@ $ pytest test_coscaling.py -q
 <h2 id="appendix-b">Appendix B. Parameter settings for the reported run</h2>
 <p>All figures use $C_0=1$, $d_0=0.05$, $\gamma_1=0.05$. Experiment-specific settings: E1 $b=1$, $\gamma_3\in\{0,3\}$, $\lambda\in[0.2,4]$; E2 $\gamma_3=3$, $A_0/b\in\{1,3\}$, $b\in\{0.5,5\}$; E3 $A_0=0.08$, $b=0.5$, $\beta\in\{-0.5,0,0.5,1\}$; E4 $A_0=0.08$, $b=0.02$, $(k,\beta)\in\{0,0.5,1\}\times\{0.25,0.75,1.5\}$; E4b $k=1$, $\beta=1.5$, $b=0.02$ ($t^\star=50$); E5 $\gamma_3=4$, $b=1$; E6 monitored $\beta=1$, blind $A_0=0$; E7 $\sigma=0.02$, OU ensemble of 2.5–4k paths; E8 closed-form case $k=0$, $\beta=0$. Random seed fixed (7) for determinism. Full settings are in the harness source.</p>
 
+<h2 id="appendix-c">Appendix C. Novelty and prior-art ledger</h2>
+<p>This appendix consolidates the adversarial prior-art audit underlying the positioning in §2 and §3.12, so the boundary between what is established and what is claimed original is explicit and auditable in one place. This paper deliberately invokes <em>no</em> blanket-originality framing; each component is placed against its closest located prior art below. "Defensibly new" means "no closer prior art located," not "correct" or "significant" — novelty and validity are independent.</p>
+<table>
+  <tr><th>Component</th><th>Status</th><th>Closest prior art</th><th>What is claimed here</th></tr>
+  <tr><td>Co-scaling <em>intuition</em> (correction must keep pace with capability)</td><td>Established</td><td>Ashby 1956 (requisite variety); Conant–Ashby 1970; scalable oversight (Christiano 2017; Leike 2018; Burns et&nbsp;al. 2023); Engels et&nbsp;al. 2025</td><td><strong>Nothing.</strong> Credited, not claimed.</td></tr>
+  <tr><td>Two-variable ODE + closed-form $\rho=\gamma r/A$</td><td>Compact restatement</td><td>Lyapunov-drift / linear control (Khalil 2002; Meyn &amp; Tweedie 2009); recursive error bounds (Shumailov et&nbsp;al. 2024; Gerstgrasser et&nbsp;al. 2024)</td><td>The compact closed-form steady-state fraction and the $\rho<1$ criterion as a corrigibility statement (packaging, not new dynamics).</td></tr>
+  <tr><td>$\beta>k$ sharpening under acceleration</td><td><strong>Defensibly new</strong></td><td>None located</td><td><strong>Original:</strong> stability is set by the exponent margin $\beta-k$, not the growth rate; directly tested in Experiment 4.</td></tr>
+  <tr><td>Hard-Takeoff Coordinate-Artefact Theorem (§3.7)</td><td><strong>Defensibly new</strong> (the framing)</td><td>Finite-time-singularity ODE theory is standard; the alignment framing is not located elsewhere</td><td><strong>Original:</strong> the finite-time singularity is a coordinate artefact; the verdict is $\mathrm{sign}(\beta-k)$, independent of speed.</td></tr>
+  <tr><td>QEC threshold mapping (§3.12)</td><td><strong>Defensibly new</strong> in alignment</td><td>Threshold theorem itself: Aharonov–Ben-Or 1997; Google 2024. Alignment precursors: Wentworth 2022; Christiano 2017/2019; von Neumann 1956</td><td><strong>Original:</strong> the explicit $p<p_{\mathrm{th}}\leftrightarrow\rho<1$ mapping — offered as a <em>conceptual bridge</em> (hypothesis, falsifier F4), not a transferred theorem.</td></tr>
+  <tr><td>Vector spectral threshold (Thm 5); stochastic tail (Thm 6)</td><td>Standard extensions</td><td>Linear-systems spectral stability; Ornstein–Uhlenbeck theory</td><td>Routine generalisations; supporting, not headline.</td></tr>
+  <tr><td>Self-certifying falsification harness (§10)</td><td>Methodological</td><td>Pre-registration norms</td><td>Executable falsifiers that exit non-zero if any kill-condition fires.</td></tr>
+</table>
+<p><strong>What this paper asserts as new — and only this:</strong> (i) the $\beta>k$ stability criterion and the single-parameter $\rho$ framing; and (ii) the explicit QEC threshold mapping (as a hypothesis with its own falsifier). The programme's strongest <em>empirical</em> novelty — sign-reversal of alignment-scaling effects under multi-layer blinding — is a separate, companion result <span class="cite">[Eastwood, Paper IV.d]</span> and is not claimed here.</p>
+<p>The retired capability law $U=I\times R^{\alpha}$ is <em>not used anywhere in this paper's argument</em>; it appears only in §1 as superseded context. Caveat: forum/blog/preprint indexing is imperfect, so the "defensibly new" verdicts carry an estimated 10–15% residual risk that a closer, unindexed precedent exists; absence of evidence is not proof of absence.</p>
+
 <hr>
 <h2 id="references">References</h2>
 <div class="refs">
@@ -425,6 +441,7 @@ $ pytest test_coscaling.py -q
   <p>Amodei, D., Olah, C., Steinhardt, J., Christiano, P., Schulman, J., &amp; Mané, D. (2016). Concrete problems in AI safety. <em>arXiv:1606.06565</em>.</p>
   <p>Ashby, W. R. (1956). <em>An Introduction to Cybernetics</em>. Chapman &amp; Hall. [Law of Requisite Variety.]</p>
   <p>Bostrom, N. (2012). The superintelligent will. <em>Minds and Machines</em>, 22(2).</p>
+  <p>Burns, C., Izmailov, P., Kirchner, J. H., et&nbsp;al. (2023). Weak-to-strong generalization: Eliciting strong capabilities with weak supervision. <em>arXiv:2312.09390</em>.</p>
   <p>Christiano, P. (2017). Corrigibility. <em>AI Alignment (Medium)</em>. [The "broad basin of attraction" framing.]</p>
   <p>Christiano, P. (2019). Reliability amplification. <em>AI Alignment Forum</em>.</p>
   <p>Christiano, P., Leike, J., Brown, T., Martic, M., Legg, S., &amp; Amodei, D. (2017). Deep reinforcement learning from human preferences. <em>NeurIPS</em>.</p>
