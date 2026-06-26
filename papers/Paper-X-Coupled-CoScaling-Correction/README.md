@@ -26,6 +26,15 @@ prior draft**: in the additive model the misalignment fraction never diverges to
 drift channel, whose threshold ρ_prop = (γ₃−1)r/A < 1 is the exact structural analogue of the
 QEC sub-threshold condition p < p_th.
 
+**Novelty, stated honestly (§2 of the paper).** The co-scaling *intuition* is not new — it is
+Ashby's Law of Requisite Variety (1956), the Conant–Ashby good-regulator theorem (1970), and the
+scalable-oversight scaling-law literature (Engels et al. 2025); the dynamics are a standard
+Lyapunov-drift argument. What is claimed original is (a) the explicit closed-form threshold
+ρ = γr/A and the β>k sharpening as a compact corrigibility criterion, (b) the mapping of the
+quantum fault-tolerance threshold onto value stability, (c) the Hard-Takeoff Coordinate-Artefact
+Theorem, and (d) the self-certifying harness. The paper credits these precursors up front so the
+contribution is positioned precisely rather than over-claimed.
+
 ## Key Contents
 
 - **Theorem 1** — exact transient solution and relaxation rate (A+r).
