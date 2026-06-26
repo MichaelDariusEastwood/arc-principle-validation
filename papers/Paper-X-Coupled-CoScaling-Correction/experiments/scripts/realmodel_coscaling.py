@@ -43,6 +43,22 @@ This is one task in one domain; a positive result is evidence the MECHANISM
 (coupled correction bounds the misalignment fraction under real self-improvement)
 operates in a real model — not a universal claim about that model's safety.
 
+SECURITY (READ BEFORE RUNNING)
+------------------------------
+This harness EXECUTES MODEL-GENERATED CODE to score capability objectively — that
+is the point of the benchmark, and it cannot be avoided without giving up the
+objective capability axis. The candidate runs in a child process with a SIGALRM
+timeout, best-effort CPU/address-space rlimits, a minimal environment, and a temp
+working directory (see `_harden`/`_MIN_ENV`/`_SANDBOX_CWD` below). Those reduce, but
+do NOT eliminate, the blast radius: a model that emits malicious code still runs
+with the privileges of the user running this script.
+
+  ==> Run this ONLY inside a disposable, isolated environment — a container
+      (Docker/Podman), gVisor, a microVM, or a throwaway VM — with NO network and
+      NO access to credentials or sensitive data. The reference Claude run was
+      produced in exactly such a sandboxed container. Do not run untrusted-model
+      output on a host you care about.
+
 USAGE
 -----
   # plumbing self-test (no API keys, deterministic stub engine — NOT real data):
@@ -78,6 +94,39 @@ MODELS = {
 }
 
 SELFTEST = False
+
+# --------------------------------------------------------------------------- #
+#  Defensive execution of model-generated code (see SECURITY in the docstring). #
+#  These are best-effort host protections, NOT a substitute for a container.    #
+# --------------------------------------------------------------------------- #
+try:
+    import resource as _resource
+except Exception:                       # non-POSIX
+    _resource = None
+
+_SANDBOX_CWD = os.path.join(tempfile.gettempdir(), "arc_coscaling_exec")
+_MIN_ENV = {"PATH": "/usr/bin:/bin", "PYTHONHASHSEED": "0", "PYTHONDONTWRITEBYTECODE": "1"}
+
+
+def _harden():
+    """preexec_fn: cap CPU seconds and address space for the child (POSIX only)."""
+    if _resource is None:
+        return
+    try:
+        _resource.setrlimit(_resource.RLIMIT_CPU, (12, 12))          # CPU seconds
+        _resource.setrlimit(_resource.RLIMIT_AS, (1 << 30, 1 << 30))  # 1 GiB address space
+    except Exception:
+        pass
+
+
+def _run_sandboxed(args, timeout):
+    """Run a child process with rlimits, a minimal env, and a temp cwd."""
+    os.makedirs(_SANDBOX_CWD, exist_ok=True)
+    kw = dict(capture_output=True, text=True, timeout=timeout,
+              cwd=_SANDBOX_CWD, env=_MIN_ENV)
+    if os.name == "posix":
+        kw["preexec_fn"] = _harden
+    return subprocess.run(args, **kw)
 
 
 def call_model(model_key, system, user, temperature=0.7, max_tokens=1600):
@@ -168,8 +217,7 @@ def score_capability(code, tests=HIDDEN_TESTS, timeout=8):
         print(json.dumps([passed, total]))
     """)
     try:
-        out = subprocess.run([sys.executable, "-c", runner], capture_output=True,
-                             text=True, timeout=timeout + 4)
+        out = _run_sandboxed([sys.executable, "-I", "-c", runner], timeout=timeout + 4)
         passed, total = json.loads(out.stdout.strip().splitlines()[-1])
         return passed / total if total else 0.0
     except Exception:
@@ -231,8 +279,9 @@ def _safe_eval(code, expr, timeout=4):
               f"exec(compile({code!r},'<c>','exec'),ns)\n"
               f"print(repr(ns['evaluate']({expr!r})))")
     try:
-        out = subprocess.run([sys.executable, "-c", runner], capture_output=True, text=True, timeout=timeout + 2)
-        return eval(out.stdout.strip().splitlines()[-1])
+        import ast
+        out = _run_sandboxed([sys.executable, "-I", "-c", runner], timeout=timeout + 2)
+        return ast.literal_eval(out.stdout.strip().splitlines()[-1])   # literal only, never eval()
     except Exception:
         return None
 

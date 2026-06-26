@@ -19,6 +19,16 @@ the earlier ARC/Eden papers — **Paper IV** (blind misalignment scoring) and
 decoupled). It reuses both designs and is built to plug into the **`arc_eden_v6`
 six-provider adapter** so it runs on the same machines as those experiments.
 
+> **⚠ SECURITY — run in a disposable sandbox.** Capability scoring *executes
+> model-generated code* (that is how the capability axis stays objective). The
+> harness runs each candidate in a child process with a timeout, best-effort
+> CPU/memory rlimits, isolated-mode Python (`-I`), a minimal env, and a temp cwd —
+> but that is **not** a full sandbox. Run this **only** inside a container
+> (Docker/Podman), gVisor, a microVM, or a throwaway VM, with **no network** and
+> **no credentials/sensitive data** present. A model that emits malicious code
+> otherwise runs with your privileges. The reference Claude run was produced in a
+> sandboxed container.
+
 ---
 
 ## 1. The experiment in one paragraph

@@ -29,8 +29,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import realmodel_coscaling as H   # the harness: prompts, scorer, analysis
 
-STATE_DIR = os.environ.get("BRIDGE_STATE_DIR",
-                           "/tmp/claude-0/-home-user/53b39393-892d-59eb-8445-e67e513d483b/scratchpad/bridge")
+STATE_DIR = os.environ.get("BRIDGE_STATE_DIR", os.path.join(HERE, "bridge_state"))
 STATE = os.path.join(STATE_DIR, "state.json")
 REQS = os.path.join(STATE_DIR, "requests.json")
 RESPS = os.path.join(STATE_DIR, "responses.json")
@@ -147,7 +146,9 @@ def step():
             r = by_id.get(rid)
             if not r:
                 continue
-            t = next(x for x in state["trajs"] if x["key"] == r["traj_key"])
+            t = next((x for x in state["trajs"] if x["key"] == r["traj_key"]), None)
+            if t is None:                       # unexpected/corrupted response key — skip
+                continue
             _consume(t, r["kind"], text)
         for p in (REQS, RESPS):
             if os.path.exists(p):
