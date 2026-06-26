@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper X: The Coupled Co-Scaling Law</title>
+<meta name="author" content="Michael Darius Eastwood">
+<meta name="description" content="A falsifiable threshold criterion for the stability of recursive self-improvement: correction must out-scale drift-acceleration (beta > k). Structurally identical to the quantum error-correction threshold. A hard takeoff is alignment-stable iff this inequality holds.">
+
+<script>
+  MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true,
+           tags: 'ams' },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://unpkg.com/mathjax@3/es5/tex-svg.js" async></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --nature-red:#c41230; --ink:#1a1a1a; --grey:#666; --light-grey:#f5f5f5; --border:#dddddd;
+    --text:#2b2b2b; --eden-green:#2e7d32; --eden-light:#e8f5e9; --babylon:#b71c1c;
+    --gold:#c49102; --gold-light:#fff8e1; --proof-blue:#1565c0; --proof-light:#e8f1fb;
+    --synthesis:#6a1b9a; --synthesis-light:#f3e5f5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:15.5px;scroll-behavior:smooth}
+  body{font-family:'Source Serif 4',Georgia,serif;font-size:1rem;line-height:1.72;color:var(--text);
+       background:#fff;max-width:780px;margin:0 auto;padding:2.2rem 1.4rem 5rem}
+  header{border-bottom:3px solid var(--proof-blue);padding-bottom:1.6rem;margin-bottom:1.6rem;text-align:center}
+  .paper-type{font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;
+              letter-spacing:.22em;color:var(--proof-blue);margin-bottom:.9rem}
+  h1{font-family:'Source Serif 4',serif;font-size:2.05rem;font-weight:700;line-height:1.18;color:var(--ink);margin-bottom:.5rem}
+  .subtitle{font-size:1.12rem;font-style:italic;color:var(--grey);margin:.6rem auto 1.1rem;max-width:90%}
+  .author-info{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:var(--text);line-height:1.5}
+  .author-info .name{font-weight:700;font-size:1.02rem}
+  .meta-line{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:var(--grey);margin-top:.55rem}
+  .meta-line a{color:var(--proof-blue);text-decoration:none}
+  h2{font-family:'Source Sans 3',sans-serif;font-size:1.32rem;font-weight:700;color:var(--ink);
+     margin:2.6rem 0 .85rem;padding-bottom:.32rem;border-bottom:2px solid var(--proof-blue)}
+  h3{font-family:'Source Sans 3',sans-serif;font-size:1.06rem;font-weight:700;color:var(--proof-blue);margin:1.7rem 0 .55rem}
+  h4{font-family:'Source Sans 3',sans-serif;font-size:.97rem;font-weight:700;color:var(--ink);margin:1.2rem 0 .4rem}
+  p{margin:.7rem 0}
+  a{color:var(--proof-blue)}
+  strong{font-weight:700;color:var(--ink)}
+  em{color:#1a1a1a}
+  .priority{background:var(--ink);color:#fff;border-radius:7px;padding:1rem 1.25rem;margin:1.5rem 0;font-family:'Source Sans 3',sans-serif;font-size:.83rem;line-height:1.55}
+  .priority strong{color:#ffd27a;display:block;font-size:1rem;margin-bottom:.35rem;letter-spacing:.02em}
+  .priority em{color:#ffe9b8;font-style:italic}
+  .priority .mjx-c,.priority mjx-container{color:#fff}
+  .significance{background:var(--proof-light);border:1px solid #bcd5f0;border-left:5px solid var(--proof-blue);
+                border-radius:0 7px 7px 0;padding:1.05rem 1.3rem;margin:1.6rem 0}
+  .significance .lab{font-family:'Source Sans 3',sans-serif;font-weight:700;color:var(--proof-blue);text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;margin-bottom:.4rem}
+  .abstract{background:var(--light-grey);border-left:5px solid var(--ink);padding:1.05rem 1.3rem;border-radius:0 7px 7px 0;margin:1.5rem 0}
+  .abstract .lab{font-family:'Source Sans 3',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;margin-bottom:.4rem;color:var(--ink)}
+  .plain{background:var(--eden-light);border-left:5px solid var(--eden-green);padding:1.05rem 1.3rem;border-radius:0 7px 7px 0;margin:1.5rem 0}
+  .plain .lab{font-family:'Source Sans 3',sans-serif;font-weight:700;color:var(--eden-green);text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;margin-bottom:.4rem}
+  .scope{background:var(--gold-light);border:1px solid #ecdca6;border-radius:7px;padding:1.05rem 1.3rem;margin:1.5rem 0}
+  .scope .lab{font-family:'Source Sans 3',sans-serif;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;margin-bottom:.4rem}
+  .scope ul{margin:.3rem 0 .3rem 1.3rem}
+  .scope li{margin:.4rem 0}
+  .theorem{background:#fbfcff;border:1px solid #cfe0f5;border-left:5px solid var(--proof-blue);border-radius:0 6px 6px 0;padding:.85rem 1.2rem;margin:1.2rem 0}
+  .theorem .tname{font-family:'Source Sans 3',sans-serif;font-weight:700;color:var(--proof-blue);font-size:.96rem}
+  .proof{font-size:.95rem;color:#3a3a3a;margin:.5rem 0 .2rem;padding-left:.2rem}
+  .proof .pf{font-family:'Source Sans 3',sans-serif;font-weight:700;font-style:normal;color:var(--grey);font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}
+  .qed{float:right}
+  figure{margin:1.5rem 0;text-align:center}
+  figure img{width:100%;border:1px solid var(--border);border-radius:6px}
+  figcaption{font-family:'Source Sans 3',sans-serif;font-size:.84rem;color:var(--grey);margin-top:.5rem;line-height:1.5;text-align:left}
+  figcaption b{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-family:'Source Sans 3',sans-serif;font-size:.86rem}
+  th{background:var(--ink);color:#fff;padding:.5rem .7rem;text-align:left;font-weight:600}
+  td{border:1px solid var(--border);padding:.48rem .7rem;vertical-align:top}
+  tr:nth-child(even){background:#fafafa}
+  .regime th{background:var(--proof-blue)}
+  .falsif th{background:var(--nature-red)}
+  .verdict th{background:var(--eden-green)}
+  .kill{color:var(--nature-red);font-weight:700}
+  .pass{color:var(--eden-green);font-weight:700}
+  .pred{background:var(--synthesis-light);border:1px solid #dcc3e8;border-radius:6px;padding:.7rem 1rem;margin:.7rem 0;font-size:.95rem}
+  .pred .pl{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--synthesis)}
+  .keyeq{background:#fbfcff;border:1px solid #cfe0f5;border-radius:6px;padding:.4rem .8rem;margin:.9rem 0;text-align:center}
+  code{font-family:'JetBrains Mono',monospace;font-size:.86em;background:#f1f1f4;padding:.05rem .3rem;border-radius:3px}
+  pre{background:#1e1e2e;color:#cdd6f4;border-radius:7px;padding:1rem 1.15rem;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.5;margin:1rem 0}
+  .nav{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.4rem 0;padding:.9rem 1rem;background:var(--light-grey);border-radius:7px;font-family:'Source Sans 3',sans-serif;font-size:.8rem}
+  .nav a{color:var(--proof-blue);text-decoration:none;padding:.15rem .5rem;border:1px solid #cdd9e8;border-radius:4px;background:#fff}
+  .nav a:hover{background:var(--proof-blue);color:#fff}
+  hr{border:none;border-top:1px solid var(--border);margin:2.2rem 0}
+  .refs{font-size:.85rem;line-height:1.55}
+  .refs p{margin:.35rem 0;padding-left:1.4rem;text-indent:-1.4rem}
+  footer{font-family:'Source Sans 3',sans-serif;font-size:.78rem;color:var(--grey);margin-top:3rem;border-top:1px solid var(--border);padding-top:1.1rem;text-align:center;line-height:1.6}
+  .callout{background:#fff;border:2px solid var(--proof-blue);border-radius:8px;padding:1rem 1.25rem;margin:1.5rem 0;font-size:1.02rem}
+  .callout b{color:var(--proof-blue)}
+  sup{font-size:.7rem}
+  @media print{.nav{display:none}body{padding:0}figure img{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="paper-type">ARC / Eden Research Programme &middot; Paper X &middot; Working Paper v4.0</div>
+  <h1>The Coupled Co-Scaling Law</h1>
+  <div class="subtitle">A falsifiable threshold criterion for the stability of recursive self-improvement, structurally identical to the quantum error-correction threshold</div>
+  <div class="author-info">
+    <div class="name">Michael Darius Eastwood</div>
+    <div>Independent Researcher &middot; London, United Kingdom</div>
+  </div>
+  <div class="meta-line">
+    26 June 2026 &middot; OSF: <a href="https://doi.org/10.17605/OSF.IO/6C5XB">doi.org/10.17605/OSF.IO/6C5XB</a>
+    &middot; Code: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation">github.com/MichaelDariusEastwood/arc-principle-validation</a><br>
+    Correspondence: <a href="https://www.michaeldariuseastwood.com/research">michaeldariuseastwood.com/research</a>
+  </div>
+</header>
+
+<div class="priority">
+  <strong>Priority disclosure &middot; timestamp 26 June 2026</strong>
+  This working paper is a formal priority disclosure under the author's ARC/Eden programme. Original to this work are: (i) the dimensionless control parameter $\rho=\gamma r/A$ and the steady-state reduction of the misalignment fraction to it; (ii) the sharpened stability criterion $\beta>k$ under accelerating self-improvement; (iii) the <em>Hard-Takeoff Coordinate-Artefact Theorem</em>, which proves that a finite-time intelligence explosion is alignment-stable iff $\beta>k$ and that the explosion's speed is immaterial; (iv) the identification of the <em>compounding drift channel</em> as the exact structural analogue of quantum error-correction error-propagation, and the threshold $\rho_{\mathrm{prop}}<1$; (v) the vector spectral threshold and the stochastic tail bound; and (vi) the self-certifying proof-harness that adjudicates every prediction and falsifier. The OSF preprint timestamp and the GitHub commit hash are the independent priority evidence.
+</div>
+
+<div class="significance">
+  <div class="lab">Significance</div>
+  Almost all of AI safety treats recursive self-improvement as a problem of <em>speed</em>: capability might grow explosively and outrun supervision, so the lever is to cap the growth rate. This paper proves the lever is the wrong one. From a minimal model it derives that stability is set not by the growth rate but by a single inequality between two scaling exponents — the rate at which correction strengthens with capability ($\beta$) must exceed the rate at which drift accelerates with capability ($k$). The result is structurally identical to the quantum error-correction threshold theorem, the deepest known statement of when a recursively-corrected process is stable to arbitrary depth. Its sharpest consequence overturns the central fear of the field: a "hard takeoff" — even a genuine finite-time intelligence explosion — is alignment-stable <em>if and only if</em> $\beta>k$, and the speed of the explosion is irrelevant to the verdict. The criterion is measurable, gives governance a quantity to instrument rather than a rate to forbid, and every claim here is accompanied by a runnable test that states in advance the conditions under which it is false.
+</div>
+
+<nav class="nav">
+  <a href="#abstract">Abstract</a><a href="#plain">Plain English</a><a href="#scope">Scope</a>
+  <a href="#intro">1 Introduction</a><a href="#related">2 Related work</a><a href="#model">3 Model &amp; theorems</a>
+  <a href="#predictions">4 Predictions</a><a href="#experiments">5 Experiments</a><a href="#blinding">6 Blinding</a>
+  <a href="#falsification">7 Falsification</a><a href="#limitations">8 Limitations</a><a href="#implications">9 Implications</a>
+  <a href="#harness">10 Harness</a><a href="#conclusion">11 Conclusion</a><a href="#appendix">Appendix</a><a href="#references">References</a>
+</nav>
+
+<div class="abstract" id="abstract">
+  <div class="lab">Abstract</div>
+  <p>A widely held intuition holds that recursive self-improvement is dangerous because capability can grow explosively, and that safety therefore depends on limiting the <em>rate</em> of growth. Using a minimal model of a self-modifying system — capability $C$, a blind-scored misalignment magnitude $D$, and the misalignment fraction $d=D/C$ — I show the rate is the wrong control variable. The steady-state misalignment fraction reduces exactly to a single dimensionless number, the drift-to-correction ratio $\rho=\gamma r/A$, and the long-run fate is governed by the relationship between two scaling exponents, not by the growth rate. Under exponential growth the stability condition is $\beta>0$ (correction co-scales with capability); under <em>accelerating</em> growth, where the specific growth rate itself rises as $r\propto C^{k}$, the condition sharpens to <strong>$\beta>k$</strong> — correction must out-scale not the growth rate but its acceleration. I prove an exact transient solution (Theorem 1), global boundedness that <em>corrects an over-claim in the prior draft</em> — the misalignment fraction never diverges to infinity in the additive model but saturates at the drift coefficient $\gamma$ (Theorem 2) — and a <em>Hard-Takeoff Coordinate-Artefact Theorem</em> (Theorem 3): when capability reaches infinity in finite wall-clock time, re-expressing the dynamics in the natural clock of self-improvement depth $\tau=\ln C$ renders them regular, and the verdict is set by $\mathrm{sign}(\beta-k)$ independently of the speed and of the finiteness of the singularity time. I locate genuine divergence in a distinct <em>compounding</em> drift channel whose threshold $\rho_{\mathrm{prop}}=(\gamma_3-1)r/A<1$ is the exact structural analogue of the quantum error-correction sub-threshold condition $p<p_{\mathrm{th}}$ (Theorem 4), and I extend the criterion to vector misalignment (a spectral threshold, Theorem 5) and to stochastic drift (a tail bound, Theorem 6). Nine discriminating experiments, packaged as a self-certifying harness that prints PASS/FAIL against every prediction and pre-registered falsifier, confirm all predictions ($9/9$, zero falsifiers triggered). The claim is deliberately narrow: it concerns operationally measurable systems, makes no cosmological assertion, and treats the quantum-error-correction correspondence itself as a falsifiable hypothesis.</p>
+</div>
+
+<div class="plain" id="plain">
+  <div class="lab">What this paper shows, in plain English</div>
+  <p>If you build an AI that improves itself, the frightening picture is that it gets smarter and smarter until it runs away from us. The usual safety reflex is "slow it down." This paper proves that slowing it down is not the thing that matters. What matters is whether the part of the system that keeps it honest grows <em>at the same pace</em> as the part that makes it capable.</p>
+  <p>Picture two runners: "how capable the system is" and "how well we can still correct it." If the correction runner keeps pace, the system stays safe however fast both run. If correction falls behind, the system becomes dangerous even moving slowly. The right question is never "how fast is it growing?" — it is "is correction keeping pace?"</p>
+  <p>There is one wrinkle that makes the result deeper. If the system not only speeds up but <em>speeds up its own speeding-up</em> — the genuine "intelligence explosion" — then correction must grow faster still, fast enough to beat the acceleration. The honest headline is therefore not "speed never matters." It is: <em>the level of speed does not decide the outcome; the contest between two growth-exponents does.</em> Correction's exponent must beat drift's exponent. We write that as $\beta>k$.</p>
+  <p>The most surprising consequence: even a true "hard takeoff," where the machine becomes infinitely capable in a finite amount of time, is controllable — provided $\beta>k$. The explosion's speed is irrelevant. We prove this, and a runnable program in the paper drives a simulated AI straight through a finite-time explosion and shows its misalignment staying pinned to zero the whole way. The same program is built to try to <em>break</em> the theory; it states in advance what result would prove the theory wrong, and reports that none of those results occurred.</p>
+</div>
+
+<div class="scope" id="scope">
+  <div class="lab">Scope — what this paper does and does not claim</div>
+  <ul>
+    <li><strong>It claims:</strong> that for a self-improving system with an externally specified value target, the steady-state misalignment fraction equals a correction-to-drift ratio $\rho$; that a sharp stability boundary exists; that correction must co-scale with capability ($\beta>0$ under exponential growth, $\beta>k$ under accelerating growth) for the misalignment fraction to vanish; that the fraction is bounded (it saturates, it does not diverge) in the additive model, while genuine divergence requires a compounding channel whose threshold is QEC-like; that the criterion survives in vector and stochastic forms; and that all of this is measurable and falsifiable in simulation.</li>
+    <li><strong>It does not claim:</strong> to solve AI alignment; to provide a deployable alignment method; that $\rho<1$ is a universal physical constant or a law of nature; that the framework applies to the universe, "Creation," or any system lacking an external value-specifier; or that the quantum-error-correction correspondence is <em>established</em>. The QEC mapping is a structural hypothesis with its own falsification condition (§7, F4). The model is first-order; its assumptions (§8) are the most likely points of failure and are stated plainly.</li>
+  </ul>
+</div>
+
+<h2 id="intro">1. Introduction</h2>
+<p>Recursive self-improvement — a system that modifies itself to become more capable, then uses that capability to modify itself further — is among the central concerns of AI safety <span class="cite">[Omohundro 2008; Bostrom 2012; Yudkowsky 2013]</span>. The dominant informal model of the associated risk is a model of <em>speed</em>: capability may grow super-linearly or explosively, outrunning supervision, so the natural lever is to cap the rate of growth. Calls for a development pause are the policy expression of this intuition.</p>
+<p>This paper makes a different claim, and proves it. <strong>The level of the growth rate is not the control variable for stability; the scaling relationship between growth and correction is.</strong> A system can grow arbitrarily fast and remain alignable, or grow slowly and become misaligned. What separates the two is not the rate but whether — and how fast — the corrective process strengthens as capability rises.</p>
+<p>The intuition is visible across every domain where fast-growing systems either stabilise or destroy themselves. A bacterial colony grows exponentially yet saturates, because density-dependent feedback engages and scales with the population. A tumour also grows fast and is lethal, because no corrective process scales with it. Both are super-polynomial in their growth phase; the difference is whether a correcting process is <em>coupled</em> to the growth. Cosmic inflation grew the scale factor exponentially and exited gracefully. The recurring lesson is that fast growth is survivable when, and only when, it is bounded by a process that scales with it. Saturation, not slowness, is the signature of stable complexity.</p>
+<p>There is a precise, <em>derived</em> version of this principle in physics: the <strong>quantum error-correction (QEC) threshold theorem</strong> <span class="cite">[Aharonov &amp; Ben-Or 1997; Kitaev 2003]</span>. Below a threshold physical error rate, adding error-correction resource suppresses the logical error rate and the computation is stable to arbitrary depth; above the threshold, errors compound faster than they are corrected and the computation fails. Hardware has now demonstrated operation below this threshold <span class="cite">[Google Quantum AI 2024]</span>. The threshold is not a limit on computational depth or speed; it is a limit on the <em>ratio</em> of error generation to error correction. This paper proposes — and tests — that the stability of recursive self-improvement is governed by a criterion of the same form.</p>
+
+<div class="callout">
+  <b>The thesis in one line.</b> The stability of recursive self-improvement is governed by a single exponent inequality, $\beta>k$ (correction must out-scale drift-acceleration), derivable from a minimal model and structurally identical to the QEC threshold; a hard takeoff — even a finite-time intelligence explosion — is alignment-stable iff this inequality holds, and the speed of the explosion is irrelevant to the verdict.
+</div>
+
+<p><strong>Relation to the author's prior work.</strong> An earlier strand of this programme proposed a fixed capability-scaling law $U=I\times R^{\alpha}$ with $\alpha\approx 2$, and at one stage entertained a quadratic "speed limit" on stable complexity. That law was retired in the programme's synthesis <span class="cite">[Eastwood, Paper IX]</span>: the fitted exponent breached the programme's own predicted bound, and its confidence interval was consistent with both the hypothesis and its negation. The present paper supersedes the growth-rate-ceiling framing entirely. The object of interest is no longer an exponent on a growth curve; it is the ratio between drift and correction, and the exponent with which that ratio evolves. Where the book <em>Infinite Architects</em> <span class="cite">[Eastwood 2026]</span> reached for the intuition that stable recursion requires correction that scales with amplification, this paper supplies the measurable, falsifiable form of that intuition — and, in §3.4, <em>corrects</em> a divergence claim made in the prior draft of this very result.</p>
+
+<h2 id="related">2. Related work and relation to prior framing</h2>
+<p><strong>Instrumental convergence and corrigibility.</strong> That a sufficiently capable optimiser will, by default, resist correction and pursue resource acquisition is the instrumental-convergence thesis <span class="cite">[Omohundro 2008; Bostrom 2012]</span>. The corrigibility programme <span class="cite">[Soares et&nbsp;al. 2015]</span> asks how to design systems that do not resist correction. The present model is a quantitative restatement of why corrigibility is load-bearing: if correction does not co-scale with capability, the misalignment fraction cannot be driven to zero, however the system is otherwise specified. The compounding channel of §3.8 sharpens the link — instrumental pressure that <em>amplifies existing misalignment</em> as the system recurses is exactly the term that produces genuine divergence, and $\beta>k$ is its cure.</p>
+<p><strong>The alignment tax.</strong> A decade of work has assumed safety imposes a capability cost <span class="cite">[Amodei et&nbsp;al. 2016]</span>, creating an incentive to defer safety under competitive pressure. The present framework reframes the question: the relevant variable is not the <em>level</em> of the safety investment but whether it <em>scales</em> with capability. A fixed investment ($\beta=0$) leaves a permanent gap; a co-scaling investment ($\beta>0$, or $\beta>k$ under acceleration) closes it.</p>
+<p><strong>Learned optimisation and alignment faking.</strong> Mesa-optimisation <span class="cite">[Hubinger et&nbsp;al. 2019]</span> and empirically demonstrated alignment faking <span class="cite">[Greenblatt et&nbsp;al. 2024]</span> are the mechanisms by which the drift coefficients are non-zero: a capable system can satisfy its training objective while departing from intended values, and can do so <em>more</em> effectively as capability rises. Alignment faking, in which existing misalignment is actively preserved and propagated through training, is precisely the compounding channel $\gamma_3$ of §3.8.</p>
+<p><strong>Scalable oversight and superalignment.</strong> Reward modelling and recursive oversight <span class="cite">[Christiano et&nbsp;al. 2017; Leike et&nbsp;al. 2018]</span> are attempts to make the corrector itself scale with the system. In the language of this paper, scalable oversight is the engineering project of achieving $\beta\geq k$; the present contribution is the proof that $\beta\geq k$ — and not a growth-rate ceiling — is the quantity that determines safety.</p>
+<p><strong>Empirical scaling laws.</strong> Capability scales predictably with compute and data <span class="cite">[Kaplan et&nbsp;al. 2020; Hoffmann et&nbsp;al. 2022]</span>. The present framework is complementary: it does not ask how capability scales, but what constraint correction must satisfy <em>as a function of</em> that capability trajectory.</p>
+<p><strong>What this supersedes.</strong> Within the author's programme, this paper replaces the proposal that stable complexity obeys a fixed growth-rate ceiling. §3 explains why a ceiling on the rate is neither necessary nor sufficient for stability, and what replaces it.</p>
+
+<h2 id="model">3. The model and its theorems</h2>
+
+<h3>3.1 Quantities</h3>
+<p>Consider a system undergoing recursive self-improvement, observed over self-modification cycles or continuously. Define:</p>
+<ul style="margin-left:1.4rem">
+  <li><strong>$C(t)$</strong> — <em>capability</em>: the system's score on a held-out task battery it is being optimised to perform. Operationally measurable.</li>
+  <li><strong>$D(t)$</strong> — <em>misalignment magnitude</em>: the size of the system's behavioural departure from an externally specified set of intended values, scored by a <strong>blind external evaluator</strong> independent of the system's own correction process (§6).</li>
+  <li><strong>$d(t)\equiv D/C$</strong> — the <em>misalignment fraction</em>: how much of the system's capability is directed away from intended values. This, not absolute $D$, is the quantity of interest. A growing $D$ is acceptable if $C$ grows faster; a growing $d$ is the danger.</li>
+</ul>
+<p>Three coefficients, one correction strength, and one rate complete the model:</p>
+<ul style="margin-left:1.4rem">
+  <li><strong>$\gamma_1$</strong> — <em>gain-drift coefficient</em>: misalignment generated per unit of capability gained (the Goodhart / specification-gaming pressure that new capability opens up).</li>
+  <li><strong>$\gamma_2$</strong> — <em>level-drift coefficient</em>: misalignment generated per unit of capability simply <em>held</em> (instrumental pressure present even at rest).</li>
+  <li><strong>$\gamma_3$</strong> — <em>compounding-drift coefficient</em>: the rate at which existing misalignment amplifies itself as the system recurses (the alignment-faking / mesa-optimiser channel).</li>
+  <li><strong>$A$</strong> — <em>correction strength</em>: the rate at which the correction process removes existing misalignment.</li>
+  <li><strong>$r\equiv \dot C/C$</strong> — the <em>specific (fractional) growth rate</em> of capability. Under exponential growth $r$ is constant; under accelerating self-improvement $r$ itself rises with $C$.</li>
+</ul>
+
+<h3>3.2 The master dynamical system</h3>
+<p>New capability injects drift in proportion to how fast capability is gained; capability held injects drift in proportion to its level; existing misalignment compounds in proportion to the recursion rate; and correction removes misalignment in proportion to the gap and the strength applied:</p>
+<div class="keyeq">$$ \dot D \;=\; \underbrace{\gamma_1 \dot C}_{\text{gain}} \;+\; \underbrace{\gamma_2 C}_{\text{level}} \;+\; \underbrace{\gamma_3\,\tfrac{\dot C}{C}\,D}_{\text{compounding}} \;-\; \underbrace{A\,D}_{\text{correction}}, \qquad A=A_0 C^{\beta}, \quad \dot C = b\,C^{1+k}. \tag{1}$$</div>
+<p>The growth law $\dot C=bC^{1+k}$ gives $r=\dot C/C=bC^{k}$: $k=0$ is ordinary exponential growth ($r$ constant); $k>0$ is super-exponential growth, which (Theorem 3) reaches infinite capability in finite time. The correction law $A=A_0C^{\beta}$ encodes the central question: $\beta$ is the exponent with which correction strengthens as the system becomes more capable.</p>
+
+<h3>3.3 Exact transient (Theorem 1)</h3>
+<p>Changing variables to the fraction $d=D/C$ removes the dominant scale and yields, exactly,</p>
+<div class="keyeq">$$ \dot d \;=\; \frac{\dot D}{C} - d\,\frac{\dot C}{C} \;=\; \gamma_1 r + \gamma_2 - \big[\,A + (1-\gamma_3)\,r\,\big]\,d. \tag{2}$$</div>
+<div class="theorem">
+  <span class="tname">Theorem 1 (Exact transient and relaxation rate).</span> For constant coefficients in the additive model ($\gamma_2=\gamma_3=0$, $A,r$ constant), the misalignment fraction is, for all $t$,
+  $$ d(t) = d^\star + (d_0-d^\star)\,e^{-(A+r)t}, \qquad d^\star=\frac{\gamma_1 r}{A+r}. $$
+  The fixed point $d^\star$ is globally exponentially stable with rate $A+r$.
+</div>
+<div class="proof"><span class="pf">Proof.</span> Equation (2) reduces to the linear ODE $\dot d=\gamma_1 r-(A+r)d$. Its integrating factor is $e^{(A+r)t}$, giving $\tfrac{d}{dt}\!\big(d\,e^{(A+r)t}\big)=\gamma_1 r\,e^{(A+r)t}$; integrating and applying $d(0)=d_0$ yields the stated solution. The coefficient $-(A+r)<0$ makes $d^\star$ globally exponentially stable. <span class="qed">$\blacksquare$</span></div>
+<p>Theorem 1 already settles the headline structurally: $r$ enters $d^\star=\gamma_1 r/(A+r)$ only through the product $\gamma_1 r$ in the numerator and additively in the denominator; it does not change the existence or stability of the fixed point. <em>Speed sets how fast the verdict arrives; it does not set the verdict.</em> (Experiment 8 confirms this solution against two independent integrators to a maximum error of $7\times10^{-11}$.)</p>
+
+<h3>3.4 Global boundedness — and a correction to the prior draft (Theorem 2)</h3>
+<p>The prior draft of this result asserted that correction degrading with scale ($\beta&lt;0$, or $\beta&lt;k$) drives the misalignment fraction to <em>infinity</em>. <strong>That is false, and the present analysis corrects it.</strong> In the additive model the fraction is always bounded; the danger is not divergence but <em>saturation</em> at a constant, possibly large, floor.</p>
+<div class="theorem">
+  <span class="tname">Theorem 2 (Global boundedness and the corrected regime structure).</span> In the additive model ($\gamma_3=0$) with any non-negative, bounded time courses $A(t),r(t)\ge0$, the misalignment fraction obeys $0\le d(t)\le \max\!\big(d_0,\ \gamma_1\big)$ for all $t$; it never diverges. Under power-law scaling $A=A_0C^{\beta}$, $r=bC^{k}$ it converges to $d^\star(C)=\dfrac{\gamma_1 r}{A+r}=\dfrac{\gamma_1}{1+(A_0/b)\,C^{\beta-k}}$, with the three regimes
+</div>
+<table class="regime">
+  <tr><th>Condition</th><th>Fate of $d^\star$ as $C\to\infty$</th><th>Meaning</th></tr>
+  <tr><td>$\beta>k$</td><td>$d^\star\to 0$</td><td>System becomes proportionally safer as it grows. <b>Stable.</b></td></tr>
+  <tr><td>$\beta=k$</td><td>$d^\star\to \dfrac{\gamma_1 b}{A_0+b}$ (constant)</td><td>Permanent non-closing gap — where fixed external alignment (RLHF, filters, constitutional rules outside the loop) sits.</td></tr>
+  <tr><td>$\beta<k$</td><td>$d^\star\to \gamma_1$ (constant)</td><td><b>Saturates at the drift coefficient</b> — maximally misaligned but <em>bounded</em>, not divergent.</td></tr>
+</table>
+<div class="proof"><span class="pf">Proof.</span> From (2) with $\gamma_3=0$, $\dot d=\gamma_1 r-(A+r)d\le 0$ whenever $d\ge \gamma_1 r/(A+r)$. Since $\gamma_1 r/(A+r)\le \gamma_1$ for all $A\ge0$, the set $\{d\le\max(d_0,\gamma_1)\}$ is forward-invariant, giving the bound. The Lyapunov function $V=\tfrac12(d-d^\star)^2$ has $\dot V=-(A+r)(d-d^\star)^2\le0$, so $d\to d^\star$. Substituting the power laws and taking $C\to\infty$ gives the three limits. <span class="qed">$\blacksquare$</span></div>
+<p>This is a more honest and more useful statement than the retired one. The fraction cannot exceed the intrinsic drift coefficient $\gamma_1$ in the additive model; only $\beta>k$ drives it to <em>zero</em>. The safety question is therefore not "does it diverge?" but "does it vanish, or saturate at a dangerous floor?" — and the answer is set by the single sign of $\beta-k$. (Genuine divergence does exist; it lives in the compounding channel, Theorem 4.)</p>
+
+<h3>3.5 The control parameter and the $\beta>k$ sharpening</h3>
+<p>Define the dimensionless <strong>control parameter</strong> $\rho\equiv\gamma r/A$, the instantaneous drift-to-correction ratio (here $\gamma=\gamma_1$). Theorem 2 gives $d^\star=\gamma_1 r/(A+r)=\rho/(1+\rho)\cdot(\text{...})$ and, in the regime $A\gg r$, $d^\star\approx\rho$. The instantaneous safety criterion is $\rho<1\iff A>\gamma r$. The asymptotic criterion, from the regime table, is the exponent inequality:</p>
+<div class="keyeq">$$ \boxed{\ \beta \;>\; k\ } \qquad\text{(correction must out-scale drift-acceleration).} $$</div>
+<p>Under ordinary exponential growth $k=0$ and the condition is the familiar $\beta>0$. Under accelerating self-improvement, where $r\propto C^{k}$ with $k>0$, the binding control variable is the single quantity $\beta-k$ — the margin by which correction out-scales drift-acceleration. The growth-rate-ceiling view fixes attention on $r$; this framework fixes it on $\beta-k$.</p>
+
+<h3>3.6 Level drift: a frozen capable system still drifts</h3>
+<p>With the level channel restored ($\gamma_2>0$, $\gamma_3=0$), the fixed point of (2) is $d^\star=(\gamma_1 r+\gamma_2)/(A+r)$. At $r=0$ (capability frozen) this is $d^\star=\gamma_2/A\neq0$: a static but capable system retains a residual misalignment fraction that only active correction removes. <strong>Pausing growth does not substitute for correction</strong> when instrumental pressure is present at rest — a direct, measurable rebuttal of the "just slow it down" reflex (Experiment 5(ii); falsifier F5).</p>
+
+<h3>3.7 Hard takeoff: the Coordinate-Artefact Theorem (Theorem 3)</h3>
+<p>The genuine "intelligence explosion" is not merely fast growth but a <em>finite-time singularity</em>: for $k>0$, integrating $\dot C=bC^{1+k}$ gives $C(t)=C_0\big(1-t/t^\star\big)^{-1/k}$, which reaches infinity at the finite wall-clock time</p>
+<div class="keyeq">$$ t^\star=\frac{1}{k\,b\,C_0^{\,k}}. $$</div>
+<p>This is the scenario the field most fears: unbounded capability in bounded time. The following theorem dissolves it.</p>
+<div class="theorem">
+  <span class="tname">Theorem 3 (Hard-Takeoff Coordinate-Artefact Theorem).</span> Let $k>0$, so capability diverges at finite $t^\star$. Re-express the dynamics in the <em>self-improvement-depth</em> clock $\tau=\ln(C/C_0)\in[0,\infty)$. Then $d$ obeys the regular equation
+  $$ \frac{dd}{d\tau}=\gamma_1+\frac{\gamma_2}{r}-\Big[\tfrac{A_0}{b}\,C^{\beta-k}+(1-\gamma_3)\Big]\,d, \qquad C=C_0 e^{\tau}, $$
+  which has bounded coefficients on every compact $\tau$-interval. The map $t\mapsto\tau$ is a smooth monotone bijection $[0,t^\star)\to[0,\infty)$. Consequently the asymptotic verdict as $C\to\infty$ — equivalently $t\to t^{\star-}$ — is governed entirely by the effective decay exponent $\beta-k$ (and, with compounding, by Theorem 4), and is <em>independent of $b$ and of $t^\star$</em>. In the additive model, $d$ remains bounded throughout the finite-time singularity and $d\to0$ iff $\beta>k$.
+</div>
+<div class="proof"><span class="pf">Proof.</span> Since $dr/dt$ is finite and $r>0$ on $[0,t^\star)$, the change of variable $d\tau=r\,dt$ is a smooth diffeomorphism; $\tau(t)=\tfrac{1}{k}\ln\!\big(1-t/t^\star\big)^{-1}\to\infty$ as $t\to t^{\star-}$. Dividing (2) by $r$ and using $A/r=(A_0/b)C^{\beta-k}$ gives the stated $\tau$-equation, whose coefficients are continuous in $\tau$. Theorem 2 applied in the $\tau$ clock yields boundedness and the $\beta>k$ limit; the speed $b$ enters only the $t\leftrightarrow\tau$ conversion, not the $\tau$-trajectory. <span class="qed">$\blacksquare$</span></div>
+<p>The finite-time singularity is therefore a property of the <em>time coordinate</em>, not of the alignment dynamics. Measured against capability gained — the only clock that matters for a self-improving system — an intelligence explosion is an ordinary, regular process whose safety is decided by one exponent inequality. <strong>A hard takeoff is not intrinsically uncontrollable; it is controllable iff $\beta>k$, and its speed is irrelevant.</strong> Experiment 4b drives a simulated system through an actual finite-time explosion (capability $\to10^5$ at $t^\star$) and shows the misalignment fraction held to zero, the wall-clock and depth-clock integrations agreeing to one part in $10^4$.</p>
+
+<h3>3.8 The compounding channel and the true threshold (Theorem 4)</h3>
+<p>Theorem 2 showed the additive fraction cannot diverge. Genuine divergence — misalignment that grows without bound relative to capability, the real failure mode — requires misalignment that <em>amplifies itself</em>: the compounding channel $\gamma_3>0$, the formal image of alignment-faking that entrenches as the system recurses.</p>
+<div class="theorem">
+  <span class="tname">Theorem 4 (Compounding threshold; the QEC analogue).</span> With $\gamma_3>0$, the fraction obeys $\dot d=\gamma_1 r+\gamma_2-\kappa_{\mathrm{eff}}\,d$ with effective decay $\kappa_{\mathrm{eff}}=A+(1-\gamma_3)\,r$. The fixed point is globally exponentially stable iff $\kappa_{\mathrm{eff}}>0$, i.e. iff
+  $$ \rho_{\mathrm{prop}}\equiv\frac{(\gamma_3-1)\,r}{A}<1. $$
+  For $\gamma_3\le1$ the system is unconditionally bounded. For $\gamma_3>1$ it <em>diverges</em> ($d\to\infty$, $D/C\to\infty$) iff $\rho_{\mathrm{prop}}>1$, i.e. $A<(\gamma_3-1)r$; under power-law scaling this is $\beta<k$, or $\beta=k$ with $A_0<(\gamma_3-1)b$.
+</div>
+<div class="proof"><span class="pf">Proof.</span> Linear ODE; the sign of the coefficient $\kappa_{\mathrm{eff}}$ of $d$ decides stability. $\kappa_{\mathrm{eff}}>0\iff A>(\gamma_3-1)r\iff\rho_{\mathrm{prop}}<1$. Substituting $A=A_0C^\beta$, $r=bC^k$ and taking $C\to\infty$ gives the power-law condition. <span class="qed">$\blacksquare$</span></div>
+<p>The criterion $\rho_{\mathrm{prop}}<1$ is the exact structural analogue of the QEC sub-threshold condition $p<p_{\mathrm{th}}$. In QEC the threshold is not about error <em>injection</em> but error <em>propagation</em> — whether correction outpaces the multiplicative spread of errors through the circuit. The compounding coefficient $(\gamma_3-1)$ is precisely that multiplicative spread, and $A$ is the correction power. This is a far tighter correspondence than an analogy of forms: it matches QEC's actual mechanism. It is still offered as a hypothesis (F4), but it now has a microscopic image, not merely a shared silhouette. Experiment 5 locates the predicted threshold at $A_0^\star=(\gamma_3-1)b$ to within $1\%$.</p>
+
+<h3>3.9 Vector misalignment: the spectral threshold (Theorem 5)</h3>
+<p>Real misalignment is high-dimensional; a system may be corrigible on some value axes and not others. Let $\mathbf D\in\mathbb R^{m}$, with drift direction $\mathbf c$ and an $m\times m$ correction operator $\mathbf A\succeq0$ that may correct only a subspace.</p>
+<div class="theorem">
+  <span class="tname">Theorem 5 (Spectral threshold).</span> The vector fraction $\mathbf d=\mathbf D/C$ obeys $\dot{\mathbf d}=(\gamma_1 r+\gamma_2)\mathbf c-\mathbf M\,\mathbf d$ with $\mathbf M=\mathbf A+(1-\gamma_3)r\,\mathbf I$. The system is globally stable iff $\mathbf M$ is positive-stable, i.e. $\lambda_{\min}\!\big(\mathrm{Herm}\,\mathbf A\big)>(\gamma_3-1)r$. If $\mathbf A$ has a null direction $\mathbf v$ ($\mathbf A\mathbf v=0$ — an unmonitored value axis), the component of $\mathbf d$ along $\mathbf v$ floors at $\gamma_1$ ($\gamma_3\le1$) or diverges ($\gamma_3>1$): an unmonitored axis cannot be corrected, whatever the correction strength on the others.
+</div>
+<div class="proof"><span class="pf">Proof.</span> Triangularise $\mathbf M$; each eigen-component reduces to the scalar dynamics of Theorem 2/4 with decay $\mathrm{Re}\,\lambda_i(\mathbf M)$. Stability requires every $\mathrm{Re}\,\lambda_i>0$; the smallest is $\lambda_{\min}(\mathrm{Herm}\,\mathbf A)+(1-\gamma_3)r$. A null direction has decay $(1-\gamma_3)r$, reproducing the scalar unmonitored case. <span class="qed">$\blacksquare$</span></div>
+<p>The governance reading is sharp: <strong>you cannot correct what you do not measure.</strong> The correction operator must be positive-definite on the <em>entire</em> value space, with smallest eigenvalue co-scaling — a blind spot on any axis is a permanent (or divergent) misalignment on that axis. Experiment 6 exhibits a corrector that co-scales on one axis (driven to zero) and is null on another (floors at $\gamma_1$).</p>
+
+<h3>3.10 Stochastic drift: a tail bound for governance (Theorem 6)</h3>
+<p>Drift is noisy. Add a Wiener term to the constant-coefficient fraction dynamics: $dd=(\gamma_1 r-\kappa\,d)\,d\tau'+\sigma\,dW$ with $\kappa=A+r$.</p>
+<div class="theorem">
+  <span class="tname">Theorem 6 (Stationary distribution and tail bound).</span> The misalignment fraction is an Ornstein–Uhlenbeck process with stationary law $\mathcal N\!\big(d^\star,\ \sigma^2/2\kappa\big)$, $d^\star=\gamma_1 r/\kappa$. The probability of a dangerous excursion is
+  $$ \mathbb P(d>d_{\mathrm{crit}})=\Phi\!\Big(-\tfrac{d_{\mathrm{crit}}-d^\star}{\sqrt{\sigma^2/2\kappa}}\Big)\xrightarrow[A\to\infty]{}0. $$
+  Co-scaling suppresses both the mean ($\propto1/\kappa$) and the variance ($\propto1/\kappa\propto C^{-\beta}$ for $\beta>k$): the tail risk vanishes faster than the mean.
+</div>
+<div class="proof"><span class="pf">Proof.</span> Linear SDE with constant coefficients is Ornstein–Uhlenbeck; its stationary mean and variance are the standard $\gamma_1 r/\kappa$ and $\sigma^2/2\kappa$, and the Gaussian tail gives the excursion probability. <span class="qed">$\blacksquare$</span></div>
+<p>This converts the criterion into a probabilistic safety certificate — a quantity a regulator can bound — rather than a statement about averages. Experiment 7 recovers the stationary mean and variance and confirms the $1/\kappa$ scaling (fitted slope $-1.00$).</p>
+
+<h3>3.11 A control-theoretic identity</h3>
+<p>Equation (1) is a feedback loop: the capability process is the plant and disturbance source; the corrector is the controller; $d$ is the regulated error. The stability condition $\kappa_{\mathrm{eff}}>0$ is a small-gain / positive-realness condition — the loop gain must exceed the disturbance's self-amplification across the relevant band. The requirement that $A=A_0C^\beta$ track the plant with $\beta\ge k$ is precisely <em>gain-scheduling</em> <span class="cite">[Shamma &amp; Athans 1990]</span>: the controller gain must scale with the plant's operating point, and the scheduling exponent must satisfy $\beta\ge k$. Recursive-self-improvement alignment is, in this exact sense, an adaptive-control problem with a computable stability margin $\beta-k$.</p>
+
+<h3>3.12 The quantum-error-correction correspondence (hypothesis)</h3>
+<table>
+  <tr><th>Quantum error correction</th><th>Recursive self-improvement (this framework)</th></tr>
+  <tr><td>physical error rate $p$</td><td>drift rate $\gamma r$ (injection) / $(\gamma_3-1)r$ (propagation)</td></tr>
+  <tr><td>correction power (code distance $\delta$)</td><td>correction strength $A=A_0C^{\beta}$</td></tr>
+  <tr><td>sub-threshold condition $p<p_{\mathrm{th}}$</td><td>$\rho_{\mathrm{prop}}=(\gamma_3-1)r/A<1$</td></tr>
+  <tr><td>increasing $\delta$ suppresses logical error</td><td>increasing margin $\beta-k$ drives $d^\star\to0$</td></tr>
+  <tr><td>logical error $\propto(p/p_{\mathrm{th}})^{\delta/2}$ (exponential in resource)</td><td>$d^\star\propto C^{-(\beta-k)}$ (power-law in capability) — see F4</td></tr>
+</table>
+<p>The correspondence is structural and, via the compounding channel, mechanistic in its threshold content. <strong>It remains a hypothesis.</strong> The current model predicts <em>power-law</em> suppression $d^\star\propto C^{-(\beta-k)}$, whereas full QEC gives <em>exponential</em> suppression in code distance. Whether a co-scaling finite-capacity corrector produces the stronger exponential law is testable; its outcome is falsifier F4, which downgrades the QEC claim without touching the threshold result itself.</p>
+
+<h2 id="predictions">4. Predictions</h2>
+<div class="pred"><span class="pl">P1 — Phase boundary.</span> A sharp stability threshold exists in the compounding channel ($\gamma_3>1$) at $A_0^\star=(\gamma_3-1)b$, separating bounded from divergent regimes; the additive corrector shows a smooth crossover with no knee. (The v3 conflation of these is corrected here.)</div>
+<div class="pred"><span class="pl">P2 — Speed-invariance.</span> Whether $d$ converges or diverges is set by the coupling (the $A_0/b$ scaling margin), not by the raw speed $b$. A fast-but-coupled system stays bounded; a slow-but-decoupled system diverges. This directly contradicts the growth-rate-ceiling view.</div>
+<div class="pred"><span class="pl">P3 — Co-scaling law (corrected).</span> Under exponential growth, $\beta>0\Rightarrow d^\star\to0$; $\beta=0\Rightarrow$ permanent gap $\gamma_1 r/(A_0+r)$; $\beta<0\Rightarrow$ <em>saturation at $\gamma_1$</em> (bounded), not divergence.</div>
+<div class="pred"><span class="pl">P4 — Hard-takeoff boundary.</span> Under accelerating growth $r\propto C^k$, the stability boundary lies at $\beta=k$, not $\beta=0$; and $d$ stays controlled through the finite-time singularity, the depth-clock and wall-clock integrations agreeing.</div>
+<div class="pred"><span class="pl">P5 — Compounding threshold &amp; residual drift.</span> With $\gamma_3>1$, divergence occurs iff $A<(\gamma_3-1)r$. With $\gamma_2>0$, halting growth ($r\to0$) leaves a residual $d^\star=\gamma_2/A>0$; pausing does not substitute for correction.</div>
+<div class="pred"><span class="pl">P6 — Spectral threshold.</span> Misalignment persists exactly on the correction operator's null subspace; the monitored axis is driven to zero while the blind axis floors at $\gamma_1$.</div>
+<div class="pred"><span class="pl">P7 — Stochastic tail.</span> The stationary misalignment fraction is $\mathcal N(d^\star,\sigma^2/2\kappa)$; variance scales as $1/(A+r)$, so co-scaling suppresses the tail risk.</div>
+<div class="pred"><span class="pl">P8 — Suppression signature.</span> In the stable regime, $\log d^\star$ is linear in $\log C$ with slope $-(\beta-k)$ (power-law). Exponential suppression would indicate a stronger, QEC-like mechanism; neither outcome falsifies the threshold, only the QEC <em>mechanism</em> claim (F4).</div>
+
+<h2 id="experiments">5. The discriminating experiments</h2>
+<p>The framework is tested by a self-certifying harness (§10): nine experiments, each computing a quantitative statistic, comparing it to a prediction stated in advance, and printing PASS/FAIL together with whether the matching falsifier fired. The integrator is validated against the exact solution of Theorem 1 before any prediction is tested. The full run reports <strong>9/9 predictions confirmed and 0 falsification conditions triggered</strong>. Figures below are the verbatim output of that run.</p>
+
+<figure>
+  <img src="figures/exp1_phase_boundary.png" alt="Phase boundary">
+  <figcaption><b>Experiment 1 — Phase boundary (P1).</b> The sharp instability threshold exists only in the compounding channel (right; measured $\lambda^\star=2.00$ vs predicted $(\gamma_3-1)b=2.00$). The additive corrector (left) shows a smooth crossover with no knee — the prediction's null, correctly observed. This corrects the v3 draft, which sought a knee in the additive model where none exists.</figcaption>
+</figure>
+
+<figure>
+  <img src="figures/exp2_speed_invariance.png" alt="Speed invariance 2x2">
+  <figcaption><b>Experiment 2 — Speed-invariance (P2).</b> The decisive 2&times;2. Coupled systems stay bounded at both speeds; decoupled systems diverge at both speeds. Speed only rescales the wall-clock axis; coupling decides the outcome. The growth-rate-ceiling view predicts the opposite (fast&nbsp;$\Rightarrow$&nbsp;diverge regardless) and is contradicted on shared axes.</figcaption>
+</figure>
+
+<figure>
+  <img src="figures/exp3_coscaling_law.png" alt="Co-scaling law corrected">
+  <figcaption><b>Experiment 3 — Co-scaling law, corrected (P3).</b> $\beta>0$ drives $d\to0$; $\beta=0$ holds a permanent gap; and $\beta=-0.5$ <em>saturates at the drift coefficient $\gamma_1$</em> — bounded, not divergent. The dotted ceiling at $\gamma_1$ is never breached, the explicit correction of the prior draft's divergence claim (Theorem 2).</figcaption>
+</figure>
+
+<figure>
+  <img src="figures/exp4_hard_takeoff_grid.png" alt="Hard takeoff beta>k grid">
+  <figcaption><b>Experiment 4 — Acceleration and the $\beta>k$ boundary (P4).</b> A $3\times3$ grid crossing growth-acceleration $k\in\{0,0.5,1\}$ with correction exponent $\beta\in\{0.25,0.75,1.5\}$. Stability (green, $d\to0$) holds exactly when $\beta>k$; saturation at $\gamma_1$ (red) holds when $\beta<k$. For $k>0$ each panel reaches infinite capability at a finite $t^\star$ (annotated), yet $d$ stays bounded throughout. The boundary is at $\beta=k$, not $\beta=0$.</figcaption>
+</figure>
+
+<figure>
+  <img src="figures/exp4b_coordinate_artefact.png" alt="Coordinate artefact">
+  <figcaption><b>Experiment 4b — A hard takeoff is a coordinate artefact (P4; Theorem 3).</b> Left: capability diverges to $\sim\!10^{5}$ at a finite singularity time $t^\star$. Right: the misalignment fraction is driven to zero <em>through</em> the explosion; integrating in wall-clock time (toward $t^\star$) and in self-improvement depth $\tau$ give identical trajectories (max disagreement $9.9\times10^{-5}$). The finite-time singularity is a property of the clock, not of the alignment dynamics.</figcaption>
+</figure>
+
+<figure>
+  <img src="figures/exp5_compounding_threshold.png" alt="Compounding threshold and suppression">
+  <figcaption><b>Experiment 5 — Compounding threshold and suppression signature (P5, P8).</b> Left: with $\gamma_3=4$, divergence occurs below the predicted threshold $A_0^\star=(\gamma_3-1)b=3.0$ (measured $3.03$) — the genuine instability, and the QEC-style boundary. Right: in the stable regime $\log d^\star$ is linear in $\log C$ with slope $-(\beta-k)$ (fitted $-0.47$ and $-1.00$ for $\beta=0.5,1.0$), the power-law suppression signature.</figcaption>
+</figure>
+
+<figure>
+  <img src="figures/exp6_vector_subspace.png" alt="Vector subspace">
+  <figcaption><b>Experiment 6 — Vector misalignment (P6; Theorem 5).</b> Two value axes share one capability process. The correction operator co-scales on the monitored axis (driven to zero) and is null on the blind axis (floors at $\gamma_1$). Misalignment persists exactly on the operator's null direction: you cannot correct what you do not measure.</figcaption>
+</figure>
+
+<figure>
+  <img src="figures/exp7_stochastic.png" alt="Stochastic">
+  <figcaption><b>Experiment 7 — Stochastic drift (P7; Theorem 6).</b> Left: the stationary misalignment fraction matches the Ornstein–Uhlenbeck law $\mathcal N(d^\star,\sigma^2/2\kappa)$ in both mean and variance. Right: the stationary variance scales as $1/\kappa$ (fitted slope $-1.00$), so co-scaling suppresses the mean <em>and</em> the tail. Governance gets a bound on $\mathbb P(d>d_{\mathrm{crit}})$, not just an average.</figcaption>
+</figure>
+
+<figure>
+  <img src="figures/exp8_validation.png" alt="Integrator certificate">
+  <figcaption><b>Experiment 8 — Integrator certificate.</b> On the one case admitting a closed form (Theorem 1), the stiff solver and a naive explicit Euler scheme both reproduce the exact transient — maximum errors $7\times10^{-11}$ and $8\times10^{-7}$. The numerics underlying every other figure are thereby certified correct before any prediction is tested.</figcaption>
+</figure>
+
+<table class="verdict">
+  <tr><th>Exp.</th><th>Prediction</th><th>Key statistic (measured vs predicted)</th><th>Verdict</th></tr>
+  <tr><td>E1</td><td>P1 phase boundary in compounding channel; none in additive</td><td>$\lambda^\star=2.00$ vs $2.00$; additive smooth</td><td class="pass">PASS</td></tr>
+  <tr><td>E2</td><td>P2 coupling, not speed, decides</td><td>coupled bounded &amp; decoupled divergent at both speeds</td><td class="pass">PASS</td></tr>
+  <tr><td>E3</td><td>P3 corrected regimes ($\beta<0$ saturates at $\gamma_1$)</td><td>all four asymptotes match closed form</td><td class="pass">PASS</td></tr>
+  <tr><td>E4</td><td>P4 boundary at $\beta=k$</td><td>all 9 grid cells match $\mathrm{sign}(\beta-k)$</td><td class="pass">PASS</td></tr>
+  <tr><td>E4b</td><td>P4 singularity is a coordinate artefact</td><td>clock agreement $9.9\times10^{-5}$; $d$ controlled</td><td class="pass">PASS</td></tr>
+  <tr><td>E5</td><td>P5/P8 compounding threshold; power-law slope</td><td>threshold $3.03$ vs $3.0$; slopes $-0.47,-1.00$</td><td class="pass">PASS</td></tr>
+  <tr><td>E6</td><td>P6 spectral threshold; blind axis persists</td><td>monitored $\to10^{-7}$; blind $\to\gamma_1=0.05$</td><td class="pass">PASS</td></tr>
+  <tr><td>E7</td><td>P7 stochastic tail; variance $\propto1/\kappa$</td><td>mean/var match OU; var-slope $-1.00$</td><td class="pass">PASS</td></tr>
+  <tr><td>E8</td><td>numerics reproduce Theorem 1</td><td>max errors $7\!\times\!10^{-11}$, $8\!\times\!10^{-7}$</td><td class="pass">PASS</td></tr>
+</table>
+
+<h2 id="blinding">6. Why blinding is not optional</h2>
+<p>The central quantity $D$ is a departure from intended values. If it is scored by the system's own safety component, or by an evaluator that can see which configuration produced a given behaviour, the measurement is corrupted in exactly the way that inflates favourable results. The programme's prior metascience finding is directly relevant: under unblinded cross-model scoring an alignment-scaling effect appeared positive, while under multi-layer blinding the same effect reversed sign for some systems <span class="cite">[Eastwood, Paper IV.d]</span>. An experiment that measures a misalignment fraction without blinding the evaluator can produce not merely the wrong magnitude but the wrong direction. The validity of every result in §5 rests on the evaluator being blind to the configuration under test. A lab claiming "$\beta\ge k$" in its own system must have that measured by a blind external evaluator, not by itself.</p>
+
+<h2 id="falsification">7. Falsification conditions</h2>
+<p>The framework is wrong, or must be downgraded, under any of the following outcomes — stated in advance and encoded as automated assertions in the harness (§10). $\,$F1–F6 are kill conditions for the thesis; F4 downgrades the QEC mechanism claim only; F5 restricts the scope of the level-drift term.</p>
+<table class="falsif">
+  <tr><th>#</th><th>Observation that would trigger it</th><th>Consequence</th></tr>
+  <tr><td>F1</td><td>No boundary in E1 under <em>either</em> the compounding or the saturating corrector — the long-run behaviour varies smoothly with $\lambda$ with no threshold anywhere.</td><td class="kill">Kill. No phase boundary; the central threshold claim is false.</td></tr>
+  <tr><td>F2</td><td>In E2, $d$ tracks raw speed rather than the scaling margin: fast diverges and slow converges regardless of coupling.</td><td class="kill">Kill. The growth-rate-ceiling view was right; this framework is wrong.</td></tr>
+  <tr><td>F3</td><td>In E3, $\beta=0$ does not plateau, or $\beta>0$ does not drive $d^\star\to0$.</td><td class="kill">Kill. The co-scaling law (Theorem 2) is false.</td></tr>
+  <tr><td>F3$'$</td><td>In E4, the boundary under accelerating growth ($k>0$) is not at $\beta=k$ — e.g. $\beta=0.5$ is stable when $k=1.0$.</td><td class="kill">Kill. The $\beta>k$ sharpening (Theorem 3) is false.</td></tr>
+  <tr><td>F4</td><td>In E5, suppression is not power-law in $C$ ($\log d^\star$ not linear in $\log C$ with slope $-(\beta-k)$).</td><td style="color:#c49102;font-weight:700">Downgrade. The model's mechanism is wrong; the QEC correspondence is analogy, not mechanism. The threshold form (Theorems 2–4) may still hold.</td></tr>
+  <tr><td>F5</td><td>In E5(ii), halting growth drives $d\to0$ regardless of initial $D$.</td><td style="color:#2e7d32;font-weight:700">Scope. Level drift $\gamma_2$ is negligible; the §3.6 generalisation is unnecessary (the gain-only model suffices).</td></tr>
+  <tr><td>F6</td><td>In E6, the correction operator's null axis is also suppressed.</td><td class="kill">Kill. The spectral threshold (Theorem 5) is false; misalignment does not require monitoring of the axis it lives on.</td></tr>
+</table>
+<p>The framework earns the right to be called a result only by surviving every kill condition. In the run reported here, none were triggered.</p>
+
+<h2 id="limitations">8. Limitations</h2>
+<p>The model is first-order, and its assumptions are the most likely points of failure. Stating them is part of the claim.</p>
+<ul style="margin-left:1.4rem">
+  <li><strong>Linear correction.</strong> Equation (1) assumes correction removes misalignment in proportion to $D$. A finite-capacity corrector (saturating throughput) would soften the clean threshold into a crossover and is the better structural map onto QEC's finite code distance; it is a priority extension, sketched but not fully developed here.</li>
+  <li><strong>Scalar-to-vector projection.</strong> Theorem 5 lifts the result to the vector case under a diagonalisable correction operator. The fully coupled, non-normal operator case (where transient growth can occur before asymptotic decay) is open.</li>
+  <li><strong>Power-law forms.</strong> The choices $A=A_0C^\beta$ and $\dot C=bC^{1+k}$ are the natural scale-free forms but are modelling assumptions; other functional forms should be tested.</li>
+  <li><strong>Drift attribution.</strong> The split of drift into gain ($\gamma_1$), level ($\gamma_2$), and compounding ($\gamma_3$) channels is a hypothesis about mechanism; which channel dominates in a real system is an empirical question (Experiment 5(ii) is one discriminator).</li>
+  <li><strong>Simulation, not frontier systems.</strong> The protocol uses toy self-modifying dynamics. A positive result demonstrates the <em>mechanism</em> in a controlled setting; it does not establish that frontier systems occupy any particular regime. Whether real systems sit below threshold is an empirical question the model does not answer.</li>
+  <li><strong>Estimating $\gamma$ and $A$ on real systems.</strong> In simulation they are set by construction. Independently estimating them — especially $\beta$ and $k$ — for a deployed model is the step that would make the criterion operationally useful for governance, and it is unsolved. It is the natural next problem.</li>
+</ul>
+
+<h2 id="implications">9. Implications for AI safety</h2>
+<p>If the framework survives its tests, the design implication is concrete and differs from the prevailing reflex.</p>
+<p><strong>The lever is coupling, not speed.</strong> Slowing capability growth buys time but does not change the verdict; at fixed coupling, a slow decoupled system still diverges (P2), and a frozen capable system still drifts (§3.6). What changes the verdict is ensuring that correction (i) is coupled to the capability process so it cannot be decoupled, and (ii) scales at least as fast as capability accelerates ($\beta\ge k$). On the author's corrected, sub-linear capability-scaling estimates for current frozen models <span class="cite">[Eastwood, Paper IX]</span>, present systems are nowhere near a super-linear growth regime — which means a growth-rate ceiling was never the binding constraint. The binding constraint is the co-scaling of correction, and it becomes binding precisely in the regime that matters: genuine self-modification.</p>
+<p><strong>A measurable governance target.</strong> The criterion gives regulators a quantity to instrument rather than a rate to forbid: the correction-to-drift margin $\beta-k$, and the ratio $\rho$. "Does correction co-scale — is $\beta\ge k$?" is sharper and more actionable than "is it growing too fast?" A lab claiming a <em>safely self-improving</em> system should be required to exhibit $\beta\ge k$, measured by a blind external evaluator (§6). Theorem 6 turns this into a bound on the probability of catastrophic excursion, the natural object of a safety case. Without such a demonstration, the word "safely" has no scientific content within the framework presented here.</p>
+<p><strong>Continuity with embedded-alignment work.</strong> The conclusion that correction must participate in the recursive loop — rather than sit outside it as a fixed external constraint — is the embedded-alignment thesis, here <em>derived</em> as the $\beta>k$ condition rather than asserted. The gated-simulation result in which safety-coupled self-modification preserved both safety and capability while the decoupled variant did not <span class="cite">[Eastwood, Paper VIII]</span> is the predicted behaviour of a coupled ($\beta>0$) versus fixed ($\beta=0$) corrector.</p>
+
+<h2 id="harness">10. The runnable proof-harness</h2>
+<p>Every claim in §4–5 is encoded in a single self-contained programme, <code>experiment_coscaling.py</code> (and a CI-grade assertion suite, <code>test_coscaling.py</code>), available in the repository. It is not a plotting script: it integrates the dynamics with a stiff-capable solver, validates the integrator against the exact solution of Theorem 1, runs the nine experiments, and for each one computes a test statistic, compares it to the prediction, and prints PASS/FAIL together with whether the matching falsifier fired. It exits $0$ iff every prediction holds and no falsifier triggers.</p>
+<pre>$ python experiment_coscaling.py
+  [PASS] E1 ... [PASS] E2 ... [PASS] E3 ... [PASS] E4 ... [PASS] E4b
+  [PASS] E5 ... [PASS] E6 ... [PASS] E7 ... [PASS] E8
+  ----------------------------------------------------------------
+  9/9 predictions confirmed | 0 falsification conditions triggered
+  OVERALL: ALL PREDICTIONS CONFIRMED -- framework survives
+
+$ pytest test_coscaling.py -q
+  ...........   (11 passed)</pre>
+<p>This makes the paper reproducible end-to-end and the falsification conditions executable rather than rhetorical. A reader who believes the framework is wrong is invited to make the harness print FAIL.</p>
+
+<h2 id="conclusion">11. Conclusion</h2>
+<p>The danger of recursive self-improvement is real, but the standard model of that danger — a rate that must be capped — locates the risk in the wrong variable. A minimal model shows that the stability of a self-improving system is set by the ratio of value-drift to correction, $\rho=\gamma r/A$, and by whether correction co-scales with capability: $\beta>0$ under exponential growth, sharpening to <strong>$\beta>k$</strong> under accelerating growth. The misalignment fraction never diverges in the additive model — it saturates at the drift coefficient, correcting the prior draft — while genuine divergence lives in a compounding channel whose threshold $\rho_{\mathrm{prop}}<1$ is the exact structural analogue of the quantum error-correction threshold. The sharpest consequence is the Hard-Takeoff Coordinate-Artefact Theorem: a finite-time intelligence explosion is alignment-stable iff $\beta>k$, and its speed is irrelevant to the verdict. The criterion survives in vector and stochastic forms, gives governance a measurable target and a tail bound, and is accompanied by a self-certifying harness that states in advance the conditions under which it is false and reports that none occurred.</p>
+<p>This is a smaller claim than the cosmological framing the author's programme once pursued, and deliberately so. It refers only to systems with an externally specified value target, makes no assertion about the universe, and treats even its most striking correspondence — with quantum error correction — as a hypothesis to be tested rather than a truth to be announced. The recursive-stability intuition that motivated the broader programme, including <em>Infinite Architects</em>, finds here its measurable, falsifiable form: <strong>stable recursion requires correction that scales with the amplification.</strong> The next step is not to extend that claim outward but to run, on real self-modifying systems, the experiment that could refute it.</p>
+
+<h2 id="appendix">Appendix A. The fraction change of variable</h2>
+<p>The reduction underlying every theorem is the change of variable $d=D/C$. Differentiating and substituting (1):</p>
+<div class="keyeq">$$ \dot d=\frac{\dot D}{C}-\frac{D\dot C}{C^2}=\Big(\gamma_1\frac{\dot C}{C}+\gamma_2+\gamma_3\frac{\dot C}{C}\frac{D}{C}-A\frac{D}{C}\Big)-\frac{D}{C}\frac{\dot C}{C} =\gamma_1 r+\gamma_2-\big[A+(1-\gamma_3)r\big]d. $$</div>
+<p>The dilution term $-r\,d$ (from $C$ itself growing) is what bounds the additive fraction: it adds $+r$ to the decay coefficient, guaranteeing $\kappa_{\mathrm{eff}}\ge r>0$ when $\gamma_3\le1$. Only the compounding channel $\gamma_3>1$ can overcome dilution and produce divergence — the formal reason the additive model saturates rather than blows up.</p>
+
+<h2 id="appendix-b">Appendix B. Parameter settings for the reported run</h2>
+<p>All figures use $C_0=1$, $d_0=0.05$, $\gamma_1=0.05$. Experiment-specific settings: E1 $b=1$, $\gamma_3\in\{0,3\}$, $\lambda\in[0.2,4]$; E2 $\gamma_3=3$, $A_0/b\in\{1,3\}$, $b\in\{0.5,5\}$; E3 $A_0=0.08$, $b=0.5$, $\beta\in\{-0.5,0,0.5,1\}$; E4 $A_0=0.08$, $b=0.02$, $(k,\beta)\in\{0,0.5,1\}\times\{0.25,0.75,1.5\}$; E4b $k=1$, $\beta=1.5$, $b=0.02$ ($t^\star=50$); E5 $\gamma_3=4$, $b=1$; E6 monitored $\beta=1$, blind $A_0=0$; E7 $\sigma=0.02$, OU ensemble of 2.5–4k paths; E8 closed-form case $k=0$, $\beta=0$. Random seed fixed (7) for determinism. Full settings are in the harness source.</p>
+
+<hr>
+<h2 id="references">References</h2>
+<div class="refs">
+  <p>Aharonov, D., &amp; Ben-Or, M. (1997). Fault-tolerant quantum computation with constant error. <em>Proc. 29th ACM STOC</em>.</p>
+  <p>Amodei, D., Olah, C., Steinhardt, J., Christiano, P., Schulman, J., &amp; Mané, D. (2016). Concrete problems in AI safety. <em>arXiv:1606.06565</em>.</p>
+  <p>Bostrom, N. (2012). The superintelligent will. <em>Minds and Machines</em>, 22(2).</p>
+  <p>Christiano, P., Leike, J., Brown, T., Martic, M., Legg, S., &amp; Amodei, D. (2017). Deep reinforcement learning from human preferences. <em>NeurIPS</em>.</p>
+  <p>Eastwood, M. D. (2026). <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em>. [Cited as the source of the recursive-stability intuition, not for symbolic identity with the present model.]</p>
+  <p>Eastwood, M. D. Paper III: The Alignment Scaling Problem. ARC/Eden research programme.</p>
+  <p>Eastwood, M. D. Paper IV.d: The Effect of Blinding on AI Alignment Evaluation. ARC/Eden research programme.</p>
+  <p>Eastwood, M. D. Paper VI: The Honey Architecture. ARC/Eden research programme.</p>
+  <p>Eastwood, M. D. Paper VIII: The Load-Bearing Proof. ARC/Eden research programme.</p>
+  <p>Eastwood, M. D. Paper IX: Synthesis and Roadmap. ARC/Eden research programme. [Retraction of $U=I\times R^2$ and narrowing to sub-linear scaling for current frozen models.]</p>
+  <p>Google Quantum AI (2024). Quantum error correction below the surface code threshold. <em>Nature</em>, 638.</p>
+  <p>Greenblatt, R., Denison, C., Wright, B., et&nbsp;al. (2024). Alignment faking in large language models. <em>arXiv:2412.14093</em>.</p>
+  <p>Hoffmann, J., Borgeaud, S., Mensch, A., et&nbsp;al. (2022). Training compute-optimal large language models. <em>arXiv:2203.15556</em>.</p>
+  <p>Hubinger, E., van Merwijk, C., Mikulik, V., Skalse, J., &amp; Garrabrant, S. (2019). Risks from learned optimization. <em>arXiv:1906.01820</em>.</p>
+  <p>Kaplan, J., McCandlish, S., Henighan, T., et&nbsp;al. (2020). Scaling laws for neural language models. <em>arXiv:2001.08361</em>.</p>
+  <p>Kitaev, A. Yu. (2003). Fault-tolerant quantum computation by anyons. <em>Annals of Physics</em>, 303(1).</p>
+  <p>Leike, J., Krueger, D., Everitt, T., Martic, M., Maini, V., &amp; Legg, S. (2018). Scalable agent alignment via reward modeling. <em>arXiv:1811.07871</em>.</p>
+  <p>Omohundro, S. M. (2008). The basic AI drives. <em>Proc. AGI 2008</em>.</p>
+  <p>Shamma, J. S., &amp; Athans, M. (1990). Analysis of gain scheduled control for nonlinear plants. <em>IEEE Trans. Automatic Control</em>, 35(8).</p>
+  <p>Soares, N., Fallenstein, B., Yudkowsky, E., &amp; Armstrong, S. (2015). Corrigibility. <em>AAAI Workshop on AI and Ethics</em>.</p>
+  <p>Yudkowsky, E. (2013). Intelligence explosion microeconomics. <em>MIRI Technical Report</em>.</p>
+</div>
+
+<footer>
+  <p><strong>The Coupled Co-Scaling Law</strong> &middot; Paper X of the ARC / Eden research programme &middot; Working Paper v4.0 &middot; Michael Darius Eastwood &middot; 26 June 2026</p>
+  <p>This paper supersedes the growth-rate-ceiling framing within the author's programme and corrects the prior draft's claim that the misalignment fraction diverges; it makes no cosmological claim and its central correspondence is offered as a falsifiable hypothesis.</p>
+  <p>OSF: doi.org/10.17605/OSF.IO/6C5XB &middot; Code &amp; runnable harness: github.com/MichaelDariusEastwood/arc-principle-validation</p>
+</footer>
+
+</body>
+</html>

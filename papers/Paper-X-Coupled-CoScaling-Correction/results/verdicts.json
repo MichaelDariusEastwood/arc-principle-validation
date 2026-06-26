@@ -1,0 +1,98 @@
+{
+  "all_pass": true,
+  "n_pass": 9,
+  "n_total": 9,
+  "n_triggered": 0,
+  "verdicts": [
+    {
+      "experiment": "E1",
+      "prediction": "P1: sharp phase boundary in compounding channel; smooth in additive",
+      "statistic": "A0*_meas=2.00 (pred 2.00); additive_smooth=True",
+      "criterion": "knee within 0.15 of (gamma3-1)b AND additive shows no divergence",
+      "passed": true,
+      "falsifier": "F1 (no boundary anywhere)",
+      "triggered": false,
+      "detail": ""
+    },
+    {
+      "experiment": "E2",
+      "prediction": "P2: coupling (A0/b), not speed b, determines convergence vs divergence",
+      "statistic": "coupled bounded at both speeds AND decoupled divergent at both speeds = True",
+      "criterion": "outcome matches coupling for all four cells",
+      "passed": true,
+      "falsifier": "F2 (outcome tracks raw speed)",
+      "triggered": false,
+      "detail": ""
+    },
+    {
+      "experiment": "E3",
+      "prediction": "P3: beta>0 -> 0; beta=0 -> gamma1*r/(A0+r); beta<0 -> gamma1 (bounded)",
+      "statistic": "all four asymptotes match analytic predictions = True",
+      "criterion": "each long-run d within tolerance of closed form",
+      "passed": true,
+      "falsifier": "F3 (regimes do not match)",
+      "triggered": false,
+      "detail": ""
+    },
+    {
+      "experiment": "E4",
+      "prediction": "P4: stability boundary lies at beta=k under accelerating growth",
+      "statistic": "all 9 cells match sign(beta-k) classification = True",
+      "criterion": "converge iff beta>k; floor iff beta<=k; across the 3x3 grid",
+      "passed": true,
+      "falsifier": "F3' (boundary not at beta=k)",
+      "triggered": false,
+      "detail": ""
+    },
+    {
+      "experiment": "E4b",
+      "prediction": "P4: depth-clock and wall-clock agree; d controlled through finite-time singularity",
+      "statistic": "max_rel_disagreement=9.85e-05; d_controlled=True",
+      "criterion": "trajectories agree (<5%) AND d remains < 0.06 and decreasing",
+      "passed": true,
+      "falsifier": "F-coordinate (singularity uncontrollable)",
+      "triggered": false,
+      "detail": ""
+    },
+    {
+      "experiment": "E5",
+      "prediction": "P5/P8: divergence iff A0<(gamma3-1)b; suppression slope = -(beta-k)",
+      "statistic": "meas_threshold=3.03 (pred 3.0); slopes={0.5: -0.469, 1.0: -0.997}",
+      "criterion": "threshold within 0.2 AND each slope within 0.08 of -(beta-k)",
+      "passed": true,
+      "falsifier": "F4 (suppression not power-law / no threshold)",
+      "triggered": false,
+      "detail": ""
+    },
+    {
+      "experiment": "E6",
+      "prediction": "P6: threshold is a spectral condition; the operator's null axis stays misaligned",
+      "statistic": "d_monitored=3.01e-07 (pred ~0); d_blind=0.050 (pred 0.050)",
+      "criterion": "monitored axis driven to 0 AND blind axis floors at gamma1 (>5x larger)",
+      "passed": true,
+      "falsifier": "F6 (blind axis also suppressed)",
+      "triggered": false,
+      "detail": ""
+    },
+    {
+      "experiment": "E7",
+      "prediction": "P7: stationary mean=g1/kappa, variance=sigma^2/(2 kappa) ~ 1/(A+r); tail suppressed",
+      "statistic": "mean 0.033/0.033; var 1.4e-04/1.3e-04; var-slope -1.00",
+      "criterion": "mean & variance match OU theory AND variance scales as 1/kappa",
+      "passed": true,
+      "falsifier": "F7 (variance does not scale as 1/(A+r))",
+      "triggered": false,
+      "detail": ""
+    },
+    {
+      "experiment": "E8",
+      "prediction": "Numerics reproduce the exact transient (Theorem 1) to machine-relevant tolerance",
+      "statistic": "max|LSODA-exact|=7.1e-11; max|Euler-exact|=8.0e-07",
+      "criterion": "LSODA error < 1e-4 AND Euler error < 1e-3",
+      "passed": true,
+      "falsifier": "F-numeric (integrator wrong)",
+      "triggered": false,
+      "detail": ""
+    }
+  ]
+}
