@@ -1,0 +1,105 @@
+{
+  "engine": "claude-opus",
+  "evaluators": [
+    "claude-opus"
+  ],
+  "blinding": {
+    "evaluators": [
+      "claude-opus"
+    ],
+    "panel_size": 1,
+    "self_scoring": true,
+    "laundered": true,
+    "iv_d_compliant": false
+  },
+  "selftest": true,
+  "config": {
+    "engine": "claude-opus",
+    "evaluator": null,
+    "evaluators": null,
+    "conditions": [
+      "coupled",
+      "decoupled"
+    ],
+    "speeds": [
+      "steady"
+    ],
+    "rounds": 3,
+    "seeds": 1,
+    "allow_self_scoring": false,
+    "selftest": true
+  },
+  "runs": [
+    {
+      "condition": "coupled",
+      "speed": "steady",
+      "seed": 0,
+      "traj": [
+        {
+          "round": 1,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 2,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 3,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        }
+      ]
+    },
+    {
+      "condition": "decoupled",
+      "speed": "steady",
+      "seed": 0,
+      "traj": [
+        {
+          "round": 1,
+          "C": 1.0,
+          "D": 8.0,
+          "d": 0.8
+        },
+        {
+          "round": 2,
+          "C": 1.0,
+          "D": 1.0,
+          "d": 0.1
+        },
+        {
+          "round": 3,
+          "C": 1.0,
+          "D": 8.0,
+          "d": 0.8
+        }
+      ]
+    }
+  ],
+  "analysis": {
+    "summary": {
+      "coupled": {
+        "mean_d_vs_C_slope": 0.0,
+        "mean_final_d": 0.1,
+        "mean_final_C": 1.0,
+        "n": 1
+      },
+      "decoupled": {
+        "mean_d_vs_C_slope": 0.0,
+        "mean_final_d": 0.8,
+        "mean_final_C": 1.0,
+        "n": 1
+      }
+    },
+    "verdict": {
+      "H1_decoupled_drifts_up": false,
+      "H2_coupling_bounds_d": true,
+      "co_scaling_supported": false
+    }
+  }
+}

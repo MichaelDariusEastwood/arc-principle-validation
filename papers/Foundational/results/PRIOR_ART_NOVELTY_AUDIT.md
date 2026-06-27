@@ -1,0 +1,63 @@
+# Prior-Art & Novelty Audit - Foundational & On the Origin of Scaling Laws (specific claims)
+
+**Method.** Two web-enabled prior-art searches, run after the shared-bridge (Cauchy)
+audit, targeting the *paper-specific* claims of the Foundational paper and On the Origin
+of Scaling Laws that the cluster audit did not cover: the ARC Bound and the alpha=1/(1-beta)
+relation; the optimal-depth R\* prediction; and Origin's "1/2, 2/3, 3/4 from one formula"
+claim. Same adversarial treatment as Paper X and the VII cluster.
+
+---
+
+## Verdict: **ANTICIPATED to PARTIALLY-ANTICIPATED** (per claim below)
+
+The named "laws" of these two papers are, individually, classical results re-applied. The
+defensible contribution is the **axiomatic framework** (if the three axioms non-trivially
+*force* the results rather than assume them) and the **application to recursive intelligence**
+- not the formulae, whose precedents are specific and strong.
+
+| Claim | Status | Closest precedent |
+|---|---|---|
+| **alpha = 1/(1-beta)** (exponent fixed by a self-referential coupling) | **Anticipated** | The Keynesian multiplier `1/(1-c)` (Kahn 1931; Keynes 1936) - the same equation, same fixed-point-of-`x=1+bx` derivation; Dyson self-energy resummation `G0/(1-Sigma G0)` (1949); preferential attachment (exponent fixed by the kernel; Price 1976 / Barabasi-Albert 1999) |
+| **ARC Bound: beta=0.5, alpha=2 as a classical "ceiling"** | **Partially-anticipated** | Quadratic ceilings recur: Heisenberg limit `1/N` vs standard quantum limit `1/sqrt(N)` (a named factor-of-2-in-exponent bound); Romer/Jones endogenous-growth `phi=1` criticality (bounded vs explosive). The specific value is the arithmetic of `1/(1-0.5)`; note the RSI literature (arXiv:2511.10668, 2025) puts the critical exponent at **1**, not 2 - so a "2" ceiling needs the axioms to justify the offset |
+| **R\*: an optimal, architecture-determined recursive depth ("no other scaling framework predicts it")** | **Partially-anticipated (leaning anticipated)** | **Qi (2025), "Optimal Depth of Neural Networks"** (arXiv:2506.16862) - *proves* a finite optimal depth from diminishing returns, as an architectural property; plus the "overthinking" literature (Yang et al. 2025) and adaptive-computation (Graves 2016 ACT; PonderNet; Universal Transformers). Existence is prior art; only a *specific closed-form* R\* could be novel |
+| **Origin: d/(d+1) gives 1/2, 2/3, 3/4 from ONE formula, zero free parameters; "no previous theory predicted 1/2, 2/3, 3/4 from the same formula"** | **Anticipated** (the "no previous theory" assertion is **factually incorrect**) | **Banavar, Maritan & Rinaldo (1999)** and **West, Brown & Enquist, "The Fourth Dimension of Life" (1999)**: `D/(D+1)` gives **1/2 (D=1), 2/3 (D=2), 3/4 (D=3)** from one formula, zero free parameters by construction. The 2/3 surface law predates everything (Sarrus & Rameaux 1839; Rubner 1883) |
+
+---
+
+## What is defensibly yours
+
+- The **three-axiom derivation** itself (separability, cumulative advantage, continuity) -
+  *if and only if* it can be shown to **force** beta=0.5 / alpha=1/(1-beta) non-trivially,
+  rather than choosing a point on a known curve. That is where any genuine novelty must live,
+  and it should be argued explicitly.
+- The **application** of these classical forms to **recursive intelligence / AI self-improvement**
+  as a unified framework - a synthesis contribution, real but built on prior machinery.
+- (Shared with the cluster audit) the **Cauchy unification** of the independent allometric
+  derivations is the one genuinely novel sub-claim.
+
+## What must be conceded (not claimed as first)
+
+- `alpha = 1/(1-beta)` is the geometric-series / self-referential-fixed-point form - textbook
+  feedback mathematics (Keynes multiplier, Dyson resummation). Not novel.
+- `d/(d+1) -> 1/2, 2/3, 3/4` is Banavar-Maritan-Rinaldo / West 1999. The "no previous theory"
+  sentence **does not survive contact with the literature** and should be removed.
+- An optimal architecture-determined recursion depth exists and is *proven* (Qi 2025); the
+  existence claim is prior art.
+
+## Recommended next-version revisions (for OSF re-versioning)
+
+1. **Foundational:** cite Keynes/Kahn (multiplier) and Dyson (resummation) for `1/(1-beta)`;
+   cite the Heisenberg-vs-SQL quadratic limit for the ceiling; cite Qi (2025) + the overthinking
+   literature for R\*. Re-scope novelty to the axiomatic derivation + the AI application, and
+   show the axioms *force* (not assume) beta=0.5.
+2. **On the Origin of Scaling Laws:** cite Banavar-Maritan-Rinaldo (1999) and West (1999) for
+   `d/(d+1)` and the 1/2, 2/3, 3/4 outputs; **delete** "no previous theory predicted 1/2, 2/3, 3/4
+   from the same formula." Keep the cross-domain Cauchy framing as the contribution.
+
+These corrections shrink the marketing, not the science; the coherent framework and the genuine
+novel residue (Cauchy unification; the AI application; beta>k in Paper X) survive intact.
+
+---
+
+*Generated by a 2-front web-enabled prior-art investigation (ARC Bound / alpha=1/(1-beta);
+R\* + d/(d+1)). Companion to the Cauchy-cluster audit (Paper-VII/results/PRIOR_ART_NOVELTY_AUDIT.md).*
