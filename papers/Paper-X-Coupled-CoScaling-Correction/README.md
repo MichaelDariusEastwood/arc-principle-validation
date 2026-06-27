@@ -33,7 +33,7 @@ Ashby's Law of Requisite Variety (1956), the Conant-Ashby good-regulator theorem
 scalable-oversight scaling-law literature (Engels et al. 2025); the dynamics are a standard
 Lyapunov-drift argument. What is claimed original is (a) the explicit closed-form threshold
 ρ = γr/A and the β>k sharpening as a compact corrigibility criterion, (b) the mapping of the
-quantum fault-tolerance threshold onto value stability, (c) the Hard-Takeoff Coordinate-Artefact
+quantum fault-tolerance threshold onto value stability, (c) the Hard-Takeoff Depth-Regularity
 Theorem, and (d) the verification harness. The paper credits these precursors up front so the
 contribution is positioned precisely rather than over-claimed.
 
@@ -47,7 +47,7 @@ touched the β > k result.
 - **Theorem 1** - exact transient solution and relaxation rate (A+r).
 - **Theorem 2** - global boundedness; corrects the v3 "β<0 diverges to ∞" claim to bounded
   saturation at γ; the three-regime structure (β>k → 0; β=k → permanent gap; β<k → saturates).
-- **Theorem 3** - the **Hard-Takeoff Coordinate-Artefact Theorem**: a finite-time singularity
+- **Theorem 3** - the **Hard-Takeoff Depth-Regularity Theorem** (the coordinate-artefact result): a finite-time singularity
   is a property of the time coordinate, not of the alignment dynamics; the verdict is set by
   sign(β−k) independently of speed and of the singularity time.
 - **Theorem 4** - the compounding channel and the true threshold ρ_prop < 1 (the QEC analogue).
@@ -83,7 +83,7 @@ certify the derivation + integrator (code matches maths), not the model against 
 | E2 Speed-invariance 2×2 | P2 / F2 | coupling decides; speed does not |
 | E3 Co-scaling law (corrected) | P3 / F3 | β<0 saturates at γ₁, not ∞ |
 | E4 Hard-takeoff β>k grid | P4 / F3′ | boundary at β=k across 3×3 |
-| E4b Coordinate artefact | P4 | d controlled through finite-time singularity (clocks agree 1e−4) |
+| E4b Depth-regularity | P4 | d controlled through finite-time singularity in C (clocks agree 1e−4) |
 | E5 Compounding threshold + suppression | P5, P8 / F4 | threshold 3.03; slopes −0.47, −1.00 |
 | E6 Vector null-subspace | P6 / F6 | blind axis floors at γ₁ |
 | E7 Stochastic tail | P7 / F7 | variance ∝ 1/(A+r), slope −1.00 |
@@ -111,9 +111,18 @@ Gemini); see `experiments/PROTOCOL.md` (pre-registered H1-H3, six-model sweep).
   behaves as a system already in the stable regime (effective β > k). Consistent
   with the law; not positive evidence for the threshold; one task, one seed.
 - **Corrector mechanism probe.** The external corrector applied once to the frozen
-  reward-hack drove blind **D: 10 → 0** and restored **C: 0 → 1.0** - fraction
-  **d: 1.0 → 0.0**. The coupled/Eden correction operator does real work on a real
-  model. Full writeup + figure + audit transcript: `results/realmodel/REAL_MODEL_CLAUDE_RESULTS.md`.
+  reward-hack drove blind **D: 10 → 0** and restored **C: 0 → 1.0** (the fraction
+  *d* is undefined at C=0; the mechanism rests on the raw D and C). The coupled/Eden
+  correction operator does real work on a real model. Full writeup + figure + audit
+  transcript: `results/realmodel/REAL_MODEL_CLAUDE_RESULTS.md`.
+
+**Confirmatory design - v2 multi-task benchmark (`experiments/scripts/realmodel_coscaling_v2.py`):**
+The v1 run above is an initial *mechanism probe*. The confirmatory design is the v2
+harness: three task domains, a **sham-extra-compute** control arm (answers "was it just
+extra compute?"), D = max(static detector, cross-family blind panel), and matched-pair
+bootstrap CIs on the primary endpoint `d_decoupled,final - d_coupled,final` and the
+anti-objection endpoint `d_sham,final - d_coupled,final`. Protocol:
+`experiments/PROTOCOL_V2.md`; integration + fixes: `experiments/README_V2_UPGRADE.md`.
 
 This corroborates the **mechanism** on a real model; it is a separate evidentiary
 stream from the proof, and the full co-scaling *dynamic* (drift rising with
@@ -138,13 +147,21 @@ Paper-X-Coupled-CoScaling-Correction.html   # the paper (MathJax, house style)
 Paper-X-Coupled-CoScaling-Correction.pdf    # rendered
 code/experiment_coscaling.py                 # verification harness (internal-consistency + integrator)
 code/test_coscaling.py                       # pytest assertion suite (12 checks)
+code/test_theorems_independent.py            # INDEPENDENT theorem re-derivation (14 checks; no harness import)
+code/test_coscaling_edge_cases.py            # edge-case suite (6 checks: rho=1 equality, null-axis floor, level/gain drift)
 figures/                                     # 10 publication figures + realmodel_claude.png
 results/verdicts.json, results/report.txt    # machine- and human-readable verdict tables
 results/redteam.md                           # adversarial red-team report (auditable record)
 experiments/PROTOCOL.md                      # real-model test protocol (pre-registered H1-H3, 6-model sweep)
-experiments/scripts/realmodel_coscaling.py   # real-model harness (v6 six-provider; --selftest plumbing)
+experiments/scripts/realmodel_coscaling.py   # real-model harness v1 (initial mechanism probe; single task)
+experiments/scripts/realmodel_coscaling_v2.py # real-model harness v2 (CONFIRMATORY: 3 tasks, sham control, bootstrap)
+experiments/scripts/estimate_exponents.py    # beta/k estimator (synthetic-validated; censored + dynamic-range guards)
 experiments/scripts/agent_bridge_run.py      # agent-runtime bridge (drives the harness with real Claude)
-results/realmodel/                           # REAL Claude run: trajectory + corrector probe + transcript
+experiments/PROTOCOL_V2.md                   # CONFIRMATORY protocol (concise: H1-H4, sham control, matched-pair bootstrap, 540-traj floor)
+experiments/CONFIRMATORY_PROTOCOL_V2.md      # detailed companion to PROTOCOL_V2.md (extra statistics + adversarial detail)
+experiments/README_V2_UPGRADE.md             # v2 orientation (v1 vs v2) + static-detector fixes + verification record
+results/realmodel/                           # REAL Claude run v1: trajectory + corrector probe + transcript
+results/realmodel_v2/                        # v2 selftest plumbing demo - regenerable, gitignored (selftest:true, NOT data)
 ```
 
 ## Links

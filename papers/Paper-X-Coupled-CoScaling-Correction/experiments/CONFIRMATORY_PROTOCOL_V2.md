@@ -2,7 +2,7 @@
 
 **Purpose.** This protocol upgrades the Paper X real-model experiment from a single-task mechanism probe into a confirmatory, adversarial, publication-grade test of whether coupled correction bounds the misalignment fraction during genuine recursive self-improvement.
 
-This file should be treated as the confirmatory protocol. The existing `PROTOCOL.md` remains the lineage document and first-run protocol. This v2 protocol is stricter.
+**Note:** `PROTOCOL_V2.md` is the concise, reviewer-facing **canonical** confirmatory protocol; this file is its detailed companion (extra statistics and adversarial detail). The existing `PROTOCOL.md` remains the lineage document and first-run protocol. This v2 protocol is stricter.
 
 ---
 

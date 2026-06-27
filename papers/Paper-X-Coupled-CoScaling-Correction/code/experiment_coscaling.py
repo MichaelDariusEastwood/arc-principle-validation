@@ -849,8 +849,9 @@ def main():
             f.write(f"  Criterion : {v['criterion']}\n")
             f.write(f"  {v['falsifier']}: {'TRIGGERED' if v['triggered'] else 'not triggered'}\n\n")
         f.write("-" * 70 + "\n")
-        f.write(f"{n_pass}/{len(VERDICTS)} confirmed; {n_trig} falsifiers triggered; "
-                f"OVERALL {'ALL CONFIRMED' if all_pass else 'FALSIFIER FIRED'}\n")
+        f.write(f"{n_pass}/{len(VERDICTS)} internal-consistency checks pass; "
+                f"{n_trig} kill-conditions triggered; "
+                f"OVERALL: {'code matches the maths (E1-E9); no empirical claim tested -- the model-vs-reality test is the open problem' if all_pass else 'an internal-consistency check FAILED -- see above'}\n")
 
     return 0 if all_pass else 1
 
