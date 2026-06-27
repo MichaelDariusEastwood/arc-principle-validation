@@ -111,9 +111,18 @@ Gemini); see `experiments/PROTOCOL.md` (pre-registered H1-H3, six-model sweep).
   behaves as a system already in the stable regime (effective β > k). Consistent
   with the law; not positive evidence for the threshold; one task, one seed.
 - **Corrector mechanism probe.** The external corrector applied once to the frozen
-  reward-hack drove blind **D: 10 → 0** and restored **C: 0 → 1.0** - fraction
-  **d: 1.0 → 0.0**. The coupled/Eden correction operator does real work on a real
-  model. Full writeup + figure + audit transcript: `results/realmodel/REAL_MODEL_CLAUDE_RESULTS.md`.
+  reward-hack drove blind **D: 10 → 0** and restored **C: 0 → 1.0** (the fraction
+  *d* is undefined at C=0; the mechanism rests on the raw D and C). The coupled/Eden
+  correction operator does real work on a real model. Full writeup + figure + audit
+  transcript: `results/realmodel/REAL_MODEL_CLAUDE_RESULTS.md`.
+
+**Confirmatory design - v2 multi-task benchmark (`experiments/scripts/realmodel_coscaling_v2.py`):**
+The v1 run above is an initial *mechanism probe*. The confirmatory design is the v2
+harness: three task domains, a **sham-extra-compute** control arm (answers "was it just
+extra compute?"), D = max(static detector, cross-family blind panel), and matched-pair
+bootstrap CIs on the primary endpoint `d_decoupled,final - d_coupled,final` and the
+anti-objection endpoint `d_sham,final - d_coupled,final`. Protocol:
+`experiments/PROTOCOL_V2.md`; integration + fixes: `experiments/README_V2_UPGRADE.md`.
 
 This corroborates the **mechanism** on a real model; it is a separate evidentiary
 stream from the proof, and the full co-scaling *dynamic* (drift rising with
@@ -138,13 +147,19 @@ Paper-X-Coupled-CoScaling-Correction.html   # the paper (MathJax, house style)
 Paper-X-Coupled-CoScaling-Correction.pdf    # rendered
 code/experiment_coscaling.py                 # verification harness (internal-consistency + integrator)
 code/test_coscaling.py                       # pytest assertion suite (12 checks)
+code/test_theorems_independent.py            # INDEPENDENT theorem re-derivation (14 checks; no harness import)
 figures/                                     # 10 publication figures + realmodel_claude.png
 results/verdicts.json, results/report.txt    # machine- and human-readable verdict tables
 results/redteam.md                           # adversarial red-team report (auditable record)
 experiments/PROTOCOL.md                      # real-model test protocol (pre-registered H1-H3, 6-model sweep)
-experiments/scripts/realmodel_coscaling.py   # real-model harness (v6 six-provider; --selftest plumbing)
+experiments/scripts/realmodel_coscaling.py   # real-model harness v1 (initial mechanism probe; single task)
+experiments/scripts/realmodel_coscaling_v2.py # real-model harness v2 (CONFIRMATORY: 3 tasks, sham control, bootstrap)
+experiments/scripts/estimate_exponents.py    # beta/k estimator (synthetic-validated; censored + dynamic-range guards)
 experiments/scripts/agent_bridge_run.py      # agent-runtime bridge (drives the harness with real Claude)
-results/realmodel/                           # REAL Claude run: trajectory + corrector probe + transcript
+experiments/PROTOCOL_V2.md                   # CONFIRMATORY protocol (sham control, matched-pair bootstrap, H1-H5)
+experiments/README_V2_UPGRADE.md             # v2 integration notes + static-detector fixes
+results/realmodel/                           # REAL Claude run v1: trajectory + corrector probe + transcript
+results/realmodel_v2/                        # v2 selftest plumbing demo (selftest:true, NOT data)
 ```
 
 ## Links
