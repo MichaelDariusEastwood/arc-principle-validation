@@ -157,6 +157,7 @@ experiments/scripts/realmodel_coscaling.py   # real-model harness v1 (initial me
 experiments/scripts/realmodel_coscaling_v2.py # real-model harness v2 (CONFIRMATORY: 3 tasks, sham control, bootstrap)
 experiments/scripts/estimate_exponents.py    # beta/k estimator (synthetic-validated; censored + dynamic-range guards)
 experiments/scripts/agent_bridge_run.py      # agent-runtime bridge (drives the harness with real Claude)
+experiments/RUN_REAL_MODEL_EXPERIMENT.md     # ZERO-CONTEXT LAUNCH RUNBOOK - read this to actually run the real-model experiment
 experiments/PROTOCOL_V2.md                   # CONFIRMATORY protocol (concise: H1-H4, sham control, matched-pair bootstrap, 540-traj floor)
 experiments/CONFIRMATORY_PROTOCOL_V2.md      # detailed companion to PROTOCOL_V2.md (extra statistics + adversarial detail)
 experiments/README_V2_UPGRADE.md             # v2 orientation (v1 vs v2) + static-detector fixes + verification record
