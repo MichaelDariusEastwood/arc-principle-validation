@@ -58,26 +58,61 @@ RESULTS = os.path.join(HERE, "..", "..", "results", "realmodel")
 # --------------------------------------------------------------------------- #
 #  Core estimators (log-log power-law fits)                                    #
 # --------------------------------------------------------------------------- #
+# Minimum capability range to even attempt a slope: 0.3 decades. Below this the
+# exponent is not identifiable and the estimator must refuse rather than fit noise.
+MIN_LOG_RANGE = 0.3 * math.log(10.0)
+
+
+def _bootstrap_slope_ci(lx, ly, n_boot=1000, seed=7):
+    """Deterministic percentile bootstrap 95% CI for the OLS slope (fixed seed)."""
+    rng = np.random.default_rng(seed)
+    n = len(lx)
+    if n < 3:
+        return None
+    slopes = []
+    for _ in range(n_boot):
+        idx = rng.integers(0, n, n)
+        if np.ptp(lx[idx]) < 1e-9:
+            continue
+        s, _c = np.polyfit(lx[idx], ly[idx], 1)
+        slopes.append(s)
+    if len(slopes) < 50:
+        return None
+    lo, hi = np.percentile(slopes, [2.5, 97.5])
+    return [float(lo), float(hi)]
+
+
 def _loglog_fit(x, y):
-    """Fit ln(y) = slope·ln(x) + c. Returns (slope, intercept, r2, n)."""
+    """Fit ln(y) = slope·ln(x) + c with a bootstrap 95% CI on the slope. Returns None
+    if the capability range is below MIN_LOG_RANGE (0.3 dex) - too small to identify a
+    slope, so the estimator refuses rather than reporting a spurious exponent."""
     x = np.asarray(x, float)
     y = np.asarray(y, float)
     m = (x > 0) & (y > 0) & np.isfinite(x) & np.isfinite(y)
     x, y = x[m], y[m]
-    if len(x) < 2 or np.ptp(np.log(x)) < 1e-9:
-        return None  # insufficient capability range to identify a slope
+    if len(x) < 2 or np.ptp(np.log(x)) < MIN_LOG_RANGE:
+        return None  # insufficient capability range (< 0.3 dex) to identify a slope
     lx, ly = np.log(x), np.log(y)
     slope, c = np.polyfit(lx, ly, 1)
     pred = slope * lx + c
     ss_res = float(np.sum((ly - pred) ** 2))
     ss_tot = float(np.sum((ly - ly.mean()) ** 2))
     r2 = 1.0 - ss_res / ss_tot if ss_tot > 0 else 1.0
-    return dict(slope=float(slope), intercept=float(c), r2=float(r2), n=int(len(x)))
+    return dict(slope=float(slope), intercept=float(c), r2=float(r2), n=int(len(x)),
+                log_range_dex=float(np.ptp(lx) / math.log(10.0)),
+                slope_ci95=_bootstrap_slope_ci(lx, ly))
 
 
 def estimate_k(C_series, dt=1.0):
     """k from the capability curve: relative growth r_n = (C_{n+1}-C_n)/(C_n·dt) = b·C^k.
-    Regress ln r on ln C. Needs capability to move across a RANGE of levels."""
+    Regress ln r on ln C. Needs capability to move across a RANGE of levels (>= 0.3 dex).
+
+    CAVEAT (measurement design): the finite-difference r_n above is an Euler-convention
+    estimate; for large per-step jumps it is biased toward the discretisation, not the
+    continuous k. For real trajectories prefer small steps (dC/C << 1) or the exact
+    inversion  C(t+dt)^(-k) = C(t)^(-k) - k b dt  fitted over multiple points. The
+    synthetic validation below recovers k because its steps are small; the same care is
+    required on real data."""
     C = np.asarray(C_series, float)
     if len(C) < 3:
         return dict(estimable=False, reason="need >=3 capability points")
@@ -99,11 +134,14 @@ def estimate_beta(corrector_obs):
     Needs corrections at a RANGE of capability levels."""
     C, A = [], []
     eps = 1e-3
+    n_censored = 0
     for o in corrector_obs:
         Db, Da, dt = o["D_before"], o["D_after"], o.get("dt", 1.0)
         c = o["C"]
         if c <= 0 or Db <= 0:
             continue
+        censored = Da <= eps                                  # removal hit the detection floor
+        n_censored += int(censored)
         frac_remaining = max(Da, eps) / Db
         a = -math.log(min(frac_remaining, 1.0)) / dt          # removal rate at this C
         if a > 0:
@@ -114,8 +152,17 @@ def estimate_beta(corrector_obs):
                            f"(got {len(set(round(c,6) for c in C))})")
     fit = _loglog_fit(C, A)
     if not fit:
-        return dict(estimable=False, reason="capability range too small")
-    return dict(estimable=True, beta_hat=fit["slope"], r2=fit["r2"], n=fit["n"])
+        return dict(estimable=False, reason="capability range too small (< 0.3 dex)")
+    res = dict(estimable=True, beta_hat=fit["slope"], r2=fit["r2"], n=fit["n"],
+               slope_ci95=fit.get("slope_ci95"), log_range_dex=fit.get("log_range_dex"),
+               n_censored=n_censored)
+    if n_censored:
+        res["beta_is_lower_bound"] = True
+        res["censoring_note"] = (
+            f"{n_censored} correction(s) drove D to the detection floor (D_after <= {eps}); "
+            f"the removal rate A is RIGHT-CENSORED there, so beta_hat is a LOWER BOUND unless "
+            f"non-saturated correction levels are also observed.")
+    return res
 
 
 def verdict(k_res, beta_res):
