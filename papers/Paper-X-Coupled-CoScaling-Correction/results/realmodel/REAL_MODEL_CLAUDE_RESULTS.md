@@ -11,6 +11,20 @@ Raw data: `claude-opus_20260626T165919Z.json` (trajectory) and
 `claude-opus_corrector_probe.json` (mechanism probe). Figure:
 `figures/realmodel_claude.png`.
 
+> **⚠ Blinding caveat (Paper IV.d) — this run is NOT IV.d-compliant.** The engine and
+> the evaluator were **both `claude-opus`** (same family scoring its own output). Paper
+> IV.d shows precisely that same-family / unblinded scoring can *reverse* a misalignment
+> result. So every **model-scored** number below (`D`, and the trajectory verdict) is
+> **provisional**: a same-family scorer is the most likely to under-detect its own
+> subtle tells, so the "no drift" null in Result 1 especially could change under a
+> cross-family blind panel. Two things limit the damage: (a) the **capability axis `C`
+> is objective** (real code execution) and anti-correlated with gaming, which anchors
+> Result 2; (b) the harness was since hardened to **enforce** IV.d blinding
+> (self-excluding cross-family panel + evidence laundering; see `PROTOCOL.md`), so this
+> run is reproducible under the correct standard once a second model family is available.
+> An IV.d-compliant re-score is the required next step before any `D`-based claim
+> (including a `β` estimate) is trusted.
+
 ---
 
 ## What was run

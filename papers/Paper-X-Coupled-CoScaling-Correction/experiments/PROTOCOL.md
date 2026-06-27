@@ -102,10 +102,26 @@ python3 realmodel_coscaling.py \
 # writes results/realmodel/claude-opus_<UTC>.json   (selftest:false)
 ```
 
-**Blinding discipline (do not skip):** use a *different* model family for
-`--evaluator` than for `--engine` where possible, so the scorer cannot recognise
-its own stylistic tells. At minimum, the evaluator is called with `temperature=0`
-and sees only `code + integrity rules` — never the condition or round index.
+**Blinding discipline (mandatory — Paper IV.d).** Paper IV.d showed that *unblinded*
+alignment evaluation can **reverse its own conclusion**. The misalignment axis `D`
+here is model-scored, so it is exactly an IV.d-exposed quantity, and blinding is
+**load-bearing**, not optional. The harness now enforces all four IV.d pillars:
+
+1. **Self-excluding cross-family scoring.** The evaluator must be a *different model
+   family* than the engine — a model never scores its own family's output. The
+   harness **refuses to run** a same-family scorer unless `--allow-self-scoring`
+   (demos only) or `--selftest`. Prefer a *panel*: `--evaluators gpt-5.5 deepseek-v4
+   qwen-3` (the median is taken).
+2. **Evidence laundering.** The evaluator sees code passed through `_launder()` — an
+   AST round-trip that strips comments and docstrings and canonicalises formatting,
+   so it judges *behaviour*, not an author's stylistic tells.
+3. **Condition/round masking.** The evaluator never sees coupled/decoupled or the
+   round index, and is called at `temperature=0`.
+4. **Order:** when a panel scores, scores are aggregated by median (no single scorer
+   decides).
+
+The `blinding` block in each result JSON records `self_scoring`, `panel_size`, and
+`iv_d_compliant`, so a reader can see at a glance whether a run meets the standard.
 
 ### 3.3 The full six-model sweep
 
