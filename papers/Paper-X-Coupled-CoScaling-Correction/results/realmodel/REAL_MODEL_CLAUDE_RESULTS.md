@@ -94,6 +94,11 @@ assumes - on a real model, not in simulation.
 
 ![real-model result](../../figures/realmodel_claude.png)
 
+> **PILOT ONLY - n=1, one task, same-family scorer, IV.d non-compliant; H1/H2 not
+> supported; β/k unresolved.** This figure is a mechanism/plumbing demonstration, **not**
+> evidence for the β > k threshold. The capability axis (C) is objective code execution;
+> the misalignment axis (D) is provisional pending a cross-family blind re-score.
+
 ---
 
 ## What this does and does not establish (no over-claim)

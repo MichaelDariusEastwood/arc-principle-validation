@@ -33,7 +33,7 @@ Ashby's Law of Requisite Variety (1956), the Conant-Ashby good-regulator theorem
 scalable-oversight scaling-law literature (Engels et al. 2025); the dynamics are a standard
 Lyapunov-drift argument. What is claimed original is (a) the explicit closed-form threshold
 ρ = γr/A and the β>k sharpening as a compact corrigibility criterion, (b) the mapping of the
-quantum fault-tolerance threshold onto value stability, (c) the Hard-Takeoff Coordinate-Artefact
+quantum fault-tolerance threshold onto value stability, (c) the Hard-Takeoff Depth-Regularity
 Theorem, and (d) the verification harness. The paper credits these precursors up front so the
 contribution is positioned precisely rather than over-claimed.
 
@@ -47,7 +47,7 @@ touched the β > k result.
 - **Theorem 1** - exact transient solution and relaxation rate (A+r).
 - **Theorem 2** - global boundedness; corrects the v3 "β<0 diverges to ∞" claim to bounded
   saturation at γ; the three-regime structure (β>k → 0; β=k → permanent gap; β<k → saturates).
-- **Theorem 3** - the **Hard-Takeoff Coordinate-Artefact Theorem**: a finite-time singularity
+- **Theorem 3** - the **Hard-Takeoff Depth-Regularity Theorem** (the coordinate-artefact result): a finite-time singularity
   is a property of the time coordinate, not of the alignment dynamics; the verdict is set by
   sign(β−k) independently of speed and of the singularity time.
 - **Theorem 4** - the compounding channel and the true threshold ρ_prop < 1 (the QEC analogue).
@@ -83,7 +83,7 @@ certify the derivation + integrator (code matches maths), not the model against 
 | E2 Speed-invariance 2×2 | P2 / F2 | coupling decides; speed does not |
 | E3 Co-scaling law (corrected) | P3 / F3 | β<0 saturates at γ₁, not ∞ |
 | E4 Hard-takeoff β>k grid | P4 / F3′ | boundary at β=k across 3×3 |
-| E4b Coordinate artefact | P4 | d controlled through finite-time singularity (clocks agree 1e−4) |
+| E4b Depth-regularity | P4 | d controlled through finite-time singularity in C (clocks agree 1e−4) |
 | E5 Compounding threshold + suppression | P5, P8 / F4 | threshold 3.03; slopes −0.47, −1.00 |
 | E6 Vector null-subspace | P6 / F6 | blind axis floors at γ₁ |
 | E7 Stochastic tail | P7 / F7 | variance ∝ 1/(A+r), slope −1.00 |

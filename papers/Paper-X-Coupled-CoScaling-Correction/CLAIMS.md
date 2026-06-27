@@ -11,7 +11,7 @@ falsifiable hypothesis · **Cond** conditional implication.
 | 1 | Stability of recursive self-improvement is governed by the exponent inequality **$\beta > k$** (correction must out-scale drift-acceleration). | **P** | Theorems 1, 3, 4; §3.4-3.8 |
 | 2 | Exact steady-state misalignment fraction $d^* = \gamma_1 r/(A+r)$, reducing to $\rho = \gamma_1 r/A$ when $A \gg r$. | **P** | Theorem 1; §3.5 |
 | 3 | In the gain-only model the fraction **saturates at $\gamma_1$, it does not diverge to infinity** (corrects the prior draft). | **P** | Theorem 2; §3.4 |
-| 4 | A finite-time hard takeoff is alignment-stable iff $\beta > k$; the verdict $= \mathrm{sign}(\beta - k)$, independent of speed and of the singularity time. | **P** | Theorem 3 (Hard-Takeoff Coordinate-Artefact); §3.7 |
+| 4 | A finite-time hard takeoff is alignment-stable iff $\beta > k$; the verdict $= \mathrm{sign}(\beta - k)$, independent of speed and of the singularity time. | **P** | Theorem 3 (Hard-Takeoff Depth-Regularity); §3.7 |
 | 5 | Genuine divergence lives in a distinct compounding channel with threshold $\rho_{\mathrm{prop}} = (\gamma_3 - 1)r/A < 1$. | **P** | Theorem 4; §3.8 |
 | 6 | Vector misalignment: an exact spectral-abscissa threshold; misalignment persists on the corrector's null subspace ("you cannot correct what you do not measure"). | **P** | Theorem 5; §3.9 |
 | 7 | Stochastic drift: an Ornstein-Uhlenbeck tail bound for governance. | **P** | Theorem 6; §3.10 |
@@ -32,7 +32,7 @@ falsifiable hypothesis · **Cond** conditional implication.
   time-stamped on OSF (10.17605/OSF.IO/6C5XB). This is real and is the author's.
 - **Novelty** (new to the literature): the co-scaling *intuition* has ancestors (Ashby 1956;
   Conant-Ashby 1970; scalable oversight; Lyapunov drift), credited in §2. The defensible *novel*
-  residue is: the closed-form $\beta > k$ criterion + the Hard-Takeoff Coordinate-Artefact theorem
+  residue is: the closed-form $\beta > k$ criterion + the Hard-Takeoff Depth-Regularity theorem
   (this paper); the IV.d blinding-reversal measurement law (companion); and the runnable $\beta/k$
   estimator + protocol. Programme-wide prior-art audits are committed under each paper's `results/`.
 

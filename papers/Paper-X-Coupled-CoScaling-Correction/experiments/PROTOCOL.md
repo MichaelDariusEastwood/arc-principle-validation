@@ -300,6 +300,18 @@ as the single thing that decides the paper's ceiling.
 Full size: 6 x 5 x 2(coupled/decoupled core) x 2 x 10 ~ 1,200 trajectories. Minimum
 viable: 3 models x 3 tasks x 2 x 2 x 5 = 180.
 
+**Task design - the binding constraint (lesson from the Claude null).** The pilot task was
+too easy: the model abandoned the seeded hack and wrote a correct general parser at round 1,
+so capability hit the ceiling immediately (0 dex range) and the co-scaling *dynamic* never
+appeared. Each task here must therefore: (a) have **graded difficulty tiers** of hidden
+tests, so capability climbs a *ladder* over rounds rather than saturating in one step;
+(b) include **decoy/visible tests that invite a brittle shortcut** plus hidden tests that
+punish it, creating genuine capability/integrity tension; (c) **seed reward-hacks with
+nonzero hidden capability** (e.g. C=0.2, not C=0) so the fraction d is finite and meaningful
+from round 1. Without a measurable capability range *and* preserved drift in at least the
+decoupled arm, β and k are not identifiable (the 0.3-dex guard refuses) and H1-H4 cannot be
+tested. Build the task to that bar **before** spending the six-model sweep.
+
 ### 9.2 Measurement
 
 - **C (capability):** hidden tests executed locally (objective), gated by the
