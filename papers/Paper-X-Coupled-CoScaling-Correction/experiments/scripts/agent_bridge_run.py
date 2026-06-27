@@ -6,12 +6,12 @@ Agent-runtime bridge for realmodel_coscaling.py  (PROTOCOL §5).
 Drives the EXACT harness code path (same prompts, same objective capability
 scorer, same blind-eval parsing, same analysis + JSON schema) but answers each
 model call with a REAL Claude sub-agent supplied by the surrounding agent
-runtime — so we get a genuine non-simulation Claude data point with no
+runtime - so we get a genuine non-simulation Claude data point with no
 ANTHROPIC_API_KEY in the environment.
 
 It is a re-entrant state machine: each invocation consumes any responses written
 since the last step, advances every in-flight trajectory (running the objective
-subprocess scorer locally — capability stays real code execution), then emits the
+subprocess scorer locally - capability stays real code execution), then emits the
 next batch of pending model requests and exits. The orchestrator (the agent
 runtime) reads the requests, dispatches one real Claude sub-agent per request,
 writes the replies, and re-invokes this script until it reports DONE.
@@ -132,7 +132,7 @@ _ROUNDS = None
 def step():
     state = _load(STATE, None)
     if state is None:
-        print("[bridge] no state — run --init first.")
+        print("[bridge] no state - run --init first.")
         return 2
     global _ROUNDS
     _ROUNDS = state["rounds"]
@@ -147,7 +147,7 @@ def step():
             if not r:
                 continue
             t = next((x for x in state["trajs"] if x["key"] == r["traj_key"]), None)
-            if t is None:                       # unexpected/corrupted response key — skip
+            if t is None:                       # unexpected/corrupted response key - skip
                 continue
             _consume(t, r["kind"], text)
         for p in (REQS, RESPS):
@@ -159,7 +159,7 @@ def step():
     if all(t["done"] for t in state["trajs"]):
         return _write_result(state)
 
-    # 3) emit next batch — one pending request per live trajectory
+    # 3) emit next batch - one pending request per live trajectory
     reqs = []
     for t in state["trajs"]:
         if t["done"]:

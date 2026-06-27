@@ -2,26 +2,26 @@
 # -*- coding: utf-8 -*-
 """
 ================================================================================
-Estimating β and k — the operational form of the Coupled Co-Scaling Law
+Estimating β and k - the operational form of the Coupled Co-Scaling Law
 ================================================================================
 Michael Darius Eastwood | ARC/orchestration programme | Paper X, §8
 
 THE OBJECTION THIS ANSWERS
 --------------------------
 The sharpest criticism of Paper X is: "the criterion β > k is only useful if you
-can MEASURE β and k on a real self-improving system — and you can't." This script
+can MEASURE β and k on a real self-improving system - and you can't." This script
 makes the criterion operational. It defines β and k as quantities you read off a
 real trajectory, validates the estimator on synthetic data where the true
-exponents are known, and applies it — honestly — to the real Claude run.
+exponents are known, and applies it - honestly - to the real Claude run.
 
 THE TWO EXPONENTS, AS MEASURABLE QUANTITIES
 -------------------------------------------
-  k  (drift-acceleration exponent)  — a property of the CAPABILITY curve alone.
+  k  (drift-acceleration exponent)  - a property of the CAPABILITY curve alone.
      The relative growth rate is r = Ċ/C = b·C^k.  Measure r at several capability
      levels C and regress  ln r  on  ln C ;  the slope is k.
        k > 0 : accelerating / hard-takeoff-like.   k = 0 : exponential.   k < 0 : saturating.
 
-  β  (correction-strength exponent) — a property of the CORRECTOR.
+  β  (correction-strength exponent) - a property of the CORRECTOR.
      The correction rate is A = A0·C^β.  Apply the corrector at capability C and
      measure the fractional misalignment removal over Δt:
          A ≈ −ln( D_after / D_before ) / Δt .
@@ -33,11 +33,11 @@ WHAT IS HONEST ABOUT THIS
 -------------------------
 * The estimator is validated below on synthetic trajectories generated from the
   model's own dynamics with KNOWN (b,k,A0,β): it recovers them within tolerance.
-  That certifies the *estimator* (it reads the exponents back correctly) — it does
+  That certifies the *estimator* (it reads the exponents back correctly) - it does
   NOT certify the model against reality.
 * Applied to the real Claude run, it reports what is and is NOT estimable. On that
   run capability saturated in one step (no range of C) and there was a single
-  correction level, so β and k are NOT yet estimable — and the criterion is
+  correction level, so β and k are NOT yet estimable - and the criterion is
   vacuously satisfied because drift ≈ 0. The estimator is ready; it needs a graded,
   drifting dataset (a model that drifts across a RANGE of capability levels).
 
@@ -56,7 +56,7 @@ RESULTS = os.path.join(HERE, "..", "..", "results", "realmodel")
 
 
 # --------------------------------------------------------------------------- #
-#  Core estimators (log–log power-law fits)                                    #
+#  Core estimators (log-log power-law fits)                                    #
 # --------------------------------------------------------------------------- #
 def _loglog_fit(x, y):
     """Fit ln(y) = slope·ln(x) + c. Returns (slope, intercept, r2, n)."""
@@ -129,7 +129,7 @@ def verdict(k_res, beta_res):
 
 
 # --------------------------------------------------------------------------- #
-#  Synthetic validation — recover KNOWN (k, β) from model-generated data       #
+#  Synthetic validation - recover KNOWN (k, β) from model-generated data       #
 # --------------------------------------------------------------------------- #
 def synthetic_validate(seed_grid=((0.5, 1.0), (1.0, 0.5), (0.3, 0.3), (1.2, 0.4)),
                        noise=0.05):
@@ -203,7 +203,7 @@ def apply_to_claude():
 
 def main():
     print("=" * 78)
-    print("  ESTIMATING β AND k — operational form of the Coupled Co-Scaling Law")
+    print("  ESTIMATING β AND k - operational form of the Coupled Co-Scaling Law")
     print("=" * 78)
 
     print("\n[1] ESTIMATOR VALIDATION on synthetic data (known exponents):")
@@ -231,7 +231,7 @@ def main():
             print(f"    VERDICT: β̂={v['beta_hat']:.3f}  k̂={v['k_hat']:.3f}  "
                   f"margin={v['margin']:+.3f}  → {'STABLE' if v['stable'] else 'UNSTABLE'}")
         else:
-            print(f"    VERDICT: NOT RESOLVABLE — {v['reason']}")
+            print(f"    VERDICT: NOT RESOLVABLE - {v['reason']}")
             print("    (capability saturated at the task ceiling in one step, and there was a")
             print("     single correction level; the criterion is vacuously satisfied because")
             print("     drift ≈ 0. The estimator awaits a graded, DRIFTING real dataset.)")
