@@ -35,6 +35,11 @@ six edge-case tests pass, and the framework's own suites (independent-theorem 14
 
 ## Run
 
+> **To actually launch the experiment from zero context, read
+> `RUN_REAL_MODEL_EXPERIMENT.md`** - the self-contained runbook (preconditions, keys,
+> sandbox, the selftest -> shakeout -> pilot -> credible ladder, output reading, and the
+> claim boundary). The commands below are the quick reference.
+
 ```bash
 # plumbing self-test (deterministic, no API, NOT data)
 python3 realmodel_coscaling_v2.py --selftest --rounds 3 --seeds 1 --tasks arith --conditions coupled decoupled --speeds steady
