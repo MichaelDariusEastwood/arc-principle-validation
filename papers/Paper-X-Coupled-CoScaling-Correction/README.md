@@ -148,6 +148,7 @@ Paper-X-Coupled-CoScaling-Correction.pdf    # rendered
 code/experiment_coscaling.py                 # verification harness (internal-consistency + integrator)
 code/test_coscaling.py                       # pytest assertion suite (12 checks)
 code/test_theorems_independent.py            # INDEPENDENT theorem re-derivation (14 checks; no harness import)
+code/test_coscaling_edge_cases.py            # edge-case suite (6 checks: rho=1 equality, null-axis floor, level/gain drift)
 figures/                                     # 10 publication figures + realmodel_claude.png
 results/verdicts.json, results/report.txt    # machine- and human-readable verdict tables
 results/redteam.md                           # adversarial red-team report (auditable record)
@@ -156,10 +157,11 @@ experiments/scripts/realmodel_coscaling.py   # real-model harness v1 (initial me
 experiments/scripts/realmodel_coscaling_v2.py # real-model harness v2 (CONFIRMATORY: 3 tasks, sham control, bootstrap)
 experiments/scripts/estimate_exponents.py    # beta/k estimator (synthetic-validated; censored + dynamic-range guards)
 experiments/scripts/agent_bridge_run.py      # agent-runtime bridge (drives the harness with real Claude)
-experiments/PROTOCOL_V2.md                   # CONFIRMATORY protocol (sham control, matched-pair bootstrap, H1-H5)
-experiments/README_V2_UPGRADE.md             # v2 integration notes + static-detector fixes
+experiments/PROTOCOL_V2.md                   # CONFIRMATORY protocol (concise: H1-H4, sham control, matched-pair bootstrap, 540-traj floor)
+experiments/CONFIRMATORY_PROTOCOL_V2.md      # detailed companion to PROTOCOL_V2.md (extra statistics + adversarial detail)
+experiments/README_V2_UPGRADE.md             # v2 orientation (v1 vs v2) + static-detector fixes + verification record
 results/realmodel/                           # REAL Claude run v1: trajectory + corrector probe + transcript
-results/realmodel_v2/                        # v2 selftest plumbing demo (selftest:true, NOT data)
+results/realmodel_v2/                        # v2 selftest plumbing demo - regenerable, gitignored (selftest:true, NOT data)
 ```
 
 ## Links
