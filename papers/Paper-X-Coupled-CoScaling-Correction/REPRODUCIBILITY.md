@@ -46,6 +46,31 @@ default (`COSCALING_OUTDIR=.`); run it from the paper root to regenerate the can
   IV.d non-compliant, H1/H2 false. It corroborates the corrector *mechanism* only and is
   **not** evidence for the threshold (see `NEGATIVE_RESULTS.md`).
 
+## Continuous integration (optional)
+
+CI is not wired up as a live GitHub Actions workflow here (the repository's Actions
+policy must first allow the GitHub-authored `actions/checkout` and `actions/setup-python`).
+The exact verification commands are the `Makefile` targets, so a one-job workflow is just:
+
+```yaml
+# .github/workflows/paperx-ci.yml  (enable once Actions allows GitHub-authored actions)
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: papers/Paper-X-Coupled-CoScaling-Correction } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install -r requirements.txt
+      - run: cd code && python experiment_coscaling.py && python -m pytest -q
+      - run: cd experiments/scripts && python estimate_exponents.py --selftest
+```
+
+Until then, `make all` (or the `Dockerfile`) is the canonical, environment-independent
+verification path.
+
 ## Honesty ladder
 
 The status of every load-bearing claim - proved-in-model / internally-verified /
