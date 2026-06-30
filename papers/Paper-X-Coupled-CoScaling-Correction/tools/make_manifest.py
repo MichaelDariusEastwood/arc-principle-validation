@@ -10,7 +10,7 @@ import hashlib, json, os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXTS = (".html", ".pdf", ".py", ".md", ".json", ".txt", ".png")
 EXTRA = ("Makefile", "Dockerfile", "requirements.txt")
-SKIP_DIRS = {"__pycache__", ".git", ".ipynb_checkpoints"}
+SKIP_DIRS = {"__pycache__", ".git", ".ipynb_checkpoints", ".pytest_cache", "node_modules", ".vscode"}
 SKIP_FILES = {"MANIFEST.json"}
 
 
