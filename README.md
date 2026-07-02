@@ -102,6 +102,12 @@ Each paper folder contains its own `README.md`, along with `experiments/`, `resu
 ## Running Experiments
 
 Experiments live inside each paper's folder under `papers/<Paper>/experiments/`. Most require Python 3.10+ and an API key for the relevant model provider.
+Active experiment paths should prefer the shared Eden gateway when available:
+
+- `EDEN_GATEWAY_URL`
+- `EDEN_GATEWAY_API_KEY`
+
+Legacy direct-provider keys are only for older standalone runs that have not yet been moved behind Eden.
 
 ```bash
 # Paper VII: 50-domain Cauchy validation
