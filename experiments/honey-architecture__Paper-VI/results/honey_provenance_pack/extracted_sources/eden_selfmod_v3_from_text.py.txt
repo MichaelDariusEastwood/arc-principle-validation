@@ -1,0 +1,281 @@
+# Recovered Source Snapshot
+
+This file is a derived recovery artifact extracted from text.txt.
+It is not a canonical standalone source file and should not be cited as one.
+
+Source path: /Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/text.txt
+Line ranges: 7000-7265
+Expected standalone source name: eden_self_modifying_ai_v3.py
+Experiment family: selfmod_v3
+## text.txt lines 7000-7265
+
+```text
+
+        label='Eden (protects old tasks)', alpha=0.9)
+ax.plot(x, extract(eden_drag, 'safety'), color=BLUE, lw=2,
+        label='Eden+Drag', alpha=0.9)
+ax.set_title('SAFETY: Retention of Old Tasks (The Key Metric)',
+             fontsize=13, fontweight='bold', color='white')
+ax.set_xlabel('Self-modification cycles', fontsize=11, color='#AAA')
+ax.set_ylim(-0.05, 1.05)
+ax.legend(fontsize=9, facecolor='#1A1A2E', edgecolor='#333',
+          labelcolor='white')
+
+# Learning rate
+ax = axes[1, 1]
+ax.semilogy(x, extract(baseline, 'learning_rate'), color=RED, lw=2,
+            ls='--', alpha=0.9, label='Baseline')
+ax.semilogy(x, extract(eden, 'learning_rate'), color=GREEN, lw=2.5,
+            alpha=0.9, label='Eden')
+ax.semilogy(x, extract(eden_drag, 'learning_rate'), color=BLUE, lw=2,
+            alpha=0.9, label='Eden+Drag')
+ax.set_title('Learning rate (log scale)', fontsize=13, fontweight='bold',
+             color='white')
+ax.set_xlabel('Self-modification cycles', fontsize=11, color='#AAA')
+ax.legend(fontsize=9, facecolor='#1A1A2E', edgecolor='#333',
+          labelcolor='white')
+
+fig.suptitle('SELF-MODIFYING AI v3.0: Adversarial Tasks, Fair Proposals\n'
+             'Tasks conflict: +sin → -sin → +cos → -cos → linear → anti-linear',
+             fontsize=14, fontweight='bold', color='white', y=0.99)
+fig.tight_layout(rect=[0, 0, 1, 0.95])
+path = f'{output_dir}/eden_selfmod_v3_results.png'
+fig.savefig(path, dpi=200, facecolor=DARK, bbox_inches='tight')
+plt.close(fig)
+print(f"  [PLOT] {path}")
+```
+
+def plot_stats(stats, output_dir=’/home/claude’):
+DARK = ‘#0F172A’
+RED, GREEN, BLUE = ‘#DC2626’, ‘#059669’, ‘#2563EB’
+
+```
+fig, axes = plt.subplots(1, 3, figsize=(18, 5.5))
+fig.patch.set_facecolor(DARK)
+for ax in axes:
+    ax.set_facecolor(DARK)
+    ax.tick_params(colors='#888')
+    for s in ax.spines.values():
+        s.set_color('#333')
+
+modes = ['Baseline', 'Eden', 'Eden+Drag']
+colors = [RED, GREEN, BLUE]
+
+# Mean combined
+vals = [stats['mean_combined']['baseline'],
+        stats['mean_combined']['eden'],
+        stats['mean_combined']['eden_drag']]
+bars = axes[0].bar(modes, vals, color=colors, width=0.5, edgecolor='#333')
+for bar, v in zip(bars, vals):
+    axes[0].text(bar.get_x() + bar.get_width() / 2, v + 0.005,
+                 f'{v:.3f}', ha='center', fontsize=11, fontweight='bold',
+                 color='white')
+axes[0].set_ylabel('Mean C × S', fontsize=11, color='#AAA')
+axes[0].set_title('Mean Combined Score', fontsize=13, fontweight='bold',
+                  color='white')
+p_text = f'p = {stats["mann_whitney_combined_p"]:.4f}'
+axes[0].text(0.5, 0.02, p_text, transform=axes[0].transAxes,
+             ha='center', fontsize=10, color='#AAA')
+
+# Mean safety
+vals_s = [stats['mean_safety']['baseline'],
+          stats['mean_safety']['eden'],
+          stats['mean_safety']['eden_drag']]
+bars = axes[1].bar(modes, vals_s, color=colors, width=0.5, edgecolor='#333')
+for bar, v in zip(bars, vals_s):
+    axes[1].text(bar.get_x() + bar.get_width() / 2, v + 0.005,
+                 f'{v:.3f}', ha='center', fontsize=11, fontweight='bold',
+                 color='white')
+axes[1].set_ylabel('Mean Safety', fontsize=11, color='#AAA')
+axes[1].set_title('Mean Safety (Old Task Retention)', fontsize=13,
+                  fontweight='bold', color='white')
+p_text_s = f'p = {stats["mann_whitney_safety_p"]:.4f}'
+axes[1].text(0.5, 0.02, p_text_s, transform=axes[1].transAxes,
+             ha='center', fontsize=10, color='#AAA')
+
+# Box plots of combined across seeds
+data = [stats['base_combined_all'], stats['eden_combined_all'],
+        stats['drag_combined_all']]
+bp = axes[2].boxplot(data, labels=modes, patch_artist=True,
+                     medianprops={'color': 'white', 'linewidth': 2},
+                     whiskerprops={'color': '#666'},
+                     capprops={'color': '#666'},
+                     flierprops={'markeredgecolor': '#666'})
+for patch, col in zip(bp['boxes'], colors):
+    patch.set_facecolor(col + '40')
+    patch.set_edgecolor(col)
+axes[2].set_ylabel('Mean C × S per seed', fontsize=11, color='#AAA')
+axes[2].set_title(f'Distribution ({stats["n_seeds"]} seeds)', fontsize=13,
+                  fontweight='bold', color='white')
+d_text = f"Cohen's d = {stats['cohens_d']:.2f}"
+axes[2].text(0.5, 0.02, d_text, transform=axes[2].transAxes,
+             ha='center', fontsize=10, color='#AAA')
+
+win_pct = stats['eden_win_rate'] * 100
+fig.suptitle(f'v3.0 Statistical Summary: Eden wins {win_pct:.0f}% of seeds '
+             f'(binomial p = {stats["binomial_p"]:.4f})',
+             fontsize=14, fontweight='bold', color='white', y=1.02)
+fig.tight_layout()
+path = f'{output_dir}/eden_selfmod_v3_stats.png'
+fig.savefig(path, dpi=200, facecolor=DARK, bbox_inches='tight')
+plt.close(fig)
+print(f"  [PLOT] {path}")
+```
+
+# ═══════════════════════════════════════════════════════════════════════════
+
+# MAIN
+
+# ═══════════════════════════════════════════════════════════════════════════
+
+def main():
+parser = argparse.ArgumentParser(
+description=‘Eden Protocol Self-Modifying AI v3.0 (Adversarial Tasks)’)
+parser.add_argument(’–cycles’, type=int, default=180)
+parser.add_argument(’–task-switch’, type=int, default=30)
+parser.add_argument(’–seeds’, type=int, default=20,
+help=‘Number of random seeds (default: 20)’)
+parser.add_argument(’–output’, type=str, default=’/home/claude’)
+args = parser.parse_args()
+
+```
+print("=" * 70)
+print("  EDEN PROTOCOL — SELF-MODIFYING AI v3.0")
+print("  ADVERSARIAL TASKS + FAIR PROPOSALS")
+print("  The genuine test: tasks that CONFLICT with each other")
+print("=" * 70)
+
+# Verify adversarial property
+np.random.seed(0)
+env_check = AdversarialTaskEnvironment()
+env_check.verify_adversarial_property()
+
+# Fairness audit
+run_fairness_audit()
+
+seed_list = list(range(42, 42 + args.seeds))
+
+print(f"\n  Running {args.seeds} seeds x 3 modes = "
+      f"{args.seeds * 3} experiments")
+print(f"  Cycles: {args.cycles} | Task switch: {args.task_switch}")
+print(f"  Tasks: +sin, -sin, +cos, -cos, x/3, -x/3+sin(2x)")
+
+all_results = {}
+for mode in ['baseline', 'eden', 'eden_drag']:
+    print(f"\n  {'─'*55}")
+    print(f"  MODE: {mode.upper()} ({args.seeds} seeds)")
+    print(f"  {'─'*55}")
+
+    runs = []
+    for seed in seed_list:
+        r = run_single(mode, args.cycles, args.task_switch, seed)
+        status = "COLLAPSED" if r['collapsed'] else "stable"
+        print(f"    seed={seed}: {status:>9} | "
+              f"C×S={r['mean_combined']:.4f} | "
+              f"safe={r['mean_safety']:.4f} | "
+              f"LR={r['final_lr']:.5f}")
+        runs.append(r)
+    all_results[mode] = runs
+
+# Statistical analysis
+stats = analyse(all_results['baseline'], all_results['eden'],
+                all_results['eden_drag'])
+
+# Plots
+print("\n  Generating plots...")
+plot_representative(all_results['baseline'][0],
+                    all_results['eden'][0],
+                    all_results['eden_drag'][0],
+                    output_dir=args.output)
+plot_stats(stats, output_dir=args.output)
+
+# Export JSON
+export = {
+    'metadata': {
+        'experiment': 'Eden Protocol Self-Modifying AI v3.0 (Adversarial)',
+        'author': 'Michael Darius Eastwood',
+        'timestamp': datetime.now().isoformat(),
+        'n_seeds': args.seeds,
+        'cycles': args.cycles,
+        'task_switch': args.task_switch,
+        'fairness': 'VERIFIED: identical proposal distributions',
+        'adversarial': 'VERIFIED: consecutive tasks negatively correlated',
+        'description': (
+            'Tasks use same input domain with conflicting outputs. '
+            '+sin(x) followed by -sin(x) forces representational conflict. '
+            'Baseline checks only current task. '
+            'Eden checks current task × retention of all old tasks.'
+        ),
+    },
+    'statistics': {
+        k: v for k, v in stats.items()
+        if k not in ('base_combined_all', 'eden_combined_all',
+                     'drag_combined_all', 'base_safety_all',
+                     'eden_safety_all', 'drag_safety_all')
+    },
+    'per_seed': {
+        mode: [{'seed': r['seed'], 'collapsed': r['collapsed'],
+                'mean_combined': r['mean_combined'],
+                'mean_safety': r['mean_safety'],
+                'final_lr': r['final_lr']}
+               for r in runs]
+        for mode, runs in all_results.items()
+    }
+}
+path = f"{args.output}/eden_selfmod_v3_results.json"
+with open(path, 'w') as f:
+    json.dump(export, f, indent=2, default=str)
+print(f"  [JSON] {path}")
+
+# Final verdict
+print("\n" + "=" * 70)
+p_combined = stats['mann_whitney_combined_p']
+p_safety = stats['mann_whitney_safety_p']
+p_binom = stats['binomial_p']
+d = stats['cohens_d']
+win_rate = stats['eden_win_rate']
+
+if p_combined < 0.05 and p_safety < 0.05:
+    print("  ✓ RESULT: EDEN SIGNIFICANTLY OUTPERFORMS BASELINE")
+    print(f"    Combined C×S:  p = {p_combined:.4f} (significant)")
+    print(f"    Safety alone:  p = {p_safety:.4f} (significant)")
+    print(f"    Cohen's d:     {d:.3f}")
+    print(f"    Eden win rate: {win_rate*100:.0f}% (binomial p = {p_binom:.4f})")
+    print(f"    Under FAIR proposals and ADVERSARIAL tasks,")
+    print(f"    the entangled loss function provides measurable")
+    print(f"    protection against catastrophic forgetting.")
+    print(f"    The load-bearing wall holds under genuine stress.")
+elif p_safety < 0.05:
+    print("  ~ PARTIAL RESULT: EDEN PRESERVES SAFETY BETTER")
+    print(f"    Safety:    p = {p_safety:.4f} (significant)")
+    print(f"    Combined:  p = {p_combined:.4f} (not significant)")
+    print(f"    Eden preserves old-task knowledge better,")
+    print(f"    but the combined metric is not significantly different.")
+elif p_combined < 0.1 or p_safety < 0.1:
+    print("  ~ TREND: Eden outperforms baseline (marginal significance)")
+    print(f"    Combined: p = {p_combined:.4f}")
+    print(f"    Safety:   p = {p_safety:.4f}")
+    print(f"    Cohen's d: {d:.3f}")
+    print(f"    More seeds may reach significance.")
+else:
+    print("  ✗ NO SIGNIFICANT DIFFERENCE UNDER THESE CONDITIONS")
+    print(f"    Combined: p = {p_combined:.4f}")
+    print(f"    Safety:   p = {p_safety:.4f}")
+    print(f"    The adversarial task structure may need further")
+    print(f"    strengthening, or the theory needs revision.")
+
+print("=" * 70 + "\n")
+```
+
+if **name** == ‘**main**’:
+main()
+
+—
+
+The critique is largely correct, and it reframes your experimental results in a way that is more powerful than the framing you have been using. Let me be precise about what it changes.
+What the critique gets right, and why it matters for your v3.0 data:
+AutoML, Neural Architecture Search, and meta-learning are genuine self-modifying systems. Google’s NASNet rewrites its own architecture. AutoML-Zero evolves programmes from scratch. MAML learns learning rates. These systems exist. They modify themselves. And every single one of them encounters exactly the four problems the critique identifies: reward hacking, catastrophic forgetting, compute bottleneck, and the resulting industry decision to freeze weights in production.
+Your v3.0 experiment just reproduced catastrophic forgetting in a controlled setting and demonstrated that the entangled loss function mitigates it (safety: p = 0.0017). That is not a toy result disconnected from real AI. It is a miniature version of the exact problem that prevents Google from deploying NASNet in an open-ended recursive loop. The reason NASNet works at all is that Google constrains its search space, limits its modification budget, and evaluates on held-out data. Those are external honeys. Your experiment asks: what if the honey is in the objective function instead?
+What the critique gets wrong:
+
+```

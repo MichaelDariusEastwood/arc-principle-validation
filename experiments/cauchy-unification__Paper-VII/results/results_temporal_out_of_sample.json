@@ -1,0 +1,447 @@
+{
+  "test_name": "Temporal Out-of-Sample Validation",
+  "description": "Fit candidate functional families on OLD data, then test whether the winning family correctly predicts the functional FORM of NEW data. The strongest form of self-administered replication.",
+  "n_domains": 7,
+  "summary": {
+    "confirmed": 4,
+    "consistent_different": 0,
+    "partial": 2,
+    "inconsistent": 1,
+    "skipped": 0
+  },
+  "domains": [
+    {
+      "domain": "Neural Scaling Laws (LLM Loss vs Parameters)",
+      "predicted_family": "power_law",
+      "train_winner_model": "power_law",
+      "train_winner_family": "power_law",
+      "train_r2": 0.9905647541933925,
+      "train_aicc": -72.66680996295186,
+      "test_winner_model": "power_law",
+      "test_winner_family": "power_law",
+      "test_r2": -75.66095464000553,
+      "test_mape": 38.81481259709922,
+      "families_match": true,
+      "predicted_confirmed": true,
+      "verdict": "CONFIRMED",
+      "verdict_detail": "Same family (power_law) wins BOTH training and test windows. Temporal out-of-sample confirmation achieved.",
+      "n_train": 12,
+      "n_test": 3,
+      "train_source": "Kaplan et al. (2020) arXiv:2001.08361, Fig 1",
+      "test_source": "Hoffmann et al. (2022) arXiv:2203.15556 [Chinchilla]; Touvron et al. (2023) arXiv:2307.09288 [Llama 2]; estimated from public benchmarks [GPT-4 scale]",
+      "all_test_evaluations": [
+        {
+          "model": "power_law",
+          "family": "power_law",
+          "train_aicc": -72.66680996295186,
+          "train_r2": 0.9905647541933925,
+          "test_r2": -75.66095464000553,
+          "test_mape": 38.81481259709922
+        },
+        {
+          "model": "exponential",
+          "family": "exponential",
+          "train_aicc": -24.313877813228384,
+          "train_r2": 0.4694770365247445,
+          "test_r2": -321.2957520844668,
+          "test_mape": 78.8031098136014
+        },
+        {
+          "model": "linear",
+          "family": "linear",
+          "train_aicc": -23.889637698481113,
+          "train_r2": 0.4503857950855683,
+          "test_r2": -105677.51898485448,
+          "test_mape": 1049.4713676849103
+        },
+        {
+          "model": "saturation_exp",
+          "family": "bounded",
+          "train_aicc": -16.70717338854549,
+          "train_r2": -8.149037000748649e-13,
+          "test_r2": -434.4138913787128,
+          "test_mape": 93.03627817058923
+        },
+        {
+          "model": "logistic",
+          "family": "bounded",
+          "train_aicc": 31.18274543799615,
+          "train_r2": -38.85592247233983,
+          "test_r2": -275.3612861948993,
+          "test_mape": 74.11250669801336
+        }
+      ],
+      "notes": "Training and test sets use different data mixes and tokenisers, so exact coefficient match is not expected. The test is whether the power-law functional form remains the best-fitting family across the extended parameter range."
+    },
+    {
+      "domain": "Moore's Law (Transistor Count vs Year)",
+      "predicted_family": "exponential",
+      "train_winner_model": "exponential",
+      "train_winner_family": "exponential",
+      "train_r2": 0.9350294867477053,
+      "train_aicc": 501.6995338710976,
+      "test_winner_model": "exponential",
+      "test_winner_family": "exponential",
+      "test_r2": 0.7785942321250714,
+      "test_mape": 71.5826454635882,
+      "families_match": true,
+      "predicted_confirmed": true,
+      "verdict": "CONFIRMED",
+      "verdict_detail": "Same family (exponential) wins BOTH training and test windows. Temporal out-of-sample confirmation achieved.",
+      "n_train": 14,
+      "n_test": 7,
+      "train_source": "Wikipedia transistor count; Intel, AMD datasheets (pre-2010)",
+      "test_source": "Wikipedia transistor count; vendor specs (2011-2022)",
+      "all_test_evaluations": [
+        {
+          "model": "exponential",
+          "family": "exponential",
+          "train_aicc": 501.6995338710976,
+          "train_r2": 0.9350294867477053,
+          "test_r2": 0.7785942321250714,
+          "test_mape": 71.5826454635882
+        },
+        {
+          "model": "logistic",
+          "family": "bounded",
+          "train_aicc": 519.3200955728682,
+          "train_r2": 0.8194186374140282,
+          "test_r2": -0.6437096278122401,
+          "test_mape": 77.46529599783017
+        },
+        {
+          "model": "linear",
+          "family": "linear",
+          "train_aicc": 532.7914000912186,
+          "train_r2": 0.4012877421406137,
+          "test_r2": -0.6829685651658866,
+          "test_mape": 89.21590104550964
+        },
+        {
+          "model": "saturation_exp",
+          "family": "bounded",
+          "train_aicc": 539.921022993695,
+          "train_r2": 0.0037084948704391163,
+          "test_r2": -0.7079499499231499,
+          "test_mape": 96.88138869697067
+        }
+      ],
+      "notes": "Moore's 'law' predicts exponential growth in transistor count. Post-2010 shows continued exponential growth, though the doubling period has lengthened."
+    },
+    {
+      "domain": "2014 Ebola Epidemic (Cumulative Cases)",
+      "predicted_family": "bounded",
+      "train_winner_model": "logistic",
+      "train_winner_family": "bounded",
+      "train_r2": 0.9940601699876964,
+      "train_aicc": 173.54116846724915,
+      "test_winner_model": "linear",
+      "test_winner_family": "linear",
+      "test_r2": -1.8961000381325137,
+      "test_mape": 60.60729982445315,
+      "families_match": false,
+      "predicted_confirmed": false,
+      "verdict": "PARTIAL_TRAIN_ONLY",
+      "verdict_detail": "Predicted family (bounded) wins on training but not test. Test preferred linear.",
+      "n_train": 17,
+      "n_test": 12,
+      "train_source": "WHO/CDC Situation Reports (Mar-Sep 2014); NEJM Ebola Response Team",
+      "test_source": "WHO/CDC Situation Reports (Oct 2014 - Jun 2015)",
+      "all_test_evaluations": [
+        {
+          "model": "logistic",
+          "family": "bounded",
+          "train_aicc": 173.54116846724915,
+          "train_r2": 0.9940601699876964,
+          "test_r2": -9015067.815775875,
+          "test_mape": 23422.929879775613
+        },
+        {
+          "model": "exponential",
+          "family": "exponential",
+          "train_aicc": 183.6559214935103,
+          "train_r2": 0.9871609646945504,
+          "test_r2": -1534111.0786514806,
+          "test_mape": 9839.951011727248
+        },
+        {
+          "model": "linear",
+          "family": "linear",
+          "train_aicc": 234.83186582187113,
+          "train_r2": 0.7394382623531447,
+          "test_r2": -1.8961000381325137,
+          "test_mape": 60.60729982445315
+        },
+        {
+          "model": "saturation_exp",
+          "family": "bounded",
+          "train_aicc": 238.86695868468053,
+          "train_r2": 0.6696349571511426,
+          "test_r2": -2.5156536671172853,
+          "test_mape": 66.45464012892323
+        },
+        {
+          "model": "power_law",
+          "family": "power_law",
+          "train_aicc": 242.65104648537147,
+          "train_r2": 0.5872708223927146,
+          "test_r2": -2.782111123652202,
+          "test_mape": 71.636086858218
+        }
+      ],
+      "notes": "Fit on first ~6 months. Test: does the bounded/logistic form capture the saturation trend in the remaining trajectory?"
+    },
+    {
+      "domain": "COVID-19 Wuhan Early Wave (Cumulative Cases)",
+      "predicted_family": "bounded",
+      "train_winner_model": "logistic",
+      "train_winner_family": "bounded",
+      "train_r2": 0.999160821200456,
+      "train_aicc": 133.23403984590237,
+      "test_winner_model": "logistic",
+      "test_winner_family": "bounded",
+      "test_r2": -0.9795137953903845,
+      "test_mape": 1.271642803189447,
+      "families_match": true,
+      "predicted_confirmed": true,
+      "verdict": "CONFIRMED",
+      "verdict_detail": "Same family (bounded) wins BOTH training and test windows. Temporal out-of-sample confirmation achieved.",
+      "n_train": 10,
+      "n_test": 7,
+      "train_source": "WHO Situation Reports (Jan 2020); Johns Hopkins CSSE",
+      "test_source": "WHO Situation Reports (Feb-Mar 2020); Johns Hopkins CSSE",
+      "all_test_evaluations": [
+        {
+          "model": "logistic",
+          "family": "bounded",
+          "train_aicc": 133.23403984590237,
+          "train_r2": 0.999160821200456,
+          "test_r2": -0.9795137953903845,
+          "test_mape": 1.271642803189447
+        },
+        {
+          "model": "exponential",
+          "family": "exponential",
+          "train_aicc": 177.45807412102837,
+          "train_r2": 0.8926984203681656,
+          "test_r2": -146092553603.89005,
+          "test_mape": 171064.20340483123
+        },
+        {
+          "model": "linear",
+          "family": "linear",
+          "train_aicc": 189.00116667980012,
+          "train_r2": 0.6596574443430063,
+          "test_r2": -950.0136124525131,
+          "test_mape": 26.016796252797565
+        },
+        {
+          "model": "power_law",
+          "family": "power_law",
+          "train_aicc": 191.4098180536381,
+          "train_r2": 0.566965342840863,
+          "test_r2": -35241.71834768851,
+          "test_mape": 127.68632846091623
+        },
+        {
+          "model": "saturation_exp",
+          "family": "bounded",
+          "train_aicc": 191.80513611574372,
+          "train_r2": 0.5495038321213382,
+          "test_r2": -639.2089031103351,
+          "test_mape": 22.53771732568735
+        }
+      ],
+      "notes": "Wuhan cumulative cases saturated after lockdown. Days counted from 31 Dec 2019. Training window covers the exponential growth phase; test window covers the lockdown-induced saturation."
+    },
+    {
+      "domain": "COVID-19 Italy First Wave (Cumulative Cases)",
+      "predicted_family": "bounded",
+      "train_winner_model": "logistic",
+      "train_winner_family": "bounded",
+      "train_r2": 0.9983185242316092,
+      "train_aicc": 169.58458233216516,
+      "test_winner_model": "linear",
+      "test_winner_family": "linear",
+      "test_r2": 0.7977466577134242,
+      "test_mape": 8.23894740569657,
+      "families_match": false,
+      "predicted_confirmed": false,
+      "verdict": "PARTIAL_TRAIN_ONLY",
+      "verdict_detail": "Predicted family (bounded) wins on training but not test. Test preferred linear.",
+      "n_train": 11,
+      "n_test": 8,
+      "train_source": "Protezione Civile Italy (Feb-Mar 2020)",
+      "test_source": "Protezione Civile Italy (Mar-Apr 2020)",
+      "all_test_evaluations": [
+        {
+          "model": "logistic",
+          "family": "bounded",
+          "train_aicc": 169.58458233216516,
+          "train_r2": 0.9983185242316092,
+          "test_r2": -3.5145140021223824,
+          "test_mape": 32.22745812508146
+        },
+        {
+          "model": "linear",
+          "family": "linear",
+          "train_aicc": 208.7505546199996,
+          "train_r2": 0.9154487690749297,
+          "test_r2": 0.7977466577134242,
+          "test_mape": 8.23894740569657
+        },
+        {
+          "model": "power_law",
+          "family": "power_law",
+          "train_aicc": 212.12511099638988,
+          "train_r2": 0.885091577368596,
+          "test_r2": -531.3700300450979,
+          "test_mape": 309.5214920726248
+        },
+        {
+          "model": "saturation_exp",
+          "family": "bounded",
+          "train_aicc": 215.8434552729843,
+          "train_r2": 0.8388772037243162,
+          "test_r2": -0.39865005904216866,
+          "test_mape": 21.679619093108446
+        },
+        {
+          "model": "exponential",
+          "family": "exponential",
+          "train_aicc": 256.74236029583597,
+          "train_r2": -5.635896529311029,
+          "test_r2": -24754765030.601994,
+          "test_mape": 1095078.7407728743
+        }
+      ],
+      "notes": "Italy's first COVID wave. Training covers the exponential rise; test covers the approach to first-wave saturation."
+    },
+    {
+      "domain": "Solar PV Learning Curve (Price vs Cumulative Production)",
+      "predicted_family": "power_law",
+      "train_winner_model": "power_law",
+      "train_winner_family": "power_law",
+      "train_r2": 0.7675997415236836,
+      "train_aicc": 60.974584354383104,
+      "test_winner_model": "power_law",
+      "test_winner_family": "power_law",
+      "test_r2": 0.5665049274662757,
+      "test_mape": 31.527919212426664,
+      "families_match": true,
+      "predicted_confirmed": true,
+      "verdict": "CONFIRMED",
+      "verdict_detail": "Same family (power_law) wins BOTH training and test windows. Temporal out-of-sample confirmation achieved.",
+      "n_train": 10,
+      "n_test": 5,
+      "train_source": "Nemet (2009); Farmer & Lafond (2016); IRENA historical",
+      "test_source": "IRENA (2023); Our World in Data; BloombergNEF",
+      "all_test_evaluations": [
+        {
+          "model": "power_law",
+          "family": "power_law",
+          "train_aicc": 60.974584354383104,
+          "train_r2": 0.7675997415236836,
+          "test_r2": 0.5665049274662757,
+          "test_mape": 31.527919212426664
+        },
+        {
+          "model": "linear",
+          "family": "linear",
+          "train_aicc": 74.57538604774162,
+          "train_r2": 0.09445107524317853,
+          "test_r2": -9616063.43377219,
+          "test_mape": 160001.83272205153
+        },
+        {
+          "model": "saturation_exp",
+          "family": "bounded",
+          "train_aicc": 75.56752577245156,
+          "train_r2": -6.307177002895514e-12,
+          "test_r2": -13249.50968361577,
+          "test_mape": 5769.740601754358
+        },
+        {
+          "model": "exponential",
+          "family": "exponential",
+          "train_aicc": 76.09722672276564,
+          "train_r2": -0.05439811291207208,
+          "test_r2": -5.483715071262596,
+          "test_mape": 99.4443721770892
+        },
+        {
+          "model": "logistic",
+          "family": "bounded",
+          "train_aicc": 83.2044687964861,
+          "train_r2": -0.3981121660768274,
+          "test_r2": -211.01400152815916,
+          "test_mape": 744.5643582905877
+        }
+      ],
+      "notes": "Wright's law: cost decreases as a power law of cumulative production. Training on pre-2010 data, testing whether the power-law form still describes the post-2010 cost trajectory."
+    },
+    {
+      "domain": "Urban Scaling (GDP vs Population, US MSAs)",
+      "predicted_family": "power_law",
+      "train_winner_model": "linear",
+      "train_winner_family": "linear",
+      "train_r2": 0.9708112825679608,
+      "train_aicc": 531.717423284563,
+      "test_winner_model": "exponential",
+      "test_winner_family": "exponential",
+      "test_r2": 0.6679654837765509,
+      "test_mape": 39.59046345008484,
+      "families_match": false,
+      "predicted_confirmed": false,
+      "verdict": "INCONSISTENT",
+      "verdict_detail": "Training winner (linear) differs from test winner (exponential); neither matches predicted (power_law).",
+      "n_train": 25,
+      "n_test": 15,
+      "train_source": "Bettencourt et al. (2007) PNAS; BEA + Census 2006",
+      "test_source": "BEA 'GDP by Metropolitan Area' 2019; Census ACS 2019 1-year estimates",
+      "all_test_evaluations": [
+        {
+          "model": "linear",
+          "family": "linear",
+          "train_aicc": 531.717423284563,
+          "train_r2": 0.9708112825679608,
+          "test_r2": 0.6000996288964456,
+          "test_mape": 28.335322363135283
+        },
+        {
+          "model": "power_law",
+          "family": "power_law",
+          "train_aicc": 533.6663764710971,
+          "train_r2": 0.9684447375333142,
+          "test_r2": 0.6353149911697245,
+          "test_mape": 29.129398584419285
+        },
+        {
+          "model": "saturation_exp",
+          "family": "bounded",
+          "train_aicc": 536.4937949281882,
+          "train_r2": 0.9646663025338031,
+          "test_r2": 0.5728131925508202,
+          "test_mape": 27.093812647842235
+        },
+        {
+          "model": "exponential",
+          "family": "exponential",
+          "train_aicc": 603.1241236464728,
+          "train_r2": 0.49221899618941933,
+          "test_r2": 0.6679654837765509,
+          "test_mape": 39.59046345008484
+        },
+        {
+          "model": "logistic",
+          "family": "bounded",
+          "train_aicc": 616.6215725170023,
+          "train_r2": 0.21471075829006414,
+          "test_r2": -0.32021681533753443,
+          "test_mape": 44.80043134772965
+        }
+      ],
+      "notes": "Same MSA-level urban scaling relationship, tested across a 13-year gap. GDP values in millions of current USD. The test is whether the super-linear power-law form (exponent > 1) still holds."
+    }
+  ]
+}

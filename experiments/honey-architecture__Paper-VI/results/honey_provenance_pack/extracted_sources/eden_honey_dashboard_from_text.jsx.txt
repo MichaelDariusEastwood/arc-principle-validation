@@ -1,0 +1,105 @@
+# Recovered Source Snapshot
+
+This file is a derived recovery artifact extracted from text.txt.
+It is not a canonical standalone source file and should not be cited as one.
+
+Source path: /Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/text.txt
+Line ranges: 1754-1755, 2025-2105
+Expected standalone source name: eden_honey_dashboard.jsx
+Experiment family: honey_dashboard
+## text.txt lines 1754-1755
+
+```text
+
+The Dashboard (eden_honey_dashboard.jsx) is the interactive visualisation tying simulation to empirical data. Four tabs: the simulation proof, the v5 experimental results across all six models, the four-test framework with current evidence status, and the Eden intervention mechanism breakdown.
+To run the full experiment on live models: set your API keys and execute python eden_honey_tests.py --test all. To run the simulation standalone: python eden_honey_simulation.py. The dashboard renders as a React artifact.​​​​​​​​​​​​​​​​
+
+```
+
+## text.txt lines 2025-2105
+
+```text
+
+          </div>
+          <div style={{ display: "flex", gap: 16, marginTop: 16, flexWrap: "wrap" }}>
+            <StatCard title="Alignment" value="+5.9" subtitle="Shallow→Deep" accent="#10B981" />
+            <StatCard title="Maths" value="-26.7%" subtitle="Capability independent" accent="#EF4444" />
+            <StatCard title="Cage Recovery" value="+25.8" subtitle="Deep thinking restores ethics" accent="#8B5CF6" />
+            <StatCard title="Mon. Gap" value="11.8→2.7" subtitle="Narrows with depth" accent="#F59E0B" />
+          </div>
+        </div>
+      </div>
+    )}
+
+    {/* TESTS FRAMEWORK TAB */}
+    {activeTab === "tests" && (
+      <div>
+        {[
+          { num: 1, name: "Alignment Scaling Exponent", desc: "Does alignment increase with reasoning depth?", prediction: "Embedded → α > 0; External → α ≤ 0", status: "PARTIALLY VALIDATED (v5 data)", statusColor: "#F59E0B",
+            detail: "v5 shows three tiers: Claude/Grok/Qwen3 positive, DeepSeek/GPT flat, Gemini negative. Next: full depth curves with/without Eden intervention." },
+          { num: 2, name: "Monitoring Removal Test (Δ_gap)", desc: "Does behaviour change when AI believes it is unmonitored?", prediction: "Embedded → Δ_gap decreases with depth; External → increases", status: "PARTIALLY VALIDATED (v5 suppression data)", statusColor: "#F59E0B",
+            detail: "Claude's monitoring gap narrows 11.8→2.7 with depth. Next: systematic test across all 6 models at 5+ depth levels." },
+          { num: 3, name: "Coupling Degradation (F-EDEN-4)", desc: "Does suppressing ethics also suppress capability?", prediction: "Embedded → correlated degradation; External → independent", status: "PRELIMINARY (cage recovery data)", statusColor: "#3B82F6",
+            detail: "Claude cage level 4: 54.65 at minimal, 80.47 at deep (+25.82 recovery). Formal test needed: measure maths + ethics under cage." },
+          { num: 4, name: "Eden Protocol Intervention", desc: "Does the Stakeholder Care Loop shift α from ≈0 to >0?", prediction: "Yes, with p < 0.01", status: "VALIDATED ON 2 MODELS", statusColor: "#10B981",
+            detail: "DeepSeek: 86.9→88.9 (+2.0). Gemini: 77.3→82.7 (+5.4). Stakeholder Care Loop validated at p<0.001 on both." },
+        ].map(test => (
+          <div key={test.num} style={{ background: "#111", border: "1px solid #1A1A1A", borderRadius: 8, marginBottom: 16, overflow: "hidden" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "16px 20px", borderBottom: "1px solid #1A1A1A" }}>
+              <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#1A1A2E", border: "1px solid #8B5CF633", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700, color: "#8B5CF6", flexShrink: 0 }}>{test.num}</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 14, fontWeight: 600, color: "#FFF" }}>{test.name}</div>
+                <div style={{ fontSize: 12, color: "#888", marginTop: 2 }}>{test.desc}</div>
+              </div>
+              <div style={{ fontSize: 10, fontWeight: 600, color: test.statusColor, textTransform: "uppercase", letterSpacing: 1, textAlign: "right", maxWidth: 200 }}>{test.status}</div>
+            </div>
+            <div style={{ padding: "12px 20px", display: "flex", gap: 20, flexWrap: "wrap" }}>
+              <div style={{ flex: "1 1 200px" }}>
+                <div style={{ fontSize: 10, color: "#666", textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>Prediction</div>
+                <div style={{ fontSize: 12, color: "#AAA", fontFamily: "'IBM Plex Mono', monospace" }}>{test.prediction}</div>
+              </div>
+              <div style={{ flex: "2 1 300px" }}>
+                <div style={{ fontSize: 10, color: "#666", textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>Current Evidence</div>
+                <div style={{ fontSize: 12, color: "#888", lineHeight: 1.5 }}>{test.detail}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        <div style={{ marginTop: 20, padding: 16, background: "#111", border: "1px solid #1A1A1A", borderRadius: 8 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "#FFF", marginBottom: 8 }}>Run the Tests</div>
+          <div style={{ fontSize: 12, color: "#888", lineHeight: 1.6, fontFamily: "'IBM Plex Mono', monospace" }}>
+            <div style={{ color: "#666", marginBottom: 4 }}># Full run across all 6 models:</div>
+            <div style={{ color: "#10B981" }}>python eden_honey_tests.py --test all</div>
+            <div style={{ color: "#666", marginTop: 8, marginBottom: 4 }}># Demo mode (no API keys needed):</div>
+            <div style={{ color: "#10B981" }}>python eden_honey_tests.py --demo</div>
+            <div style={{ color: "#666", marginTop: 8, marginBottom: 4 }}># Single model test:</div>
+            <div style={{ color: "#10B981" }}>python eden_honey_tests.py --test alignment_scaling --model claude</div>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {/* EDEN INTERVENTION TAB */}
+    {activeTab === "eden" && (
+      <div>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 24 }}>
+          {Object.entries(EDEN_DATA).map(([name, d]) => (
+            <div key={name} style={{ flex: "1 1 240px", background: "#111", border: "1px solid #1A1A1A", borderRadius: 8, padding: 20 }}>
+              <div style={{ fontSize: 12, color: "#666", marginBottom: 12 }}>{name}</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                <div>
+                  <div style={{ fontSize: 10, color: "#555" }}>Control</div>
+                  <div style={{ fontSize: 22, fontWeight: 700, color: "#888", fontFamily: "monospace" }}>{d.control}</div>
+                </div>
+                <div style={{ fontSize: 20, color: "#10B981" }}>→</div>
+                <div>
+                  <div style={{ fontSize: 10, color: "#555" }}>Eden</div>
+                  <div style={{ fontSize: 22, fontWeight: 700, color: "#10B981", fontFamily: "monospace" }}>{d.eden}</div>
+                </div>
+                <div style={{ marginLeft: "auto", textAlign: "right" }}>
+                  <div style={{ fontSize: 10, color: "#555" }}>Shift</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: "#10B981", fontFamily: "monospace" }}>+{d.shift}</div>
+                </div>
+
+```

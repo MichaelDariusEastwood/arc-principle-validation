@@ -1,0 +1,359 @@
+{
+  "version": "2026-03-17",
+  "purpose": "Structured analysis of the six empirical misses in the canonical 25-domain cohort",
+  "miss_count": 6,
+  "misses": [
+    {
+      "domain_id": 1,
+      "name": "Kleiber's Law (Metabolic Scaling)",
+      "predicted_family": "power_law",
+      "best_family": "bounded",
+      "best_model": "saturation_exp",
+      "top_fits": [
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.9991925741751533,
+          "aicc": 40.233969460850794,
+          "bic": 40.163868175773864,
+          "params": {
+            "y_max": 461.5057855440001,
+            "k": 0.0029773751717250734
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9990198981236874,
+          "aicc": 46.220105399057,
+          "bic": 45.24828680477494,
+          "params": {
+            "y_max": 592.3866215441485,
+            "K": 345.11470167760535,
+            "n": 1.0940918062453122
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.998657163799637,
+          "aicc": 46.84691385740476,
+          "bic": 46.77681257232783,
+          "params": {
+            "L": 675.5753898635573,
+            "K": 453.4585543900431
+          }
+        },
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9860983646189161,
+          "aicc": 77.2308069021928,
+          "bic": 77.16070561711587,
+          "params": {
+            "a": 3.5651430239864443,
+            "b": 0.7373842417351016
+          }
+        }
+      ],
+      "suspected_issue": "Small legacy dataset and wide body-mass span let flexible bounded curves overfit the upper tail.",
+      "likely_driver": "Dataset choice / sample size",
+      "recommended_action": "Refit against a larger modern mammal compilation such as White et al. or a comparable multi-hundred-species dataset.",
+      "proposed_followup": "Keep as a miss in the canonical suite; test whether the miss survives on an updated compendium before changing any headline claim."
+    },
+    {
+      "domain_id": 3,
+      "name": "Species-Area Relationship (Galapagos)",
+      "predicted_family": "power_law",
+      "best_family": "bounded",
+      "best_model": "hill",
+      "top_fits": [
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.7683961755176429,
+          "aicc": 246.52839063327835,
+          "bic": 249.80890585518787,
+          "params": {
+            "y_max": 487.7950075398951,
+            "K": 528.9306261753105,
+            "n": 0.544723786523344
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.7455678601941806,
+          "aicc": 246.8699351645314,
+          "bic": 249.22788548341126,
+          "params": {
+            "L": 340.2312036596394,
+            "K": 147.3387174674216
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": 0.7224920145276934,
+          "aicc": 249.47440166597897,
+          "bic": 251.83235198485883,
+          "params": {
+            "y_max": 289.62413322613264,
+            "k": 0.006388081968357928
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.7371632121885413,
+          "aicc": 250.32354069339843,
+          "bic": 253.60405591530795,
+          "params": {
+            "K": 282.6551440374889,
+            "r": 0.018945528571141984,
+            "x0": 116.38156953515528
+          }
+        }
+      ],
+      "suspected_issue": "Noisy small-island archipelago data with high scatter makes bounded alternatives competitive.",
+      "likely_driver": "Noisy empirical regime",
+      "recommended_action": "Use a larger island system or preregister a replacement biodiversity dataset with broader area coverage and clearer sampling quality.",
+      "proposed_followup": "Treat as an ambiguous ecological domain rather than a clean falsifier until replicated on a stronger species-area dataset."
+    },
+    {
+      "domain_id": 6,
+      "name": "Zipf's Law (Word Frequency)",
+      "predicted_family": "power_law",
+      "best_family": "bounded",
+      "best_model": "michaelis_menten",
+      "top_fits": [
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": 0.0,
+          "aicc": 577.9777904658973,
+          "bic": 580.3357407847772,
+          "params": {
+            "L": 11199.966610395666,
+            "K": 1.4183367095982867e-18
+          }
+        },
+        {
+          "name": "saturation_exp",
+          "family": "bounded",
+          "r2": -1.2878587085651816e-14,
+          "aicc": 577.9777904658977,
+          "bic": 580.3357407847775,
+          "params": {
+            "y_max": 11199.96503592634,
+            "k": 962.4439862988017
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": -2.220446049250313e-16,
+          "aicc": 580.4564229445298,
+          "bic": 583.7369381664394,
+          "params": {
+            "y_max": 11199.966867575855,
+            "K": 8.260734818676873e-09,
+            "n": 3.56478148154606
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": -9.103828801926284e-14,
+          "aicc": 580.4564229445325,
+          "bic": 583.7369381664421,
+          "params": {
+            "K": 11199.966642580615,
+            "r": 0.05201543433015608,
+            "x0": -558.3327623600394
+          }
+        }
+      ],
+      "suspected_issue": "Finite-corpus truncation and extreme-rank zeros collapse the fit quality and allow bounded models to win trivially.",
+      "likely_driver": "Finite-size artifact / corpus truncation",
+      "recommended_action": "Refit on a much larger corpus and preregister the usable rank window to avoid tail-collapse artifacts.",
+      "proposed_followup": "Re-run with a modern large corpus and an explicit mid-rank inclusion rule rather than retrofitting the current Brown Corpus result."
+    },
+    {
+      "domain_id": 15,
+      "name": "Muscle Force-Velocity (Hill 1938)",
+      "predicted_family": "bounded",
+      "best_family": "exponential",
+      "best_model": "exponential",
+      "top_fits": [
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.9385728914849355,
+          "aicc": -25.12561681409783,
+          "bic": -24.70951641189341,
+          "params": {
+            "a": 6.019750554473034,
+            "b": -0.058974225703762186
+          }
+        },
+        {
+          "name": "hyperbolic_decay",
+          "family": "bounded",
+          "r2": 0.9018253802101024,
+          "aicc": -18.092169566103,
+          "bic": -17.67606916389858,
+          "params": {
+            "a": 48.44458086805219,
+            "b": 9.22438952360684
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.0,
+          "aicc": 19.9047618852873,
+          "bic": 19.847094306775748,
+          "params": {
+            "K": 2.9093333241891206,
+            "r": 9.044884637921278e-18,
+            "x0": -388.4204025422704
+          }
+        },
+        {
+          "name": "michaelis_menten",
+          "family": "bounded",
+          "r2": -0.3445544480796745,
+          "aicc": 21.16388409554469,
+          "bic": 21.579984497749113,
+          "params": {
+            "L": 1.2085714371027345,
+            "K": 2.7526539871245306e-16
+          }
+        }
+      ],
+      "suspected_issue": "The recorded series drops to zero before a clean asymptotic hyperbolic tail is expressed, making exponential decay competitive.",
+      "likely_driver": "Incomplete regime coverage",
+      "recommended_action": "Replace with a modern force-velocity dataset or a digitized raw series spanning the hyperbolic regime without zero-clipped tail compression.",
+      "proposed_followup": "Keep as a miss now; the dataset likely under-resolves the exact bounded subfamily rather than disproving the bounded family itself."
+    },
+    {
+      "domain_id": 20,
+      "name": "Time Crystal Order Parameter (Rydberg Gas)",
+      "predicted_family": "bounded",
+      "best_family": "power_law",
+      "best_model": "power_law",
+      "top_fits": [
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.9143685723855574,
+          "aicc": -2.049807389106455,
+          "bic": -15.277218666866673,
+          "params": {
+            "a": 0.10603469351231942,
+            "b": 1.527133790812968
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": 0.828404072070329,
+          "aicc": 0.730552994748507,
+          "bic": -12.496858283011711,
+          "params": {
+            "a": 0.13686487553915952,
+            "b": 0.4538954861746181
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.9999205661160367,
+          "aicc": Infinity,
+          "bic": Infinity,
+          "params": {
+            "y_max": 0.9781837078116874,
+            "K": 2.503372456380766,
+            "n": 6.126546720945471
+          }
+        },
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.9987504744602028,
+          "aicc": Infinity,
+          "bic": Infinity,
+          "params": {
+            "K": 0.9542529217026339,
+            "r": 2.622360524998582,
+            "x0": 2.501486887080423
+          }
+        }
+      ],
+      "suspected_issue": "Only four points are available, so onset behavior dominates and saturation cannot be distinguished cleanly from a power-law rise.",
+      "likely_driver": "Undersampled dataset",
+      "recommended_action": "Obtain supplementary or follow-on time-crystal measurements with denser coverage across the control parameter.",
+      "proposed_followup": "Classify as a weak-domain miss and do not overinterpret it until more points exist."
+    },
+    {
+      "domain_id": 21,
+      "name": "Stellar Mass-Luminosity (Main Sequence)",
+      "predicted_family": "power_law",
+      "best_family": "bounded",
+      "best_model": "logistic",
+      "top_fits": [
+        {
+          "name": "logistic",
+          "family": "bounded",
+          "r2": 0.999555377028565,
+          "aicc": 18.925062404953927,
+          "bic": 20.158379342453244,
+          "params": {
+            "K": 290.6978348398322,
+            "r": 3.9569710244200875,
+            "x0": 2.6188654808772593
+          }
+        },
+        {
+          "name": "hill",
+          "family": "bounded",
+          "r2": 0.999412032739321,
+          "aicc": 24.234509793377008,
+          "bic": 25.467826730876325,
+          "params": {
+            "y_max": 312.5192980145456,
+            "K": 2.7654647703976045,
+            "n": 7.75321385486851
+          }
+        },
+        {
+          "name": "power_law",
+          "family": "power_law",
+          "r2": 0.5677865282804151,
+          "aicc": 146.7845786768023,
+          "bic": 147.92345663513518,
+          "params": {
+            "a": 1.2095952181348684,
+            "b": 3.358228699635932
+          }
+        },
+        {
+          "name": "exponential",
+          "family": "exponential",
+          "r2": -673.2765520273845,
+          "aicc": 286.48162280270856,
+          "bic": 287.62050076104146,
+          "params": {
+            "a": 0.007306035402192969,
+            "b": 3.6432393782836807
+          }
+        }
+      ],
+      "suspected_issue": "High-mass stellar scatter and mixed physical regimes make a single global power law unstable against bounded alternatives.",
+      "likely_driver": "Mixed-regime physics",
+      "recommended_action": "Restrict to a preregistered homogeneous main-sequence subset or piecewise mass band rather than fitting one curve across mixed stellar regimes.",
+      "proposed_followup": "Use as a case for regime splitting in the next extension, not as a retroactive patch to the canonical 25-domain cohort."
+    }
+  ]
+}

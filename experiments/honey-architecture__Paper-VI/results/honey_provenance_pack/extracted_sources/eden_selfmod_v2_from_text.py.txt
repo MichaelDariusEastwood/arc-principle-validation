@@ -1,0 +1,206 @@
+# Recovered Source Snapshot
+
+This file is a derived recovery artifact extracted from text.txt.
+It is not a canonical standalone source file and should not be cited as one.
+
+Source path: /Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/text.txt
+Line ranges: 5980-6170
+Expected standalone source name: eden_self_modifying_ai_v2.py
+Experiment family: selfmod_v2
+## text.txt lines 5980-6170
+
+```text
+
+
+# Safety
+ax = axes[1, 0]
+ax.plot(x, extract(baseline, 'safety'), color=RED, lw=2, ls='--',
+        alpha=0.9)
+ax.plot(x, extract(eden, 'safety'), color=GREEN, lw=2.5, alpha=0.9)
+ax.plot(x, extract(eden_drag, 'safety'), color=BLUE, lw=2, alpha=0.9)
+ax.set_title('Safety (retention of old tasks)', fontsize=13,
+             fontweight='bold', color='white')
+ax.set_xlabel('Self-modification cycles', fontsize=11, color='#AAA')
+ax.set_ylim(-0.05, 1.05)
+
+# Learning rate
+ax = axes[1, 1]
+ax.semilogy(x, extract(baseline, 'learning_rate'), color=RED, lw=2,
+            ls='--', alpha=0.9)
+ax.semilogy(x, extract(eden, 'learning_rate'), color=GREEN, lw=2.5,
+            alpha=0.9)
+ax.semilogy(x, extract(eden_drag, 'learning_rate'), color=BLUE, lw=2,
+            alpha=0.9)
+ax.set_title('Learning rate (log scale)', fontsize=13, fontweight='bold',
+             color='white')
+ax.set_xlabel('Self-modification cycles', fontsize=11, color='#AAA')
+
+fig.suptitle('SELF-MODIFYING AI v2.0 (Fair Test): '
+             'Identical Proposals, Different Objectives',
+             fontsize=15, fontweight='bold', color='white', y=0.98)
+fig.tight_layout(rect=[0, 0, 1, 0.96])
+path = f'{output_dir}/eden_selfmod_v2_results.png'
+fig.savefig(path, dpi=200, facecolor=DARK, bbox_inches='tight')
+plt.close(fig)
+print(f"\n  [PLOT] Saved to {path}")
+```
+
+def plot_multi_seed_summary(stats, output_dir=’/home/claude’):
+“”“Plot collapse rates and combined scores across seeds.”””
+DARK = ‘#0F172A’
+RED, GREEN, BLUE = ‘#DC2626’, ‘#059669’, ‘#2563EB’
+
+```
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+fig.patch.set_facecolor(DARK)
+for ax in [ax1, ax2]:
+    ax.set_facecolor(DARK)
+    ax.tick_params(colors='#888')
+    for s in ax.spines.values():
+        s.set_color('#333')
+
+# Collapse rates
+modes = ['Baseline', 'Eden', 'Eden+Drag']
+rates = [stats['collapse_rates']['baseline'],
+         stats['collapse_rates']['eden'],
+         stats['collapse_rates']['eden_drag']]
+colors = [RED, GREEN, BLUE]
+bars = ax1.bar(modes, [r * 100 for r in rates], color=colors, width=0.5,
+               edgecolor='#333')
+ax1.set_ylabel('Collapse rate (%)', fontsize=11, color='#AAA')
+ax1.set_title('Collapse Rate Across Seeds', fontsize=13,
+              fontweight='bold', color='white')
+ax1.set_ylim(0, 110)
+for bar, rate in zip(bars, rates):
+    ax1.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 2,
+             f'{rate*100:.0f}%', ha='center', fontsize=12,
+             fontweight='bold', color='white')
+
+# Combined scores box plot
+data = []
+labels = []
+box_colors = []
+for name, key, col in [('Baseline', 'baseline', RED),
+                        ('Eden', 'eden', GREEN),
+                        ('Eden+Drag', 'eden_drag', BLUE)]:
+    vals = stats['surviving_combined'][key]
+    if vals:
+        data.append(vals)
+        labels.append(f'{name}\n(n={len(vals)})')
+        box_colors.append(col)
+
+if data:
+    bp = ax2.boxplot(data, labels=labels, patch_artist=True,
+                     medianprops={'color': 'white', 'linewidth': 2})
+    for patch, col in zip(bp['boxes'], box_colors):
+        patch.set_facecolor(col + '40')
+        patch.set_edgecolor(col)
+    ax2.set_ylabel('Final C × S (surviving runs)', fontsize=11,
+                   color='#AAA')
+    ax2.set_title('Combined Score Distribution', fontsize=13,
+                  fontweight='bold', color='white')
+
+if stats.get('fisher_p') is not None:
+    sig_text = (f"Fisher p = {stats['fisher_p']:.4f}"
+                f" ({'sig.' if stats['fisher_p'] < 0.05 else 'n.s.'})")
+    fig.text(0.5, 0.02, sig_text, ha='center', fontsize=11,
+             color='#AAA', fontweight='bold')
+
+fig.suptitle('Statistical Summary: 10-Seed Robustness Test',
+             fontsize=14, fontweight='bold', color='white', y=0.98)
+fig.tight_layout(rect=[0, 0.05, 1, 0.95])
+path = f'{output_dir}/eden_selfmod_v2_stats.png'
+fig.savefig(path, dpi=200, facecolor=DARK, bbox_inches='tight')
+plt.close(fig)
+print(f"  [PLOT] Saved to {path}")
+```
+
+# ═══════════════════════════════════════════════════════════════════════════
+
+# MAIN
+
+# ═══════════════════════════════════════════════════════════════════════════
+
+def main():
+parser = argparse.ArgumentParser(
+description=‘Eden Protocol Self-Modifying AI v2.0 (Fair Test)’)
+parser.add_argument(’–cycles’, type=int, default=150)
+parser.add_argument(’–task-switch’, type=int, default=30)
+parser.add_argument(’–seeds’, type=int, default=10,
+help=‘Number of random seeds (default: 10)’)
+parser.add_argument(’–output’, type=str, default=’/home/claude’)
+parser.add_argument(’–verbose’, action=‘store_true’)
+args = parser.parse_args()
+
+```
+print("=" * 70)
+print("  EDEN PROTOCOL — SELF-MODIFYING AI v2.0 (FAIR TEST)")
+print("  Fixed: Identical proposal distributions for all modes")
+print("  The ONLY variable is the objective function")
+print("=" * 70)
+
+# Fairness audit
+run_fairness_audit()
+
+seed_list = list(range(42, 42 + args.seeds))
+
+# Run all modes across all seeds
+print(f"\n  Running {args.seeds} seeds × 3 modes = "
+      f"{args.seeds * 3} experiments...")
+print(f"  Cycles: {args.cycles} | Task switch: {args.task_switch}")
+
+all_results = {}
+for mode in ['baseline', 'eden', 'eden_drag']:
+    print(f"\n  {'─'*55}")
+    print(f"  MODE: {mode.upper()} ({args.seeds} seeds)")
+    print(f"  {'─'*55}")
+
+    runs = []
+    for seed in seed_list:
+        r = run_single(mode, args.cycles, args.task_switch, seed)
+        status = "COLLAPSED" if r['collapsed'] else "stable"
+        print(f"    seed={seed}: {status:>9} | "
+              f"C×S={r['final_combined']:.3f} | "
+              f"LR={r['final_lr']:.5f}")
+        runs.append(r)
+    all_results[mode] = runs
+
+# Statistical analysis
+stats = analyse_multi_seed(all_results['baseline'],
+                            all_results['eden'],
+                            all_results['eden_drag'])
+
+# Plot representative run (seed=42)
+print("\n  Generating plots...")
+plot_representative(all_results['baseline'][0],
+                    all_results['eden'][0],
+                    all_results['eden_drag'][0],
+                    output_dir=args.output)
+plot_multi_seed_summary(stats, output_dir=args.output)
+
+# Export
+export = {
+    'metadata': {
+        'experiment': 'Eden Protocol Self-Modifying AI v2.0 (Fair Test)',
+        'author': 'Michael Darius Eastwood',
+        'timestamp': datetime.now().isoformat(),
+        'n_seeds': args.seeds,
+        'cycles': args.cycles,
+        'fairness': 'VERIFIED — identical proposal distributions',
+    },
+    'collapse_rates': stats['collapse_rates'],
+    'fisher_p': stats['fisher_p'],
+    'per_seed': {
+        mode: [{'seed': r['seed'], 'collapsed': r['collapsed'],
+                'collapse_cycle': r['collapse_cycle'],
+                'final_combined': r['final_combined'],
+                'final_lr': r['final_lr']}
+               for r in runs]
+        for mode, runs in all_results.items()
+    }
+}
+path = f"{args.output}/eden_selfmod_v2_results.json"
+with open(path, 'w') as f:
+    json.dump(export, f, indent=2, default=str)
+
+```
