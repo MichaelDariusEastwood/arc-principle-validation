@@ -36,11 +36,21 @@
   .nav a{colour:var(--blue);text-decoration:none;padding:.15rem .5rem;border:1px solid #cdd9e8;border-radius:4px;background:#fff}
   @media(max-width:640px){body{padding:1rem .8rem 3rem}h1{font-size:1.6rem}}
   @media print{.nav{display:none}body{padding:0}}
+
+/* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must
+   not overflow at phone widths; desktop and print rendering unchanged. */
+@media (max-width: 720px) {
+  code { overflow-wrap: anywhere !important; word-break: break-all !important; }
+  pre { overflow-x: auto !important; max-width: 100% !important; }
+  table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
+  thead, tbody, tr { max-width: 100%; }
+  img, svg { max-width: 100% !important; height: auto !important; }
+}
 </style>
 </head>
 <body>
 
-<!-- revision-ledger: internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
+<!-- revision-ledger: internal revision 2026-07-03 (mobile overflow fix) | ADDED a max-width-720px media block so long hashes, Message-IDs, code spans, tables and images cannot overflow horizontally on phones; desktop and print rendering unchanged. | internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
 <header>
   <div class="paper-type">ARC / Eden Research Programme &middot; Paper XI &middot; v1.0</div>
   <h1>Convergent Evidence for Recursive Amplification as a Cross-Domain Structural Principle</h1>
