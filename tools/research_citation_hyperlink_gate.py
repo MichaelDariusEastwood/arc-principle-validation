@@ -56,13 +56,27 @@ _CITE_PAREN = re.compile(rf"\(({_SURNAME}),?\s*((?:19|20)\d\d)[a-z]?\)")
 # "Author (2020)" single-author narrative form
 _CITE_NARR = re.compile(rf"\b({_SURNAME})\s*\(((?:19|20)\d\d)[a-z]?\)")
 
+# Combined in-text matcher (named groups) for the strict inline-link check: a citation
+# is compliant only when it sits inside an <a>. Operator standard (2026-07-03): every
+# in-text mention of a person/paper must itself be a hyperlink, not merely resolvable
+# to an entry in the reference list.
+_INTEXT = re.compile(
+    r"(?P<narr>(?P<n1>" + _SURNAME + r")(?:\s+et\s+al\.?|\s+(?:and|&)\s+" + _SURNAME + r")?"
+    r"\s*\((?:19|20)\d\d[a-z]?\))"
+    r"|"
+    r"(?P<paren>\((?P<n2>" + _SURNAME + r")(?:\s+et\s+al\.?|\s+(?:and|&)\s+" + _SURNAME + r")?"
+    r",?\s*(?:19|20)\d\d[a-z]?\))"
+)
+
 # Words that look like a surname before "(2020)" but are not authors.
 _STOP = {"Figure", "Table", "Section", "Appendix", "Paper", "Act", "Regulation",
          "Chapter", "Part", "Volume", "Article", "Fig", "Eq", "Equation", "Box",
          "Note", "Version", "Since", "In", "By", "See", "The", "This", "From",
          "January", "February", "March", "April", "May", "June", "July", "August",
          "September", "October", "November", "December",
-         "Humain", "Phénomène", "Phenomene", "Masnavi"}
+         "Jan", "Feb", "Mar", "Apr", "Jun", "Jul", "Aug", "Sep", "Sept", "Oct", "Nov", "Dec",
+         "Humain", "Phénomène", "Phenomene", "Masnavi",
+         "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"}
 
 _SHA_KW = re.compile(r"SHA-?256", re.IGNORECASE)
 # An *asserted* hash: SHA-256 followed within a short span by a hex run (>=8) that
@@ -140,36 +154,36 @@ def check_html(html: str, name: str = "") -> dict:
             blocking.append(msg)
             findings.append({"type": "reference", "status": "blocked", "text": label})
 
-    # ── 2. In-text citation resolution ───────────────────────────────────
-    # Work paragraph-by-paragraph so an inline link in the same <p> counts.
+    # ── 2. In-text citations must be INLINE-linked ───────────────────────
+    # Walk the body tracking <a> depth. A citation inside an <a> is compliant;
+    # a citation in open text (depth 0) is a bare mention and blocks — being
+    # merely listed in the reference section is no longer sufficient.
     cite_total = cite_ok = 0
-    seen = set()
-    for pm in re.finditer(r"<p\b[^>]*>(.*?)</p>", body_html, re.DOTALL | re.IGNORECASE):
-        para = pm.group(1)
-        para_has_link = bool(_HREF.search(para))
-        ptext = _strip_tags(para)
-        for rx in (_CITE_ETAL, _CITE_TWO, _CITE_PAREN, _CITE_NARR):
-            for cm in rx.finditer(ptext):
-                surname, year = cm.group(1), cm.group(2)
-                if surname in _STOP:
-                    continue
-                key = (surname, year, cm.start())
-                if key in seen:
-                    continue
-                seen.add(key)
-                cite_total += 1
-                if surname in linked_authors or surname in linked_acronyms:
-                    cite_ok += 1
-                elif surname in unlinked_authors:
-                    m = f"in-text '{surname} {year}' cites a reference that has no link"
-                    blocking.append(m)
-                    findings.append({"type": "citation", "status": "blocked", "ref": f"{surname} {year}"})
-                elif para_has_link:
-                    cite_ok += 1  # self-supporting inline link in same paragraph
-                else:
-                    m = f"in-text '{surname} {year}' has no supportive link and no matching reference"
-                    blocking.append(m)
-                    findings.append({"type": "citation", "status": "blocked", "ref": f"{surname} {year}"})
+
+    def _scan(seg, inside):
+        nonlocal cite_total, cite_ok
+        for cm in _INTEXT.finditer(seg):
+            name = cm.group("n1") or cm.group("n2")
+            if not name or name in _STOP:
+                continue
+            cite_total += 1
+            if inside:
+                cite_ok += 1
+            else:
+                snippet = re.sub(r"\s+", " ", cm.group(0)).strip()
+                blocking.append(f"in-text '{snippet}' is not an inline hyperlink")
+                findings.append({"type": "citation", "status": "blocked", "ref": snippet})
+
+    pos, depth = 0, 0
+    for tm in re.finditer(r"<[^>]+>", body_html):
+        _scan(body_html[pos:tm.start()], depth > 0)
+        low = tm.group(0).lower()
+        if re.match(r"<a[\s>]", low):
+            depth += 1
+        elif low.startswith("</a"):
+            depth = max(0, depth - 1)
+        pos = tm.end()
+    _scan(body_html[pos:], depth > 0)
 
     # ── 3. Integrity-hash anchor ─────────────────────────────────────────
     sha_total = sha_ok = 0
@@ -221,14 +235,15 @@ def _print(result: dict):
 
 def selftest() -> bool:
     cases = [
-        ('<p>Body cites Smith et al., 2020.</p>'
+        ('<p>Body cites <a href="https://doi.org/x">Smith et al. (2020)</a>.</p>'
          '<div class="refs"><p>Smith, J. (2020). A paper. <a href="https://doi.org/x">DOI</a>.</p></div>',
-         True, "linked ref + resolved in-text"),
-        ('<p>Body cites Jones et al., 2019.</p>'
+         True, "inline-linked in-text + linked ref"),
+        ('<p>Body cites Smith et al. (2020) with no inline link.</p>'
+         '<div class="refs"><p>Smith, J. (2020). A paper. <a href="https://doi.org/x">DOI</a>.</p></div>',
+         False, "in-text not inline-linked blocks even when the ref is linked"),
+        ('<p>Body cites Jones et al. (2019).</p>'
          '<div class="refs"><p>Jones, K. (2019). A paper. No link here.</p></div>',
          False, "bare reference must block"),
-        ('<p>Body cites Doe et al., 2018 with no reference at all.</p><div class="refs"></div>',
-         False, "orphan in-text citation must block"),
         ('<p>Integrity: SHA-256 a1b2c3d4e5f6 anchored at <a href="https://osf.io/x">OSF</a>.</p>',
          True, "sha with adjacent anchor passes"),
         ('<p>Integrity: SHA-256 a1b2c3d4e5f6 with nothing to check it against.</p>',
