@@ -70,6 +70,18 @@ hr { margin: 6pt 0 !important; }
   margin: 0 0 2.5pt 0 !important; }
 .abstract { font-size: 9pt !important; }
 div, section { margin-top: 0; }
+/* Keep-with-next: no heading, label bar, or kicker may orphan at a page foot. */
+h1, h2, h3, h4, h5, h6, .lab, .paper-type,
+[class*="label"], [class*="kicker"], dt {
+  break-after: avoid-page !important; page-break-after: avoid !important; }
+p { orphans: 3; widows: 3; }
+/* Small callout blocks keep their head with their body; Chromium still breaks
+   any block taller than a page, so long sections are unaffected. */
+.abstract, .significance, [class*="disclosure"], [class*="callout"],
+[class*="keybox"], [class*="verdict"] { break-inside: avoid-page; }
+figure { break-inside: avoid-page; }
+[class*="timeline-date"] { break-after: avoid-page !important; page-break-after: avoid !important; }
+footer { break-inside: avoid-page; }
 """
 
 MD_TEMPLATE = """<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8">
