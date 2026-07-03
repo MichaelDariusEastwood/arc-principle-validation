@@ -21,6 +21,19 @@ except ImportError:
 
 PAPERS = Path(__file__).resolve().parent.parent / "papers"
 
+# Centralised print furniture — every PDF in the corpus gets identical page
+# numbering ("Page X of Y") from this single place, so it can never drift or be
+# forgotten per-paper. Chromium fills the pageNumber/totalPages spans natively.
+# The templates do NOT inherit page CSS, so the font is set inline.
+FOOTER_TEMPLATE = (
+    '<div style="width:100%; text-align:center;'
+    " font-family:Georgia,'Times New Roman',serif; font-size:8pt; color:#666;\">"
+    'Page <span class="pageNumber"></span> of <span class="totalPages"></span>'
+    "</div>"
+)
+# Near-empty header (a bare template would make Chromium print its default date/url).
+HEADER_TEMPLATE = '<div style="font-size:1px; height:0;"></div>'
+
 MD_TEMPLATE = """<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8">
 <title>{title}</title><style>
 @page {{ size: A4; margin: 18mm 16mm; }}
@@ -82,9 +95,12 @@ def export(targets):
             )
             page.wait_for_timeout(400)
             page.pdf(path=str(out), format="A4",
-                     margin={"top": "16mm", "bottom": "16mm",
+                     margin={"top": "16mm", "bottom": "18mm",
                              "left": "14mm", "right": "14mm"},
-                     print_background=True, prefer_css_page_size=False)
+                     print_background=True, prefer_css_page_size=False,
+                     display_header_footer=True,
+                     header_template=HEADER_TEMPLATE,
+                     footer_template=FOOTER_TEMPLATE)
             if src.suffix == ".md":
                 load.unlink(missing_ok=True)
             kb = out.stat().st_size // 1024
