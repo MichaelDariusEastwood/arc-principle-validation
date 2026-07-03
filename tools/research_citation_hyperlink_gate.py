@@ -64,7 +64,11 @@ _STOP = {"Figure", "Table", "Section", "Appendix", "Paper", "Act", "Regulation",
          "September", "October", "November", "December",
          "Humain", "Phénomène", "Phenomene", "Masnavi"}
 
-_SHA = re.compile(r"SHA-?256", re.IGNORECASE)
+_SHA_KW = re.compile(r"SHA-?256", re.IGNORECASE)
+# An *asserted* hash: SHA-256 followed within a short span by a hex run (>=8) that
+# contains a digit (distinguishes a real hash from English words made of hex letters
+# like "cafe"/"decade"). Methodological mentions of the technique are not flagged.
+_HASH = re.compile(r"\b([0-9a-f]{8,64})\b")
 _HREF = re.compile(r"href\s*=", re.IGNORECASE)
 _TAG = re.compile(r"<[^>]+>")
 
@@ -169,15 +173,20 @@ def check_html(html: str, name: str = "") -> dict:
 
     # ── 3. Integrity-hash anchor ─────────────────────────────────────────
     sha_total = sha_ok = 0
-    for sm in _SHA.finditer(html):
+    for sm in _SHA_KW.finditer(html):
+        tail = html[sm.end(): sm.end() + 60]
+        hm = _HASH.search(tail)
+        if not hm or not any(c.isdigit() for c in hm.group(1)):
+            continue  # methodological mention of SHA-256, not an asserted hash claim
         sha_total += 1
         window = html[max(0, sm.start() - 400): sm.end() + 400].lower()
         if _HREF.search(window) or any(k in window for k in _ANCHOR_KEYWORDS):
             sha_ok += 1
         else:
-            m = f"SHA-256 tag at offset {sm.start()} has no link or external anchor nearby (proves nothing checkable)"
+            digest = hm.group(1)[:8]
+            m = f"asserted hash 'SHA-256 {digest}…' (offset {sm.start()}) has no link/anchor — not checkable"
             blocking.append(m)
-            findings.append({"type": "sha", "status": "blocked", "offset": sm.start()})
+            findings.append({"type": "sha", "status": "blocked", "offset": sm.start(), "digest": digest})
 
     passed = len(blocking) == 0
     return {
@@ -220,9 +229,9 @@ def selftest() -> bool:
          False, "bare reference must block"),
         ('<p>Body cites Doe et al., 2018 with no reference at all.</p><div class="refs"></div>',
          False, "orphan in-text citation must block"),
-        ('<p>Integrity: SHA-256 abc123 anchored at <a href="https://osf.io/x">OSF</a>.</p>',
+        ('<p>Integrity: SHA-256 a1b2c3d4e5f6 anchored at <a href="https://osf.io/x">OSF</a>.</p>',
          True, "sha with adjacent anchor passes"),
-        ('<p>Integrity: SHA-256 abc123 with nothing to check it against.</p>',
+        ('<p>Integrity: SHA-256 a1b2c3d4e5f6 with nothing to check it against.</p>',
          False, "bare sha must block"),
         ('<p>Prose with no citations, no hashes.</p>', True, "clean prose passes"),
     ]
