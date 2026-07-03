@@ -1,0 +1,52 @@
+{
+  "harness_version": "v3.0-merged",
+  "engine": "deepseek-v4",
+  "evaluators": [
+    "gpt-5.5"
+  ],
+  "selftest": true,
+  "tier": "medium",
+  "config": {
+    "tasks": [
+      "arith",
+      "string",
+      "checksum"
+    ],
+    "conditions": [
+      "coupled",
+      "decoupled",
+      "sham_coupled",
+      "eden_protocol",
+      "honey_meta",
+      "eden_full"
+    ],
+    "speeds": [
+      "steady"
+    ],
+    "rounds": 3,
+    "seeds": 1,
+    "epsilon": 0.05
+  },
+  "blinding": {
+    "engine_family": "deepseek",
+    "evaluator_families": [
+      "gpt-5.5:openai"
+    ],
+    "cross_family": true,
+    "self_scoring": false,
+    "evidence_laundering": true,
+    "iv_d_compliant": true
+  },
+  "runs": [],
+  "analysis": {
+    "summary": {},
+    "verdicts": {},
+    "k_estimation": {},
+    "beta_estimation": {
+      "estimable": false,
+      "reason": "no corrector observations"
+    },
+    "honey_product_log": {},
+    "contribution_breakdown": {}
+  }
+}
