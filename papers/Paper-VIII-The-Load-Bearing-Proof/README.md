@@ -1,6 +1,6 @@
-# Paper VIII: The Load-Bearing Proof
+# Paper VIII: The Load-Bearing Test
 
-**Full title:** Paper VIII: The Load-Bearing Proof
+**Full title:** Paper VIII: The Load-Bearing Test
 **Version:** v1.0
 **First published:** 18 March 2026
 **Author:** Michael Darius Eastwood
