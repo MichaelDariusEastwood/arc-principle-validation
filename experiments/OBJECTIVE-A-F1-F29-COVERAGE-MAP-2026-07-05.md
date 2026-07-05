@@ -31,7 +31,7 @@ Legend: ✅ resolved/verified · ◐ partial · ○ open (next work) · ▶ owne
 | F23 | Metabolic numbers contradict within Paper III | ✅ addressed | Refined: mean(11 species)=2.4% vs set-wide=2.5% — different quantities, not contradiction; recompute → T5 |
 | F24 | ARC Bound live in III + Foundational | ✅ resolved | III + Foundational HAVE the retirement note; On-the-Origin was the lag → FIXED this session |
 | F25 | Author-order Paper XI (Grier/Morrell/Elliott) | ✅ verified resolved | 0 wrong-order occurrences; ref reads "Morrell, Elliott, & Grier (2026)" correctly |
-| F26 | MToC missing FOUR papers (X, C, XI, HRIH) | ○ **open** | MToC count reconciled to 22; missing-paper sub-item not yet verified |
+| F26 | MToC missing FOUR papers (X, C, XI, HRIH) | ✅ verified resolved | MToC lists all 4 (X,C,XI,HRIH) + trilogy + pre-papers + IV a/b/c/d — complete at 22. Backlog predates fix |
 | F27 | Overstatement inventory | ✅ done | Overstatement pass: corpus hedges well; 1 flag (Paper III "mathematical certainty") |
 | F28 | Missing falsifiability (VII, IV-a/c/d, XI) | ✅ resolved | f28 branch = VII/IV-a/c/d; XI added this session — all 5 present |
 | F29 | HRIH:232 drops α (U=I×R vs U=I×R^α) | ○ open | Equation family verified; specific HRIH line not yet checked |
