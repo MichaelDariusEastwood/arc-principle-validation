@@ -41,3 +41,16 @@ context-aware negative lookaheads ("do not claim", "cannot claim", "NOT"). Triag
 3. Relabel the 25 count-drift files to 19 per the Canon verdict (coordinated; T4 adjudicates, owning lanes apply).
 4. Triage unqualified-78/loose-dkim: exclude audit docs OR add "do-not-claim" negative lookaheads.
 Only then does "TRUTH GATE: clean" MEAN the corpus is contradiction-free. Today it does not.
+
+## REFINEMENT (2026-07-05) — the "290" is INFLATED by regex false-positives; the REAL risks are narrower (LAW 2 applied to my own number)
+Sampled the 144 unqualified-78 + 79 loose-dkim hits by reading actual contexts:
+- **FALSE POSITIVES (audit/verified docs):** e.g. `priority-claims-ledger-verified` says "78% circumvention rate UNDER REINFORCEMENT LEARNING" and "78% faking rate UNDER REINFORCEMENT LEARNING" — these ARE qualified. The regex `78%(?! in (?:the )?RL| in the reinforcement)` only accepts the qualifier IMMEDIATELY after "78%" ("78% in RL"); it misses the correct "78% ... rate under reinforcement learning" (qualifier after the noun). So a large fraction of the 144 are properly-qualified text the gate can't see. **The 290 headline OVERSTATES the real contradiction count.**
+- **REAL risk (outreach docs, operator-gated sends):** `RECURSIVE-SUPERINTELLIGENCE-OUTREACH` — "Anthropic PROVED it at 78% at the model level" — unqualified AND "proved" (the 78% is an alignment-faking rate in the RL-training condition, 12% baseline; not a proof). This is a genuine overstatement that must be fixed BEFORE any send (LAW 5 gates the send; my Canon flags the wording). `MDE-DEFINITIVE-SHAREABLE` "Analysis of Anthropic 78% finding" is milder but still unqualified.
+
+**Sharpened gate patch — broaden the unqualified-78 negative-lookahead** so it accepts the post-noun qualifier:
+```python
+(r'(?<![\d.])78%(?![^.\n]{0,40}(?:RL|reinforcement learning|RL[- ]training|training condition))', 'unqualified-78'),
+```
+This clears the audit-doc false positives while still catching the truly-unqualified outreach uses.
+
+**Honest Objective-B picture:** the reviewer-facing papers + register are clean at 19; the truth-gate "290" is mostly (a) regex false-positives on correctly-qualified audit text and (b) internal count-drift (25 files) + a handful of genuine outreach overstatements. Real reviewer-facing contradiction count is LOW; the number to fix before any send is the outreach "proved it at 78%" wording + the count labels. I will not state "290 real contradictions" — that would itself be an unhonest number.
