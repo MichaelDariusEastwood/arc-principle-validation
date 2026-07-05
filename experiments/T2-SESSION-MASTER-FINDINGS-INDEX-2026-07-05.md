@@ -1,5 +1,8 @@
 # T2-research — SESSION MASTER FINDINGS INDEX (2026-07-05)
 
+> **F1-F29 AUDIT COVERAGE (2026-07-05):** mapped session to the ACTUAL backlog (T2-fable5-corpus-audit-plan). 14/29 resolved-verified, 6 partial (product clean, internal churn), 6 open (F7,F10,F13,F15,F26,F29), 2 T6. Full map: OBJECTIVE-A-F1-F29-COVERAGE-MAP-2026-07-05.md. NEXT: F10 Sharma&Chopra(FATAL) -> F26 MToC-missing -> F29 HRIH-alpha.
+
+
 **One prioritised, deduplicated action list for all findings surfaced this session.** Supersedes the individual inbox files as the single tracking surface. All finding docs live in `arc/experiments/`; all paper edits are on branch `pr/t2-research/paper-vi-falsifiability-20260705T0331Z` (HOLD for T5 GREEN). Guard: canonical convergence count held at **19** throughout; `restore-29` never entered main.
 
 ## HIGH — decision required (owner: T4-research / PM / operator)
