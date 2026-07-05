@@ -49,3 +49,22 @@ instructive contrast to the Paper V Fisher issue:
 clean binomial test + stated null + robustness + predict-before-fit). Paper V's Fisher p=6.3×10⁻²¹ is the lone outlier —
 a combined flourish that skips the independence justification Paper VII would never skip. Fixing/caveating Paper V's
 Fisher step brings the whole corpus to Paper VII's standard.
+
+## Finding (LOW/MODEST) — Data & Code Availability statement is not standardized across empirical papers
+
+**Objective D (methodology, NOT book-blocked) + Objective A peer-review readiness.**
+
+Every empirical paper references its data/code (OSF DOI 10.17605/OSF.IO/6C5XB + github.com/MichaelDariusEastwood/
+arc-principle-validation) and carries methodological detail — so reproducibility is NOT absent. But a **dedicated,
+standardized "Data & Code Availability" section** is present in only 3 papers (Paper II, VI, VII — they have an explicit
+Reproducibility heading) and is distributed-not-consolidated in the other 7: **IV-a, IV-b, IV-c, IV-d, V, VIII,
+On-the-Origin**. Most peer-reviewed venues now REQUIRE a standardized availability statement per article.
+
+**Recommendation (flag — T5 + author; low provenance risk, adds a statement, changes no claim):** add a uniform
+"Data & Code Availability" block to the 7 papers lacking one, following the II/VI/VII model — data location (OSF 6C5XB),
+code repo, per-experiment parameters/n/seeds, and (per Objective G) the verify-yourself pointer (redacted .emls +
+published hashes). This brings the whole corpus to journal-submission standard. Not urgent, but it is the concrete
+remaining item under Objective D's methodology half while the book manuscript stays absent from this machine.
+
+**Credit (LAW 1):** Paper V already has "3.5 Data Integrity" + "we report all data without exclusion"; Paper VIII has
+"§8.4 Cross-Architecture Replication"; all papers carry the OSF DOI. The gap is standardization, not absence.
