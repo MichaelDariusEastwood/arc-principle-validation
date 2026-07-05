@@ -32,3 +32,20 @@ Reports effect sizes (d) alongside every p; corrected its own test (pilot Mann-W
 design, p 0.016→0.0018); and explicitly NARROWS the claim ("the strongest defensible empirical claim is therefore
 narrower than the original pilot framing: stakeholder care ... while the composite is architecture-dependent"). The
 Fisher-independence caveat is the single gap in an otherwise-honest statistical treatment.
+
+## Positive (verified SOUND) — Paper VII convergence p-value is exemplary
+Paper VII's headline "19 of 25 domains confirm the Cauchy-predicted family, p=1.56×10⁻⁵" is done RIGHT, and stands in
+instructive contrast to the Paper V Fisher issue:
+- **Null fully stated + justified:** one-sided binomial test; under H0 that each domain's family is chosen uniformly at
+  random from three families (chance=1/3), P(≥19 of 25) = 1.56×10⁻⁵.
+- **Honest interpretation:** "~1 in 64,000, ~4.2σ" — not inflated.
+- **Robustness rerun:** baseline-20 → 15/20 (p=1.67×10⁻⁴). Result holds on a different sample.
+- **Acknowledges the misses:** "The Six Empirical Misses: six of 25 domains produced…".
+- **Predict-before-fit discipline:** the composition operator was classified from known physics BEFORE fitting and the
+  family PREDICTED from the operator class, then tested by independent AICc model selection. This is the direct defence
+  against the look-elsewhere / post-hoc / cherry-picking attack on the convergence thesis.
+
+**Net statistical picture:** the corpus CAN do combination-of-evidence rigorously (Paper VII proves it with a single
+clean binomial test + stated null + robustness + predict-before-fit). Paper V's Fisher p=6.3×10⁻²¹ is the lone outlier —
+a combined flourish that skips the independence justification Paper VII would never skip. Fixing/caveating Paper V's
+Fisher step brings the whole corpus to Paper VII's standard.
