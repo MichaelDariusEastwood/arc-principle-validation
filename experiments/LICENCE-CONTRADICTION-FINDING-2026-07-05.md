@@ -18,3 +18,18 @@ This is a rights change (All-Rights-Reserved → CC BY-NC-ND grants more permiss
 
 ## Credit (LAW 1)
 Every paper DOES carry a proper CDPA-1988 copyright notice (22/22) — authorship/rights are asserted. The gap is purely the CC BY-NC-ND grant not being expressed inline (and 9 papers asserting the contradictory "All Rights Reserved").
+
+---
+
+## UPDATE 2026-07-05 — THREE-WAY contradiction found (top-level LICENCE is MIT); strengthens "operator decision, do NOT unilaterally fix"
+
+On deeper inspection the licence estate contradicts itself across the FULL permissiveness spectrum:
+1. **Top-level `LICENCE` = MIT** — "permission… to use, copy, modify, merge, publish, distribute, sublicense, **and/or sell**". Maximally PERMISSIVE (allows commercial use, derivatives, resale).
+2. **9 papers inline = "© 2026 MDE. All Rights Reserved"** — maximally RESTRICTIVE (no sharing).
+3. **Charter intent = CC BY-NC-ND (papers) / proprietary (code)** — the MIDDLE (share, attribution, non-commercial, no-derivatives).
+
+**MIT contradicts BOTH halves of the charter's dual-licence:** it is neither "proprietary" (for code) nor "CC BY-NC-ND" (for papers) — MIT is *more* permissive than either. A downloaded paper says "All Rights Reserved"; the repo root says "do anything including sell it"; the charter wants CC BY-NC-ND. Three incompatible answers.
+
+**Why this is firmly a flag, not a fix (LAW 1 + consequential-rights caution):** reconciling requires the operator to DECIDE and APPLY a coherent dual-licence realignment — (a) replace the top-level MIT with the intended split (e.g. `LICENSE-PAPERS.md` = CC BY-NC-ND + `LICENSE-CODE.md` = proprietary, or a root notice pointing to both), (b) reconcile the 9 "All Rights Reserved" paper notices to CC BY-NC-ND, (c) add a uniform inline CC BY-NC-ND line to all 22 papers so standalone PDFs carry it. Each step GRANTS or RESTRICTS public rights — an IP decision only the author/operator makes. I did not edit. Route: operator/T4.
+
+**Severity raised MEDIUM → HIGH-for-Objective-G:** "dual licence everywhere" cannot be true while the repo root licenses everything as MIT (incl. the code the charter wants proprietary). This is the single biggest Objective-G gap.
