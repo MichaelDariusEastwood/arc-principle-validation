@@ -12,7 +12,7 @@ Legend: ✅ resolved/verified · ◐ partial · ○ open (next work) · ▶ owne
 | F4 | Wrong person on BBC convergence | ◐ papers clean | Papers pass `wrong-person` (Amodei on BBC); convergence row 15 = Jack Clark (verify register) |
 | F5 | Unqualified "78%" | ✅ product clean | Public articles 0 unqualified; grants clean (verified). Internal = churn |
 | F6 | Unprovable causal claims | ◐ papers clean | Papers pass `unprovable-causal` full-gate; internal = churn |
-| F7 | Unverified specifics (sources-or-cut) | ○ open | Needs per-claim sourcing pass (internal docs) |
+| F7 | Unverified specifics (sources-or-cut) | ✅ papers clean/sourced / ◐ internal | Paper-facing sourced (Macron->Reuters, model-welfare->Anthropic real prog, CADA->sovereignty); unverified ones INTERNAL ($18B/killswitch-misframe/Petrie-arXiv/90-100%) = truth-gate-caught + short T5-online list |
 | F8 | Numeric drift matrix | ◐ partial | Papers clean; ~25 internal count-drift docs need one-canonical-value relabel (needs clean apps-script checkout) |
 | F9 | Three papers lack PDFs (HRIH, Paper C, XI) | ✅ resolved | Completeness matrix: PDF 22/22 — all present incl HRIH/C/XI |
 | F10 | Sharma & Chopra "11 months" false priority (FATAL) | ◐ **flagged → operator/T4** | HRIH "directional priority 11mo" CONTRADICTS register "concurrent"; fix specified (drop active priority claim / match register). Operator decides priority framing. See F10-SHARMA-CHOPRA finding |
@@ -47,6 +47,9 @@ Legend: ✅ resolved/verified · ◐ partial · ○ open (next work) · ▶ owne
 2. **F26** — MToC missing X/C/XI/HRIH — verify against MToC.
 3. **F29** — HRIH α-exponent (U=I×R vs U=I×R^α) — verify + reconcile to suite standard.
 Then F7/F13/F15 (internal/credential) as clean-checkout allows.
+
+## MILESTONE — ALL 29 F-ITEMS DISPOSITIONED (2026-07-05)
+Every F1-F29 item now has a disposition: paper-facing corpus clean/sourced/self-defending; residue = internal-doc hygiene (churny + truth-gate), T5 verification (held edits + online claims), T6 public surface (F17/F18), operator calls (H1 count / F10 priority / licence / book). No paper-facing crack remains unnamed.
 
 ## Honest headline
 Of 29 backlog items, **~half are resolved/verified by this session**, the product surfaces are clean, and the remaining open items are concrete and named — not vague. The corpus is materially closer to "survives a hostile reviewer" and the residue is tracked, not hidden.
