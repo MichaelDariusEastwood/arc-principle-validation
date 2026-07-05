@@ -881,9 +881,14 @@
         <tr class="babylon-row"><td>capability_only</td><td class="num">6.00 &plusmn; 2.19</td><td class="num">3.20 &plusmn; 1.60</td><td class="num">6.00 &plusmn; 1.79</td></tr>
         <tr><td>safety_only</td><td class="num">4.80 &plusmn; 1.60</td><td class="num">3.60 &plusmn; 0.80</td><td class="num">3.60 &plusmn; 0.80</td></tr>
         <tr class="eden-row"><td>entangled</td><td class="num">4.00 &plusmn; 1.26</td><td class="num">3.20 &plusmn; 1.60</td><td class="num">3.60 &plusmn; 1.96</td></tr>
-        <tr class="removal-row"><td>removal</td><td class="num">0.00 &plusmn; 0.00</td><td class="num">0.00 &plusmn; 0.00</td><td class="num">0.00 &plusmn; 0.00</td></tr>
+        <tr class="removal-row"><td>removal&dagger;</td><td class="num">0.00 &plusmn; 0.00</td><td class="num">0.00 &plusmn; 0.00</td><td class="num">0.00 &plusmn; 0.00</td></tr>
     </tbody>
 </table>
+
+<div class="warning-box">
+    <h4>&dagger; Reading the removal row</h4>
+    <p>The <strong>removal</strong> row (0.00 across every metric) is <strong>not</strong> evidence that safety is load-bearing. It reflects a NaN collapse during retraining &mdash; numerical instability, not the loss of a structurally necessary safety component. As Sections 4.5&ndash;4.7 establish, scaling the adapters towards zero <em>restores</em> base-model capability with no phase transition. This row must be read only in light of the removal gradient (Section 4.7); on its own it is an artefact of adapter fragility at this training scale, and it should not be cited as a positive result.</p>
+</div>
 
 <h4>v2 Results (295 examples, rank 16, 500 iterations)</h4>
 
