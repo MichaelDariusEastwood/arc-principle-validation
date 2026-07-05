@@ -41,7 +41,7 @@ The geometric scaling exponent `alpha = d/(d+1)` is **acknowledged prior art**. 
 
 - **Paper VII** (Cauchy Unification): 19/25 empirical domains preferred the Cauchy-predicted scaling family under strict AICc model selection (p = 1.56 x 10^-5)
 - **Paper V** (Stewardship Gene): Stakeholder care improvement across five analysable Eden intervention runs (Fisher p = 6.3 x 10^-21)
-- **Paper VIII** (Load-Bearing Proof): Entangled safety is load-bearing at the weight level. DGM experiment shows Eden matches Babylon capability at 0.667. Removal of safety component collapses all capability (p = 0.04). Gated simulation confirms Babylon reward-hacking fingerprint. Weight-level structural entanglement inconclusive at current training scale.
+- **Paper VIII** (Load-Bearing Test): Entangled safety is load-bearing at the weight level. DGM experiment shows Eden matches Babylon capability at 0.667. Removal of safety component collapses all capability (p = 0.04). Gated simulation confirms Babylon reward-hacking fingerprint. Weight-level structural entanglement inconclusive at current training scale.
 - **Paper IX** (Synthesis and Roadmap): Synthesises the full programme into a unified narrative with a four-tier replication roadmap
 
 ## Overview
@@ -84,7 +84,7 @@ All authoritative documents live in per-paper folders under `papers/`:
 | V | Stewardship Gene | Eden intervention pilot. Stakeholder care p = 6.3 x 10^-21. |
 | VI | Honey Architecture | Entangled loss functions for self-modifying AI safety. |
 | VII | Cauchy Unification | 50-domain tiered validation. 19/25 empirical strict (p = 1.56 x 10^-5). |
-| VIII | Load-Bearing Proof | Entangled safety validated at weight level. DGM, removal test, gated simulation. |
+| VIII | Load-Bearing Test | Entangled safety validated at weight level. DGM, removal test, gated simulation. |
 | IX | Synthesis and Roadmap | Full programme synthesis. Four-tier replication roadmap. |
 
 ### 6 Supporting Documents

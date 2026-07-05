@@ -67,7 +67,7 @@ The complete **18-document suite** lives under `papers/`, each in its own folder
 | V | Stewardship Gene | **Stakeholder care is the most robust intervention** (lead finding 2); blinding gap noted. |
 | VI | Honey Architecture | In toy self-modifying nets, an entangled C×S loss prevents capability-only collapse. |
 | VII | Cauchy Unification | 19/25 empirical domains prefer the predicted family under strict AICc (p = 1.56×10⁻⁵). |
-| VIII | Load-Bearing Proof | 1 positive, 2 null/inconclusive; embedded safety = zero capability cost (benefit open). |
+| VIII | Load-Bearing Test | 1 positive, 2 null/inconclusive; embedded safety = zero capability cost (benefit open). |
 | IX | Synthesis and Roadmap | Five-tier evidence hierarchy; honest tally; four-phase replication roadmap. |
 
 **6 supporting documents:** Foundational (axioms; α = 1/(1−β), ARC bound α ≤ 2), On the Origin of Scaling Laws (cross-domain d/(d+1) catalogue), Eden Engineering (protocol spec, v6.1), Eden Vision (philosophical position paper), Executive Summary (grant-facing overview), Master Table of Contents (navigation).

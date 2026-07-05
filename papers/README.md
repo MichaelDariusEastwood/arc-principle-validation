@@ -40,7 +40,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | V | [The Stewardship Gene](Paper-V-Stewardship-Gene/) | v2.0 | 16 Mar 2026 | Eden Protocol scaling test (6 models) | `experiments/results/` |
 | VI | [The Honey Architecture](Paper-VI-Honey-Architecture/) | v1.1 | 16 Mar 2026 | Honey tests, self-modifying AI v1-v4 | `experiments/results/` |
 | VII | [Cauchy Unification](Paper-VII-Cauchy-Unification/) | v3.0 | 16 Mar 2026 | 50-domain validation, null controls, temporal OOS, preregistered extension | `experiments/results/` |
-| VIII | [The Load-Bearing Proof](Paper-VIII-The-Load-Bearing-Proof/) | v3.0 | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
+| VIII | [The Load-Bearing Test](Paper-VIII-The-Load-Bearing-Proof/) | v3.0 | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
 | IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v3.0 | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
 | X | [The Coupled Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v4.0 | 26 Jun 2026 | Self-certifying proof-harness, 9 experiments (9/9 confirmed, 0 falsifiers) | `Paper-X-Coupled-CoScaling-Correction/results/` |
 
@@ -118,7 +118,7 @@ Progressive expansion from 20 to 50 to 105 domains, with null controls, negative
 - **Preregistration:** `Paper-VII-Cauchy-Unification/experiments/preregistration/`
 - **Key finding:** 19/25 domains confirmed (p = 1.56 x 10^-5).
 
-### Load-Bearing Proof Experiments (Paper VIII)
+### Load-Bearing Test Experiments (Paper VIII)
 
 Three experiment tracks testing whether safety and capability are entangled at the weight level:
 

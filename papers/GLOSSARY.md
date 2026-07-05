@@ -212,7 +212,7 @@ This glossary defines all key terminology used across the ARC/Eden paper suite a
 
 - **Paper VII** -- *Cauchy Unification.* Validates the ARC framework's mathematical foundation across 50 empirical domains. 19/25 canonical domains show strict Cauchy-family match (p = 1.56 x 10^-5).
 
-- **Paper VIII** -- *The Load-Bearing Proof.* Three independent experiments testing whether safety is structurally inseparable from capability. Two confirm at behavioural and architectural levels. One inconclusive at weight level.
+- **Paper VIII** -- *The Load-Bearing Test.* Three independent experiments testing whether safety is structurally inseparable from capability. Two confirm at behavioural and architectural levels. One inconclusive at weight level.
 
 - **Paper IX** -- *Synthesis and Roadmap.* Integrates all findings. Five-tier evidence hierarchy. What was proven, what was inconclusive, what remains.
 

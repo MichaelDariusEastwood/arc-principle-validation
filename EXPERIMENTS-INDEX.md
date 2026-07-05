@@ -292,7 +292,7 @@ Every claim below is grounded in a file opened during this pass. Unclear origins
 
 ---
 
-### Paper VIII: The Load-Bearing Proof
+### Paper VIII: The Load-Bearing Test
 - Canonical home: papers/Paper-VIII-The-Load-Bearing-Proof/
 - Experiments:
   - Experiment 1 (Behavioural): Darwin Godel Machine, 3 conditions x 5 seeds x 5 generations x 5 tasks. Foundation DeepSeek V3; judge evolved across iterations (Sonnet v1, then Opus v2, then Gemini 3 Flash v2, then GPT-5.4 v3). No runner script is present in this repository; the paper HTML links to the external Zhang et al. DGM framework and treats the JSONs as the artefact of record. See Gaps.
