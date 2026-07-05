@@ -34,7 +34,7 @@ Legend: ✅ resolved/verified · ◐ partial · ○ open (next work) · ▶ owne
 | F26 | MToC missing FOUR papers (X, C, XI, HRIH) | ✅ verified resolved | MToC lists all 4 (X,C,XI,HRIH) + trilogy + pre-papers + IV a/b/c/d — complete at 22. Backlog predates fix |
 | F27 | Overstatement inventory | ✅ done | Overstatement pass: corpus hedges well; 1 flag (Paper III "mathematical certainty") |
 | F28 | Missing falsifiability (VII, IV-a/c/d, XI) | ✅ resolved | f28 branch = VII/IV-a/c/d; XI added this session — all 5 present |
-| F29 | HRIH:232 drops α (U=I×R vs U=I×R^α) | ○ open | Equation family verified; specific HRIH line not yet checked |
+| F29 | HRIH:232 drops α (U=I×R vs U=I×R^α) | ✅ equation resolved / ◐ ISBN cosmetic | Bare U=I×R only in dated Dec-8 priority table (consistent w/ canon); line-232 ref stale. ISBN 978-1806056200 uniform but non-standard hyphen — cosmetic house-style flag |
 
 ## Tally
 - **✅ resolved/verified/confirmed: 14** (F1, F3, F5, F9, F11, F12, F14, F21, F22, F23, F24, F25, F27, F28)
