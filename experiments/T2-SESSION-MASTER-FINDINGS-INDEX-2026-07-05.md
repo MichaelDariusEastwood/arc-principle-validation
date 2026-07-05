@@ -51,3 +51,6 @@
 
 ## Guard status
 origin/main convergence count = **19** (held all session). `restore-29` NOT in main ancestry. Papers truth-gate-clean. Re-flag immediately if either changes.
+
+## Equation-family competing-framing check — VERIFIED CLEAN (2026-07-05)
+Concern: canon says 'never present R² and R as competing'. Coarse scan flagged R² across 11 papers, but targeted check (equation-form I×R² vs statistical R²) found **0 equation-form I×R² instances** in Foundational/III/On-the-Origin/II — every R² is statistical goodness-of-fit. The equation family is carried by α-notation (U=I×R^α, α=2 ceiling), NOT a bare I×R² competing with I×R. Canon SATISFIED, no defect. (Complements F29 + Paper III R²=1 identity reframe + ARC-Bound retirement — equation family fully audited + consistent.)
