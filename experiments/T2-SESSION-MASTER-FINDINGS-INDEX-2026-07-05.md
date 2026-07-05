@@ -15,6 +15,8 @@
 | M3 | **LTFF interview-prep** states retracted α≈2.2 as current, no retraction in doc | C | flagged | grants lane/operator | Reframe directional + add α=2.24→0.49 note (LTFF SEND-PACKET already has it) | OBJECTIVE-C-GRANT… / 7f29f4b |
 | M4 | **Reproducibility uneven** — 6/10 experiment dirs lack a dir-level reproduce-doc; Paper-VII is the template | D | flagged (author owns run-knowledge) | operator/author | Add REPRODUCE.md (data→cmd→seed→output) to the 6; expand OPEN-CORE-REPRODUCIBILITY to index all 10 | OBJECTIVE-D-REPRODUCIBILITY… / 61d2470 |
 
+| L5 | **Paper XI falsifiability** — was MISSING (central convergence paper, apophenia-exposed); §4.1 ADDED grounded in §4 criteria as defeat conditions | A/#4 | **FIXED (edit applied, hold-for-T5)** | T5 verify | Confirm reads clean + matches §4; finalise WITH H1 | LADDER4-PAPER-XI… / see commit |
+
 ## LOW / paper-edit HOLD-for-T5 (owner: T5 verify, then merge)
 | # | Finding | Obj | Status | Owner | Action | Doc/commit |
 |---|---|---|---|---|---|---|
