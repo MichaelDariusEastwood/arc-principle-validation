@@ -42,6 +42,7 @@
 - **Grant estate (~25 funders) clean** on count-drift + super-linear framing + £624k, bar M3.
 - **Trilogy (HRIH/Vision/Engineering+PNP) publish-grade** + consistent + provenance-complete.
 - **Citations year-consistent** (apparent inconsistencies = prolific authors + DOI false-match).
+- **Falsification criteria (F1-F29) honestly reported** — 13 distinct criteria, 23 fail/tension vs 26 pass vs 17 pending; open falsifications (F2, F7 falsified; F3 fails; F1a weakened; F10 untested). Corpus falsifies itself in print = deepest anti-crank signal. Open: consolidate into one canonical status table (T5/author).
 - **Equations-by-artifact consistent** — R (Dec-8 thesis) / R^α (general, α=1/(1−β)) / R² (α=2 info-theoretic CEILING, ARC Bound); Foundational explicitly frames R² as "an information-theoretic upper bound" not a rival to R^α; NO paper poses "R² or R^α". Canon rule (never present R²/R as competing) HOLDS.
 - **ISBN estate clean** — one programme ISBN 9781806056200 (checksum-valid) consistent across 17 papers; PNP two extra ISBNs = legit external citations (Pattern Seekers 9781541647145, Jessica Kingsley 9781843103882), all checksum-valid.
 
