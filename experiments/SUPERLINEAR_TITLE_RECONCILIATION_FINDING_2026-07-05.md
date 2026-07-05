@@ -59,3 +59,27 @@ surfaces**, four points, all the same root cause (α 2.24→0.49 retraction not 
 "super-linear headline reconciliation" pass — Paper I notice + Paper II title (provenance-gated) + MToC row
 correction + Paper III wording. The deep discussions already model the honesty; only the headline surfaces
 need to catch up. Doing them together (not piecemeal) avoids re-churning the same files.
+
+---
+
+## Statistical reinforcement (2026-07-05) — the title claim is unsupportable on the paper's OWN numbers
+
+Paper II reports its corrected headline as: α_seq = 0.49 (regression, r²=0.86, **SE=0.20, bootstrap CI [−1.3, 2.9]**).
+The bootstrap CI spans strongly-negative to strongly-super-linear. Consequences, all from the paper's own figures:
+- The point estimate (0.49) is **sub-linear**, contradicting the title's "super-linear".
+- The CI **includes >1** (up to 2.9) → cannot rule super-linear OUT.
+- The CI **includes <0** (down to −1.3) → cannot even establish α>0 from this single fit alone (the revised α>0 claim rests on the cross-model *pattern*, sequential>parallel, not on this CI).
+- SE=0.20 would imply a tight CI ~[0.10, 0.88]; the bootstrap CI is ~7× wider, correctly reflecting the small-n non-normal distribution. Paper II **transparently reports both** — that honesty is to its credit and is NOT the issue.
+
+**The issue this sharpens:** the title's word "**Validation**" of super-linearity is not merely contradicted by the
+sub-linear point estimate — it is **statistically unsupportable**: the only clean fit validates nothing (the CI is
+consistent with negative, sub-linear, and super-linear alike). This makes the Paper II title reconciliation
+higher-priority, not lower. The body is honest (reports the wide CI, revises to α>0-on-the-pattern); only the
+title asserts a "validation" the statistics cannot bear.
+
+## Also checked, CLEAN (no action): the Phase-1 α≈2.24 worked example
+Paper II's "Sequential α Estimation Result: α ≈ 2.2, consistent with super-linear" is the Phase-1 (v11) endpoint-method
+CALCULATION (R1=280.25/E1=0.417 → R2=576.17/E2=0.083 → α=2.24), correctly superseded by the Phase-2 (v13) correction
+later in the paper. Standard "original finding → replication corrects it" structure; the abstract leads with "does not
+replicate". Not a stale live claim. (A minor nicety would be an inline forward-ref from the Phase-1 result to the
+Phase-2 correction, but the Phase-1/Phase-2 structure + abstract already carry it.)
