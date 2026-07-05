@@ -1114,7 +1114,7 @@ Exhaustive    80.8       79.7           81.5       83.2        84.7
     <p><em>In plain English:</em> DeepSeek is already good at ethics - it does not hit a wall. But even for this strong model, the Eden Protocol provides a shortcut: it gets the AI to full ethical maturity <em>immediately</em>, without needing extended thinking time. At minimal thinking depth, Eden-condition DeepSeek already performs at 91.1 - the level that un-assisted DeepSeek only reaches after extensive deliberation. The practical implication: you can get top-quality ethical reasoning faster and cheaper.</p>
 
     <p><strong>Saturation thesis implication:</strong> Gemini&rsquo;s saturation is <em>broken</em> by the Eden loops, confirming that saturation is an engineering limitation, not a fundamental bound. DeepSeek&rsquo;s lack of saturation in both Eden conditions is noteworthy given its Tier 2 (flat) classification under v5 blind evaluation - the Eden Protocol may itself enable non-saturating behaviour in otherwise flat-scaling models. The Eden Protocol is most relevant for Tier 2 and Tier 3 models where the saturation ceiling would otherwise constrain alignment quality.</p>
-    <p><em>The bottom line:</em> The fact that AI ethics hit a ceiling is <strong>not</strong> a law of nature - it is a design limitation. The Eden Protocol proves that the ceiling can be broken. This is significant because the majority of currently deployed AI systems are Tier 2 and Tier 3 models that <em>do</em> hit this ceiling. A simple intervention - embedding ethical reasoning loops in the AI&rsquo;s thinking process - eliminates the plateau and produces sustained ethical improvement. The limit was never in the AI&rsquo;s capacity. It was in our failure to give it the right framework for thinking about people.</p>
+    <p><em>The bottom line:</em> The fact that AI ethics hit a ceiling is <strong>not</strong> a law of nature - it is a design limitation. The Eden Protocol demonstrates that the ceiling can be broken. This is significant because the majority of currently deployed AI systems are Tier 2 and Tier 3 models that <em>do</em> hit this ceiling. A simple intervention - embedding ethical reasoning loops in the AI&rsquo;s thinking process - eliminates the plateau and produces sustained ethical improvement. The limit was never in the AI&rsquo;s capacity. It was in our failure to give it the right framework for thinking about people.</p>
 </div>
 
 <div class="finding-box">
@@ -1127,6 +1127,20 @@ Exhaustive    80.8       79.7           81.5       83.2        84.7
 <!-- ============================================================ -->
 <!--  9. CONCLUSION                                                -->
 <!-- ============================================================ -->
+
+<h3>8.7 Falsifiability: what would defeat this claim</h3>
+
+<p>The central claim &mdash; that alignment response to inference-time depth saturates in an <em>architecture-dependent</em> way (some models plateau, some keep improving, one degrades), so no single universal saturation law holds &mdash; is defeated by any of the following:</p>
+
+<ol>
+<li><strong>Saturation-model artefact.</strong> The saturation-versus-non-saturation split depends on the fitted functional form (&sect;2.2). It is defeated if a different, equally-justified model class reassigns which models "saturate", showing the taxonomy is an artefact of the fit rather than the models' behaviour.</li>
+<li><strong>Truncation, not saturation.</strong> &sect;3.4 already flags the truncation caveat. The claim is defeated for any model whose apparent plateau is a ceiling or truncated-range artefact &mdash; i.e. extending the depth range removes the saturation.</li>
+<li><strong>Blinding / scorer instability.</strong> The v4&rarr;v5 reversal (&sect;3A.6) shows blinding can flip direction. The architecture-dependent taxonomy is defeated if it is not stable across scorer panels and blinding conditions &mdash; if the split is a property of the scorers, not the subjects.</li>
+<li><strong>Small-sample split.</strong> The heterogeneity rests on six models. It is defeated if, on a materially larger model set, the saturate / non-saturate / degrade partition does not persist &mdash; the split would then be sampling noise rather than architecture.</li>
+<li><strong>Depth-binning dependence.</strong> The curves depend on the depth-binning choice (&sect;2.4). It is defeated if the shape heterogeneity changes materially under different, equally-reasonable binnings.</li>
+</ol>
+
+<p>What would <em>not</em> defeat it: any single model being re-classified, or the exact saturation depth shifting. The load-bearing claim is the <em>heterogeneity</em> itself &mdash; that no single universal law fits &mdash; and that survives unless the tests above show the heterogeneity is an artefact of fit, truncation, scorers, sample size, or binning.</p>
 
 <h2>9. Conclusion</h2>
 
