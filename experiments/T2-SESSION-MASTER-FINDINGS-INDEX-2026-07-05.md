@@ -19,7 +19,7 @@
 | # | Finding | Obj | Status | Owner | Action | Doc/commit |
 |---|---|---|---|---|---|---|
 | L1 | **R²=1.00000000** framing — Paper III EDIT applied (now "exact analytical identity, not empirical fit", matching Foundational) | A/#7 | EDIT made, hold-for-T5 | T5 | Verify edit + identity claim; then merge | LADDER7-R2-IDENTITY… / effbd0d |
-| L2 | **ARC-Bound retirement xref** — On-the-Origin lists α≤2 as current w/o retirement note (only lag of 9) | A | flagged | T5/operator | Add Paper-III-style qualifier to On-the-Origin | ARC-BOUND-RETIREMENT-XREF / cba8f9c |
+| L2 | **ARC-Bound retirement xref** — On-the-Origin lists α≤2 as current w/o retirement note (only lag of 9) | A | **FIXED (edit applied, hold-for-T5)** | T5 verify | Paper-III-style qualifier ADDED to On-the-Origin | ARC-BOUND-RETIREMENT-XREF / cba8f9c |
 | L3 | **F23 metabolic** — "2.4 vs 2.5" NOT a contradiction (different sets); full table-mean recompute needed | A/#2 | refined, routed | T5 | Parse full tables from source; confirm prose-mean=table-mean; add set-scope line | F23-METABOLIC-REFINED / cd6c4e5 |
 | L4 | **Citation real-existence** spot-check (year-consistency already CLEAN) | A/#7 | deferred (LAW 5) | T5 online | Online-verify top ~10 authorities exist as cited | LADDER7-CITATION… / 14581a3 |
 
