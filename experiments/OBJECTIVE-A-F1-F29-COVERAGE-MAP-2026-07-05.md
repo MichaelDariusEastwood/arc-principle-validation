@@ -20,7 +20,7 @@ Legend: ✅ resolved/verified · ◐ partial · ○ open (next work) · ▶ owne
 | F12 | "Single source of truth" wrong | ✅ addressed | research-canonical-facts.json built + guarded (count 19) |
 | F13 | FULL-EVIDENCE-TIMELINE inconsistent | ◐ diagnosed → clean-checkout owner | 3 precise fixes: book-date Jan6-vs-Jan2 (Line66), F25 author-order residue (Line62), ISBN-10/13 drift. Churny checkout = cannot edit; line-numbered. See F13 finding |
 | F14 | Equation family unreconciled | ✅ resolved | equations-by-artifact verified consistent (U=I×R / R^α / R² by artifact) |
-| F15 | credential.html table mismatch | ○ open | Credential surface — row-for-row vs master |
+| F15 | credential.html table mismatch | ◐ diagnosed → T4/PM+owner | credential.html has 19-vs-29 contradiction LIVE ("19 independently sourced" x2 + "THE 29 CONVERGENCES" section). Same tension as merge guard. Fix to 19 but finalise w/ H1. Churny = cannot edit |
 | F16 | PNAS DOI pgag076 unverified | ◐ partial | DOI-scheme checked; real-existence deferred → T5 online |
 | F17 | Public evidence page broken | ▶ T6 | SEO/nav/public surface = T6-research |
 | F18 | Named-individual attribution risks | ▶ T6 | Public page = T6 |
