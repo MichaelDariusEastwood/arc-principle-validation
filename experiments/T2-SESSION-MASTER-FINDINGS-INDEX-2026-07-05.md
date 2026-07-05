@@ -39,6 +39,7 @@
 - **Grant estate (~25 funders) clean** on count-drift + super-linear framing + £624k, bar M3.
 - **Trilogy (HRIH/Vision/Engineering+PNP) publish-grade** + consistent + provenance-complete.
 - **Citations year-consistent** (apparent inconsistencies = prolific authors + DOI false-match).
+- **ISBN estate clean** — one programme ISBN 9781806056200 (checksum-valid) consistent across 17 papers; PNP two extra ISBNs = legit external citations (Pattern Seekers 9781541647145, Jessica Kingsley 9781843103882), all checksum-valid.
 
 ## Guard status
 origin/main convergence count = **19** (held all session). `restore-29` NOT in main ancestry. Papers truth-gate-clean. Re-flag immediately if either changes.
