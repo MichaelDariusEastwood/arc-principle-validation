@@ -29,7 +29,7 @@
 ## Objective B truth-gate → zero (owner: PM/T4 coordinated)
 | # | Finding | Status | Action |
 |---|---|---|---|
-| B1 | **Product is CLEAN** — arc papers 0 violations; public served pages effectively 0; the ~290 is internal working-docs | verified | Reframe the "290" honestly — product surfaces pass NOW |
+| B1 | **Product is CLEAN** — arc papers **0 violations under the FULL 21-check gate** (incl eden-protocol-dating, verified after earlier subset scan); public served pages effectively 0; the ~290 is internal working-docs | verified (full gate) | Reframe the "290" honestly — product surfaces pass NOW |
 | B2 | Gate tuning (biggest lever) | specified | Exclude/allowlist defect-DESCRIBING docs (finding docs quote forbidden phrasings to fix them) |
 | B3 | Gate CHECKS patch | specified, uncommitted (needs clean T2 apps-script checkout) | Add "25" + "confirmations" to count-drift regex; broaden unqualified-78 to 40-char RL window |
 | B4 | Count-drift relabel ~25 internal docs | post-merge | Context-sensitive (blind 28→19 corrupts quoted-as-wrong) |
