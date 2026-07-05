@@ -18,7 +18,7 @@ Legend: ✅ resolved/verified · ◐ partial · ○ open (next work) · ▶ owne
 | F10 | Sharma & Chopra "11 months" false priority (FATAL) | ◐ **flagged → operator/T4** | HRIH "directional priority 11mo" CONTRADICTS register "concurrent"; fix specified (drop active priority claim / match register). Operator decides priority framing. See F10-SHARMA-CHOPRA finding |
 | F11 | Convergence count variants (8,11,15…) | ✅ addressed | count-drift + Canon verdict → single count 19 |
 | F12 | "Single source of truth" wrong | ✅ addressed | research-canonical-facts.json built + guarded (count 19) |
-| F13 | FULL-EVIDENCE-TIMELINE inconsistent | ○ open | Internal evidence doc — verify vs canonical |
+| F13 | FULL-EVIDENCE-TIMELINE inconsistent | ◐ diagnosed → clean-checkout owner | 3 precise fixes: book-date Jan6-vs-Jan2 (Line66), F25 author-order residue (Line62), ISBN-10/13 drift. Churny checkout = cannot edit; line-numbered. See F13 finding |
 | F14 | Equation family unreconciled | ✅ resolved | equations-by-artifact verified consistent (U=I×R / R^α / R² by artifact) |
 | F15 | credential.html table mismatch | ○ open | Credential surface — row-for-row vs master |
 | F16 | PNAS DOI pgag076 unverified | ◐ partial | DOI-scheme checked; real-existence deferred → T5 online |
