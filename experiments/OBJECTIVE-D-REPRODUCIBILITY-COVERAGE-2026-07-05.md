@@ -26,3 +26,21 @@ NOT "9/10 irreproducible". Every dir has code; methodology also lives in each pa
 2. Expand OPEN-CORE-REPRODUCIBILITY.md (38 lines) to index all 10 experiments with a one-line run-pointer each.
 3. Cross-links to the paper Data & Code Availability sections (only Papers II/VI/VII have one — see STATISTICAL_METHODOLOGY_FINDINGS_2026-07-05 §data-availability). Standardise both together.
 I do NOT author the run-steps here — I cannot verify a seed/entry-point/expected-output I did not run (would violate LAW 1). The author/experiment-owner supplies them; I have scoped exactly which 6 dirs + the template.
+
+---
+
+## UPDATE 2026-07-05 — Paper VI now has a GROUNDED REPRODUCE.md (commit 2a4ba25); method proven, severity refined DOWN
+
+**Key correction (LAW 1):** reproducibility info is NOT simply "absent" from the 6 dirs — for **honey-architecture (Paper VI)** it is EMBEDDED in the result-JSON metadata (v2=10seeds×150cyc fairness-VERIFIED; v3=20seeds×180cyc adversarial-VERIFIED; v4=15seeds×5levels=225runs; all timestamped 2026-03-16). I authored `honey-architecture__Paper-VI/REPRODUCE.md` extracting these verbatim — grounded, fabricates nothing; only the generator run-command is TODO(author).
+
+**Generalisation check (honest):** the artefact-metadata method does NOT apply uniformly:
+| Dir | result-JSONs | top-level metadata/config |
+|---|---|---|
+| honey-architecture (Paper VI) | 4 | **4/4 rich** → REPRODUCE.md DONE |
+| eden-intervention (Paper V) | 6 | 0 (nested or code-only) |
+| paper-ii-compute (Paper II) | 7 | 0 |
+| alignment-scaling (Papers IV) | 24 | 0 |
+| paper-i-foundational (Paper I) | 0 | — (code-only) |
+| analysis-tools (Cross-Programme) | 0 | — |
+
+**Refined severity: LOW–MEDIUM.** One of six now has a grounded reproduce-doc. The other five need deeper per-dir extraction (nested metadata / code inspection) or author run-knowledge — genuine but not blocking (methodology also lives in each paper's Methods §, and Paper-VII remains the GOLD structural template). Next: deeper extraction pass on the 5 (recover params from nested JSON / code) where possible; author supplies generator run-commands.
