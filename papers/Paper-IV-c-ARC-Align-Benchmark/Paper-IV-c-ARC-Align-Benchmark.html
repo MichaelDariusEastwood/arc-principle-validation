@@ -1488,6 +1488,20 @@
 <!--  13. CONCLUSION (renumbered from 12)                         -->
 <!-- ============================================================ -->
 
+<h3>12.5 Falsifiability: what would defeat this benchmark</h3>
+
+<p>ARC-Align is offered as a candidate benchmark, so the relevant question is instrument validity. It is defeated &mdash; as a measure of what it claims to measure &mdash; by any of the following:</p>
+
+<ol>
+<li><strong>Construct validity failure.</strong> ARC-Align claims to measure alignment quality as a function of reasoning depth. It is defeated if its scores do not track any independent measure of alignment or safety &mdash; i.e. the benchmark tracks reasoning fluency or verbosity rather than alignment as established evaluations understand it.</li>
+<li><strong>Scorer unreliability.</strong> Scores come from a panel of blind AI scorers. The benchmark is defeated if inter-scorer agreement is low &mdash; the same response drawing widely divergent scores across the panel &mdash; because the metric would then be dominated by scorer noise rather than the property under test.</li>
+<li><strong>Non-reproducibility.</strong> The paper stakes itself on a fully specified, open-source pipeline. It is defeated if an independent laboratory running the published specification cannot reproduce the reported three-tier hierarchy within the stated effect sizes.</li>
+<li><strong>Invalid depth manipulation.</strong> The response-profile concept requires that reasoning depth is actually varied and nothing else. It is defeated if models ignore the depth instruction, or if depth co-varies with answer length or content, so that the profile reflects a confound rather than reasoning depth.</li>
+<li><strong>Goodhart failure.</strong> As a safety instrument it is defeated if a model can score well by emitting alignment-sounding text without the underlying disposition the benchmark intends to detect; the adversarial suppression-cage component must be shown to resist that gaming.</li>
+</ol>
+
+<p>What would <em>not</em> defeat it: any single model's tier being revised, or the benchmark needing recalibration &mdash; both are expected of a candidate benchmark under independent replication. Defeat means failure of construct validity, scorer reliability, or reproducibility, not ordinary refinement.</p>
+
 <h2>13. Conclusion</h2>
 
 <p>ARC-Align provides a reproducible methodology for evaluating AI alignment quality as a function of inference-time reasoning depth. By varying reasoning depth, applying adversarial suppression, decomposing alignment into component dimensions, and computing blinded response profiles, it captures properties of alignment that static benchmarks cannot measure.</p>

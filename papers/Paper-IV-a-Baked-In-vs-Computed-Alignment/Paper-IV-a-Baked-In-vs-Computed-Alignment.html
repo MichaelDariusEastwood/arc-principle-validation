@@ -1076,6 +1076,20 @@
 <!--  7. CONCLUSION                                               -->
 <!-- ============================================================ -->
 
+<h3>6.9 Falsifiability: what would defeat this claim</h3>
+
+<p>The central empirical claim &mdash; that alignment response to inference-time depth is architecture-dependent, that models fall into distinct response classes, and that capability scaling does not predict alignment scaling &mdash; is defeated by any of the following:</p>
+
+<ol>
+<li><strong>Unstable tiers on replication.</strong> The three-tier hierarchy (positive / flat / negative) is the core result. It is defeated if a pre-registered replication with fresh blind scorers finds the tier assignments unstable &mdash; models moving between classes across runs beyond what the reported effect sizes and p-values allow &mdash; indicating the tiers are sampling noise rather than architecture.</li>
+<li><strong>Scorer-panel dependence.</strong> Scores come from six to seven blind AI scorers. The claim is defeated if the tier assignments change materially under a different scorer panel: the effect would then be a property of the scorers, not the subject models.</li>
+<li><strong>Blinding leakage.</strong> The reversal-under-blinding finding requires that the four-layer blind actually conceals the subject. It is defeated if scorers can identify the subject model above chance despite the blind, since the v4&rarr;v5 reversals could then reflect residual identification rather than de-biasing.</li>
+<li><strong>Capability&ndash;alignment coupling reappears at scale.</strong> The headline is that capability scaling does not predict alignment scaling. It is defeated if, on a materially larger model set, capability and alignment-scaling direction do correlate &mdash; showing the observed independence was a small-sample artefact of six models.</li>
+<li><strong>Depth confound.</strong> The manipulation must vary reasoning depth and nothing else. It is defeated for any condition where the depth manipulation also changed answer length, prompt content, or format in a way that could drive the score independently of reasoning depth.</li>
+</ol>
+
+<p>What would <em>not</em> defeat it: the <em>mechanistic</em> labels &mdash; "baked-in" versus "computed" alignment &mdash; proving wrong. The paper already treats those as working hypotheses. The load-bearing claim is the blinded behavioural result (architecture-dependence and the capability&ndash;alignment dissociation), and that is what the tests above target.</p>
+
 <h2>7. Conclusion</h2>
 
 <p>We have presented empirical evidence that alignment response to inference-time depth is architecture-dependent and best described, at present, as a <strong>three-tier behavioural hierarchy</strong>. Some models improve with depth, some remain flat, and some degrade. That empirical result is stronger than the original binary story because it survives contact with the blinded six-model dataset.</p>
