@@ -15,7 +15,7 @@ Legend: ✅ resolved/verified · ◐ partial · ○ open (next work) · ▶ owne
 | F7 | Unverified specifics (sources-or-cut) | ○ open | Needs per-claim sourcing pass (internal docs) |
 | F8 | Numeric drift matrix | ◐ partial | Papers clean; ~25 internal count-drift docs need one-canonical-value relabel (needs clean apps-script checkout) |
 | F9 | Three papers lack PDFs (HRIH, Paper C, XI) | ✅ resolved | Completeness matrix: PDF 22/22 — all present incl HRIH/C/XI |
-| F10 | Sharma & Chopra "11 months" false priority (FATAL) | ○ **open — highest** | Not yet verified; concrete + paper-addressable |
+| F10 | Sharma & Chopra "11 months" false priority (FATAL) | ◐ **flagged → operator/T4** | HRIH "directional priority 11mo" CONTRADICTS register "concurrent"; fix specified (drop active priority claim / match register). Operator decides priority framing. See F10-SHARMA-CHOPRA finding |
 | F11 | Convergence count variants (8,11,15…) | ✅ addressed | count-drift + Canon verdict → single count 19 |
 | F12 | "Single source of truth" wrong | ✅ addressed | research-canonical-facts.json built + guarded (count 19) |
 | F13 | FULL-EVIDENCE-TIMELINE inconsistent | ○ open | Internal evidence doc — verify vs canonical |
