@@ -28,6 +28,8 @@ Independently, Demetrius (2006) developed a quantum-statistical framework in whi
 
 Two derivations. Different physics. Same formula. The purpose of this paper is to explain why.
 
+These two are not the only independent derivations of alpha = d/(d+1). At least four distinct methodological routes yield the same exponent: network-geometric optimisation (West, Brown & Enquist, 1997; Banavar, Maritan & Rinaldo, 1999), fractal cell geometry (He & Chen, 2003; He, 2004), quantum metabolism (Demetrius, 2006; Demetrius & Tuszynski, 2010), and Murray's-law flow conservation (Zhao, 2015). We analyse the network-geometric and quantum-metabolism pair in depth because their unification through Cauchy's functional equation is the most transparent; the argument generalises to the others. Bettencourt (2013) concerns urban scaling — super-linear for socioeconomic output, sub-linear for infrastructure — and is a distinct phenomenon, not a derivation of this metabolic exponent.
+
 ## 2. Cauchy's Functional Equation and Recursive Composition
 
 In 1821, Augustin-Louis Cauchy proved that the only continuous solutions to the functional equation f(x + y) = f(x) + f(y) are linear functions f(x) = cx. The multiplicative analogue, f(xy) = f(x)f(y), yields power functions f(x) = x raised to alpha for some constant alpha.
@@ -125,7 +127,7 @@ The boundary w = -1/3 is the strong energy condition boundary in general relativ
 
 Three confirmed. Two consistent. One untested. Zero free parameters.
 
-Two independent derivations (West et al. 1997; Demetrius 2006, with the explicit dimensional generalisation in Demetrius & Tuszynski 2010) produce the same formula from different physics, unified by Cauchy's functional equation (1821).
+The two derivations analysed here (West et al. 1997; Demetrius 2006, with the explicit dimensional generalisation in Demetrius & Tuszynski 2010) produce the same formula from different physics, unified by Cauchy's functional equation (1821) — and they are two of at least four independent derivations of the exponent (the others being He's fractal cell geometry and Zhao's Murray's-law flow conservation), which the same Cauchy argument accommodates.
 
 ## 9. Conclusion
 
