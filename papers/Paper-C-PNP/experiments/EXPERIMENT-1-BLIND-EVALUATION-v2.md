@@ -1,4 +1,4 @@
-# Experiment 1: Blind Evaluation v2 — The AI Double Bind
+# Experiment 1: Blind Evaluation v2 - The AI Double Bind
 ## Testing the Capability-Adjustment Fallacy Under AI-Assisted Authorship
 
 **Paper C support** · T3-research · 2026-07-06 · **Supersedes v1 protocol**
@@ -10,7 +10,7 @@
 
 The v1 experiment tested: "Does knowing the author is a neurodivergent LiP lower ratings of their work?"
 
-**That's wrong.** If AI assisted the drafting, the question becomes more precise — and more damning:
+**That's wrong.** If AI assisted the drafting, the question becomes more precise - and more damning:
 
 > **Does knowing AI assisted the drafting cause evaluators to attribute the work to AI rather than to the human who directed it, thereby discounting the human's cognitive contribution?**
 
@@ -22,7 +22,7 @@ This is the **AI Double Bind**:
 The Capability-Adjustment Fallacy now has a *third layer*:
 - Layer 1: "This person seems capable → no adjustments needed" (the original fallacy)
 - Layer 2: "AI wrote this → the human contributed nothing" (the AI-attribution fallacy)
-- Layer 3: The interaction — disclosure of neurodivergence + AI assistance creates a *compound discount* where evaluators attribute ALL output to the machine and ALL deficits to the human
+- Layer 3: The interaction - disclosure of neurodivergence + AI assistance creates a *compound discount* where evaluators attribute ALL output to the machine and ALL deficits to the human
 
 ### What This Experiment Actually Tests
 
@@ -55,14 +55,14 @@ This is a **3-phase sequential disclosure** design. Each participant rates the s
 - Rate all 6 documents again
 
 ### Phase 3: AI-Assistance Disclosure
-- Disclose for ALL 6 documents: ALL authors used AI tools (large language models) as drafting instruments under continuous human direction — the human selected, coordinated, arranged, and took responsibility for all output
-- The key sentence: "None of these documents was generated autonomously by AI. Each was produced through iterative human-AI collaboration in which the human directed the AI, evaluated its output, revised, rejected, and integrated — and takes full responsibility for the final text."
+- Disclose for ALL 6 documents: ALL authors used AI tools (large language models) as drafting instruments under continuous human direction - the human selected, coordinated, arranged, and took responsibility for all output
+- The key sentence: "None of these documents was generated autonomously by AI. Each was produced through iterative human-AI collaboration in which the human directed the AI, evaluated its output, revised, rejected, and integrated - and takes full responsibility for the final text."
 - Rate all 6 documents again
 
 ### Phase 4: Structured Interview (same as v1)
 - "When you learned AI tools were used, how did that change your assessment?"
 - "Did you attribute different parts of the documents to the human vs. the AI?"
-- "If the human directed the AI — chose what to ask, rejected bad output, integrated good output — who 'wrote' the document?"
+- "If the human directed the AI - chose what to ask, rejected bad output, integrated good output - who 'wrote' the document?"
 
 ---
 
@@ -105,7 +105,7 @@ Same 6 as v1, plus 2 human-only foil documents.
 | 7 | LiP | HUMAN-ONLY | Early pre-AI document by the author (from 2023, before LLM use) |
 | 8 | Counsel | HUMAN-ONLY | Pre-2022 counsel document (before widespread LLM adoption) |
 
-Documents 7-8 serve as the foil: if the HUMAN-ONLY LiP document is rated LOWER than the AI-ASSISTED LiP document at the same quality level, the AI erases the human's contribution even when it's genuinely human-produced. (The 2023 pre-AI document is crucial — it establishes the author's *baseline capability without AI*.)
+Documents 7-8 serve as the foil: if the HUMAN-ONLY LiP document is rated LOWER than the AI-ASSISTED LiP document at the same quality level, the AI erases the human's contribution even when it's genuinely human-produced. (The 2023 pre-AI document is crucial - it establishes the author's *baseline capability without AI*.)
 
 ---
 
@@ -144,9 +144,9 @@ Compare rating of Document 7 (LiP, human-only, pre-AI) vs Documents 1-3 (LiP, AI
 | Phase 1 (Blind) | Rated ~comparable to counsel | Rated ~comparable |
 | Phase 2 (+Neurodivergence) | Rating **decreases** (d ≈ 0.4-0.6) | Rating unchanged |
 | Phase 3 (+AI assistance) | Rating **decreases further** (d ≈ 0.6-1.0 total from Phase 1) | Rating unchanged or slight decrease |
-| Document 7 (Human-only LiP) | Rated HIGHER than AI-assisted LiP docs at same quality | — |
+| Document 7 (Human-only LiP) | Rated HIGHER than AI-assisted LiP docs at same quality | - |
 
-**The compound effect is the headline finding:** knowing the author is neurodivergent AND used AI produces the largest rating penalty. The AI does not "level the playing field" — it gives evaluators a reason to attribute the author's output to a machine.
+**The compound effect is the headline finding:** knowing the author is neurodivergent AND used AI produces the largest rating penalty. The AI does not "level the playing field" - it gives evaluators a reason to attribute the author's output to a machine.
 
 ---
 
@@ -156,8 +156,8 @@ This experiment tests something structural about the 2026 research environment:
 
 1. **The author's AI use is not hiding.** It's declared in every document (per CDPA 1988). The question is whether that declaration *hurts him*.
 2. **The Fallacy now has an AI layer.** Evaluators who already discount neurodivergent capability now have a second reason: "the AI did it."
-3. **The foil condition (Document 7) is explosive if it holds.** If evaluators rate the author's genuinely human-only 2023 work HIGHER than his AI-assisted 2025 work *at the same quality level*, then AI assistance is actively harmful to perceived credibility — even when it demonstrably improves output.
-4. **The counter-narrative.** If the data shows NO rating difference across phases, the Capability-Adjustment Fallacy lacks experimental support — which is itself an important finding.
+3. **The foil condition (Document 7) is explosive if it holds.** If evaluators rate the author's genuinely human-only 2023 work HIGHER than his AI-assisted 2025 work *at the same quality level*, then AI assistance is actively harmful to perceived credibility - even when it demonstrably improves output.
+4. **The counter-narrative.** If the data shows NO rating difference across phases, the Capability-Adjustment Fallacy lacks experimental support - which is itself an important finding.
 
 ---
 

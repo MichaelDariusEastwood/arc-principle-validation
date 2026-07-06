@@ -504,21 +504,21 @@
 <p>We begin with three axioms that any recursive amplification system must satisfy.</p>
 
 <div class="axiom-box">
-<div class="box-label">Axiom 1  – Separability</div>
+<div class="box-label">Axiom 1  - Separability</div>
 <p>Effective capability decomposes as $U = I \times g(R)$, where $I > 0$ is base potential (structured asymmetry), $R \geq 1$ is recursive depth, and $g(1) = 1$ (at depth 1, capability equals base potential).</p>
 </div>
 
 <p>This axiom asserts that base quality and recursive depth contribute to capability through independent, multiplicative channels. A system with zero base potential ($I = 0$) achieves zero capability regardless of recursive depth: recursion has nothing to amplify.</p>
 
 <div class="axiom-box">
-<div class="box-label">Axiom 2  – Cumulative Advantage</div>
+<div class="box-label">Axiom 2  - Cumulative Advantage</div>
 <p>The amplification factor grows according to accumulated amplification: $\frac{dg}{dr} = a \cdot g^{\beta}$, where $g(0) = 1$, $a > 0$ is a rate constant and $\beta \in [0, 1)$ is the self-referential coupling parameter.</p>
 </div>
 
 <p>This axiom captures the essential feature of recursive processing: each step's marginal amplification depends on accumulated amplification. When $\beta = 0$, steps are independent and amplification grows linearly. When $\beta > 0$, accumulated amplification accelerates future gains (super-linear scaling). The parameter $\beta$ measures how much of accumulated context each new step can effectively leverage. Operating on the amplification factor $g$ rather than on absolute capability $Q = I \cdot g$ preserves the separability asserted in Axiom 1: the amplification function depends only on recursive depth, not on base potential.</p>
 
 <div class="axiom-box">
-<div class="box-label">Axiom 3  – Continuity</div>
+<div class="box-label">Axiom 3  - Continuity</div>
 <p>The scaling function $g$ is continuous and monotonically non-decreasing in $R$.</p>
 </div>
 
@@ -529,14 +529,14 @@
 <p>How does the gain from recursive step $r$ combine with accumulated capability $Q_r$? We formalise this as follows.</p>
 
 <div class="definition">
-<div class="box-label">Definition  – Recursive Composition Operator</div>
+<div class="box-label">Definition  - Recursive Composition Operator</div>
 <p>Let $\oplus : \mathbb{R}^+ \times \mathbb{R}^+ \to \mathbb{R}^+$ be the <strong>recursive composition operator</strong>, defined by $Q_{r+1} = Q_r \oplus \delta Q_r$, where $\delta Q_r$ is the incremental gain at step $r$. The operator $\oplus$ characterises how incremental gains compose with accumulated capability.</p>
 </div>
 
 <p>The composition operator is the central mathematical object of this framework. It is what varies across domains and what determines the scaling function. It is also empirically measurable: observe how marginal gains at step $r$ relate to accumulated capability $Q_r$.</p>
 
 <div class="theorem">
-<div class="box-label">Theorem 1  – Classification of Scaling Functions</div>
+<div class="box-label">Theorem 1  - Classification of Scaling Functions</div>
 <p>Under Axioms 1&ndash;3, the algebraic properties of $\oplus$ uniquely determine the scaling function $f_{\oplus}(R)$:</p>
 <ol style="margin-top: 0.5rem;">
     <li><strong>Multiplicative composition</strong> ($g(R_1 \cdot R_2) = g(R_1) \cdot g(R_2)$): the unique continuous solution is $g(R) = R^{\alpha}$ &emsp; <em>(power law)</em></li>
@@ -623,7 +623,7 @@
 <p>For systems with multiplicative composition, the exponent $\alpha$ is not a free parameter. It is derived from the coupling constant $\beta$.</p>
 
 <div class="theorem">
-<div class="box-label">Theorem 2  – The Scaling Exponent</div>
+<div class="box-label">Theorem 2  - The Scaling Exponent</div>
 <p>Under Axiom 2, the power-law exponent is: $$\alpha = \frac{1}{1 - \beta}$$</p>
 </div>
 
@@ -650,8 +650,8 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 <p>The separable form $U = I \times f(R, \beta)$ is not merely a convenient parameterisation. We prove that the multiplicative interaction between $I$ and $R$ is a <em>necessary</em> consequence of the axioms.</p>
 
 <div class="theorem">
-<div class="box-label">Theorem 2a  – Non-Additivity</div>
-<p>Under Axioms 1–3 with $\beta \in (0, 1)$, the solution $U(I, R)$ cannot be decomposed as $U = g(I) + h(R)$ for any functions $g$ and $h$. The multiplicative interaction is essential.</p>
+<div class="box-label">Theorem 2a  - Non-Additivity</div>
+<p>Under Axioms 1-3 with $\beta \in (0, 1)$, the solution $U(I, R)$ cannot be decomposed as $U = g(I) + h(R)$ for any functions $g$ and $h$. The multiplicative interaction is essential.</p>
 </div>
 
 <p><em>Proof.</em> Suppose $U(I, R) = f(I) + h(R)$. By Axiom 1: $U = I \times g(R)$ with $g(0) = 1$. At $R = 0$: $f(I) + h(0) = I$, so $f(I) = I - h(0)$. Substituting: $I \times g(R) = I + [h(R) - h(0)]$, giving $g(R) = 1 + [h(R) - h(0)]/I$. Since $g$ depends only on $R$ (Axiom 1), but the right side depends on $I$, we require $h(R) = h(0)$ for all $R$, giving $g(R) = 1$ (no amplification). But Axiom 2 with $\beta > 0$ guarantees $dg/dr = a \cdot g^{\beta} = a > 0$ at $r = 0$, so $g$ is non-constant. Contradiction. $\blacksquare$</p>
@@ -680,7 +680,7 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 <p>The full solution to the $\beta$-dynamics equation is not a pure power law. It contains a transition.</p>
 
 <div class="theorem">
-<div class="box-label">Theorem 3  – The Scaling Crossover</div>
+<div class="box-label">Theorem 3  - The Scaling Crossover</div>
 <p>The full solution $g(R) = \left[ 1 + (1-\beta)aR \right]^{1/(1-\beta)}$ exhibits three regimes:</p>
 <ol>
     <li>$R \ll R^*$: $\;g \approx 1 + aR$ &emsp; (approximately linear amplification)</li>
@@ -700,7 +700,7 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 <p>We now prove that any system satisfying Axioms 1&ndash;3 with $\beta > 0$ necessarily exhibits five structural properties.</p>
 
 <div class="theorem">
-<div class="box-label">Theorem 4  – Universal Structural Properties</div>
+<div class="box-label">Theorem 4  - Universal Structural Properties</div>
 <p>Under Axioms 1&ndash;3, any recursive system with $\beta > 0$ exhibits:</p>
 <ol>
     <li><strong>Threshold behaviour.</strong> There exists a crossover depth $R^*$ below which base capability dominates and above which recursive gains dominate. This follows from Theorem 3: the transition from $U \approx I$ to $U \propto R^{\alpha}$ is a qualitative regime change.</li>
@@ -817,7 +817,7 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 
 <p>Several studies challenge the framework's AI predictions:</p>
 
-<p>Li et al. (2025, arXiv:2502.12215) found that for DeepSeek R1, longer chains do not consistently enhance accuracy. Li et al. (2025, arXiv:2502.14382) found that hybrid parallel-sequential approaches outperform pure sequential on code generation. Sharma &amp; Chopra's own ablation showed parallel approaches achieve greater <em>semantic diversity</em> on creative tasks while sequential achieves greater <em>lexical diversity</em> –suggesting the sequential advantage applies most strongly to convergent tasks requiring iterative error correction [3,7,8].</p>
+<p>Li et al. (2025, arXiv:2502.12215) found that for DeepSeek R1, longer chains do not consistently enhance accuracy. Li et al. (2025, arXiv:2502.14382) found that hybrid parallel-sequential approaches outperform pure sequential on code generation. Sharma &amp; Chopra's own ablation showed parallel approaches achieve greater <em>semantic diversity</em> on creative tasks while sequential achieves greater <em>lexical diversity</em> -suggesting the sequential advantage applies most strongly to convergent tasks requiring iterative error correction [3,7,8].</p>
 
 <p>These results refine, rather than refute, the hypothesis. The sequential advantage appears to have boundary conditions: it holds within task-appropriate depth ranges, for convergent problems, and breaks down at extreme depths or for divergent tasks.</p>
 
@@ -948,7 +948,7 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 <p>The framework as presented assigns a single composition operator $\oplus$ to each system. This may be an idealisation. In bounded or dissipative systems, the composition operator itself can transition between regimes as recursive depth increases.</p>
 
 <div class="theorem">
-<div class="box-label">Theorem 5  – Composition Operator Transitions</div>
+<div class="box-label">Theorem 5  - Composition Operator Transitions</div>
 <p>A single physical system can transition between different composition operator regimes as a function of recursive depth or an internal state parameter. This extends the framework from fixed $\oplus$ to depth-dependent $\oplus(R)$, modelled by generalising Axiom 2 to $dg/dr = a(g, r) \cdot g^{\beta(g, r)}$ where the coupling itself depends on accumulated amplification.</p>
 </div>
 
@@ -971,7 +971,7 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 <p>The strongest test of this framework is not whether it describes systems already studied. It is whether it predicts the scaling behaviour of systems not yet examined.</p>
 
 <div class="prediction">
-<strong>Forward prediction:</strong> Identify a recursive system not studied in this paper –evolutionary algorithms, market price discovery, immune response maturation, protein folding optimisation, or any system satisfying the three axioms. Measure only its composition operator $\oplus$ (by observing how marginal gains relate to accumulated capability). The measured $\oplus$ will predict whether the system follows power-law, exponential, or saturating scaling <em>before the full $U$ vs $R$ curve is measured</em>.
+<strong>Forward prediction:</strong> Identify a recursive system not studied in this paper -evolutionary algorithms, market price discovery, immune response maturation, protein folding optimisation, or any system satisfying the three axioms. Measure only its composition operator $\oplus$ (by observing how marginal gains relate to accumulated capability). The measured $\oplus$ will predict whether the system follows power-law, exponential, or saturating scaling <em>before the full $U$ vs $R$ curve is measured</em>.
 </div>
 
 <p>This is a genuine forward prediction. No domain-specific theory of evolution, economics, or immunology makes it. If the prediction succeeds in even one new domain, the framework's generality is confirmed beyond the original evidence base. If it fails, the framework's cross-domain applicability is refuted.</p>
@@ -1327,7 +1327,7 @@ $$g(R) \approx \left[ (1-\beta)aR \right]^{1/(1-\beta)} \propto R^{1/(1-\beta)}$
 
 <p><strong>Evidential limitations (updated v3.1):</strong> The earlier $\alpha$ estimates ($n = 2$ and $n = 12$) have been superseded by the v5 cross-architecture experiment (6 frontier models, 30 problems), which finds $\alpha_{\text{compute}} \approx 0.49$ for the best-fitting model (Gemini 3 Flash, $r^2 = 0.86$). The v5 results represent a significant downward revision from earlier estimates and demonstrate that $\alpha$ is architecture-dependent rather than universal. No $\alpha$ has been measured in time crystals. The COGITATE connection is structural, not quantitative. The $\beta$&ndash;$\alpha$ relationship is validated computationally to machine precision ($R^2 = 1.0$) but the empirical measurement of $\beta$ in physical systems requires independent confirmation. The $R^*$ crossover is untested empirically. The $\beta$ boundary values in the phase diagram are approximate. Theorem 5 ($\oplus$ transitions) is confirmed in four computational systems but untested in physical experiments. The five-property test (Theorem 4) did not reach statistical significance ($p = 0.095$) and requires larger samples. The alignment scaling exponent $\alpha_{\text{align}}$ is now known to be architecture-dependent (ranging from $-0.25$ to $+0.44$), refuting the original prediction that it would be universally near zero for external constraints.</p>
 
-<p><strong>Blind prediction testing:</strong> A blind prediction test was conducted on three computational systems (Barabási-Albert networks, gradient descent with momentum, Kuramoto oscillators). The measured $\alpha$ values were 3–20× smaller than predicted by $\alpha = 1/(1-\beta)$. However, forensic analysis identified two independent confounds: (1) the numerical-derivative $\beta$ estimation method is fatally biased, giving $\beta \approx 0.95$ regardless of true $\beta$, even for pure Bernoulli systems; (2) none of the tested systems satisfy Axiom 2 (constant coupling coefficient $a$), and the BA network's effective coupling decreases ~50× over the simulation. When the proper linearisation method is applied to axiom-satisfying systems, the prediction recovers with $R^2 = 0.9999$. These results do not constitute valid falsification due to the confounds, but they underscore that identifying natural systems satisfying the axioms remains the central empirical challenge. Full methodology and forensic analysis are available as supplementary material (see Paper III).</p>
+<p><strong>Blind prediction testing:</strong> A blind prediction test was conducted on three computational systems (Barabási-Albert networks, gradient descent with momentum, Kuramoto oscillators). The measured $\alpha$ values were 3-20× smaller than predicted by $\alpha = 1/(1-\beta)$. However, forensic analysis identified two independent confounds: (1) the numerical-derivative $\beta$ estimation method is fatally biased, giving $\beta \approx 0.95$ regardless of true $\beta$, even for pure Bernoulli systems; (2) none of the tested systems satisfy Axiom 2 (constant coupling coefficient $a$), and the BA network's effective coupling decreases ~50× over the simulation. When the proper linearisation method is applied to axiom-satisfying systems, the prediction recovers with $R^2 = 0.9999$. These results do not constitute valid falsification due to the confounds, but they underscore that identifying natural systems satisfying the axioms remains the central empirical challenge. Full methodology and forensic analysis are available as supplementary material (see Paper III).</p>
 
 <p><strong>Theoretical limitations:</strong> The framework formalises the <em>pattern</em> of recursive amplification but does not identify the <em>mechanism</em>. It tells you <em>what</em> happens (scaling exponents, crossover depths, functional forms) but not <em>why</em> at a microscopic level (analogous to thermodynamics before statistical mechanics). Connecting the composition operator to microscopic dynamics remains an open problem.</p>
 
@@ -1457,7 +1457,7 @@ $$R^* = \frac{1}{(1-\beta)a} = \frac{\alpha}{a}$$
 
 <h2>Appendix C: Computational Validation Suite</h2>
 
-<p>This appendix summarises the results of a comprehensive computational validation programme testing Theorems 1–5. All validation code is available as supplementary material. Tests were conducted using Python 3.12 with NumPy, SciPy, and Matplotlib.</p>
+<p>This appendix summarises the results of a comprehensive computational validation programme testing Theorems 1-5. All validation code is available as supplementary material. Tests were conducted using Python 3.12 with NumPy, SciPy, and Matplotlib.</p>
 
 <h3>C.1 Theorem 1 Validation (Cauchy Classification)</h3>
 

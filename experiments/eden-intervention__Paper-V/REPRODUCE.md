@@ -1,9 +1,9 @@
-# Reproduce — Eden Intervention / Protocol Scaling (Paper V, Stewardship Gene)
+# Reproduce - Eden Intervention / Protocol Scaling (Paper V, Stewardship Gene)
 
 > **Provenance note (T2-research, 2026-07-05):** Assembled from this dir's own `scripts/` entry-points and `results/*.json` fields. Models, depth levels, prompt count, and output schema are read from committed artefacts; nothing fabricated. Environment version-pins + API keys = TODO(author). HOLD for T5.
 
 ## What this tests
-The Eden Protocol intervention across reasoning depth — whether the stewardship/safety intervention holds as capability scales (empirical basis for Paper V).
+The Eden Protocol intervention across reasoning depth - whether the stewardship/safety intervention holds as capability scales (empirical basis for Paper V).
 
 ## Entry-point
 - **Canonical runner:** `eden_protocol_scaling_test_v3.py` (latest; takes CLI args). Prior: `eden_protocol_scaling_test.py`, `…_v2.py`.

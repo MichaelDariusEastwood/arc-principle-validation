@@ -3,8 +3,8 @@
 ## 1. PNP Component Radar Chart
 6-axis radar showing the asymmetry:
 - Axes: Cross-domain depth, Pattern transfer, Research intensity, Hyperfocus, Executive function, Institutional recognition
-- Outer ring (green): PNP strengths — high scores
-- Inner deficit (red): Executive function + Institutional recognition — low scores
+- Outer ring (green): PNP strengths - high scores
+- Inner deficit (red): Executive function + Institutional recognition - low scores
 - Evidence badge per axis (STRONG/MODERATE/OBSERVATIONAL from §6 table)
 - Use --eden-green + --eden-danger tokens
 
@@ -19,7 +19,7 @@ Three converging arrows → central finding "The asymmetry itself is the finding
 Split panel:
 - LEFT: What institutions see → "This person writes sophisticated legal submissions → clearly capable"
 - RIGHT: What's invisible → Executive-function collapse on routine procedural tasks
-- CENTER ARROW: The Fallacy — "Capability in domain A ≠ absence of disability in domain B"
+- CENTER ARROW: The Fallacy - "Capability in domain A ≠ absence of disability in domain B"
 - Bottom: NICE CG142 quote about IQ-adaptive gap
 
 ## 4. Convergence Timeline

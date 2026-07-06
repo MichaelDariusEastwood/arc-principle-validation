@@ -1,10 +1,10 @@
-# Paper XI — Convergent Evidence for Recursive Amplification
+# Paper XI - Convergent Evidence for Recursive Amplification
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 Full title: Convergent Evidence for Recursive Amplification as a Cross-Domain Structural Principle
 Author: Michael Darius Eastwood · v1.0 · 2 July 2026
 
-The synthesis paper. 19 sourced developments consistent with the thesis (of which 10 are independent external convergences; the remainder are validated predictions, lineage extensions and same-event corroborations — full decomposition in the convergence register) documented with exact dates, sources, and gap measurements. The closed loop: ND brain → manuscript → validations → protective proof → formal vindication → clinical documentation.
+The synthesis paper. 19 sourced developments consistent with the thesis (of which 10 are independent external convergences; the remainder are validated predictions, lineage extensions and same-event corroborations - full decomposition in the convergence register) documented with exact dates, sources, and gap measurements. The closed loop: ND brain → manuscript → validations → protective proof → formal vindication → clinical documentation.
 
 ## Key references
 - Hernández-Espinosa et al. (2026), PNAS Nexus 5(4):pgag076
@@ -27,7 +27,7 @@ Chrome headless:
 **1. Human Authorship & Intellectual Property Assertion**
 The author, Michael Darius Eastwood, is the sole creator and copyright holder of this work. All core concepts, hypotheses, architectural frameworks, and conclusions originate exclusively from human ideation.
 
-- **United Kingdom:** In accordance with the Copyright, Designs and Patents Act 1988 (including s.9(3)), the author asserts that they undertook the "necessary arrangements" for the creation of this work. The AI served strictly as an instrument to execute the author's specific instructions, and the work is a human-authored work assisted by a computer — not a computer-generated work.
+- **United Kingdom:** In accordance with the Copyright, Designs and Patents Act 1988 (including s.9(3)), the author asserts that they undertook the "necessary arrangements" for the creation of this work. The AI served strictly as an instrument to execute the author's specific instructions, and the work is a human-authored work assisted by a computer - not a computer-generated work.
 - **United States:** In compliance with US Copyright Office guidance, the author certifies that the selection, coordination, and arrangement of all text were performed by the human author, rendering the final expression a product of human intellect.
 
 **2. Nature of AI-Assisted Workflows**
@@ -39,6 +39,6 @@ Any novel technical contributions, structural designs, or algorithmic discoverie
 
 ## Declaration of AI Use
 
-The author used Claude (Anthropic), GPT (OpenAI), Gemini (Google), and DeepSeek AI to draft sections, refine clarity, and check mathematical consistency. The research question, theoretical framework, formalism, experimental predictions, and scientific judgement are human work. The author takes full responsibility for all claims, interpretations, errors, and conclusions. AI models used as experimental *subjects* or *evaluators* are named in each paper's methods (e.g. Claude Opus, DeepSeek-V4, GPT-5.5, Gemini, gpt-3.5-turbo, gpt-4o-mini, as applicable). Don't believe — verify.
+The author used Claude (Anthropic), GPT (OpenAI), Gemini (Google), and DeepSeek AI to draft sections, refine clarity, and check mathematical consistency. The research question, theoretical framework, formalism, experimental predictions, and scientific judgement are human work. The author takes full responsibility for all claims, interpretations, errors, and conclusions. AI models used as experimental *subjects* or *evaluators* are named in each paper's methods (e.g. Claude Opus, DeepSeek-V4, GPT-5.5, Gemini, gpt-3.5-turbo, gpt-4o-mini, as applicable). Don't believe - verify.
 
-- **Licence:** CC BY-NC-ND 4.0 (paper text/figures) / proprietary (code) — see repo `LICENSE.md`.
+- **Licence:** CC BY-NC-ND 4.0 (paper text/figures) / proprietary (code) - see repo `LICENSE.md`.

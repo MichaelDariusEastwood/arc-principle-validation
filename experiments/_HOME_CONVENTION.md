@@ -1,4 +1,4 @@
-# arc-principle-validation = PUBLIC PUBLISHED repo — published artifacts ONLY
+# arc-principle-validation = PUBLIC PUBLISHED repo - published artifacts ONLY
 
 This repo is the published papers folder (public). It must contain ONLY published artifacts:
 papers (HTML/PDF), per-experiment REPRODUCE.md, published result data/scripts, canonical results maps.

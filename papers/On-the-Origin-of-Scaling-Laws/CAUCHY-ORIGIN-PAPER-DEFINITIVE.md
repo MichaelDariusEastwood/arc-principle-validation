@@ -28,7 +28,7 @@ Independently, Demetrius (2006) developed a quantum-statistical framework in whi
 
 Two derivations. Different physics. Same formula. The purpose of this paper is to explain why.
 
-These two are not the only independent derivations of alpha = d/(d+1). At least four distinct methodological routes yield the same exponent: network-geometric optimisation (West, Brown & Enquist, 1997; Banavar, Maritan & Rinaldo, 1999), fractal cell geometry (He & Chen, 2003; He, 2004), quantum metabolism (Demetrius, 2006; Demetrius & Tuszynski, 2010), and Murray's-law flow conservation (Zhao, 2015). We analyse the network-geometric and quantum-metabolism pair in depth because their unification through Cauchy's functional equation is the most transparent; the argument generalises to the others. Bettencourt (2013) concerns urban scaling — super-linear for socioeconomic output, sub-linear for infrastructure — and is a distinct phenomenon, not a derivation of this metabolic exponent.
+These two are not the only independent derivations of alpha = d/(d+1). At least four distinct methodological routes yield the same exponent: network-geometric optimisation (West, Brown & Enquist, 1997; Banavar, Maritan & Rinaldo, 1999), fractal cell geometry (He & Chen, 2003; He, 2004), quantum metabolism (Demetrius, 2006; Demetrius & Tuszynski, 2010), and Murray's-law flow conservation (Zhao, 2015). We analyse the network-geometric and quantum-metabolism pair in depth because their unification through Cauchy's functional equation is the most transparent; the argument generalises to the others. Bettencourt (2013) concerns urban scaling - super-linear for socioeconomic output, sub-linear for infrastructure - and is a distinct phenomenon, not a derivation of this metabolic exponent.
 
 ## 2. Cauchy's Functional Equation and Recursive Composition
 
@@ -127,7 +127,7 @@ The boundary w = -1/3 is the strong energy condition boundary in general relativ
 
 Three confirmed. Two consistent. One untested. Zero free parameters.
 
-The two derivations analysed here (West et al. 1997; Demetrius 2006, with the explicit dimensional generalisation in Demetrius & Tuszynski 2010) produce the same formula from different physics, unified by Cauchy's functional equation (1821) — and they are two of at least four independent derivations of the exponent (the others being He's fractal cell geometry and Zhao's Murray's-law flow conservation), which the same Cauchy argument accommodates.
+The two derivations analysed here (West et al. 1997; Demetrius 2006, with the explicit dimensional generalisation in Demetrius & Tuszynski 2010) produce the same formula from different physics, unified by Cauchy's functional equation (1821) - and they are two of at least four independent derivations of the exponent (the others being He's fractal cell geometry and Zhao's Murray's-law flow conservation), which the same Cauchy argument accommodates.
 
 ## 9. Conclusion
 
@@ -178,7 +178,7 @@ Raise AI with care.
 **1. Human Authorship & Intellectual Property Assertion**
 The author, Michael Darius Eastwood, is the sole creator and copyright holder of this work. All core concepts, hypotheses, architectural frameworks, and conclusions originate exclusively from human ideation.
 
-- **United Kingdom:** In accordance with the Copyright, Designs and Patents Act 1988 (including s.9(3)), the author asserts that they undertook the "necessary arrangements" for the creation of this work. The AI served strictly as an instrument to execute the author's specific instructions, and the work is a human-authored work assisted by a computer — not a computer-generated work.
+- **United Kingdom:** In accordance with the Copyright, Designs and Patents Act 1988 (including s.9(3)), the author asserts that they undertook the "necessary arrangements" for the creation of this work. The AI served strictly as an instrument to execute the author's specific instructions, and the work is a human-authored work assisted by a computer - not a computer-generated work.
 - **United States:** In compliance with US Copyright Office guidance, the author certifies that the selection, coordination, and arrangement of all text were performed by the human author, rendering the final expression a product of human intellect.
 
 **2. Nature of AI-Assisted Workflows**

@@ -1,4 +1,4 @@
-# Reproduce — Domain Validation (Foundational & Origin papers)
+# Reproduce - Domain Validation (Foundational & Origin papers)
 
 > **Provenance note (T2-research, 2026-07-05):** Assembled from this directory's
 > committed scripts and pre-computed `results_*.txt` outputs. This is the source
@@ -21,7 +21,7 @@ Python 3 with **NumPy**, **SciPy**, and **matplotlib** (a few scripts also use
 | Script | What it does |
 |--------|--------------|
 | `arc_1d_prediction_test.py` | The 1D prediction test (α at d=1 → 1/2). |
-| `arc_20_domain_universal_test.py` | 20-domain blind structured-prediction comparison (legacy/exploratory — permissive scoring; provenance only). |
+| `arc_20_domain_universal_test.py` | 20-domain blind structured-prediction comparison (legacy/exploratory - permissive scoring; provenance only). |
 | `arc_physics_domains_test.py` | Physics-domain exponent predictions vs measured. |
 | `arc_acoustic_time_crystal_test.py` · `arc_real_time_crystal_test.py` | Time-crystal validations (synthetic + real experimental data). |
 | `arc_einstein_verification.py` | E=mc² / chain-reaction consistency check. |
@@ -42,8 +42,8 @@ Python 3 with **NumPy**, **SciPy**, and **matplotlib** (a few scripts also use
 4. **Rebuild the canonical map:** `python3 generate_canonical_results.py`.
 
 ## Honest scope (LAW 1)
-- `arc_20_domain_universal_test.py` is **legacy/exploratory** (permissive "within-tolerance" scoring) — retained for provenance, not a canonical headline. The strict canonical successor lives in `cauchy-unification__Paper-VII/` (`arc_50_domain_universal_test.py`).
-- Several results are **mathematical/numerical verifications of proven theorems** (Cauchy equations, α=d/(d+1)) — "Supporting" evidence tier, not independent empirical confirmation.
+- `arc_20_domain_universal_test.py` is **legacy/exploratory** (permissive "within-tolerance" scoring) - retained for provenance, not a canonical headline. The strict canonical successor lives in `cauchy-unification__Paper-VII/` (`arc_50_domain_universal_test.py`).
+- Several results are **mathematical/numerical verifications of proven theorems** (Cauchy equations, α=d/(d+1)) - "Supporting" evidence tier, not independent empirical confirmation.
 - Measured exponents cited in these tests should be reconciled to one source per domain (see the metabolic-exponent reconciliation note, 2026-07-05).
 
 ## Outputs

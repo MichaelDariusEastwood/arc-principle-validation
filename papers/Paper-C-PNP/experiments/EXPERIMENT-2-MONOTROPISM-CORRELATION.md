@@ -8,12 +8,12 @@
 
 ## 0. RATIONALE
 
-Paper C §4 proposes monotropism — the attentional tendency to focus intensely on a narrow interest tunnel — as the mechanism producing PNP component 4 (hyperfocus) and component 3 (autonomous research intensity). §6 defines PNP as a cluster of six features, with components 1 (cross-domain depth) and 5 (executive asymmetry) being measurable.
+Paper C §4 proposes monotropism - the attentional tendency to focus intensely on a narrow interest tunnel - as the mechanism producing PNP component 4 (hyperfocus) and component 3 (autonomous research intensity). §6 defines PNP as a cluster of six features, with components 1 (cross-domain depth) and 5 (executive asymmetry) being measurable.
 
 This experiment tests the mechanism claim directly:
 > **Does monotropism score predict: (a) number of domains with documented output, (b) depth of output per domain, and (c) the gap between high-complexity and routine-procedural performance?**
 
-If the mechanism is real, high-monotropism individuals should show MORE cross-domain output AND MORE procedural difficulty — the asymmetry itself, in a single dataset.
+If the mechanism is real, high-monotropism individuals should show MORE cross-domain output AND MORE procedural difficulty - the asymmetry itself, in a single dataset.
 
 ---
 
@@ -35,17 +35,17 @@ If the mechanism is real, high-monotropism individuals should show MORE cross-do
 
 | Construct | Instrument | Items | Time | Validation |
 |-----------|-----------|-------|------|------------|
-| **Monotropism** | Monotropism Questionnaire (MQ) — Garau et al. (2023) | 47 items (Likert) | ~15 min | Validated in autistic + ADHD populations; preprint, cite as preliminary |
-| **Hyperfocus** | Adult Hyperfocus Questionnaire (AHQ) — Hupfeld et al. (2019) or adapted | 12 items | ~5 min | Published in ADHD populations |
+| **Monotropism** | Monotropism Questionnaire (MQ) - Garau et al. (2023) | 47 items (Likert) | ~15 min | Validated in autistic + ADHD populations; preprint, cite as preliminary |
+| **Hyperfocus** | Adult Hyperfocus Questionnaire (AHQ) - Hupfeld et al. (2019) or adapted | 12 items | ~5 min | Published in ADHD populations |
 | **Cross-domain output** | Custom Cross-Domain Output Inventory (CDOI) | ~20 items | ~10 min | Novel instrument (validated within this study against documented output) |
-| **Executive function** | Adult ADHD Self-Report Scale (ASRS v1.1) — WHO | 6 items (screener) | ~3 min | Validated globally |
+| **Executive function** | Adult ADHD Self-Report Scale (ASRS v1.1) - WHO | 6 items (screener) | ~3 min | Validated globally |
 | **Procedural difficulty** | Custom Procedural Functioning Scale (PFS) | ~15 items | ~5 min | Novel; items drawn from NICE CG142 adaptive-functioning domains |
 | **Cognitive ability proxy** | ICAR-16 (International Cognitive Ability Resource) | 16 items | ~15 min | Validated, public domain |
 | **Demographics** | Age, gender, diagnosis status (self-reported: ASC, ADHD, both, neither, pursuing assessment), education level, employment status, country | 10 items | ~2 min | Standard |
 
 **Total survey time:** ~55 minutes. Compensation: £15 Amazon voucher.
 
-### 2.2 Cross-Domain Output Inventory (CDOI) — Novel Instrument
+### 2.2 Cross-Domain Output Inventory (CDOI) - Novel Instrument
 
 The CDOI asks participants to list domains in which they have produced *documented, verifiable output* in the past 5 years. For each domain:
 
@@ -94,7 +94,7 @@ H₂: lm(PFS_total ~ MQ_total + age + diagnosis, data = df)
 
 ### 3.2 Asymmetry Gap (H₃)
 ```
-Long-format: each participant has 2 rows — "domain_output_z" and "procedural_function_z"
+Long-format: each participant has 2 rows - "domain_output_z" and "procedural_function_z"
 Model: lmer(z_score ~ domain_type * MQ_total + (1|participant), data = df_long)
 Key term: domain_type:MQ_total interaction
 ```
@@ -121,7 +121,7 @@ Covariates: ICAR_score, age, education
 | H₂: MQ → procedural difficulty | β ≈ 0.20-0.30 | Small-medium |
 | H₃: Asymmetry gap | Significant interaction, MQ × domain_type | Medium |
 | H₄: ASC+ADHD highest MQ | η² ≈ 0.08-0.12 | Medium |
-| H₅: Mediation via hyperfocus | Indirect effect significant, direct effect reduced | — |
+| H₅: Mediation via hyperfocus | Indirect effect significant, direct effect reduced | - |
 
 ### What success looks like
 A single dataset showing: high monotropism → more domains of output AND more procedural difficulty → the asymmetry is quantifiable and mechanistically grounded. This would be the first study directly linking monotropism to polymathic output.
@@ -180,7 +180,7 @@ No correlation between MQ and domain count → the mechanism claim lacks quantit
 1. **Preprint** (~4,000 words): "Monotropism as a Predictor of Cross-Domain Output: Evidence from a Cross-Sectional Study of 200 Adults"
 2. **De-identified dataset** on OSF
 3. **Analysis code** (R Markdown) on GitHub
-4. **CDOI validation report** — the novel instrument's psychometric properties
+4. **CDOI validation report** - the novel instrument's psychometric properties
 5. **Paper C Appendix B:** Summary of findings, integrated into Paper C's mechanism section (§4, §6)
 
 ---

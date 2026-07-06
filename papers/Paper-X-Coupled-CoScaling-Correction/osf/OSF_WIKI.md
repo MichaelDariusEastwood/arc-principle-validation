@@ -38,13 +38,13 @@ The proofs are independently re-derived in a standalone test suite, and the pape
 has been hardened against three independent adversarial reviews.
 
 ## Contents of this project
-- `Paper-X-Coupled-CoScaling-Correction.pdf` / `.html` — the paper
-- `CLAIMS.md` — itemised claim ledger
-- `code/` — verification harness + theorem test suites
-- `experiments/` — real-model protocol, harness, and the zero-context launch runbook
-- `results/` — verdict tables and run records
-- `MANIFEST.json` — SHA-256 of every file (integrity)
-- `NEGATIVE_RESULTS.md`, `SECURITY.md`, `REPRODUCIBILITY.md` — honesty and reproducibility
+- `Paper-X-Coupled-CoScaling-Correction.pdf` / `.html` - the paper
+- `CLAIMS.md` - itemised claim ledger
+- `code/` - verification harness + theorem test suites
+- `experiments/` - real-model protocol, harness, and the zero-context launch runbook
+- `results/` - verdict tables and run records
+- `MANIFEST.json` - SHA-256 of every file (integrity)
+- `NEGATIVE_RESULTS.md`, `SECURITY.md`, `REPRODUCIBILITY.md` - honesty and reproducibility
 
 ## How to cite
 > Eastwood, M. D. (2026). *The Coupled Co-Scaling Law: A Falsifiable Threshold
