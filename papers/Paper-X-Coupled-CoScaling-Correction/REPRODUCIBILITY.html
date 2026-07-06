@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Reproducibility - Paper X</title><style>
+body { font-family: Charter, Georgia, 'Times New Roman', serif; font-size: 10.5pt;
+  line-height: 1.42; color: #1b1b1f; max-width: 780px; margin: 0 auto; padding: 2rem 1.2rem;
+  text-align: justify; }
+h1 { font-size: 19pt; line-height: 1.18; color: #14141a; margin: 0 0 4pt 0;
+  letter-spacing: -0.01em; }
+.masthead { border-top: 3px solid #14532d; border-bottom: 1px solid #d4d4d8;
+  padding: 10pt 0 8pt 0; margin-bottom: 14pt; }
+.meta { display: grid; grid-template-columns: max-content 1fr; gap: 1.5pt 10pt;
+  font-size: 8.6pt; line-height: 1.35; margin-top: 6pt; text-align: left; }
+.meta b { color: #3f3f46; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 7.6pt; font-weight: 600; }
+h2 { font-size: 12.5pt; color: #14532d; margin: 15pt 0 5pt 0; padding-bottom: 2pt;
+  border-bottom: 1px solid #e4e4e7; page-break-after: avoid; text-align: left; }
+h3 { font-size: 11pt; color: #1f2937; margin: 10pt 0 3pt 0; page-break-after: avoid;
+  text-align: left; }
+h4 { font-size: 10.5pt; margin: 8pt 0 2pt 0; page-break-after: avoid; }
+p { margin: 0 0 6pt 0; }
+table { border-collapse: collapse; width: 100%; font-size: 8.4pt; margin: 6pt 0;
+  page-break-inside: avoid; text-align: left; }
+th { background: #14532d; color: #fff; padding: 3.5pt 6pt; text-align: left;
+  font-weight: 600; letter-spacing: 0.02em; }
+td { border: 0.5pt solid #d4d4d8; padding: 3.5pt 6pt; vertical-align: top; }
+tr:nth-child(even) td { background: #fafaf9; }
+blockquote { border-left: 3pt solid #14532d; margin: 7pt 0; padding: 4pt 11pt;
+  background: #f6f7f4; color: #27272a; }
+code { font-family: 'SF Mono', Menlo, monospace; font-size: 8.6pt; background: #f4f4f5;
+  padding: 0 2.5pt; border-radius: 2pt; }
+pre { background: #f8f8f7; border: 0.5pt solid #e4e4e7; padding: 7pt; font-size: 8pt;
+  white-space: pre-wrap; page-break-inside: avoid; }
+ul, ol { margin: 3pt 0 7pt 0; padding-left: 17pt; text-align: left; }
+li { margin: 0 0 2.5pt 0; }
+a { color: #14532d; text-decoration: none; border-bottom: 0.5pt solid #86a68f; }
+hr { border: none; border-top: 1px solid #e4e4e7; margin: 11pt 0; }
+strong { color: #111114; }
+@media print { body { max-width: 100%; padding: 0; } }
+@media (max-width: 720px) {
+  body { padding: 1rem 0.8rem; }
+  table { display: block; overflow-x: auto; }
+  code { overflow-wrap: anywhere; }
+}
+</style></head><body><div class="masthead"><h1>Reproducibility - Paper X</h1><div class="meta"></div></div><p>Everything in this paper except the live-model experiment is deterministic and reproducible
+offline in under a minute. This file says exactly which command reproduces which claim, and
+- as honestly - which claim <strong>cannot</strong> yet be reproduced because the experiment has not been run.</p>
+<h2 id="environment">Environment</h2>
+<ul>
+<li>Python 3.11 (tested 3.11.15). Dependencies and tested versions: <code>requirements.txt</code>.</li>
+<li><code>pip install -r requirements.txt</code>  (numpy, scipy, matplotlib; pytest for tests).</li>
+<li>Or use the container: <code>docker build -t paperx . &amp;&amp; docker run --rm paperx</code>.</li>
+</ul>
+<h2 id="one-command">One command</h2>
+<pre><code class="language-bash">make all        # install + verify (harness) + test-all (both suites)
+</code></pre>
+<h2 id="what-reproduces-what">What reproduces what</h2>
+<table>
+<thead>
+<tr>
+<th>Claim in the paper</th>
+<th>Command</th>
+<th>Artefact produced</th>
+<th>What it establishes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Theorems 1-6 numerically consistent with their closed forms (E1-E9)</td>
+<td><code>make verify</code> (<code>code/experiment_coscaling.py</code>)</td>
+<td><code>results/verdicts.json</code>, <code>results/report.txt</code>, <code>figures/*.png</code></td>
+<td>code matches the maths (10/10 internal-consistency + integrator checks)</td>
+</tr>
+<tr>
+<td>Regression: harness output is stable</td>
+<td><code>make test</code> (<code>code/test_coscaling.py</code>)</td>
+<td>-</td>
+<td>12 assertions on the harness</td>
+</tr>
+<tr>
+<td><strong>Independent</strong> re-derivation of the corrected theorems</td>
+<td><code>make test-independent</code> (<code>code/test_theorems_independent.py</code>)</td>
+<td>-</td>
+<td>14 from-scratch checks (no harness import): Thm 2 time-varying limits, Thm 4 equality = linear divergence, Thm 5 non-normal transient + null-axis floor, Thm 6 OU variance, γ₃=1 boundary</td>
+</tr>
+<tr>
+<td>β/k estimator recovers known exponents</td>
+<td><code>make estimator</code></td>
+<td>stdout</td>
+<td>synthetic identifiability only</td>
+</tr>
+<tr>
+<td>Real-model harness plumbing</td>
+<td><code>make selftest</code></td>
+<td><code>results/realmodel/*_selftest.json</code></td>
+<td>deterministic stub, <strong>not data</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The two test suites are deliberately independent: <code>test_coscaling.py</code> shares the harness
+integrator (regression), while <code>test_theorems_independent.py</code> re-implements the dynamics
+from scratch with <code>scipy.solve_ivp</code> + matrix exponentials, so a shared bug cannot hide.</p>
+<h2 id="determinism">Determinism</h2>
+<p>Random seed is fixed (<code>7</code>) in the harness; figures and verdicts are byte-reproducible on a
+fixed library stack. <code>code/experiment_coscaling.py</code> writes to the current directory by
+default (<code>COSCALING_OUTDIR=.</code>); run it from the paper root to regenerate the canonical
+<code>results/</code> and <code>figures/</code>.</p>
+<h2 id="what-is-not-reproducible-here-stated-plainly">What is NOT reproducible here (stated plainly)</h2>
+<ul>
+<li>The <strong><code>β &gt; k</code> threshold on a real system.</strong> Not run. The decisive experiment is
+  pre-registered in <code>experiments/PROTOCOL.md</code>; reproducing it needs live API keys for
+  several model families and a network-isolated sandbox (<code>SECURITY.md</code>).</li>
+<li>The <strong>first Claude run</strong> is a pilot: <code>n = 1</code>, one task, same-family scorer,
+  IV.d non-compliant, H1/H2 false. It corroborates the corrector <em>mechanism</em> only and is
+  <strong>not</strong> evidence for the threshold (see <code>NEGATIVE_RESULTS.md</code>).</li>
+</ul>
+<h2 id="continuous-integration-optional">Continuous integration (optional)</h2>
+<p>CI is not wired up as a live GitHub Actions workflow here (the repository's Actions
+policy must first allow the GitHub-authored <code>actions/checkout</code> and <code>actions/setup-python</code>).
+The exact verification commands are the <code>Makefile</code> targets, so a one-job workflow is just:</p>
+<pre><code class="language-yaml"># .github/workflows/paperx-ci.yml  (enable once Actions allows GitHub-authored actions)
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: papers/Paper-X-Coupled-CoScaling-Correction } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install -r requirements.txt
+      - run: cd code &amp;&amp; python experiment_coscaling.py &amp;&amp; python -m pytest -q
+      - run: cd experiments/scripts &amp;&amp; python estimate_exponents.py --selftest
+</code></pre>
+<p>Until then, <code>make all</code> (or the <code>Dockerfile</code>) is the canonical, environment-independent
+verification path.</p>
+<h2 id="honesty-ladder">Honesty ladder</h2>
+<p>The status of every load-bearing claim - proved-in-model / internally-verified /
+synthetically-validated / real-model-pilot / open - is in <code>CLAIMS.md</code>. Nothing in this
+repository should be read one rung higher than it is placed there.</p></body></html>

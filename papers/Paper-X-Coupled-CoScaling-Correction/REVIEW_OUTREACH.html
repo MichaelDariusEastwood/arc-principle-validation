@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>External review plan - Paper X</title><style>
+body { font-family: Charter, Georgia, 'Times New Roman', serif; font-size: 10.5pt;
+  line-height: 1.42; color: #1b1b1f; max-width: 780px; margin: 0 auto; padding: 2rem 1.2rem;
+  text-align: justify; }
+h1 { font-size: 19pt; line-height: 1.18; color: #14141a; margin: 0 0 4pt 0;
+  letter-spacing: -0.01em; }
+.masthead { border-top: 3px solid #14532d; border-bottom: 1px solid #d4d4d8;
+  padding: 10pt 0 8pt 0; margin-bottom: 14pt; }
+.meta { display: grid; grid-template-columns: max-content 1fr; gap: 1.5pt 10pt;
+  font-size: 8.6pt; line-height: 1.35; margin-top: 6pt; text-align: left; }
+.meta b { color: #3f3f46; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 7.6pt; font-weight: 600; }
+h2 { font-size: 12.5pt; color: #14532d; margin: 15pt 0 5pt 0; padding-bottom: 2pt;
+  border-bottom: 1px solid #e4e4e7; page-break-after: avoid; text-align: left; }
+h3 { font-size: 11pt; color: #1f2937; margin: 10pt 0 3pt 0; page-break-after: avoid;
+  text-align: left; }
+h4 { font-size: 10.5pt; margin: 8pt 0 2pt 0; page-break-after: avoid; }
+p { margin: 0 0 6pt 0; }
+table { border-collapse: collapse; width: 100%; font-size: 8.4pt; margin: 6pt 0;
+  page-break-inside: avoid; text-align: left; }
+th { background: #14532d; color: #fff; padding: 3.5pt 6pt; text-align: left;
+  font-weight: 600; letter-spacing: 0.02em; }
+td { border: 0.5pt solid #d4d4d8; padding: 3.5pt 6pt; vertical-align: top; }
+tr:nth-child(even) td { background: #fafaf9; }
+blockquote { border-left: 3pt solid #14532d; margin: 7pt 0; padding: 4pt 11pt;
+  background: #f6f7f4; color: #27272a; }
+code { font-family: 'SF Mono', Menlo, monospace; font-size: 8.6pt; background: #f4f4f5;
+  padding: 0 2.5pt; border-radius: 2pt; }
+pre { background: #f8f8f7; border: 0.5pt solid #e4e4e7; padding: 7pt; font-size: 8pt;
+  white-space: pre-wrap; page-break-inside: avoid; }
+ul, ol { margin: 3pt 0 7pt 0; padding-left: 17pt; text-align: left; }
+li { margin: 0 0 2.5pt 0; }
+a { color: #14532d; text-decoration: none; border-bottom: 0.5pt solid #86a68f; }
+hr { border: none; border-top: 1px solid #e4e4e7; margin: 11pt 0; }
+strong { color: #111114; }
+@media print { body { max-width: 100%; padding: 0; } }
+@media (max-width: 720px) {
+  body { padding: 1rem 0.8rem; }
+  table { display: block; overflow-x: auto; }
+  code { overflow-wrap: anywhere; }
+}
+</style></head><body><div class="masthead"><h1>External review plan - Paper X</h1><div class="meta"></div></div><p>You do not need a PhD or academic rank to get this reviewed. You need to make <strong>one
+narrow claim</strong> cheap for a competent person to inspect. Do not ask anyone to "review the
+ARC/Eden programme" - ask them to find a fatal flaw in a single theorem or in the protocol.</p>
+<h2 id="split-the-review-into-five-lanes-one-expert-each">Split the review into five lanes (one expert each)</h2>
+<table>
+<thead>
+<tr>
+<th>Lane</th>
+<th>What to review</th>
+<th>The narrow ask</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Control theory / dynamical systems</td>
+<td>Theorems 1-4, the depth-clock proof, β &gt; k</td>
+<td>"Under the stated ODE assumptions, is the β &gt; k criterion correctly derived?"</td>
+</tr>
+<tr>
+<td>Linear systems / non-normal dynamics</td>
+<td>Theorem 5, spectral abscissa, transient growth</td>
+<td>"Is the spectral-stability claim right, and is the non-normal-transient caveat adequate?"</td>
+</tr>
+<tr>
+<td>Statistics / stochastic processes</td>
+<td>Theorem 6, the OU tail bound</td>
+<td>"Is the OU local-Gaussian framing honest, and what breaks it?"</td>
+</tr>
+<tr>
+<td>ML evaluations / AI safety</td>
+<td>the real-model protocol, blinding, reward-hack task design</td>
+<td>"Would the β/k estimator give an interpretable measurement if run across six models?"</td>
+</tr>
+<tr>
+<td>Quantum information</td>
+<td>the QEC analogy language <strong>only</strong></td>
+<td>"Is the threshold-form analogy misleading? (It is explicitly not a QEC theorem.)"</td>
+</tr>
+</tbody>
+</table>
+<p>Approach those whose work is <em>closest</em>, not the most famous first. The paper already
+cites the nearest neighbours: scalable-oversight scaling laws (Engels et al. 2025),
+corrigibility (Christiano), model-collapse (Shumailov et al. 2024). A control theorist
+familiar with gain scheduling / small-gain is ideal for lanes 1-2.</p>
+<h2 id="the-email-narrow-no-endorsement-ask">The email (narrow, no endorsement ask)</h2>
+<blockquote>
+<p><strong>Subject:</strong> Request for adversarial technical review of a β &gt; k stability theorem</p>
+<p>Dear Dr [Name],</p>
+<p>I am an independent researcher preparing a short technical note on a minimal dynamical
+model of recursive self-improvement. The central claim is narrow: under the stated ODE
+assumptions, the misalignment fraction is asymptotically controlled iff the correction
+exponent β exceeds the drift-acceleration exponent k.</p>
+<p>I am not asking for endorsement. I am asking whether you can find a fatal flaw, in one
+specific part: [Theorem 3 / the vector extension / the estimator protocol]. I can offer
+[honorarium] for a short written technical review, and I would publish your critique and
+my response, unless you prefer anonymity.</p>
+<p>The paper, code, red-team report, and a claim-status ledger (which separates model
+theorem, internal verification, synthetic estimator validation, and a real-model pilot)
+are public: [links].</p>
+<p>Respectfully,
+Michael Darius Eastwood</p>
+</blockquote>
+<p>Attach, at most: (1) a 2-page mathematical note, (2) the theorem-proof appendix, (3) the
+code link, (4) <code>results/redteam.md</code>, (5) a one-page "What this does not claim" (the Scope
+and Claim-Status boxes). Do <strong>not</strong> lead with the book, the cosmic framing, or priority.</p>
+<h2 id="where-to-post">Where to post</h2>
+<ul>
+<li><strong>arXiv</strong> (cs.AI / cs.LG / cs.SY / eess.SY) - needs an endorser; ask one narrowly
+  ("is this in scope and coherent?", not "do you endorse it?"). arXiv is a moderated
+  preprint server, not peer review.</li>
+<li><strong>OpenReview / workshop</strong> - NeurIPS / ICML / ICLR workshops on AI safety, scalable
+  oversight, evaluations, agents, governance. Main-conference acceptance is unlikely
+  before real-model evidence.</li>
+<li><strong>Control venues</strong> - IEEE CDC / ACC / IFAC workshops, once the theorem polish lands.</li>
+<li><strong>Alignment Forum / LessWrong</strong> - strong adversarial AI-safety critique (not formal
+  academic validation).</li>
+<li><strong>OSF preprint</strong> - already the canonical home; keep it the source of record.</li>
+<li><strong>GitHub</strong> - open "Adversarial review requested" issues with theorem-specific labels.</li>
+</ul>
+<h2 id="after-review">After review</h2>
+<p>Publish a <strong>response-to-review</strong> document even if the reviews are critical - that is the
+single strongest credibility signal an independent researcher can give. The red-team
+ledger (<code>results/redteam.md</code>) and this repository's correction history already model the
+posture: find serious defects, fix them in the open, invite more.</p></body></html>

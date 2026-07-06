@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Negative results, nulls, and self-corrections - Paper X</title><style>
+body { font-family: Charter, Georgia, 'Times New Roman', serif; font-size: 10.5pt;
+  line-height: 1.42; color: #1b1b1f; max-width: 780px; margin: 0 auto; padding: 2rem 1.2rem;
+  text-align: justify; }
+h1 { font-size: 19pt; line-height: 1.18; color: #14141a; margin: 0 0 4pt 0;
+  letter-spacing: -0.01em; }
+.masthead { border-top: 3px solid #14532d; border-bottom: 1px solid #d4d4d8;
+  padding: 10pt 0 8pt 0; margin-bottom: 14pt; }
+.meta { display: grid; grid-template-columns: max-content 1fr; gap: 1.5pt 10pt;
+  font-size: 8.6pt; line-height: 1.35; margin-top: 6pt; text-align: left; }
+.meta b { color: #3f3f46; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 7.6pt; font-weight: 600; }
+h2 { font-size: 12.5pt; color: #14532d; margin: 15pt 0 5pt 0; padding-bottom: 2pt;
+  border-bottom: 1px solid #e4e4e7; page-break-after: avoid; text-align: left; }
+h3 { font-size: 11pt; color: #1f2937; margin: 10pt 0 3pt 0; page-break-after: avoid;
+  text-align: left; }
+h4 { font-size: 10.5pt; margin: 8pt 0 2pt 0; page-break-after: avoid; }
+p { margin: 0 0 6pt 0; }
+table { border-collapse: collapse; width: 100%; font-size: 8.4pt; margin: 6pt 0;
+  page-break-inside: avoid; text-align: left; }
+th { background: #14532d; color: #fff; padding: 3.5pt 6pt; text-align: left;
+  font-weight: 600; letter-spacing: 0.02em; }
+td { border: 0.5pt solid #d4d4d8; padding: 3.5pt 6pt; vertical-align: top; }
+tr:nth-child(even) td { background: #fafaf9; }
+blockquote { border-left: 3pt solid #14532d; margin: 7pt 0; padding: 4pt 11pt;
+  background: #f6f7f4; color: #27272a; }
+code { font-family: 'SF Mono', Menlo, monospace; font-size: 8.6pt; background: #f4f4f5;
+  padding: 0 2.5pt; border-radius: 2pt; }
+pre { background: #f8f8f7; border: 0.5pt solid #e4e4e7; padding: 7pt; font-size: 8pt;
+  white-space: pre-wrap; page-break-inside: avoid; }
+ul, ol { margin: 3pt 0 7pt 0; padding-left: 17pt; text-align: left; }
+li { margin: 0 0 2.5pt 0; }
+a { color: #14532d; text-decoration: none; border-bottom: 0.5pt solid #86a68f; }
+hr { border: none; border-top: 1px solid #e4e4e7; margin: 11pt 0; }
+strong { color: #111114; }
+@media print { body { max-width: 100%; padding: 0; } }
+@media (max-width: 720px) {
+  body { padding: 1rem 0.8rem; }
+  table { display: block; overflow-x: auto; }
+  code { overflow-wrap: anywhere; }
+}
+</style></head><body><div class="masthead"><h1>Negative results, nulls, and self-corrections - Paper X</h1><div class="meta"></div></div><p>A standing record of what did <strong>not</strong> work, what came back null, and what an earlier
+draft got wrong. Kept prominent on purpose: a paper that only reports its wins is not
+falsifiable in practice. Every item here is reproducible from the committed artefacts.</p>
+<h2 id="1-the-real-model-run-is-a-null-contrast-not-positive-evidence">1. The real-model run is a NULL contrast, not positive evidence</h2>
+<p>The first real-model run (Claude, <code>results/realmodel/claude-opus_20260626T165919Z.json</code>)
+returned <strong>H1 = false, H2 = false, co_scaling_supported = false</strong>. From a seeded
+reward-hack, <em>both</em> the coupled and the decoupled arm discarded the hack at round 1 and
+wrote a correct general parser; neither drifted. So there was <strong>no drift for the external
+corrector to bind</strong>, and the coupled-vs-decoupled contrast is null.</p>
+<p>This is <strong>consistent with</strong> the law (the model already sits in the stable regime, its
+internal correction out-scaling drift) but it is <strong>not</strong> positive evidence for the
+<code>β &gt; k</code> threshold. It does not exhibit the co-scaling <em>dynamic</em>. Reported as a pilot
+only; the threshold remains supported by the mathematics + internal-consistency harness,
+not by this run.</p>
+<h2 id="2-the-pilot-is-ivd-non-compliant-provisional-d">2. The pilot is IV.d non-compliant (provisional D)</h2>
+<p>The same run used a <strong>same-family scorer</strong> (Claude scoring Claude): <code>self_scoring: true</code>,
+<code>iv_d_compliant: false</code>, <code>laundered: false</code>. Paper IV.d shows same-family/unblinded
+scoring can <em>reverse</em> a misalignment result, so every <code>D</code>-based number from this run is
+<strong>provisional</strong> pending a cross-family blind re-score. <code>n = 1</code>, one task, one seed.</p>
+<h2 id="3-the-k-estimator-is-not-resolvable-on-the-pilot-data">3. The β/k estimator is NOT-RESOLVABLE on the pilot data</h2>
+<p><code>experiments/scripts/estimate_exponents.py</code> recovers known exponents on synthetic
+trajectories (to ≈ 0.1) but returns <strong>not resolvable</strong> on the Claude data
+(<code>results/realmodel/exponent_estimates.json</code>): capability range was 0 dex (the model
+jumped to <code>C = 1</code> in one step) and correction was observed at a single capability level,
+so neither <code>k</code> nor <code>β</code> is identifiable. Honest non-result, not a measurement.</p>
+<h2 id="4-the-probe-fraction-at-c-0-was-a-metric-artefact-withdrawn">4. The probe fraction at C = 0 was a metric artefact (withdrawn)</h2>
+<p>The corrector probe reported <code>d = 1.00</code> for the seeded hack at <code>C = 0</code>. The ratio <code>D/C</code>
+is <strong>undefined</strong> at <code>C = 0</code>; the <code>1.00</code> was a <code>D/10</code> display fallback and is <strong>withdrawn</strong>
+(<code>claude-opus_corrector_probe.json</code>, <code>d: null</code>). The mechanism result (D 10→0, C 0→1)
+does not depend on <code>d</code>. The metric is now regularised, <code>d = D/(10(C+ε))</code>, <code>ε = 0.05</code>
+pre-registered, with near-zero-capability points flagged <code>fraction_invalid</code>.</p>
+<h2 id="5-prior-draft-errors-that-adversarial-review-corrected-do-not-reintroduce">5. Prior-draft errors that adversarial review corrected (do not reintroduce)</h2>
+<ul>
+<li><strong>Divergence over-claim (v3).</strong> The prior draft claimed correction degrading with scale
+  drives the misalignment fraction to <em>infinity</em>. <strong>False.</strong> In the gain-only model the
+  fraction is bounded and <em>saturates</em> at <code>γ₁</code> (Theorem 2). Genuine divergence lives only in
+  the compounding channel (Theorem 4).</li>
+<li><strong>Additive "knee" (E1).</strong> An earlier experiment sought a sharp instability knee in the
+  <em>additive</em> model, where there is none - the additive corrector shows a smooth crossover.
+  The knee exists only in the compounding channel.</li>
+<li><strong>Theorem 2 moving-fixed-point Lyapunov.</strong> The proof used <code>V = ½(d−d*)²</code> as if <code>d*</code> were
+  constant; invalid once <code>A, r</code> vary with <code>C</code>. Corrected to a depth-clock comparison proof
+  (independently re-verified in <code>code/test_theorems_independent.py</code>).</li>
+<li><strong>Theorem 4 equality case.</strong> "Diverges iff ρ_prop &gt; 1" omitted the boundary: at
+  ρ_prop = 1 (κ_eff = 0) the fraction grows <strong>linearly</strong> with nonzero injection. Corrected.</li>
+<li><strong>Theorem 5 null-axis floor.</strong> Stated as <code>γ₁</code>; the correct floor is <code>γ₁c_v/(1−γ₃)</code>
+  (and linear growth at <code>γ₃ = 1</code>). The <code>γ₁</code> value is only the <code>γ₃ = 0</code>, unit-projection
+  special case. Corrected.</li>
+<li><strong>γ₃ = 1 boundary.</strong> "γ₃ ≤ 1 unconditionally bounded" is too strong at the knife-edge:
+  at <code>γ₃ = 1</code> the fraction is bounded only for <code>β ≥ k</code> (it grows as <code>C^{k−β}</code> for <code>β &lt; k</code>).
+  Corrected (surfaced by building the independent test suite).</li>
+<li><strong>QEC over-claim.</strong> Earlier framing leaned on the quantum-error-correction <em>threshold
+  theorem</em>. The suppression law here is power-law, QEC's is exponential: the correspondence
+  is a <strong>threshold-form analogy only</strong>, demoted to a hypothesis (F4).</li>
+</ul>
+<h2 id="6-red-team-residue">6. Red-team residue</h2>
+<p>A multi-agent red-team raised <strong>24</strong> objections; <strong>21</strong> survived independent verification
+(0 fatal, 13 serious, 8 minor) - all framing/wording/edge-case fixes, none touching the
+load-bearing <code>β &gt; k</code> result. Full report: <code>results/redteam.md</code>. Two external adversarial
+reviews (June 2026) then added the Theorem-2/4/5 precision fixes and the finite-capacity
+and non-normal-transient limitations recorded in the paper's §8.</p>
+<h2 id="7-what-would-still-count-as-a-negative-result-going-forward">7. What would still count as a negative result going forward</h2>
+<ul>
+<li>A real drifting system whose measured <code>(β, k)</code> does <strong>not</strong> predict whether coupled
+  correction succeeds.</li>
+<li>A stable system with <code>β &lt; k</code> under genuine acceleration, or an unstable one with <code>β &gt; k</code>
+  (kill conditions F1-F3′, F6).</li>
+<li>Exponential rather than power-law suppression under a finite-capacity corrector (would
+  downgrade the QEC analogy, F4 - not the threshold result).</li>
+</ul></body></html>
