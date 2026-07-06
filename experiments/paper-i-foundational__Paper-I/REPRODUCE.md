@@ -1,6 +1,6 @@
 # Reproduce - Paper I (ARC Principle, Foundational Toolkit)
 
-> **Provenance note (T2-research, 2026-07-05):** Assembled from this dir's committed script. This dir is a **figure/analysis toolkit** (no result-JSON artefacts — it generates the paper's figures from the framework equations), so there is no per-run parameter file to extract; the toolkit itself is the reproducible unit. HOLD for T5.
+> **Provenance note (T2-research, 2026-07-05):** Assembled from this dir's committed script. This dir is a **figure/analysis toolkit** (no result-JSON artefacts - it generates the paper's figures from the framework equations), so there is no per-run parameter file to extract; the toolkit itself is the reproducible unit. HOLD for T5.
 
 ## What this is
 `arc_principle_research_toolkit.py` - the foundational toolkit that generates Paper I's figures and illustrative analyses of the ARC Principle (U = I × R^α scaling family, geometric speed limit, cross-domain forms).

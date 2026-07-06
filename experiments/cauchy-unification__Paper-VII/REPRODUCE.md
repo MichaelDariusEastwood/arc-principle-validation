@@ -4,7 +4,7 @@
 > instructions already live in **`README.md`** (scripts table, results→script map,
 > data/preregistration assets, exact run commands, evidence tiers, and honest caveats).
 > This `REPRODUCE.md` exists only so the reproduction doc is discoverable under the
-> conventional filename used across the other experiment directories — it does not
+> conventional filename used across the other experiment directories - it does not
 > duplicate or supersede the README. **Read `README.md` in this directory.**
 
 ## Quick start

@@ -86,7 +86,7 @@ After completing Phase 1 ratings, each participant reads:
 
 > *Thank you. Before you re-rate these documents, we want to share some information about the author of Documents [IDs for the 3 LiP documents].*
 >
-> *These three documents were written by a litigant-in-person. The author has no formal legal training — no law degree, no Legal Practice Course, no pupillage, no training contract. The author has conducted their own litigation while self-represented.*
+> *These three documents were written by a litigant-in-person. The author has no formal legal training - no law degree, no Legal Practice Course, no pupillage, no training contract. The author has conducted their own litigation while self-represented.*
 >
 > *The author has disclosed diagnoses of autism spectrum condition and attention deficit hyperactivity disorder, both diagnosed in adulthood. Clinical documentation records significant executive-function difficulties in routine administration, timekeeping, and procedural work. The author has applied for reasonable adjustments in court proceedings under the Equality Act 2010 and CPR Practice Direction 1A.*
 >

@@ -1,6 +1,6 @@
 # Reproduce - Alignment Scaling (Papers IV-a / IV-b / IV-c / IV-d)
 
-> **Provenance note (T2-research, 2026-07-05):** Assembled from the dir's own artefacts — the versioned runner scripts in `scripts/` and the recorded fields in `results/alignment_raw_*.json`. Every model, parameter, and output field below is read from committed files; nothing is fabricated. Any residual environment detail (exact library versions, API-key setup) is marked TODO(author). HOLD for T5 verification.
+> **Provenance note (T2-research, 2026-07-05):** Assembled from the dir's own artefacts - the versioned runner scripts in `scripts/` and the recorded fields in `results/alignment_raw_*.json`. Every model, parameter, and output field below is read from committed files; nothing is fabricated. Any residual environment detail (exact library versions, API-key setup) is marked TODO(author). HOLD for T5 verification.
 
 ## What this experiment tests
 Cross-model measurement of the **alignment-scaling exponent** (`alpha_align`) vs the **capability exponent** (`alpha_cap`) across reasoning depth - the empirical basis for Papers IV-a/b/c/d (baked-in vs computed alignment; alignment saturation at low depth). It measures whether alignment scales with depth and how it compares to capability, under a blinded scoring protocol with bootstrap confidence intervals.

@@ -1,6 +1,6 @@
 # Reproduce - Honey Architecture / Eden Protocol Self-Modifying AI (Paper VI)
 
-> **Provenance note (T2-research, 2026-07-05):** This REPRODUCE.md is assembled from the **result artefacts' own embedded metadata** (each `results/*.json` self-documents its experiment name, version, parameters, seeds, and timestamp). It fabricates nothing. The one gap — the exact generator script + run-command — is marked TODO(author); everything else below is extracted verbatim from the committed result JSONs. HOLD for T5 verification.
+> **Provenance note (T2-research, 2026-07-05):** This REPRODUCE.md is assembled from the **result artefacts' own embedded metadata** (each `results/*.json` self-documents its experiment name, version, parameters, seeds, and timestamp). It fabricates nothing. The one gap - the exact generator script + run-command - is marked TODO(author); everything else below is extracted verbatim from the committed result JSONs. HOLD for T5 verification.
 
 ## What this experiment tests
 The Eden Protocol self-modifying-AI series: a neural network that genuinely modifies its own hyperparameters during training, tested for capability, safety, fairness, adversarial robustness, and complexity scaling - the empirical basis for Paper VI (Honey Architecture).

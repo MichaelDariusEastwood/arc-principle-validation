@@ -160,7 +160,7 @@ rubric/
 
 ☐ **AGENT** - cross-link: add a short "Reproducing the benchmark" subsection to `papers/Paper-IV-c-ARC-Align-Benchmark/README.md` pointing at `prompts/`, `rubric/`, and `experiments/`.
 
-> If the canonical prompt/rubric source files are found alongside the harness in §3, prefer those over reconstructing from outputs — reconstruction is the fallback, not the first choice.
+> If the canonical prompt/rubric source files are found alongside the harness in §3, prefer those over reconstructing from outputs - reconstruction is the fallback, not the first choice.
 
 ---
 
@@ -199,7 +199,7 @@ git commit -m "Open-core re-publish: citation & prior-art, blind-eval harness, p
 git push origin main
 ```
 
-> **History note:** if the §1 scan ever finds a secret that was previously committed, a plain push is **not** enough — the operator must scrub history (e.g. `git filter-repo`) and force-push, and rotate the leaked credential. The repo already shows `.git/filter-repo/` artefacts, so a prior history rewrite has happened; treat any new leak with the same rigour.
+> **History note:** if the §1 scan ever finds a secret that was previously committed, a plain push is **not** enough - the operator must scrub history (e.g. `git filter-repo`) and force-push, and rotate the leaked credential. The repo already shows `.git/filter-repo/` artefacts, so a prior history rewrite has happened; treat any new leak with the same rigour.
 
 ---
 
@@ -225,7 +225,7 @@ git push origin v2026.03
    - In `CITATION.cff`, keep `doi: 10.17605/OSF.IO/6C5XB` as the primary; optionally add the Zenodo DOI under an `identifiers:` block as a secondary "software" identifier.
    - Make sure the OSF deposit and the Zenodo record cross-reference each other so the parent DOI stays authoritative.
 
-> Recommended: **Option A** — it preserves a single canonical DOI (6C5XB) and avoids citation drift. Only use Option B if a distinct archived-software DOI is genuinely required.
+> Recommended: **Option A** - it preserves a single canonical DOI (6C5XB) and avoids citation drift. Only use Option B if a distinct archived-software DOI is genuinely required.
 
 ---
 
