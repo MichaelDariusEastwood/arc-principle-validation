@@ -1,5 +1,7 @@
 # Paper C — Polymathy and Neurodivergent Cognition
 
+- **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
+
 **Full title:** Polymathy and Neurodivergent Cognition: A Hypothesis at the Intersection of Giftedness, Monotropic Cognition, and Institutional Misrecognition — the Polymathic Neurodivergent Profile (PNP)
 
 **Author:** Michael Darius Eastwood

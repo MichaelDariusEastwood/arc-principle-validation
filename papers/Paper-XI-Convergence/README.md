@@ -1,4 +1,6 @@
 # Paper XI — Convergent Evidence for Recursive Amplification
+
+- **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 Full title: Convergent Evidence for Recursive Amplification as a Cross-Domain Structural Principle
 Author: Michael Darius Eastwood · v1.0 · 2 July 2026
 
