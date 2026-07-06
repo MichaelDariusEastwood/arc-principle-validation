@@ -397,7 +397,7 @@ Every claim below is grounded in a file opened during this pass. Unclear origins
 
 ### Paper XI: Convergent Evidence for Recursive Amplification
 - Canonical home: papers/Paper-XI-Convergence/
-- Experiments: None. Paper XI is a pure synthesis-and-convergence paper documenting 19 independently sourced external convergences (arXiv, DOI, publisher, patent office, broadcaster, vendor sources) against the ARC/Eden programme timeline. No runners, no protocols, no result files.
+- Experiments: None. Paper XI is a pure synthesis-and-convergence paper documenting 19 sourced developments (10 independent external convergences) external convergences (arXiv, DOI, publisher, patent office, broadcaster, vendor sources) against the ARC/Eden programme timeline. No runners, no protocols, no result files.
 - Results: None in-tree. Every empirical claim points to Papers I to X or to external sources with SHA-256 hashes and DOIs.
 - Figures: None in-tree (the tree contains only Paper-XI-Convergent-Evidence.html, .pdf, and README.md).
 - Hash-pinned: No MANIFEST.json. The paper's own text discusses SHA-256 hashes of the foundational manuscript and .eml files but these live at michaeldariuseastwood.com/evidence, not in this repository.

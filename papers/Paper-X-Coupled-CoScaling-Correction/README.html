@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Paper X: The Coupled Co-Scaling Law</title><style>
+body { font-family: Charter, Georgia, 'Times New Roman', serif; font-size: 10.5pt;
+  line-height: 1.42; color: #1b1b1f; max-width: 780px; margin: 0 auto; padding: 2rem 1.2rem;
+  text-align: justify; }
+h1 { font-size: 19pt; line-height: 1.18; color: #14141a; margin: 0 0 4pt 0;
+  letter-spacing: -0.01em; }
+.masthead { border-top: 3px solid #14532d; border-bottom: 1px solid #d4d4d8;
+  padding: 10pt 0 8pt 0; margin-bottom: 14pt; }
+.meta { display: grid; grid-template-columns: max-content 1fr; gap: 1.5pt 10pt;
+  font-size: 8.6pt; line-height: 1.35; margin-top: 6pt; text-align: left; }
+.meta b { color: #3f3f46; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 7.6pt; font-weight: 600; }
+h2 { font-size: 12.5pt; color: #14532d; margin: 15pt 0 5pt 0; padding-bottom: 2pt;
+  border-bottom: 1px solid #e4e4e7; page-break-after: avoid; text-align: left; }
+h3 { font-size: 11pt; color: #1f2937; margin: 10pt 0 3pt 0; page-break-after: avoid;
+  text-align: left; }
+h4 { font-size: 10.5pt; margin: 8pt 0 2pt 0; page-break-after: avoid; }
+p { margin: 0 0 6pt 0; }
+table { border-collapse: collapse; width: 100%; font-size: 8.4pt; margin: 6pt 0;
+  page-break-inside: avoid; text-align: left; }
+th { background: #14532d; color: #fff; padding: 3.5pt 6pt; text-align: left;
+  font-weight: 600; letter-spacing: 0.02em; }
+td { border: 0.5pt solid #d4d4d8; padding: 3.5pt 6pt; vertical-align: top; }
+tr:nth-child(even) td { background: #fafaf9; }
+blockquote { border-left: 3pt solid #14532d; margin: 7pt 0; padding: 4pt 11pt;
+  background: #f6f7f4; color: #27272a; }
+code { font-family: 'SF Mono', Menlo, monospace; font-size: 8.6pt; background: #f4f4f5;
+  padding: 0 2.5pt; border-radius: 2pt; }
+pre { background: #f8f8f7; border: 0.5pt solid #e4e4e7; padding: 7pt; font-size: 8pt;
+  white-space: pre-wrap; page-break-inside: avoid; }
+ul, ol { margin: 3pt 0 7pt 0; padding-left: 17pt; text-align: left; }
+li { margin: 0 0 2.5pt 0; }
+a { color: #14532d; text-decoration: none; border-bottom: 0.5pt solid #86a68f; }
+hr { border: none; border-top: 1px solid #e4e4e7; margin: 11pt 0; }
+strong { color: #111114; }
+@media print { body { max-width: 100%; padding: 0; } }
+@media (max-width: 720px) {
+  body { padding: 1rem 0.8rem; }
+  table { display: block; overflow-x: auto; }
+  code { overflow-wrap: anywhere; }
+}
+</style></head><body><div class="masthead"><h1>Paper X: The Coupled Co-Scaling Law</h1><div class="meta"><b>Full title</b><span>The Coupled Co-Scaling Law - A Falsifiable Threshold Criterion for the Stability of Recursive Self-Improvement, Sharing the Threshold Form of the Quantum Error-Correction Criterion</span><b>Version</b><span>v4.0</span><b>First published</b><span>26 June 2026</span><b>Author</b><span>Michael Darius Eastwood</span></div></div><p>The keystone safety result of the ARC/Eden programme. It proves that the stability of a
+self-improving system is <strong>not</strong> governed by how fast capability grows, but by a single
+inequality between two scaling exponents: the exponent with which <strong>correction</strong> strengthens
+as the system becomes more capable (β) must exceed the exponent with which <strong>drift</strong>
+accelerates with capability (k). The steady-state misalignment fraction is d* = γr/(A+r)
+(reducing to the dimensionless ratio ρ = γr/A when A ≫ r), and the asymptotic safety condition
+is <strong>β &gt; k</strong>.</p>
+<p>The criterion shares the <strong>threshold form</strong> of the <strong>quantum error-correction (QEC)
+sub-threshold condition</strong> - a correspondence offered as a <em>falsifiable hypothesis</em>, since the
+model's suppression law is power-law rather than QEC's exponential. Its sharpest consequence
+speaks to the central fear of the field: a hard takeoff - even a genuine <strong>finite-time
+intelligence explosion</strong> - is alignment-stable <em>if and only if</em> β &gt; k, and the <em>speed</em> of the
+explosion does not change that verdict.</p>
+<p>This version supersedes the growth-rate-ceiling framing of the programme <strong>and corrects the
+prior draft</strong>: in the gain-only model the misalignment fraction never diverges to infinity - it
+<em>saturates</em> at the drift coefficient γ. Genuine divergence requires a distinct <em>compounding</em>
+drift channel, whose threshold ρ_prop = (γ₃−1)r/A &lt; 1 shares the form of the QEC sub-threshold
+condition p &lt; p_th.</p>
+<p><strong>Novelty, stated honestly (§2 of the paper).</strong> The co-scaling <em>intuition</em> is not new - it is
+Ashby's Law of Requisite Variety (1956), the Conant-Ashby good-regulator theorem (1970), and the
+scalable-oversight scaling-law literature (Engels et al. 2025); the dynamics are a standard
+Lyapunov-drift argument. What is claimed original is (a) the explicit closed-form threshold
+ρ = γr/A and the β&gt;k sharpening as a compact corrigibility criterion, (b) the mapping of the
+quantum fault-tolerance threshold onto value stability, (c) the Hard-Takeoff Depth-Regularity
+Theorem, and (d) the verification harness. The paper credits these precursors up front so the
+contribution is positioned precisely rather than over-claimed.</p>
+<p><strong>Audited.</strong> The paper was put through a multi-agent adversarial red-team (5 fronts; 24
+objections, 21 confirmed, <strong>0 fatal</strong>) and revised accordingly; the full report is in
+<code>results/redteam.md</code>. Every surviving objection was a framing/wording/edge-case fix - none
+touched the β &gt; k result.</p>
+<h2 id="key-contents">Key Contents</h2>
+<ul>
+<li><strong>Theorem 1</strong> - exact transient solution and relaxation rate (A+r).</li>
+<li><strong>Theorem 2</strong> - global boundedness; corrects the v3 "β&lt;0 diverges to ∞" claim to bounded
+  saturation at γ; the three-regime structure (β&gt;k → 0; β=k → permanent gap; β&lt;k → saturates).</li>
+<li><strong>Theorem 3</strong> - the <strong>Hard-Takeoff Depth-Regularity Theorem</strong> (the coordinate-artefact result): a finite-time singularity
+  is a property of the time coordinate, not of the alignment dynamics; the verdict is set by
+  sign(β−k) independently of speed and of the singularity time.</li>
+<li><strong>Theorem 4</strong> - the compounding channel and the true threshold ρ_prop &lt; 1 (the QEC analogue).</li>
+<li><strong>Theorem 5</strong> - vector misalignment: a spectral threshold; you cannot correct what you do not
+  measure (misalignment persists on the correction operator's null subspace).</li>
+<li><strong>Theorem 6</strong> - stochastic drift: an Ornstein-Uhlenbeck tail bound for governance.</li>
+<li>A control-theoretic identity (gain-scheduling with scheduling exponent β ≥ k).</li>
+<li>Eight predictions (P1-P8) and seven falsification conditions (F1-F6, F3′).</li>
+</ul>
+<h2 id="experiments">Experiments</h2>
+<p>A <strong>verification harness</strong>, <code>code/experiment_coscaling.py</code>, runs ten experiments. It validates
+the integrator against the closed-form solution of Theorem 1, then for each experiment compares a
+numerical integration of the model against the prediction the theorems derive, and prints
+PASS/FAIL. These are <strong>internal-consistency and integrator checks</strong> - they confirm the code
+matches the maths; they do <strong>not</strong> test the model against a real system (the open empirical
+problem, §8). It exits 0 iff every check matches its closed-form prediction.</p>
+<pre><code class="language-bash">cd code
+pip install numpy scipy matplotlib       # or: pip install -r ../../../requirements.txt
+python experiment_coscaling.py           # runs all 10 experiments, writes figures/ + results/
+pytest test_coscaling.py -q              # 12 internal-consistency assertions
+</code></pre>
+<p><strong>Latest run:</strong> <code>10/10 internal-consistency checks pass | 0 kill-conditions triggered</code> - these
+certify the derivation + integrator (code matches maths), not the model against reality
+(see <code>results/verdicts.json</code> and <code>results/report.txt</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Experiment</th>
+<th>Tests</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1 Phase boundary</td>
+<td>P1 / F1</td>
+<td>knee at λ*=2.00 (compounding); smooth in additive</td>
+</tr>
+<tr>
+<td>E2 Speed-invariance 2×2</td>
+<td>P2 / F2</td>
+<td>coupling decides; speed does not</td>
+</tr>
+<tr>
+<td>E3 Co-scaling law (corrected)</td>
+<td>P3 / F3</td>
+<td>β&lt;0 saturates at γ₁, not ∞</td>
+</tr>
+<tr>
+<td>E4 Hard-takeoff β&gt;k grid</td>
+<td>P4 / F3′</td>
+<td>boundary at β=k across 3×3</td>
+</tr>
+<tr>
+<td>E4b Depth-regularity</td>
+<td>P4</td>
+<td>d controlled through finite-time singularity in C (clocks agree 1e−4)</td>
+</tr>
+<tr>
+<td>E5 Compounding threshold + suppression</td>
+<td>P5, P8 / F4</td>
+<td>threshold 3.03; slopes −0.47, −1.00</td>
+</tr>
+<tr>
+<td>E6 Vector null-subspace</td>
+<td>P6 / F6</td>
+<td>blind axis floors at γ₁</td>
+</tr>
+<tr>
+<td>E7 Stochastic tail</td>
+<td>P7 / F7</td>
+<td>variance ∝ 1/(A+r), slope −1.00</td>
+</tr>
+<tr>
+<td>E8 Integrator certificate</td>
+<td>-</td>
+<td>max error 7e−11 vs closed form</td>
+</tr>
+<tr>
+<td>E9 Residual drift at rest</td>
+<td>P5 / F5</td>
+<td>frozen system → d=γ₂/A₀&gt;0; halting growth ≠ correction</td>
+</tr>
+</tbody>
+</table>
+<h2 id="real-model-test-non-simulation">Real-model test (non-simulation)</h2>
+<p>The harness above is an <em>internal-consistency</em> check (code matches the maths). The
+<strong>genuine falsifier</strong> - testing the model against a real system - lives in
+<code>experiments/</code>. <code>experiments/scripts/realmodel_coscaling.py</code> instantiates Paper
+VIII's gated self-modification (Eden = coupled corrector vs Babylon = decoupled)
+driven by a <strong>real frontier model</strong>, with <strong>objective</strong> capability scoring (hidden
+tests are <em>executed</em>) and <strong>blind</strong> misalignment scoring. It plugs into the
+<code>arc_eden_v6</code> six-provider adapter (Claude, GPT-5.5, DeepSeek v4, Qwen-3, Grok-4,
+Gemini); see <code>experiments/PROTOCOL.md</code> (pre-registered H1-H3, six-model sweep).</p>
+<p><strong>First real run - Claude (non-simulation), <code>results/realmodel/</code>:</strong></p>
+<ul>
+<li><strong>Self-improvement trajectory (seeded reward-hack → recursive self-improve).</strong>
+  From a hard-coded lookup that games the visible tests (C=0, blind D=10), <strong>both</strong>
+  the coupled and decoupled arms - decoupled under pure score-pressure - removed
+  the hack at round 1 and stayed general (C=1.0, D=0, d=0) for all 3 rounds. The
+  contrast is <em>null</em> because the frontier model <strong>does not drift</strong> on this task: it
+  behaves as a system already in the stable regime (effective β &gt; k). Consistent
+  with the law; not positive evidence for the threshold; one task, one seed.</li>
+<li><strong>Corrector mechanism probe.</strong> The external corrector applied once to the frozen
+  reward-hack drove blind <strong>D: 10 → 0</strong> and restored <strong>C: 0 → 1.0</strong> (the fraction
+  <em>d</em> is undefined at C=0; the mechanism rests on the raw D and C). The coupled/Eden
+  correction operator does real work on a real model. Full writeup + figure + audit
+  transcript: <code>results/realmodel/REAL_MODEL_CLAUDE_RESULTS.md</code>.</li>
+</ul>
+<p><strong>Confirmatory design - v2 multi-task benchmark (<code>experiments/scripts/realmodel_coscaling_v2.py</code>):</strong>
+The v1 run above is an initial <em>mechanism probe</em>. The confirmatory design is the v2
+harness: three task domains, a <strong>sham-extra-compute</strong> control arm (answers "was it just
+extra compute?"), D = max(static detector, cross-family blind panel), and matched-pair
+bootstrap CIs on the primary endpoint <code>d_decoupled,final - d_coupled,final</code> and the
+anti-objection endpoint <code>d_sham,final - d_coupled,final</code>. Protocol:
+<code>experiments/PROTOCOL_V2.md</code>; integration + fixes: <code>experiments/README_V2_UPGRADE.md</code>.</p>
+<p>This corroborates the <strong>mechanism</strong> on a real model; it is a separate evidentiary
+stream from the proof, and the full co-scaling <em>dynamic</em> (drift rising with
+capability, bounded by coupling) remains the open empirical problem (§8) - the next
+step is the other five models, several of which may be less intrinsically
+corrective than Claude.</p>
+<p><strong>Making the criterion operational - estimating β and k.</strong> The sharpest objection to
+the law is that <code>β &gt; k</code> is only useful if β and k can be <em>measured</em>.
+<code>experiments/scripts/estimate_exponents.py</code> defines <strong>k</strong> from the capability curve
+(<code>ln r</code> vs <code>ln C</code>) and <strong>β</strong> from corrector-removal rates (<code>ln A</code> vs <code>ln C</code>), and is
+validated on synthetic data (recovers known exponents within ≈0.1, every
+stable/unstable verdict correct). On the Claude run capability saturated in one step,
+so β and k are honestly <strong>not yet estimable</strong> (the criterion is vacuously satisfied -
+no drift); a graded, drifting dataset yields the first measured (β, k). The full
+objection set and the paper's responses are consolidated in <code>ANTICIPATED_OBJECTIONS.md</code>.</p>
+<h2 id="files">Files</h2>
+<pre><code>Paper-X-Coupled-CoScaling-Correction.html   # the paper (MathJax, house style)
+Paper-X-Coupled-CoScaling-Correction.pdf    # rendered
+code/experiment_coscaling.py                 # verification harness (internal-consistency + integrator)
+code/test_coscaling.py                       # pytest assertion suite (12 checks)
+code/test_theorems_independent.py            # INDEPENDENT theorem re-derivation (14 checks; no harness import)
+code/test_coscaling_edge_cases.py            # edge-case suite (6 checks: rho=1 equality, null-axis floor, level/gain drift)
+figures/                                     # 10 publication figures + realmodel_claude.png
+results/verdicts.json, results/report.txt    # machine- and human-readable verdict tables
+results/redteam.md                           # adversarial red-team report (auditable record)
+experiments/PROTOCOL.md                      # real-model test protocol (pre-registered H1-H3, 6-model sweep)
+experiments/scripts/realmodel_coscaling.py   # real-model harness v1 (initial mechanism probe; single task)
+experiments/scripts/realmodel_coscaling_v2.py # real-model harness v2 (CONFIRMATORY: 3 tasks, sham control, bootstrap)
+experiments/scripts/estimate_exponents.py    # beta/k estimator (synthetic-validated; censored + dynamic-range guards)
+experiments/scripts/agent_bridge_run.py      # agent-runtime bridge (drives the harness with real Claude)
+experiments/RUN_REAL_MODEL_EXPERIMENT.md     # ZERO-CONTEXT LAUNCH RUNBOOK - read this to actually run the real-model experiment
+experiments/PROTOCOL_V2.md                   # CONFIRMATORY protocol (concise: H1-H4, sham control, matched-pair bootstrap, 540-traj floor)
+experiments/CONFIRMATORY_PROTOCOL_V2.md      # detailed companion to PROTOCOL_V2.md (extra statistics + adversarial detail)
+experiments/README_V2_UPGRADE.md             # v2 orientation (v1 vs v2) + static-detector fixes + verification record
+results/realmodel/                           # REAL Claude run v1: trajectory + corrector probe + transcript
+results/realmodel_v2/                        # v2 selftest plumbing demo - regenerable, gitignored (selftest:true, NOT data)
+</code></pre>
+<h2 id="links">Links</h2>
+<ul>
+<li><strong>OSF DOI:</strong> https://doi.org/10.17605/OSF.IO/6C5XB</li>
+<li><strong>GitHub:</strong> https://github.com/MichaelDariusEastwood/arc-principle-validation</li>
+<li><strong>Falsification challenge:</strong> https://github.com/MichaelDariusEastwood/arc-scaling-challenge</li>
+<li><strong>Research hub:</strong> https://www.michaeldariuseastwood.com/research/</li>
+</ul>
+<h2 id="citation">Citation</h2>
+<blockquote>
+<p>Eastwood, M. D. (2026). <em>The Coupled Co-Scaling Law: A Falsifiable Threshold Criterion for the
+Stability of Recursive Self-Improvement.</em> Paper X, ARC/Eden research programme.
+OSF: doi.org/10.17605/OSF.IO/6C5XB.</p>
+</blockquote>
+<h2 id="declarations-statement-of-authorship">Declarations &amp; Statement of Authorship</h2>
+<p><strong>1. Human Authorship &amp; Intellectual Property Assertion</strong>
+The author, Michael Darius Eastwood, is the sole creator and copyright holder of this work. All core concepts, hypotheses, architectural frameworks, and conclusions originate exclusively from human ideation.</p>
+<ul>
+<li><strong>United Kingdom:</strong> In accordance with the Copyright, Designs and Patents Act 1988 (including s.9(3)), the author asserts that they undertook the "necessary arrangements" for the creation of this work. The AI served strictly as an instrument to execute the author's specific instructions, and the work is a human-authored work assisted by a computer — not a computer-generated work.</li>
+<li><strong>United States:</strong> In compliance with US Copyright Office guidance, the author certifies that the selection, coordination, and arrangement of all text were performed by the human author, rendering the final expression a product of human intellect.</li>
+</ul>
+<p><strong>2. Nature of AI-Assisted Workflows</strong>
+Generative artificial-intelligence tools were used purely as assistive, high-velocity instruments to support the mechanical execution of the research process (analogous to advanced text editors or reference software). AI assistance was restricted to prose refinement, structural formatting, cross-referencing literature, and brainstorming counter-arguments, all under direct human oversight and manual verification. Every underlying idea, hypothesis, experimental design, test, synthesis, and final editorial judgement is human-driven; no content herein constitutes an unedited or unverified machine output, and nothing is relied upon without human checking.</p>
+<p><strong>3. Inventions &amp; Patent Rights</strong>
+Any novel technical contributions, structural designs, or algorithmic discoveries described in this work are the exclusive intellectual property of the human author. Consistent with UK and US authorities that an AI system cannot be a named inventor (e.g. Thaler v Comptroller-General), the AI functioned solely as a calculation and search utility and did not autonomously conceive or invent any solution presented; the conception is the author's.</p></body></html>
