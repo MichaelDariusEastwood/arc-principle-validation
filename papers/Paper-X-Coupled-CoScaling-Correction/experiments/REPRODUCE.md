@@ -25,9 +25,14 @@ empirical real-model protocol.
 - `scripts/agent_bridge_run.py` — drives the exact harness code path from an agent runtime (Protocol §5).
 
 ## Environment
-Python 3 with the scientific stack (NumPy/SciPy). Real-model runs require model API
-access: a weak drift engine (gpt-3.5-turbo) and a **cross-family evaluator panel**
-(same-family scoring requires an explicit demo override — it is not the default).
+Python 3 with the scientific stack (NumPy/SciPy). Real-model runs require model API access. The archived drift run
+(`results/drift/gpt35_20260702T171415Z.json`) used a weak drift engine (gpt-3.5-turbo)
+with a **same-family** evaluator (gpt-4o-mini) — both OpenAI, so it is **NOT IV.d-compliant**;
+its decoupled/coupled contrast must be read as same-family (non-blind) scoring. The
+**cross-family, IV.d-compliant** run (DeepSeek-V4 engine + GPT-5.5 blind judge,
+`results/realmodel_v3/`) returned **d=0 across all conditions — a null on the contrast**
+(a second in-house instance of Paper IV.d). Cross-family blinding is the default for any
+IV.d-compliant measurement.
 
 ## To reproduce
 1. Read `PROTOCOL_V2.md` (design) and `CONFIRMATORY_PROTOCOL_V2.md` (confirmatory run) first — they define the three task families (arithmetic, string normalisation, checksum), the tiered hidden tests, the `sham_coupled` control, and the pre-registered hypotheses H1/H2/H3.

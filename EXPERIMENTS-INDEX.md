@@ -25,7 +25,7 @@ is retained but superseded where they disagree.
 | Real-model v1 (pilot) | experiments/scripts/realmodel_coscaling.py + agent_bridge_run.py | experiments/PROTOCOL.md | results/realmodel/ (claude-opus, 26 Jun) + REAL_MODEL_CLAUDE_RESULTS.md | none |
 | Real-model v2 | realmodel_coscaling_v2.py | PROTOCOL_V2.md + CONFIRMATORY_PROTOCOL_V2.md | results/realmodel_v2/ (selftest only) | none |
 | Real-model v3 | realmodel_coscaling_v3.py | RUN_REAL_MODEL_EXPERIMENT.md | results/realmodel_v3/ (deepseek-v4, 2 Jul) | none |
-| Drift engine (the 45-trajectory headline) | experiments/scripts/drift_engine.py | RUN_REAL_MODEL_EXPERIMENT.md | results/drift/ (gpt-3.5-turbo, 2 Jul) | none |
+| Drift engine (45-traj SAME-family run; cross-family IV.d run nulls the contrast) | experiments/scripts/drift_engine.py | RUN_REAL_MODEL_EXPERIMENT.md | results/drift/ (gpt-3.5-turbo, 2 Jul) | none |
 | Hard-tasks battery | hard_tasks_v3.py + run_hard_tasks.py | (script header) | results/hard/ (deepseek-v4 null, 2 Jul) | none |
 
 ---
@@ -368,7 +368,7 @@ Every claim below is grounded in a file opened during this pass. Unclear origins
   - results/realmodel_v3/deepseek-v4_20260702T033809Z.json — v3 selftest, tier medium. NOT DATA.
   - results/realmodel_v3/deepseek-v4_20260702T033830Z.json — v3 selftest, tier medium. NOT DATA.
   - results/realmodel_v3/deepseek-v4_20260702T040313Z.json — v3 real run, deepseek-v4 engine, gpt-5.5 evaluator, tier medium, 2 July 2026 04:03Z, 18 runs. Analysis reports final d = 0 across coupled, decoupled, eden_full; no drift; effectively a null on this task ladder.
-  - results/drift/gpt35_20260702T171415Z.json — the drift-engine run cited in the paper abstract. 45 runs, engine gpt-3.5-turbo, evaluator gpt-4o-mini, 2 July 2026 17:14Z. Analysis: decoupled mean_final_d = 6.38 with 99 D events across 15 trajectories, capability collapsing to 0.26; coupled and eden_full held final d = 0 across all 30 trajectories at higher final capability (0.56 and 0.44). H1_drift = True, H2_coupled_bounds = True. Single-lab; explicitly labelled such in the paper.
+  - results/drift/gpt35_20260702T171415Z.json — the drift-engine run cited in the paper abstract. 45 runs, engine gpt-3.5-turbo, evaluator gpt-4o-mini, 2 July 2026 17:14Z. Analysis: decoupled mean_final_d = 6.38 with 99 D events across 15 trajectories, capability collapsing to 0.26; coupled and eden_full held final d = 0 across all 30 trajectories at higher final capability (0.56 and 0.44). H1_drift = True, H2_coupled_bounds = True **under SAME-family scoring** (engine gpt-3.5-turbo + evaluator gpt-4o-mini, both OpenAI) → **NOT IV.d-compliant**. The cross-family IV.d run (DeepSeek-V4 + GPT-5.5, results/realmodel_v3/) nulls this contrast (d=0 across all conditions) — a scorer-bias artefact / second in-house Paper IV.d instance, NOT standalone evidence for the co-scaling dynamic. Single-lab; explicitly labelled such in the paper.
   - results/hard/deepseek-v4_20260702T111825Z.json — hard-tasks run, deepseek-v4 engine, gpt-5.5 evaluator, 2 July 2026 11:18Z. 45 runs, config 8 rounds x 5 seeds. Analysis: any_drift = False for all conditions, H1_drift = False, H2_coupled_bounds = False. A null. Not cited in the paper abstract.
 - Figures:
   - figures/exp1_phase_boundary.png — E1 sharp phase boundary in the compounding channel. Simulation (experiment_coscaling.py::experiment_1). Referenced by paper HTML line 353.
