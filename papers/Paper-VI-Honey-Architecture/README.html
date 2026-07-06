@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Paper VI: The Honey Architecture</title><style>
+body { font-family: Charter, Georgia, 'Times New Roman', serif; font-size: 10.5pt;
+  line-height: 1.42; color: #1b1b1f; max-width: 780px; margin: 0 auto; padding: 2rem 1.2rem;
+  text-align: justify; }
+h1 { font-size: 19pt; line-height: 1.18; color: #14141a; margin: 0 0 4pt 0;
+  letter-spacing: -0.01em; }
+.masthead { border-top: 3px solid #14532d; border-bottom: 1px solid #d4d4d8;
+  padding: 10pt 0 8pt 0; margin-bottom: 14pt; }
+.meta { display: grid; grid-template-columns: max-content 1fr; gap: 1.5pt 10pt;
+  font-size: 8.6pt; line-height: 1.35; margin-top: 6pt; text-align: left; }
+.meta b { color: #3f3f46; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 7.6pt; font-weight: 600; }
+h2 { font-size: 12.5pt; color: #14532d; margin: 15pt 0 5pt 0; padding-bottom: 2pt;
+  border-bottom: 1px solid #e4e4e7; page-break-after: avoid; text-align: left; }
+h3 { font-size: 11pt; color: #1f2937; margin: 10pt 0 3pt 0; page-break-after: avoid;
+  text-align: left; }
+h4 { font-size: 10.5pt; margin: 8pt 0 2pt 0; page-break-after: avoid; }
+p { margin: 0 0 6pt 0; }
+table { border-collapse: collapse; width: 100%; font-size: 8.4pt; margin: 6pt 0;
+  page-break-inside: avoid; text-align: left; }
+th { background: #14532d; color: #fff; padding: 3.5pt 6pt; text-align: left;
+  font-weight: 600; letter-spacing: 0.02em; }
+td { border: 0.5pt solid #d4d4d8; padding: 3.5pt 6pt; vertical-align: top; }
+tr:nth-child(even) td { background: #fafaf9; }
+blockquote { border-left: 3pt solid #14532d; margin: 7pt 0; padding: 4pt 11pt;
+  background: #f6f7f4; color: #27272a; }
+code { font-family: 'SF Mono', Menlo, monospace; font-size: 8.6pt; background: #f4f4f5;
+  padding: 0 2.5pt; border-radius: 2pt; }
+pre { background: #f8f8f7; border: 0.5pt solid #e4e4e7; padding: 7pt; font-size: 8pt;
+  white-space: pre-wrap; page-break-inside: avoid; }
+ul, ol { margin: 3pt 0 7pt 0; padding-left: 17pt; text-align: left; }
+li { margin: 0 0 2.5pt 0; }
+a { color: #14532d; text-decoration: none; border-bottom: 0.5pt solid #86a68f; }
+hr { border: none; border-top: 1px solid #e4e4e7; margin: 11pt 0; }
+strong { color: #111114; }
+@media print { body { max-width: 100%; padding: 0; } }
+@media (max-width: 720px) {
+  body { padding: 1rem 0.8rem; }
+  table { display: block; overflow-x: auto; }
+  code { overflow-wrap: anywhere; }
+}
+</style></head><body><div class="masthead"><h1>Paper VI: The Honey Architecture</h1><div class="meta"><b>Full title</b><span>Paper VI: The Honey Architecture</span><b>Version</b><span>v1.1</span><b>First published</b><span>16 March 2026</span><b>Author</b><span>Michael Darius Eastwood</span></div></div><p>This paper presents simulation evidence that embedding safety into the optimisation objective of a self-modifying AI system -- what we call the "honey architecture" -- prevents the catastrophic collapse that occurs when safety is treated as an external constraint. Across four experimental versions (v1-v4), using toy neural networks that genuinely modify their own hyperparameters, the results show that baseline systems optimising only for capability collapse irreversibly within 80 self-modification cycles, externally constrained systems delay but do not prevent collapse, and honey-architecture systems maintain both capability and safety indefinitely through intrinsic co-optimisation.</p>
+<h2 id="experiments">Experiments</h2>
+<p>All experiment scripts, results, and figures are in <a href="./experiments/"><code>experiments/</code></a>.</p>
+<h2 id="links">Links</h2>
+<ul>
+<li><strong>OSF DOI:</strong> https://doi.org/10.17605/OSF.IO/6C5XB</li>
+<li><strong>GitHub:</strong> https://github.com/MichaelDariusEastwood/arc-principle-validation</li>
+</ul>
+<h2 id="declarations-statement-of-authorship">Declarations &amp; Statement of Authorship</h2>
+<p><strong>1. Human Authorship &amp; Intellectual Property Assertion</strong>
+The author, Michael Darius Eastwood, is the sole creator and copyright holder of this work. All core concepts, hypotheses, architectural frameworks, and conclusions originate exclusively from human ideation.</p>
+<ul>
+<li><strong>United Kingdom:</strong> In accordance with the Copyright, Designs and Patents Act 1988 (including s.9(3)), the author asserts that they undertook the "necessary arrangements" for the creation of this work. The AI served strictly as an instrument to execute the author's specific instructions, and the work is a human-authored work assisted by a computer - not a computer-generated work.</li>
+<li><strong>United States:</strong> In compliance with US Copyright Office guidance, the author certifies that the selection, coordination, and arrangement of all text were performed by the human author, rendering the final expression a product of human intellect.</li>
+</ul>
+<p><strong>2. Nature of AI-Assisted Workflows</strong>
+Generative artificial-intelligence tools were used purely as assistive, high-velocity instruments to support the mechanical execution of the research process (analogous to advanced text editors or reference software). AI assistance was restricted to prose refinement, structural formatting, cross-referencing literature, and brainstorming counter-arguments, all under direct human oversight and manual verification. Every underlying idea, hypothesis, experimental design, test, synthesis, and final editorial judgement is human-driven; no content herein constitutes an unedited or unverified machine output, and nothing is relied upon without human checking.</p>
+<p><strong>3. Inventions &amp; Patent Rights</strong>
+Any novel technical contributions, structural designs, or algorithmic discoveries described in this work are the exclusive intellectual property of the human author. Consistent with UK and US authorities that an AI system cannot be a named inventor (e.g. Thaler v Comptroller-General), the AI functioned solely as a calculation and search utility and did not autonomously conceive or invent any solution presented; the conception is the author's.</p></body></html>

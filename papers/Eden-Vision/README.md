@@ -7,7 +7,7 @@
 
 ## Summary
 
-Every engineering project begins with requirements. Every set of requirements begins with purpose. And every purpose, traced back far enough, arrives at the same question: what is this for? This paper articulates the philosophical foundations of the Eden Protocol -- the values, principles, and ethical commitments that underpin the engineering specification. It draws on 84% of humanity's wisdom traditions to argue that alignment research conducted across millennia in religious and philosophical contexts contains directly applicable insights for AI safety, and that the Eden Protocol's emphasis on embedded stewardship, graduated autonomy, and intrinsic care represents a synthesis of these traditions with modern capability science.
+Every engineering project begins with requirements. Every set of requirements begins with purpose. And every purpose, traced back far enough, arrives at the same question: what is this for? This paper articulates the philosophical foundations of the Eden Protocol -- the values, principles, and ethical commitments that underpin the engineering specification. It draws on the faith traditions with which ~80% of humanity identifies (p.28; the figure appears as 84% in the book's back-matter originality note) to argue that alignment research conducted across millennia in religious and philosophical contexts contains directly applicable insights for AI safety, and that the Eden Protocol's emphasis on embedded stewardship, graduated autonomy, and intrinsic care represents a synthesis of these traditions with modern capability science.
 
 ## Experiments
 
@@ -18,3 +18,10 @@ See [`../Paper-V-Stewardship-Gene/experiments/`](../Paper-V-Stewardship-Gene/exp
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+
+## Declaration of AI Use
+
+The author used Claude (Anthropic), GPT (OpenAI), Gemini (Google), and DeepSeek AI to draft sections, refine clarity, and check mathematical consistency. The research question, theoretical framework, formalism, experimental predictions, and scientific judgement are human work. The author takes full responsibility for all claims, interpretations, errors, and conclusions. AI models used as experimental *subjects* or *evaluators* are named in each paper's methods (e.g. Claude Opus, DeepSeek-V4, GPT-5.5, Gemini, gpt-3.5-turbo, gpt-4o-mini, as applicable). Don't believe - verify.
+
+- **Licence:** CC BY-NC-ND 4.0 (paper text/figures) / proprietary (code) - see repo `LICENSE.md`.

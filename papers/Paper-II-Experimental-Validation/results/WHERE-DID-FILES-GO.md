@@ -1,0 +1,2 @@
+
+Moved to ./_archive/ on 2026-07-04 (duplicates; canonical named in /EXPERIMENTS-INDEX.md): figure_14_form_vs_amount.png, figure_9_divergence.png, figure_1_raw_data.png, figure_8_equation.png, figure_5_error_reduction.png, figure_12_combined_scaling.png, figure_10_summary.png, figure_7_cross_domain.png, figure_15_complete_summary.png, figure_3_sensitivity.png, figure_2_scaling_loglog.png, figure_4_alpha_comparison.png, figure_11_experimental_data.png, figure_13_alpha_summary.png, figure_6_alignment_taxonomy.png

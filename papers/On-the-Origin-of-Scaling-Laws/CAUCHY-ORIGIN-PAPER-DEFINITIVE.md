@@ -24,9 +24,11 @@ Two major theoretical frameworks have been proposed, each deriving the same form
 
 West, Brown & Enquist (1997, 1999) derived the 3/4 exponent from the geometry of hierarchical, space-filling, fractal-like vascular networks. Their argument: a network that fills a d-dimensional volume with hierarchical branching, while minimising transport costs, produces a scaling exponent of d/(d + 1). For three-dimensional organisms, d = 3, giving 3/4.
 
-Independently, Demetrius (2006) derived the same formula from quantum statistical mechanics, applying the Debye model of thermal properties to coupled energy-transducing oscillators embedded in d-dimensional space. In his framework, the scaling exponent in the quantum regime is d/(d + 1), with d = 1 giving 1/2, d = 2 giving 2/3, and d = 3 giving 3/4.
+Independently, Demetrius (2006) developed a quantum-statistical framework in which the Debye model of thermal properties is applied to coupled energy-transducing oscillators embedded in d-dimensional bio-membranes, using Debye functions for d = 1, 2, 3. Demetrius and Tuszynski (2010) subsequently made the dimensional generalisation explicit: in the quantum regime the scaling exponent is beta = d/(d + 1), with d = 1 giving 1/2, d = 2 giving 2/3, and d = 3 giving 3/4.
 
 Two derivations. Different physics. Same formula. The purpose of this paper is to explain why.
+
+These two are not the only independent derivations of alpha = d/(d+1). At least four distinct methodological routes yield the same exponent: network-geometric optimisation (West, Brown & Enquist, 1997; Banavar, Maritan & Rinaldo, 1999), fractal cell geometry (He & Chen, 2003; He, 2004), quantum metabolism (Demetrius, 2006; Demetrius & Tuszynski, 2010), and Murray's-law flow conservation (Zhao, 2015). We analyse the network-geometric and quantum-metabolism pair in depth because their unification through Cauchy's functional equation is the most transparent; the argument generalises to the others. Bettencourt (2013) concerns urban scaling - super-linear for socioeconomic output, sub-linear for infrastructure - and is a distinct phenomenon, not a derivation of this metabolic exponent.
 
 ## 2. Cauchy's Functional Equation and Recursive Composition
 
@@ -46,7 +48,7 @@ Consider a hierarchical transport network embedded in d-dimensional Euclidean sp
 
 A network satisfying both conditions partitions a (d + 1)-dimensional quantity (the volume plus time, or equivalently the volume and the flow rate) into d-dimensional transport channels. The surface-to-volume scaling of such a partition gives alpha = d/(d + 1).
 
-This result is independent of the specific branching geometry (fractal, Murray's law, area-preserving, or area-increasing). It depends only on the dimensionality d of the embedding space and the requirement that the network fills it hierarchically. This is why West et al. (network geometry) and Demetrius (oscillator coupling in d-dimensional space) arrive at the same formula: both are instantiating the Cauchy power-law constraint in d-dimensional space with the space-filling condition.
+This result is independent of the specific branching geometry (fractal, Murray's law, area-preserving, or area-increasing). It depends only on the dimensionality d of the embedding space and the requirement that the network fills it hierarchically. This is why West et al. (network geometry) and Demetrius and coworkers (oscillator coupling in d-dimensional space) arrive at the same formula: both are instantiating the Cauchy power-law constraint in d-dimensional space with the space-filling condition.
 
 ## 4. The Dimensional Ladder: Empirical Confirmation
 
@@ -56,7 +58,7 @@ The formula alpha = d/(d + 1) makes a prediction for every positive integer d. W
 
 **Cosmological confirmation.** In the radiation-dominated era, the Friedmann solution gives the scale factor a(t) proportional to t raised to 1/2. The equation of state parameter w = 1/3 corresponds, under the mapping d = 2/(1 + 3w), to d = 1. The radiation era is governed by one-dimensional photon streaming through plasma. Exact analytical result.
 
-**Biological data.** Filamentous fungi, with one-dimensional hyphal transport, show metabolic scaling exponents in the range 0.50 to 0.55 at the colony level (Aguilar-Trigueros et al., 2017; Wilkinson, 2012; Fuentes, 2015). Consistent with the prediction, though confidence intervals are wide.
+**Biological data.** Filamentous fungi, with predominantly one-dimensional hyphal transport, show colony-level metabolic scaling exponents clustering near 0.5. Aguilar-Trigueros, Rillig and Crowther (2017) reanalyse two independent primary datasets and report beta = 0.53 +/- 0.09 for five marine filamentous fungi (Fuentes et al., 2015) and beta = 0.58 +/- 0.15 for eight ectomycorrhizal fungal species (Wilkinson et al., 2012). Consistent with the d = 1 prediction, though confidence intervals are wide and datasets are small.
 
 ### 4.2 d = 2, alpha = 2/3
 
@@ -78,7 +80,7 @@ The formula alpha = d/(d + 1) makes a prediction for every positive integer d. W
 
 **Empirical data.** Glazier (2008) showed that in both birds and mammals, the metabolic scaling exponent approaches 1.0 at extreme metabolic levels (torpor and maximum exertion), while falling near 2/3 at intermediate resting levels. This is consistent with the asymptotic prediction: as the effective dimensionality of the metabolic system increases, the exponent approaches 1 but never reaches it.
 
-**Demetrius (2006) independently predicted this limit:** 'As the embedding spatial dimensionality of the biological system of oscillators, d, increases asymptotically, the exponent tends to one.'
+**Demetrius and Tuszynski (2010) independently derived this limit:** 'As the embedding spatial dimensionality of the biological system of oscillators, d, increases asymptotically, the exponent tends to one.'
 
 ## 5. The Geometric Speed Limit
 
@@ -125,7 +127,7 @@ The boundary w = -1/3 is the strong energy condition boundary in general relativ
 
 Three confirmed. Two consistent. One untested. Zero free parameters.
 
-Two independent derivations (West et al. 1997; Demetrius 2006) produce the same formula from different physics, unified by Cauchy's functional equation (1821).
+The two derivations analysed here (West et al. 1997; Demetrius 2006, with the explicit dimensional generalisation in Demetrius & Tuszynski 2010) produce the same formula from different physics, unified by Cauchy's functional equation (1821) - and they are two of at least four independent derivations of the exponent (the others being He's fractal cell geometry and Zhao's Murray's-law flow conservation), which the same Cauchy argument accommodates.
 
 ## 9. Conclusion
 
@@ -135,11 +137,15 @@ The convergence of independent derivations on alpha = d/(d + 1) is not coinciden
 
 ## References
 
-Aguilar-Trigueros, C.A. et al. (2017). Branching out: towards a trait-based understanding of fungal ecology. *Fungal Biology Reviews*, 31(1), 34-41.
+Aguilar-Trigueros, C.A., Rillig, M.C. & Crowther, T.W. (2017). Applying allometric theory to fungi. *ISME Journal*, 11(10), 2175-2180. DOI: 10.1038/ismej.2017.86.
 
 Cauchy, A.L. (1821). *Cours d'analyse de l'Ecole Royale Polytechnique*.
 
-Demetrius, L. (2006). Quantum metabolism explains the allometric scaling of metabolic rates. *Journal of the Royal Society Interface*, 3, 843-851.
+Demetrius, L. (2006). The origin of allometric scaling laws in biology. *Journal of Theoretical Biology*, 243(4), 455-467. DOI: 10.1016/j.jtbi.2006.05.031.
+
+Demetrius, L. & Tuszynski, J.A. (2010). Quantum metabolism explains the allometric scaling of metabolic rates. *Journal of the Royal Society Interface*, 7(44), 507-514. DOI: 10.1098/rsif.2009.0310.
+
+Fuentes, M.E., Quinones, R.A., Gutierrez, M.H. & Pantoja, S. (2015). Effects of temperature and glucose concentration on the growth and respiration of fungal species isolated from a highly productive coastal upwelling ecosystem. *Fungal Ecology*, 13, 135-149. DOI: 10.1016/j.funeco.2014.09.006.
 
 Glazier, D.S. (2005). Beyond the '3/4-power law': variation in the intra- and interspecific scaling of metabolic rate in animals. *Biological Reviews*, 80, 611-662.
 
@@ -155,6 +161,8 @@ West, G.B., Brown, J.H. & Enquist, B.J. (1999). The fourth dimension of life: fr
 
 White, C.R. & Seymour, R.S. (2003). Mammalian basal metabolic rate is proportional to body mass 2/3. *Proceedings of the National Academy of Sciences*, 100, 4046-4049.
 
+Wilkinson, A., Solan, M., Alexander, I. & Johnson, D. (2012). Species richness and nitrogen supply regulate the productivity and respiration of ectomycorrhizal fungi in pure culture. *Fungal Ecology*, 5, 211-222. DOI: 10.1016/j.funeco.2011.10.005.
+
 ---
 
 *Correspondence: michael@michaeldariuseastwood.com*
@@ -162,3 +170,19 @@ White, C.R. & Seymour, R.S. (2003). Mammalian basal metabolic rate is proportion
 *Pre-registration: osf.io/6c5xb*
 
 Raise AI with care.
+
+---
+
+## Declarations & Statement of Authorship
+
+**1. Human Authorship & Intellectual Property Assertion**
+The author, Michael Darius Eastwood, is the sole creator and copyright holder of this work. All core concepts, hypotheses, architectural frameworks, and conclusions originate exclusively from human ideation.
+
+- **United Kingdom:** In accordance with the Copyright, Designs and Patents Act 1988 (including s.9(3)), the author asserts that they undertook the "necessary arrangements" for the creation of this work. The AI served strictly as an instrument to execute the author's specific instructions, and the work is a human-authored work assisted by a computer - not a computer-generated work.
+- **United States:** In compliance with US Copyright Office guidance, the author certifies that the selection, coordination, and arrangement of all text were performed by the human author, rendering the final expression a product of human intellect.
+
+**2. Nature of AI-Assisted Workflows**
+Generative artificial-intelligence tools were used purely as assistive, high-velocity instruments to support the mechanical execution of the research process (analogous to advanced text editors or reference software). AI assistance was restricted to prose refinement, structural formatting, cross-referencing literature, and brainstorming counter-arguments, all under direct human oversight and manual verification. Every underlying idea, hypothesis, experimental design, test, synthesis, and final editorial judgement is human-driven; no content herein constitutes an unedited or unverified machine output, and nothing is relied upon without human checking.
+
+**3. Inventions & Patent Rights**
+Any novel technical contributions, structural designs, or algorithmic discoveries described in this work are the exclusive intellectual property of the human author. Consistent with UK and US authorities that an AI system cannot be a named inventor (e.g. Thaler v Comptroller-General), the AI functioned solely as a calculation and search utility and did not autonomously conceive or invent any solution presented; the conception is the author's.

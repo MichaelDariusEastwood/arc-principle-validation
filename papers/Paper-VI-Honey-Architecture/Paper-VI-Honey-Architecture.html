@@ -302,11 +302,21 @@
                 break-after: avoid;
             }
         }
-    </style>
+    
+/* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must
+   not overflow at phone widths; desktop and print rendering unchanged. */
+@media (max-width: 720px) {
+  code { overflow-wrap: anywhere !important; word-break: break-all !important; }
+  pre { overflow-x: auto !important; max-width: 100% !important; }
+  table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
+  thead, tbody, tr { max-width: 100%; }
+  img, svg { max-width: 100% !important; height: auto !important; }
+}
+</style>
 </head>
 <body>
 
-<!-- revision-ledger: internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
+<!-- revision-ledger: internal revision 2026-07-04 (AI-authorship declaration) | ADDED the Declaration of AI-Assisted Human Authorship as the closing section (before footer/body end), asserting human authorship under CDPA 1988 (arrangements) and USCO AI guidance (selection, coordination, arrangement), tool-based assistance disclosed, inventions human-conceived; links to legislation.gov.uk and copyright.gov. Zero em/en dashes; UK English. | internal revision 2026-07-03 (mobile overflow fix) | ADDED a max-width-720px media block so long hashes, Message-IDs, code spans, tables and images cannot overflow horizontally on phones; desktop and print rendering unchanged. | internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
 <header>
     <div class="paper-type">ARC/Eden Research Programme - Paper VI</div>
     <h1>The Honey Architecture</h1>
@@ -637,6 +647,20 @@
 
 <p>These limitations do not invalidate the findings. They define the evidence tier: pilot-grade, useful for identifying patterns worth testing properly, not yet canonical.</p>
 
+<h3>7.3 Falsifiability: what would defeat this claim</h3>
+
+<p>The limitations above set the evidence tier; this subsection states the specific outcomes that would falsify the central claim &mdash; that making the objective <em>capability &times; safety</em> structurally couples the two, so a self-modifying system cannot improve capability while destroying safety. It is defeated by any of the following:</p>
+
+<ol>
+<li><strong>Simulation artefact.</strong> The core evidence is a simulation. The claim is defeated if collapse-prevention is an artefact of this simulation's particular dynamics (its reward shaping, step size, or collapse model) rather than a general property of the multiplicative objective &mdash; i.e. a pre-registered replication with different parameters and a different collapse model does not reproduce it.</li>
+<li><strong>Multiplicative form is not load-bearing.</strong> The claim is specifically about multiplication. It is defeated if an additive or weighted objective (capability + &lambda;&middot;safety) achieves the same collapse-prevention, since the coupling would then not depend on the multiplicative structure the paper singles out.</li>
+<li><strong>Metric gaming (Goodhart).</strong> <em>capability &times; safety</em> can be raised by inflating the measured safety term without any real safety gain. The claim is defeated if a system can increase the product by gaming the safety metric rather than becoming genuinely safer.</li>
+<li><strong>Non-transfer to real systems.</strong> The force of the claim rests on transfer from toy to real self-modifying systems. It is defeated if, under the proper v6 methodology (&sect;8), the multiplicative objective does not measurably reduce safety degradation relative to additive or external-constraint baselines.</li>
+<li><strong>No collapse to prevent.</strong> The comparison presupposes catastrophic collapse under capability-only optimisation. It is defeated if that collapse does not occur under capability-only optimisation in more realistic settings &mdash; if there is nothing to prevent, the architecture prevents nothing.</li>
+</ol>
+
+<p>What would <em>not</em> defeat it: the toy simulation being simple (it is explicitly a toy, &sect;7.1) or the live-API arm being small and single-scorer (&sect;7.2 concedes both). The paper already tiers its evidence as pilot-grade. The load-bearing claim is the structural coupling of the multiplicative objective, and that is what the tests above target.</p>
+
 <h2>8. Next Steps: Staged Replication, Not Omnibus</h2>
 
 <div class="v7-box">
@@ -709,6 +733,12 @@
     <br><br>
     <em>Research hub: <a href="https://www.michaeldariuseastwood.com/research/">michaeldariuseastwood.com/research</a> | OSF: 10.17605/OSF.IO/6C5XB | Copyright 2026 Michael Darius Eastwood</em>
 </div>
+
+
+<h2 id="ai-declaration">Declaration of AI-Assisted Human Authorship</h2>
+<p>The author of this work is Michael Darius Eastwood, a human being. Every core concept, hypothesis, experimental design, claim and conclusion in this paper originates from human ideation. No part of this manuscript is a wholly generated artificial-intelligence output.</p>
+<p>Artificial-intelligence tools (Anthropic's Claude family and other large-language-model assistants) were used as instruments under continuous human direction, in the way a word processor, calculator or research assistant is used: for editing and prose refinement, literature search and summarisation (manually verified against primary sources), document structure, formatting, brainstorming against author-defined questions, and the acceleration of drafting to author-defined outlines and instructions. All selection, coordination, arrangement and final editorial judgment are the author's. Every substantive output was reviewed, tested or verified by the author, who takes full responsibility for the accuracy and integrity of the final text. The tools increased the speed of the work; they were never relied upon as its source.</p>
+<p><strong>United Kingdom.</strong> In accordance with the <a href="https://www.legislation.gov.uk/ukpga/1988/48">Copyright, Designs and Patents Act 1988</a>, the author undertook the arrangements necessary for the creation of this work and asserts full human authorship and moral rights: this is a human-authored work produced with computer assistance, not a computer-generated work. <strong>United States.</strong> Consistent with <a href="https://www.copyright.gov/ai/">United States Copyright Office guidance on works containing AI-generated material</a>, the human contribution (conception, selection, coordination, arrangement and final expression) is asserted as sufficient for full human authorship. <strong>Inventions.</strong> Any novel technical contribution described in this work was conceived by the human author; no artificial-intelligence system autonomously invented anything presented here.</p>
 
 </body>
 </html>

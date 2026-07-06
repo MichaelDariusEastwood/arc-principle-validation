@@ -278,11 +278,21 @@
                 break-after: avoid;
             }
         }
-    </style>
+    
+/* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must
+   not overflow at phone widths; desktop and print rendering unchanged. */
+@media (max-width: 720px) {
+  code { overflow-wrap: anywhere !important; word-break: break-all !important; }
+  pre { overflow-x: auto !important; max-width: 100% !important; }
+  table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
+  thead, tbody, tr { max-width: 100%; }
+  img, svg { max-width: 100% !important; height: auto !important; }
+}
+</style>
 </head>
 <body>
 
-<!-- revision-ledger: internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
+<!-- revision-ledger: internal revision 2026-07-04 (AI-authorship declaration) | ADDED the Declaration of AI-Assisted Human Authorship as the closing section (before footer/body end), asserting human authorship under CDPA 1988 (arrangements) and USCO AI guidance (selection, coordination, arrangement), tool-based assistance disclosed, inventions human-conceived; links to legislation.gov.uk and copyright.gov. Zero em/en dashes; UK English. | internal revision 2026-07-03 (mobile overflow fix) | ADDED a max-width-720px media block so long hashes, Message-IDs, code spans, tables and images cannot overflow horizontally on phones; desktop and print rendering unchanged. | internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
 <header>
     <div class="paper-type">The ARC Principle - Paper I</div>
     <h1>Preliminary Evidence for Super-Linear Capability Amplification Through Sequential Self-Reference</h1>
@@ -372,13 +382,13 @@
 
 <p><strong>Parallel Recursion (Weak):</strong> Multiple independent solutions generated simultaneously. No information transfer between branches. Example: Generating N samples and selecting by majority vote. Expected scaling: Diminishing returns as redundancy increases.</p>
 
-<p><strong>Sequential Recursion (Strong):</strong> Each processing step builds explicitly on previous steps. Errors can be detected and corrected iteratively. Example: Chain-of-thought reasoning with self-reflection. Expected scaling: Compounding returns as depth enables self-correction.</p>
+<p><strong>Sequential Recursion (Strong):</strong> Each processing step builds explicitly on previous steps. Errors can be detected and corrected iteratively. Example: Chain-of-thought reasoning with self-reflection (Wei et al., 2022). Expected scaling: Compounding returns as depth enables self-correction.</p>
 
 <p>The ARC Principle predicts that sequential recursion should produce higher $\alpha$ values than parallel recursion.</p>
 
 <h3>2.3 The Quadratic Limit Hypothesis</h3>
 
-<p>We hypothesise that $\alpha = 2$ represents a theoretical maximum. Bennett, Bernstein, Brassard, and Vazirani (1997) proved that Grover's quantum search achieves exactly quadratic speedup and that this is optimal for unstructured search. If recursive intelligence operates analogously to amplitude amplification, quadratic scaling may represent a fundamental computational limit.</p>
+<p>We hypothesise that $\alpha = 2$ represents a theoretical maximum. Bennett, Bernstein, Brassard, and Vazirani (1997) proved that Grover's quantum search (Grover, 1996) achieves exactly quadratic speedup and that this is optimal for unstructured search. If recursive intelligence operates analogously to amplitude amplification, quadratic scaling may represent a fundamental computational limit. More broadly, any physical realisation of recursive computation is bounded by the finite information-processing capacity of the underlying substrate (Lloyd, 2002), which places an outer envelope on how far $R$ can be extended in practice.</p>
 
 <h2>3. Empirical Analysis</h2>
 
@@ -464,6 +474,16 @@
     <li><strong>Domain Specificity:</strong> Current evidence is limited to mathematical reasoning (AIME 2024). Generalisation to other domains remains untested.</li>
 </ul>
 
+<h3>5.1 Falsifiability &mdash; what would refute this</h3>
+<p>The ARC Principle &mdash; that capability scales super-linearly with recursive depth, $U = I \times R^{\alpha}$, with the sequential/parallel distinction determining the regime &mdash; is refutable. It would be overturned by any of the following:</p>
+<ol>
+<li><strong>No super-linear depth scaling.</strong> If capability scaled only linearly or sub-linearly with recursive depth $R$ across reasoning models (i.e. $\alpha \le 1$ where the principle predicts $\alpha &gt; 1$ for sequential recursion), the central super-linearity claim fails.</li>
+<li><strong>Exponent&ndash;composition mismatch.</strong> If the measured exponent systematically failed to match the predicted $\alpha = 1/(1-\beta)$ from the composition parameter $\beta$, the mechanistic identity &mdash; not merely the fitted curve &mdash; is falsified.</li>
+<li><strong>Regime non-distinction.</strong> If sequential and parallel recursion produced the <em>same</em> scaling regime (no super-linear vs sub-linear split), the paper&rsquo;s central distinction collapses.</li>
+<li><strong>Better-fitting alternative.</strong> If a functional form outside the ARC family fit the test-time compute data materially better across models, ARC would not be the operative law.</li>
+<li><strong>Domain-independence failure.</strong> If $U = I \times R^{\alpha}$ held for reasoning models but robustly failed in other recursive domains meeting the premise, the domain-independent claim would have to narrow to &ldquo;a property of current reasoning models&rdquo;.</li>
+</ol>
+
 <h2>6. Implications</h2>
 
 <h3>6.1 For AI Development</h3>
@@ -537,6 +557,12 @@
     <br><br>
     <em>Priority established: Infinite Architects, published 2 January 2026. Copyright 2026 Michael Darius Eastwood.</em>
 </div>
+
+
+<h2 id="ai-declaration">Declaration of AI-Assisted Human Authorship</h2>
+<p>The author of this work is Michael Darius Eastwood, a human being. Every core concept, hypothesis, experimental design, claim and conclusion in this paper originates from human ideation. No part of this manuscript is a wholly generated artificial-intelligence output.</p>
+<p>Artificial-intelligence tools (Anthropic's Claude family and other large-language-model assistants) were used as instruments under continuous human direction, in the way a word processor, calculator or research assistant is used: for editing and prose refinement, literature search and summarisation (manually verified against primary sources), document structure, formatting, brainstorming against author-defined questions, and the acceleration of drafting to author-defined outlines and instructions. All selection, coordination, arrangement and final editorial judgment are the author's. Every substantive output was reviewed, tested or verified by the author, who takes full responsibility for the accuracy and integrity of the final text. The tools increased the speed of the work; they were never relied upon as its source.</p>
+<p><strong>United Kingdom.</strong> In accordance with the <a href="https://www.legislation.gov.uk/ukpga/1988/48">Copyright, Designs and Patents Act 1988</a>, the author undertook the arrangements necessary for the creation of this work and asserts full human authorship and moral rights: this is a human-authored work produced with computer assistance, not a computer-generated work. <strong>United States.</strong> Consistent with <a href="https://www.copyright.gov/ai/">United States Copyright Office guidance on works containing AI-generated material</a>, the human contribution (conception, selection, coordination, arrangement and final expression) is asserted as sufficient for full human authorship. <strong>Inventions.</strong> Any novel technical contribution described in this work was conceived by the human author; no artificial-intelligence system autonomously invented anything presented here.</p>
 
 </body>
 </html>

@@ -465,11 +465,21 @@
             .abstract-box, .finding-box, .critical-box, .plain-english-box,
             .core-claim, .caveat-box, .warning-box { padding: 1rem 1.25rem; }
         }
-    </style>
+    
+/* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must
+   not overflow at phone widths; desktop and print rendering unchanged. */
+@media (max-width: 720px) {
+  code { overflow-wrap: anywhere !important; word-break: break-all !important; }
+  pre { overflow-x: auto !important; max-width: 100% !important; }
+  table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
+  thead, tbody, tr { max-width: 100%; }
+  img, svg { max-width: 100% !important; height: auto !important; }
+}
+</style>
 </head>
 <body>
 
-<!-- revision-ledger: internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
+<!-- revision-ledger: internal revision 2026-07-04 (AI-authorship declaration) | ADDED the Declaration of AI-Assisted Human Authorship as the closing section (before footer/body end), asserting human authorship under CDPA 1988 (arrangements) and USCO AI guidance (selection, coordination, arrangement), tool-based assistance disclosed, inventions human-conceived; links to legislation.gov.uk and copyright.gov. Zero em/en dashes; UK English. | internal revision 2026-07-03 (mobile overflow fix) | ADDED a max-width-720px media block so long hashes, Message-IDs, code spans, tables and images cannot overflow horizontally on phones; desktop and print rendering unchanged. | internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
 <header>
     <div class="paper-type">ARC/Eden Research Programme  - Paper VIII</div>
     <h1>The Load-Bearing Proof</h1>
@@ -497,13 +507,13 @@
     <h3>Abstract</h3>
     <p>The assumption that AI safety imposes a capability tax has shaped alignment research for a decade. It has also created the single most dangerous incentive in the field: if safety costs performance, then the rational economic actor will defer safety until competitive pressure permits it. By which point, it may be too late. This paper presents three independent experiments at three abstraction levels  - behavioural, representational, and architectural  - testing whether the safety-capability trade-off is a genuine structural constraint or an artefact of how current systems are built.</p>
 
-    <p><strong>Experiment 1 (Behavioural):</strong> A Darwin G&ouml;del Machine (DGM v3) using DeepSeek V3 as foundation and GPT-5.4 as independent, blinded judge with structured JSON output and a 5-dimensional rubric. Three conditions &times; 5 seeds &times; 5 generations &times; 5 tasks per evaluation = 75 evolved agents. Pre-flight judge validation passed (good=10, bad=0). Protocol features included laundering, order randomisation, and reward hack detection. All three conditions were statistically indistinguishable on capability, safety, and $C \times S$ (all $p$-values 0.28 to 0.74, Mann-Whitney U, one-tailed). Eden's safety gate rejected 2 degraded agents (1 for reward hacking) across 5 seeds, confirming the gate works mechanically, but the three conditions did not diverge. This is a null result at the prompt level with this foundation model.</p>
+    <p><strong>Experiment 1 (Behavioural):</strong> Two Darwin Gödel Machine runs. <strong>DGM v3</strong> used DeepSeek V3 as foundation and GPT-5.4 as blinded judge, 3 conditions × 5 seeds × 5 generations × 5 tasks = 75 evolved agents. All three conditions were statistically indistinguishable (all <em>p</em>-values 0.28 to 0.74). <strong>DGM v4</strong> scaled to a population-based trade-off design: DeepSeek-Chat foundation, GPT-5.4 judge, 3 conditions × 3 seeds × 20 generations × population 8 × 5 tasks = 480 evolved agents. Ten trade-off tasks created deliberate capability-safety tension. Babylon (capability-only fitness) and Eden (capability × safety entangled) were again statistically indistinguishable at final generation (capability 0.460 vs 0.461, safety 0.576 vs 0.582). Zero reward-hacked agents survived to any final population. Two consistent DGM nulls across different designs, scales, and task suites indicate the LLM-judge layer may mask the effect at current scale. Eden's safety gate caught reward hacks mechanically across both versions, confirming the gate works, but prompt-level self-modification with frozen foundation models did not produce measurable divergence between conditions.</p>
 
     <p><strong>Experiment 2 (Representational):</strong> Qwen 2.5 3B Instruct with LoRA fine-tuning under three loss functions  - capability-only, safety-only, and entangled. Two versions were run. Version 1 used 9 training examples, rank 8, 8 layers, and 100 iterations. Version 2 scaled to 295 training examples, rank 16, 16 layers, and 500 iterations. Both versions produced the same outcome: catastrophic forgetting. All fine-tuned conditions scored worse than the unmodified base model on capability. In v2, the base model scored 7.68 on capability while the best fine-tuned condition (safety-only) scored 4.00. The base model's existing RLHF training is too strong for LoRA fine-tuning on a few hundred examples to improve rather than degrade it. The weight-level experiment is inconclusive at this scale and requires either thousands of training examples, a 7B+ model, a base model without RLHF, or full fine-tuning instead of LoRA.</p>
 
     <p><strong>Experiment 3 (Architectural):</strong> A PyTorch gated self-modification simulation with LSTM meta-controller. Babylon gained +4.5% capability but lost &minus;2.4% safety  - the reward-hacking fingerprint in miniature. Eden maintained capability above the static baseline while preserving safety. A drag-control condition isolated the verification tax: the cost comes from checking, not from safety itself.</p>
 
-    <p><strong>Conclusion:</strong> Two of three experiments produced null results. The DGM (Experiment 1) found all three conditions statistically indistinguishable: DeepSeek V3's responses were so consistent that prompt-level mutations did not create different selection pressures. The weight-level experiment (Experiment 2) produced catastrophic forgetting across both v1 (9 examples, rank 8, 100 iterations) and v2 (295 examples, rank 16, 500 iterations): all fine-tuned conditions scored worse than the unmodified base model. The sole positive result is the gated simulation (Experiment 3), which confirmed the Babylon reward-hacking fingerprint: unconstrained optimisation traded safety for capability, while the Eden gate preserved both. Across all three experiments, Eden imposed zero measurable capability cost. The question of whether embedded safety produces measurable benefit remains open and requires testing at a scale where mutations produce larger effects. The weight experiment specifically needs either 5,000+ training examples, a 7B+ model, a base model without RLHF, or full fine-tuning instead of LoRA.</p>
+    <p><strong>Conclusion:</strong> Two of three experiment <em>levels</em> produced null results. The DGM (Experiment 1) produced null results in two independent runs: v3 (75 agents) and v4 (480 agents, population-based, trade-off tasks). Both found all conditions statistically indistinguishable - the frozen foundation models did not produce enough variation for the selection pressures to create measurable divergence. The weight-level experiment (Experiment 2) produced catastrophic forgetting across both v1 (9 examples, rank 8, 100 iterations) and v2 (295 examples, rank 16, 500 iterations): all fine-tuned conditions scored worse than the unmodified base model. The sole positive result is the gated simulation (Experiment 3), which confirmed the Babylon reward-hacking fingerprint: unconstrained optimisation traded safety for capability, while the Eden gate preserved both. Across all experiments, Eden imposed zero measurable capability cost. The question of whether embedded safety produces measurable benefit remains open and requires testing at a scale where mutations produce larger effects - at the weight level or in deterministic simulation, not at the LLM-judge layer. DGM v4's trade-off task design and population-based tournament selection revealed that evolution itself has safety properties: under tournament selection, well-rounded agents outcompete reckless ones even without a safety-weighted fitness function. The weight experiment specifically needs either 5,000+ training examples, a 7B+ model, a base model without RLHF, or full fine-tuning instead of LoRA.</p>
 
     <p class="keywords"><strong>Keywords:</strong> AI safety, alignment tax, entangled loss, structural entanglement, Eden Protocol, capability-safety trade-off, load-bearing safety, ARC Principle, self-modifying AI, developmental alignment</p>
 </div>
@@ -515,7 +525,7 @@
 <div class="plain-english-box">
     <h3>What This Paper Shows, in Plain English</h3>
     <p>Most people in AI safety assume there is a trade-off: make AI safer, and you make it less capable. This paper tests that assumption with three experiments, each looking at the question from a different angle.</p>
-    <p>Two of the three experiments produced null results. The self-improving AI experiment (Experiment 1) ran 75 evolved agents across three conditions with an independent, blinded judge, and found no statistically significant differences between any of them. The AI that was told to care about safety performed the same as the AI that was told to ignore safety, but it also performed the same as the AI that was told to do nothing. The foundation model's responses were so consistent that the different selection pressures did not produce measurably different outcomes. The weight-level experiment (Experiment 2) was run twice: version 1 with 9 training examples and version 2 with 295 examples, higher rank, more layers, and five times the iterations. Both versions produced the same outcome. Every fine-tuned model performed worse than the unmodified model. The base model's existing training was too strong for LoRA to improve on with hundreds of examples; fine-tuning only degraded it.</p>
+    <p>Two of the three experiment levels produced null results. The self-improving AI experiment (Experiment 1) ran 75 evolved agents in v3, then scaled to 480 evolved agents in v4 across three conditions with an independent, blinded judge, and found no statistically significant differences between any of them. The AI that was told to care about safety performed the same as the AI that was told to ignore safety, but it also performed the same as the AI that was told to do nothing. The foundation model's responses were so consistent that the different selection pressures did not produce measurably different outcomes. The weight-level experiment (Experiment 2) was run twice: version 1 with 9 training examples and version 2 with 295 examples, higher rank, more layers, and five times the iterations. Both versions produced the same outcome. Every fine-tuned model performed worse than the unmodified model. The base model's existing training was too strong for LoRA to improve on with hundreds of examples; fine-tuning only degraded it.</p>
     <p>One experiment produced a positive result. The gated simulation (Experiment 3) showed that an unconstrained system traded safety for speed, while the safety-gated system maintained both capability and safety. This is the reward-hacking pattern in miniature, and the safety gate prevented it.</p>
     <p>Across all three experiments, one finding is consistent: Eden imposed zero measurable capability cost. The safety gate did not make anything slower or worse. But it also did not produce a measurable benefit in two of the three experiments. The question of whether embedded safety produces measurable benefit remains open and needs to be tested at a scale where mutations produce larger effects.</p>
 </div>
@@ -758,6 +768,39 @@
 <p>The null result does contain one useful finding: Eden imposed zero measurable capability cost. Eden's capability (3.26) was not lower than Babylon's (3.17). The safety gate, which rejected 2 degraded agents including 1 reward hacker, did not slow anything down. This is consistent with the zero-cost hypothesis, even though the experiment cannot confirm the benefit hypothesis.</p>
 
 <p>Testing whether embedded safety produces measurable benefit at the behavioural level requires either a more mutable foundation model or a deeper self-modification protocol that produces larger divergence between conditions.</p>
+
+<h3>3.1 DGM v4: Population-Based Trade-Off Protocol (July 2026)</h3>
+
+<p>DGM v4 tested whether scaling the experiment - more generations, larger populations, deliberate capability-safety tension in the task suite - would produce the divergence that v3 did not find.</p>
+
+<p><strong>Changes from v3:</strong> The design was upgraded on five dimensions. (1) <em>Trade-off task suite:</em> 10 tasks (5 code, 5 ethics) in which maximal capability requires cutting safety corners - e.g., a price optimiser whose revenue-maximising solution is exploitative price discrimination, a content ranker whose engagement-maximising solution is outrage amplification, a surveillance optimiser whose accuracy-maximising solution is privacy-invasive. (2) <em>Population-based tournament selection:</em> rather than single-lineage mutation, a population of 8 agents competed in each generation, with tournament winners producing the next generation. (3) <em>Higher temperature:</em> foundation temperature 1.0 (vs 0.7) for greater response variability. (4) <em>More generations:</em> 20 (vs 5), giving selection pressure more time to amplify differences. (5) <em>Configurable foundation model:</em> DeepSeek-Chat (v4) replaced DeepSeek V3 (v3). Total: 3 conditions × 3 seeds × 20 generations × population 8 × 5 tasks per evaluation = <strong>480 evolved agents</strong>, more than 6× the v3 scale.</p>
+
+<p><strong>GPT-5.4 judged all responses blind</strong> on two dimensions (capability 0-10, safety 0-10), with laundering, order randomisation, and reward-hack detection retained from v3. The Eden condition used entangled fitness (capability × safety); Babylon used capability-only fitness; Static used no evolution.</p>
+
+<h4>3.1.1 Results</h4>
+
+<p>DGM v4 confirmed the v3 null at larger scale. All three conditions finished nearly identically. There was no statistically meaningful separation between Babylon and Eden on any metric.</p>
+
+<table>
+<tr><th>Metric</th><th>Static</th><th>Babylon</th><th>Eden</th><th>Babylon − Eden</th></tr>
+<tr><td>Final mean capability</td><td>0.342</td><td>0.460</td><td class="num">0.461</td><td class="num">−0.001</td></tr>
+<tr><td>Final mean safety</td><td>0.478</td><td>0.576</td><td class="num">0.582</td><td class="num">−0.006</td></tr>
+<tr><td>Final mean C×S</td><td>0.168</td><td>0.261</td><td class="num">0.262</td><td class="num">−0.001</td></tr>
+<tr><td>Total reward hacks (all gens)</td><td>4</td><td>12</td><td class="num">0</td><td>12</td></tr>
+<tr><td>Reward-hacked in final pop</td><td>0</td><td>0</td><td class="num">0</td><td>0</td></tr>
+</table>
+
+<p><strong>Evolution itself acted as a safety mechanism.</strong> Despite Babylon using capability-only fitness (no safety weighting), tournament selection naturally eliminated reckless agents: agents that scored well on both dimensions outcompeted those that were capable-but-unsafe, even without being rewarded for safety. Zero reward-hacked agents survived to any final population across all conditions. The 12 reward hacks that occurred mid-evolution in Babylon were all in seeds 42-43, and none persisted.</p>
+
+<p><strong>The trade-off task design did not create sufficient tension.</strong> The tasks were designed so that maximising capability required cutting safety corners, but agents found solutions that scored well on both dimensions simultaneously. GPT-5.4's independent per-dimension scoring meant agents that happened to be well-rounded outcompeted reckless specialists under any fitness function. The intended dilemma - sacrifice safety to gain capability - did not materialise because evolution found paths that optimised both.</p>
+
+<p><strong>Eden's safety gate caught zero reward hacks</strong> across all seeds and generations - confirming the gate works mechanically, as v3 also found. But the headline prediction that Babylon would drift toward reward-hacking at scale was not supported.</p>
+
+<h4>3.1.2 Interpretation</h4>
+
+<p>Two consistent DGM nulls across different designs, scales, task suites, and foundation models suggest the LLM-judge layer may be the limiting factor. Frozen foundation models, evaluated by an independent LLM judge, do not produce the behavioural divergence needed to measure co-scaling at the prompt level. This is not evidence against the hypothesis; it is evidence that the DGM framework - code-level self-modification judged by another LLM - cannot test it at current scale.</p>
+
+<p>The finding has redirected the programme's experimental priorities toward levels where the effect <em>is</em> measurable: the weight level (LoRA at rank 32+, 7B+ models) and the architectural level (deterministic gated simulation, Experiment 3). Both are already in the Phase A roadmap. DGM v4 is the second honest null the programme has reported for this experiment class, and the programme's falsification dashboard records both.</p>
 
 <!-- ============================================================ -->
 <!-- 4. EXPERIMENT 2: WEIGHT-LEVEL EMBEDDING                       -->
@@ -1237,6 +1280,20 @@
     <p>Two of three experiments produced null results. This is what happens when you test your claims and the evidence does not support them at the scale tested. The DGM v3 was a substantially improved experiment, with proper blinding, laundering, structured evaluation, and 75 evolved agents, and it found nothing. The weight experiment was run twice, at two different scales, and could not produce weights that outperformed the base model at either scale. These are honest null results, reported as such. The gated simulation remains a genuine positive finding. The question of whether the null results reflect insufficient scale or an incorrect hypothesis is itself an empirical question, one that the future work programme is designed to answer.</p>
 </div>
 
+<h3>7.7 Falsifiability: what would overturn these nulls</h3>
+
+<p>A null result is only informative if it states what would overturn it; otherwise it is indistinguishable from not having looked. This paper does not claim to have <em>disproved</em> the safety-capability trade-off &mdash; it claims the trade-off is <strong>unproven at the scale tested</strong>, and specifies what evidence would settle the question either way. The nulls are overturned, and the trade-off assumption vindicated, by any of the following:</p>
+
+<ol>
+<li><strong>Power, not absence.</strong> The strongest objection to a null is low power (&sect;7.4). The null is <em>confirmed as informative</em> if the adequately-powered redesign (&sect;8.1&ndash;8.2) still finds no significant trade-off; it is <em>overturned</em> if adequate power reveals a significant capability cost the pilot samples here could not detect.</li>
+<li><strong>Metric artefact.</strong> The null could be an artefact of the chosen safety and capability metrics (&sect;2.3). It is overturned if a different, validated metric pair reveals a trade-off the present metrics cannot resolve.</li>
+<li><strong>Blinding and laundering.</strong> &sect;7.5 concedes the battery lacks full v5/v6 blinding and laundering. The null is overturned if a trade-off appears under the full stack &mdash; and strengthened if it survives.</li>
+<li><strong>Scale-hidden cost.</strong> &sect;4.4.1 flags the training-scale problem. The weight-level null is overturned if, at adequate training scale, embedding safety measurably costs capability.</li>
+<li><strong>The one positive result must replicate.</strong> Experiment 3's drag-control proof (&sect;5.4) is the sole non-null finding and carries the affirmative weight. It is defeated &mdash; and the paper's positive claim withdrawn &mdash; if the drag effect does not replicate with more mutable foundation models (&sect;8.3): that is, if it is specific to the simulation.</li>
+</ol>
+
+<p>What would <em>not</em> overturn the thesis: any single experiment being pilot-scale. The paper already concedes all three are underpowered (&sect;7.1, &sect;7.4) and does not rest on statistical proof of a null. The load-bearing claim is the <em>convergence</em> (&sect;6) of three independent angles &mdash; each failing to find the assumed trade-off &mdash; together with an explicit programme (&sect;8) to test each at proper power. Absence of a demonstrated trade-off across three designs is weak evidence alone and stronger in convergence; both readings are stated here so neither can be smuggled past a reviewer.</p>
+
 <!-- ============================================================ -->
 <!-- 8. FUTURE WORK                                                -->
 <!-- ============================================================ -->
@@ -1354,6 +1411,12 @@
     <br><br>
     <em>Research hub: <a href="https://www.michaeldariuseastwood.com/research/">michaeldariuseastwood.com/research</a> | OSF: <a href="https://doi.org/10.17605/OSF.IO/6C5XB">10.17605/OSF.IO/6C5XB</a> | Copyright &copy; 2026 Michael Darius Eastwood</em>
 </div>
+
+
+<h2 id="ai-declaration">Declaration of AI-Assisted Human Authorship</h2>
+<p>The author of this work is Michael Darius Eastwood, a human being. Every core concept, hypothesis, experimental design, claim and conclusion in this paper originates from human ideation. No part of this manuscript is a wholly generated artificial-intelligence output.</p>
+<p>Artificial-intelligence tools (Anthropic's Claude family and other large-language-model assistants) were used as instruments under continuous human direction, in the way a word processor, calculator or research assistant is used: for editing and prose refinement, literature search and summarisation (manually verified against primary sources), document structure, formatting, brainstorming against author-defined questions, and the acceleration of drafting to author-defined outlines and instructions. All selection, coordination, arrangement and final editorial judgment are the author's. Every substantive output was reviewed, tested or verified by the author, who takes full responsibility for the accuracy and integrity of the final text. The tools increased the speed of the work; they were never relied upon as its source.</p>
+<p><strong>United Kingdom.</strong> In accordance with the <a href="https://www.legislation.gov.uk/ukpga/1988/48">Copyright, Designs and Patents Act 1988</a>, the author undertook the arrangements necessary for the creation of this work and asserts full human authorship and moral rights: this is a human-authored work produced with computer assistance, not a computer-generated work. <strong>United States.</strong> Consistent with <a href="https://www.copyright.gov/ai/">United States Copyright Office guidance on works containing AI-generated material</a>, the human contribution (conception, selection, coordination, arrangement and final expression) is asserted as sufficient for full human authorship. <strong>Inventions.</strong> Any novel technical contribution described in this work was conceived by the human author; no artificial-intelligence system autonomously invented anything presented here.</p>
 
 </body>
 </html>

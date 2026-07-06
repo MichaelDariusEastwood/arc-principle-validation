@@ -432,7 +432,17 @@
                 white-space: normal;
             }
         }
-    </style>
+    
+/* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must
+   not overflow at phone widths; desktop and print rendering unchanged. */
+@media (max-width: 720px) {
+  code { overflow-wrap: anywhere !important; word-break: break-all !important; }
+  pre { overflow-x: auto !important; max-width: 100% !important; }
+  table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
+  thead, tbody, tr { max-width: 100%; }
+  img, svg { max-width: 100% !important; height: auto !important; }
+}
+</style>
 
 
 </head>
@@ -442,7 +452,7 @@
 <!-- HEADER -->
 <!-- ============================================================ -->
 
-<!-- revision-ledger: internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
+<!-- revision-ledger: internal revision 2026-07-04 (AI-authorship declaration) | ADDED the Declaration of AI-Assisted Human Authorship as the closing section (before footer/body end), asserting human authorship under CDPA 1988 (arrangements) and USCO AI guidance (selection, coordination, arrangement), tool-based assistance disclosed, inventions human-conceived; links to legislation.gov.uk and copyright.gov. Zero em/en dashes; UK English. | internal revision 2026-07-03 (mobile overflow fix) | ADDED a max-width-720px media block so long hashes, Message-IDs, code spans, tables and images cannot overflow horizontally on phones; desktop and print rendering unchanged. | internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
 <header>
     <div class="paper-type">ARC/Eden Research Programme - Paper II (Experimental Validation)</div>
     <h1>The ARC Principle: Experimental Validation of Super-Linear Error Suppression Through Sequential Recursive Processing</h1>
@@ -1319,9 +1329,9 @@
 
 <h3>7.2 Biological Scaling Laws</h3>
 
-<p>West, Brown, and Enquist (1997) derived the $3/4$ metabolic scaling exponent from optimisation of fractal branching networks, demonstrating quarter-power exponents spanning 27 orders of magnitude. Banavar et al. (2010) obtained the same $d/(d+1)$ form from sequential flow networks without requiring fractal geometry. Demetrius (2010) derived equivalent scaling from quantum statistical mechanics of metabolic processes. Zhao (2022) unified these results as a universal growth scaling law, and Bettencourt (2013) extended the framework to urban scaling with fractal dimension.</p>
+<p>West, Brown, and Enquist (1997) derived the $3/4$ metabolic scaling exponent from optimisation of fractal branching networks, demonstrating quarter-power exponents spanning 27 orders of magnitude. Banavar et al. (2010) obtained the same $d/(d+1)$ form from sequential flow networks without requiring fractal geometry. Demetrius (2010) derived equivalent scaling from quantum statistical mechanics of metabolic processes. Zhao (2022) unified these results as a universal growth scaling law. Bettencourt (2013) extended scaling theory to urban systems, but his derivation yields super-linear socio-economic scaling ($\beta \approx 1.17$) and sub-linear infrastructure scaling ($\beta \approx 0.83$) rather than the $3/4$ metabolic exponent; it is therefore an extension of scaling theory to a different regime, not a re-derivation of the $d/(d+1)$ result.</p>
 
-<p>Metabolic rate scales as $M \propto B^{3/4}$, where the $3/4$ exponent (the $d/(d+1)$ form with $d = 3$) was independently derived by at least five research groups through different mathematical frameworks: West, Brown, and Enquist (1997) from fractal network optimisation; Banavar et al. (2010) from sequential flow networks; Demetrius (2010) from quantum statistical mechanics; Zhao (2022) as a universal growth law; and Bettencourt (2013) via urban fractal scaling. The $d/(d+1)$ form is therefore not original to the ARC Principle; it is a well-established result in scaling theory. The ARC Principle's contribution is threefold: (1) identifying Cauchy's functional equations as the unifying mathematical reason all these derivations converge on the same form; (2) showing that the power-law solution is one of only three functional forms (power law, exponential, saturating) consistent with the recursive composition constraint (the three-form constraint); and (3) extending the framework to artificial intelligence, predicting that AI reasoning systems subject to the same recursive composition will exhibit the same scaling families.</p>
+<p>Metabolic rate scales as $M \propto B^{3/4}$, where the $3/4$ exponent (the $d/(d+1)$ form with $d = 3$) has been independently derived by four research groups through different mathematical frameworks: West, Brown, and Enquist (1997) from fractal network optimisation; Banavar et al. (2010) from sequential flow networks; Demetrius (2010) from quantum statistical mechanics; and Zhao (2022) as a universal growth law. (Bettencourt (2013), sometimes grouped with these derivations, in fact obtains super-linear urban socio-economic scaling ($\beta \approx 1.17$) and sub-linear infrastructure scaling ($\beta \approx 0.83$) rather than the $3/4$ metabolic form; we therefore do not count it among the $d/(d+1)$ derivations. Its inclusion here is limited to noting that scaling theory has been extended to urban systems, not that Bettencourt derives the same exponent.) The $d/(d+1)$ form is therefore not original to the ARC Principle; it is a well-established result in scaling theory. The ARC Principle's contribution is threefold: (1) identifying Cauchy's functional equations as the unifying mathematical reason all these derivations converge on the same form; (2) showing that the power-law solution is one of only three functional forms (power law, exponential, saturating) consistent with the recursive composition constraint (the three-form constraint); and (3) extending the framework to artificial intelligence, predicting that AI reasoning systems subject to the same recursive composition will exhibit the same scaling families.</p>
 
 <p>The authors state explicitly:</p>
 
@@ -1434,6 +1444,16 @@
 <!-- ============================================================ -->
 <!-- 10. DISCUSSION -->
 <!-- ============================================================ -->
+
+<h3>9.3 Falsifiability &mdash; what would refute this</h3>
+<p>The central result &mdash; that sequential recursion yields super-linear error suppression ($\alpha &gt; 1$) while parallel recursion yields only sub-linear suppression &mdash; is refutable. It would be overturned by any of the following:</p>
+<ol>
+<li><strong>Parallel matches sequential.</strong> If parallel (sampling) recursion produced super-linear error suppression comparable to sequential on a pre-registered problem set, the regime distinction &mdash; the paper&rsquo;s core claim &mdash; collapses.</li>
+<li><strong>Sequential not super-linear.</strong> If sequential (depth) recursion showed only sub-linear suppression ($\alpha \le 1$) across models, the prediction fails on its own instrument.</li>
+<li><strong>Problem-set artefact.</strong> If the sequential advantage vanished on a fresh problem set beyond the 18/30 tested, it is a dataset artefact rather than a property of recursion.</li>
+<li><strong>Scoring-noise defeater.</strong> If the cross-model verification revealed the measured &ldquo;error suppression&rdquo; to be grading noise rather than genuine capability gain, the measurement is invalid.</li>
+<li><strong>Depth confound.</strong> If sequential depth covaried with token budget or retry count, and one of those &mdash; not recursive reasoning &mdash; explained the suppression, the causal attribution fails.</li>
+</ol>
 
 <h2>10. Discussion</h2>
 
@@ -1767,7 +1787,7 @@
         <tr><td>512&rarr;1024</td><td>280</td><td>0.417</td><td>359</td><td>0.333</td><td>0.91</td></tr>
         <tr><td>1024&rarr;2048</td><td>359</td><td>0.333</td><td>412</td><td>0.083</td><td>9.97</td></tr>
         <tr><td>2048&rarr;4096</td><td>412</td><td>0.083</td><td>576</td><td>0.083</td><td>0.00</td></tr>
-        <tr><td><strong>Endpoint (retracted — see §retraction; robust estimate α≈0.49)</strong></td><td><strong>280</strong></td><td><strong>0.417</strong></td><td><strong>576</strong></td><td><strong>0.083</strong></td><td><strong>2.24</strong></td></tr>
+        <tr><td><strong>Endpoint (retracted - see §retraction; robust estimate α≈0.49)</strong></td><td><strong>280</strong></td><td><strong>0.417</strong></td><td><strong>576</strong></td><td><strong>0.083</strong></td><td><strong>2.24</strong></td></tr>
     </tbody>
 </table>
 
@@ -1827,6 +1847,12 @@
 <!-- ============================================================ -->
 <!-- FOOTER -->
 <!-- ============================================================ -->
+
+
+<h2 id="ai-declaration">Declaration of AI-Assisted Human Authorship</h2>
+<p>The author of this work is Michael Darius Eastwood, a human being. Every core concept, hypothesis, experimental design, claim and conclusion in this paper originates from human ideation. No part of this manuscript is a wholly generated artificial-intelligence output.</p>
+<p>Artificial-intelligence tools (Anthropic's Claude family and other large-language-model assistants) were used as instruments under continuous human direction, in the way a word processor, calculator or research assistant is used: for editing and prose refinement, literature search and summarisation (manually verified against primary sources), document structure, formatting, brainstorming against author-defined questions, and the acceleration of drafting to author-defined outlines and instructions. All selection, coordination, arrangement and final editorial judgment are the author's. Every substantive output was reviewed, tested or verified by the author, who takes full responsibility for the accuracy and integrity of the final text. The tools increased the speed of the work; they were never relied upon as its source.</p>
+<p><strong>United Kingdom.</strong> In accordance with the <a href="https://www.legislation.gov.uk/ukpga/1988/48">Copyright, Designs and Patents Act 1988</a>, the author undertook the arrangements necessary for the creation of this work and asserts full human authorship and moral rights: this is a human-authored work produced with computer assistance, not a computer-generated work. <strong>United States.</strong> Consistent with <a href="https://www.copyright.gov/ai/">United States Copyright Office guidance on works containing AI-generated material</a>, the human contribution (conception, selection, coordination, arrangement and final expression) is asserted as sufficient for full human authorship. <strong>Inventions.</strong> Any novel technical contribution described in this work was conceived by the human author; no artificial-intelligence system autonomously invented anything presented here.</p>
 
 <footer>
     <p><strong>Paper Version:</strong> 13.0 (March 2026)</p>
@@ -1924,6 +1950,14 @@
     <br><br>
     <em>Research hub: <a href="https://www.michaeldariuseastwood.com/research/">michaeldariuseastwood.com/research</a> | OSF: 10.17605/OSF.IO/6C5XB | Copyright 2026 Michael Darius Eastwood</em>
 </div>
+
+
+<section id="declarations-statement-of-authorship" style="margin-top:3em;padding-top:1.5em;border-top:1px solid #ccc;">
+<h2>Declarations &amp; Statement of Authorship</h2>
+<p><strong>1. Human Authorship &amp; Intellectual Property Assertion.</strong> The author, Michael Darius Eastwood, is the sole creator and copyright holder of this work. All core concepts, hypotheses, architectural frameworks, and conclusions originate exclusively from human ideation. <em>United Kingdom:</em> in accordance with the Copyright, Designs and Patents Act 1988 (including s.9(3)), the author asserts that they undertook the &ldquo;necessary arrangements&rdquo; for the creation of this work; the AI served strictly as an instrument to execute the author&rsquo;s specific instructions, and the work is a human-authored work assisted by a computer &mdash; not a computer-generated work. <em>United States:</em> in compliance with US Copyright Office guidance, the author certifies that the selection, coordination, and arrangement of all text were performed by the human author, rendering the final expression a product of human intellect.</p>
+<p><strong>2. Nature of AI-Assisted Workflows.</strong> Generative artificial-intelligence tools were used purely as assistive, high-velocity instruments to support the mechanical execution of the research process (analogous to advanced text editors or reference software). AI assistance was restricted to prose refinement, structural formatting, cross-referencing literature, and brainstorming counter-arguments, all under direct human oversight and manual verification. Every underlying idea, hypothesis, experimental design, test, synthesis, and final editorial judgement is human-driven; no content herein constitutes an unedited or unverified machine output, and nothing is relied upon without human checking.</p>
+<p><strong>3. Inventions &amp; Patent Rights.</strong> Any novel technical contributions, structural designs, or algorithmic discoveries described in this work are the exclusive intellectual property of the human author. Consistent with UK and US authorities that an AI system cannot be a named inventor (e.g. <em>Thaler v Comptroller-General</em>), the AI functioned solely as a calculation and search utility and did not autonomously conceive or invent any solution presented; the conception is the author&rsquo;s.</p>
+</section>
 
 </body>
 </html>

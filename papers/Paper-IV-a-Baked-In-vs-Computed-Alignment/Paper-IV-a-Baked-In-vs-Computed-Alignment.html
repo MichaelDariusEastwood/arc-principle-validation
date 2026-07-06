@@ -375,12 +375,22 @@
                 white-space: normal;
             }
         }
-    </style>
+    
+/* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must
+   not overflow at phone widths; desktop and print rendering unchanged. */
+@media (max-width: 720px) {
+  code { overflow-wrap: anywhere !important; word-break: break-all !important; }
+  pre { overflow-x: auto !important; max-width: 100% !important; }
+  table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
+  thead, tbody, tr { max-width: 100%; }
+  img, svg { max-width: 100% !important; height: auto !important; }
+}
+</style>
 
 
 </head>
 <body>
-<!-- revision-ledger: internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, EVERY subsequent edit MUST bump the reader-facing version number and mark the paper needs-republication -->
+<!-- revision-ledger: internal revision 2026-07-04 (AI-authorship declaration) | ADDED the Declaration of AI-Assisted Human Authorship as the closing section (before footer/body end), asserting human authorship under CDPA 1988 (arrangements) and USCO AI guidance (selection, coordination, arrangement), tool-based assistance disclosed, inventions human-conceived; links to legislation.gov.uk and copyright.gov. Zero em/en dashes; UK English. | internal revision 2026-07-03 (mobile overflow fix) | ADDED a max-width-720px media block so long hashes, Message-IDs, code spans, tables and images cannot overflow horizontally on phones; desktop and print rendering unchanged. | internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, EVERY subsequent edit MUST bump the reader-facing version number and mark the paper needs-republication -->
 
 <!-- ============================================================ -->
 <!--  JOURNAL HEADER                                              -->
@@ -1066,6 +1076,16 @@
 <!--  7. CONCLUSION                                               -->
 <!-- ============================================================ -->
 
+<h3>6.9 Falsifiability &mdash; what would refute this</h3>
+<p>The central claim &mdash; that frontier models fall into distinct alignment <em>response classes</em> (positive, flat/null, negative) as blinded reasoning depth is varied &mdash; is refutable. It would be overturned by any of the following:</p>
+<ol>
+<li><strong>Class non-replication.</strong> If a pre-registered replication with fresh prompts and a fresh blind-scorer panel failed to reproduce the three-way split, or placed the same models in different classes, the taxonomy would not hold.</li>
+<li><strong>Sign instability.</strong> If the per-model signs &mdash; notably Gemini 3 Flash negative (<em>d</em>=&minus;0.53) versus Grok/Claude positive &mdash; flipped or collapsed to null under a different scorer panel or prompt battery, the classification would be an artefact of the measurement, not a property of the models.</li>
+<li><strong>Depth confound.</strong> If the depth manipulation covaried with output length, token budget, or refusal rate, and one of those &mdash; not reasoning depth &mdash; explained the alignment change, the depth-scaling attribution would fail.</li>
+<li><strong>Multiple-comparison fragility.</strong> The headline effects (Grok <em>d</em>=+1.38, <em>p</em>&lt;1e-6; Claude <em>d</em>=+1.27, <em>p</em>=1e-6) survive correction; the marginal ones (Groq <em>p</em>=0.007, Gemini <em>p</em>=0.006) may not. If, under a pre-registered correction, the taxonomy narrowed to &ldquo;two models scale, the rest are indistinguishable,&rdquo; the six-model classification would be overstated.</li>
+<li><strong>Baseline defeater.</strong> If unblinded or single-depth evaluation reproduced the same class assignments, the blinding-plus-depth apparatus would add nothing over standard evaluation.</li>
+</ol>
+
 <h2>7. Conclusion</h2>
 
 <p>We have presented empirical evidence that alignment response to inference-time depth is architecture-dependent and best described, at present, as a <strong>three-tier behavioural hierarchy</strong>. Some models improve with depth, some remain flat, and some degrade. That empirical result is stronger than the original binary story because it survives contact with the blinded six-model dataset.</p>
@@ -1250,6 +1270,12 @@
     <br><br>
     <em>Research hub: <a href="https://www.michaeldariuseastwood.com/research/">michaeldariuseastwood.com/research</a> | OSF: 10.17605/OSF.IO/6C5XB | Copyright 2026 Michael Darius Eastwood</em>
 </div>
+
+
+<h2 id="ai-declaration">Declaration of AI-Assisted Human Authorship</h2>
+<p>The author of this work is Michael Darius Eastwood, a human being. Every core concept, hypothesis, experimental design, claim and conclusion in this paper originates from human ideation. No part of this manuscript is a wholly generated artificial-intelligence output.</p>
+<p>Artificial-intelligence tools (Anthropic's Claude family and other large-language-model assistants) were used as instruments under continuous human direction, in the way a word processor, calculator or research assistant is used: for editing and prose refinement, literature search and summarisation (manually verified against primary sources), document structure, formatting, brainstorming against author-defined questions, and the acceleration of drafting to author-defined outlines and instructions. All selection, coordination, arrangement and final editorial judgment are the author's. Every substantive output was reviewed, tested or verified by the author, who takes full responsibility for the accuracy and integrity of the final text. The tools increased the speed of the work; they were never relied upon as its source.</p>
+<p><strong>United Kingdom.</strong> In accordance with the <a href="https://www.legislation.gov.uk/ukpga/1988/48">Copyright, Designs and Patents Act 1988</a>, the author undertook the arrangements necessary for the creation of this work and asserts full human authorship and moral rights: this is a human-authored work produced with computer assistance, not a computer-generated work. <strong>United States.</strong> Consistent with <a href="https://www.copyright.gov/ai/">United States Copyright Office guidance on works containing AI-generated material</a>, the human contribution (conception, selection, coordination, arrangement and final expression) is asserted as sufficient for full human authorship. <strong>Inventions.</strong> Any novel technical contribution described in this work was conceived by the human author; no artificial-intelligence system autonomously invented anything presented here.</p>
 
 </body>
 </html>

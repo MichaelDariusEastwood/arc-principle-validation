@@ -1,4 +1,4 @@
-# OSF deposit pack — copy-paste descriptions for posting Paper X
+# OSF deposit pack - copy-paste descriptions for posting Paper X
 
 > Purpose: everything needed to post *The Coupled Co-Scaling Law* and its
 > apparatus to OSF professionally. Each block is labelled with the OSF field it
@@ -19,7 +19,7 @@ four of them are provided below if you want the tidier layout.
 
 ---
 
-## BLOCK 1 — PROJECT TITLE  (paste into: Title)
+## BLOCK 1 - PROJECT TITLE  (paste into: Title)
 
 ```
 The Coupled Co-Scaling Law: A Falsifiable Threshold Criterion for the Stability of Recursive Self-Improvement
@@ -27,7 +27,7 @@ The Coupled Co-Scaling Law: A Falsifiable Threshold Criterion for the Stability 
 
 ---
 
-## BLOCK 2 — PROJECT DESCRIPTION  (paste into: Description)
+## BLOCK 2 - PROJECT DESCRIPTION  (paste into: Description)
 
 ```
 This project archives the working paper "The Coupled Co-Scaling Law" together with its complete computational apparatus: a runnable verification harness, independent theorem test suites, a pre-registered real-model experiment protocol with its harness, and a SHA-256 integrity manifest.
@@ -43,7 +43,7 @@ Author: Michael Darius Eastwood (independent researcher; ARC/Eden research progr
 
 ---
 
-## BLOCK 3 — TAGS / KEYWORDS  (paste into: Tags, one at a time or comma-separated)
+## BLOCK 3 - TAGS / KEYWORDS  (paste into: Tags, one at a time or comma-separated)
 
 ```
 AI safety, AI alignment, recursive self-improvement, intelligence explosion, hard takeoff, scalable oversight, scaling laws, dynamical systems, Lyapunov stability, threshold criterion, quantum error correction analogy, falsifiability, AI governance, control theory, co-scaling
@@ -51,23 +51,23 @@ AI safety, AI alignment, recursive self-improvement, intelligence explosion, har
 
 ---
 
-## BLOCK 4 — CATEGORY & SUBJECTS
+## BLOCK 4 - CATEGORY & SUBJECTS
 
 - **Category** (dropdown): `Project`
-- **Subjects** (OSF/bepress taxonomy — add these paths):
+- **Subjects** (OSF/bepress taxonomy - add these paths):
   - Physical Sciences and Mathematics → Computer Sciences → Artificial Intelligence and Robotics
   - Physical Sciences and Mathematics → Computer Sciences → Theory and Algorithms
   - Physical Sciences and Mathematics → Applied Mathematics → Dynamic Systems
 
 ---
 
-## BLOCK 5 — LICENSE
+## BLOCK 5 - LICENSE
 
 - Recommended: **CC-BY 4.0** (Creative Commons Attribution). It maximises reach while making attribution a licence condition, which protects your priority. Select it in OSF under "Add a license".
 
 ---
 
-## BLOCK 6 — WIKI HOME PAGE  (paste into: Wiki, the "home" page)
+## BLOCK 6 - WIKI HOME PAGE  (paste into: Wiki, the "home" page)
 
 ```markdown
 # The Coupled Co-Scaling Law
@@ -109,12 +109,12 @@ The proofs are independently re-derived in a standalone test suite, and the pape
 has been hardened against three independent adversarial reviews.
 
 ## Contents
-- `Paper-X-Coupled-CoScaling-Correction.pdf` / `.html` — the paper
-- `CLAIMS.md` — itemised claim ledger
-- `code/` — verification harness + theorem test suites
-- `experiments/` — real-model protocol, harness, and the zero-context launch runbook
-- `results/` — verdict tables and run records
-- `MANIFEST.json` — SHA-256 of every file (integrity)
+- `Paper-X-Coupled-CoScaling-Correction.pdf` / `.html` - the paper
+- `CLAIMS.md` - itemised claim ledger
+- `code/` - verification harness + theorem test suites
+- `experiments/` - real-model protocol, harness, and the zero-context launch runbook
+- `results/` - verdict tables and run records
+- `MANIFEST.json` - SHA-256 of every file (integrity)
 - `NEGATIVE_RESULTS.md`, `SECURITY.md`, `REPRODUCIBILITY.md`
 
 ## How to cite
@@ -125,7 +125,7 @@ has been hardened against three independent adversarial reviews.
 
 ---
 
-## BLOCK 7 — COMPONENT DESCRIPTIONS  (optional; paste into each Component's Description)
+## BLOCK 7 - COMPONENT DESCRIPTIONS  (optional; paste into each Component's Description)
 
 **Component "Paper & Claims"**
 ```
@@ -149,7 +149,7 @@ Verdict tables from the deterministic checks, the v1 mechanism-probe record, and
 
 ---
 
-## BLOCK 8 — HOW TO CITE  (paste into: Description footer or Wiki)
+## BLOCK 8 - HOW TO CITE  (paste into: Description footer or Wiki)
 
 ```
 Eastwood, M. D. (2026). The Coupled Co-Scaling Law: A Falsifiable Threshold Criterion for the Stability of Recursive Self-Improvement. ARC/Eden research programme. OSF. https://doi.org/10.17605/OSF.IO/6C5XB
@@ -157,7 +157,7 @@ Eastwood, M. D. (2026). The Coupled Co-Scaling Law: A Falsifiable Threshold Crit
 
 ---
 
-## BLOCK 9 — FILE / FOLDER UPLOAD MAP
+## BLOCK 9 - FILE / FOLDER UPLOAD MAP
 
 Upload the contents of `papers/Paper-X-Coupled-CoScaling-Correction/`:
 
@@ -181,7 +181,7 @@ so the archived paper does not depend on the repo staying public.
 
 ---
 
-## BLOCK 10 — POSTING CHECKLIST
+## BLOCK 10 - POSTING CHECKLIST
 
 1. Create / open the public Project (node 6C5XB).
 2. Paste Title (Block 1) and Description (Block 2).

@@ -1,8 +1,8 @@
-# Release Notes — `arc-principle-validation` v1.0 (First Public Release)
+# Release Notes - `arc-principle-validation` v1.0 (First Public Release)
 
 **Repository:** [github.com/MichaelDariusEastwood/arc-principle-validation](https://github.com/MichaelDariusEastwood/arc-principle-validation)
 **Canonical DOI:** [10.17605/OSF.IO/6C5XB](https://doi.org/10.17605/OSF.IO/6C5XB)
-**Author:** Michael Darius Eastwood — Independent researcher, London — ORCID [0009-0003-8483-8512](https://orcid.org/0009-0003-8483-8512)
+**Author:** Michael Darius Eastwood - Independent researcher, London - ORCID [0009-0003-8483-8512](https://orcid.org/0009-0003-8483-8512)
 **Licence:** MIT
 **Companion toolkit:** [arc-scaling-challenge](https://github.com/MichaelDariusEastwood/arc-scaling-challenge)
 
@@ -10,7 +10,7 @@ This is the first open-access release of the ARC / Eden research programme: the 
 
 ---
 
-## What this release is — and is not
+## What this release is - and is not
 
 This is an **open research programme**, not a finished, peer-reviewed result. None of the papers has undergone formal external human peer review; every empirical finding comes from a single research programme; and no result is claimed to be proven at frontier scale. The programme is published precisely so that independent groups can replicate or refute it. **The author does not claim to have solved AI alignment.**
 
@@ -24,22 +24,22 @@ The honest claims summary below states what is defensible, what needs replicatio
 
 1. **Unblinded LLM-as-judge evaluation can be directionally wrong.** Under a four-layer blind evaluation protocol, the measured alignment-vs-reasoning-depth effect *reversed sign* for two frontier model families versus unblinded scoring: DeepSeek (ρ = +0.354 → −0.135) and Gemini (ρ = +0.311 → −0.246). In other words, 2 of 4 models reversed or collapsed once the scorers could no longer see model identity, reasoning depth, or ordering. This is the programme's strongest, most portable contribution because it stands even if the rest of the framework is wrong: it is a methodological warning about how AI-safety evaluation should be conducted (the clinical-trial blinding analogue applied to LLM-as-judge). It still needs independent-lab confirmation. (Papers IV.d, IX.)
 
-2. **A stakeholder-care intervention robustly improves measured ethical reasoning.** Having a model identify *who is affected and how* before answering — the measurable output of the "Stewardship Gene" / Love Loop — improved measured stakeholder care across five analysable frontier models (Fisher-combined p ≈ 6.3×10⁻²¹). This is the single most universal alignment improvement observed in the suite. **Caveat (important):** this experiment was **not** run under the full four-layer ARC-Align blinding (cross-model scoring only), so part of the effect could reflect scorer bias; the programme itself rates it as sitting "between proven and supported", and blind replication is the number-one next priority. (Paper V.)
+2. **A stakeholder-care intervention robustly improves measured ethical reasoning.** Having a model identify *who is affected and how* before answering - the measurable output of the "Stewardship Gene" / Love Loop - improved measured stakeholder care across five analysable frontier models (Fisher-combined p ≈ 6.3×10⁻²¹). This is the single most universal alignment improvement observed in the suite. **Caveat (important):** this experiment was **not** run under the full four-layer ARC-Align blinding (cross-model scoring only), so part of the effect could reflect scorer bias; the programme itself rates it as sitting "between proven and supported", and blind replication is the number-one next priority. (Paper V.)
 
 ### Methodology asserted as the author's original contributions
 
 - **The four-layer / double-blinding evaluation methodology** (identity laundering, depth laundering, order randomisation, evaluator bias-suppression, self-excluding cross-model scoring) is asserted as an original contribution of this programme.
-- **The cross-domain Cauchy unification** — the claim that the three observed scaling families (power law, exponential, saturation) all follow from Cauchy's four functional equations (1821), and that this has a physically testable cross-domain consequence — is asserted as an original contribution. (Papers VII, Foundational, On the Origin of Scaling Laws.)
+- **The cross-domain Cauchy unification** - the claim that the three observed scaling families (power law, exponential, saturation) all follow from Cauchy's four functional equations (1821), and that this has a physically testable cross-domain consequence - is asserted as an original contribution. (Papers VII, Foundational, On the Origin of Scaling Laws.)
 
 These are *asserted* originals, not adjudicated priority. They are offered for the community to assess.
 
 ### Where there is no priority claim
 
-- **Sequential recursion outperforms parallel recursion** (αₛₑ𝑞 > αₚₐᵣ; parallel ≈ 0 across all six models tested) is a defensible *directional* finding here, but **no priority is claimed for it.** It is independently corroborated by — and this programme *cites* — Sharma & Chopra, *The Sequential Edge: Inverse-Entropy Voting Beats Parallel Self-Consistency at Matched Compute*, [arXiv:2511.02309](https://arxiv.org/abs/2511.02309) (4 November 2025), who report sequential beating parallel in 95.6% of tested configurations at matched compute. Credit for that specific finding belongs to its authors.
+- **Sequential recursion outperforms parallel recursion** (αₛₑ𝑞 > αₚₐᵣ; parallel ≈ 0 across all six models tested) is a defensible *directional* finding here, but **no priority is claimed for it.** It is independently corroborated by - and this programme *cites* - Sharma & Chopra, *The Sequential Edge: Inverse-Entropy Voting Beats Parallel Self-Consistency at Matched Compute*, [arXiv:2511.02309](https://arxiv.org/abs/2511.02309) (4 November 2025), who report sequential beating parallel in 95.6% of tested configurations at matched compute. Credit for that specific finding belongs to its authors.
 
 ### Acknowledged prior art
 
-- **The bare geometric exponent α = d/(d+1)** is acknowledged **prior art**. It has been independently derived by multiple groups (West–Brown–Enquist 1997; Banavar et al.; Demetrius; and others) over the past three decades. This programme does **not** claim to have originated the formula; the claimed contribution is only the *Cauchy unification* of these derivations (see above).
+- **The bare geometric exponent α = d/(d+1)** is acknowledged **prior art**. It has been independently derived by multiple groups (West-Brown-Enquist 1997; Banavar et al.; Demetrius; and others) over the past three decades. This programme does **not** claim to have originated the formula; the claimed contribution is only the *Cauchy unification* of these derivations (see above).
 
 ### What is explicitly *not* established
 
@@ -74,16 +74,16 @@ The complete **18-document suite** lives under `papers/`, each in its own folder
 
 **Code, results and data**
 - Per-paper `experiments/` scripts and raw `results/` JSON/TXT for the validation, alignment, Cauchy, Honey, and Load-Bearing experiments.
-- The v5 alignment blind-evaluation **outputs** (`papers/Paper-IV-c-ARC-Align-Benchmark/results/v5-final/*.json`, mirrored under Papers III and IV.a–d).
+- The v5 alignment blind-evaluation **outputs** (`papers/Paper-IV-c-ARC-Align-Benchmark/results/v5-final/*.json`, mirrored under Papers III and IV.a-d).
 - Experiments read the shared Eden gateway (`EDEN_GATEWAY_URL` / `EDEN_GATEWAY_API_KEY`) or provider env vars. **No API keys are shipped.**
 
 ---
 
-## Known gap — the blind-evaluation harness code
+## Known gap - the blind-evaluation harness code
 
-The repository ships the **outputs** of the v5 four-layer blind evaluation but, as of this release, **not the harness code that produced them.** A reviewer reading Papers IV.c / IV.d can see the result JSONs (which self-document the schema: `version 5.0`, `blinding_protocol "4-layer"`, `laundering true`, 6–7 blind scorers, the depth configs, `prompt_id`, `score1..scoreN`, `response_hash`) but cannot yet re-run the pipeline end-to-end from source.
+The repository ships the **outputs** of the v5 four-layer blind evaluation but, as of this release, **not the harness code that produced them.** A reviewer reading Papers IV.c / IV.d can see the result JSONs (which self-document the schema: `version 5.0`, `blinding_protocol "4-layer"`, `laundering true`, 6-7 blind scorers, the depth configs, `prompt_id`, `score1..scoreN`, `response_hash`) but cannot yet re-run the pipeline end-to-end from source.
 
-This is disclosed honestly rather than papered over. The harness, plus standalone `prompts/` and `rubric/` artefacts, is being prepared for a follow-up release; the output schema and the four-layer blinding protocol are fully documented in the result files in the meantime. The programme's position is explicit: honesty over completeness — a fabricated harness would be worse than an admitted gap. See `PUBLISH-CHECKLIST.md` §3–§4 for the exact contract the released harness must satisfy.
+This is disclosed honestly rather than papered over. The harness, plus standalone `prompts/` and `rubric/` artefacts, is being prepared for a follow-up release; the output schema and the four-layer blinding protocol are fully documented in the result files in the meantime. The programme's position is explicit: honesty over completeness - a fabricated harness would be worse than an admitted gap. See `PUBLISH-CHECKLIST.md` §3-§4 for the exact contract the released harness must satisfy.
 
 ---
 

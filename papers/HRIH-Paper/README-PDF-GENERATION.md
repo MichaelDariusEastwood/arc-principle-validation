@@ -1,8 +1,8 @@
-# HRIH Paper — PDF Generation
+# HRIH Paper - PDF Generation
 
 The HTML paper is complete at `Hyperspace-Recursive-Intelligence-Hypothesis.html`.
 
-PDF generation requires Chrome headless (same as all other papers — see 
+PDF generation requires Chrome headless (same as all other papers - see 
 export-pdfs.sh in the repo root). MathJax equations require a browser
 engine to render properly.
 

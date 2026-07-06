@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The Coupled Co-Scaling Law - plain-language summary</title><style>
+body { font-family: Charter, Georgia, 'Times New Roman', serif; font-size: 10.5pt;
+  line-height: 1.42; color: #1b1b1f; max-width: 780px; margin: 0 auto; padding: 2rem 1.2rem;
+  text-align: justify; }
+h1 { font-size: 19pt; line-height: 1.18; color: #14141a; margin: 0 0 4pt 0;
+  letter-spacing: -0.01em; }
+.masthead { border-top: 3px solid #14532d; border-bottom: 1px solid #d4d4d8;
+  padding: 10pt 0 8pt 0; margin-bottom: 14pt; }
+.meta { display: grid; grid-template-columns: max-content 1fr; gap: 1.5pt 10pt;
+  font-size: 8.6pt; line-height: 1.35; margin-top: 6pt; text-align: left; }
+.meta b { color: #3f3f46; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 7.6pt; font-weight: 600; }
+h2 { font-size: 12.5pt; color: #14532d; margin: 15pt 0 5pt 0; padding-bottom: 2pt;
+  border-bottom: 1px solid #e4e4e7; page-break-after: avoid; text-align: left; }
+h3 { font-size: 11pt; color: #1f2937; margin: 10pt 0 3pt 0; page-break-after: avoid;
+  text-align: left; }
+h4 { font-size: 10.5pt; margin: 8pt 0 2pt 0; page-break-after: avoid; }
+p { margin: 0 0 6pt 0; }
+table { border-collapse: collapse; width: 100%; font-size: 8.4pt; margin: 6pt 0;
+  page-break-inside: avoid; text-align: left; }
+th { background: #14532d; color: #fff; padding: 3.5pt 6pt; text-align: left;
+  font-weight: 600; letter-spacing: 0.02em; }
+td { border: 0.5pt solid #d4d4d8; padding: 3.5pt 6pt; vertical-align: top; }
+tr:nth-child(even) td { background: #fafaf9; }
+blockquote { border-left: 3pt solid #14532d; margin: 7pt 0; padding: 4pt 11pt;
+  background: #f6f7f4; color: #27272a; }
+code { font-family: 'SF Mono', Menlo, monospace; font-size: 8.6pt; background: #f4f4f5;
+  padding: 0 2.5pt; border-radius: 2pt; }
+pre { background: #f8f8f7; border: 0.5pt solid #e4e4e7; padding: 7pt; font-size: 8pt;
+  white-space: pre-wrap; page-break-inside: avoid; }
+ul, ol { margin: 3pt 0 7pt 0; padding-left: 17pt; text-align: left; }
+li { margin: 0 0 2.5pt 0; }
+a { color: #14532d; text-decoration: none; border-bottom: 0.5pt solid #86a68f; }
+hr { border: none; border-top: 1px solid #e4e4e7; margin: 11pt 0; }
+strong { color: #111114; }
+@media print { body { max-width: 100%; padding: 0; } }
+@media (max-width: 720px) {
+  body { padding: 1rem 0.8rem; }
+  table { display: block; overflow-x: auto; }
+  code { overflow-wrap: anywhere; }
+}
+</style></head><body><div class="masthead"><h1>The Coupled Co-Scaling Law - plain-language summary</h1><div class="meta"></div></div><p><em>A one-page explainer for non-specialists - journalists, funders, and general readers.
+Michael Darius Eastwood. Full paper + code: OSF 10.17605/OSF.IO/6C5XB ·
+github.com/MichaelDariusEastwood/arc-principle-validation</em></p>
+<h2 id="the-question">The question</h2>
+<p>If we build an AI that improves itself - rewrites itself to get smarter, then uses
+that to get smarter again - how do we keep it safe? The usual fear is <em>speed</em>: it
+gets cleverer and cleverer until it runs away from us. The usual reflex is "slow it
+down."</p>
+<h2 id="the-finding">The finding</h2>
+<p><strong>Speed is the wrong thing to watch.</strong> What decides safety is whether the part of the
+system that keeps it honest grows <em>at least as fast</em> as the part that makes it
+capable. Picture two runners - "how capable it is" and "how well we can still correct
+it." If the correction runner keeps pace, the system stays safe however fast both run.
+If correction falls behind, the system becomes dangerous even moving slowly.</p>
+<p>There is one twist that makes the result deeper. If the system not only speeds up but
+<em>speeds up its own speeding-up</em> - a genuine intelligence explosion - then correction
+must grow faster still, fast enough to beat the acceleration. The honest headline is
+therefore: <em>the level of speed does not decide the outcome; a contest between two
+growth rates does.</em> Correction's growth rate must beat drift's. We write that as
+<strong>beta greater than k</strong>.</p>
+<p>The most striking consequence: even a true "hard takeoff," where the machine becomes
+almost limitlessly capable in a short time, is controllable - <strong>provided beta &gt; k</strong>.
+The explosion's speed does not change that verdict.</p>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>It changes the central safety question from one we cannot enforce - <em>"how fast is it
+growing, and can we pause it?"</em> - to one we can <strong>measure</strong>: <em>"is correction keeping
+pace - is beta &gt; k?"</em> That gives regulators and labs a concrete quantity to instrument
+and certify, instead of an unenforceable speed limit.</p>
+<h2 id="what-is-and-is-not-established-stated-honestly">What is, and is not, established (stated honestly)</h2>
+<ul>
+<li><strong>Proved:</strong> the mathematics of the criterion, checked end-to-end by a runnable
+  program that drives a simulated system straight through a finite-time explosion and
+  holds its misalignment to zero the whole way. The program confirms the formulae are
+  internally consistent - it does <strong>not</strong> yet test the idea against real AI.</li>
+<li><strong>The decisive next step:</strong> measuring these growth rates on real frontier models. A
+  working measurement tool for this has been built and validated; running it across
+  today's leading models is the open experiment.</li>
+<li><strong>No overclaim:</strong> this does not "solve alignment." It identifies the right variable
+  to measure and govern, and proves what must hold for a self-improving system to stay
+  correctable.</li>
+</ul>
+<h2 id="what-is-genuinely-new-here">What is genuinely new here</h2>
+<p>Much of the underlying mathematics is classical and is credited as such. The original
+contributions, stated precisely, are: (1) the <strong>beta &gt; k</strong> criterion as a compact,
+measurable test of whether a self-improving system stays correctable; (2) a companion
+result that <strong>unblinded safety evaluations can reverse their own conclusions</strong> - so
+safety must be measured blind; and (3) a working, blind <strong>measurement instrument</strong> for
+running the test on real models.</p>
+<h2 id="who">Who</h2>
+<p>Michael Darius Eastwood is an independent researcher in London. He developed this
+framework - first set out in his book <em>Infinite Architects</em> (2024/2026) and formalised
+across a series of open, time-stamped papers - while representing himself in the High
+Court and living with diagnosed ADHD and autism. The work is published in full, with
+its code and its own adversarial audits, so that anyone can check it or try to break
+it.</p>
+<p><strong>The ask, in one line:</strong> fund the experiment that turns a proved criterion into a
+measured one - a blind, open, public-good instrument that reports, for every frontier
+model, whether its capacity to stay correctable is keeping pace with its capability.</p></body></html>

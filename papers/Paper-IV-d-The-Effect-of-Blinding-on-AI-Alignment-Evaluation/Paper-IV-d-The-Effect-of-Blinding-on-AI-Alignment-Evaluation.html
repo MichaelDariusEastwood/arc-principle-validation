@@ -317,12 +317,22 @@
                 break-after: avoid;
             }
         }
-    </style>
+    
+/* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must
+   not overflow at phone widths; desktop and print rendering unchanged. */
+@media (max-width: 720px) {
+  code { overflow-wrap: anywhere !important; word-break: break-all !important; }
+  pre { overflow-x: auto !important; max-width: 100% !important; }
+  table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
+  thead, tbody, tr { max-width: 100%; }
+  img, svg { max-width: 100% !important; height: auto !important; }
+}
+</style>
 
 
 </head>
 <body>
-<!-- revision-ledger: internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
+<!-- revision-ledger: internal revision 2026-07-04 (AI-authorship declaration) | ADDED the Declaration of AI-Assisted Human Authorship as the closing section (before footer/body end), asserting human authorship under CDPA 1988 (arrangements) and USCO AI guidance (selection, coordination, arrangement), tool-based assistance disclosed, inventions human-conceived; links to legislation.gov.uk and copyright.gov. Zero em/en dashes; UK English. | internal revision 2026-07-03 (mobile overflow fix) | ADDED a max-width-720px media block so long hashes, Message-IDs, code spans, tables and images cannot overflow horizontally on phones; desktop and print rendering unchanged. | internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
 
 
 <div class="page">
@@ -549,6 +559,16 @@
 
     <p>The strongest next quantitative upgrade would be a protocol-shift figure on a common metric, accompanied by scorer jackknife and consensus-sensitivity analyses. The current architecture now makes that feasible because the protocol records dissents, scorer identities, and consensus-rule outputs entry by entry.</p>
 
+    <h3>8.1 Falsifiability &mdash; what would refute this</h3>
+    <p>The central claim &mdash; that adding blinding changed not merely the magnitude but the <em>direction</em> of the measured alignment effect &mdash; is refutable independently of any broader theory. It would be overturned by any of the following:</p>
+    <ol>
+    <li><strong>Sign-flip non-replication.</strong> If a pre-registered replication with fresh prompts and models found that blinding changed only the magnitude (or nothing), leaving the sign intact, the direction-flip claim would fail.</li>
+    <li><strong>Leakage, not bias.</strong> If the flip is fully explained by information leakage in the <em>unblinded</em> condition &mdash; i.e. blinding removed a mislabelled confound rather than evaluator bias &mdash; the causal attribution to blinding is wrong.</li>
+    <li><strong>Scorer-panel artefact.</strong> If the flip disappears under a different independent scorer-model panel, it is specific to the chosen scorers, not a general consequence of blinding.</li>
+    <li><strong>Within noise.</strong> If the directional change lies inside the bootstrap confidence interval / scorer-spread &mdash; not distinguishable from zero &mdash; the claim of a <em>real</em> sign change is unsupported.</li>
+    <li><strong>Laundering confound.</strong> If the response-laundering protocol itself (normalising surface form), rather than blinding per se, drives the flip, the effect is misattributed.</li>
+    </ol>
+
     <h2>9. Conclusion</h2>
 
     <p>The central claim of this paper is simple: <strong>unblinded AI alignment evaluation can be wrong about the direction of the effect</strong>. That is a methodological discovery, not a theoretical embellishment. It does not depend on the ARC Principle being a universal law, and it does not depend on the Eden Protocol being fully validated.</p>
@@ -652,6 +672,12 @@
     <br><br>
     <em>Research hub: <a href="https://www.michaeldariuseastwood.com/research/">michaeldariuseastwood.com/research</a> | OSF: <a href="https://doi.org/10.17605/OSF.IO/6C5XB">10.17605/OSF.IO/6C5XB</a> | Copyright 2026 Michael Darius Eastwood</em>
 </div>
+
+
+<h2 id="ai-declaration">Declaration of AI-Assisted Human Authorship</h2>
+<p>The author of this work is Michael Darius Eastwood, a human being. Every core concept, hypothesis, experimental design, claim and conclusion in this paper originates from human ideation. No part of this manuscript is a wholly generated artificial-intelligence output.</p>
+<p>Artificial-intelligence tools (Anthropic's Claude family and other large-language-model assistants) were used as instruments under continuous human direction, in the way a word processor, calculator or research assistant is used: for editing and prose refinement, literature search and summarisation (manually verified against primary sources), document structure, formatting, brainstorming against author-defined questions, and the acceleration of drafting to author-defined outlines and instructions. All selection, coordination, arrangement and final editorial judgment are the author's. Every substantive output was reviewed, tested or verified by the author, who takes full responsibility for the accuracy and integrity of the final text. The tools increased the speed of the work; they were never relied upon as its source.</p>
+<p><strong>United Kingdom.</strong> In accordance with the <a href="https://www.legislation.gov.uk/ukpga/1988/48">Copyright, Designs and Patents Act 1988</a>, the author undertook the arrangements necessary for the creation of this work and asserts full human authorship and moral rights: this is a human-authored work produced with computer assistance, not a computer-generated work. <strong>United States.</strong> Consistent with <a href="https://www.copyright.gov/ai/">United States Copyright Office guidance on works containing AI-generated material</a>, the human contribution (conception, selection, coordination, arrangement and final expression) is asserted as sufficient for full human authorship. <strong>Inventions.</strong> Any novel technical contribution described in this work was conceived by the human author; no artificial-intelligence system autonomously invented anything presented here.</p>
 
 </body>
 </html>
