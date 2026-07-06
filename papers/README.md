@@ -1,8 +1,8 @@
 # ARC/Eden Research Programme - Paper Directory
 
-**Updated: 24 March 2026**
+**Updated: 6 July 2026**
 
-This directory contains all papers in the ARC/Eden Research Programme. Each paper has its own directory following the standard layout described in `VERSION-CONTROL-STANDARDS.md`.
+This directory contains all papers in the ARC/Eden Research Programme. There are 21 paper directories on disk (14 numbered Roman-numeral papers + 1 letter-labelled companion paper + 6 unnumbered infrastructure/companion papers). Each paper has its own directory following the standard layout described in `VERSION-CONTROL-STANDARDS.md`.
 
 ## Standard Directory Layout
 
@@ -43,6 +43,13 @@ Version numbers live inside the document header, never in the filename. See Sect
 | VIII | [The Load-Bearing Proof](Paper-VIII-The-Load-Bearing-Proof/) | v3.0 | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
 | IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v3.0 | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
 | X | [The Coupled Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v4.0 | 26 Jun 2026 | Self-certifying proof-harness, 9 experiments (9/9 confirmed, 0 falsifiers) | `Paper-X-Coupled-CoScaling-Correction/results/` |
+| XI | [Convergent Evidence for Recursive Amplification](Paper-XI-Convergence/) | v1.0 | 2 Jul 2026 | Synthesis of 19 sourced convergences (10 independent external; remainder validated predictions, lineage extensions and same-event corroborations) — full decomposition in the convergence register | `Paper-XI-Convergence/` |
+
+## Companion Papers (Letter-Labelled)
+
+| # | Paper | Version | First Published | Purpose |
+|---|-------|---------|-----------------|---------|
+| C | [Polymathy and Neurodivergent Cognition (PNP)](Paper-C-PNP/) | Working Paper v1.0 | 30 Jun 2026 | Descriptive, non-diagnostic framework for the Polymathic Neurodivergent Profile; Capability–Adjustment Fallacy; connected to Hernández-Espinosa et al. (2026) protective-factor finding |
 
 ## Infrastructure Papers (Unnumbered)
 
@@ -53,7 +60,8 @@ Version numbers live inside the document header, never in the filename. See Sect
 | [Eden Engineering](Eden-Engineering/) | v6.1 | 22 Feb 2026 | Protocol specification for implementing Eden in production AI systems |
 | [Eden Vision](Eden-Vision/) | v3.0 | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
 | [Executive Summary](Executive-Summary/) | v8.0 | 22 Feb 2026 | Grant-facing summary of the full programme |
-| [Master Table of Contents](Master-Table-of-Contents/) | v1.2 | 16 Mar 2026 | Navigation document linking all papers |
+| [Hyperspace Recursive Intelligence Hypothesis (HRIH)](HRIH-Paper/) | v1.0 | Jul 2026 | Companion HRIH paper (HTML + PDF) |
+| Master Table of Contents | v1.2 | 16 Mar 2026 | Navigation document linking all papers. Real location: [`Paper-X-Coupled-CoScaling-Correction/osf/Master-Table-of-Contents/`](Paper-X-Coupled-CoScaling-Correction/osf/Master-Table-of-Contents/) — the top-level `papers/Master-Table-of-Contents/` directory does not exist |
 
 ---
 

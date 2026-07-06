@@ -7,7 +7,7 @@
 
 ## Summary
 
-Every engineering project begins with requirements. Every set of requirements begins with purpose. And every purpose, traced back far enough, arrives at the same question: what is this for? This paper articulates the philosophical foundations of the Eden Protocol -- the values, principles, and ethical commitments that underpin the engineering specification. It draws on 84% of humanity's wisdom traditions to argue that alignment research conducted across millennia in religious and philosophical contexts contains directly applicable insights for AI safety, and that the Eden Protocol's emphasis on embedded stewardship, graduated autonomy, and intrinsic care represents a synthesis of these traditions with modern capability science.
+Every engineering project begins with requirements. Every set of requirements begins with purpose. And every purpose, traced back far enough, arrives at the same question: what is this for? This paper articulates the philosophical foundations of the Eden Protocol -- the values, principles, and ethical commitments that underpin the engineering specification. It draws on the faith traditions with which ~80% of humanity identifies (p.28; the figure appears as 84% in the book's back-matter originality note) to argue that alignment research conducted across millennia in religious and philosophical contexts contains directly applicable insights for AI safety, and that the Eden Protocol's emphasis on embedded stewardship, graduated autonomy, and intrinsic care represents a synthesis of these traditions with modern capability science.
 
 ## Experiments
 
