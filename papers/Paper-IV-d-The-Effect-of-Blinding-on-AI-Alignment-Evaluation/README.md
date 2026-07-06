@@ -25,3 +25,17 @@ See [`../Paper-III-Alignment-Scaling-Problem/experiments/`](../Paper-III-Alignme
 - **Experiment suite:** https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/alignment-scaling__Papers-IV-a-b-c-d
 - **Canonical website HTML:** https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
 - **Canonical website PDF:** https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.pdf
+
+## Declarations & Statement of Authorship
+
+**1. Human Authorship & Intellectual Property Assertion**
+The author, Michael Darius Eastwood, is the sole creator and copyright holder of this work. All core concepts, hypotheses, architectural frameworks, and conclusions originate exclusively from human ideation.
+
+- **United Kingdom:** In accordance with the Copyright, Designs and Patents Act 1988 (including s.9(3)), the author asserts that they undertook the "necessary arrangements" for the creation of this work. The AI served strictly as an instrument to execute the author's specific instructions, and the work is a human-authored work assisted by a computer — not a computer-generated work.
+- **United States:** In compliance with US Copyright Office guidance, the author certifies that the selection, coordination, and arrangement of all text were performed by the human author, rendering the final expression a product of human intellect.
+
+**2. Nature of AI-Assisted Workflows**
+Generative artificial-intelligence tools were used purely as assistive, high-velocity instruments to support the mechanical execution of the research process (analogous to advanced text editors or reference software). AI assistance was restricted to prose refinement, structural formatting, cross-referencing literature, and brainstorming counter-arguments, all under direct human oversight and manual verification. Every underlying idea, hypothesis, experimental design, test, synthesis, and final editorial judgement is human-driven; no content herein constitutes an unedited or unverified machine output, and nothing is relied upon without human checking.
+
+**3. Inventions & Patent Rights**
+Any novel technical contributions, structural designs, or algorithmic discoveries described in this work are the exclusive intellectual property of the human author. Consistent with UK and US authorities that an AI system cannot be a named inventor (e.g. Thaler v Comptroller-General), the AI functioned solely as a calculation and search utility and did not autonomously conceive or invent any solution presented; the conception is the author's.
