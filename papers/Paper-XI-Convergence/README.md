@@ -2,7 +2,7 @@
 Full title: Convergent Evidence for Recursive Amplification as a Cross-Domain Structural Principle
 Author: Michael Darius Eastwood · v1.0 · 2 July 2026
 
-The synthesis paper. 19 independently sourced convergences documented with exact dates, sources, and gap measurements. The closed loop: ND brain → manuscript → validations → protective proof → formal vindication → clinical documentation.
+The synthesis paper. 19 sourced developments consistent with the thesis (of which 10 are independent external convergences; the remainder are validated predictions, lineage extensions and same-event corroborations — full decomposition in the convergence register) documented with exact dates, sources, and gap measurements. The closed loop: ND brain → manuscript → validations → protective proof → formal vindication → clinical documentation.
 
 ## Key references
 - Hernández-Espinosa et al. (2026), PNAS Nexus 5(4):pgag076
