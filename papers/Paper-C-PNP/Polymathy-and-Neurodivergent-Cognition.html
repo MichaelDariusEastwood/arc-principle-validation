@@ -48,7 +48,23 @@
   .rung-hyp{background:var(--synthesis);color:#fff}
   .book-quote{border-left:3px solid var(--synthesis);background:var(--synthesis-light);padding:.65rem 1rem;margin:.9rem 0;border-radius:0 6px 6px 0;font-style:italic;font-size:.94rem}
   .book-quote .cite{display:block;font-style:normal;font-size:.78rem;color:var(--grey);margin-top:.35rem;text-align:right}
-  @media print{.nav{display:none}body{padding:0}}
+  @page{size:A4;margin:15mm 16mm 18mm 16mm;@bottom-center{content:"Page " counter(page) " of " counter(pages);font-family:'Source Sans 3',sans-serif;font-size:7.5pt;color:#555}}
+  @media print{
+    .nav{display:none}
+    html{font-size:9.5pt}
+    body{padding:0;max-width:100%;line-height:1.55}
+    header{padding-bottom:.9rem;margin-bottom:1rem}
+    h1{font-size:1.6rem}
+    h2{margin:1.5rem 0 .5rem}
+    h3{margin:1rem 0 .35rem}
+    p{margin:.45rem 0}
+    ul,ol{margin:.45rem 0 .45rem 1.3rem}
+    li{margin:.22rem 0}
+    table{margin:.7rem 0;font-size:.8rem}
+    .abstract,.scope,.callout,.priority,.evidence{padding:.7rem .9rem;margin:.9rem 0}
+    blockquote,.book-quote{padding:.5rem .9rem;margin:.7rem 0}
+    .refs{font-size:.78rem;line-height:1.45}
+  }
   @media(max-width:640px){body{padding:1rem .8rem 3rem}h1{font-size:1.55rem}}
 
 /* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must
