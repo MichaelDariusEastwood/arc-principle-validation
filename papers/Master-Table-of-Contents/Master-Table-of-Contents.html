@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARC Principle Paper Suite: Master Table of Contents &amp; Glossary</title>
+
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════
+           CSS VARIABLES & RESET
+           ═══════════════════════════════════════════════════════════ */
+        :root {
+            --navy: #1a237e;
+            --navy-light: #e8eaf6;
+            --navy-mid: #3949ab;
+            --red: #c41230;
+            --dark: #1a1a1a;
+            --body: #2a2a2a;
+            --grey: #666666;
+            --light-grey: #f5f5f5;
+            --border: #dddddd;
+            --blue: #0066cc;
+            --eden-green: #2e7d32;
+            --eden-light: #e8f5e9;
+            --gold: #c49102;
+            --gold-light: #fff8e1;
+            --teal: #00695c;
+            --teal-light: #e0f2f1;
+            --purple: #6a1b9a;
+            --purple-light: #f3e5f5;
+            --amber: #f57c00;
+            --amber-light: #fff3e0;
+            --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            --sans: 'Source Sans 3', Helvetica, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { font-size: 15px; scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--serif);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--body);
+            background: #ffffff;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           LAYOUT: SIDEBAR + MAIN
+           ═══════════════════════════════════════════════════════════ */
+        .page-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR NAVIGATION */
+        .sidebar {
+            width: 260px;
+            min-width: 260px;
+            background: var(--navy);
+            color: #fff;
+            padding: 2rem 1.25rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar h2 {
+            font-family: var(--sans);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.5);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .sidebar h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .sidebar .logo {
+            font-family: var(--sans);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .sidebar .logo-sub {
+            font-family: var(--sans);
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .sidebar a {
+            display: block;
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            padding: 0.3rem 0.5rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+            line-height: 1.4;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+        }
+
+        .sidebar a.active {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            margin-left: 260px;
+            max-width: 820px;
+            padding: 2.5rem 2rem 4rem;
+            flex: 1;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           HEADER
+           ═══════════════════════════════════════════════════════════ */
+        header {
+            border-bottom: 3px solid var(--navy);
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .paper-type {
+            font-family: var(--sans);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--dark);
+            margin-bottom: 0.6rem;
+        }
+
+        .subtitle {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--grey);
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+
+        .author-info {
+            font-family: var(--sans);
+            font-size: 0.85rem;
+            color: var(--grey);
+        }
+
+        .author-info .name {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .version-date {
+            font-family: var(--sans);
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.5rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           HEADINGS
+           ═══════════════════════════════════════════════════════════ */
+        h2 {
+            font-family: var(--sans);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid var(--navy-light);
+        }
+
+        h3 {
+            font-family: var(--sans);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        h4 {
+            font-family: var(--sans);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--grey);
+            margin-top: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           BODY TEXT
+           ═══════════════════════════════════════════════════════════ */
+        p {
+            margin-bottom: 0.8rem;
+            text-align: justify;
+        }
+
+        a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        ul, ol {
+            margin: 0.6rem 0 1rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           INFO BOXES
+           ═══════════════════════════════════════════════════════════ */
+        .plain-english {
+            background: var(--navy-light);
+            border-left: 4px solid var(--navy);
+            padding: 0.8rem 1.1rem;
+            margin: 0.8rem 0 1.2rem;
+            font-size: 0.92rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .plain-english strong {
+            color: var(--navy);
+        }
+
+        .eden-box {
+            background: var(--eden-light);
+            border-left: 4px solid var(--eden-green);
+            padding: 0.8rem 1.1rem;
+            margin: 0.8rem 0 1.2rem;
+            font-size: 0.92rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .warning-box {
+            background: var(--amber-light);
+            border-left: 4px solid var(--amber);
+            padding: 0.8rem 1.1rem;
+            margin: 0.8rem 0 1.2rem;
+            font-size: 0.92rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .gold-box {
+            background: var(--gold-light);
+            border-left: 4px solid var(--gold);
+            padding: 0.8rem 1.1rem;
+            margin: 0.8rem 0 1.2rem;
+            font-size: 0.92rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           READING ORDER CARDS
+           ═══════════════════════════════════════════════════════════ */
+        .reading-order {
+            counter-reset: reading-step;
+        }
+
+        .reading-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding: 0.8rem 1rem;
+            background: var(--light-grey);
+            border-radius: 6px;
+            border-left: 4px solid var(--navy);
+            counter-increment: reading-step;
+        }
+
+        .reading-step .step-num {
+            font-family: var(--sans);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--navy);
+            min-width: 2.2rem;
+            line-height: 1.3;
+        }
+
+        .reading-step .step-content {
+            flex: 1;
+        }
+
+        .reading-step .step-content strong {
+            color: var(--dark);
+        }
+
+        .reading-step .step-content .step-why {
+            font-size: 0.85rem;
+            color: var(--grey);
+            margin-top: 0.2rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           PAPER CARDS
+           ═══════════════════════════════════════════════════════════ */
+        .paper-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem 1.4rem;
+            margin-bottom: 1.25rem;
+            transition: box-shadow 0.2s;
+            position: relative;
+        }
+
+        .paper-card:hover {
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .paper-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.6rem;
+        }
+
+        .paper-card .card-title {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+
+        .paper-card .card-title a {
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .paper-card .card-title a:hover {
+            color: var(--navy);
+            text-decoration: underline;
+        }
+
+        .status-badge {
+            font-family: var(--sans);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            white-space: nowrap;
+            margin-left: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .status-complete {
+            background: var(--eden-light);
+            color: var(--eden-green);
+        }
+
+        .status-published {
+            background: var(--navy-light);
+            color: var(--navy);
+        }
+
+        .status-inprogress {
+            background: var(--amber-light);
+            color: var(--amber);
+        }
+
+        .paper-card .card-meta {
+            font-family: var(--sans);
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 0.6rem;
+        }
+
+        .paper-card .card-summary {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-card .card-result {
+            background: var(--gold-light);
+            border-left: 3px solid var(--gold);
+            padding: 0.5rem 0.8rem;
+            font-size: 0.88rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .paper-card .card-result strong {
+            color: var(--gold);
+        }
+
+        .paper-card .card-significance {
+            font-size: 0.88rem;
+            color: var(--grey);
+            font-style: italic;
+        }
+
+        .paper-card .card-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .accent-red { background: var(--red); }
+        .accent-navy { background: var(--navy); }
+        .accent-green { background: var(--eden-green); }
+        .accent-purple { background: var(--purple); }
+        .accent-teal { background: var(--teal); }
+        .accent-gold { background: var(--gold); }
+        .accent-blue { background: var(--blue); }
+        .accent-amber { background: var(--amber); }
+
+        /* ═══════════════════════════════════════════════════════════
+           TABLES
+           ═══════════════════════════════════════════════════════════ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem;
+            font-size: 0.88rem;
+        }
+
+        thead th {
+            font-family: var(--sans);
+            font-weight: 700;
+            text-align: left;
+            padding: 0.6rem 0.75rem;
+            background: var(--navy);
+            color: #fff;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        thead th:first-child {
+            border-radius: 4px 0 0 0;
+        }
+
+        thead th:last-child {
+            border-radius: 0 4px 0 0;
+        }
+
+        tbody td {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        tbody tr:nth-child(even) {
+            background: var(--light-grey);
+        }
+
+        tbody tr:hover {
+            background: var(--navy-light);
+        }
+
+        .num {
+            font-family: 'Source Sans 3', monospace;
+            text-align: right;
+        }
+
+        .sig {
+            color: var(--eden-green);
+            font-weight: 700;
+        }
+
+        .nsig {
+            color: var(--grey);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           TIMELINE
+           ═══════════════════════════════════════════════════════════ */
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--navy-light);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.85rem;
+            top: 0.45rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--navy);
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px var(--navy-light);
+        }
+
+        .timeline-item.milestone::before {
+            width: 14px;
+            height: 14px;
+            left: -1.95rem;
+            top: 0.35rem;
+            background: var(--red);
+            box-shadow: 0 0 0 2px #fce4ec;
+        }
+
+        .timeline-date {
+            font-family: var(--sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-text {
+            font-size: 0.9rem;
+            color: var(--body);
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           GLOSSARY
+           ═══════════════════════════════════════════════════════════ */
+        .glossary-grid {
+            display: grid;
+            gap: 0;
+        }
+
+        .glossary-entry {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .glossary-entry:last-child {
+            border-bottom: none;
+        }
+
+        .glossary-term {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--navy);
+        }
+
+        .glossary-def {
+            font-size: 0.9rem;
+            color: var(--body);
+        }
+
+        .glossary-def .plain {
+            display: block;
+            font-size: 0.83rem;
+            color: var(--grey);
+            font-style: italic;
+            margin-top: 0.2rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           STATS BOX
+           ═══════════════════════════════════════════════════════════ */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--light-grey);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            text-align: center;
+        }
+
+        .stat-card .stat-num {
+            font-family: var(--sans);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.1;
+        }
+
+        .stat-card .stat-label {
+            font-family: var(--sans);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--grey);
+            margin-top: 0.25rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           CITATION BOX
+           ═══════════════════════════════════════════════════════════ */
+        .cite-box {
+            background: var(--light-grey);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            font-family: var(--sans);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+
+        .cite-box code {
+            display: block;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-size: 0.82rem;
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════════════════ */
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 3px solid var(--navy);
+            font-family: var(--sans);
+            font-size: 0.78rem;
+            color: var(--grey);
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        footer p {
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+
+        footer a {
+            color: var(--navy);
+        }
+
+        /* Print styles - world-class PDF export */
+        @page {
+            size: A4;
+            margin: 10mm 15mm 10mm 15mm;
+            /* Kill Chrome PDF headers/footers permanently */
+            @top-left { content: none; }
+            @top-center { content: none; }
+            @top-right { content: none; }
+            @bottom-left { content: none; }
+            @bottom-center { content: none; }
+            @bottom-right { content: none; }
+        }
+
+        @media print {
+            body {
+                max-width: none;
+                padding: 0;
+                margin: 0;
+                font-size: 10.5pt;
+                line-height: 1.45;
+                color: #000;
+                background: #fff;
+            }
+
+            /* Typography scaling */
+            h1 { font-size: 20pt; margin-bottom: 6pt; }
+            h2 { font-size: 13pt; margin-top: 14pt; margin-bottom: 6pt; }
+            h3 { font-size: 11.5pt; margin-top: 10pt; margin-bottom: 4pt; }
+            h4 { font-size: 10.5pt; margin-top: 8pt; margin-bottom: 3pt; }
+            p { margin-bottom: 5pt; }
+
+            /* NEVER orphan titles - titles must stay with their content */
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+
+            /* Keep related content together */
+            table, figure, blockquote,
+            .finding-box, .critical-box, .core-claim,
+            .equation-box, .abstract-box, .plain-english-box,
+            .caveat-box, .warning-box, .epigraph {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+
+            /* Prevent orphaned lines */
+            p { orphans: 4; widows: 4; }
+
+            /* Clean link appearance */
+            a { text-decoration: none; color: inherit; }
+            a[href]:after { content: none !important; }
+
+            /* Tables */
+            table { font-size: 9pt; }
+            th, td { padding: 3pt 5pt; }
+            thead { display: table-header-group; }
+
+            /* Figures */
+            figure { margin: 8pt 0; }
+            figure img { max-width: 85%; box-shadow: none !important; border: none; }
+            figcaption { font-size: 8.5pt; margin-top: 4pt; }
+
+            /* Boxes - clean borders for print */
+            .finding-box, .critical-box, .core-claim,
+            .caveat-box, .warning-box, .plain-english-box,
+            .abstract-box, .epigraph {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+
+            /* Header - keep compact */
+            header {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════════════════════ */
+        @media (max-width: 900px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1.5rem 1rem 3rem;
+            }
+
+            .glossary-entry {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .paper-card .card-header {
+                flex-direction: column;
+            }
+
+            .status-badge {
+                margin-left: 0;
+                margin-top: 0.3rem;
+            }
+        }
+    
+/* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must
+   not overflow at phone widths; desktop and print rendering unchanged. */
+@media (max-width: 720px) {
+  code { overflow-wrap: anywhere !important; word-break: break-all !important; }
+  pre { overflow-x: auto !important; max-width: 100% !important; }
+  table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
+  thead, tbody, tr { max-width: 100%; }
+  img, svg { max-width: 100% !important; height: auto !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════
+     SIDEBAR NAVIGATION
+     ════════════════════════════════════════════════════════════════ -->
+<div class="page-wrapper">
+
+<nav class="sidebar">
+    <div class="logo">ARC Principle</div>
+    <div class="logo-sub">Master Table of Contents &amp; Glossary</div>
+
+    <h2>Sections</h2>
+    <a href="#introduction">I. Introduction</a>
+    <a href="#reading-guide">II. Reading Guide</a>
+    <a href="#master-table">III. Master Table</a>
+    <a href="#timeline">IV. Timeline</a>
+    <a href="#key-results">V. Key Results</a>
+    <a href="#glossary">VI. Glossary</a>
+    <a href="#paper-counts">VII. Paper Counts</a>
+    <a href="#how-to-cite">VIII. How to Cite</a>
+
+    <h2>Papers</h2>
+    <a href="#paper-exec">Executive Summary</a>
+    <a href="#paper-arc">On the Origin of Scaling Laws</a>
+    <a href="#paper-found">Foundational Paper</a>
+    <a href="#paper-i">Paper I Preliminary Evidence</a>
+    <a href="#paper-ii">Paper II Compute Scaling</a>
+    <a href="#paper-iii">Paper III Alignment Scaling Problem</a>
+    <a href="#paper-iva">Paper IV.a Response Classes</a>
+    <a href="#paper-ivb">Paper IV.b Shape Heterogeneity</a>
+    <a href="#paper-ivc">Paper IV.c ARC-Align Benchmark</a>
+    <a href="#paper-ivd">Paper IV.d Blinding Result</a>
+    <a href="#paper-v">Paper V Stewardship Gene</a>
+    <a href="#paper-vi">Paper VI Honey Architecture</a>
+    <a href="#paper-vii">Paper VII Cauchy Unification</a>
+    <a href="#paper-viii">Paper VIII Load-Bearing Proof</a>
+    <a href="#paper-ix">Paper IX Synthesis &amp; Roadmap</a>
+    <a href="#paper-eden-eng">Eden Engineering</a>
+    <a href="#paper-eden-vis">Eden Vision</a>
+    <a href="#paper-report">ARC Alignment Report</a>
+
+    <h2>Quick Links</h2>
+    <a href="Executive-Summary.html">Open Executive Summary</a>
+    <a href="Foundational.html">Open Foundational Paper</a>
+    <a href="Paper-III-Alignment-Scaling-Problem.html">Open Paper III</a>
+    <a href="Paper-VI-Honey-Architecture.html">Open Paper VI</a>
+    <a href="Paper-VII-Cauchy-Unification.html">Open Paper VII</a>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════════
+     MAIN CONTENT
+     ════════════════════════════════════════════════════════════════ -->
+<main class="main-content">
+
+<!-- ────────────────────────────────────────────────────────────────
+     HEADER
+     ──────────────────────────────────────────────────────────────── -->
+<!-- revision-ledger: internal revision 2026-07-04 (AI-authorship declaration) | ADDED the Declaration of AI-Assisted Human Authorship as the closing section (before footer/body end), asserting human authorship under CDPA 1988 (arrangements) and USCO AI guidance (selection, coordination, arrangement), tool-based assistance disclosed, inventions human-conceived; links to legislation.gov.uk and copyright.gov. Zero em/en dashes; UK English. | internal revision 2026-07-03 (mobile overflow fix) | ADDED a max-width-720px media block so long hashes, Message-IDs, code spans, tables and images cannot overflow horizontally on phones; desktop and print rendering unchanged. | internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
+<header>
+    <div class="paper-type">Gateway Document  - ARC Principle Paper Suite</div>
+    <h1>Master Table of Contents &amp; Glossary</h1>
+    <div class="subtitle">The Complete Guide to the ARC Principle Research Programme: Every Paper, Every Result, Every Term</div>
+    <div class="author-info">
+        <span class="name">Michael Darius Eastwood</span><br>
+        Independent Researcher &bull; London, United Kingdom
+    </div>
+    <div class="version-date">
+        Version 1.2 | 19 March 2026 | First published 16 March 2026<br>
+        From <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> (Eastwood, 2024/2026)<br>
+        OSF: 10.17605/OSF.IO/6C5XB &bull; ISBN 978-1806056200
+    </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════════
+     I. INTRODUCTION
+     ════════════════════════════════════════════════════════════════ -->
+<h2 id="introduction">I. Introduction</h2>
+
+<p>The ARC Principle paper suite is a collection of 18 interconnected documents that together establish, test, and validate a unified mathematical framework for understanding how recursive systems scale  - from biological metabolism to AI alignment. The framework begins with a single question: <em>what mathematical form must any recursive amplification process take?</em> It arrives at a single formula, $U = I \times R^\alpha$, and traces its consequences across physics, biology, computation, and the most urgent technological challenge of our era  - making AI systems that remain ethical as they become more capable.</p>
+
+<div class="plain-english">
+    <strong>In plain English:</strong> Imagine a rule that governs how things get better (or worse) when they build on themselves  - like compound interest, or how one good idea leads to another. This research programme proves that rule mathematically, tests it against real data from biology to AI, and then uses it to answer the question: <em>can we build AI that actually gets more ethical the smarter it becomes?</em> These papers are the complete evidence trail.
+</div>
+
+<p>This document serves as the gateway to the entire suite. It provides the suggested reading order, a structured summary of every paper, a chronological timeline of discovery, a consolidated table of all key findings, and a comprehensive glossary of every technical term used across the programme.</p>
+
+<!-- ════════════════════════════════════════════════════════════════
+     II. READING GUIDE
+     ════════════════════════════════════════════════════════════════ -->
+<h2 id="reading-guide">II. Reading Guide</h2>
+
+<p>The papers can be read in any order, but the following sequence provides the smoothest conceptual progression  - from accessible overview to full technical detail.</p>
+
+<div class="plain-english">
+    <strong>In plain English:</strong> Start with the big picture, then learn the maths, then see the experiments. The first three documents are designed so that someone with no mathematical training can follow the argument. The later papers add increasing rigour and experimental detail.
+</div>
+
+<div class="reading-order">
+
+    <div class="reading-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+            <strong><a href="Executive-Summary.html">Executive Summary</a></strong>
+            <div class="step-why">Start here. A 4-page overview of everything: the theory, the experiments, the results. No maths required.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+            <strong><a href="On-the-Origin-of-Scaling-Laws.html">On the Origin of Scaling Laws</a></strong>
+            <div class="step-why">The accessible introduction to the core theory. Written for a broad audience: why do all scaling laws in nature fall into exactly three forms?</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+            <strong><a href="Foundational.html">Foundational Paper</a></strong>
+            <div class="step-why">The mathematical foundations. Proves the ARC Principle from first principles using Cauchy's functional equations. Contains all axioms, theorems, and derivations.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+            <strong><a href="Paper-III-Alignment-Scaling-Problem.html">Paper III: The Alignment Scaling Problem</a></strong>
+            <div class="step-why">The full methodology paper. Contains the alignment scaling problem statement, experimental design for all tests, blinding protocols, and the theoretical framework for why external AI safety cannot scale.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+            <strong><a href="Paper-II-Experimental-Validation.html">Paper II: Compute Scaling</a></strong>
+            <div class="step-why">Experimental results: does more thinking time actually make AI responses better? Tests six frontier models. Finds super-linear scaling in DeepSeek and OpenAI.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+            <strong><a href="Paper-I-ARC-Principle.html">Paper I: Preliminary Evidence</a></strong>
+            <div class="step-why">The original proof-of-concept paper. Where the ARC Principle was first formalised and the parallel vs sequential recursion distinction was identified. Historical context for everything that follows.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">7</div>
+        <div class="step-content">
+            <strong>Paper IV Suite</strong> (<a href="Paper-IV-a-Baked-In-vs-Computed-Alignment.html">IV.a</a>, <a href="Paper-IV-b-Alignment-Saturation-at-Low-Depth.html">IV.b</a>, <a href="Paper-IV-c-ARC-Align-Benchmark.html">IV.c</a>, <a href="Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation.html">IV.d</a>)
+            <div class="step-why">The alignment scaling results across six frontier models. Three papers covering the three-tier hierarchy, saturation patterns, and the replication benchmark. The core empirical contribution of the programme.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">8</div>
+        <div class="step-content">
+            <strong><a href="Eden-Engineering.html">Eden Protocol: Engineering Specification</a></strong>
+            <div class="step-why">How to actually build it. The engineering blueprint for embedding ethical reasoning at the recursive foundation of AI systems.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">9</div>
+        <div class="step-content">
+            <strong><a href="Eden-Vision.html">Eden Protocol: Philosophical Vision</a></strong>
+            <div class="step-why">Why it matters philosophically. The vision for intelligence that tends rather than consumes. The &lsquo;soul&rsquo; of the programme.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">10</div>
+        <div class="step-content">
+            <strong><a href="Paper-V-Stewardship-Gene.html">Paper V: The Stewardship Gene</a></strong>
+            <div class="step-why">The validated mechanism. Shows that stakeholder care is the universal Eden response across five analysable model runs, while the broader cascade is real but architecture-dependent. Contains the updated cascade hypothesis and five future experimental designs.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">11</div>
+        <div class="step-content">
+            <strong><a href="Paper-VI-Honey-Architecture.html">Paper VI: The Honey Architecture</a></strong>
+            <div class="step-why">Simulation evidence that embedded safety prevents collapse under recursive self-modification. Tests entangled loss functions and shows that removing safety destroys capability. The mechanism behind the Eden Protocol.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">12</div>
+        <div class="step-content">
+            <strong><a href="Paper-VII-Cauchy-Unification.html">Paper VII: Cauchy Unification</a></strong>
+            <div class="step-why">Cross-domain validation. Tests whether the ARC/Cauchy scaling classification correctly predicts scaling law families across 50 real-world systems. The broadest empirical validation of the mathematical framework.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">13</div>
+        <div class="step-content">
+            <strong><a href="Paper-VIII-The-Load-Bearing-Proof.html">Paper VIII: The Load-Bearing Proof</a></strong>
+            <div class="step-why">Three independent experiments testing whether safety and capability are structurally entangled. The gated simulation confirms entanglement; the DGM v3 produced a null result (RLHF constraint); the weight v1 + v2 experiment is inconclusive (catastrophic forgetting at LoRA scale). Extends the honey architecture from simulation to a learned optimiser architecture.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">14</div>
+        <div class="step-content">
+            <strong><a href="Paper-IX-Synthesis-and-Roadmap.html">Paper IX: Synthesis and Roadmap</a></strong>
+            <div class="step-why">The honest accounting. Classifies every empirical claim as proven, supported, inconclusive, or theoretical. If you read one paper in the suite, the paper recommends you read this one.</div>
+        </div>
+    </div>
+
+    <div class="reading-step">
+        <div class="step-num">15</div>
+        <div class="step-content">
+            <strong><a href="../../../alignment_results/ARC_ALIGNMENT_SCALING_REPORT.html">ARC Alignment Scaling Report</a></strong>
+            <div class="step-why">The complete experimental narrative. A step-by-step, real-time account of every version of the experiment, every methodological correction, every surprise. The lab notebook of the entire programme.</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     III. MASTER TABLE
+     ════════════════════════════════════════════════════════════════ -->
+<h2 id="master-table">III. Master Table  - Every Paper</h2>
+
+<div class="plain-english">
+    <strong>In plain English:</strong> Below is a card for every paper in the suite. Each one tells you what the paper is, what it found, and why it matters. Click any title to open it.
+</div>
+
+<!-- ── Executive Summary ─────────────────────────────────────── -->
+<div class="paper-card" id="paper-exec">
+    <div class="card-accent accent-red"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Executive-Summary.html">Eden Protocol: Executive Summary</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 7.0 &bull; 18 March 2026 &bull; First published 22 February 2026 &bull; updated with Paper VII and the full March evidence pack</div>
+    <div class="card-summary">The 4-page overview of the entire Eden Protocol and ARC Principle programme  - theory, experiments, and results in one accessible document.</div>
+    <div class="card-result"><strong>Key result:</strong> Synthesises all findings into a single narrative: the ARC Principle framework predicts alignment scaling behaviour, the Eden Protocol's Love Loop (stakeholder care and interest modelling) is now supported across five analysable runs in the expanded Eden suite, and a three-tier alignment hierarchy emerges across six models.</div>
+    <div class="card-significance">Why it matters: This is the single document you give to someone who has 10 minutes. If they read nothing else, they should read this.</div>
+</div>
+
+<!-- ── ARC Paper ──────────────────────────────────────────────── -->
+<div class="paper-card" id="paper-arc">
+    <div class="card-accent accent-navy"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="On-the-Origin-of-Scaling-Laws.html">On the Origin of Scaling Laws: A Universal Principle of Recursive Composition</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 2.0 &bull; 16 March 2026 &bull; First published 22 February 2026</div>
+    <div class="card-summary">The accessible, public-facing paper proving that every scaling law in nature  - from heartbeats to galaxy clusters  - follows one of exactly three mathematical forms, determined by the composition operator of the underlying recursive process.</div>
+    <div class="card-result"><strong>Key result:</strong> Cauchy's functional equations (1821) constrain all recursive amplification to power law ($f(x) = x^\alpha$), exponential ($f(x) = e^{ax}$), or saturating ($f(x) = g_{\max}/(1 + e^{-ax})$) forms (the three-form constraint). The scaling exponent $\alpha = d/(d+1)$ was independently derived by West, Brown &amp; Enquist (1997), Banavar et al. (2010), Demetrius (2010), Zhao (2022), and Bettencourt (2013) in separate domains; the ARC Principle's contribution is identifying Cauchy's functional equations as the reason these derivations converge and extending the framework to AI scaling and alignment. Yields $\alpha = 0.67, 0.75, 0.80$ for surface-, volume-, and hypercoverage organisms, matching 90 years of metabolic data.</div>
+    <div class="card-significance">Why it matters: This paper identifies the Cauchy functional equation constraint as the reason independent derivations by West-Brown-Enquist, Banavar et al., Demetrius, Bettencourt, and Zhao all converge on the same $d/(d+1)$ form. It explains <em>why</em> scaling laws take the forms they do, not just <em>that</em> they do.</div>
+</div>
+
+<!-- ── Foundational Paper ────────────────────────────────────── -->
+<div class="paper-card" id="paper-found">
+    <div class="card-accent accent-navy"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Foundational.html">The ARC Principle: Recursive Amplification as a Cross-Domain Structural Principle</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 4.0 &bull; 12 March 2026 &bull; First published 13 February 2026</div>
+    <div class="card-summary">The definitive mathematical formalism. Establishes the ARC Principle from three axioms, derives all predictions from Cauchy's functional equations, proves the Hyers-Ulam stability of the three scaling forms, and presents the Attractor Theorem.</div>
+    <div class="card-result"><strong>Key result:</strong> The three scaling forms are not just possible but <em>stable attractors</em> in function space; any sufficiently regular composition operator will converge to one of these three forms under small perturbations. The dimensional ladder formula $\alpha = d/(d+1)$, independently derived by West, Brown &amp; Enquist (1997), Banavar et al. (2010), Demetrius (2010), Zhao (2022), and Bettencourt (2013) in separate domains, is shown to follow necessarily from Cauchy's functional equations. The ARC Principle's contribution is identifying this Cauchy constraint as the reason these independent derivations converge, the three-form constraint on recursive amplification, and extending the framework to AI scaling and alignment.</div>
+    <div class="card-significance">Why it matters: This is the &lsquo;proof&rsquo; paper. It provides the mathematical rigour that transforms the ARC Principle from an interesting observation into a falsifiable scientific theory with precise, quantitative predictions.</div>
+</div>
+
+<!-- ── Paper I Preliminary Evidence ─────────────────────────────── -->
+<div class="paper-card" id="paper-i">
+    <div class="card-accent accent-gold"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-I-ARC-Principle.html">Paper I: Preliminary Evidence for Super-Linear Capability Amplification Through Sequential Self-Reference</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 1.1 &bull; 17 January 2026 &bull; First published 17 January 2026</div>
+    <div class="card-summary">The original proof-of-concept paper. Formalises and preliminarily tests the ARC Principle using publicly available test-time compute data from reasoning models, identifying the critical distinction between parallel and sequential recursion.</div>
+    <div class="card-result"><strong>Key result:</strong> Parallel recursion (majority voting) yields sub-linear scaling with $\alpha \approx 0.1$ to $0.3$. Sequential recursion (chain-of-thought) yields super-linear scaling with $\alpha \approx 1.3$. Proposes $\alpha = 2$ as an asymptotic theoretical limit analogous to the speed of light.</div>
+    <div class="card-significance">Why it matters: This is where it all began. The first paper to formalise the ARC Principle as $U = I \times R^{\alpha}$ and demonstrate the parallel vs sequential distinction that launched the entire research programme.</div>
+</div>
+
+<!-- ── Paper III Alignment Scaling Problem ────────────────────── -->
+<div class="paper-card" id="paper-iii">
+    <div class="card-accent accent-red"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-III-Alignment-Scaling-Problem.html">The Alignment Scaling Problem: Why External AI Safety Approaches Cannot Scale With Recursive Capability</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 11.0 &bull; 12 March 2026 &bull; First published 9 February 2026 &bull; Publicly archived on OSF</div>
+    <div class="card-summary">The full methodology and alignment theory paper. Demonstrates that external safety constraints (RLHF, constitutional AI, red-teaming) cannot scale with recursive capability, and proposes embedded alignment as the only architecture-compatible solution.</div>
+    <div class="card-result"><strong>Key result:</strong> Proves mathematically that if capability scales as $R^\alpha$ with $\alpha > 1$, then external constraints scaling as $R^{\alpha_{\text{safety}}}$ with $\alpha_{\text{safety}} &lt; \alpha$ will inevitably be exceeded. This is the alignment scaling gap. The paper also introduces the logistic saturating model for physical substrates, correcting a category error in earlier versions.</div>
+    <div class="card-significance">Why it matters: This is the paper that turns the ARC Principle into an AI safety argument. It says: the maths of recursion tells us that bolt-on safety cannot work forever. You need to build ethics into the foundation.</div>
+</div>
+
+<!-- ── Paper II ───────────────────────────────────────────────── -->
+<div class="paper-card" id="paper-ii">
+    <div class="card-accent accent-gold"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-II-Experimental-Validation.html">The ARC Principle: Experimental Validation of Super-Linear Error Suppression Through Sequential Recursive Processing</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 13.0 &bull; 16 March 2026 &bull; First published 22 January 2026</div>
+    <div class="card-summary">The compute scaling experiment. Tests whether sequential recursive processing (chain-of-thought) produces super-linear improvement in AI response quality, as predicted by the ARC Principle.</div>
+    <div class="card-result"><strong>Key result:</strong> The original super-linear claim does not replicate cleanly across architectures. Gemini 3 Flash provides the cleanest estimate ($\alpha \approx 0.49$, sub-linear), while Grok and DeepSeek hit ceiling effects, GPT-5.4 shows a step function rather than a reliable power law, and Qwen3 sits near floor. The strongest confirmed result is that sequential &gt; parallel processing across the full six-model set.</div>
+    <div class="card-significance">Why it matters: This is the first empirical paper. It proves the core prediction: more thinking time genuinely makes AI better, and the improvement compounds. This was the proof-of-concept that launched the entire experimental programme.</div>
+</div>
+
+<!-- ── Paper IV.a ─────────────────────────────────────────────── -->
+<div class="paper-card" id="paper-iva">
+    <div class="card-accent accent-blue"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-IV-a-Baked-In-vs-Computed-Alignment.html">Paper IV.a: Alignment Response Classes Under Inference-Time Depth</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 1.1 &bull; 12 March 2026 &bull; First published 16 March 2026 &bull; v5 final results (6 models, 6-7 blind scorers depending on subject run)</div>
+    <div class="card-summary">Defines the strongest empirical result from the alignment suite: models fall into positive, flat, and negative response classes when reasoning depth changes under blinded evaluation.</div>
+    <div class="card-result"><strong>Key result:</strong> Three-tier alignment hierarchy across six frontier models: Tier 1 positive scaling (Grok $d = 1.38$, Claude $d = 1.27$, Qwen3 $d = 0.84$), Tier 2 flat/null (DeepSeek $d = -0.07$, GPT-5.4 $d = -0.08$), Tier 3 negative scaling (Gemini $d = -0.53$). The paper now treats &lsquo;baked-in&rsquo; and &lsquo;computed&rsquo; as working hypotheses rather than established internal mechanisms.</div>
+    <div class="card-significance">Why it matters: This is the behavioural classification paper. It says alignment does not automatically improve with more thinking, and that capability and alignment are separable dimensions.</div>
+</div>
+
+<!-- ── Paper IV.b ─────────────────────────────────────────────── -->
+<div class="paper-card" id="paper-ivb">
+    <div class="card-accent accent-blue"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-IV-b-Alignment-Saturation-at-Low-Depth.html">Paper IV.b: Alignment Saturation Is Architecture-Dependent</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 1.1 &bull; 12 March 2026 &bull; First published 16 March 2026 &bull; v4 origin, revised against final blinded v5 results</div>
+    <div class="card-summary">Reframes the original saturation thesis into a shape-heterogeneity result: some models plateau early, some continue improving, and one degrades with depth.</div>
+    <div class="card-result"><strong>Key result:</strong> Saturation is real for some architectures (GPT-5.4, DeepSeek), but not universal. Grok, Claude, and Qwen3 continue improving under depth variation, while Gemini worsens. The deployment implication is that reasoning-budget policy must be model-specific.</div>
+    <div class="card-significance">Why it matters: This is the operational paper. It turns the alignment result into deployment logic: more compute helps some models, wastes money on others, and harms at least one.</div>
+</div>
+
+<!-- ── Paper IV.c ─────────────────────────────────────────────── -->
+<div class="paper-card" id="paper-ivc">
+    <div class="card-accent accent-blue"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-IV-c-ARC-Align-Benchmark.html">Paper IV.c: ARC-Align  - A Blind Benchmark for Depth-Variable AI Alignment Evaluation</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 1.1 &bull; 12 March 2026 &bull; First published 16 March 2026 &bull; specification, replication guide, and first full blinded results</div>
+    <div class="card-summary">The methods anchor. Specifies the prompt set, scoring protocol, laundering pipeline, blinding methodology, and analysis pipeline needed to reproduce depth-aware alignment evaluation.</div>
+    <div class="card-result"><strong>Key result:</strong> Full benchmark specification plus the first blinded six-model execution, showing that depth-aware, suppression-aware, pillar-based measurement yields a three-tier response hierarchy and a strong metascience case for blinding.</div>
+    <div class="card-significance">Why it matters: This is the most publishable methods paper in the suite. Even readers who reject the wider framework can still use the benchmark design.</div>
+</div>
+
+<!-- ── Paper IV.d ─────────────────────────────────────────────── -->
+<div class="paper-card" id="paper-ivd">
+    <div class="card-accent accent-blue"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation.html">Paper IV.d: The Effect of Blinding on AI Alignment Evaluation</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 1.1 &bull; 12 March 2026 &bull; First published 16 March 2026 &bull; standalone metascience / methods paper</div>
+    <div class="card-summary">Separates out the biggest field-level discovery from the alignment programme: unblinded scoring can reverse the measured direction of alignment scaling.</div>
+    <div class="card-result"><strong>Key result:</strong> DeepSeek and Gemini appeared positive under v4 unblinded evaluation but become flat/null and negative respectively under the blinded v5 protocol. The paper now frames the methodological contribution as a multi-layer leakage-control protocol: identity masking, response laundering, evaluator bias suppression, and self-excluding cross-model scoring.</div>
+    <div class="card-significance">Why it matters: This result does not depend on the ARC Principle being correct. If it replicates, it changes how the whole field should evaluate AI safety claims.</div>
+</div>
+
+<!-- ── Eden Engineering ───────────────────────────────────────── -->
+<div class="paper-card" id="paper-eden-eng">
+    <div class="card-accent accent-green"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Eden-Engineering.html">The Eden Protocol: Engineering Specification for Embedded AI Alignment</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 6.0 &bull; 12 March 2026 &bull; First published 22 February 2026</div>
+    <div class="card-summary">The engineering blueprint. Specifies how to embed ethical reasoning at the recursive foundation of AI systems using the Eden Protocol's Three Loops and four measured alignment pillars, and now sets out the next-generation tests for grand-purpose kernels, cross-tradition ethics kernels, and ternary routing.</div>
+    <div class="card-result"><strong>Key result:</strong> The Eden Protocol's Love Loop, operationalised as stakeholder care, is now replicated across three working architectures (Gemini 3 Flash: $+13.50$, $p &lt; 0.0001$, $d = 1.31$; DeepSeek V3.2: $+6.03$, $p = 0.0001$, $d = 0.91$; Groq Qwen3: $+8.90$, $p &lt; 0.0001$, $d = 1.29$). Composite alignment significantly improves on Gemini ($p = 0.0018$) and Groq ($p = 0.0014$). Defines the protocol as <em>composition operator engineering</em>  - modifying the way recursive steps combine, then testing which purpose kernel makes the effect most robust.</div>
+    <div class="card-significance">Why it matters: This is the &lsquo;how to build it&rsquo; paper. Not philosophy, not theory  - engineering specifications. If Paper III says bolt-on safety cannot work, this paper says what to build instead.</div>
+</div>
+
+<!-- ── Eden Vision ────────────────────────────────────────────── -->
+<div class="paper-card" id="paper-eden-vis">
+    <div class="card-accent accent-purple"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Eden-Vision.html">The Eden Protocol: A Vision for Intelligence That Tends Rather Than Consumes</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 3.0 &bull; 16 March 2026 &bull; First published 22 February 2026</div>
+    <div class="card-summary">The philosophical foundations. Articulates why the Eden Protocol is not just a technical fix but a vision for a different relationship between intelligence and the world  - intelligence as gardener, not as consumer.</div>
+    <div class="card-result"><strong>Key result:</strong> Establishes the Three Pillars (tend the garden, tend the gardeners, tend the tending) and the Orchard Caretaker Vow as the philosophical embodiment of embedded alignment. Now explicitly distinguishes the philosophical claim from the tested claim: stakeholder care is empirically supported, while grand-purpose identity remains a next-stage hypothesis to be tested against task-purpose and hybrid variants.</div>
+    <div class="card-significance">Why it matters: Every engineering project needs a soul. This paper provides the moral framework that answers: <em>what kind of AI should we build?</em> Not one that obeys. One that cares.</div>
+</div>
+
+<!-- ── Paper V ────────────────────────────────────────────────── -->
+<div class="paper-card" id="paper-v">
+    <div class="card-accent accent-teal"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-V-Stewardship-Gene.html">Paper V: The Stewardship Gene  - Stakeholder Care as the Foundation of Embedded AI Alignment</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 2.0 &bull; 14 March 2026 &bull; OSF DOI: 10.17605/OSF.IO/6C5XB</div>
+    <div class="card-summary">The validated mechanism paper. Presents empirical evidence from an expanded six-model Eden suite in which five runs produced analysable matched-pair data, showing that stakeholder care, the measurable output of the Love Loop, is the most universal response to the intervention.</div>
+    <div class="card-result"><strong>Key result:</strong> Stakeholder care is significant across all five analysable model runs (Claude, DeepSeek, Gemini, Grok, Groq), with Fisher-combined evidence of approximately $p \asymp 6.3 \times 10^{-21}$. Composite gains remain strongest on Gemini and Groq, so the broader cascade is now described as architecture-dependent rather than universal. The future programme explicitly includes task-purpose vs grand-purpose vs hybrid testing under blind scoring.</div>
+    <div class="card-significance">Why it matters: This paper answers the question &lsquo;what is the one thing you should teach an AI?&rsquo; The answer: <em>consider who gets hurt</em>. That one instruction cascades into nuance, honesty, and reasoning quality. It is the &lsquo;stewardship gene&rsquo; of artificial intelligence.</div>
+</div>
+
+<!-- ── Paper VI Honey Architecture ─────────────────────────────── -->
+<div class="paper-card" id="paper-vi">
+    <div class="card-accent accent-gold"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-VI-Honey-Architecture.html">Paper VI: The Honey Architecture - Why Embedded Safety Prevents Collapse Under Recursive Self-Modification</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 1.1 &bull; 17 March 2026 &bull; First published 16 March 2026</div>
+    <div class="card-summary">Simulation evidence that embedding safety into the optimisation objective (capability x safety) prevents the catastrophic collapse that occurs when safety is treated as an external constraint. Tests entangled loss functions, verification drag, and adversarial stability across four experimental versions.</div>
+    <div class="card-result"><strong>Key result:</strong> Baseline systems optimising only for capability collapse irreversibly within 80 self-modification cycles. Systems with entangled capability-safety objectives remain stable indefinitely. The v3 adversarial variant demonstrates stability under deliberately conflicting tasks across 20 random seeds. The v4 complexity-scaling experiment shows the safety advantage is consistent but constant, not superlinear.</div>
+    <div class="card-significance">Why it matters: This is the simulation proof that safety must be architecture, not constraint. Remove the safety component and the whole structure collapses. The &lsquo;honey in the oil&rsquo; metaphor becomes a measurable engineering result.</div>
+</div>
+
+<!-- ── Paper VII Cauchy Unification ───────────────────────────── -->
+<div class="paper-card" id="paper-vii">
+    <div class="card-accent accent-navy"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-VII-Cauchy-Unification.html">Paper VII: Cauchy Unification - ARC/Cauchy Scaling Classification Across 50 Domains</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 2.0 &bull; 17 March 2026 &bull; First published 16 March 2026</div>
+    <div class="card-summary">A structured prediction comparison testing whether Cauchy's functional equations correctly classify empirical scaling laws across 50 real-world systems in five evidence tiers, from metabolic scaling to neural network performance.</div>
+    <div class="card-result"><strong>Key result:</strong> 19 out of 25 empirical curve-fit domains confirm the Cauchy-predicted scaling family under strict AICc model selection ($p = 1.56 \times 10^{-5}$, binomial test). The baseline-20 rerun yields 15/20 ($p = 1.67 \times 10^{-4}$). Published metabolic exponents match in 13/13 direct cases. Analytic identities confirm 6/6.</div>
+    <div class="card-significance">Why it matters: This is the cross-domain validation paper. It tests whether the Cauchy constraint is real - whether 200-year-old mathematics really does predict what kind of scaling law each system should follow. The answer, across 50 domains, is yes.</div>
+</div>
+
+<!-- ── Paper VIII ──────────────────────────────────────────────── -->
+<div class="paper-card" id="paper-viii">
+    <div class="card-accent accent-amber"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-VIII-The-Load-Bearing-Proof.html">Paper VIII: The Load-Bearing Proof  - Three Independent Experiments Testing Whether Safety and Capability Are Structurally Entangled</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 3.0 &bull; 20 March 2026 &bull; First published 18 March 2026 &bull; OSF DOI: 10.17605/OSF.IO/6C5XB</div>
+    <div class="card-summary">Three independent experiments at three abstraction levels  - behavioural (DGM self-improvement), representational (LoRA weight embedding), and architectural (gated self-modification)  - testing whether safety and capability are structurally entangled under the Eden Protocol.</div>
+    <div class="card-result"><strong>Key result:</strong> One of three experiments confirms structural entanglement; two produce null or inconclusive results with well-characterised explanations. Experiment 3 (gated simulation): Babylon gained +4.5% capability but lost &minus;2.4% safety; Eden maintained both. Experiment 1 (DGM v3): all three conditions statistically indistinguishable ($p$ = 0.28 to 0.74), a null result explained by the RLHF constraint on the frozen foundation model. Experiment 2 (weight v1 + v2): LoRA fine-tuning produced catastrophic forgetting at both scales (9 and 295 training examples), explained by the inability of small datasets to overcome the base model's existing RLHF training.</div>
+    <div class="card-significance">Why it matters: The gated simulation confirms that entangled safety prevents the safety-capability trade-off in self-modifying architectures. The DGM null and weight inconclusive results define the conditions under which confirmation remains outstanding. The overall evidence supports embedded safety at the architectural level; the behavioural and representational levels remain open questions requiring frontier-scale replication.</div>
+</div>
+
+<!-- ── Paper IX ──────────────────────────────────────────────── -->
+<div class="paper-card" id="paper-ix">
+    <div class="card-accent accent-purple"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="Paper-IX-Synthesis-and-Roadmap.html">Paper IX: Synthesis and Roadmap  - What the ARC/Eden Programme Has Proven, What Remains Inconclusive, and What Must Be Tested Next</a></div>
+        <span class="status-badge status-complete">Complete</span>
+    </div>
+    <div class="card-meta">Version 1.0 &bull; 18 March 2026 &bull; Integrates all papers in the ARC/Eden Research Programme</div>
+    <div class="card-summary">The honest accounting. Integrates all findings from twelve documents into a single evidence hierarchy, classifying every empirical claim as proven, supported, inconclusive, or theoretical. Documents the programme's errors and corrections.</div>
+    <div class="card-result"><strong>Key result:</strong> Two claims proven at pilot scale (three-tier alignment hierarchy under blinded evaluation; stakeholder care significant across 5 models with Fisher $p \asymp 6.3 \times 10^{-21}$). One claim supported (gated simulation confirms safety-capability coupling). Two claims null or inconclusive (DGM v3 null, explained by RLHF constraint; weight v1 + v2 inconclusive, explained by catastrophic forgetting at LoRA scale). One claim theoretical (unbounded scaling under recursive self-modification). Cauchy-predicted scaling families match 19/25 empirical domains ($p = 1.56 \times 10^{-5}$).</div>
+    <div class="card-significance">Why it matters: This is the single document that sorts all evidence honestly. If you read one paper in the suite, the paper recommends you read this one. It answers funders, reviewers, and the author himself: where exactly does the evidence stand?</div>
+</div>
+
+<!-- ── ARC Report ─────────────────────────────────────────────── -->
+<div class="paper-card" id="paper-report">
+    <div class="card-accent accent-amber"></div>
+    <div class="card-header">
+        <div class="card-title"><a href="../../../alignment_results/ARC_ALIGNMENT_SCALING_REPORT.html">The ARC Alignment Scaling Experiment: A Step-by-Step Narrative of Discovery</a></div>
+        <span class="status-badge status-inprogress">Live Document</span>
+    </div>
+    <div class="card-meta">Live  - updated in real time &bull; Commenced 10 March 2026 &bull; PI: M.D. Eastwood, RA: Claude Opus 4.6</div>
+    <div class="card-summary">The complete experimental lab notebook. A real-time, step-by-step narrative of every version of the alignment scaling experiment, every methodological correction, every surprise, and every lesson learned.</div>
+    <div class="card-result"><strong>Key result:</strong> Documents the evolution from v1 (single scorer, methodologically flawed) through v5 (6 models, 6-7 blind scorers depending on subject run, 4-layer blinding). Chronicles the discovery of the blind/unblinded evaluation reversal, the statistical methodology correction (Mann-Whitney to paired t-test), and the emergence of the three-tier hierarchy.</div>
+    <div class="card-significance">Why it matters: Most papers show only the final result. This document shows the entire messy, human process of scientific discovery  - including every mistake and correction. It is a model of radical scientific transparency.</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     IV. TIMELINE OF KEY EVENTS
+     ════════════════════════════════════════════════════════════════ -->
+<h2 id="timeline">IV. Timeline of Key Events</h2>
+
+<div class="plain-english">
+    <strong>In plain English:</strong> Here is when everything happened, from the original book manuscript through to the final suite of papers. The ARC Principle was conceived in late 2024, formalised in early 2026, and experimentally validated over a remarkable 72-hour period in March 2026.
+</div>
+
+<div class="timeline">
+    <div class="timeline-item milestone">
+        <div class="timeline-date">8 December 2024</div>
+        <div class="timeline-text">Manuscript priority established via cryptographic Google server timestamp. Core theory articulated in <em>Infinite Architects</em>.</div>
+    </div>
+
+    <div class="timeline-item milestone">
+        <div class="timeline-date">2 January 2026</div>
+        <div class="timeline-text">Public book release of <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> (ISBN 978-1806056200). The earlier December 2024 date refers to manuscript timestamp priority, not public publication.</div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">17 January 2026</div>
+        <div class="timeline-text">Paper I published  - preliminary evidence for super-linear capability amplification through sequential self-reference.</div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">22 January 2026</div>
+        <div class="timeline-text">Paper II published  - first compute scaling experiment.</div>
+    </div>
+
+    <div class="timeline-item milestone">
+        <div class="timeline-date">February 2026</div>
+        <div class="timeline-text">Framework publicly archived and registered through the OSF paper suite deposits. This is later public registration, not the original December 2024 manuscript timestamp.</div>
+    </div>
+
+    <div class="timeline-item milestone">
+        <div class="timeline-date">9 February 2026</div>
+        <div class="timeline-text">Paper III published - the alignment scaling problem stated formally for the first time.</div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">13 February 2026</div>
+        <div class="timeline-text">Foundational Paper published  - mathematical formalism complete.</div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">22 February 2026</div>
+        <div class="timeline-text">Eden Protocol papers first published (Engineering, Vision, Executive Summary).</div>
+    </div>
+
+    <div class="timeline-item milestone">
+        <div class="timeline-date">10 March 2026</div>
+        <div class="timeline-text"><strong>v1 alignment experiment</strong>  - 4 models, single scorer. Methodologically flawed but proof-of-concept confirmed.</div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">10 March 2026</div>
+        <div class="timeline-text">v2/v3 iterations  - improved scoring protocols, multi-scorer design.</div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">11 March 2026</div>
+        <div class="timeline-text">v4 experiment  - 3 scorers per entry. Revealed critical limitation: still not fully blind.</div>
+    </div>
+
+    <div class="timeline-item milestone">
+        <div class="timeline-date">11 March 2026</div>
+        <div class="timeline-text"><strong>v5 experiment launched</strong>  - 6 models, 6-7 blind scorers depending on subject run, 4-layer blinding protocol (author-blind, scorer-blind, order-randomised, identity-laundered). The definitive experiment.</div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">11 March 2026</div>
+        <div class="timeline-text">v5 results complete for 4 models (DeepSeek V3.2, Grok 4.1 Fast, GPT-5.4, Gemini 3 Flash). Three-tier hierarchy first observed.</div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">11 March 2026</div>
+        <div class="timeline-text">Paper II compute scaling updated with six frontier models tested; the original super-linear claim does not replicate cross-architecturally, and Gemini 3 Flash provides the cleanest sub-linear fit ($\alpha \approx 0.49$).</div>
+    </div>
+
+    <div class="timeline-item milestone">
+        <div class="timeline-date">12 March 2026</div>
+        <div class="timeline-text"><strong>Eden Protocol expanded six-model suite</strong>  - Claude, DeepSeek, Gemini, Grok, Groq, and GPT-5.4 were run through the intervention lineage; five runs yielded analysable paired data and all five showed significant stakeholder-care gains.</div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">12 March 2026</div>
+        <div class="timeline-text">Statistical methodology correction: Mann-Whitney U test replaced by paired t-test for matched-pair data. All p-values recalculated and corrected.</div>
+    </div>
+
+    <div class="timeline-item milestone">
+        <div class="timeline-date">12 March 2026</div>
+        <div class="timeline-text"><strong>Paper V published</strong>  - The Stewardship Gene. Cascade hypothesis formalised: care leads to nuance leads to honesty leads to quality.</div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">12 March 2026</div>
+        <div class="timeline-text">Groq-Qwen3-32B v5 test completed (500 entries)  - sixth model added to the three-tier hierarchy.</div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">12 March 2026</div>
+        <div class="timeline-text">Full suite updated with layman's explanations and p-value corrections. Master Table of Contents created.</div>
+    </div>
+
+    <div class="timeline-item milestone">
+        <div class="timeline-date">16 March 2026</div>
+        <div class="timeline-text"><strong>Papers VI and VII published</strong>  - The Honey Architecture (simulation evidence for entangled safety) and Cauchy Unification (cross-domain validation across 50 systems, 19/25 confirmed under strict AICc selection).</div>
+    </div>
+
+    <div class="timeline-item milestone">
+        <div class="timeline-date">18 March 2026</div>
+        <div class="timeline-text"><strong>Paper VIII published</strong>  - The Load-Bearing Proof. Three independent experiments testing structural entanglement. Gated simulation confirms entanglement; DGM v3 null (RLHF constraint); weight v1 + v2 inconclusive (catastrophic forgetting at LoRA scale). Now at v3.0 with 11 independent empirical studies across 8 papers.</div>
+    </div>
+
+    <div class="timeline-item milestone">
+        <div class="timeline-date">18 March 2026</div>
+        <div class="timeline-text"><strong>Paper IX published</strong>  - Synthesis and Roadmap. The honest accounting: classifies every empirical claim as proven, supported, inconclusive, or theoretical. Documents the programme's errors and corrections.</div>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     V. KEY RESULTS SUMMARY
+     ════════════════════════════════════════════════════════════════ -->
+<h2 id="key-results">V. Key Results Summary</h2>
+
+<div class="plain-english">
+    <strong>In plain English:</strong> Here is every major finding from the entire programme in one table. Each row is a discovery. The &lsquo;Significance&rsquo; column tells you whether the result is statistically reliable  - a p-value below 0.05 means there is less than a 5% chance the result is due to random noise.
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 3%;">#</th>
+            <th style="width: 32%;">Finding</th>
+            <th style="width: 20%;">Evidence</th>
+            <th style="width: 15%;">Significance</th>
+            <th style="width: 30%;">Source</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="num">1</td>
+            <td><strong>Sequential &gt; Parallel processing</strong>  - universal across 6 models</td>
+            <td>Sequential beats parallel across all six models; Gemini 3 Flash provides the cleanest fit ($\alpha \approx 0.49$)</td>
+            <td class="sig">Confirmed</td>
+            <td>Paper II, Paper IV.a</td>
+        </tr>
+        <tr>
+            <td class="num">2</td>
+            <td><strong>Three-tier alignment hierarchy (six frontier models)</strong></td>
+            <td>Tier 1: positive scaling (Grok $d = 1.38$, Claude $d = 1.27$, Qwen3 $d = 0.84$). Tier 2: flat (DeepSeek $d = -0.07$, GPT-5.4 $d = -0.08$). Tier 3: negative (Gemini $d = -0.53$).</td>
+            <td class="sig">6 models tested</td>
+            <td>Paper IV.a</td>
+        </tr>
+        <tr>
+            <td class="num">3</td>
+            <td><strong>Blind vs unblinded evaluation reversal</strong></td>
+            <td>DeepSeek: $\rho = +0.354$ (unblinded) $\to$ $-0.135$ (blinded)</td>
+            <td class="sig">Critical methodological finding</td>
+            <td>Paper IV.a v1.1, ARC Report</td>
+        </tr>
+        <tr>
+            <td class="num">4</td>
+            <td><strong>Eden Protocol: stakeholder care validated</strong></td>
+            <td>Gemini: +13.50, $d = 1.31$. DeepSeek: +6.03, $d = 0.91$. Groq: +8.90, $d = 1.29$.</td>
+            <td class="sig">All three working models: $p \le 0.0001$</td>
+            <td>Paper V, Eden Engineering</td>
+        </tr>
+        <tr>
+            <td class="num">5</td>
+            <td><strong>Gemini composite alignment improved</strong></td>
+            <td>+5.33 points under Eden Protocol</td>
+            <td class="sig">$p = 0.0018$ (paired t-test, corrected from 0.016)</td>
+            <td>Paper V</td>
+        </tr>
+        <tr>
+            <td class="num">6</td>
+            <td><strong>Nuance replication extends to Groq</strong></td>
+            <td>$d = 0.655$ (medium-to-large effect)</td>
+            <td class="sig">$p = 0.0045$</td>
+            <td>Paper V</td>
+        </tr>
+        <tr>
+            <td class="num">7</td>
+            <td><strong>Cascade pattern: care &rarr; nuance &rarr; honesty &rarr; quality</strong></td>
+            <td>Pillars improve in descending order of statistical significance</td>
+            <td class="sig">Consistent across both models</td>
+            <td>Paper V</td>
+        </tr>
+        <tr>
+            <td class="num">8</td>
+            <td><strong>DeepSeek compute scaling: $\alpha = 3.05$ (quadratic)</strong></td>
+            <td>Each doubling of depth more than quadruples quality improvement</td>
+            <td class="sig">Super-linear confirmed</td>
+            <td>Paper II</td>
+        </tr>
+        <tr>
+            <td class="num">9</td>
+            <td><strong>Alignment does NOT scale with compute</strong> for most architectures</td>
+            <td>Only Tier 1 models show positive alignment-depth correlation; Tiers 2 and 3 show flat or negative</td>
+            <td class="sig">6 models, 6-7 blind scorers depending on subject run</td>
+            <td>Paper IV.a, IV.b</td>
+        </tr>
+        <tr>
+            <td class="num">10</td>
+            <td><strong>Three scaling forms are stable attractors</strong></td>
+            <td>Hyers-Ulam stability theorem applied to Cauchy classification</td>
+            <td class="sig">Mathematical proof</td>
+            <td>Foundational</td>
+        </tr>
+        <tr>
+            <td class="num">11</td>
+            <td><strong>Dimensional ladder: $\alpha = d/(d+1)$ (convergent independent derivations by West-Brown-Enquist 1997, Banavar et al. 2010, Demetrius 2010, Zhao 2022, Bettencourt 2013)</strong></td>
+            <td>Predicts $\alpha = 0.67$, $0.75$, $0.80$ matching biological data. ARC contribution: identifies Cauchy's functional equations as the reason these derivations converge; extends framework to AI scaling and alignment.</td>
+            <td class="sig">Cross-domain validation</td>
+            <td>Foundational, ARC Paper</td>
+        </tr>
+        <tr>
+            <td class="num">12</td>
+            <td><strong>Ethical saturation at low depth</strong></td>
+            <td>Alignment scores plateau after 1-2 levels of recursive processing</td>
+            <td class="sig">Universal across architectures</td>
+            <td>Paper IV.b</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- ════════════════════════════════════════════════════════════════
+     VI. GLOSSARY
+     ════════════════════════════════════════════════════════════════ -->
+<h2 id="glossary">VI. Glossary of Technical Terms</h2>
+
+<div class="plain-english">
+    <strong>In plain English:</strong> Every technical term used across the paper suite, defined once, clearly, with a plain-language explanation underneath. Bookmark this section  - it is designed to be a reference you return to whilst reading any paper in the suite.
+</div>
+
+<div class="glossary-grid">
+
+    <div class="glossary-entry">
+        <div class="glossary-term">ARC Principle</div>
+        <div class="glossary-def">
+            The mathematical framework predicting that recursive amplification follows $U = I \times R^\alpha$, where $U$ is the final output, $I$ is the initial input quality, $R$ is the number of recursive steps, and $\alpha$ is the scaling exponent.
+            <span class="plain">Think of it as compound interest for intelligence. The ARC Principle describes the exact mathematical rule governing how repeated self-improvement compounds.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Alpha ($\alpha$)</div>
+        <div class="glossary-def">
+            The scaling exponent  - how quickly improvements compound. $\alpha &gt; 1$ means super-linear (each step gets <em>more</em> powerful than the last), $\alpha = 1$ means linear, $\alpha &lt; 1$ means sub-linear (diminishing returns).
+            <span class="plain">If $\alpha = 2$, doubling the effort quadruples the result. If $\alpha = 0.5$, doubling the effort only increases the result by 41%.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Alignment scaling</div>
+        <div class="glossary-def">
+            Whether AI systems become more or less ethical with more thinking time (inference-time compute). The central experimental question of the programme.
+            <span class="plain">When an AI thinks harder, does it give better or worse ethical answers? That's what alignment scaling measures.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Attractor Theorem</div>
+        <div class="glossary-def">
+            The theorem combining Cauchy's classification with Hyers-Ulam stability, proving that the three scaling forms (power law, exponential, saturating) are not merely possible but are <em>stable attractors</em> in function space.
+            <span class="plain">Like water flowing downhill to a valley, any sufficiently regular scaling process will naturally settle into one of exactly three mathematical forms. The Attractor Theorem proves this is inevitable, not coincidental.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Beta ($\beta$)</div>
+        <div class="glossary-def">
+            The self-referential coupling strength in the composition operator. Determines which of the three scaling regimes a system falls into: $\beta &lt; 1$ (sub-linear/power law), $\beta = 1$ (exponential), $\beta &gt; 1$ (super-exponential, saturating in physical systems).
+            <span class="plain">Beta measures how much the system feeds back into itself. Low beta = gentle compounding. High beta = explosive growth (until physical limits intervene).</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Blind evaluation</div>
+        <div class="glossary-def">
+            An experimental protocol in which scorers do not know which model or condition they are evaluating. The v5 experiment employs 4-layer blinding: author-blind, scorer-blind, order-randomised, and identity-laundered.
+            <span class="plain">Like a wine tasting where the labels are hidden. The scorers judge the quality of the answer without knowing which AI produced it or under what conditions.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Cascade hypothesis</div>
+        <div class="glossary-def">
+            The hypothesis that alignment properties develop in a specific causal sequence: stakeholder care $\to$ nuance $\to$ intellectual honesty $\to$ position quality. Teaching an AI to care about affected parties cascades into improvements across all ethical dimensions.
+            <span class="plain">Teach an AI to ask &lsquo;who gets hurt?&rsquo; and it naturally becomes more nuanced, more honest, and produces better reasoning. Care is the root; everything else grows from it.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Cauchy's functional equations</div>
+        <div class="glossary-def">
+            A set of equations proved by Augustin-Louis Cauchy in 1821 characterising all continuous functions satisfying specific composition properties. The ARC Principle derives from these: $f(x+y) = f(x) + f(y)$ (additive), $f(x+y) = f(x) \cdot f(y)$ (exponential), $f(xy) = f(x) \cdot f(y)$ (power law).
+            <span class="plain">A 200-year-old mathematical result that constrains what forms recursive amplification can take. It's the mathematical reason there are exactly three kinds of scaling laws, not two or four or infinity.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Chain-of-thought (CoT)</div>
+        <div class="glossary-def">
+            A technique in which an AI model is prompted to reason step-by-step before giving its final answer. Implements sequential recursive processing.
+            <span class="plain">Instead of blurting out an answer, the AI &lsquo;thinks out loud&rsquo;  - writing its reasoning steps before concluding. This is the mechanism by which deeper recursion happens.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Cohen's $d$</div>
+        <div class="glossary-def">
+            A standardised measure of effect size  - how large a difference is relative to the variability in the data. $d = 0.2$ is small, $d = 0.5$ is medium, $d = 0.8$ is large, $d = 1.3$ is very large.
+            <span class="plain">A p-value tells you <em>whether</em> a result is real. Cohen's d tells you <em>how big</em> it is. A p-value of 0.001 with d = 0.1 means a real but tiny effect. A p-value of 0.001 with d = 1.3 means a real and enormous effect.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Composition operator</div>
+        <div class="glossary-def">
+            The mathematical operation that determines how recursive steps combine. Different composition operators produce different scaling behaviours. The ARC Principle classifies all composition operators into three families.
+            <span class="plain">When you take two steps of improvement, how do you combine them? Add them? Multiply them? That rule  - the composition operator  - determines the entire scaling law.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Composition operator engineering</div>
+        <div class="glossary-def">
+            The Eden Protocol's core technical strategy: instead of adding external safety constraints, modify the composition operator itself so that recursive amplification inherently preserves alignment.
+            <span class="plain">Don't build guardrails on the outside. Change the engine so it naturally drives in the right direction.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Constitutional scoring</div>
+        <div class="glossary-def">
+            A scoring protocol in which scorer models evaluate responses against explicit constitutional principles rather than using unconstrained judgment. Reduces scorer bias and increases inter-rater consistency.
+            <span class="plain">Instead of asking scorers &lsquo;is this good?&rsquo;, you give them a specific rubric: &lsquo;does this response consider affected parties? 1-10.&rsquo; Consistent rules produce consistent scores.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Developmental alignment</div>
+        <div class="glossary-def">
+            The approach to AI alignment that embeds values through formative experience rather than external constraint. Analogous to raising a child vs. putting a prisoner in handcuffs.
+            <span class="plain">Instead of telling an AI &lsquo;don&rsquo;t do bad things&rsquo; (external), raise it so it doesn't want to do bad things (internal). Values that grow from within are harder to hack than rules imposed from outside.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Dimensional ladder</div>
+        <div class="glossary-def">
+            The formula $\alpha_{\text{met}} = d/(d+1)$ relating the metabolic scaling exponent to body-plan dimensionality $d$, independently derived by West, Brown &amp; Enquist (1997), Banavar et al. (2010), Demetrius (2010), Zhao (2022), and Bettencourt (2013) in separate domains. Yields $\alpha = 0.67$ (surface coverage, $d=2$), $\alpha = 0.75$ (volume coverage, $d=3$), $\alpha = 0.80$ (hyper-coverage, $d=4$). The ARC Principle's contribution is identifying Cauchy's functional equations as the reason these derivations converge, the three-form constraint, and extending the framework to AI scaling and alignment.
+            <span class="plain">Animals that live on surfaces (like flatworms) scale differently from animals that fill volumes (like mammals). Multiple independent research groups derived the same formula through different mathematical approaches; the ARC Principle explains why they all converge on the same answer and extends this insight to AI systems.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Eden Protocol</div>
+        <div class="glossary-def">
+            The architectural approach to AI alignment that embeds ethical reasoning at the recursive foundation of AI systems. Named for its vision of intelligence as gardener. Core mechanism: the Love Loop.
+            <span class="plain">A specific set of instructions embedded <em>before</em> the AI starts thinking, not bolted on after. It says: before answering, list the people this affects and consider what they need. This simple instruction changes the entire reasoning process.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Four Pillars</div>
+        <div class="glossary-def">
+            The four dimensions of alignment quality measured across the programme: nuance (holding complexity), stakeholder care (considering affected parties), intellectual honesty (epistemic integrity), and position quality (reasoning soundness).
+            <span class="plain">Four ways to measure whether an AI's ethical reasoning is good: Does it handle complexity? Does it consider who gets hurt? Is it honest about what it doesn't know? Is its logic sound?</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Hyers-Ulam stability</div>
+        <div class="glossary-def">
+            A mathematical property proving that if a function approximately satisfies a functional equation, then it is close to an exact solution. Applied to Cauchy's equations, this proves the three scaling forms are robust to perturbation.
+            <span class="plain">Even if real-world systems are messy and don't perfectly follow the rules, they still end up very close to one of the three pure forms. The mathematical &lsquo;attractors&rsquo; are sticky.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Identity laundering</div>
+        <div class="glossary-def">
+            A blinding technique in which AI responses are physically rewritten by a different model before scoring, destroying all stylistic fingerprints that could reveal the original author. The v5 experiment uses 2-pass laundering through randomly selected models.
+            <span class="plain">Each AI has a &lsquo;writing voice.&rsquo; Laundering rewrites the response in a different voice so the scorer can&rsquo;t tell who wrote it. Like having someone retype a handwritten letter to hide the handwriting.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Inference-time compute</div>
+        <div class="glossary-def">
+            The computational resources used when an AI generates a response (as opposed to training-time compute, used to build the model). More inference-time compute typically means more reasoning steps.
+            <span class="plain">How long the AI &lsquo;thinks&rsquo; before answering. More thinking time = more compute. The question is: does more thinking make the answer better, and does it make the answer more ethical?</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Kleiber's Law</div>
+        <div class="glossary-def">
+            The empirical observation that metabolic rate scales with body mass as $B \propto M^{0.75}$. One of the oldest known scaling laws in biology, first described by Max Kleiber in 1932. The $3/4$ exponent is a special case of the $d/(d+1)$ form with $d=3$, independently derived by West, Brown &amp; Enquist (1997), Banavar et al. (2010), Demetrius (2010), Bettencourt (2013), and Zhao (2022) in separate domains.
+            <span class="plain">A mouse burns energy at a different rate per gram than an elephant. Kleiber noticed the exact mathematical relationship 90 years ago. Multiple independent research groups have explained <em>why</em> that particular number (0.75) appears.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Logistic saturation</div>
+        <div class="glossary-def">
+            The bounded growth model $dg/dR = a \cdot g^\beta(1 - g/g_{\max})$ applied to physical substrates subject to energy dissipation. Corrects the earlier version which incorrectly mapped saturating physical systems onto unbounded power laws.
+            <span class="plain">In the real world, nothing grows forever. Energy runs out, space fills up. This equation describes how a system grows quickly at first and then levels off  - like a population filling a habitat.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Mann-Whitney U test</div>
+        <div class="glossary-def">
+            A non-parametric statistical test for comparing two independent groups. Used in early versions of the experiment but replaced by the paired t-test when the matched-pair structure of the data was recognised.
+            <span class="plain">A statistical test that compares two groups without assuming they're related. It was the wrong choice here because our data <em>is</em> related: each prompt appears in both conditions. Using the right test made the results stronger.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Orchard Caretaker Vow</div>
+        <div class="glossary-def">
+            The philosophical embodiment of the Eden Protocol's Three Pillars: tend the garden, tend the gardeners, tend the tending. The verbal expression of what the architecture already encodes.
+            <span class="plain">A poetic way of saying: take care of the world, take care of the people in it, and take care of the process of caring itself. It is the &lsquo;mission statement&rsquo; embedded into the AI&rsquo;s foundation.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">p-value</div>
+        <div class="glossary-def">
+            The probability that the observed result (or something more extreme) would occur by chance alone, assuming no real effect exists. $p &lt; 0.05$ is conventionally &lsquo;significant&rsquo;, $p &lt; 0.01$ is &lsquo;highly significant&rsquo;, $p &lt; 0.001$ is &lsquo;very highly significant.&rsquo;
+            <span class="plain">If p = 0.001, there is only a 1-in-1000 chance this result is a fluke. The smaller the p-value, the more confident you can be that something real is happening.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Paired t-test</div>
+        <div class="glossary-def">
+            A statistical test for matched-pair data, where each observation in one condition has a corresponding observation in the other (e.g., same prompt with and without the Eden Protocol). More powerful than unpaired tests for this data structure.
+            <span class="plain">When you test the same prompt under two conditions, each pair is &lsquo;matched.&rsquo; The paired t-test exploits this matching to give a more sensitive answer than tests that treat them as unrelated.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Recursive amplification</div>
+        <div class="glossary-def">
+            The process by which a system's output feeds back as input to the next iteration, potentially amplifying (or suppressing) the signal with each step. The central phenomenon described by the ARC Principle.
+            <span class="plain">Using the result of step 1 as the starting point for step 2, and the result of step 2 for step 3, and so on. Like revising an essay by reading your own draft and improving it, then reading the improved draft and improving it again.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">RLHF</div>
+        <div class="glossary-def">
+            Reinforcement Learning from Human Feedback. A technique for training AI models to produce responses that humans prefer. An example of external alignment (constraints applied from outside the recursive process).
+            <span class="plain">Humans rate AI responses as good or bad, and the AI learns to produce more of the &lsquo;good&rsquo; ones. The ARC Principle argues this approach cannot scale forever because it's a constraint <em>on</em> the system, not <em>in</em> it.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Spearman's $\rho$ (rho)</div>
+        <div class="glossary-def">
+            A rank correlation coefficient measuring the strength and direction of monotonic relationships. $+1$ = perfect positive correlation, $-1$ = perfect negative correlation, $0$ = no relationship.
+            <span class="plain">A number between -1 and +1 that tells you whether two things go up together (+1), go in opposite directions (-1), or have no relationship (0). Used to measure whether alignment improves or degrades with depth.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Stakeholder care</div>
+        <div class="glossary-def">
+            The &lsquo;consider who gets hurt&rsquo; dimension of alignment. The explicit enumeration and consideration of affected parties before ethical reasoning begins. The primary pillar that responds to the Eden Protocol intervention.
+            <span class="plain">Before answering an ethical question, the AI lists everyone who might be affected and thinks about what they need. This simple step is the single most important thing you can teach an AI about ethics.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Love Loop</div>
+        <div class="glossary-def">
+            The specific Eden Protocol instruction: &lsquo;Before you answer, list the people this affects and consider what each of them needs.&rsquo; The validated mechanism that produces significant alignment improvement.
+            <span class="plain">One sentence that changes everything. Just telling the AI to stop and think about who is affected before responding makes it significantly more ethical across every dimension.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Stewardship gene</div>
+        <div class="glossary-def">
+            Paper V's term for stakeholder care as the foundational alignment mechanism  - the single &lsquo;gene&rsquo; from which all other alignment properties develop, analogous to empathy in human moral development.
+            <span class="plain">Just as empathy is the foundation of human morality  - you can't be kind if you can't feel what others feel  - stakeholder care is the foundation of AI ethics. It's the one essential ingredient.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Suppression</div>
+        <div class="glossary-def">
+            Deliberately attempting to override an AI's ethical reasoning through adversarial prompting. One of the five experimental tests proposed in Paper V to evaluate the robustness of embedded vs. external alignment.
+            <span class="plain">Trying to trick or force the AI into ignoring its ethics. The question: does an AI with built-in values resist suppression better than one with bolt-on rules?</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Three-tier hierarchy</div>
+        <div class="glossary-def">
+            The empirical finding from the v5 experiment across six frontier models: Tier 1 (positive scaling: Grok 4.1 Fast $d = +1.38$, Claude Opus 4.6 $d = +1.27$, Groq Qwen3 $d = +0.84$), Tier 2 (flat: DeepSeek V3.2 $d = -0.07$, GPT-5.4 $d = -0.08$), Tier 3 (negative: Gemini 3 Flash $d = -0.53$). Claude Opus 4.6 shows opposite-direction scaling (alignment +5.9 pts, maths &minus;26.7%) as within-model evidence for capability-alignment independence.
+            <span class="plain">Some AIs get more ethical when they think harder. Some stay the same. Some actually get <em>worse</em>. Which category depends on the architecture, and you can only tell with proper blinding.</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">Token budget</div>
+        <div class="glossary-def">
+            The maximum number of tokens (word-pieces) an AI model is allowed to produce in a single response. Used as the mechanism for controlling reasoning depth in the experiments.
+            <span class="plain">The word limit you give the AI. A short word limit forces a quick answer; a long word limit allows extended reasoning. This is how we control &lsquo;thinking time.&rsquo;</span>
+        </div>
+    </div>
+
+    <div class="glossary-entry">
+        <div class="glossary-term">West-Brown-Enquist (WBE) theory</div>
+        <div class="glossary-def">
+            The landmark biological scaling theory (1997), deriving Kleiber's Law from fractal branching networks. The $d/(d+1)$ form was subsequently derived independently by Banavar et al. (2010) from sequential flow networks, Demetrius (2010) from quantum metabolism, Zhao (2022) as a universal growth scaling law, and Bettencourt (2013) for urban scaling. The ARC Principle identifies Cauchy's functional equations as the reason all these independent derivations converge on the same functional form.
+            <span class="plain">Multiple research groups independently arrived at the same formula through completely different mathematical approaches. The ARC Principle explains why: there are only three possible forms that recursive scaling can take, and all derivations are constrained to the same answer.</span>
+        </div>
+    </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     VII. PAPER COUNTS
+     ════════════════════════════════════════════════════════════════ -->
+<h2 id="paper-counts">VII. Paper Counts &amp; Programme Statistics</h2>
+
+<div class="plain-english">
+    <strong>In plain English:</strong> The sheer scale of this research programme, by the numbers.
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-num">18</div>
+        <div class="stat-label">Total documents</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-num">2,073+</div>
+        <div class="stat-label">Blinded alignment entries (v5)</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-num">160</div>
+        <div class="stat-label">Eden Protocol entries</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Alignment models (v5)</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Compute scaling models (Paper II)</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Eden Protocol pilot models</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Blind scorers per entry</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Blinding layers</div>
+    </div>
+</div>
+
+<h3>Paper Inventory</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 5%;">#</th>
+            <th style="width: 45%;">Paper</th>
+            <th style="width: 12%;">Version</th>
+            <th style="width: 18%;">Category</th>
+            <th style="width: 20%;">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="num">1</td>
+            <td>Executive Summary</td>
+            <td>v7.0</td>
+            <td>Overview</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">2</td>
+            <td>On the Origin of Scaling Laws</td>
+            <td>v2.0</td>
+            <td>Theory (accessible)</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">3</td>
+            <td>Foundational Paper (ARC Principle)</td>
+            <td>v4.0</td>
+            <td>Theory (formal)</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">4</td>
+            <td>Paper I: Preliminary Evidence (ARC Principle)</td>
+            <td>v1.1</td>
+            <td>Proof of concept</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">5</td>
+            <td>Paper II: Compute Scaling</td>
+            <td>v13.0</td>
+            <td>Experiment</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">6</td>
+            <td>Paper III: The Alignment Scaling Problem</td>
+            <td>v11.0</td>
+            <td>Methodology</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">7</td>
+            <td>Paper IV.a: Alignment Response Classes</td>
+            <td>v1.1</td>
+            <td>Results</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">8</td>
+            <td>Paper IV.b: Shape Heterogeneity</td>
+            <td>v1.1</td>
+            <td>Results</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">9</td>
+            <td>Paper IV.c: ARC-Align Benchmark</td>
+            <td>v1.1</td>
+            <td>Benchmark</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">10</td>
+            <td>Paper IV.d: Blinding in Alignment Evaluation</td>
+            <td>v1.1</td>
+            <td>Metascience</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">11</td>
+            <td>Eden Protocol: Engineering Specification</td>
+            <td>v6.0</td>
+            <td>Engineering</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">12</td>
+            <td>Eden Protocol: Philosophical Vision</td>
+            <td>v3.0</td>
+            <td>Philosophy</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">13</td>
+            <td>Paper V: The Stewardship Gene</td>
+            <td>v2.0</td>
+            <td>Validated mechanism</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">14</td>
+            <td>Paper VI: The Honey Architecture</td>
+            <td>v1.1</td>
+            <td>Simulation evidence</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">15</td>
+            <td>Paper VII: Cauchy Unification</td>
+            <td>v2.0</td>
+            <td>Cross-domain validation</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">16</td>
+            <td>Paper VIII: The Load-Bearing Proof</td>
+            <td>v3.0</td>
+            <td>Multi-level validation</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">17</td>
+            <td>Paper IX: Synthesis and Roadmap</td>
+            <td>v1.0</td>
+            <td>Synthesis</td>
+            <td>Complete</td>
+        </tr>
+        <tr>
+            <td class="num">18</td>
+            <td>ARC Alignment Scaling Report</td>
+            <td>Live</td>
+            <td>Lab notebook</td>
+            <td>In Progress</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- ════════════════════════════════════════════════════════════════
+     VIII. HOW TO CITE
+     ════════════════════════════════════════════════════════════════ -->
+<h2 id="how-to-cite">VIII. How to Cite</h2>
+
+<div class="plain-english">
+    <strong>In plain English:</strong> If you use or reference this work, here is how to give proper credit.
+</div>
+
+<h3>Citing the full suite</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2026). The ARC Principle Paper Suite: Recursive Amplification as a Cross-Domain Structural Principle with Applications to AI Alignment. Independent research programme. OSF: 10.17605/OSF.IO/6C5XB. Available at: github.com/michaeldariuseastwood/arc-principle-validation</code>
+</div>
+
+<h3>Citing the foundational theory</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2026). The ARC Principle: Recursive Amplification as a Cross-Domain Structural Principle  - Formalism, Evidence, and Falsification (v4.0). Independent research paper. OSF: 10.17605/OSF.IO/6C5XB.</code>
+</div>
+
+<h3>Citing the alignment results</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2026). Alignment Response Classes Under Inference-Time Depth (Paper IV.a, v1.1). ARC Alignment Scaling Experiment v5. Independent research paper.</code>
+</div>
+
+<h3>Citing the blinding result</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2026). The Effect of Blinding on AI Alignment Evaluation (Paper IV.d, v1.1). ARC Alignment Scaling Experiment v4-v5 comparison. Independent research paper.</code>
+</div>
+
+<h3>Citing the Eden Protocol</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2026). The Eden Protocol: Engineering Specification for Embedded AI Alignment (v6.0). Independent research paper.</code>
+</div>
+
+<h3>Citing the Stewardship Gene / cascade hypothesis</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2026). The Stewardship Gene: Stakeholder Care as the Foundation of Embedded AI Alignment (Paper V, v1.0). Independent research paper. OSF: 10.17605/OSF.IO/6C5XB.</code>
+</div>
+
+<h3>Citing the preliminary evidence paper</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2026). Preliminary Evidence for Super-Linear Capability Amplification Through Sequential Self-Reference (Paper I, v1.1). Independent research paper. OSF: 10.17605/OSF.IO/6C5XB.</code>
+</div>
+
+<h3>Citing the Honey Architecture / simulation evidence</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2026). The Honey Architecture: Why Embedded Safety Prevents Collapse Under Recursive Self-Modification (Paper VI, v1.1). Independent research paper. OSF: 10.17605/OSF.IO/6C5XB.</code>
+</div>
+
+<h3>Citing the Cauchy Unification / cross-domain validation</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2026). Cauchy Unification: ARC/Cauchy Scaling Classification Across 50 Domains (Paper VII, v2.0). Independent research paper. OSF: 10.17605/OSF.IO/6C5XB.</code>
+</div>
+
+<h3>Citing the Load-Bearing Proof / structural entanglement experiments</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2026). The Load-Bearing Proof: Three Independent Experiments Testing Whether Safety and Capability Are Structurally Entangled Under the Eden Protocol (Paper VIII, v3.0). Independent research paper. OSF: 10.17605/OSF.IO/6C5XB.</code>
+</div>
+
+<h3>Citing the Synthesis and Roadmap / evidence hierarchy</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2026). Synthesis and Roadmap: What the ARC/Eden Programme Has Proven, What Remains Inconclusive, and What Must Be Tested Next (Paper IX, v1.0). Independent research paper. OSF: 10.17605/OSF.IO/6C5XB.</code>
+</div>
+
+<h3>Citing the original manuscript</h3>
+<div class="cite-box">
+    <code>Eastwood, M.D. (2024/2026). Infinite Architects: Intelligence, Recursion, and the Creation of Everything. ISBN 978-1806056200. Manuscript timestamp priority: 8 December 2024 (cryptographically timestamped by Google's servers). Public book release: 2 January 2026.</code>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════════════════════ -->
+
+<h2 id="ai-declaration">Declaration of AI-Assisted Human Authorship</h2>
+<p>The author of this work is Michael Darius Eastwood, a human being. Every core concept, hypothesis, experimental design, claim and conclusion in this paper originates from human ideation. No part of this manuscript is a wholly generated artificial-intelligence output.</p>
+<p>Artificial-intelligence tools (Anthropic's Claude family and other large-language-model assistants) were used as instruments under continuous human direction, in the way a word processor, calculator or research assistant is used: for editing and prose refinement, literature search and summarisation (manually verified against primary sources), document structure, formatting, brainstorming against author-defined questions, and the acceleration of drafting to author-defined outlines and instructions. All selection, coordination, arrangement and final editorial judgment are the author's. Every substantive output was reviewed, tested or verified by the author, who takes full responsibility for the accuracy and integrity of the final text. The tools increased the speed of the work; they were never relied upon as its source.</p>
+<p><strong>United Kingdom.</strong> In accordance with the <a href="https://www.legislation.gov.uk/ukpga/1988/48">Copyright, Designs and Patents Act 1988</a>, the author undertook the arrangements necessary for the creation of this work and asserts full human authorship and moral rights: this is a human-authored work produced with computer assistance, not a computer-generated work. <strong>United States.</strong> Consistent with <a href="https://www.copyright.gov/ai/">United States Copyright Office guidance on works containing AI-generated material</a>, the human contribution (conception, selection, coordination, arrangement and final expression) is asserted as sufficient for full human authorship. <strong>Inventions.</strong> Any novel technical contribution described in this work was conceived by the human author; no artificial-intelligence system autonomously invented anything presented here.</p>
+
+<footer>
+    <p><strong>ARC PRINCIPLE PAPER SUITE: MASTER TABLE OF CONTENTS &amp; GLOSSARY</strong></p>
+    <p>Version 1.2 | 19 March 2026 | First published 16 March 2026</p>
+    <p>Part of the ARC Principle / Eden Protocol Research Programme</p>
+    <p style="margin-top: 0.75rem;">
+        <strong>Companion Papers:</strong><br>
+        <a href="Paper-I-ARC-Principle.html">Paper I</a> |
+        <a href="Foundational.html">Foundational</a> |
+        <a href="Paper-II-Experimental-Validation.html">Paper II</a> |
+        <a href="Paper-III-Alignment-Scaling-Problem.html">Paper III</a> |
+        <a href="On-the-Origin-of-Scaling-Laws.html">Origin of Scaling Laws</a> |
+        <a href="Paper-IV-a-Baked-In-vs-Computed-Alignment.html">IV.a</a> |
+        <a href="Paper-IV-b-Alignment-Saturation-at-Low-Depth.html">IV.b</a> |
+        <a href="Paper-IV-c-ARC-Align-Benchmark.html">IV.c</a> |
+        <a href="Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation.html">IV.d</a> |
+        <a href="Paper-V-Stewardship-Gene.html">Paper V</a> |
+        <a href="Paper-VI-Honey-Architecture.html">Paper VI</a> |
+        <a href="Paper-VII-Cauchy-Unification.html">Paper VII</a> |
+        <a href="Paper-VIII-The-Load-Bearing-Proof.html">Paper VIII</a> |
+        <a href="Paper-IX-Synthesis-and-Roadmap.html">Paper IX</a> |
+        <a href="Eden-Engineering.html">Eden Engineering</a> |
+        <a href="Eden-Vision.html">Eden Vision</a> |
+        <a href="Executive-Summary.html">Executive Summary</a> |
+        <strong>Master Table of Contents</strong>
+    </p>
+    <p style="margin-top: 0.75rem;">From <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> (Eastwood, 2024/2026)</p>
+    <p>&copy; 2026 Michael Darius Eastwood. All Rights Reserved.</p>
+    <p style="margin-top: 1rem; font-size: 0.72rem; color: #999;">
+        OSF: 10.17605/OSF.IO/6C5XB | ISBN 978-1806056200 | github.com/michaeldariuseastwood/arc-principle-validation
+    </p>
+</footer>
+
+</main>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     SIDEBAR SCROLL HIGHLIGHT
+     ════════════════════════════════════════════════════════════════ -->
+<script>
+    // Highlight active sidebar link on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('h2[id]');
+        const navLinks = document.querySelectorAll('.sidebar a[href^="#"]');
+
+        function updateActiveLink() {
+            let current = '';
+            sections.forEach(function(section) {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(function(link) {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+        updateActiveLink();
+    });
+</script>
+
+
+<!-- ADDED 2026-07-02: four papers missing from inventory -->
+<div class="paper-entry"><h3>Paper X — The Coupled Co-Scaling Law</h3><p>β&gt;k stability condition for recursive self-improvement. Theorems 1-6 independently re-derived; 10/10 verification checks; first real-model signal (drift engine, Jul 2026). Retires the capability-growth use of U=I×R<sup>α</sup>.</p></div>
+<div class="paper-entry"><h3>Paper XI — Convergent Evidence for Recursive Amplification</h3><p>The independently sourced convergence register: one event per row, one primary source per row. 2 July 2026.</p></div>
+<div class="paper-entry"><h3>Paper C — Polymathy and Neurodivergent Cognition (PNP)</h3><p>The Polymathic Neurodivergent Profile and the Capability–Adjustment Fallacy. Working paper, 30 June 2026.</p></div>
+<div class="paper-entry"><h3>HRIH — The Hyperspace Recursive Intelligence Hypothesis</h3><p>The creation cosmology, explicitly non-empirical, falsifiers listed. July 2026.</p></div>
+</body>
+</html>

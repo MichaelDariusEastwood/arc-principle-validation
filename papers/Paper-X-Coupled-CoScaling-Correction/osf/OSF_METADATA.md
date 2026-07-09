@@ -1,4 +1,4 @@
-# OSF project metadata - The Coupled Co-Scaling Law
+# OSF project metadata — The Coupled Co-Scaling Law
 
 Finished wording for the OSF project form fields. Enter each value into the
 matching field when you create / edit the project (node 6C5XB).
@@ -40,5 +40,5 @@ AI safety; AI alignment; recursive self-improvement; intelligence explosion; har
 Eastwood, M. D. (2026). The Coupled Co-Scaling Law: A Falsifiable Threshold Criterion for the Stability of Recursive Self-Improvement. ARC/Eden research programme. OSF. https://doi.org/10.17605/OSF.IO/6C5XB
 
 ## Dates
-- Document (priority) date: 26 June 2026 - leave untouched on the paper.
-- OSF deposit date: 29 June 2026 - recorded automatically by OSF; do not backdate.
+- Document (priority) date: 26 June 2026 — leave untouched on the paper.
+- OSF deposit date: 29 June 2026 — recorded automatically by OSF; do not backdate.

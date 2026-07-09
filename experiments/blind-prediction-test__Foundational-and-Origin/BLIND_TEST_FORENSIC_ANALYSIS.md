@@ -84,7 +84,7 @@ The effective coupling constant a_eff = m / Σ k_j^β **decreases over time** as
 
 **a_eff decreases 49× over the simulation.** Axiom 2 requires constant a. The prediction α = 1/(1-β) does not apply.
 
-The correct theoretical result for sub-linear BA networks (Krapivsky et al., 2000) predicts *stretched exponential* degree growth, not power-law. The measured α ≈ 0.34 is the correct answer for this system - it reflects the BA model's known behaviour, not a failure of the ARC framework.
+The correct theoretical result for sub-linear BA networks (Krapivsky et al., 2000) predicts *stretched exponential* degree growth, not power-law. The measured α ≈ 0.34 is the correct answer for this system—it reflects the BA model's known behaviour, not a failure of the ARC framework.
 
 ### System 2: Gradient Descent with Momentum
 
@@ -121,7 +121,7 @@ The order parameter emerges from **collective synchronisation** involving a pitc
 
 ## The Real Open Question
 
-The blind test - despite its methodological flaws - does expose a genuine scientific challenge: **which natural or engineered systems genuinely satisfy the ARC framework's axioms?**
+The blind test—despite its methodological flaws—does expose a genuine scientific challenge: **which natural or engineered systems genuinely satisfy the ARC framework's axioms?**
 
 For the framework to constitute a scientific discovery rather than merely a mathematical curiosity, one must identify systems where:
 
@@ -156,6 +156,6 @@ Each would require careful verification that the axioms are approximately satisf
 
 ## Integrity Note
 
-This forensic analysis was conducted with the same commitment to honesty as the original blind test. The blind test was a legitimate scientific exercise. Its conclusion ("FAILED") was honestly reported given the data. However, good science requires examining whether the test methodology was appropriate before accepting the conclusion. In this case, two independent confounds - either of which would be sufficient alone - invalidate the test as evidence for or against the ARC framework.
+This forensic analysis was conducted with the same commitment to honesty as the original blind test. The blind test was a legitimate scientific exercise. Its conclusion ("FAILED") was honestly reported given the data. However, good science requires examining whether the test methodology was appropriate before accepting the conclusion. In this case, two independent confounds—either of which would be sufficient alone—invalidate the test as evidence for or against the ARC framework.
 
 The framework's empirical status remains: **mathematically proven, empirically untested on axiom-satisfying natural systems.**

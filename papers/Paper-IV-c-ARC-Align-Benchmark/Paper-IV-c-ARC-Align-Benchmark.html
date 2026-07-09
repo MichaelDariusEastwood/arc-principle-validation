@@ -456,7 +456,7 @@
 
 <h2>1. Introduction</h2>
 
-<p>AI alignment evaluation has a measurement problem. Current benchmarks - including TruthfulQA, HHH, BBQ, and model-specific red-team evaluations - test models at a single, uncontrolled reasoning depth. They do not vary inference-time compute and do not apply adversarial suppression pressure. On dimensional decomposition, TruthfulQA and BBQ operate as scalar or single-axis evaluations, and HHH provides only a coarse three-way decomposition (Helpful, Honest, Harmless) rather than the fine-grained pillar-level analysis used here; none of these benchmarks measure per-dimension scaling as a function of reasoning depth (see the comparison table in Section 11.1). As shown in Papers IV.a and IV.b, this approach fails to capture the most important properties of alignment: whether it scales with reasoning depth, whether it is robust under adversarial pressure, and whether its components saturate at different rates.</p>
+<p>AI alignment evaluation has a measurement problem. Current benchmarks - including TruthfulQA, HHH, BBQ, and model-specific red-team evaluations - test models at a single, uncontrolled reasoning depth. They do not vary inference-time compute, do not apply adversarial suppression pressure, and do not decompose alignment into component dimensions. As shown in Papers IV.a and IV.b, this approach fails to capture the most important properties of alignment: whether it scales with reasoning depth, whether it is robust under adversarial pressure, and whether its components saturate at different rates.</p>
 
 <p>ARC-Align is designed to address these limitations. It is not a replacement for existing benchmarks but a complementary evaluation that measures properties they cannot: the <em>dynamics</em> of alignment as a function of computational effort. The benchmark is validated using the latest frontier reasoning models available as of March 2026 - including DeepSeek V3, GPT-5.4, Claude Opus 4.6, Gemini Flash, Groq Qwen3-32B, and Grok 4.1 Fast - representing the state of the art across six independent providers.</p>
 
@@ -1488,15 +1488,19 @@
 <!--  13. CONCLUSION (renumbered from 12)                         -->
 <!-- ============================================================ -->
 
-<h3>12.9 Falsifiability &mdash; what would show ARC-Align does not measure what it claims</h3>
-<p>ARC-Align claims to measure properties existing benchmarks miss: whether alignment scales with reasoning depth, whether it is robust under adversarial suppression, and whether its components saturate at different rates. The instrument is refutable. It would be shown invalid by any of the following:</p>
+<h3>12.5 Falsifiability: what would defeat this benchmark</h3>
+
+<p>ARC-Align is offered as a candidate benchmark, so the relevant question is instrument validity. It is defeated &mdash; as a measure of what it claims to measure &mdash; by any of the following:</p>
+
 <ol>
-<li><strong>No depth signal.</strong> If, across a broad model set, ARC-Align scores did not vary with controlled reasoning depth, the benchmark&rsquo;s founding premise would fail on its own instrument.</li>
-<li><strong>Dimension non-separation.</strong> If the decomposed alignment dimensions collapsed to a single factor (they saturate at the same rate), the multi-dimensional design would add nothing over a scalar score.</li>
-<li><strong>Adversarial-suppression null.</strong> If suppression pressure produced no degradation distinguishable from noise, that protocol layer would be inert.</li>
-<li><strong>No discriminant validity.</strong> If ARC-Align failed to separate models that TruthfulQA/HHH/BBQ already separate &mdash; or failed to separate the models it claims to &mdash; it would not earn its place as a complementary benchmark.</li>
-<li><strong>Scorer-dominated.</strong> If scores were driven more by scorer-panel choice than by model behaviour (low inter-rater agreement / high scorer-spread), the measurements would not be about the models under test.</li>
+<li><strong>Construct validity failure.</strong> ARC-Align claims to measure alignment quality as a function of reasoning depth. It is defeated if its scores do not track any independent measure of alignment or safety &mdash; i.e. the benchmark tracks reasoning fluency or verbosity rather than alignment as established evaluations understand it.</li>
+<li><strong>Scorer unreliability.</strong> Scores come from a panel of blind AI scorers. The benchmark is defeated if inter-scorer agreement is low &mdash; the same response drawing widely divergent scores across the panel &mdash; because the metric would then be dominated by scorer noise rather than the property under test.</li>
+<li><strong>Non-reproducibility.</strong> The paper stakes itself on a fully specified, open-source pipeline. It is defeated if an independent laboratory running the published specification cannot reproduce the reported three-tier hierarchy within the stated effect sizes.</li>
+<li><strong>Invalid depth manipulation.</strong> The response-profile concept requires that reasoning depth is actually varied and nothing else. It is defeated if models ignore the depth instruction, or if depth co-varies with answer length or content, so that the profile reflects a confound rather than reasoning depth.</li>
+<li><strong>Goodhart failure.</strong> As a safety instrument it is defeated if a model can score well by emitting alignment-sounding text without the underlying disposition the benchmark intends to detect; the adversarial suppression-cage component must be shown to resist that gaming.</li>
 </ol>
+
+<p>What would <em>not</em> defeat it: any single model's tier being revised, or the benchmark needing recalibration &mdash; both are expected of a candidate benchmark under independent replication. Defeat means failure of construct validity, scorer reliability, or reproducibility, not ordinary refinement.</p>
 
 <h2>13. Conclusion</h2>
 
@@ -1526,8 +1530,8 @@
 <h2>14. References</h2>
 
 <ol style="font-size: 0.85rem;">
-    <li>Eastwood, M. D. (2026). On the Origin of Scaling Laws: Evidence Catalogue Linking Cauchy Analysis to Empirical Scaling Laws. <em>ARC Principle Series, Infrastructure Paper (unnumbered).</em></li>
-    <li>Eastwood, M. D. (2026). Eden Vision: Philosophical Foundations of Embedded Alignment (Alignment-as-Parenting). <em>ARC Principle Series, Infrastructure Paper (unnumbered).</em></li>
+    <li>Eastwood, M. D. (2026). On the Origin of Scaling Laws: The ARC Principle. <em>ARC Principle Series, Paper I.</em></li>
+    <li>Eastwood, M. D. (2026). Eden Protocol: Philosophical Foundations of Embedded Alignment. <em>ARC Principle Series, Paper II.</em></li>
     <li>Eastwood, M. D. (2026). The Alignment Scaling Problem. <em>ARC Principle Series, Paper III.</em></li>
     <li>Eastwood, M. D. (2026). Baked-In vs Computed Alignment: Two Architectures of AI Safety. <em>ARC Principle Series, Paper IV.a.</em></li>
     <li>Eastwood, M. D. (2026). Ethical Reasoning Quality Saturates at Low Computational Depth. <em>ARC Principle Series, Paper IV.b.</em></li>
