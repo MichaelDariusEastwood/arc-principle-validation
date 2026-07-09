@@ -7,75 +7,311 @@
 <meta name="author" content="Michael Darius Eastwood">
 <meta name="description" content="Paper C: a falsifiable descriptive framework for radical cognitive asymmetry, the Capability-Adjustment Fallacy, a documented live case across clinical, legal and research records, and the independent convergence with formal results in AI alignment.">
 <style>
-  :root{--ink:#1a1a1a;--grey:#555;--light-grey:#f5f5f5;--border:#ddd;--text:#2b2b2b;--proof-blue:#1565c0;--proof-light:#e8f1fb;--gold:#c49102;--gold-light:#fff8e1;--synthesis:#6a1b9a;--synthesis-light:#f3e5f5;--green:#2e7d32}
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{font-size:15.5px;scroll-behavior:smooth}
-  body{font-family:'Source Serif 4',Georgia,serif;font-size:1rem;line-height:1.72;color:var(--text);background:#fff;max-width:800px;margin:0 auto;padding:2.2rem 1.4rem 5rem}
-  header{border-bottom:3px solid var(--synthesis);padding-bottom:1.6rem;margin-bottom:1.6rem;text-align:center}
-  .paper-type{font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.22em;color:var(--synthesis);margin-bottom:.9rem}
-  h1{font-family:'Source Serif 4',serif;font-size:2rem;font-weight:700;line-height:1.18;color:var(--ink);margin-bottom:.5rem}
-  .subtitle{font-size:1.1rem;font-style:italic;color:var(--grey);margin:.6rem auto 1.1rem;max-width:92%}
-  .author-info{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:var(--text);line-height:1.5}
-  .meta-line{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:var(--grey);margin-top:.55rem}
-  h2{font-family:'Source Sans 3',sans-serif;font-size:1.3rem;font-weight:700;color:var(--ink);margin:2.6rem 0 .85rem;padding-bottom:.32rem;border-bottom:2px solid var(--synthesis)}
-  h3{font-family:'Source Sans 3',sans-serif;font-size:1.05rem;font-weight:700;color:var(--synthesis);margin:1.7rem 0 .55rem}
-  p{margin:.7rem 0}
-  ul,ol{margin:.7rem 0 .7rem 1.4rem}
-  li{margin:.4rem 0}
-  blockquote{border-left:4px solid var(--synthesis);background:var(--synthesis-light);padding:.8rem 1.1rem;margin:1.1rem 0;border-radius:0 7px 7px 0;font-style:italic}
-  .abstract{background:var(--light-grey);border-left:5px solid var(--ink);padding:1.05rem 1.3rem;border-radius:0 7px 7px 0;margin:1.5rem 0}
-  .abstract .lab{font-family:'Source Sans 3',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;margin-bottom:.4rem;color:var(--ink)}
-  .scope{background:var(--gold-light);border:1px solid #ecdca6;border-radius:7px;padding:1.05rem 1.3rem;margin:1.5rem 0}
-  .scope .lab{font-family:'Source Sans 3',sans-serif;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;margin-bottom:.4rem}
-  .callout{background:#fff;border:2px solid var(--synthesis);border-radius:8px;padding:1rem 1.25rem;margin:1.5rem 0;font-size:1.02rem}
-  .callout b{color:var(--synthesis)}
-  .priority{background:var(--ink);color:#fff;border-radius:7px;padding:1rem 1.25rem;margin:1.5rem 0;font-family:'Source Sans 3',sans-serif;font-size:.85rem;line-height:1.6}
-  .priority strong{color:#ffd27a;display:block;font-size:1rem;margin-bottom:.35rem}
-  table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-family:'Source Sans 3',sans-serif;font-size:.85rem}
-  th{background:var(--ink);color:#fff;padding:.5rem .7rem;text-align:left;font-weight:600}
-  td{border:1px solid var(--border);padding:.48rem .7rem;vertical-align:top}
-  tr:nth-child(even){background:#fafafa}
-  .verdict th{background:var(--synthesis)}
-  .nav{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.4rem 0;padding:.9rem 1rem;background:var(--light-grey);border-radius:7px;font-family:'Source Sans 3',sans-serif;font-size:.78rem}
-  .nav a{color:var(--proof-blue);text-decoration:none;padding:.15rem .5rem;border:1px solid #cdd9e8;border-radius:4px;background:#fff}
-  hr{border:none;border-top:1px solid var(--border);margin:2.2rem 0}
-  .refs{font-size:.85rem;line-height:1.55}
-  .refs p{margin:.35rem 0;padding-left:1.4rem;text-indent:-1.4rem}
-  footer{font-family:'Source Sans 3',sans-serif;font-size:.78rem;color:var(--grey);margin-top:3rem;border-top:1px solid var(--border);padding-top:1.1rem;text-align:center;line-height:1.6}
-  .evidence{background:var(--proof-light);border:1px solid #bcd5f0;border-radius:7px;padding:1rem 1.2rem;margin:1.2rem 0;font-size:.9rem}
-  .evidence .lab{font-family:'Source Sans 3',sans-serif;font-weight:700;color:var(--proof-blue);text-transform:uppercase;letter-spacing:.08em;font-size:.74rem;margin-bottom:.5rem}
-  .rung{display:inline-block;font-family:'JetBrains Mono','Menlo',monospace;font-size:.7rem;font-weight:700;padding:.1rem .45rem;border-radius:4px;margin-right:.35rem;vertical-align:middle;letter-spacing:.03em}
-  .rung-hyp{background:var(--synthesis);color:#fff}
-  .book-quote{border-left:3px solid var(--synthesis);background:var(--synthesis-light);padding:.65rem 1rem;margin:.9rem 0;border-radius:0 6px 6px 0;font-style:italic;font-size:.94rem}
-  .book-quote .cite{display:block;font-style:normal;font-size:.78rem;color:var(--grey);margin-top:.35rem;text-align:right}
-  @page{size:A4;margin:15mm 16mm 18mm 16mm;@bottom-center{content:"Page " counter(page) " of " counter(pages);font-family:'Source Sans 3',sans-serif;font-size:7.5pt;color:#555}}
-  @media print{
-    .nav{display:none}
-    html{font-size:9.5pt}
-    body{padding:0;max-width:100%;line-height:1.55}
-    header{padding-bottom:.9rem;margin-bottom:1rem}
-    h1{font-size:1.6rem}
-    h2{margin:1.5rem 0 .5rem}
-    h3{margin:1rem 0 .35rem}
-    p{margin:.45rem 0}
-    ul,ol{margin:.45rem 0 .45rem 1.3rem}
-    li{margin:.22rem 0}
-    table{margin:.7rem 0;font-size:.8rem}
-    .abstract,.scope,.callout,.priority,.evidence{padding:.7rem .9rem;margin:.9rem 0}
-    blockquote,.book-quote{padding:.5rem .9rem;margin:.7rem 0}
-    .refs{font-size:.78rem;line-height:1.45}
+  :root {
+    --ink: #1a1a1a;
+    --grey: #4a4a4a;
+    --light-grey: #f8f8f8;
+    --border: #ccc;
+    --text: #1a1a1a;
+    --accent: #1060a0;
+    --emph: #333;
+    --rule: #ddd;
+    --ref-bg: #fafafa;
   }
-  @media(max-width:640px){body{padding:1rem .8rem 3rem}h1{font-size:1.55rem}}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must
-   not overflow at phone widths; desktop and print rendering unchanged. */
-@media (max-width: 720px) {
-  code { overflow-wrap: anywhere !important; word-break: break-all !important; }
-  pre { overflow-x: auto !important; max-width: 100% !important; }
-  table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
-  thead, tbody, tr { max-width: 100%; }
-  img, svg { max-width: 100% !important; height: auto !important; }
-}
+  /* ── PAGE ── */
+  html { font-size: 14px; scroll-behavior: smooth; }
+  body {
+    font-family: 'Source Serif 4', 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--text);
+    background: #fff;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 5rem;
+  }
+
+  /* ── ARTICLE HEADER ── */
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 1.2rem; margin-bottom: 1.4rem; text-align: left; }
+  .paper-type {
+    font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    font-size: .68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: .4rem;
+    text-align: left;
+  }
+  .subtitle {
+    font-size: .95rem;
+    font-style: italic;
+    color: var(--grey);
+    margin: .3rem 0 .8rem;
+    line-height: 1.45;
+  }
+  .author-info {
+    font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    font-size: .78rem;
+    color: var(--grey);
+    line-height: 1.45;
+  }
+  .author-info .name { font-size: .85rem; color: var(--ink); font-weight: 600; }
+  .meta-line {
+    font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    font-size: .68rem;
+    color: var(--grey);
+    margin-top: .4rem;
+    line-height: 1.4;
+  }
+
+  /* ── ABSTRACT ── */
+  .abstract {
+    background: var(--light-grey);
+    border-left: 3px solid var(--ink);
+    padding: .8rem 1rem;
+    margin: 1.5rem 0;
+    font-size: .9rem;
+    line-height: 1.5;
+  }
+  .abstract .lab {
+    font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ink);
+    margin-bottom: .5rem;
+  }
+
+  /* ── HEADINGS ── */
+  h2 {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 .6rem;
+    padding-bottom: .3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  h3 {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 1.4rem 0 .4rem;
+  }
+  p { margin: .55rem 0; }
+  ul, ol { margin: .55rem 0 .55rem 1.4rem; }
+  li { margin: .25rem 0; }
+
+  /* ── CALLOUTS ── */
+  blockquote {
+    border-left: 3px solid var(--accent);
+    background: #f5f8fc;
+    padding: .7rem .95rem;
+    margin: 1rem 0;
+    font-style: italic;
+    font-size: .92rem;
+  }
+  .scope {
+    background: #fdf8f0;
+    border: 1px solid #e8d5a0;
+    padding: .8rem 1rem;
+    margin: 1rem 0;
+    font-size: .88rem;
+  }
+  .scope .lab {
+    font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #8b7355;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: .68rem;
+    margin-bottom: .35rem;
+  }
+  .callout {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: .85rem 1rem;
+    margin: 1.2rem 0;
+    font-size: .9rem;
+    border-left: 3px solid var(--accent);
+  }
+  .callout b { color: var(--accent); }
+  .priority {
+    background: var(--ink);
+    color: #fff;
+    padding: .85rem 1rem;
+    margin: 1rem 0;
+    font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    font-size: .78rem;
+    line-height: 1.55;
+  }
+  .priority strong {
+    color: #ffd27a;
+    display: block;
+    font-size: .88rem;
+    margin-bottom: .25rem;
+  }
+  .evidence {
+    background: #f5f8fc;
+    border: 1px solid #c8daf0;
+    padding: .8rem 1rem;
+    margin: 1rem 0;
+    font-size: .85rem;
+  }
+  .evidence .lab {
+    font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: .68rem;
+    margin-bottom: .4rem;
+  }
+  .book-quote {
+    border-left: 3px solid var(--accent);
+    background: #f8f8f8;
+    padding: .6rem .9rem;
+    margin: .8rem 0;
+    font-style: italic;
+    font-size: .88rem;
+  }
+  .book-quote .cite {
+    display: block;
+    font-style: normal;
+    font-size: .72rem;
+    color: var(--grey);
+    margin-top: .3rem;
+    text-align: right;
+  }
+
+  /* ── TABLES ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: .8rem;
+  }
+  th {
+    font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    background: var(--ink);
+    color: #fff;
+    padding: .4rem .55rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: .72rem;
+    letter-spacing: .04em;
+  }
+  td {
+    border: 1px solid var(--border);
+    padding: .35rem .55rem;
+    vertical-align: top;
+    line-height: 1.4;
+  }
+  tr:nth-child(even) { background: var(--ref-bg); }
+
+  /* ── NAV BAR ── */
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    margin: 1.5rem 0;
+    padding: .6rem;
+    background: var(--light-grey);
+    border: 1px solid var(--border);
+    font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    font-size: .65rem;
+  }
+  .nav a {
+    color: var(--accent);
+    text-decoration: none;
+    padding: .1rem .4rem;
+    border: 1px solid var(--border);
+    background: #fff;
+  }
+
+  /* ── LABELS ── */
+  .rung {
+    display: inline-block;
+    font-family: 'JetBrains Mono', 'Menlo', monospace;
+    font-size: .62rem;
+    font-weight: 700;
+    padding: .08rem .4rem;
+    border-radius: 3px;
+    margin-right: .25rem;
+    vertical-align: middle;
+    letter-spacing: .03em;
+  }
+  .rung-hyp { background: #4a2a7a; color: #fff; }
+
+  /* ── REFERENCES ── */
+  .refs { font-size: .78rem; line-height: 1.45; }
+  .refs p { margin: .25rem 0; padding-left: 1.2rem; text-indent: -1.2rem; }
+
+  /* ── MISC ── */
+  hr { border: none; border-top: 1px solid var(--rule); margin: 1.5rem 0; }
+  footer {
+    font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    font-size: .7rem;
+    color: var(--grey);
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+    padding-top: .8rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* ── PRINT (A4, compact, journal-like) ── */
+  @page {
+    size: A4;
+    margin: 15mm 16mm 18mm 16mm;
+    @bottom-center {
+      content: "Page " counter(page) " of " counter(pages);
+      font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+      font-size: 7.5pt;
+      color: #555;
+    }
+  }
+  @media print {
+    .nav { display: none; }
+    html { font-size: 8.5pt; }
+    body { padding: 0; max-width: 100%; line-height: 1.45; }
+    header { padding-bottom: .6rem; margin-bottom: .8rem; }
+    h1 { font-size: 1.3rem; }
+    h2 { margin: 1.2rem 0 .4rem; font-size: 1rem; }
+    h3 { margin: .8rem 0 .3rem; font-size: .85rem; }
+    p { margin: .3rem 0; }
+    ul, ol { margin: .3rem 0 .3rem 1.2rem; }
+    li { margin: .15rem 0; }
+    table { margin: .5rem 0; font-size: .7rem; }
+    .abstract, .scope, .callout, .priority, .evidence { padding: .5rem .7rem; margin: .7rem 0; }
+    blockquote, .book-quote { padding: .4rem .7rem; margin: .5rem 0; }
+    .refs { font-size: .7rem; line-height: 1.35; }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    body { padding: 1rem .8rem 3rem; }
+    h1 { font-size: 1.4rem; }
+  }
+  @media (max-width: 720px) {
+    code { overflow-wrap: anywhere !important; word-break: break-all !important; }
+    pre { overflow-x: auto !important; max-width: 100% !important; }
+    table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
+    img, svg { max-width: 100% !important; height: auto !important; }
+  }
 </style>
 </head>
 <body>
