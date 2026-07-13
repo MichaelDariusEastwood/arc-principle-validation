@@ -27,7 +27,7 @@ This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitH
 
 ### Independent corroboration (sequential > parallel)
 
-The programme's sequential-recursion result (`alpha_sequential > 1 > alpha_parallel`) is independently corroborated by:
+The programme's sequential-recursion ordering result (sequential recursion outperforms parallel at matched compute: `alpha_sequential > alpha_parallel`) is independently corroborated by:
 
 > Sharma, A. & Chopra, P. (2025). *The Sequential Edge: Inverse-Entropy Voting Beats Parallel Self-Consistency at Matched Compute.* arXiv:2511.02309 (4 November 2025). https://arxiv.org/abs/2511.02309
 
@@ -64,7 +64,7 @@ U = I x R^alpha     where alpha = 1/(1 - beta)
 - **beta** = Self-referential coupling
 - **alpha** = Scaling exponent (derived, not fitted)
 
-**Core prediction:** alpha_sequential > 1 > alpha_parallel. Validated to R^2 = 1.00000000 (machine precision).
+**Core prediction:** alpha_sequential > 1 > alpha_parallel. Status: the ordering alpha_sequential > alpha_parallel is supported (Paper II), but the early super-linearity estimate alpha_sequential ≈ 2.24 was retracted; the robust v13 estimate is alpha_sequential ≈ 0.49 (sub-linear). Super-linearity (alpha > 1) remains an open, pre-registered prediction — not confirmed. (The R^2 = 1.00000000 fit reported earlier was an algebraic identity check, not empirical validation.)
 
 ## The Document Suite (18 documents)
 
