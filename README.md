@@ -7,7 +7,7 @@
 
 ## Citation & Prior Art
 
-This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitHub, use the **"Cite this repository"** button in the sidebar (top right of the repository page) to export the citation in APA or BibTeX directly from that file.
+Use the canonical OSF DOI and preferred citation below. It is the public citation authority for this research suite.
 
 **Cite this work as:**
 
@@ -104,9 +104,6 @@ All authoritative documents live in per-paper folders under `papers/`:
 arc-principle-validation/
 +-- README.md
 +-- LICENCE
-+-- CANONICAL-VERSIONS.md
-+-- VERSION-CONTROL-STANDARDS.md
-+-- OSF-UPLOAD-CHECKLIST-2026-03-18.md
 +-- papers/                              # Per-paper folders (HTML, PDF, experiments, results, figures)
 |   +-- Paper-I-ARC-Principle/
 |   +-- Paper-II-Experimental-Validation/

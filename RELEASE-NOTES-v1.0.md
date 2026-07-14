@@ -83,13 +83,13 @@ The complete **18-document suite** lives under `papers/`, each in its own folder
 
 The repository ships the **outputs** of the v5 four-layer blind evaluation but, as of this release, **not the harness code that produced them.** A reviewer reading Papers IV.c / IV.d can see the result JSONs (which self-document the schema: `version 5.0`, `blinding_protocol "4-layer"`, `laundering true`, 6–7 blind scorers, the depth configs, `prompt_id`, `score1..scoreN`, `response_hash`) but cannot yet re-run the pipeline end-to-end from source.
 
-This is disclosed honestly rather than papered over. The harness, plus standalone `prompts/` and `rubric/` artefacts, is being prepared for a follow-up release; the output schema and the four-layer blinding protocol are fully documented in the result files in the meantime. The programme's position is explicit: honesty over completeness — a fabricated harness would be worse than an admitted gap. See `PUBLISH-CHECKLIST.md` §3–§4 for the exact contract the released harness must satisfy.
+This is disclosed honestly rather than papered over. The harness, plus standalone `prompts/` and `rubric/` artefacts, is being prepared for a follow-up release; the output schema and the four-layer blinding protocol are fully documented in the result files in the meantime. The programme's position is explicit: honesty over completeness — a fabricated harness would be worse than an admitted gap. A private release contract governs any later harness publication.
 
 ---
 
 ## How to cite
 
-This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitHub, use the **"Cite this repository"** button (top-right of the repo page) to export APA or BibTeX.
+Use the canonical OSF DOI and preferred citation below for this public research suite.
 
 **Preferred citation:**
 
@@ -107,7 +107,7 @@ This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitH
 }
 ```
 
-The canonical project DOI is **10.17605/OSF.IO/6C5XB**. If a Zenodo software DOI is minted for this GitHub release (see `ZENODO-OSF-RELEASE-RUNBOOK.md`), it will be added to `CITATION.cff` as a secondary identifier; the OSF DOI remains the primary, authoritative citation to avoid fragmenting references.
+The canonical project DOI is **10.17605/OSF.IO/6C5XB**. Any later software-release DOI will be recorded in the corresponding public release metadata; the OSF DOI remains the primary, authoritative citation to avoid fragmenting references.
 
 **When citing the sequential-vs-parallel result, also cite the corroborating prior/parallel art:**
 
