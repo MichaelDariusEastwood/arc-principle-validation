@@ -93,7 +93,7 @@ All authoritative documents live in per-paper folders under `papers/`:
 |----------|---------|
 | Foundational | Axiomatic derivation from Cauchy functional equations. d/(d+1) prediction. |
 | On the Origin of Scaling Laws | Cross-domain d/(d+1) evidence catalogue. 8 independent derivations. |
-| Eden Engineering | Protocol architecture specification (v6). |
+| Eden Engineering | Non-enabling historical research note; expanded specification withdrawn pending patent and disclosure review. |
 | Eden Vision | Public coordination document. Philosophical foundations. |
 | Executive Summary | Programme overview for grant reviewers and technical evaluators. |
 | Master Table of Contents | Suite navigation with per-paper summaries. |
@@ -152,7 +152,7 @@ Each experiment folder contains its own README with specific instructions and de
 
 ## Falsification
 
-Thirteen explicit falsification criteria are specified across the ARC framework and Eden Protocol, each independently sufficient to refute the relevant claims. See Paper III Section 4 and Eden Engineering Section 11.
+The ARC framework's explicit falsification criteria are set out in Paper III Section 4. Each is independently sufficient to refute the relevant claim.
 
 ## Citation
 
