@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OSF DOI](https://img.shields.io/badge/OSF-10.17605%2FOSF.IO%2F6C5XB-blue)](https://doi.org/10.17605/OSF.IO/6C5XB)
 
-## Citation & Prior Art
+## Citation and related work
 
 This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitHub, use the **"Cite this repository"** button in the sidebar (top right of the repository page) to export the citation in APA or BibTeX directly from that file.
 
@@ -33,13 +33,21 @@ The programme's sequential-recursion ordering result (sequential recursion outpe
 
 Their work reports, on independent systems and at matched compute, that sequential reasoning outperforms parallel self-consistency. **No priority is claimed for that result here** — it is cited as corroborating prior/parallel art, and the credit for that specific finding belongs to its authors.
 
-### Acknowledged prior art (the geometric exponent)
+### Acknowledged earlier work (the geometric exponent)
 
-The geometric scaling exponent `alpha = d/(d+1)` is **acknowledged prior art**. It follows the dimensional-scaling tradition of West, Brown & Enquist (allometric quarter-power scaling) and related derivations across physics and biology; this programme does not claim to have originated `d/(d+1)`. The contribution claimed here is the **Cauchy unification** — deriving the family of admissible scaling laws from the Cauchy functional equations and showing that a single framework accounts for the observed cross-domain exponents (see Paper VII and the Foundational document).
+The geometric scaling exponent `alpha = d/(d+1)` is **not claimed as original here**. It follows the dimensional-scaling tradition of West, Brown & Enquist (allometric quarter-power scaling) and related derivations across physics and biology; this programme does not claim to have originated `d/(d+1)`. The contribution claimed here is the **Cauchy unification** — deriving the family of admissible scaling laws from the Cauchy functional equations and showing that a single framework accounts for the observed cross-domain exponents (see Paper VII and the Foundational document).
 
-## Headline Results (March 2026)
+## Headline results
 
-- **Paper VII** (Cauchy Unification): 19/25 empirical domains preferred the Cauchy-predicted scaling family under strict AICc model selection (p = 1.56 x 10^-5)
+> Stated as of March 2026 except where a correction is noted inline. Where a
+> result is under correction, the corrections notice is authoritative, not this page.
+
+- **Paper VII** (Cauchy Unification): **under correction as of 11 August 2026.** The functional-equation
+  grid classifies homomorphisms, and there are four cells, not three; the earlier three-family framing
+  and the derived-from-Cauchy treatment of bounded curves are withdrawn. The primary statistic is a
+  permutation test conditioned on both marginals, not the binomial reported previously. See the
+  [corrections notice](https://www.michaeldariuseastwood.com/research/corrections/) for the current
+  figures before citing this result
 - **Paper V** (Stewardship Gene): Stakeholder care improvement across five analysable Eden intervention runs (Fisher p = 6.3 x 10^-21)
 - **Paper VIII** (Load-Bearing Proof): Entangled safety is load-bearing at the weight level. DGM experiment shows Eden matches Babylon capability at 0.667. Removal of safety component collapses all capability (p = 0.04). Gated simulation confirms Babylon reward-hacking fingerprint. Weight-level structural entanglement inconclusive at current training scale.
 - **Paper IX** (Synthesis and Roadmap): Synthesises the full programme into a unified narrative with a four-tier replication roadmap
@@ -64,11 +72,25 @@ U = I x R^alpha     where alpha = 1/(1 - beta)
 - **beta** = Self-referential coupling
 - **alpha** = Scaling exponent (derived, not fitted)
 
-**Core prediction:** alpha_sequential > 1 > alpha_parallel. Status: the ordering alpha_sequential > alpha_parallel is supported (Paper II), but the early super-linearity estimate alpha_sequential ≈ 2.24 was retracted; the robust v13 estimate is alpha_sequential ≈ 0.49 (sub-linear). Super-linearity (alpha > 1) remains an open, pre-registered prediction — not confirmed. (The R^2 = 1.00000000 fit reported earlier was an algebraic identity check, not empirical validation.)
+**Core prediction:** alpha_sequential > 1 > alpha_parallel. Status: the ordering alpha_sequential > alpha_parallel is supported (Paper II), but the early super-linearity estimate alpha_sequential ≈ 2.24 was retracted; the robust v13 estimate is alpha_sequential ≈ 0.49 (sub-linear). Super-linearity (alpha > 1) remains an open prediction and is not confirmed. (The R^2 = 1.00000000 fit reported earlier was an algebraic identity check, not empirical validation.)
 
 ## The Document Suite (18 documents)
 
-All authoritative documents live in per-paper folders under `papers/`:
+Per-paper folders under `papers/` hold **mirrors** of each paper, alongside the code and data
+that reproduce it.
+
+> **Where the master lives.** As of 11 August 2026, the master copy of each paper is its page on
+> [michaeldariuseastwood.com](https://www.michaeldariuseastwood.com/research/papers/). This repository
+> receives each new version after it is published there. The reason is practical: the published page
+> carries the structured metadata, figures and mathematics that a plain-text copy cannot hold without
+> losing them, so editing it anywhere else silently drops information. The canon previously said the
+> reverse; the canon was wrong, and every revision for the past two months went to the site.
+>
+> **What this repository is for:** reproducing the results. The code, data and experiment runners here
+> are authoritative for reproduction. If a paper mirror here disagrees with the published page, the
+> published page is correct and this copy is behind. Please
+> [open an issue](https://github.com/MichaelDariusEastwood/arc-principle-validation/issues) if you find
+> that, because a lagging mirror is a defect, not a variant.
 
 ### 12 Research Papers
 
