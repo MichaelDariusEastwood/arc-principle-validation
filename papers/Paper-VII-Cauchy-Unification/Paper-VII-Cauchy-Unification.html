@@ -1,359 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paper VII: Cauchy Unification</title>
+<html lang="en-GB">
+<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Paper VII: Cauchy Unification</title> <script> MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true }, svg: { fontCache: 'global' } }; </script> <script src="https://unpkg.com/mathjax@3/es5/tex-svg.js" async></script> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"> <style> :root { --nature-red: #c41230; --nature-dark: #1a1a1a; --nature-grey: #666666; --nature-light-grey: #f5f5f5; --nature-border: #dddddd; --text-body: #333333; --cauchy-blue: #0d47a1; --cauchy-light: #e3f2fd; --eden-green: #2e7d32; --eden-light: #e8f5e9; } * { margin: 0; padding: 0; box-sizing: border-box; } html { font-size: 15px; } body { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; font-size: 1rem; line-height: 1.7; color: var(--text-body); background: #ffffff; max-width: 750px; margin: 0 auto; padding: 2rem; } header { border-bottom: 3px solid var(--cauchy-blue); padding-bottom: 2rem; margin-bottom: 2rem; text-align: center; } .paper-type { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--cauchy-blue); margin-bottom: 1rem; } h1, h2.as-h1{ font-family: 'Source Serif 4', Georgia, serif; font-size: 2.2rem; font-weight: 700; line-height: 1.2; color: var(--nature-dark); margin-bottom: 0.5rem; } .subtitle { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.2rem; font-weight: 400; font-style: italic; color: var(--nature-grey); margin-bottom: 1.5rem; } .author-info { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.9rem; color: var(--nature-grey); } .author-info .name { font-weight: 600; color: var(--nature-dark); } .version-date { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.8rem; color: var(--nature-grey); margin-top: 0.75rem; } h2 { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.5rem; font-weight: 600; color: var(--cauchy-blue); margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--cauchy-light); } h3 { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--nature-dark); margin-top: 1.5rem; margin-bottom: 0.5rem; } p { margin-bottom: 1rem; text-align: justify; hyphens: none; } ul, ol { margin: 0.75rem 0 1rem 1.5rem; } li { margin-bottom: 0.4rem; } .abstract-box { background: var(--cauchy-light); border: 1px solid var(--cauchy-blue); border-radius: 8px; padding: 1.5rem 2rem; margin: 1.5rem 0; } .abstract-box h3 { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cauchy-blue); margin-top: 0; margin-bottom: 1rem; } .finding-box { background: var(--eden-light); border-left: 4px solid var(--eden-green); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0; } .finding-box h4 { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--eden-green); margin-bottom: 0.75rem; } .warning-box { background: #fff3e0; border-left: 4px solid #e65100; border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0; } .warning-box h4 { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #e65100; margin-bottom: 0.75rem; } table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.82rem; } th, td { border: 1px solid var(--nature-border); padding: 6px 10px; text-align: left; } th { background: var(--nature-light-grey); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; } .num { text-align: right; font-variant-numeric: tabular-nums; } .confirmed { background: #e8f5e9; } .failed { background: #fce4ec; } .equation-box { background: var(--nature-light-grey); border: 1px solid var(--nature-border); border-radius: 8px; padding: 1.5rem 2rem; margin: 1.5rem 0; text-align: center; } .companion-links { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--nature-border); font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.85rem; color: var(--nature-grey); } .companion-links a { color: var(--cauchy-blue); } .keywords { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.85rem; color: var(--nature-grey); margin-top: 1rem; } .references { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.85rem; } .references p { text-indent: -1.5rem; padding-left: 1.5rem; margin-bottom: 0.5rem; } .tier-label { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; display: inline-block; padding: 2px 8px; border-radius: 3px; margin-bottom: 0.5rem; } .tier-primary { background: var(--cauchy-blue); color: #fff; } .tier-secondary { background: #546e7a; color: #fff; } .tier-noted { background: #b0bec5; color: #37474f; } /* Print styles - world-class PDF export */ @page { size: A4; margin: 10mm 15mm 10mm 15mm; /* Kill Chrome PDF headers/footers permanently */ @top-left { content: none; } @top-center { content: none; } @top-right { content: none; } @bottom-left { content: none; } @bottom-center { content: none; } @bottom-right { content: none; } } @media print { body { max-width: none; padding: 0; margin: 0; font-size: 10.5pt; line-height: 1.45; color: #000; background: #fff; } /* Typography scaling */ h1, /* Typography scaling */ h2.as-h1{ font-size: 20pt; margin-bottom: 6pt; } h2 { font-size: 13pt; margin-top: 14pt; margin-bottom: 6pt; } h3 { font-size: 11.5pt; margin-top: 10pt; margin-bottom: 4pt; } h4 { font-size: 10.5pt; margin-top: 8pt; margin-bottom: 3pt; } p { margin-bottom: 5pt; } /* NEVER orphan titles - titles must stay with their content */ h1, h2, h3, h4, /* NEVER orphan titles - titles must stay with their content */ h2.as-h1{ page-break-after: avoid !important; break-after: avoid !important; } /* Keep related content together */ table, figure, blockquote, .finding-box, .critical-box, .core-claim, .equation-box, .abstract-box, .plain-english-box, .caveat-box, .warning-box, .epigraph { page-break-inside: avoid !important; break-inside: avoid !important; } /* Prevent orphaned lines */ p { orphans: 4; widows: 4; } /* Clean link appearance */ a { text-decoration: none; color: inherit; } a[href]:after { content: none !important; } /* Tables */ table { font-size: 9pt; } th, td { padding: 3pt 5pt; } thead { display: table-header-group; } /* Figures */ figure { margin: 8pt 0; } figure img { max-width: 85%; box-shadow: none !important; border: none; } figcaption { font-size: 8.5pt; margin-top: 4pt; } /* Boxes - clean borders for print */ .finding-box, .critical-box, .core-claim, .caveat-box, .warning-box, .plain-english-box, .abstract-box, .epigraph { box-shadow: none !important; border-radius: 0 !important; } /* Header - keep compact */ header { page-break-after: avoid; break-after: avoid; } }
 
-    <script>
-        MathJax = {
-            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
-            svg: { fontCache: 'global' }
-        };
-    </script>
-    <script src="https://unpkg.com/mathjax@3/es5/tex-svg.js" async></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --nature-red: #c41230;
-            --nature-dark: #1a1a1a;
-            --nature-grey: #666666;
-            --nature-light-grey: #f5f5f5;
-            --nature-border: #dddddd;
-            --text-body: #333333;
-            --cauchy-blue: #0d47a1;
-            --cauchy-light: #e3f2fd;
-            --eden-green: #2e7d32;
-            --eden-light: #e8f5e9;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { font-size: 15px; }
-
-        body {
-            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-body);
-            background: #ffffff;
-            max-width: 750px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            border-bottom: 3px solid var(--cauchy-blue);
-            padding-bottom: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .paper-type {
-            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--cauchy-blue);
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-family: 'Source Serif 4', Georgia, serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--nature-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            font-family: 'Source Serif 4', Georgia, serif;
-            font-size: 1.2rem;
-            font-weight: 400;
-            font-style: italic;
-            color: var(--nature-grey);
-            margin-bottom: 1.5rem;
-        }
-
-        .author-info {
-            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
-            font-size: 0.9rem;
-            color: var(--nature-grey);
-        }
-
-        .author-info .name { font-weight: 600; color: var(--nature-dark); }
-
-        .version-date {
-            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
-            font-size: 0.8rem;
-            color: var(--nature-grey);
-            margin-top: 0.75rem;
-        }
-
-        h2 {
-            font-family: 'Source Serif 4', Georgia, serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--cauchy-blue);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid var(--cauchy-light);
-        }
-
-        h3 {
-            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--nature-dark);
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        p { margin-bottom: 1rem; text-align: justify; hyphens: none; }
-        ul, ol { margin: 0.75rem 0 1rem 1.5rem; }
-        li { margin-bottom: 0.4rem; }
-
-        .abstract-box {
-            background: var(--cauchy-light);
-            border: 1px solid var(--cauchy-blue);
-            border-radius: 8px;
-            padding: 1.5rem 2rem;
-            margin: 1.5rem 0;
-        }
-
-        .abstract-box h3 {
-            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--cauchy-blue);
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
-
-        .finding-box {
-            background: var(--eden-light);
-            border-left: 4px solid var(--eden-green);
-            border-radius: 0 8px 8px 0;
-            padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .finding-box h4 {
-            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--eden-green);
-            margin-bottom: 0.75rem;
-        }
-
-        .warning-box {
-            background: #fff3e0;
-            border-left: 4px solid #e65100;
-            border-radius: 0 8px 8px 0;
-            padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .warning-box h4 {
-            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #e65100;
-            margin-bottom: 0.75rem;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin: 1rem 0;
-            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
-            font-size: 0.82rem;
-        }
-
-        th, td { border: 1px solid var(--nature-border); padding: 6px 10px; text-align: left; }
-        th { background: var(--nature-light-grey); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
-        .num { text-align: right; font-variant-numeric: tabular-nums; }
-        .confirmed { background: #e8f5e9; }
-        .failed { background: #fce4ec; }
-
-        .equation-box {
-            background: var(--nature-light-grey);
-            border: 1px solid var(--nature-border);
-            border-radius: 8px;
-            padding: 1.5rem 2rem;
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-
-        .companion-links {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--nature-border);
-            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
-            font-size: 0.85rem;
-            color: var(--nature-grey);
-        }
-
-        .companion-links a { color: var(--cauchy-blue); }
-
-        .keywords { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.85rem; color: var(--nature-grey); margin-top: 1rem; }
-        .references { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; font-size: 0.85rem; }
-        .references p { text-indent: -1.5rem; padding-left: 1.5rem; margin-bottom: 0.5rem; }
-
-        .tier-label {
-            font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 3px;
-            margin-bottom: 0.5rem;
-        }
-        .tier-primary { background: var(--cauchy-blue); color: #fff; }
-        .tier-secondary { background: #546e7a; color: #fff; }
-        .tier-noted { background: #b0bec5; color: #37474f; }
-
-        /* Print styles - world-class PDF export */
-        @page {
-            size: A4;
-            margin: 10mm 15mm 10mm 15mm;
-            /* Kill Chrome PDF headers/footers permanently */
-            @top-left { content: none; }
-            @top-center { content: none; }
-            @top-right { content: none; }
-            @bottom-left { content: none; }
-            @bottom-center { content: none; }
-            @bottom-right { content: none; }
-        }
-
-        @media print {
-            body {
-                max-width: none;
-                padding: 0;
-                margin: 0;
-                font-size: 10.5pt;
-                line-height: 1.45;
-                color: #000;
-                background: #fff;
-            }
-
-            /* Typography scaling */
-            h1 { font-size: 20pt; margin-bottom: 6pt; }
-            h2 { font-size: 13pt; margin-top: 14pt; margin-bottom: 6pt; }
-            h3 { font-size: 11.5pt; margin-top: 10pt; margin-bottom: 4pt; }
-            h4 { font-size: 10.5pt; margin-top: 8pt; margin-bottom: 3pt; }
-            p { margin-bottom: 5pt; }
-
-            /* NEVER orphan titles - titles must stay with their content */
-            h1, h2, h3, h4 {
-                page-break-after: avoid !important;
-                break-after: avoid !important;
-            }
-
-            /* Keep related content together */
-            table, figure, blockquote,
-            .finding-box, .critical-box, .core-claim,
-            .equation-box, .abstract-box, .plain-english-box,
-            .caveat-box, .warning-box, .epigraph {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-            }
-
-            /* Prevent orphaned lines */
-            p { orphans: 4; widows: 4; }
-
-            /* Clean link appearance */
-            a { text-decoration: none; color: inherit; }
-            a[href]:after { content: none !important; }
-
-            /* Tables */
-            table { font-size: 9pt; }
-            th, td { padding: 3pt 5pt; }
-            thead { display: table-header-group; }
-
-            /* Figures */
-            figure { margin: 8pt 0; }
-            figure img { max-width: 85%; box-shadow: none !important; border: none; }
-            figcaption { font-size: 8.5pt; margin-top: 4pt; }
-
-            /* Boxes - clean borders for print */
-            .finding-box, .critical-box, .core-claim,
-            .caveat-box, .warning-box, .plain-english-box,
-            .abstract-box, .epigraph {
-                box-shadow: none !important;
-                border-radius: 0 !important;
-            }
-
-            /* Header - keep compact */
-            header {
-                page-break-after: avoid;
-                break-after: avoid;
-            }
-        }
-    
-/* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must
-   not overflow at phone widths; desktop and print rendering unchanged. */
-@media (max-width: 720px) {
-  code { overflow-wrap: anywhere !important; word-break: break-all !important; }
-  pre { overflow-x: auto !important; max-width: 100% !important; }
-  table { display: block !important; overflow-x: auto !important; max-width: 100% !important; }
-  thead, tbody, tr { max-width: 100%; }
-  img, svg { max-width: 100% !important; height: auto !important; }
+/* mobile-overflow-fix 2026-07-03: long hashes/Message-IDs and wide tables must not overflow at phone widths; desktop and print rendering unchanged. */
+@media (max-width: 720px) { code { overflow-wrap: anywhere !important; word-break: break-all !important; } pre { overflow-x: auto !important; max-width: 100% !important; } table { display: block !important; overflow-x: auto !important; max-width: 100% !important; } thead, tbody, tr { max-width: 100%; } img, svg { max-width: 100% !important; height: auto !important; }
 }
 </style>
+
+<!-- SEO: START --> <meta name="description" content="Cauchy&#39;s four functional equations -- additive, multiplicative, exponential, and logarithmic -- are the only continuous solutions to their respective composition constraints. This paper argues that this 200-year-old mathematical result has a physically testable consequence: under the stated axioms, it constrains scaling laws to one of three functional families (power law, exponential, or saturation curve). The family"> <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"> <meta name="author" content="Michael Darius Eastwood"> <link rel="canonical" href="https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.html"> <meta property="og:title" content="Paper VII: Cauchy Unification"> <meta property="og:description" content="Cauchy&#39;s four functional equations -- additive, multiplicative, exponential, and logarithmic -- are the only continuous solutions to their respective composition constraints. This paper argues that this 200-year-old mathematical result has a physically testable consequence: under the stated axioms, it constrains scaling laws to one of three functional families (power law, exponential, or saturation curve). The family"> <meta property="og:type" content="article"> <meta property="og:url" content="https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.html"> <meta property="og:site_name" content="Michael Darius Eastwood Research"> <meta property="og:image" content="https://www.michaeldariuseastwood.com/InfiniteArchitectsKindle20260103.jpg"> <meta property="og:locale" content="en_GB"> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:title" content="Paper VII: Cauchy Unification"> <meta name="twitter:description" content="Cauchy&#39;s four functional equations -- additive, multiplicative, exponential, and logarithmic -- are the only continuous solutions to their respective composition constraints. This paper argues that this 200-year-old mathematical result has a physically testable consequence: under the stated axioms, it constrains scaling laws to one of three functional families (power law, exponential, or saturation curve). The family"> <meta name="twitter:image" content="https://www.michaeldariuseastwood.com/InfiniteArchitectsKindle20260103.jpg"> <meta name="citation_title" content="Paper VII: Cauchy Unification"> <meta name="citation_author" content="Michael Darius Eastwood"> <meta name="citation_publication_date" content="2026-03-16">
+ <meta name="citation_doi" content="10.17605/OSF.IO/X6WA7"> <meta name="citation_abstract_html_url" content="https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.html"> <meta name="citation_journal_title" content="ARC and Eden Research Programme"> <meta name="citation_pdf_url" content="https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.pdf"> <script type="application/ld+json">[{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Paper VII: Cauchy Unification","name":"Paper VII: Cauchy Unification","description":"Cauchy's four functional equations -- additive, multiplicative, exponential, and logarithmic -- are the only continuous solutions to their respective composition constraints. This paper argues that this 200-year-old mathematical result has a physically testable consequence: under the stated axioms, it constrains scaling laws to one of three functional families (power law, exponential, or saturation curve). The family","url":"https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.html","mainEntityOfPage":"https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.html","inLanguage":"en-GB","isAccessibleForFree":true,"image":"https://www.michaeldariuseastwood.com/InfiniteArchitectsKindle20260103.jpg","author":[{"@type":"Person","name":"Michael Darius Eastwood"}],"publisher":{"@type":"Person","name":"Michael Darius Eastwood","url":"https://www.michaeldariuseastwood.com/"},"datePublished":"2026-03-16","dateModified":"2026-08-08","abstract":"Cauchy's four functional equations -- additive, multiplicative, exponential, and logarithmic -- are the only continuous solutions to their respective composition constraints. This paper argues that this 200-year-old mathematical result has a physically testable consequence: under the stated axioms, it constrains scaling laws to one of three functional families (power law, exponential, or saturation curve). The family","keywords":"ARC Principle, Eden Protocol, AI alignment, Paper VII Cauchy Unification, cauchy, unification"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.michaeldariuseastwood.com/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://www.michaeldariuseastwood.com/research/"},{"@type":"ListItem","position":3,"name":"Papers","item":"https://www.michaeldariuseastwood.com/research/#papers"},{"@type":"ListItem","position":4,"name":"Paper VII: Cauchy Unification","item":"https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.html"}]}]</script> <!-- SEO: END -->
+<!-- mde-network v1 -->
+<style>
+@view-transition{navigation:auto}
+@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+:focus-visible{outline:2px solid var(--green,hsl(152,45%,36%));outline-offset:2px;border-radius:3px}
+h1,h2,h3, h2.as-h1{text-wrap:balance}
+p{text-wrap:pretty}
+.site-nav{view-transition-name:mde-nav}
+@supports(animation-timeline:scroll()){
+ .nv-progress{position:fixed;top:0;left:0;z-index:60;height:2px;width:100%;background:var(--green,hsl(152,45%,36%));transform-origin:0 50%;animation:nvgrow linear both;animation-timeline:scroll()}
+ @keyframes nvgrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+}
+@supports(animation-timeline:view()){
+ @media (prefers-reduced-motion:no-preference){
+.nv-reveal{animation:nvfade .55s cubic-bezier(0.16,1,0.3,1) both;animation-timeline:view();animation-range:entry 0% entry 38%}
+  @keyframes nvfade{from{opacity:.25;transform:translateY(10px)}to{opacity:1;transform:none}}
+ }
+}
+.nv-chip{position:fixed;right:16px;bottom:16px;z-index:55;min-height:44px;min-width:44px;padding:.5rem .8rem;font:600 .8rem/1 var(--font-body,'IBM Plex Sans',sans-serif);color:var(--ink,#222);background:var(--bg-surface,#f5f4f0);border:1px solid var(--border,#ddd6c8);border-radius:10px;box-shadow:0 3px 12px rgba(28,28,25,.08);cursor:pointer}
+.nv-chip:hover{box-shadow:0 6px 20px rgba(28,28,25,.16)}
+.nv-pal{position:fixed;inset:0;z-index:70;display:none;align-items:flex-start;justify-content:center;padding:12vh 1rem 1rem;background:rgba(28,28,25,.34);backdrop-filter:blur(3px)}
+.nv-pal.open{display:flex}
+.nv-box{width:100%;max-width:34rem;background:var(--bg-primary,#fafaf8);border:1px solid var(--border,#ddd6c8);border-radius:14px;box-shadow:0 18px 60px rgba(28,28,25,.16);overflow:hidden}
+.nv-box input{width:100%;border:0;outline:0;padding:.95rem 1.1rem;font:500 1rem/1.2 var(--font-body,'IBM Plex Sans',sans-serif);background:transparent;color:var(--ink,#222)}
+.nv-list{max-height:46vh;overflow:auto;border-top:1px solid var(--hairline,#e7e5e0);margin:0;padding:.3rem;list-style:none}
+.nv-list a{display:flex;justify-content:space-between;gap:1rem;padding:.55rem .8rem;border-radius:7px;text-decoration:none;color:var(--ink,#222);font-size:.92rem}
+.nv-list .sec{color:var(--ink-dim,#777);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.nv-list li.on a,.nv-list a:hover{background:var(--green-bg,rgba(47,93,58,.08));color:var(--green,hsl(152,45%,36%))}
+.nv-papernav{display:flex;justify-content:space-between;align-items:center;gap:1rem;max-width:1080px;margin:0 auto;padding:.65rem 1.4rem;font-size:.84rem;border-bottom:1px solid var(--hairline,#e7e5e0)}
+.nv-papernav a{text-decoration:none;color:var(--ink-sec,#555);max-width:38%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nv-papernav a:hover{color:var(--green,hsl(152,45%,36%))}
+.nv-papernav .hubx{color:var(--green,hsl(152,45%,36%));font-weight:600}
+.nv-foot{border-top:1px solid var(--hairline,#e7e5e0);margin-top:3rem;padding:1.6rem 1.4rem 2.2rem;font-size:.82rem;line-height:2;color:var(--ink-dim,#777)}
+.nv-foot .inner{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.2rem 1.2rem}
+.nv-foot a{color:var(--ink-sec,#555);text-decoration:none}
+.nv-foot a:hover{color:var(--green,hsl(152,45%,36%))}
+.cat-date,.hub-stat b{font-variant-numeric:tabular-nums}
+@media (max-width:720px){.nv-chip{bottom:14px;right:14px}.nv-papernav a{max-width:34%}}
+@media print{.nv-chip,.nv-pal,.nv-progress{display:none!important}}
+</style>
+<style id="eden-chrome">
+/* the chrome carries its own surface: it must read identically whether the page below it is warm paper or full dark. inheriting the page background is what made the nav look alien on the dark pages. */.site-nav-wrap{background:#fbfaf7;border-bottom:1px solid rgba(28,28,25,.10);color:#1c1c19}.site-nav{display:flex;flex-wrap:wrap;gap:.9rem 1.4rem;align-items:baseline;max-width:1000px;margin:0 auto;padding:1rem 1.5rem .3rem;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#1c1c19}.site-nav a{color:#3b3b34}.site-nav a:hover{color:#2d5a27}
+.site-nav .nav-home{font-weight:700;font-size:.9rem;text-decoration:none;color:#1c1c19;margin-right:auto}
+.site-nav ul{display:flex;flex-wrap:wrap;gap:.85rem 1.15rem;list-style:none;margin:0;padding:0}
+.site-nav a{font-size:.82rem;text-decoration:none;color:#6b6b60}
+.site-nav a:hover,.site-nav a[aria-current]{color:#b8860b;text-decoration:underline}
+.sub-nav{max-width:1000px;margin:0 auto;padding:.2rem 1.5rem .7rem;border-bottom:1px solid #e0ddd5;display:flex;flex-wrap:wrap;gap:.5rem 1rem;font-family:'IBM Plex Mono',monospace;font-size:.68rem}
+.sub-nav a{color:#6b6b60;text-decoration:none;letter-spacing:.04em}
+.sub-nav a:hover,.sub-nav a[aria-current]{color:#b8860b}
+.eden-foot{max-width:1000px;margin:3rem auto 0;padding:1.2rem 1.5rem 2.5rem;border-top:1px solid #e0ddd5;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:.78rem;color:#6b6b60}
+.eden-foot .foot-links{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;margin-bottom:.7rem}
+.eden-foot a{color:#6b6b60;text-decoration:none}
+.eden-foot a:hover{color:#b8860b;text-decoration:underline}
+.eden-foot .motto{font-style:italic;color:#8a8a80}
+/* a <pre> holds its lines verbatim by definition, so without somewhere to put the overflow it pushes the whole document. paper X carried a shell transcript 3,084px wide inside a 952px column and scrolled the page 1,888px sideways ON DESKTOP, and 2,726px on a phone. every other overflow found on this site was a mobile problem; this one was worse on the desktop nobody thought to check. the rule sits outside the media query for that reason. */
+pre{overflow-x:auto;max-width:100%}
+/* MathJax emits a parallel MathML tree for screen readers. It is meant to be reachable and invisible, and on /research/papers/on-the-origin-of-scaling-laws it was reachable, invisible and 427px wide, scrolling the page 3px. the standard visually-hidden clip keeps it in the accessibility tree and out of the layout; display:none would have taken it out of both. the selector carries `body ` because MathJax injects its own stylesheet at runtime, after this one, and between two !important rules of equal specificity the later wins. */
+body mjx-assistive-mml,mjx-container mjx-assistive-mml{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(1px,1px,1px,1px)!important;clip-path:inset(50%)!important;white-space:nowrap!important}
+/* a DOI is a link readers are meant to follow, and it is the one link on a paper page that identifies the work. on /research/papers/ they stood 23px, one pixel under the WCAG minimum, which is still under. matched on the href because a DOI is a DOI whatever class the page put around it: matching the class would mean naming every paper template. */
+a[href*="doi.org"],a[href*="10.17605"]{display:inline-block;padding:.35rem .2rem}
+/* a wide table is the one thing on these pages that will not fold. 122 pages carry a table of four columns or more, and on a 390px phone the four-column table on /research/the-synthesis/ measured 460px and pushed the whole document 94px sideways, so every line of prose on the page scrolled too. making the table its own scroll container keeps the overflow inside the table where it belongs. display:block is what turns it into one; the rows still lay out as a table underneath.
+   two additions after measuring: min-width:0, because /research/corrections/ sets .cor-table{min-width:52rem} and a scroll container that is still forced to 832px scrolls nothing, it just overflows; and the table[class] selector, because a bare `table` is specificity 0,0,1 and any class rule outbids it, which is why that page kept overflowing 163px while carrying this rule. specificity, not !important.
+   the overflow-wrap rule is for the other kind of overflow, the kind with no box to find. /verify.html scrolled 309px sideways and not one element on it measured wider than the viewport, because the culprit was a single unbreakable token inside a paragraph: Message-ID: CAGPsKA=eLT_wH2+m=JvqObFB=3RL+wJbYkMTfyXJbDMDMPHUSA@mail.gmail.com, sixty characters with nowhere to break, in a 292px column. this site is built on hashes, DOIs and message-IDs, so it will keep happening. break-word rather than anywhere: it only breaks a word that cannot otherwise fit, so ordinary prose is untouched.
+   it is set on body and left to inherit rather than listed per element, because the first attempt named p, li, dd, dt, td, th, figcaption and blockquote and then /research/evidence-spine.html still overflowed 28px on a <strong> holding 10.17605/OSF.IO/6C5XB. every such list is a list of the places the problem has already been found. overflow-wrap inherits, so one declaration covers the ones nobody has hit yet. */
+/* tap targets. measured on a phone, the sub-nav links stood 13px and the footer links 18px in their smaller dimension. WCAG 2.5.8 sets 24px as the AA minimum and 44px is the comfortable figure; a nav you have to aim at is the thing that reads as amateur on a phone, whatever the type looks like. nothing moves on desktop; the gaps come down to pay for the size the padding adds.
+   vertical padding alone was not enough, which only measurement showed: WCAG measures the target, and the shortest sub-nav label is "Hub", which stood 27px tall and 21px WIDE. so the padding is on all four sides and the gap absorbs it. the breadcrumb was missed entirely on the first pass, since it is a third nav and was not in the rule: its links were 13px with no padding at all.
+   the last rule is a floor under the smallest type. measured on a phone, the homepage evidence badge rendered at 9px and the claims-ledger label at 9.3px, from rules setting .55rem to .6rem. that is below what anyone reads without pinching, and pinching a page to read its own captions is the thing that makes a site feel unfinished. .7rem is 11.2px: still clearly secondary, and legible. the selectors carry `body ` only to reach 0,1,1 specificity, so the floor holds whichever order the page's own stylesheet happens to load in, and the floor is in px rather than rem for the same reason the nav is: a .7rem floor on a page that shrinks its root resolves to 9.8px, which is a floor that sinks with the thing it is meant to hold up. the sub-nav's own 10.9px is left alone; it is legible, and it is the design.
+   the .btn rule is the one that would have cost money. the Amazon buy buttons on /book/ stood 18px tall on a phone, under half the comfortable target and below the 24px minimum, so the two links on the site that exist to sell the book were the hardest things on it to press. inline-flex with min-height rather than padding, so the label centres in the taller box instead of sitting at the top of it.
+   the last four were card-footer links, "Evidence ->", "Timeline ->", "Book ->", "DOI ->", standing 11px in a div whose class ends __meta. they are not in a <nav>, so the nav rule did not reach them. matching on the container's class rather than naming the page is the difference between a rule and another entry on the list of places this has already been found.
+   .nbl and .inner are the paper pages' own third navigation. 22 papers carry one, so those pages present three navs: the stamped primary, the stamped sub-nav, and this. it is kept rather than removed because it is the only place the paper's own artefacts are linked, PDF, TXT, CFF, DOI and GitHub, and deleting it to tidy the count would take those with it. its links measured 18px to 23px. this is a chrome rule, not an edit to a paper: no paper's text, date, version or claims are touched, so no version bump and no OSF re-upload.
+   the share buttons were the largest single defect on the site by count. running the gate over all 666 published routes rather than the 24-route sample returned 380 routes with findings, and 376 of them were the same thing: button.share-btn, 13px to 23px, on every blog post. one rule, roughly 370 pages. a sample tells you whether a fix worked; only the full run tells you what is actually wrong. */
+@media(max-width:720px){.site-nav{padding:.8rem 1rem .2rem;gap:.55rem .9rem}.site-nav a{font-size:.78rem;display:inline-block;padding:.4rem 0}body .sub-nav{padding:.2rem .7rem .5rem;gap:0 .5rem;font-size:11px}body .sub-nav a{display:inline-block;padding:.5rem .35rem}body .eden-crumb{font-size:11px}body .eden-crumb a{display:inline-block;padding:.5rem .35rem}.eden-foot .foot-links{gap:0 .6rem}.eden-foot .foot-links a{display:inline-block;padding:.45rem .25rem}table,table[class]{display:block;max-width:100%;min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch}.pa-tw table,.pa-tw table[class]{display:table;min-width:560px}.pa-tw{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}body{overflow-wrap:break-word}body .kicker,body .article-meta,body .evidence,body .evidence-locker,body .evidence-badge,body .pa-verified,body .pa-check,body .cl-lab,body .cl-id,body .page-chip,body .cor-th-superseded,body .future-name,body th,body .label,body .footer-heading,body .dl-table th,body .ep-table th,body [class*="__status"],body [class*="__tier"],body [class*="-tag"],body [class*="__label"],body [class*="-label"]{font-size:11px}body .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px}body nav.jump a,body .book-author-card a,body nav a,body [class*="meta"]>a,body [class*="links"]>a{display:inline-block;padding:.35rem .2rem}body .share-btn{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}body .tb,body [class*="tabs"]{overflow-x:auto;max-width:100%}body .main-content,body .page-wrapper,body .pn,body .pnh,body .ac,body .author-page{max-width:100%;box-sizing:border-box}body .ia-research-bridge__links a,body .correspondence,body .correspondence a{font-size:11px}body .ia-research-bridge__links a,body .nbl a,body .inner a{display:inline-block;padding:.35rem .2rem}body .companion-links a{display:inline-block;min-width:24px;text-align:center;padding:.35rem .3rem}body .legal-back,body .claim-card__doi{display:inline-block;padding:.4rem .25rem}body button{min-height:32px}body .journal-type,body .status-badge,body .hero-void__eyebrow,body .paper-type{font-size:11px}}
+@media print{.site-nav,.sub-nav,.sr-nav,.vf-nav,.eden-foot .foot-links,button,.hero-ctas,.filter-bar{display:none!important}body{background:#fff!important;color:#000!important}a{color:#000!important;text-decoration:none}main a[href]:after,.wrap a[href]:after{content:" (" attr(href) ")";font-size:.72em;color:#444}.eden-foot{border-top:1px solid #000;color:#000;font-size:.7rem}.eden-foot .build-stamp{opacity:1!important;color:#000}.claim-risk,.cl-risk,.vf-tool,.vf-step{border:1px solid #999!important;background:#fff!important;color:#000!important;box-shadow:none!important}}
+</style>
+<style id="eden-crumb">.eden-crumb{max-width:1000px;margin:0 auto;padding:.5rem 1.5rem 0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.68rem;letter-spacing:.03em;color:#8a8a80;display:flex;flex-wrap:wrap;gap:.3rem;align-items:baseline}.eden-crumb a{color:#6b6b60;text-decoration:none}.eden-crumb a:hover{color:#b8860b;text-decoration:underline}.eden-crumb .here{color:#1c1c19}@media(max-width:720px){.eden-crumb{padding:.45rem 1rem 0}}@media print{.eden-crumb{display:none}}</style> <link rel="alternate" type="application/x-cff" href="/research/papers/paper-vii-cauchy-unification.cff" title="Citation File Format"> <style>.site-nav{position:relative}
+.lang-switch{position:absolute;top:1.05rem;right:1.5rem;z-index:65}
+.site-nav .nav-links{margin-right:4.25rem;overflow:visible}
+.lang-switch summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:.3rem;font-size:.82rem;color:#6b6b60;letter-spacing:.02em}
+.lang-switch summary:hover{color:#b8860b}
+.lang-switch summary::-webkit-details-marker{display:none}
+.lang-switch[open] summary{color:#b8860b}
+.lang-switch[open] .nav-caret{transform:rotate(180deg);color:#b8860b}
+.lang-switch .ls-globe{width:.95em;height:.95em;flex:none}
+.site-nav .ls-menu{position:absolute;right:0;left:auto;top:calc(100% + .55rem);background:#fbfaf7;border:1px solid #e0ddd5;border-radius:10px;box-shadow:0 10px 28px rgba(28,28,25,.14);padding:.35rem;display:flex;flex-direction:column;min-width:11.5rem;max-width:calc(100vw - 1.2rem);z-index:70}
+.site-nav .ls-menu a,.site-nav .ls-menu .ls-soon{padding:.5rem .75rem;border-radius:7px;font-size:.82rem;text-decoration:none;color:#3b3b34;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+.site-nav .ls-menu a:hover{background:#f6f3ea;color:#b8860b;text-decoration:none}
+.site-nav .ls-menu a[aria-current]{color:#b8860b;font-weight:600;text-decoration:none}
+.site-nav .ls-menu a[aria-current]::after{content:"\2713";font-size:.8em}
+.site-nav .ls-menu .ls-soon{color:#b0ada0;cursor:default}
+.site-nav .ls-menu .ls-soon::after{content:"soon";font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:#b0ada0;border:1px solid #e0ddd5;border-radius:999px;padding:.08rem .45rem}
+@media(max-width:720px){.lang-switch{top:.95rem;right:1rem}.site-nav .nav-links{margin-right:0}}
+.journey-map{margin:2.2rem 0 0;border-top:1px solid #e6e2d5;padding-top:1.4rem}
+.journey-map h2{margin:.2rem 0 .6rem}
+.journey-map .jm-entry{font-family:'IBM Plex Sans',sans-serif;font-size:.92rem;color:#3b3b34;background:#f6f3ea;border:1px solid #e6e2d5;border-radius:10px;padding:.7rem .9rem}
+.jm-rows{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0 0}
+.jm-rows a,.jm-rows .jm-here{font-family:'IBM Plex Sans',sans-serif;font-size:.9rem;text-decoration:none;border:1px solid #e3ded2;border-radius:10px;padding:.55rem .9rem;color:#2d2d28;background:#f7f5f0;width:100%;text-align:center}
+.jm-rows a:hover{border-color:#b8860b;color:#8a6508}
+.jm-rows .jm-here{border-color:#b8860b;background:#faf7ee;color:#8a6508;font-weight:600}
+@media(min-width:721px){.jm-rows a,.jm-rows .jm-here{width:calc(50% - .3rem)}}
+
+.site-nav .nav-caret{width:.58em;height:.58em;flex:none;color:#b0ada0;transition:transform .15s ease}
+.nav-journey{position:relative}
+.nav-journey summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:.25rem;font-size:.82rem;color:#6b6b60}
+.nav-journey summary:hover{color:#b8860b}
+.nav-journey summary::-webkit-details-marker{display:none}
+.nav-journey[open] summary{color:#b8860b}
+.nav-journey[open] .nav-caret{transform:rotate(180deg);color:#b8860b}
+.nav-journey.is-here>summary{color:#b8860b}
+.site-nav .nj-menu{position:absolute;left:0;top:calc(100% + .55rem);background:#fbfaf7;border:1px solid #e0ddd5;border-radius:10px;box-shadow:0 10px 28px rgba(28,28,25,.14);padding:.35rem;display:flex;flex-direction:column;min-width:12.5rem;max-width:calc(100vw - 1.2rem);z-index:70}
+.site-nav .nj-menu a{padding:.5rem .75rem;border-radius:7px;font-size:.82rem;color:#3b3b34;min-height:44px;display:flex;align-items:center;text-decoration:none}
+.site-nav .nj-menu a:hover{background:#f6f3ea;color:#b8860b;text-decoration:none}
+.site-nav .nj-menu a[aria-current]{color:#b8860b;font-weight:600;text-decoration:none}
+@media(max-width:720px){.site-nav .nj-menu{position:static;min-width:0;max-width:none;margin:.35rem 0 .2rem;box-shadow:none;background:transparent;border:0;border-left:2px solid #e0ddd5;border-radius:0;padding:0 0 0 .7rem}.site-nav .nj-menu a{min-height:40px;padding:.45rem .5rem}.site-nav .nav-links li{max-width:100%}}</style><!-- eden-i18n:v2 --><script data-eden-nav>(function(){var L=["uk","fa","fr","de","es","it","pt"],R=["/","/research/how-fast-can-anything-grow/","/research/the-open-problem/","/research/the-synthesis/","/research/where-could-this-lead/","/why/"];function gc(){var m=document.cookie.match(/(?:^|; )eden-lang=([a-z-]+)/);return m?m[1]:""}function sc(v){document.cookie="eden-lang="+v+";path=/;max-age=31536000;samesite=lax"}var p=location.pathname,m=p.match(/^\/([a-z]{2})(\/|$)/),cur=(m&&L.indexOf(m[1])>-1)?m[1]:"en";var base=(cur==="en")?p:p.replace(/^\/[a-z]{2}/,"")||"/";function norm(x){x=x.split("#")[0].split("?")[0];if(!x)return "/";x=x.replace(/index\.html?$/,"");return x.slice(-1)==="/"?x:x+"/"}function has(x){return R.indexOf(norm(x))>-1}var w=gc();if(!w&&cur!=="en"){sc(cur);w=cur}if(w&&w!=="en"&&L.indexOf(w)>-1&&cur!==w&&has(base)){location.replace("/"+w+(base==="/"?"/":base)+location.search+location.hash);return}if(w==="en"&&cur!=="en"){location.replace(base+location.search+location.hash);return}document.addEventListener("click",function(e){var el=e.target.closest("[data-setlang]");if(!el)return;e.preventDefault();sc(el.getAttribute("data-setlang"));location.reload()});function rewrite(){var a=gc();if(!a||a==="en"||L.indexOf(a)<0)return;var links=document.querySelectorAll('a[href^="/"]');for(var i=0;i<links.length;i++){var el=links[i],h=el.getAttribute("href");if(!h||h.indexOf("//")===0||el.closest(".ls-menu"))continue;if(/^\/[a-z]{2}\//.test(h)&&L.indexOf(h.slice(1,3))>-1)continue;if(has(h))el.setAttribute("href","/"+a+(norm(h)==="/"?"/":norm(h)))}}function banner(){var a=gc();if(!a||a==="en"||L.indexOf(a)<0||cur!=="en")return;if(has(base))return;var M={uk:["\u0426\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0449\u0435 \u043d\u0435 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0435\u043d\u0430 \u0443\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u043e\u044e \u0442\u0430 \u043f\u043e\u043a\u0430\u0437\u0430\u043d\u0430 \u0430\u043d\u0433\u043b\u0456\u0439\u0441\u044c\u043a\u043e\u044e. \u041f\u0435\u0440\u0435\u043a\u043b\u0430\u0434 \u0433\u043e\u0442\u0443\u0454\u0442\u044c\u0441\u044f.","ltr"],fa:["\u0627\u06cc\u0646 \u0635\u0641\u062d\u0647 \u0647\u0646\u0648\u0632 \u0628\u0647 \u0641\u0627\u0631\u0633\u06cc \u062a\u0631\u062c\u0645\u0647 \u0646\u0634\u062f\u0647 \u0648 \u0628\u0647 \u0627\u0646\u06af\u0644\u06cc\u0633\u06cc \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f. \u062a\u0631\u062c\u0645\u0647 \u062f\u0631 \u062f\u0633\u062a \u0627\u0646\u062c\u0627\u0645 \u0627\u0633\u062a.","rtl"],fr:["Cette page n\u2019est pas encore traduite en fran\u00e7ais et s\u2019affiche en anglais. La traduction est en cours.","ltr"],de:["Diese Seite ist noch nicht auf Deutsch verf\u00fcgbar und wird auf Englisch angezeigt. Die \u00dcbersetzung ist in Arbeit.","ltr"],es:["Esta p\u00e1gina a\u00fan no est\u00e1 traducida al espa\u00f1ol y se muestra en ingl\u00e9s. La traducci\u00f3n est\u00e1 en curso.","ltr"],it:["Questa pagina non \u00e8 ancora tradotta in italiano ed \u00e8 mostrata in inglese. La traduzione \u00e8 in corso.","ltr"],pt:["Esta p\u00e1gina ainda n\u00e3o est\u00e1 traduzida para portugu\u00eas e \u00e9 apresentada em ingl\u00eas. A tradu\u00e7\u00e3o est\u00e1 em curso.","ltr"]};var msg=M[a];if(!msg)return;var main=document.querySelector("main")||document.body;if(!main||document.querySelector(".tr-pending"))return;var d=document.createElement("p");d.className="tr-pending";d.dir=msg[1];d.style.cssText="max-width:720px;margin:0 auto 1.2rem;padding:.6rem .9rem;font-size:.82rem;color:#6b6b60;background:#f8f5ec;border-left:3px solid #b8860b;border-radius:0 7px 7px 0;font-family:'IBM Plex Sans',system-ui,sans-serif";d.textContent=msg[0];main.insertBefore(d,main.firstChild)}function boot(){document.addEventListener("click",function(e){var t=e.target;if(!t||!t.closest)return;var a=t.closest(".ls-menu a[hreflang]");if(a)sc(a.getAttribute("hreflang"))},true);rewrite();banner();function c(e){document.querySelectorAll('details.nav-journey[open],details.lang-switch[open]').forEach(function(d){if(!e||!d.contains(e.target))d.removeAttribute("open")})}document.addEventListener("click",function(e){c(e)});document.addEventListener("keydown",function(e){if(e.key==="Escape")c()})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);else boot();})()</script>
 </head>
 <body>
+<div class="site-nav-wrap"><nav class="site-nav" aria-label="Primary"><a class="nav-home" href="/">Michael Darius Eastwood</a><ul class="nav-links"><li><details class="nav-journey"><summary>The journey<svg class="nav-caret" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M1 1l4 3.6L9 1"/></svg></summary><div class="nj-menu"><a href="/why/">Why</a><a href="/research/the-open-problem/">The problem</a><a href="/research/how-fast-can-anything-grow/">The theory</a><a href="/research/the-synthesis/">The synthesis</a><a href="/research/where-could-this-lead/">Where this leads</a></div></details></li><li><a href="/eden-protocol">Eden Protocol</a></li><li><a href="/research/">Research</a></li><li><a href="/book/">Book</a></li><li><a href="https://edenlegal.ai" target="_blank" rel="noopener">Eden Legal AI</a></li><li><a href="https://edencontrol.com" target="_blank" rel="noopener">Eden Control</a></li><li><a href="/#contact">Contact</a></li><li><a href="/search/">Search</a></li></ul><details class="lang-switch"><summary aria-label="Language"><svg class="ls-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13.5 13.5 0 0 1 0 18M12 3a13.5 13.5 0 0 0 0 18"/></svg>EN<svg class="nav-caret" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M1 1l4 3.6L9 1"/></svg></summary><div class="ls-menu"><a href="/research/papers/paper-vii-cauchy-unification.html" hreflang="en" aria-current="true">English</a><a href="#" data-setlang="uk" hreflang="uk">Українська</a><a href="#" data-setlang="fa" hreflang="fa">فارسی</a><a href="#" data-setlang="fr" hreflang="fr">Français</a><a href="#" data-setlang="de" hreflang="de">Deutsch</a><a href="#" data-setlang="es" hreflang="es">Español</a><a href="#" data-setlang="it" hreflang="it">Italiano</a><a href="#" data-setlang="pt" hreflang="pt">Português</a></div></details></nav></div><div class="sub-nav" aria-label="Research"><a href="/research/">Hub</a><a href="/research/papers/">Papers</a><a href="/research/evidence/">Evidence</a><a href="/track-record/">Track record</a><a href="/research/corrections/">Corrections</a><a href="/review/">Review</a></div><nav class="eden-crumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/research/">Research</a><span>/</span><a href="/research/papers/">Papers</a><span>/</span><span class="here">Paper VII: Cauchy Unification</span></nav>
 
-<!-- revision-ledger: internal revision 2026-07-04 (AI-authorship declaration) | ADDED the Declaration of AI-Assisted Human Authorship as the closing section (before footer/body end), asserting human authorship under CDPA 1988 (arrangements) and USCO AI guidance (selection, coordination, arrangement), tool-based assistance disclosed, inventions human-conceived; links to legislation.gov.uk and copyright.gov. Zero em/en dashes; UK English. | internal revision 2026-07-03 (mobile overflow fix) | ADDED a max-width-720px media block so long hashes, Message-IDs, code spans, tables and images cannot overflow horizontally on phones; desktop and print rendering unchanged. | internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
-<header>
-    <div class="paper-type">ARC Principle - Paper VII</div>
-    <h1>Cauchy Unification</h1>
-    <div class="subtitle">ARC/Cauchy Scaling Classification: A Structured Prediction Comparison Across 50 Domains in Five Evidence Tiers</div>
-    <div class="author-info">
-        <span class="name">Michael Darius Eastwood</span><br>
-        Author, <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> (2026)<br>
-        London, United Kingdom | OSF: 10.17605/OSF.IO/6C5XB | ISBN 978-1806056200 (ISBN-10: 1806056208)<br>
-        Correspondence: michael@michaeldariuseastwood.com | Web: <a href="https://www.michaeldariuseastwood.com" style="color: var(--cauchy-blue);">michaeldariuseastwood.com</a>
-    </div>
-    <div class="version-date">
-        Version 3.0 | 24 March 2026 | First published 16 March 2026<br>
-        v3.0: corrected space-filling overstatement (added conservation/optimisation constraint as third necessary condition); added 3/4 exponent debate acknowledgement (White &amp; Seymour 2003; Glazier 2005, 2022); corrected cnidarian/jellyfish d=2 status to 'nearest-comparator match, not dimensional confirmation'; added new references<br>
-        v2.0: expanded to 50 domains across five evidence tiers; replaced permissive R&sup2; criterion with proper AICc; honest miss analysis; tiered reporting<br>
-        Supersedes: v2.0 (17 March 2026)<br>
-        Extends: On the Origin of Scaling Laws | Foundational Paper<br>
-        Validation code: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/cauchy-unification__Paper-VII" style="color: var(--cauchy-blue);">GitHub (experiment)</a> |
-        <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/experiments/cauchy-unification__Paper-VII/data/canonical_50_domain_manifest.json" style="color: var(--cauchy-blue);">Manifest</a><br>
-        Research hub: <a href="https://www.michaeldariuseastwood.com/research/" style="color: var(--cauchy-blue);">michaeldariuseastwood.com/research</a>
-    </div>
+<!-- revision-ledger: internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, EVERY subsequent edit MUST bump the reader-facing version number and mark the paper needs-republication -->
+<!-- RESEARCH BRIDGE: START --> <div class="ia-research-bridge"> <div class="ia-research-bridge__inner"> <div class="ia-research-bridge__identity"> <span class="ia-research-bridge__eyebrow">Michael Darius Eastwood Research</span> <span class="ia-research-bridge__title">Canonical publication layer</span> </div> <div class="ia-research-bridge__links"><a href="https://www.michaeldariuseastwood.com/research/" target="_blank" rel="noreferrer">Research hub</a><a href="https://www.michaeldariuseastwood.com/" target="_blank" rel="noreferrer">Main site</a><a href="https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.pdf" target="_blank" rel="noreferrer">PDF</a><a href="https://doi.org/10.17605/OSF.IO/X6WA7" target="_blank" rel="noreferrer">OSF</a><a href="https://github.com/MichaelDariusEastwood/arc-principle-validation" target="_blank" rel="noreferrer">GitHub</a></div> </div> </div> <section class="ia-research-summary"> <div class="ia-research-summary__meta"> <div class="ia-research-summary__kicker-row"> <p class="ia-research-summary__eyebrow">Research paper</p> <span class="ia-research-summary__pill">Research suite</span> </div> <h1>Paper VII: Cauchy Unification</h1>
+<div class="mde-byline" style="display:flex;align-items:center;gap:12px;margin:18px 0 26px 0;padding:12px 0;border-top:1px solid #ddd;border-bottom:1px solid #ddd;">
+<img src="/images/author-photo.webp" alt="Michael Darius Eastwood" width="64" height="64" style="border-radius:50%;object-fit:cover;" loading="lazy">
+<div style="font-size:0.95rem;line-height:1.45;">
+<div><strong>Michael Darius Eastwood</strong> · Independent AI alignment researcher</div>
+<div style="opacity:.75;">Published <time datetime="2026-03-16">16 March 2026</time></div>
+</div>
+</div> <p class="ia-research-summary__deck">Cauchy&#39;s four functional equations -- additive, multiplicative, exponential, and logarithmic -- are the only continuous solutions to their respective composition constraints. This paper argues that this 200-year-old mathematical result has a physically testable consequence: under the stated axioms, it constrains scaling laws to one of three functional families (power law, exponential, or saturation curve). The family</p> <p class="ia-research-summary__authors">Michael Darius Eastwood</p> <p class="ia-research-summary__author-affiliation" style="font-size:.85em;font-style:italic;color:#666;margin:.15em 0.35em">Michael Darius Eastwood, independent researcher, London: building measurable alignment, where correction lives inside the recursive loop rather than bolted on outside it.</p> <p class="ia-research-summary__dates">First published 2026-03-16 · Updated 2026-08-13</p> </div> <div class="ia-research-summary__stack"> <div class="ia-research-summary__abstract"> <h2>Abstract</h2> <p>Cauchy&#39;s four functional equations -- additive, multiplicative, exponential, and logarithmic -- are the only continuous solutions to their respective composition constraints. This paper argues that this 200-year-old mathematical result has a physically testable consequence: under the stated axioms, it constrains scaling laws to one of three functional families (power law, exponential, or saturation curve). The family</p> </div> <div class="ia-research-summary__related"> <h2>Related reading</h2> <ul class="ia-research-summary__related-list"><li><a href="/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html"><span>Paper IV.d: The Effect of Blinding on AI Alignment Evaluation</span><span>Open</span></a></li><li><a href="/research/papers/paper-v-stewardship-gene.html"><span>Paper V: The Stewardship Gene</span><span>Open</span></a></li><li><a href="/research/papers/paper-vi-honey-architecture.html"><span>Paper VI: The Honey Architecture</span><span>Open</span></a></li></ul> </div> </div> </section> <style> .ia-research-bridge, .ia-research-summary { width: 100vw; margin-left: calc(50% - 50vw); } .ia-research-bridge { position: relative; background: linear-gradient(135deg, rgba(20, 25, 38, 0.98), rgba(15, 18, 28, 0.96)), radial-gradient(circle at top right, rgba(172, 134, 66, 0.18), transparent 26%); color: #edf1f7; border-bottom: 1px solid rgba(255,255,255,0.08); font-family: "Inter", "Helvetica Neue", Arial, sans-serif; } .ia-research-bridge::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 34px 34px; mask-image: radial-gradient(circle at center, black 36%, transparent 84%); } .ia-research-bridge__inner { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; } .ia-research-bridge__identity { display: grid; gap: 0.18rem; } .ia-research-bridge__eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(233, 220, 195, 0.72); } .ia-research-bridge__title { font-size: 0.98rem; font-weight: 600; letter-spacing: -0.01em; } .ia-research-bridge__links { display: flex; gap: 0.7rem; flex-wrap: wrap; } .ia-research-bridge a { color: #f3d387; font-weight: 700; text-decoration: none; } .ia-research-bridge a:hover { color: #fff4d0; } .ia-research-summary { background: radial-gradient(circle at top right, rgba(40, 90, 99, 0.08), transparent 24%), linear-gradient(180deg, rgba(246, 242, 235, 0.96), rgba(251, 249, 244, 0.98)); border-bottom: 1px solid rgba(20, 25, 38, 0.08); padding: 2.2rem 1.25rem 2.2rem; display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.85fr); align-items: start; font-family: "Inter", "Helvetica Neue", Arial, sans-serif; } .ia-research-summary__meta, .ia-research-summary__stack { max-width: 580px; } .ia-research-summary__meta { justify-self: end; width: 100%; padding: 1.5rem 1.6rem; border-radius: 24px; border: 1px solid rgba(23, 26, 32, 0.08); background: rgba(255, 255, 255, 0.72); box-shadow: 0 20px 52px rgba(18, 24, 35, 0.05); } .ia-research-summary__stack { justify-self: start; width: 100%; display: grid; gap: 1rem; } .ia-research-summary__kicker-row { display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; } .ia-research-summary__eyebrow { margin: 0; color: #7b5e2b; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; } .ia-research-summary__pill { display: inline-flex; align-items: center; border-radius: 999px; padding: 0.35rem 0.7rem; background: rgba(20, 25, 38, 0.08); color: #202630; font-size: 0.75rem; font-weight: 700; } .ia-research-summary h1, .ia-research-summary h2.as-h1{ margin: 0.9rem 0 0; font-family: "Source Serif 4", Georgia, serif; font-size: clamp(2rem, 3vw, 3.1rem); line-height: 1.02; letter-spacing: -0.04em; color: #171a20; } .ia-research-summary__deck { margin: 1rem 0 0; color: #49515f; font-size: 1.02rem; line-height: 1.72; } .ia-research-summary__authors, .ia-research-summary__dates { margin: 0.5rem 0 0; color: #616977; } .ia-research-summary__abstract, .ia-research-summary__related { background: rgba(255, 255, 255, 0.82); border: 1px solid rgba(23, 26, 32, 0.1); border-radius: 22px; padding: 1.2rem 1.25rem; box-shadow: 0 18px 48px rgba(18, 24, 35, 0.06); } .ia-research-summary__abstract h2, .ia-research-summary__related h2 { margin: 0; font-size: 0.9rem; letter-spacing: 0.16em; text-transform: uppercase; color: #7b5e2b; border: 0; padding: 0; font-family: "Inter", "Helvetica Neue", Arial, sans-serif; } .ia-research-summary__abstract p { margin: 0.75rem 0 0; color: #2a313d; line-height: 1.75; } .ia-research-summary__related-list { list-style: none; margin: 0.85rem 0 0; padding: 0; display: grid; gap: 0.65rem; } .ia-research-summary__related-list li { margin: 0; } .ia-research-summary__related-list a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 1rem; border-radius: 16px; background: rgba(20, 25, 38, 0.04); color: #1b2430; font-weight: 600; text-decoration: none; transition: transform 180ms ease, background 180ms ease; } .ia-research-summary__related-list a span:last-child { color: #7b5e2b; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; } .ia-research-summary__related-list a:hover { transform: translateY(-1px); background: rgba(20, 25, 38, 0.07); } @media (max-width: 980px) { .ia-research-summary { grid-template-columns: 1fr; padding-top: 1.4rem; } .ia-research-summary__meta, .ia-research-summary__stack { max-width: 100%; justify-self: stretch; } } @media (max-width: 720px) { .ia-research-bridge__inner, .ia-research-summary { padding-left: 1rem; padding-right: 1rem; } .ia-research-summary__meta { padding: 1.2rem 1.1rem; border-radius: 20px; } .ia-research-summary__related-list a { align-items: flex-start; flex-direction: column; } } </style> <!-- RESEARCH BRIDGE: END --> <!-- revision-ledger: v3.2 revision 2026-08-10 (em-dash removal in Section 12.1 falsifiability list) | REPLACED the six &amp;mdash; entities in the Falsifiability subsection with commas, parentheses, semicolons and 'that is'; no substantive claim, statistic, table, model, protocol, reference or figure altered; SEO metadata, JSON-LD, format bar and links left untouched. | v3.1 revision 2026-08-08 (Section 2.2 equation display correction + statistics upgrade) | CORRECTED the two displayed functional equations in Section 2.2 (they were swapped; protocol, table and code unaffected); Section 9.1 count 11 to 10 with unified miss list; permutation-primary statistics with binomial sensitivity; strictly-derived-subset result added; sigma equivalences and the wrong 'about 300 times' ratio removed; Section 2.1 logarithmic wording tightened; needs-republication: OSF PDF re-upload pending. | internal revision 2026-07-04 (AI-authorship declaration) | ADDED the Declaration of AI-Assisted Human Authorship as the closing section (before footer/body end), asserting human authorship under CDPA 1988 (arrangements) and USCO AI guidance (selection, coordination, arrangement), tool-based assistance disclosed, inventions human-conceived; links to legislation.gov.uk and copyright.gov. Zero em/en dashes; UK English. | internal revision 2026-07-03 (mobile overflow fix) | ADDED a max-width-720px media block so long hashes, Message-IDs, code spans, tables and images cannot overflow horizontally on phones; desktop and print rendering unchanged. | internal revision 2026-07-03 | publication_status: UNPUBLISHED (first public release will be v1.0) | standing rule: once published, every subsequent edit must bump the reader-facing version and mark needs-republication -->
+<header> <div class="paper-type">ARC Principle - Paper VII</div> <h2 class="as-h1">Cauchy Unification</h2> <div class="subtitle">ARC/Cauchy Scaling Classification: A Structured Prediction Comparison Across 50 Domains in Five Evidence Tiers</div> <div class="author-info"> <span class="name">Michael Darius Eastwood</span><br> Author, <em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> (2026)<br> London, United Kingdom | OSF: 10.17605/OSF.IO/X6WA7 | ISBN 978-1806056200 (ISBN-10: 1806056208)<br> Correspondence: michael@michaeldariuseastwood.com | Web: <a href="https://www.michaeldariuseastwood.com" style="color: var(--cauchy-blue);">michaeldariuseastwood.com</a> </div> <div class="version-date"> Working Paper v3.3 | 13 August 2026<br> v3.3 (13 August 2026): main-loop Tier A pass: added Section 3.2 stating the six-model candidate set's missing logarithmic and pure linear families and its consequences; every 19/25 and 14/18 statement now carries the model-set qualifier (abstract, Section 5 box, Section 8, Figure 1 caption, conclusion); sharpened the finite-model-set limitation to the two-out-one-in form; added the four-family re-run to the falsifiability list and referenced the two drafted draft registrations awaiting human submission via the registered-programme page; no statistic, table, model, protocol or reference was altered v3.2 (10 August 2026): paper-pass ledger correction: replaced the six &amp;mdash; entities in Section 12.1 (Falsifiability) with commas, parentheses, semicolons and 'that is'; no substantive claim, statistic, table, model, protocol, reference or figure was altered; the JSON-LD, SEO metadata, format bar and all links were left untouched<br> v3.1 (8 August 2026): corrected the two displayed functional equations in Section 2.2 (the multiplicative and additive bullets displayed each other's equations; the protocol, the Section 5 table, and the validation code were unaffected); corrected the Section 9.1 hit count (11 to 10) and unified the miss list; adopted the marginal-conditioned permutation test as the primary statistic with the binomial retained as sensitivity; added the strictly-derived-subset result (14/18); removed sigma equivalences and the arithmetically wrong 'about 300 times' comparison; tightened Section 2.1 wording on the logarithmic equation<br> v3.0 (24 March 2026): corrected space-filling overstatement (added conservation/optimisation constraint as third necessary condition); added 3/4 exponent debate acknowledgement (White &amp; Seymour 2003; Glazier 2005, 2022); corrected cnidarian/jellyfish d=2 status to 'nearest-comparator match, not dimensional confirmation'; added new references<br> expanded to 50 domains across five evidence tiers; replaced permissive R&sup2; criterion with proper AICc; honest miss analysis; tiered reporting<br> Supersedes: v3.2 (10 August 2026); v3.1 (8 August 2026); v3.0 (24 March 2026); v2.0 (17 March 2026)<br> Extends: On the Origin of Scaling Laws | Foundational Paper<br> Validation code: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/cauchy-unification__Paper-VII" style="color: var(--cauchy-blue);">GitHub (experiment)</a> | <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/experiments/cauchy-unification__Paper-VII/data/canonical_50_domain_manifest.json" style="color: var(--cauchy-blue);">Manifest</a><br> Research hub: <a href="https://www.michaeldariuseastwood.com/research/" style="color: var(--cauchy-blue);">michaeldariuseastwood.com/research</a> </div>
 </header>
 
-<div class="abstract-box">
-    <h3>Abstract</h3>
-    <p>Cauchy's four functional equations - additive, multiplicative, exponential, and logarithmic - are the only continuous solutions to their respective composition constraints. We argue that this 200-year-old mathematical result has a physically testable consequence: under the stated axioms, it constrains scaling laws to one of three functional families (power law, exponential, or saturation curve). The family is determined by the composition operator of the underlying recursive amplification process.</p>
-
-    <p>The novel contribution is not Cauchy's mathematics itself, but the claim that Cauchy-type functional equations have a physically testable consequence for scaling-law classification across domains.</p>
-
-    <p>We present a structured prediction comparison across 50 real-world systems in five evidence tiers. For each empirical domain, the composition operator was classified from known physics before fitting, the scaling family was predicted from the operator class, published or standard reference data was loaded, and the prediction was tested by independent model fitting using AICc-based model selection.</p>
-
-    <p><strong>Primary result:</strong> 19 out of 25 empirical curve-fit domains confirm the Cauchy-predicted family under strict AICc model selection ($p = 1.56 \times 10^{-5}$, binomial test against $p = 1/3$ chance). This is roughly 1 in 64,000 - about 300 times stronger than the conventional $p &lt; 0.05$ threshold and equivalent to approximately 4.2$\sigma$. <strong>Secondary results:</strong> a baseline-20 rerun yields 15/20 ($p = 1.67 \times 10^{-4}$); published metabolic exponents match the nearest ARC/Cauchy comparator in 13/13 direct cases; analytic identities confirm 6/6. These tiers are reported separately and are never combined into a single blended number.</p>
-
-    <p>This result is strong enough to publish as exploratory evidence but not strong enough to claim as proven. No locked pre-registration artefact exists. Independent replication is needed.</p>
-
-    <p class="keywords"><strong>Keywords:</strong> Cauchy functional equations, scaling laws, power laws, universality, cross-domain, recursive composition, AICc model selection, metabolic scaling, neural scaling, ARC Principle</p>
+<div class="abstract-box"> <h3>Abstract</h3> <p>Cauchy's four functional equations - additive, multiplicative, exponential, and logarithmic - are the only continuous solutions to their respective composition constraints. We argue that this 200-year-old mathematical result has a physically testable consequence: under the stated axioms, it constrains scaling laws to one of three functional families (power law, exponential, or saturation curve). The family is determined by the composition operator of the underlying recursive amplification process.</p> <p>The novel contribution is not Cauchy's mathematics itself, but the claim that Cauchy-type functional equations have a physically testable consequence for scaling-law classification across domains.</p> <p>We present a structured prediction comparison across 50 real-world systems in five evidence tiers. For each empirical domain, the composition operator was classified from known physics before fitting, the scaling family was predicted from the operator class, published or standard reference data was loaded, and the prediction was tested by independent model fitting using AICc-based model selection.</p> <p><strong>Primary result</strong> (computed on the six-model candidate set, which contained no logarithmic and no pure linear candidate (Section 3.2))<strong>:</strong> 19 out of 25 empirical curve-fit domains confirm the Cauchy-predicted family under strict AICc model selection. The primary significance statistic is a permutation test conditioned on both the predicted and the observed family marginals: $p = 7 \times 10^{-5}$. A one-sided binomial test against uniform $1/3$ chance gives $p = 1.56 \times 10^{-5}$ (roughly 1 in 64,000) and is retained as a sensitivity check. The result also holds on the strictly Cauchy-derived subset alone (the 18 multiplicative and additive domains, excluding the bounded family whose exhaustiveness remains an open problem): 14/18, permutation $p = 3.0 \times 10^{-4}$. <strong>Secondary results:</strong> a baseline-20 rerun yields 15/20 ($p = 1.67 \times 10^{-4}$); published metabolic exponents match the nearest ARC/Cauchy comparator in 13/13 direct cases; analytic identities confirm 6/6. These tiers are reported separately and are never combined into a single blended number.</p> <p>This result is strong enough to publish as exploratory evidence but not strong enough to claim as proven. No locked pre-registration artefact exists. That statement is about the fifty-domain result reported here, and it stays, because those outcomes were computed before any protocol was frozen and no artefact created afterwards could change that. <strong>A separate, forward prediction frame does exist and is not claimed as covering this result.</strong> On 17 March 2026, between 02:06:51 and 02:07:05 UTC, a prediction protocol, an extension manifest and a checksum file were deposited to the public Open Science Framework component <a href="https://osf.io/x6wa7/">x6wa7</a>. Each carries an OSF-assigned creation timestamp, each has a modification timestamp identical to its creation timestamp, and the outcomes for the domains they specify have not been computed. That is a dated third-party deposit rather than an OSF Registration, which is a distinct frozen and schema-bound object this component does not carry; the API reports <code>registration: false</code> and the page says so rather than blurring it. What the deposit establishes is the ordering: the predictions were public and unaltered before any result they predict existed. Independent replication is needed.</p> <p class="keywords"><strong>Keywords:</strong> Cauchy functional equations, scaling laws, power laws, universality, cross-domain, recursive composition, AICc model selection, metabolic scaling, neural scaling, ARC Principle</p>
 </div>
 
 <h2>1. The Question</h2>
@@ -370,109 +155,54 @@
 
 <p>Augustin-Louis Cauchy established in the early nineteenth century that four functional equations have unique continuous solutions:</p>
 
-<div class="equation-box">
-    <p><strong>Additive:</strong> $f(x + y) = f(x) + f(y)$ has solution $f(x) = cx$</p>
-    <p><strong>Multiplicative:</strong> $f(xy) = f(x) \cdot f(y)$ has solution $f(x) = x^c$</p>
-    <p><strong>Exponential:</strong> $f(x + y) = f(x) \cdot f(y)$ has solution $f(x) = a^x$</p>
-    <p><strong>Logarithmic:</strong> $f(xy) = f(x) + f(y)$ has solution $f(x) = c \log x$</p>
+<div class="equation-box"> <p><strong>Additive:</strong> $f(x + y) = f(x) + f(y)$ has solution $f(x) = cx$</p> <p><strong>Multiplicative:</strong> $f(xy) = f(x) \cdot f(y)$ has solution $f(x) = x^c$</p> <p><strong>Exponential:</strong> $f(x + y) = f(x) \cdot f(y)$ has solution $f(x) = a^x$</p> <p><strong>Logarithmic:</strong> $f(xy) = f(x) + f(y)$ has solution $f(x) = c \log x$</p>
 </div>
 
-<p>These are not four independent results. They are four faces of one constraint: the requirement that a function be compatible with a binary operation. The additive and multiplicative equations govern power laws. The exponential equation governs exponential growth and decay. The logarithmic equation governs saturation and diminishing returns.</p>
+<p>These are not four independent results. They are four faces of one constraint: the requirement that a function be compatible with a binary operation. The additive and multiplicative equations govern power laws. The exponential equation governs exponential growth and decay. The logarithmic equation governs diminishing returns.</p>
 
 <h3>2.2 The prediction</h3>
 
 <p>Consider any system where a quantity $U$ grows with recursive depth $R$. The system's <em>composition operator</em> determines how consecutive applications combine:</p>
 
-<ul>
-    <li><strong>Multiplicative composition</strong> ($U(R_1) \cdot U(R_2) \sim U(R_1 + R_2)$): Cauchy's multiplicative equation forces $U \propto R^c$ - a power law.</li>
-    <li><strong>Additive composition</strong> ($U(R_1) + U(R_2) \sim U(R_1 + R_2)$): Cauchy's exponential equation forces $U \propto a^R$ - an exponential.</li>
-    <li><strong>Bounded composition</strong> (output constrained to $[0, K]$): the compatible forms are saturation curves (logistic, Hill, Michaelis-Menten, hyperbolic). A formal proof of exhaustiveness for the bounded case is not provided here and remains an open problem.</li>
+<ul> <li><strong>Multiplicative composition</strong> ($U(R_1 \cdot R_2) \sim U(R_1) \cdot U(R_2)$: depth multiplies, output multiplies): Cauchy's multiplicative equation forces $U \propto R^c$ - a power law.</li> <li><strong>Additive composition</strong> ($U(R_1 + R_2) \sim U(R_1) \cdot U(R_2)$: depth adds, output multiplies): Cauchy's exponential equation forces $U \propto a^R$ - an exponential.</li> <li><strong>Bounded composition</strong> (output constrained to $[0, K]$): the compatible forms are saturation curves (logistic, Hill, Michaelis-Menten, hyperbolic). A formal proof of exhaustiveness for the bounded case is not provided here and remains an open problem.</li>
 </ul>
 
-<div class="finding-box">
-    <h4>The prediction</h4>
-    <p>If you know the composition operator of a system, you can predict the functional form of its scaling law before seeing any data. The prediction follows from Cauchy's equations with no free parameters and no curve fitting.</p>
+<div class="finding-box"> <h4>The prediction</h4> <p>If you know the composition operator of a system, you can predict the functional form of its scaling law before seeing any data. The prediction follows from Cauchy's equations with no free parameters and no curve fitting.</p>
 </div>
 
 <h2>3. Prediction Protocol</h2>
 
 <p>For each domain:</p>
 
-<ol>
-    <li><strong>Classify the composition operator from known physics</strong> (before fitting). Determine whether the system's recursive amplification process combines multiplicatively, additively, or with a bound.</li>
-    <li><strong>Predict the scaling family</strong> from the operator class using Cauchy's equations.</li>
-    <li><strong>Load published or standard reference data.</strong></li>
-    <li><strong>Independently fit candidate models</strong> (power law, exponential, logistic, Hill, Michaelis-Menten, saturation-exponential) to the data using nonlinear least-squares regression.</li>
-    <li><strong>Select the best model by AICc</strong> (corrected Akaike information criterion) and compare the prediction against the selected model's family.</li>
+<ol> <li><strong>Classify the composition operator from known physics</strong> (before fitting). Determine whether the system's recursive amplification process combines multiplicatively, additively, or with a bound.</li> <li><strong>Predict the scaling family</strong> from the operator class using Cauchy's equations.</li> <li><strong>Load published or standard reference data.</strong></li> <li><strong>Independently fit candidate models</strong> (power law, exponential, logistic, Hill, Michaelis-Menten, saturation-exponential) to the data using nonlinear least-squares regression.</li> <li><strong>Select the best model by AICc</strong> (corrected Akaike information criterion) and compare the prediction against the selected model's family.</li>
 </ol>
 
-<div class="warning-box">
-    <h4>Structured prediction comparison - not a blind test</h4>
-    <p>The operator classification is made before the fitting procedure runs. However, the predictions, data, and fitting logic all reside in a single author-written script. There is no locked pre-registration artefact. This test should therefore be understood as a structured prediction comparison, not a formally pre-registered blind trial. A pre-registered replication with independent operator classification is planned.</p>
+<div class="warning-box"> <h4>Structured prediction comparison - not a blind test</h4> <p>The operator classification is made before the fitting procedure runs. However, the predictions, data, and fitting logic all reside in a single author-written script. There is no locked pre-registration artefact. This test should therefore be understood as a structured prediction comparison, not a formally registered blind trial. A replication with independent operator classification is planned.</p>
 </div>
 
 <h3>3.1 Statistical method</h3>
 
 <p>The v2 test uses proper AICc (corrected Akaike information criterion) computed from residual sum of squares, sample size, and parameter count - not the R$^2$-based approximation used in the legacy v1 test. The v1 approximation ($\text{AIC} \approx n \ln(1 - R^2) + 2k$) was adequate as a heuristic but should not have been described as strict AIC in the standard statistical sense. The v2 rewrite corrects this.</p>
 
-<p>The primary significance test is a one-sided binomial test: under the null hypothesis that each domain's family is chosen uniformly at random from three families, the probability of 19 or more matches in 25 trials is $p = 1.56 \times 10^{-5}$.</p>
+<p>The primary significance test is a marginal-conditioned permutation test: holding both the predicted and the observed family marginals fixed and permuting the pairing 400,000 times, the probability of 19 or more matches is $p = 7 \times 10^{-5}$. The expected match count under this null is 9.5 of 25, not the 8.33 a uniform null gives, because power laws are simply common among the observed fits. A one-sided binomial test against a uniform three-family null gives $p = 1.56 \times 10^{-5}$ and is retained as a sensitivity check; it is the weaker null and is not used as the headline. Sigma equivalences are not quoted because they shift with the choice of null. Reproduction: <code>scripts/paper-vii-permutation-null.py</code> in the site repository, which parses the published Section 5 table directly so it cannot drift from this page.</p>
 
-<h2>4. Evidence Tiers</h2>
+<h3>3.2 A model-set limitation this paper must state against itself</h3>
+<p>Section 2.1 names four Cauchy families. The candidate model set in Section 3 contains six models spanning three of them: the power-law, exponential and bounded families. Two of the four continuous Cauchy solutions have no candidate of their own: the logarithmic form $c \log x$ and the pure linear form $cx$. One consequence runs each way. A genuinely logarithmic domain could not have been classified correctly, because the fitter had no logarithmic candidate to select, so some of the six misses may have been guaranteed misses; and some of the nineteen hits may be logarithmic relations that a power law fits acceptably over a finite range. Every hit count in this paper therefore carries this qualifier, and none may be quoted without it. A confirmatory study that re-runs the comparison with the full four-family candidate set, with per-cell outcomes specified in advance, has been drafted and dated as a draft registration awaiting human submission (the four-family logarithmic-cell test in the <a href="/research/registered-programme/">registered programme</a>, alongside the fresh-domain extension study). Until that re-run reports, the numbers below are the six-model result, exactly as computed, and nothing stronger.</p>
+
+<figure style="margin: 1.5rem 0; text-align: center;"> <img width="720" height="400" src="/research/figures/figure-arc-architecture.svg" alt="Figure 1" style="max-width: 100%; height: auto; border-radius: 4px;" loading="lazy"> <figcaption style="font-size: 0.85rem; color: #666; text-align: left; margin-top: 0.5rem; line-height: 1.4;"><strong>Figure 1 |</strong> ARC Architecture and Cauchy Unification. Four functional equations (1821) constrain scaling to three families. α=d/(d+1) for physical systems (13/13 metabolic exponents, &lt;0.2% physics error); α=1/(1−β) for recursive intelligence. 19/25 domains confirm predicted function family (p=7×10⁻⁵, permutation; six-model set, no logarithmic candidate - §3.2). Source: Paper VII v3.1 · Foundational · evidence spine C-4, C-11.</figcaption>
+</figure> <h2>4. Evidence Tiers</h2>
 
 <p>The 50-domain suite comprises five evidence tiers of decreasing strength. These tiers are never combined into a single blended number.</p>
 
-<table>
-    <thead>
-        <tr><th>Tier</th><th>Description</th><th>Count</th><th>Result</th><th>Significance</th></tr>
-    </thead>
-    <tbody>
-        <tr><td><span class="tier-label tier-primary">Primary</span></td><td>Empirical curve-fit (AICc)</td><td class="num">25</td><td class="num">19/25</td><td class="num">$p = 1.56 \times 10^{-5}$</td></tr>
-        <tr><td><span class="tier-label tier-secondary">Secondary</span></td><td>Baseline-20 rerun (AICc)</td><td class="num">20</td><td class="num">15/20</td><td class="num">$p = 1.67 \times 10^{-4}$</td></tr>
-        <tr><td><span class="tier-label tier-secondary">Secondary</span></td><td>Published exponents (direct)</td><td class="num">13</td><td class="num">13/13</td><td>Nearest comparator match</td></tr>
-        <tr><td><span class="tier-label tier-noted">Noted</span></td><td>Published exponents (provisional)</td><td class="num">6</td><td class="num">3/6</td><td>Contested organisms</td></tr>
-        <tr><td><span class="tier-label tier-noted">Noted</span></td><td>Analytic identities</td><td class="num">6</td><td class="num">6/6</td><td>Tautological confirmation</td></tr>
-    </tbody>
+<table> <thead> <tr><th>Tier</th><th>Description</th><th>Count</th><th>Result</th><th>Significance</th></tr> </thead> <tbody> <tr><td><span class="tier-label tier-primary">Primary</span></td><td>Empirical curve-fit (AICc)</td><td class="num">25</td><td class="num">19/25</td><td class="num">$p = 7 \times 10^{-5}$ perm.; $1.56 \times 10^{-5}$ binomial</td></tr> <tr><td><span class="tier-label tier-secondary">Secondary</span></td><td>Baseline-20 rerun (AICc)</td><td class="num">20</td><td class="num">15/20</td><td class="num">$p = 1.67 \times 10^{-4}$</td></tr> <tr><td><span class="tier-label tier-secondary">Secondary</span></td><td>Published exponents (direct)</td><td class="num">13</td><td class="num">13/13</td><td>Nearest comparator match</td></tr> <tr><td><span class="tier-label tier-noted">Noted</span></td><td>Published exponents (provisional)</td><td class="num">6</td><td class="num">3/6</td><td>Contested organisms</td></tr> <tr><td><span class="tier-label tier-noted">Noted</span></td><td>Analytic identities</td><td class="num">6</td><td class="num">6/6</td><td>Tautological confirmation</td></tr> </tbody>
 </table>
 
 <h2>5. Primary Result: 25 Empirical Curve-Fit Domains</h2>
 
-<table>
-    <thead>
-        <tr><th>#</th><th>Domain</th><th>Operator</th><th>Predicted</th><th>AICc Best</th><th>Match</th></tr>
-    </thead>
-    <tbody>
-        <tr class="confirmed"><td>1</td><td>Kleiber's Law (Metabolic Scaling)</td><td>Multiplicative</td><td>Power law</td><td>Saturation-exp</td><td>No</td></tr>
-        <tr class="confirmed"><td>2</td><td>Urban Scaling (GDP vs Population)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr>
-        <tr class="failed"><td>3</td><td>Species-Area (Galapagos)</td><td>Multiplicative</td><td>Power law</td><td>Hill</td><td>No</td></tr>
-        <tr class="confirmed"><td>4</td><td>Wright's Law (Solar PV)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>5</td><td>Heap's Law (Vocabulary)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr>
-        <tr class="failed"><td>6</td><td>Zipf's Law (Word Frequency)</td><td>Multiplicative</td><td>Power law</td><td>Michaelis-Menten</td><td>No</td></tr>
-        <tr class="confirmed"><td>7</td><td>Learning Curve (Cigar Rolling)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>8</td><td>Moore's Law (Transistor Count)</td><td>Additive</td><td>Exponential</td><td>Exponential</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>9</td><td>Radioactive Decay (P-32)</td><td>Additive</td><td>Exponential</td><td>Exponential</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>10</td><td>Gutenberg-Richter (Earthquakes)</td><td>Additive</td><td>Exponential</td><td>Exponential</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>11</td><td>Bacterial Growth (E. coli)</td><td>Bounded</td><td>Bounded</td><td>Logistic</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>12</td><td>O$_2$-Hemoglobin Curve</td><td>Bounded</td><td>Bounded</td><td>Hill</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>13</td><td>Epidemic SIR (Ebola 2014)</td><td>Bounded</td><td>Bounded</td><td>Hill</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>14</td><td>Amdahl's Law (CPU Scaling)</td><td>Bounded</td><td>Bounded</td><td>Michaelis-Menten</td><td>Yes</td></tr>
-        <tr class="failed"><td>15</td><td>Muscle Force-Velocity (Hill 1938)</td><td>Bounded</td><td>Bounded</td><td>Exponential</td><td>No</td></tr>
-        <tr class="confirmed"><td>16</td><td>Facebook MAU Growth</td><td>Bounded</td><td>Bounded</td><td>Logistic</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>17</td><td>Brownian Diffusion (MSD)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>18</td><td>Horton's Law (Stream Numbers)</td><td>Additive</td><td>Exponential</td><td>Exponential</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>19</td><td>Neural Scaling Laws (LLM Loss)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr>
-        <tr class="failed"><td>20</td><td>Time Crystal Order (Rydberg Gas)</td><td>Bounded</td><td>Bounded</td><td>Power law</td><td>No</td></tr>
-        <tr class="failed"><td>21</td><td>Stellar Mass-Luminosity</td><td>Multiplicative</td><td>Power law</td><td>Logistic</td><td>No</td></tr>
-        <tr class="confirmed"><td>22</td><td>Heart Rate vs Body Mass</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>23</td><td>Rent's Rule (VLSI Pin Count)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>24</td><td>Taylor's Power Law</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>25</td><td>Hack's Law (Stream Length)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr>
-    </tbody>
+<table> <thead> <tr><th>#</th><th>Domain</th><th>Operator</th><th>Predicted</th><th>AICc Best</th><th>Match</th></tr> </thead> <tbody> <tr class="confirmed"><td>1</td><td>Kleiber's Law (Metabolic Scaling)</td><td>Multiplicative</td><td>Power law</td><td>Saturation-exp</td><td>No</td></tr> <tr class="confirmed"><td>2</td><td>Urban Scaling (GDP vs Population)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr> <tr class="failed"><td>3</td><td>Species-Area (Galapagos)</td><td>Multiplicative</td><td>Power law</td><td>Hill</td><td>No</td></tr> <tr class="confirmed"><td>4</td><td>Wright's Law (Solar PV)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr> <tr class="confirmed"><td>5</td><td>Heap's Law (Vocabulary)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr> <tr class="failed"><td>6</td><td>Zipf's Law (Word Frequency)</td><td>Multiplicative</td><td>Power law</td><td>Michaelis-Menten</td><td>No</td></tr> <tr class="confirmed"><td>7</td><td>Learning Curve (Cigar Rolling)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr> <tr class="confirmed"><td>8</td><td>Moore's Law (Transistor Count)</td><td>Additive</td><td>Exponential</td><td>Exponential</td><td>Yes</td></tr> <tr class="confirmed"><td>9</td><td>Radioactive Decay (P-32)</td><td>Additive</td><td>Exponential</td><td>Exponential</td><td>Yes</td></tr> <tr class="confirmed"><td>10</td><td>Gutenberg-Richter (Earthquakes)</td><td>Additive</td><td>Exponential</td><td>Exponential</td><td>Yes</td></tr> <tr class="confirmed"><td>11</td><td>Bacterial Growth (E. coli)</td><td>Bounded</td><td>Bounded</td><td>Logistic</td><td>Yes</td></tr> <tr class="confirmed"><td>12</td><td>O$_2$-Hemoglobin Curve</td><td>Bounded</td><td>Bounded</td><td>Hill</td><td>Yes</td></tr> <tr class="confirmed"><td>13</td><td>Epidemic SIR (Ebola 2014)</td><td>Bounded</td><td>Bounded</td><td>Hill</td><td>Yes</td></tr> <tr class="confirmed"><td>14</td><td>Amdahl's Law (CPU Scaling)</td><td>Bounded</td><td>Bounded</td><td>Michaelis-Menten</td><td>Yes</td></tr> <tr class="failed"><td>15</td><td>Muscle Force-Velocity (Hill 1938)</td><td>Bounded</td><td>Bounded</td><td>Exponential</td><td>No</td></tr> <tr class="confirmed"><td>16</td><td>Facebook MAU Growth</td><td>Bounded</td><td>Bounded</td><td>Logistic</td><td>Yes</td></tr> <tr class="confirmed"><td>17</td><td>Brownian Diffusion (MSD)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr> <tr class="confirmed"><td>18</td><td>Horton's Law (Stream Numbers)</td><td>Additive</td><td>Exponential</td><td>Exponential</td><td>Yes</td></tr> <tr class="confirmed"><td>19</td><td>Neural Scaling Laws (LLM Loss)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr> <tr class="failed"><td>20</td><td>Time Crystal Order (Rydberg Gas)</td><td>Bounded</td><td>Bounded</td><td>Power law</td><td>No</td></tr> <tr class="failed"><td>21</td><td>Stellar Mass-Luminosity</td><td>Multiplicative</td><td>Power law</td><td>Logistic</td><td>No</td></tr> <tr class="confirmed"><td>22</td><td>Heart Rate vs Body Mass</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr> <tr class="confirmed"><td>23</td><td>Rent's Rule (VLSI Pin Count)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr> <tr class="confirmed"><td>24</td><td>Taylor's Power Law</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr> <tr class="confirmed"><td>25</td><td>Hack's Law (Stream Length)</td><td>Multiplicative</td><td>Power law</td><td>Power law</td><td>Yes</td></tr> </tbody>
 </table>
 
-<div class="finding-box">
-    <h4>Primary result: 19/25 empirical domains confirmed ($p = 1.56 \times 10^{-5}$)</h4>
-    <p>Under strict AICc-based model selection, the Cauchy-predicted family is confirmed in 19 of 25 empirical curve-fit domains. The binomial probability of this result under random assignment to three families is $p = 1.56 \times 10^{-5}$ - roughly 1 in 64,000. This is approximately 300 times stronger than $p &lt; 0.05$ and equivalent to about 4.2$\sigma$.</p>
-    <p>This is strong enough to publish as exploratory evidence. It is not strong enough to claim as proven. Independent replication with pre-registered operator classification is the necessary next step.</p>
+<div class="finding-box"> <h4>Primary result, on the six-model set (no logarithmic or pure linear candidate; Section 3.2): 19/25 empirical domains confirmed ($p = 7 \times 10^{-5}$, permutation)</h4> <p>Under strict AICc-based model selection, the Cauchy-predicted family is confirmed in 19 of 25 empirical curve-fit domains. The marginal-conditioned permutation probability is $p = 7 \times 10^{-5}$; the binomial probability under uniform random assignment to three families is $p = 1.56 \times 10^{-5}$, roughly 1 in 64,000. On the strictly Cauchy-derived subset alone (multiplicative and additive domains only) the result is 14/18 at permutation $p = 3.0 \times 10^{-4}$: the headline does not depend on the bounded family, whose exhaustiveness remains open.</p> <p>This is strong enough to publish as exploratory evidence. It is not strong enough to claim as proven. Independent replication with pre-registered operator classification is the necessary next step.</p>
 </div>
 
 <h3>5.1 Baseline-20 rerun</h3>
@@ -483,16 +213,7 @@
 
 <p>Six of 25 empirical domains produced a best-fit model outside the predicted family. Each miss has a specific, identifiable explanation. Honest analysis follows.</p>
 
-<table>
-    <thead><tr><th>#</th><th>Domain</th><th>Predicted</th><th>AICc Best</th><th>Explanation</th></tr></thead>
-    <tbody>
-        <tr class="failed"><td>1</td><td>Kleiber's Law</td><td>Power law</td><td>Saturation-exp</td><td>Classic contested case. Kleiber's original 1932 dataset has only 13 mammals. A bounded model can capture slight upper curvature at extreme body masses. The power-law exponent debate (0.67 vs 0.75) has persisted for decades.</td></tr>
-        <tr class="failed"><td>3</td><td>Species-Area (Galapagos)</td><td>Power law</td><td>Hill</td><td>Small dataset (30 Galapagos islands) with high scatter. Several islands have very small areas with disproportionate species counts. The Hill function can absorb this scatter with its extra parameter.</td></tr>
-        <tr class="failed"><td>6</td><td>Zipf's Law</td><td>Power law</td><td>Michaelis-Menten</td><td>Finite-corpus truncation. The Brown Corpus has a hard upper bound on word frequency (69,971 for 'the'). At low ranks, frequencies saturate against this ceiling, pulling AICc towards a bounded model. Zipf's law is a power law in the asymptotic limit; finite corpora violate this limit.</td></tr>
-        <tr class="failed"><td>15</td><td>Muscle Force-Velocity</td><td>Bounded</td><td>Exponential</td><td>The Hill 1938 force-velocity data shows a monotonic decrease from maximum isometric force to zero at maximum velocity. The data does not reach or demonstrate an asymptotic plateau - it terminates where force reaches zero. An exponential decay fits this truncated range better than a saturation curve. The bounded prediction requires data spanning the full approach to saturation.</td></tr>
-        <tr class="failed"><td>20</td><td>Time Crystal Order</td><td>Bounded</td><td>Power law</td><td>Only 4 data points. With so few observations, AICc penalises the extra parameters of saturation models. A power law, with fewer free parameters, wins on parsimony. The bounded prediction may be correct but is untestable with this dataset.</td></tr>
-        <tr class="failed"><td>21</td><td>Stellar Mass-Luminosity</td><td>Power law</td><td>Logistic</td><td>The mass-luminosity relation shows significant scatter at high stellar masses where radiation pressure, convective instability, and different fusion pathways create deviations from a simple power law. A logistic model absorbs this scatter by fitting an apparent upper rollover.</td></tr>
-    </tbody>
+<table> <thead><tr><th>#</th><th>Domain</th><th>Predicted</th><th>AICc Best</th><th>Explanation</th></tr></thead> <tbody> <tr class="failed"><td>1</td><td>Kleiber's Law</td><td>Power law</td><td>Saturation-exp</td><td>Classic contested case. Kleiber's original 1932 dataset has only 13 mammals. A bounded model can capture slight upper curvature at extreme body masses. The power-law exponent debate (0.67 vs 0.75) has persisted for decades.</td></tr> <tr class="failed"><td>3</td><td>Species-Area (Galapagos)</td><td>Power law</td><td>Hill</td><td>Small dataset (30 Galapagos islands) with high scatter. Several islands have very small areas with disproportionate species counts. The Hill function can absorb this scatter with its extra parameter.</td></tr> <tr class="failed"><td>6</td><td>Zipf's Law</td><td>Power law</td><td>Michaelis-Menten</td><td>Finite-corpus truncation. The Brown Corpus has a hard upper bound on word frequency (69,971 for 'the'). At low ranks, frequencies saturate against this ceiling, pulling AICc towards a bounded model. Zipf's law is a power law in the asymptotic limit; finite corpora violate this limit.</td></tr> <tr class="failed"><td>15</td><td>Muscle Force-Velocity</td><td>Bounded</td><td>Exponential</td><td>The Hill 1938 force-velocity data shows a monotonic decrease from maximum isometric force to zero at maximum velocity. The data does not reach or demonstrate an asymptotic plateau - it terminates where force reaches zero. An exponential decay fits this truncated range better than a saturation curve. The bounded prediction requires data spanning the full approach to saturation.</td></tr> <tr class="failed"><td>20</td><td>Time Crystal Order</td><td>Bounded</td><td>Power law</td><td>Only 4 data points. With so few observations, AICc penalises the extra parameters of saturation models. A power law, with fewer free parameters, wins on parsimony. The bounded prediction may be correct but is untestable with this dataset.</td></tr> <tr class="failed"><td>21</td><td>Stellar Mass-Luminosity</td><td>Power law</td><td>Logistic</td><td>The mass-luminosity relation shows significant scatter at high stellar masses where radiation pressure, convective instability, and different fusion pathways create deviations from a simple power law. A logistic model absorbs this scatter by fitting an apparent upper rollover.</td></tr> </tbody>
 </table>
 
 <p>In summary: three misses involve small or truncated datasets (species-area, time crystal, Zipf); one involves data that does not span the full saturation range (muscle force-velocity); one involves a classically contested relationship (Kleiber); and one involves astrophysical complexity at extreme values (stellar mass-luminosity). None represents a case where the predicted family is fundamentally wrong in principle - but neither can any miss be dismissed. These are genuine failures that an independent replication must address.</p>
@@ -503,35 +224,18 @@
 
 <p>Thirteen taxa with well-established metabolic scaling exponents were tested against the ARC/Cauchy dimensional prediction. The prediction requires three conditions: (a) multiplicative composition (Cauchy's equation constrains the form to a power law), (b) $d$-dimensional space-filling transport geometry, and (c) a conservation or optimisation constraint on resource flow (energy minimisation in West et al.; supply-demand balance in Banavar et al.; steady-state energy balance in Demetrius). Under all three conditions, the exponent is constrained to $d/(d+1)$. Neither Cauchy alone, nor space-filling alone, is sufficient. Organisms with three-dimensional vascular transport and conserved flow should scale as $M^{3/4}$, those with two-dimensional transport as $M^{2/3}$, and those with one-dimensional filamentous transport as $M^{1/2}$.</p>
 
-<div class="warning-box">
-    <h4>Note on the 3/4 exponent</h4>
-    <p>The empirical value of the mammalian metabolic scaling exponent is debated, with estimates ranging from approximately 0.67 to 0.75 depending on taxon, mass range, temperature correction, and statistical method (White &amp; Seymour 2003; Glazier 2005, 2022). The largest modern dataset (619 species) gives a maximum-likelihood estimate of 0.687 (95% CI 0.674-0.701), which excludes 0.750. The $d/(d+1)$ prediction of 0.750 for $d = 3$ matches the upper end of the empirical range. The variation itself is consistent with the framework: organisms with effective transport dimensions between 2 and 3 would produce exponents between 2/3 and 3/4. The framework predicts this variation rather than a single universal exponent.</p>
+<div class="warning-box"> <h4>Note on the 3/4 exponent</h4> <p>The empirical value of the mammalian metabolic scaling exponent is debated, with estimates ranging from approximately 0.67 to 0.75 depending on taxon, mass range, temperature correction, and statistical method (White &amp; Seymour 2003; Glazier 2005, 2022). The largest modern dataset (619 species) gives a maximum-likelihood estimate of 0.687 (95% CI 0.674-0.701), which excludes 0.750. The $d/(d+1)$ prediction of 0.750 for $d = 3$ matches the upper end of the empirical range. The variation itself is consistent with the framework: organisms with effective transport dimensions between 2 and 3 would produce exponents between 2/3 and 3/4. The framework predicts this variation rather than a single universal exponent.</p>
 </div>
 
-<table>
-    <thead><tr><th>#</th><th>Taxon</th><th>Predicted</th><th>Observed</th><th>Nearest</th><th>CI includes?</th></tr></thead>
-    <tbody>
-        <tr class="confirmed"><td>26</td><td>Mammals</td><td class="num">0.750</td><td class="num">0.737</td><td>$d=3$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>27</td><td>Birds</td><td class="num">0.750</td><td class="num">0.720</td><td>$d=3$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>28</td><td>Fish</td><td class="num">0.750</td><td class="num">0.800</td><td>$d=3$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>29</td><td>Reptiles</td><td class="num">0.750</td><td class="num">0.760</td><td>$d=3$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>30</td><td>Insects</td><td class="num">0.750</td><td class="num">0.750</td><td>$d=3$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>31</td><td>Amphibians</td><td class="num">0.750</td><td class="num">0.740</td><td>$d=3$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>32</td><td>Crustaceans</td><td class="num">0.750</td><td class="num">0.730</td><td>$d=3$</td><td>Yes</td></tr>
-        <tr class="provisional"><td>33</td><td>Jellyfish</td><td class="num">0.667</td><td class="num">0.680</td><td>$d=2$</td><td>Yes</td></tr>
-        <tr class="provisional"><td>34</td><td>Cnidarians</td><td class="num">0.667</td><td class="num">0.700</td><td>$d=2$</td><td>Yes</td></tr>
-        <tr class="provisional"><td>35</td><td>Ctenophores</td><td class="num">0.667</td><td class="num">0.660</td><td>$d=2$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>36</td><td>Ectomycorrhizal fungi</td><td class="num">0.500</td><td class="num">0.580</td><td>$d=1$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>37</td><td>Marine fungi</td><td class="num">0.500</td><td class="num">0.530</td><td>$d=1$</td><td>Yes</td></tr>
-        <tr class="confirmed"><td>38</td><td>Saprotrophic fungi (20&deg;C)</td><td class="num">0.500</td><td class="num">0.530</td><td>$d=1$</td><td>Yes</td></tr>
-    </tbody>
+<table> <thead><tr><th>#</th><th>Taxon</th><th>Predicted</th><th>Observed</th><th>Nearest</th><th>CI includes?</th></tr></thead> <tbody> <tr class="confirmed"><td>26</td><td>Mammals</td><td class="num">0.750</td><td class="num">0.737</td><td>$d=3$</td><td>Yes</td></tr> <tr class="confirmed"><td>27</td><td>Birds</td><td class="num">0.750</td><td class="num">0.720</td><td>$d=3$</td><td>Yes</td></tr> <tr class="confirmed"><td>28</td><td>Fish</td><td class="num">0.750</td><td class="num">0.800</td><td>$d=3$</td><td>Yes</td></tr> <tr class="confirmed"><td>29</td><td>Reptiles</td><td class="num">0.750</td><td class="num">0.760</td><td>$d=3$</td><td>Yes</td></tr> <tr class="confirmed"><td>30</td><td>Insects</td><td class="num">0.750</td><td class="num">0.750</td><td>$d=3$</td><td>Yes</td></tr> <tr class="confirmed"><td>31</td><td>Amphibians</td><td class="num">0.750</td><td class="num">0.740</td><td>$d=3$</td><td>Yes</td></tr> <tr class="confirmed"><td>32</td><td>Crustaceans</td><td class="num">0.750</td><td class="num">0.730</td><td>$d=3$</td><td>Yes</td></tr> <tr class="provisional"><td>33</td><td>Jellyfish</td><td class="num">0.667</td><td class="num">0.680</td><td>$d=2$</td><td>Yes</td></tr> <tr class="provisional"><td>34</td><td>Cnidarians</td><td class="num">0.667</td><td class="num">0.700</td><td>$d=2$</td><td>Yes</td></tr> <tr class="provisional"><td>35</td><td>Ctenophores</td><td class="num">0.667</td><td class="num">0.660</td><td>$d=2$</td><td>Yes</td></tr> <tr class="confirmed"><td>36</td><td>Ectomycorrhizal fungi</td><td class="num">0.500</td><td class="num">0.580</td><td>$d=1$</td><td>Yes</td></tr> <tr class="confirmed"><td>37</td><td>Marine fungi</td><td class="num">0.500</td><td class="num">0.530</td><td>$d=1$</td><td>Yes</td></tr> <tr class="confirmed"><td>38</td><td>Saprotrophic fungi (20&deg;C)</td><td class="num">0.500</td><td class="num">0.530</td><td>$d=1$</td><td>Yes</td></tr> </tbody>
 </table>
 
 <p>All 13 published exponents fall nearest to the predicted dimensional comparator ($d/(d+1)$), and all 13 confidence intervals include the predicted value. This is strong corroborating evidence, but it tests a different claim (specific exponent) than the primary result (functional family), so it is reported separately.</p>
 
-<div class="warning-box">
-    <h4>Caveat on d=2 biological entries</h4>
-    <p>The jellyfish, cnidarian, and ctenophore entries (rows 33-35) are classified as nearest-comparator matches to $d = 2$, meaning their observed exponents fall closer to 2/3 than to either 1/2 or 3/4. However, the $d = 2$ biological prediction remains untested in the strong sense because no known organism possesses a genuinely two-dimensional hierarchical space-filling transport network with conserved flow. These organisms lack the vascular architecture that the $d/(d+1)$ derivation assumes. The $d = 2$ confirmation exists in cosmology (Friedmann matter-era solution, exact) and physics (percolation, fragmentation), not in biology. These rows should be understood as empirical proximity to the $d = 2$ comparator, not as dimensional confirmation.</p>
+<div class="warning-box"> <h4>Provenance note on the 13-taxa table</h4> <p>The table above does not carry a per-row citation column. Section 10.2 references [26]-[35] name the broader compendium literature on interspecific metabolic scaling (West, Brown and Enquist 1997; Banavar et al. 1999, 2010; Demetrius 2003, 2006, 2010; White and Seymour 2003; Glazier 2005, 2022; Kolokotrones et al. 2010) from which the mammalian, vertebrate and invertebrate scaling exponent literature is compiled, but this paper does not currently anchor a locked per-row source citation to each observed exponent or confidence interval in the table. Independent readers should treat individual rows as pending a per-row source audit before reuse in secondary work; the jellyfish, cnidarian and ctenophore rows (33-35) and the three fungal rows (36-38) are the ones for which a per-row source citation has not been anchored in this paper.</p>
+</div>
+
+<div class="warning-box"> <h4>Caveat on d=2 biological entries</h4> <p>The jellyfish, cnidarian, and ctenophore entries (rows 33-35) are classified as nearest-comparator matches to $d = 2$, meaning their observed exponents fall closer to 2/3 than to either 1/2 or 3/4. However, the $d = 2$ biological prediction remains untested in the strong sense because no known organism possesses a genuinely two-dimensional hierarchical space-filling transport network with conserved flow. These organisms lack the vascular architecture that the $d/(d+1)$ derivation assumes. The $d = 2$ confirmation exists in cosmology (Friedmann matter-era solution, exact) and physics (percolation, fragmentation), not in biology. These rows should be understood as empirical proximity to the $d = 2$ comparator, not as dimensional confirmation.</p>
 </div>
 
 <h3>7.2 Provisional published exponents (3/6)</h3>
@@ -544,23 +248,18 @@
 
 <h2>8. Significance Framing</h2>
 
-<p>The primary result ($p = 1.56 \times 10^{-5}$) deserves honest contextualisation.</p>
+<p>The primary result ($p = 7 \times 10^{-5}$, permutation) deserves honest contextualisation.</p>
 
-<ul>
-    <li><strong>In absolute terms:</strong> roughly 1 in 64,000. If 64,000 researchers each picked scaling families at random for 25 domains, on average one would match 19 or more by chance.</li>
-    <li><strong>Relative to convention:</strong> about 300 times stronger than $p &lt; 0.05$. Equivalent to approximately 4.2$\sigma$ in Gaussian terms.</li>
-    <li><strong>What it supports:</strong> the result is strong enough to publish as exploratory evidence that Cauchy-type composition constraints predict scaling families at well-above-chance rates.</li>
-    <li><strong>What it does not support:</strong> it is not strong enough to claim the theory is proven. The particle-physics discovery threshold is 5$\sigma$ ($p \approx 3 \times 10^{-7}$). The test lacks formal pre-registration. The operator classifications were made by the author, not an independent panel.</li>
-    <li><strong>What is needed:</strong> independent replication with pre-registered operator classification, ideally by researchers with no stake in the outcome.</li>
+<ul> <li><strong>In absolute terms:</strong> under the uniform-chance binomial null, roughly 1 in 64,000: if 64,000 researchers each picked scaling families at random for 25 domains, on average one would match 19 or more by chance. The stricter permutation null, which concedes that power laws are simply common among real fits, still leaves $p = 7 \times 10^{-5}$.</li> <li><strong>Relative to convention:</strong> both tests land three orders of magnitude beyond $p &lt; 0.05$. Sigma equivalences are not quoted because they shift with the choice of null.</li> <li><strong>What it supports:</strong> the result is strong enough to publish as exploratory evidence that Cauchy-type composition constraints predict scaling families at well-above-chance rates.</li> <li><strong>What it does not support:</strong> it is not strong enough to claim the theory is proven. The particle-physics discovery threshold is 5$\sigma$ ($p \approx 3 \times 10^{-7}$). The test lacks formal pre-registration. The operator classifications were made by the author, not an independent panel. The candidate set contained no logarithmic and no pure linear model, so the hit rate is conditional on that model set (Section 3.2).</li> <li><strong>What is needed:</strong> independent replication with pre-registered operator classification, ideally by researchers with no stake in the outcome.</li>
 </ul>
 
 <h2>9. Group Analysis</h2>
 
 <h3>9.1 Multiplicative composition: power laws</h3>
 
-<p>Of 14 empirical domains classified as multiplicative, 11 produce power-law scaling as their AICc-best model. These span metabolic allometry (heart rate vs body mass), urban economics (Bettencourt 2007), technology learning curves (Wright's law), computational linguistics (Heap's law), skill acquisition (Crossman 1959), Brownian motion (Catipovic 2013), neural network scaling (Kaplan 2020), VLSI design (Rent's rule), population ecology (Taylor's power law), and fluvial geomorphology (Hack's law).</p>
+<p>Of 14 empirical domains classified as multiplicative, 10 produce power-law scaling as their AICc-best model. These span metabolic allometry (heart rate vs body mass), urban economics (Bettencourt 2007), technology learning curves (Wright's law), computational linguistics (Heap's law), skill acquisition (Crossman 1959), Brownian motion (Catipovic 2013), neural network scaling (Kaplan 2020), VLSI design (Rent's rule), population ecology (Taylor's power law), and fluvial geomorphology (Hack's law).</p>
 
-<p>Three multiplicative domains miss: Kleiber's law (bounded model edges out power law on a 13-point dataset), species-area (high scatter on small island data), and stellar mass-luminosity (scatter at high mass). Zipf's law also misses due to finite-corpus truncation.</p>
+<p>Four multiplicative domains miss: Kleiber's law (bounded model edges out power law on a 13-point dataset), species-area (high scatter on small island data), stellar mass-luminosity (scatter at high mass), and Zipf's law (finite-corpus truncation).</p>
 
 <h3>9.2 Additive composition: exponentials</h3>
 
@@ -618,78 +317,51 @@
 <p>[35] Kolokotrones, T., Savage, V., Deeds, E. J. &amp; Fontana, W. (2010). Curvature in metabolic scaling. <em>Nature</em> 464(7289):753-756.</p>
 </div>
 
-<h2>11. Prior Art</h2>
+<h2>11. Related Work</h2>
 
-<p>An exhaustive prior-art investigation found no previous work that invokes all four Cauchy functional equations as a unifying cross-domain principle constraining the forms of scaling laws.</p>
+<p>An exhaustive investigation of related work found no previous publication that invokes all four Cauchy functional equations as a unifying cross-domain principle constraining the forms of scaling laws.</p>
 
 <p>The closest existing work includes:</p>
 
-<ul>
-    <li><strong>Bingham &amp; Ostaszewski (2015):</strong> connect Cauchy's equation to regular variation theory. Pure mathematics. No cross-domain physical science application.</li>
-    <li><strong>West, Brown &amp; Enquist (1997):</strong> derive a 3/4 metabolic exponent from fractal vascular networks with energy-minimised flow. Domain-specific. Does not predict other domains. Note that the empirical exponent is debated (see Warning box in Section 7.1).</li>
-    <li><strong>Banavar, Maritan &amp; Rinaldo (1999, 2010):</strong> derive the same $d/(d+1)$ form from geometric constraints on transportation networks combined with supply-demand conservation, without requiring fractal geometry. Independently confirmed the quarter-power exponent from different starting assumptions. Banavar et al. (2010) showed that the exponent ranges from 2/3 to 3/4 depending on how velocity scales, with 3/4 as the optimised maximum - demonstrating that space-filling geometry alone is insufficient without a conservation or optimisation constraint.</li>
-    <li><strong>Demetrius (2003, 2006) and Demetrius &amp; Tuszynski (2010):</strong> derive equivalent scaling from quantum statistical mechanics, applying the Debye model of thermal properties to coupled energy-transducing oscillator networks in $d$-dimensional space. A completely independent route to the same exponent from different physics (quantum oscillator coupling rather than network geometry). The convergence of this derivation with West's network geometry derivation is explained by Cauchy's multiplicative functional equation applied to multiplicative composition in $d$-dimensional space with a conservation constraint (see companion paper, On the Origin of Scaling Laws v3.1).</li>
-    <li><strong>Bettencourt (2013):</strong> derives city scaling exponents from network dimensionality, extending the $d/(d+1)$ form beyond biology to urban systems.</li>
-    <li><strong>Zhao (2022):</strong> derives the formula as a universal growth scaling law from network optimisation, providing another independent derivation.</li>
-    <li><strong>He &amp; Chen (2003):</strong> derive metabolic scaling exponents from optimal vascular network geometry with flow conservation constraints.</li>
-    <li><strong>He &amp; Zhang (2004):</strong> extend the derivation to heterogeneous branching networks, recovering the $d/(d+1)$ form under energy-minimisation assumptions.</li>
-    <li><strong>Maino et al. (2014):</strong> derive metabolic scaling from thermodynamic first principles applied to ontogenetic growth, independently obtaining the same exponent family.</li>
-    <li><strong>Geoffrey West, <em>Scale</em> (2017):</strong> discusses scaling across biology and cities. No mention of Cauchy's functional equations.</li>
-    <li><strong>Acz&eacute;l (1966):</strong> standard reference for all four Cauchy equations. Applications to information theory but not to cross-domain scaling.</li>
+<ul> <li><strong>Bingham &amp; Ostaszewski (2015):</strong> connect Cauchy's equation to regular variation theory. Pure mathematics. No cross-domain physical science application.</li> <li><strong>West, Brown &amp; Enquist (1997):</strong> derive a 3/4 metabolic exponent from fractal vascular networks with energy-minimised flow. Domain-specific. Does not predict other domains. Note that the empirical exponent is debated (see Warning box in Section 7.1).</li> <li><strong>Banavar, Maritan &amp; Rinaldo (1999, 2010):</strong> derive the same $d/(d+1)$ form from geometric constraints on transportation networks combined with supply-demand conservation, without requiring fractal geometry. Independently confirmed the quarter-power exponent from different starting assumptions. Banavar et al. (2010) showed that the exponent ranges from 2/3 to 3/4 depending on how velocity scales, with 3/4 as the optimised maximum - demonstrating that space-filling geometry alone is insufficient without a conservation or optimisation constraint.</li> <li><strong>Demetrius (2003, 2006) and Demetrius &amp; Tuszynski (2010):</strong> derive equivalent scaling from quantum statistical mechanics, applying the Debye model of thermal properties to coupled energy-transducing oscillator networks in $d$-dimensional space. A completely independent route to the same exponent from different physics (quantum oscillator coupling rather than network geometry). The convergence of this derivation with West's network geometry derivation is explained by Cauchy's multiplicative functional equation applied to multiplicative composition in $d$-dimensional space with a conservation constraint (see companion paper, On the Origin of Scaling Laws v3.1).</li> <li><strong>Bettencourt (2013):</strong> derives city scaling exponents from network dimensionality, extending the $d/(d+1)$ form beyond biology to urban systems.</li> <li><strong>Zhao (2022):</strong> derives the formula as a universal growth scaling law from network optimisation, providing another independent derivation.</li> <li><strong>He &amp; Chen (2003):</strong> derive metabolic scaling exponents from optimal vascular network geometry with flow conservation constraints.</li> <li><strong>He &amp; Zhang (2004):</strong> extend the derivation to heterogeneous branching networks, recovering the $d/(d+1)$ form under energy-minimisation assumptions.</li> <li><strong>Maino et al. (2014):</strong> derive metabolic scaling from thermodynamic first principles applied to ontogenetic growth, independently obtaining the same exponent family.</li> <li><strong>Geoffrey West, <em>Scale</em> (2017):</strong> discusses scaling across biology and cities. No mention of Cauchy's functional equations.</li> <li><strong>Acz&eacute;l (1966):</strong> standard reference for all four Cauchy equations. Applications to information theory but not to cross-domain scaling.</li>
 </ul>
 
 <p>The gap is genuine. The $d/(d+1)$ formula has been independently derived by at least seven research groups through different mathematical frameworks - fractal networks, geometric constraints with supply-demand balance, quantum metabolism, urban scaling, network optimisation, optimal vascular geometry, and thermodynamic first principles. Every known derivation requires three conditions: multiplicative composition (which Cauchy constrains to the power-law family), $d$-dimensional space-filling geometry, and a conservation or optimisation constraint on resource flow. The mathematical theorems are 200 years old. The biological data is 90 years old. The novel contribution is not the $d/(d+1)$ formula itself (which is well established), nor Cauchy's mathematics, but the claim that Cauchy-type functional equations explain <em>why</em> these independent derivations converge on the same form, and that the Cauchy constraint has a physically testable consequence for scaling-law classification across domains.</p>
 
 <h2>12. Limitations</h2>
 
-<ul>
-    <li><strong>No pre-registration artefact.</strong> The predictions, data arrays, and fitting logic all reside in a single author-written script. There is no locked pre-registration artefact. This test should be understood as a structured prediction comparison, not a formally pre-registered blind trial.</li>
-    <li><strong>Operator classification by author.</strong> The composition operator classification is done by the author, not by an independent assessor. A pre-registered replication with independent operator classification would be more rigorous.</li>
-    <li><strong>Bounded composition exhaustiveness is open.</strong> The proof that only saturation-family curves are compatible with bounded composition is not provided and remains an open problem. The bounded category currently groups logistic, Hill, Michaelis-Menten, and hyperbolic forms by empirical convention rather than mathematical proof.</li>
-    <li><strong>Legacy AIC was an approximation.</strong> The v1 test used an R$^2$-based AIC approximation ($\text{AIC} \approx n \ln(1 - R^2) + 2k$), not a full likelihood-based nonlinear AIC. The v2 test corrects this with proper AICc computed from residual sum of squares.</li>
-    <li><strong>Three datasets use reference values.</strong> Radioactive decay (NIST half-life), Amdahl's law (theoretical formula), and Moore's law (manufacturer specs) use theoretical or reference values rather than independently collected empirical measurements.</li>
-    <li><strong>Family prediction only.</strong> The framework predicts the functional family but not the specific exponent. Predicting exponents requires additional structure (dimensionality, constraint type) developed in the companion Foundational paper.</li>
-    <li><strong>Six empirical misses.</strong> The misses are not dismissible. They identify real limits of the framework: small datasets, truncated ranges, high-scatter regimes, and domains where competing physical effects (radiation pressure, corpus boundaries) perturb the ideal prediction.</li>
-    <li><strong>Operator classification is descriptive, not explanatory.</strong> The framework does not explain <em>why</em> a particular domain has a multiplicative rather than additive composition operator. It takes the operator as given and predicts the consequence.</li>
-    <li><strong>Baseline-20 rerun is not cleanly comparable to v1.</strong> The fitter changed from R$^2$-based AIC approximation to proper AICc. The model set expanded. A direct comparison of 14/20 (v1) to 15/20 (v2 baseline rerun) is not meaningful because the selection criterion changed.</li>
-    <li><strong>Publication bias risk.</strong> The 5 new expansion domains were selected after the baseline-20 test. While they were chosen to span new physical regimes (stellar astrophysics, allometric heart rate, VLSI, ecology, geomorphology), the selection was not randomised.</li>
-    <li><strong>Finite model set.</strong> The fitter compares a finite set of candidate models (power law, exponential, logistic, Hill, Michaelis-Menten, saturation-exponential). The true best model for any domain may not be in this set.</li>
-    <li><strong>Sample size.</strong> Twenty-five empirical domains is a reasonable exploratory sample but not definitive. Expansion to 100+ domains with pre-registered selection criteria would strengthen or weaken the result.</li>
+<ul> <li><strong>No pre-registration artefact.</strong> The predictions, data arrays, and fitting logic all reside in a single author-written script. There is no locked pre-registration artefact. This test should be understood as a structured prediction comparison, not a formally registered blind trial.</li> <li><strong>Operator classification by author.</strong> The composition operator classification is done by the author, not by an independent assessor. A replication with independent operator classification would be more rigorous.</li> <li><strong>Bounded composition exhaustiveness is open.</strong> The proof that only saturation-family curves are compatible with bounded composition is not provided and remains an open problem. The bounded category currently groups logistic, Hill, Michaelis-Menten, and hyperbolic forms by empirical convention rather than mathematical proof.</li> <li><strong>Legacy AIC was an approximation.</strong> The v1 test used an R$^2$-based AIC approximation ($\text{AIC} \approx n \ln(1 - R^2) + 2k$), not a full likelihood-based nonlinear AIC. The v2 test corrects this with proper AICc computed from residual sum of squares.</li> <li><strong>Three datasets use reference values.</strong> Radioactive decay (NIST half-life), Amdahl's law (theoretical formula), and Moore's law (manufacturer specs) use theoretical or reference values rather than independently collected empirical measurements.</li> <li><strong>Family prediction only.</strong> The framework predicts the functional family but not the specific exponent. Predicting exponents requires additional structure (dimensionality, constraint type) developed in the companion Foundational paper.</li> <li><strong>Six empirical misses.</strong> The misses are not dismissible. They identify real limits of the framework: small datasets, truncated ranges, high-scatter regimes, and domains where competing physical effects (radiation pressure, corpus boundaries) perturb the ideal prediction.</li> <li><strong>Operator classification is descriptive, not explanatory.</strong> The framework does not explain <em>why</em> a particular domain has a multiplicative rather than additive composition operator. It takes the operator as given and predicts the consequence.</li> <li><strong>Baseline-20 rerun is not cleanly comparable to v1.</strong> The fitter changed from R$^2$-based AIC approximation to proper AICc. The model set expanded. A direct comparison of 14/20 (v1) to 15/20 (v2 baseline rerun) is not meaningful because the selection criterion changed.</li> <li><strong>Publication bias risk.</strong> The 5 new expansion domains were selected after the baseline-20 test. While they were chosen to span new physical regimes (stellar astrophysics, allometric heart rate, VLSI, ecology, geomorphology), the selection was not randomised.</li> <li><strong>Finite model set, and specifically two Cauchy families out, one non-Cauchy family in.</strong> The fitter compares six candidate models (power law, exponential, logistic, Hill, Michaelis-Menten, saturation-exponential). Two of the four Cauchy solutions named in Section 2.1 have no candidate (logarithmic $c \log x$; pure linear $cx$), while the bounded family, whose exhaustiveness remains an open problem, is represented four times. The true best model for any domain may not be in this set, and Section 3.2 states the consequences for the hit counts.</li> <li><strong>Sample size.</strong> Twenty-five empirical domains is a reasonable exploratory sample but not definitive. Expansion to 100+ domains with pre-registered selection criteria would strengthen or weaken the result.</li>
 </ul>
 
 <h3>12.1 Falsifiability: what would defeat this claim</h3>
 
-<p>The limitations above describe where the framework is weak; this subsection states the specific outcomes that would falsify it. The central claim &mdash; that a domain's composition operator, classified from known physics <em>before</em> fitting, predicts its scaling-law family &mdash; is defeated by any of the following:</p>
+<p>The limitations above describe where the framework is weak; this subsection states the specific outcomes that would falsify it. The central claim, that a domain's composition operator, classified from known physics <em>before</em> fitting, predicts its scaling-law family, is defeated by any of the following:</p>
 
 <ol>
-<li><strong>Hit rate at chance.</strong> The primary result is a family-prediction hit rate of 19/25 empirical domains (&sect;5&ndash;&sect;6). With three to four candidate families, blind assignment gives a chance baseline of roughly one in three to one in four. The claim is defeated if a locked, pre-registered replication with independent operator classification returns a hit rate not significantly above that chance baseline.</li>
+<li><strong>Hit rate at chance.</strong> The primary result is a family-prediction hit rate of 19/25 empirical domains (&sect;5&ndash;&sect;6). With three to four candidate families, blind assignment gives a chance baseline of roughly one in three to one in four. The claim is defeated if a replication with independent operator classification returns a hit rate not significantly above that chance baseline.</li>
 <li><strong>Post-hoc operator classification.</strong> The test's strength depends on the operator being assignable from independently-known physics without seeing the data. The claim is defeated if, in a blind trial, independent assessors cannot reproduce the author's operator classifications from the physics alone, or if any classification can be shown to have been chosen to fit the observed exponent.</li>
-<li><strong>Fit degeneracy.</strong> The prediction is meaningful only if the candidate families are empirically distinguishable on the data at hand. It is defeated for any domain where the fitter reaches the observed curve equally well under the <em>wrong</em> family &mdash; i.e. the family assignment carries no discriminating information for that domain's range and noise.</li>
+<li><strong>Fit degeneracy.</strong> The prediction is meaningful only if the candidate families are empirically distinguishable on the data at hand. It is defeated for any domain where the fitter reaches the observed curve equally well under the <em>wrong</em> family; that is, the family assignment carries no discriminating information for that domain's range and noise.</li>
 <li><strong>Unrationalised misses.</strong> Six domains miss (&sect;6). The misses are consistent with the claim only if their causes are fixed as a pre-registered exclusion rule <em>before</em> the next test, not supplied after seeing which domains missed. The claim is defeated if the miss rate rises under a pre-registered replication with no post-hoc exclusions.</li>
-<li><strong>Exploratory ceiling.</strong> The abstract concedes there is no locked pre-registration artefact. Until one exists &mdash; operators classified and predictions locked before fitting, on a randomised domain sample &mdash; the claim cannot rise above <em>exploratory</em>, and any presentation of it as established would itself falsify the paper's stated evidential status.</li>
+<li><strong>Four-family re-run.</strong> The drafted four-family confirmatory study (Section 3.2) re-runs this comparison with logarithmic and pure linear candidates included. The claim is weakened if the hit rate falls materially when the missing families are available, and defeated if it falls to the chance baseline; hits that migrate to the logarithmic family will be reported as reclassifications, not as new confirmations.</li>
+<li><strong>Exploratory ceiling.</strong> The abstract concedes there is no locked pre-registration artefact. Until one exists (operators classified and predictions locked before fitting, on a randomised domain sample), the claim cannot rise above <em>exploratory</em>, and any presentation of it as established would itself falsify the paper's stated evidential status.</li>
 </ol>
 
-<p>What would <em>not</em> defeat it: a single additional miss, or a better-fitting model appearing in one domain. The claim is about the aggregate operator&ndash;family mapping, not any single fit &mdash; but that aggregate must clear the chance baseline under pre-registered, independently-classified replication.</p>
+<p>What would <em>not</em> defeat it: a single additional miss, or a better-fitting model appearing in one domain. The claim is about the aggregate operator&ndash;family mapping, not any single fit; but that aggregate must clear the chance baseline under pre-registered, independently-classified replication.</p>
 
 <h2>13. Implications</h2>
 
 <p>If the framework holds under independent pre-registered replication, it would suggest:</p>
 
-<ol>
-    <li>The forms of scaling laws are not coincidences but mathematical consequences of composition structure, under the stated axioms.</li>
-    <li>The same principle that governs how a mouse's heart beats governs how neural networks improve with scale.</li>
-    <li>The renormalisation group's power-law predictions and Cauchy's multiplicative equation may be related theorems - a connection that, to the author's knowledge, has not been formally articulated. A formal proof of this equivalence remains open.</li>
-    <li>Any new system's scaling family can be predicted from first principles by classifying its composition operator, without any data fitting.</li>
-    <li>Two hundred years of domain-specific explanations for scaling laws - fractal networks, learning curves, critical phenomena - may be special cases of a single mathematical constraint that Cauchy identified in 1821.</li>
+<ol> <li>The forms of scaling laws are not coincidences but mathematical consequences of composition structure, under the stated axioms.</li> <li>The same principle that governs how a mouse's heart beats governs how neural networks improve with scale.</li> <li>The renormalisation group's power-law predictions and Cauchy's multiplicative equation may be related theorems - a connection that, to the author's knowledge, has not been formally articulated. A formal proof of this equivalence remains open.</li> <li>Any new system's scaling family can be predicted from first principles by classifying its composition operator, without any data fitting.</li> <li>Two hundred years of domain-specific explanations for scaling laws - fractal networks, learning curves, critical phenomena - may be special cases of a single mathematical constraint that Cauchy identified in 1821.</li>
 </ol>
 
 <p>These implications are conditional. The current evidence is exploratory, not definitive.</p>
 
 <h2>14. Conclusion</h2>
 
-<p>Plant an acorn and, given centuries, you get an oak. But plant that oak's acorn, and its acorn, recursively across millennia, and you get a forest that shapes the climate of continents. What we plant in these systems will compound across scales we cannot imagine. The seed determines the forest.</p>
+<p>Plant an acorn and given centuries, you get an oak. But plant that oak's acorn, and its acorn, recursively across millennia, and you get a forest that shapes the climate of continents. What we plant in these systems will compound across scales we cannot imagine. The seed determines the forest.</p>
 
-<p>Cauchy proved 200 years ago that the seed also determines the <em>form</em> of the forest. Multiplicative seeds produce power laws. Additive seeds produce exponentials. Bounded seeds produce saturation. Twenty-five empirical domains tested against this prediction yield 19 confirmations at $p = 1.56 \times 10^{-5}$. Thirteen published metabolic exponents fall where the dimensional theory predicts.</p>
+<p>Cauchy proved 200 years ago that the seed also determines the <em>form</em> of the forest. Multiplicative seeds produce power laws. Additive seeds produce exponentials. Bounded seeds produce saturation. Twenty-five empirical domains tested against this prediction yield 19 confirmations at $p = 7 \times 10^{-5}$ under the marginal-conditioned permutation test, on the six-model candidate set of Section 3.2; the four-family re-run is drafted and awaiting human submission. Thirteen published metabolic exponents fall where the dimensional theory predicts.</p>
 
 <p>The mathematics was always there. We just had not read it as a prediction about the physical world. Whether that reading holds under independent scrutiny is now a question for the scientific community to answer.</p>
 
@@ -698,41 +370,357 @@
 <h2>15. Reproducibility</h2>
 
 <p>The complete validation suite - including all 50 domain definitions, the canonical manifest, and the AICc-based fitting code - is available at:</p>
-<ul>
-    <li>Experiment code: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/cauchy-unification__Paper-VII">github.com/.../experiments/cauchy-unification__Paper-VII</a></li>
-    <li>50-domain manifest: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/experiments/cauchy-unification__Paper-VII/data/canonical_50_domain_manifest.json">canonical_50_domain_manifest.json</a></li>
+<ul> <li>Experiment code: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/cauchy-unification__Paper-VII">github.com/.../experiments/cauchy-unification__Paper-VII</a></li> <li>50-domain manifest: <a href="https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/experiments/cauchy-unification__Paper-VII/data/canonical_50_domain_manifest.json">canonical_50_domain_manifest.json</a></li>
 </ul>
 <p>The script requires Python 3.10+, numpy, and scipy. All data is embedded in the manifest with full provenance citations. Output is deterministic.</p>
 
-<div class="companion-links">
-    <strong>Companion Papers:</strong>
-    <a href="Paper-I-ARC-Principle.html">Paper I</a> |
-    <a href="Foundational.html">Foundational</a> |
-    <a href="Paper-II-Experimental-Validation.html">Paper II</a> |
-    <a href="Paper-III-Alignment-Scaling-Problem.html">Paper III</a> |
-    <a href="../On-the-Origin-of-Scaling-Laws/On-the-Origin-of-Scaling-Laws.html">Origin of Scaling Laws</a> |
-    <a href="Paper-IV-a-Baked-In-vs-Computed-Alignment.html">IV.a</a> |
-    <a href="Paper-IV-b-Alignment-Saturation-at-Low-Depth.html">IV.b</a> |
-    <a href="Paper-IV-c-ARC-Align-Benchmark.html">IV.c</a> |
-    <a href="Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation.html">IV.d</a> |
-    <a href="Paper-V-Stewardship-Gene.html">Paper V</a> |
-    <a href="Paper-VI-Honey-Architecture.html">Paper VI</a> |
-    <strong>Paper VII</strong> |
-    <a href="Paper-VIII-The-Load-Bearing-Proof.html">Paper VIII</a> |
-    <a href="Paper-IX-Synthesis-and-Roadmap.html">Paper IX</a> |
-    <a href="Eden-Engineering.html">Eden Engineering</a> |
-    <a href="Eden-Vision.html">Eden Vision</a> |
-    <a href="Executive-Summary.html">Executive Summary</a> |
-    <a href="Master-Table-of-Contents.html">Master Table of Contents</a>
-    <br><br>
-    <em>Research hub: <a href="https://www.michaeldariuseastwood.com/research/">michaeldariuseastwood.com/research</a> | OSF: 10.17605/OSF.IO/6C5XB | Copyright 2026 Michael Darius Eastwood</em>
-</div>
-
+<div class="companion-links"> <strong>Companion Papers:</strong> <a href="/research/papers/paper-i-arc-principle.html">Paper I</a> | <a href="/research/papers/foundational.html">Foundational</a> | <a href="/research/papers/paper-ii-experimental-validation.html">Paper II</a> | <a href="/research/papers/paper-iii-alignment-scaling-problem.html">Paper III</a> | <a href="/research/papers/on-the-origin-of-scaling-laws.html">Origin of Scaling Laws</a> | <a href="/research/papers/paper-iv-a-baked-in-vs-computed-alignment.html">IV.a</a> | <a href="/research/papers/paper-iv-b-alignment-saturation-at-low-depth.html">IV.b</a> | <a href="/research/papers/paper-iv-c-arc-align-benchmark.html">IV.c</a> | <a href="/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html">IV.d</a> | <a href="/research/papers/paper-v-stewardship-gene.html">Paper V</a> | <a href="/research/papers/paper-vi-honey-architecture.html">Paper VI</a> | <strong>Paper VII</strong> | <a href="/research/papers/paper-viii-the-load-bearing-proof.html">Paper VIII</a> | <a href="/research/papers/paper-ix-synthesis-and-roadmap.html">Paper IX</a> | <a href="/research/papers/eden-engineering.html">Eden Engineering</a> | <a href="/research/papers/eden-vision.html">Eden Vision</a> | <a href="/research/papers/executive-summary.html">Executive Summary</a> | <a href="/research/papers/master-table-of-contents.html">Master Table of Contents</a> <br><br> <em>Research hub: <a href="https://www.michaeldariuseastwood.com/research/">michaeldariuseastwood.com/research</a> | OSF: 10.17605/OSF.IO/X6WA7 | Copyright 2026 Michael Darius Eastwood</em>
+</div> <!-- eden:citations:cite-block:v1 -->
+<aside id="how-to-cite" style="margin:2.5rem 0 1.5rem;padding:1.2rem 1.4rem;border:1px solid #ddd;border-left:4px solid #c41230;border-radius:6px;background:#fbfaf5;font-family:'Source Sans 3',Helvetica,Arial,sans-serif" aria-labelledby="how-to-cite-heading">
+  <h2 id="how-to-cite-heading" style="font-family:'Source Serif 4',Georgia,serif;font-size:1.1rem;margin:0 0 .5rem;color:#1a1a1a">How to cite this paper</h2>
+<div style="font-size:.85rem;color:#666;margin-bottom:.5rem">DOI: 10.17605/OSF.IO/X6WA7</div>
+  <div style="font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#666;margin:.75rem 0 .25rem">APA (author-date, 7th edition)</div>
+  <pre style="font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:.82rem;line-height:1.55;background:#fff;border:1px solid #e4ddd0;border-radius:4px;padding:.65rem .8rem;margin:0;white-space:pre-wrap;word-break:break-word;overflow-x:auto">Eastwood, M. D. (2026). Paper VII: Cauchy Unification. ARC and Eden Research Programme. https://doi.org/10.17605/OSF.IO/X6WA7. https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.html</pre>
+  <div style="font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#666;margin:.75rem 0 .25rem">BibTeX</div>
+  <pre style="font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:.82rem;line-height:1.55;background:#fff;border:1px solid #e4ddd0;border-radius:4px;padding:.65rem .8rem;margin:0;white-space:pre-wrap;word-break:break-word;overflow-x:auto">@article{paperpaperviicauchyunification,
+  author  = {Michael Darius Eastwood},
+  title   = {Paper VII: Cauchy Unification},
+  year    = {2026},
+  date    = {2026-03-16},
+  journal = {ARC and Eden Research Programme},
+  doi     = {10.17605/OSF.IO/X6WA7},
+  url     = {https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.html}
+}</pre>
+  <div style="font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#666;margin:.75rem 0 .25rem">Inline</div>
+  <pre style="font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:.82rem;line-height:1.55;background:#fff;border:1px solid #e4ddd0;border-radius:4px;padding:.65rem .8rem;margin:0;white-space:pre-wrap;word-break:break-word;overflow-x:auto">Eastwood, 2026</pre>
+  <p style="font-size:.85rem;line-height:1.55;color:#333;margin:.9rem 0 0">See <a href="/how-to-cite/" style="color:#c41230">/how-to-cite/</a> for the canonical citation manual across all artefacts, or <a href="/citations.json" style="color:#c41230">/citations.json</a> for the machine-readable index.</p>
+</aside>
+<!-- /eden:citations:cite-block:v1 -->
 
 <h2 id="ai-declaration">Declaration of AI-Assisted Human Authorship</h2>
 <p>The author of this work is Michael Darius Eastwood, a human being. Every core concept, hypothesis, experimental design, claim and conclusion in this paper originates from human ideation. No part of this manuscript is a wholly generated artificial-intelligence output.</p>
 <p>Artificial-intelligence tools (Anthropic's Claude family and other large-language-model assistants) were used as instruments under continuous human direction, in the way a word processor, calculator or research assistant is used: for editing and prose refinement, literature search and summarisation (manually verified against primary sources), document structure, formatting, brainstorming against author-defined questions, and the acceleration of drafting to author-defined outlines and instructions. All selection, coordination, arrangement and final editorial judgment are the author's. Every substantive output was reviewed, tested or verified by the author, who takes full responsibility for the accuracy and integrity of the final text. The tools increased the speed of the work; they were never relied upon as its source.</p>
-<p><strong>United Kingdom.</strong> In accordance with the <a href="https://www.legislation.gov.uk/ukpga/1988/48">Copyright, Designs and Patents Act 1988</a>, the author undertook the arrangements necessary for the creation of this work and asserts full human authorship and moral rights: this is a human-authored work produced with computer assistance, not a computer-generated work. <strong>United States.</strong> Consistent with <a href="https://www.copyright.gov/ai/">United States Copyright Office guidance on works containing AI-generated material</a>, the human contribution (conception, selection, coordination, arrangement and final expression) is asserted as sufficient for full human authorship. <strong>Inventions.</strong> Any novel technical contribution described in this work was conceived by the human author; no artificial-intelligence system autonomously invented anything presented here.</p>
+<p><strong>United Kingdom.</strong> In accordance with the <a href="https://www.legislation.gov.uk/ukpga/1988/48">Copyright, Designs and Patents Act 1988</a>, the author undertook the arrangements necessary for the creation of this work and asserts full human authorship and moral rights: this is a human-authored work produced with computer assistance, not a computer-generated work. <strong>United States.</strong> Consistent with <a href="https://www.copyright.gov/ai/">United States Copyright Office guidance on works containing AI-generated material</a>, the human contribution (conception, selection, coordination, arrangement and final expression) is asserted as sufficient for full human authorship. <strong>Inventions.</strong> Any novel technical contribution described in this work was conceived by the human author; no artificial-intelligence system autonomously invented anything presented here.</p> <script>
+(function(){
+ var routes=[["Search everything","/search/","Hub"],["","/verify/","Hub"],["Research hub","/research/","Hub"],["The catalogue","/research/papers/","Hub"],
+ ["Evidence spine","/research/evidence-spine","Evidence"],["Priority ledger","/priority-claims","Evidence"],
+ ["Falsification dashboard","/research/evidence-portal/falsification.html","Evidence"],["Data availability","/research/data-availability/","Evidence"],
+ ["Reproducibility","/research/reproducibility/","Evidence"],["For funders and assessors","/research/for-funders","Evidence"],
+ ["Convergence register","/research/convergences/","Evidence"],["Evidence portal","/research/evidence-portal/","Evidence"],
+ ["Research blog","/research/blog/","Explore"],["Objections answered","/research/blog/tag/objection-posts/","Explore"],
+ ["The book","/book/","Explore"],["Eden Protocol","/eden-protocol","Explore"],["Start here","/start-here","Explore"],
+ ["Home","/","Explore"]];
+ var loaded=false, items=routes.slice(), pal, list, inp, idx=0;
+ function load(){ if(loaded) return; loaded=true;
+  fetch("/research/data/papers.json").then(function(r){return r.json()}).then(function(m){
+   (m.documents||[]).forEach(function(d){ if(d.status!=="withdrawn") items.push([d.title,"/research/papers/"+d.slug,d.roman?("Paper "+d.roman):"Paper"]); });
+  }).catch(function(){});
+ }
+ function build(){ if(pal) return; load();
+  pal=document.createElement("div"); pal.className="nv-pal"; pal.setAttribute("role","dialog"); pal.setAttribute("aria-modal","true"); pal.setAttribute("aria-label","Site search");
+  pal.innerHTML='<div class="nv-box"><input type="text" placeholder="Jump anywhere… (papers, evidence, claims)" aria-label="Search the site"><ul class="nv-list"></ul></div>';
+  document.body.appendChild(pal);
+  inp=pal.querySelector("input"); list=pal.querySelector(".nv-list");
+  inp.addEventListener("input",render);
+  inp.addEventListener("keydown",function(e){
+   var lis=list.querySelectorAll("li");
+   if(e.key==="ArrowDown"){idx=Math.min(idx+1,lis.length-1);mark(lis);e.preventDefault()}
+   else if(e.key==="ArrowUp"){idx=Math.max(idx-1,0);mark(lis);e.preventDefault()}
+   else if(e.key==="Enter"){var a=lis[idx]&&lis[idx].querySelector("a");if(a)location.href=a.getAttribute("href")}
+   else if(e.key==="Escape"){close()}
+  });
+  pal.addEventListener("click",function(e){ if(e.target===pal) close(); });
+ }
+ function mark(lis){ for(var i=0;i<lis.length;i++) lis[i].classList.toggle("on",i===idx); if(lis[idx])lis[idx].scrollIntoView({block:"nearest"}); }
+ function render(){ var q=(inp.value||"").toLowerCase(), out="",n=0;
+  for(var i=0;i<items.length&&n<12;i++){ var it=items[i];
+   if(!q||it[0].toLowerCase().indexOf(q)>-1){ out+='<li'+(n===0?' class="on"':'')+'><a href="'+it[1]+'">'+it[0]+'<span class="sec">'+it[2]+"</span></a></li>"; n++; } }
+  idx=0; list.innerHTML=out||'<li><a href="/research/">No match. Open the hub<span class="sec">Hub</span></a></li>';
+ }
+ function open(){ build(); pal.classList.add("open"); inp.value=""; render(); setTimeout(function(){inp.focus()},0); }
+ function close(){ if(pal) pal.classList.remove("open"); }
+ document.addEventListener("keydown",function(e){
+  var t=e.target, typing=t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.isContentEditable);
+  if(((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k")||(!typing&&e.key==="/")){ e.preventDefault(); (pal&&pal.classList.contains("open"))?close():open(); }
+  else if(e.key==="Escape"&&pal&&pal.classList.contains("open")){ close(); }
+ });
+ var chip=document.createElement("button"); chip.className="nv-chip"; chip.type="button";
+ chip.setAttribute("aria-label","Search the site (press / or Cmd+K)"); chip.textContent="⌘K";
+ chip.addEventListener("click",open); document.body.appendChild(chip);
+ var bar=document.createElement("div"); bar.className="nv-progress"; bar.setAttribute("aria-hidden","true"); document.body.appendChild(bar);
+})();
+</script>
+<script type="text/plain" id="cite-this-payload">@misc{eastwood2026paperviicauchyun,
+  author = {Eastwood, Michael Darius},
+  title = {Paper VII: Cauchy Unification},
+  year = {2026},
+  doi = {10.17605/OSF.IO/X6WA7},
+  url = {https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification},
+  note = {ARC / Eden research programme}
+}
 
+Eastwood, M. D. (2026). Paper VII: Cauchy Unification. ARC / Eden research programme. https://doi.org/10.17605/OSF.IO/X6WA7</script><div style="max-width:1000px;margin:2rem auto 0;padding:0 1.5rem"><button type="button" id="cite-this-btn" style="font:600 11px/1 system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;padding:9px 12px;min-height:34px;border:1px solid #c9b98a;border-radius:7px;background:#f7f5f0;color:#8a6508;cursor:pointer">cite this paper</button></div><script>(function(){var b=document.getElementById("cite-this-btn"),c=document.getElementById("cite-this-payload");if(!b||!c||!navigator.clipboard)return;b.addEventListener("click",function(){navigator.clipboard.writeText(c.textContent.trim()).then(function(){b.textContent="copied (bibtex + apa)";setTimeout(function(){b.textContent="cite this paper"},1800)})})})();</script> <footer class="nv-foot"><div class="inner"><a href="/research/the-open-problem/">The problem</a></li><li><a href="/research/the-synthesis/">The synthesis</a></li><li><a href="/research/">Research hub</a><a href="/research/papers/">Catalogue</a><a href="/research/evidence-spine.html">Evidence spine</a><a href="/priority-claims">Priority ledger</a><a href="/research/evidence-portal/falsification.html">Falsification</a><a href="/research/reproducibility/">Reproducibility</a><a href="/research/data-availability/">Data availability</a><a href="/research/for-funders">For funders</a><a href="/research/blog/">Blog</a><a href="/book/">Book</a><a href="/eden-protocol">Eden Protocol</a><a href="/">Home</a></div><div class="inner" style="margin-top:.4rem">ARC / Eden Research Programme · DOI <a href="https://doi.org/10.17605/OSF.IO/X6WA7" rel="noopener">10.17605/OSF.IO/X6WA7</a> · Raise AI with care · <a href="/verify/">.</a></div><!-- page-dates:v1 --><div class="page-dates" style="margin-top:.45rem;font-size:.72rem;opacity:.62">First published <time datetime="2026-03-16">16 March 2026</time> &middot; Last updated <time datetime="2026-08-10">10 August 2026</time></div><!-- /page-dates:v1 --></footer>
+<!-- eden-reader:v1 --><div class="er-listen" id="er-root">
+<span id="er-l" hidden><i data-k="listen">Listen</i><i data-k="voice">Listen &#183; author&#8217;s voice</i><i data-k="standard">Listen &#183; standard voice</i><i data-k="resume">Resume</i><i data-k="play">Play</i><i data-k="pause">Pause</i><i data-k="novoice">This device has no voice installed for this language, so it cannot read the page aloud.</i><i data-k="english">Read in English</i><i data-k="figure">There is a picture here. It shows:</i><i data-k="figlabel">Picture</i></span>
+<button id="er-play" type="button">&#9654;&#xFE0E; Listen</button><span class="er-hint">reads aloud &#183; highlights as it goes &#183; jump to any section</span>
+<div id="er-panel" hidden>
+ <div class="er-row">
+  <button id="er-restart" type="button" title="Restart section" aria-label="Restart section"><svg viewBox="0 0 16 16"><path d="M4 2v12M13 2 6 8l7 6z"/></svg><span class="er-cap">Restart</span></button>
+  <button id="er-b10" type="button" title="Back 10 seconds" aria-label="Back 10 seconds"><svg viewBox="0 0 20 16"><path d="M9 2 3 8l6 6"/></svg><span class="er-cap">10s</span></button>
+  <button id="er-pp" type="button" title="Pause" aria-label="Pause" aria-pressed="false"><svg viewBox="0 0 16 16"><path d="M4 2v12M12 2v12" stroke-width="3"/></svg><span class="er-cap">Pause</span></button>
+  <button id="er-f10" type="button" title="Forward 10 seconds" aria-label="Forward 10 seconds"><svg viewBox="0 0 20 16"><path d="M11 2l6 6-6 6"/></svg><span class="er-cap">10s</span></button>
+  <button id="er-next" type="button" title="Next section" aria-label="Next section"><svg viewBox="0 0 16 16"><path d="M12 2v12M3 2l7 6-7 6z"/></svg><span class="er-cap">Next</span></button>
+  <button id="er-close" type="button" title="Stop" aria-label="Stop"><svg viewBox="0 0 16 16"><rect x="3" y="3" width="10" height="10"/></svg><span class="er-cap">Stop</span></button>
+ </div>
+ <div class="er-row2" role="status" aria-live="polite" aria-atomic="true"><span id="er-st"></span><span id="er-time"></span></div>
+ <details id="er-secs" open><summary><svg class="er-chev" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M1 1l4 3.6L9 1"/></svg><span id="er-secs-label">Jump to any section</span><span id="er-secs-n"></span></summary><ol id="er-list"></ol></details>
+ <select id="er-voice" hidden aria-label="Choose voice"></select>
+ <p id="er-note" hidden></p>
+</div></div>
+<style>.er-listen{position:fixed;bottom:1rem;right:1rem;z-index:60;font-family:'IBM Plex Sans',system-ui,sans-serif}
+#er-play{min-height:44px;min-width:44px;padding:.45rem .9rem;border:1px solid #2d5a27;border-radius:999px;background:#fbfaf5;color:#2d5a27;font:inherit;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(28,28,25,.12)}
+#er-play:hover{background:#2d5a27;color:#fff}
+.er-hint{display:block;margin-top:.3rem;max-width:12.5rem;text-align:right;font-size:.64rem;line-height:1.35;color:#6b6b60}
+#er-panel:not([hidden]) ~ .er-hint,.er-listen:has(#er-panel:not([hidden])) .er-hint{display:none}
+#er-panel{background:#fbfaf7;border:1px solid #e0ddd5;border-radius:12px;box-shadow:0 10px 28px rgba(28,28,25,.16);padding:.6rem .7rem;min-width:15.5rem;max-width:min(20rem,calc(100vw - 1.6rem))}
+.er-row{display:flex;gap:.3rem;justify-content:center}
+.er-row button{min-height:46px;min-width:44px;border:1px solid #e0ddd5;border-radius:8px;background:#fff;color:#3b3b34;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.1rem;padding:.3rem .2rem}
+.er-cap{font-size:.58rem;letter-spacing:.02em;line-height:1;color:inherit}
+.er-row button:hover{border-color:#b8860b;color:#b8860b}
+.er-row svg{width:17px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.er-row svg text{fill:currentColor;stroke:none;font-size:8px;font-weight:700}
+.er-row svg rect{fill:currentColor;stroke:none}
+.er-row2{display:flex;justify-content:space-between;gap:.6rem;margin:.4rem .1rem 0;font-size:.72rem;color:#6b6b60}
+#er-secs{margin-top:.45rem}
+#er-secs summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.4rem;
+ min-height:40px;padding:.3rem .6rem;border:1px solid #e0ddd5;border-radius:8px;background:#fff;
+ font-size:.78rem;font-weight:600;color:#2d5a27}
+#er-secs summary::-webkit-details-marker{display:none}
+#er-secs summary:hover{border-color:#b8860b;color:#b8860b}
+#er-secs[open] summary{color:#b8860b;border-color:#b8860b;border-radius:8px 8px 0 0}
+#er-secs .er-chev{width:.6em;height:.6em;flex:none;transition:transform .15s ease}
+#er-secs[open] .er-chev{transform:rotate(180deg)}
+#er-secs-n{margin-left:auto;font-weight:400;color:#6b6b60;font-variant-numeric:tabular-nums}
+#er-secs[open] #er-list{border:1px solid #b8860b;border-top:0;border-radius:0 0 8px 8px;padding:.25rem}
+#er-list{list-style:none;margin:.25rem 0 0;padding:0;max-height:11rem;overflow-y:auto}
+#er-list button{display:block;width:100%;text-align:left;padding:.5rem .55rem;min-height:40px;border:0;background:none;font:inherit;font-size:.78rem;color:#3b3b34;cursor:pointer;border-radius:6px}
+#er-list button:hover{background:#f6f3ea;color:#b8860b}
+#er-list .er-cur{color:#b8860b;font-weight:600}
+#er-voice{margin-top:.4rem;width:100%;min-height:36px;font:inherit;font-size:.75rem;border:1px solid #e0ddd5;border-radius:7px;background:#fff;color:#3b3b34}
+#er-note{margin:.4rem 0 0;font-size:.66rem;color:#8a8a80}
+.er-now{background:#f8f5ec;box-shadow:-3px 0 0 #b8860b;transition:background .3s}
+figure.er-now,figure.er-speaking{outline:2px solid #b8860b;outline-offset:8px;border-radius:10px;background:#faf7ee;box-shadow:none}
+.er-speaking{background:#f0ede3;border-radius:4px}
+@media(max-width:720px){.er-listen{right:.6rem;bottom:.6rem}#er-panel{max-width:calc(100vw - 1.2rem)}}
+@media print{.er-listen{display:none}}</style>
+<script>(function(){"use strict";
+var play=document.getElementById("er-play"),panel=document.getElementById("er-panel");
+function trunc(s,n){if(s.length<=n)return s;var c=s.slice(0,n+1),i=c.lastIndexOf(" ");return (i>n*0.6?c.slice(0,i):s.slice(0,n))+"…"}
+function L(k){var e=document.querySelector('#er-l [data-k="'+k+'"]');return e?e.textContent:k}
+function setPlay(k){play.innerHTML="&#9654;&#xFE0E; "+L(k)}
+if(!play)return;
+var pp=document.getElementById("er-pp"),st=document.getElementById("er-st"),tm=document.getElementById("er-time"),
+ list=document.getElementById("er-list"),voiceSel=document.getElementById("er-voice"),note=document.getElementById("er-note");
+var KEY="er-pos:"+location.pathname;
+var lm=location.pathname.match(/^\/(uk|fa|fr|de|es|it|pt)(\/|$)/),lang=lm?lm[1]:null;
+var base=lang?location.pathname.replace(/^\/[a-z]{2}/,""):location.pathname;
+var slug=base.replace(/\/index\.html?$/,"").replace(/\.html?$/,"").replace(/\/$/,"").split("/").pop()||"home";
+var adir="/audio/"+slug+(lang?"-"+lang:"")+"/";
+var manifest=null,mode=null,idx=0,playing=false,paused=false,player=null,chosen=null,ttsN=0,sent=null,sidx=0,noVoice=false;
+fetch(adir+"manifest.json").then(function(r){return r.ok?r.json():null}).then(function(m){
+ if(m&&m.sections&&m.sections.length&&m.model_language_supported!==false){manifest=m;setPlay("voice");if(m.disclosure){note.textContent=m.disclosure}}
+}).catch(function(){});
+function root(){return document.querySelector("main")||document.querySelector("article")||document.body}
+// FIGURE-VOICE STANDARD (operator directive, 13 Aug 2026): every figure is its
+// own section - announced, described from its alt text, and highlighted for
+// the duration, so a listener always knows an image is on screen and gets time
+// to take it in. Repeated figures are skipped, never re-announced. Old cloned
+// manifests predate the standard, so section building has two variants:
+// figure-aware for device/tts modes and figure-aware manifests, plain for
+// legacy manifests (else counts mismatch and highlighting silently dies).
+var FIGPREFIX=/^\s*(figure|figura|abbildung|рисунок|شکل)\s*[:|]\s*/i;
+function figDesc(f){var img=f.querySelector("img[alt]");
+ var d=img&&img.getAttribute("alt")?img.getAttribute("alt"):(f.querySelector("figcaption")?f.querySelector("figcaption").textContent:"");
+ return d.replace(/\s+/g," ").trim().replace(FIGPREFIX,"")}
+var secCache={};
+function sections(fig){var k=fig?"f":"p";if(secCache[k])return secCache[k];
+ var out=[],cur=null,chars=0,seen={};
+ function flush(){if(cur&&cur.els.length)out.push(cur);cur=null}
+ root().querySelectorAll("h1,h2,p,blockquote,figcaption,summary,li"+(fig?",figure":"")).forEach(function(el){
+  if(el.closest("nav,footer,form,.er-listen,.eden-foot,.site-nav,.sub-nav,.tr-correct"))return;
+  if(fig&&el.tagName==="FIGURE"){var d=figDesc(el);var key=d.toLowerCase().replace(/\W+/g,"").slice(0,80);
+   if(!d||seen[key])return;seen[key]=1;flush();
+   out.push({title:L("figlabel")+" \u00b7 "+trunc(d.split(/[.!?]/)[0],72),els:[el],figure:true,speak:L("figure")+" "+d});
+   chars=0;return}
+  if(fig&&el.closest("figure"))return;
+  var x=el.textContent.replace(/\s+/g," ").trim();if(!x||x.indexOf("Listen to this page")>-1)return;
+  var isH=/^h[12]$/i.test(el.tagName);
+  if((isH&&cur&&cur.els.length)||!cur||chars>4200){flush();cur={title:isH?x:(out.length?"Section "+(out.length+1):(document.title.split("|")[0].trim())),els:[]};chars=0}
+  if(isH&&cur.els.length===0)cur.title=x;
+  cur.els.push(el);chars+=x.length});
+ flush();secCache[k]=out;return out}
+function figAware(){return mode==="cloned"?!!(manifest&&manifest.figureSections!=null):true}
+function segCount(){return manifest?manifest.sections.length:(ttsN||sections(figAware()).length)}
+function mapped(){return manifest?sections(figAware()).length===manifest.sections.length:true}
+function hlSec(i,on){
+ // Selecting a section must ALWAYS take the page there (operator directive,
+ // 13 Aug 2026): when the DOM mapping is exact we highlight and scroll the
+ // real section; when a legacy manifest's counts do not line up we still jump
+ // to the nearest section by index rather than silently doing nothing, which
+ // left the listener unable to see which part of the page was being read.
+ var ok=mapped(),ss=sections(figAware()),s=ok?ss[i]:ss[Math.min(i,ss.length-1)];
+ if(!s)return;
+ if(ok)s.els.forEach(function(e){e.classList[on?"add":"remove"]("er-now")});
+ if(on&&s.els[0]){var dp=s.els[0].closest("details");if(dp&&!dp.open)dp.open=true;
+  var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  s.els[0].scrollIntoView({block:"start",behavior:rm?"auto":"smooth"})}}
+function clearHl(){document.querySelectorAll(".er-now").forEach(function(e){e.classList.remove("er-now")});
+ document.querySelectorAll(".er-speaking").forEach(function(e){e.classList.remove("er-speaking")})}
+function buildList(){list.innerHTML="";var n=segCount(),titles=mapped()?sections(figAware()):null;
+ var nEl=document.getElementById("er-secs-n");if(nEl)nEl.textContent=n+" sections";
+ // The list opens itself the first time a reader ever plays: the jump-to-any
+ // -section list IS the feature, and a closed <summary> reading "Sections"
+ // was mistaken for a caption for weeks (operator report, 13 Aug 2026).
+ // After that, the reader's own last choice is remembered.
+ var d=document.getElementById("er-secs");
+ if(d){var pref=localStorage.getItem("er-secs-open");
+  if(pref===null){d.setAttribute("open","")}else if(pref==="0"){d.removeAttribute("open")}else{d.setAttribute("open","")}
+  d.addEventListener("toggle",function(){localStorage.setItem("er-secs-open",d.open?"1":"0")})}
+ for(var i=0;i<n;i++){(function(i){var b=document.createElement("button");
+  b.textContent=(i+1)+". "+(titles&&titles[i]?titles[i].title:"Section "+(i+1));
+  if(i===idx)b.className="er-cur";
+  b.addEventListener("click",function(){go(i)});
+  var li=document.createElement("li");li.appendChild(b);list.appendChild(li)})(i)}}
+function markCur(){var bs=list.querySelectorAll("button");bs.forEach(function(b,i){b.className=i===idx?"er-cur":""})}
+function fmt(s){s=Math.max(0,Math.floor(s));return Math.floor(s/60)+":"+("0"+s%60).slice(-2)}
+function status(){st.textContent=(idx+1)+"/"+segCount()}
+function stopAll(){playing=false;paused=false;if(player){player.pause();player=null}
+ if("speechSynthesis" in window)speechSynthesis.cancel();clearHl();tm.textContent=""}
+function fin(saveDone){stopAll();panel.hidden=true;play.hidden=false;
+ if(saveDone){localStorage.removeItem(KEY);setPlay(manifest?"voice":"listen")}
+ else{localStorage.setItem(KEY,String(idx));setPlay("resume")}}
+// Section flow (operator report, 13 Aug 2026: "after section 6 there is a big
+// pause and stops"): the next section used to be FETCHED only at the moment
+// the previous one ended - on a phone that is a seconds-long gap - and a
+// rejected play() was swallowed into permanent silence. Now the next section
+// preloads while the current one speaks, and a rejected play() retries once
+// and then surfaces as a visible paused state one tap resumes, never a silent
+// halt.
+var preA=null,preU=null;
+function urlFor(i){if(mode==="cloned")return adir+manifest.sections[i].file;
+ if(mode==="tts")return "/api/tts?path="+encodeURIComponent(location.pathname)+"&i="+i;return null}
+function warm(i){if(i>=segCount())return;var u2=urlFor(i);
+ if(u2&&u2!==preU){preU=u2;preA=new Audio(u2);preA.preload="auto"}}
+function playSeg(u,i){hlSec(i,true);
+ player=(preA&&preU===u)?preA:new Audio(u);preA=null;preU=null;
+ player.addEventListener("timeupdate",function(){if(player)tm.textContent=fmt(player.currentTime)+" / "+(player.duration?fmt(player.duration):"")});
+ player.onended=function(){hlSec(i,false);if(playing&&i+1<segCount())go(i+1);else if(playing)fin(true)};
+ player.onerror=function(){hlSec(i,false);if(mode==="tts"&&i===0){dev()}else if(mode==="tts"){fin(true)}else{mode=null;dev()}};
+ var tries=0;(function attempt(){if(!playing||!player)return;
+  player.play().then(function(){warm(i+1)}).catch(function(){
+  if(!playing||!player)return;
+  if(++tries<3){setTimeout(attempt,350);return}
+  paused=true;setPP(false)})})()}
+function go(i){if(i<0||i>=segCount())return;clearHl();if(player){player.pause();player=null}
+ if("speechSynthesis" in window)speechSynthesis.cancel();
+ idx=i;localStorage.setItem(KEY,String(i));status();markCur();paused=false;setPP(true);
+ if(mode==="cloned"||mode==="tts"){playSeg(urlFor(i),i)}
+ else{devGo(i)}}
+function setPP(isPlaying){var cap=L(isPlaying?"pause":"play");
+ pp.innerHTML=(isPlaying?'<svg viewBox="0 0 16 16"><path d="M4 2v12M12 2v12" stroke-width="3"/></svg>':'<svg viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>')+'<span class="er-cap"></span>';
+ pp.querySelector(".er-cap").textContent=cap;pp.title=cap;pp.setAttribute("aria-label",cap);pp.setAttribute("aria-pressed",isPlaying?"true":"false")}
+function sentencesIn(i){var s=sections(figAware())[i]||{els:[]},out=[];
+ if(s.figure){(s.speak.match(/[^.!?]+[.!?]+["\u201d\u2019]?\s*|[^.!?]+$/g)||[s.speak]).forEach(function(q){
+  if(q.trim().length>1)out.push({el:s.els[0],text:q.trim()})});return out}
+ s.els.forEach(function(el){var x=el.textContent.replace(/\s+/g," ").trim();if(!x)return;
+  (x.match(/[^.!?]+[.!?]+["\u201d\u2019]?\s*|[^.!?]+$/g)||[x]).forEach(function(q){if(q.trim().length>1)out.push({el:el,text:q.trim()})})});
+ return out}
+function devGo(i){sent=sentencesIn(i);sidx=0;hlSec(i,true);devSpeak()}
+function devSpeak(){if(!playing)return;if(!sent||sidx>=sent.length){hlSec(idx,false);if(idx+1<segCount())go(idx+1);else fin(true);return}
+ var s=sent[sidx];var u=new SpeechSynthesisUtterance(s.text);
+ u.lang=document.documentElement.lang||"en-GB";if(chosen)u.voice=chosen;u.rate=0.98;
+ s.el.classList.add("er-speaking");tm.textContent="";
+ u.onend=function(){s.el.classList.remove("er-speaking");sidx++;if(playing&&!paused)devSpeak()};
+ u.onerror=function(){s.el.classList.remove("er-speaking");fin(false)};
+ speechSynthesis.speak(u)}
+// Operator ruling (13 Aug 2026): of the system voices only Daniel is
+// acceptable. Apple ships a shelf of novelty voices (Rocko, Shelley, Grandma,
+// Grandpa, Flo, Eddy, Reed, Bubbles, Jester, Superstar, Trinoids, Whisper,
+// Bells, Boing, Bad News, Good News, Wobble, Organ, Cellos, Zarvox, Junior,
+// Ralph, Albert, Fred, Kathy, Bahh, Deranged, Hysterical) which are comic, not
+// narration. They are excluded outright rather than merely ranked down.
+var NOVELTY=/rocko|shelley|grandma|grandpa|flo|eddy|reed|bubbles|jester|superstar|trinoids|whisper|bells|boing|bad news|good news|wobble|organ|cellos|zarvox|junior|ralph|albert|fred|kathy|bahh|deranged|hysterical|sandy|princess|bruce|vicki|victoria|agnes/i;
+function rank(v){var n=(v.name||"").toLowerCase(),s=0;
+ if(/daniel/.test(n))s+=10;
+ if(/premium|enhanced|natural|neural|siri/.test(n))s+=4;if(/google/.test(n))s+=2;
+ var pl=(document.documentElement.lang||"en").slice(0,2);if((v.lang||"").slice(0,2)===pl)s+=2;if((v.lang||"").toLowerCase()==="en-gb")s+=3;return s}
+function pick(){if(!("speechSynthesis" in window))return;var pl=(document.documentElement.lang||"en").slice(0,2);
+ var all=speechSynthesis.getVoices().filter(function(v){return(v.lang||"").slice(0,2)===pl});
+ var vs=all.filter(function(v){return !NOVELTY.test(v.name||"")});
+ if(!vs.length)vs=all;
+ vs.sort(function(a,b){return rank(b)-rank(a)});chosen=vs[0]||null;
+ // A device with no voice for this language must never be asked to read it:
+ // an English engine handed Persian text speaks nonsense (operator report,
+ // 13 Aug 2026: "just repeating dart dart dart"). No voice means no speech.
+ noVoice=!chosen;
+ // the picker only means anything in device mode; the cloned and standard
+ // voices are the author's choice, not the reader's.
+ if(mode==="device"&&vs.length>1){voiceSel.hidden=false;voiceSel.innerHTML="";vs.slice(0,6).forEach(function(v){var o=document.createElement("option");o.value=v.name;o.textContent=v.name;voiceSel.appendChild(o)});
+  var saved=localStorage.getItem("er-voice");if(saved){var f=vs.find(function(v){return v.name===saved});if(f){chosen=f;voiceSel.value=saved}}
+  if(chosen)voiceSel.value=chosen.name}
+ else voiceSel.hidden=true}
+function dev(){mode="device";
+ if(!("speechSynthesis" in window)){fin(true);return}
+ pick();
+ if(noVoice){
+  // Honest refusal beats nonsense. The sentence names no language, so it
+  // translates with the page and every mirror says it in its own words: an
+  // interpolated document.lang shows the reader "no en-GB voice installed".
+  // The English link appears only on a mirror, and only the whitelisted
+  // `lang` prefix is stripped: a blind two-character strip turns an English
+  // path into a dead one (/research/... becomes search/...).
+  note.textContent=L("novoice");
+  if(lang){note.appendChild(document.createTextNode(" "));
+   var a=document.createElement("a");a.href=location.pathname.replace(/^\/[a-z]{2}/,"")||"/";
+   a.style.color="#b8860b";a.textContent=L("english");note.appendChild(a)}
+  note.hidden=false;st.textContent="";tm.textContent="";
+  playing=false;setPP(false);return}
+ buildList();go(idx)}
+function begin(){playing=true;paused=false;play.hidden=true;panel.hidden=false;
+ if(note.textContent)note.hidden=false;setPP(true);
+ var s=parseInt(localStorage.getItem(KEY)||"0",10);idx=(s>0&&s<segCount())?s:0;
+ if(manifest){mode="cloned";buildList();status();go(idx);return}
+ st.textContent="preparing\u2026";
+ fetch("/api/tts?path="+encodeURIComponent(location.pathname)+"&i=0",{method:"GET"}).then(function(r){
+  if(!r.ok)throw 0;ttsN=parseInt(r.headers.get("x-section-count")||"0",10);mode="tts";
+  note.textContent=L("standard");note.hidden=false;
+  buildList();status();return r.blob()}).then(function(b){
+  if(idx===0){hlSec(0,true);player=new Audio(URL.createObjectURL(b));
+   player.addEventListener("timeupdate",function(){if(player)tm.textContent=fmt(player.currentTime)});
+   player.onended=function(){hlSec(0,false);if(playing&&1<segCount())go(1);else fin(true)};
+   player.onerror=function(){dev()};player.play()}else{go(idx)}
+ }).catch(function(){dev()})}
+play.addEventListener("click",begin);
+pp.addEventListener("click",function(){
+ if(mode==="device"){if(paused){paused=false;devSpeak();setPP(true)}else{paused=true;speechSynthesis.cancel();setPP(false)}return}
+ if(!player)return;if(player.paused){player.play();setPP(true)}else{player.pause();setPP(false)}});
+document.getElementById("er-restart").addEventListener("click",function(){go(idx)});
+document.getElementById("er-next").addEventListener("click",function(){go(idx+1)});
+document.getElementById("er-b10").addEventListener("click",function(){
+ if(mode==="device"){sidx=Math.max(0,sidx-1);speechSynthesis.cancel();return}
+ if(player)player.currentTime=Math.max(0,player.currentTime-10)});
+document.getElementById("er-f10").addEventListener("click",function(){
+ if(mode==="device"){speechSynthesis.cancel();return}
+ if(player)player.currentTime=player.currentTime+10});
+document.getElementById("er-close").addEventListener("click",function(){fin(false)});
+if("speechSynthesis" in window)speechSynthesis.onvoiceschanged=pick;
+voiceSel.addEventListener("change",function(){var vs=speechSynthesis.getVoices();
+ chosen=vs.find(function(v){return v.name===voiceSel.value})||chosen;localStorage.setItem("er-voice",voiceSel.value)});
+var sv=parseInt(localStorage.getItem(KEY)||"0",10);
+if(sv>0){setPlay("resume");
+ // Name the section: "Resume" alone gives a returning reader nothing to
+ // decide with (discoverability audit, 13 Aug 2026).
+ try{var ss=sections(figAware());if(ss&&ss[sv])play.innerHTML+=' <span class="er-cap">'+(sv+1)+'. '+trunc(ss[sv].title,34)+'</span>'}catch(_){}}
+})();</script>
 </body>
 </html>

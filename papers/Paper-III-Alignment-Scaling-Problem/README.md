@@ -1,7 +1,8 @@
 # Paper III: The Alignment Scaling Problem
 
 **Full title:** The Alignment Scaling Problem: Why External AI Safety Approaches Cannot Scale With Recursive Capability
-**Version:** v11.0
+**Version:** v1.3
+**Version date:** Working Paper, 12 August 2026
 **First published:** 9 February 2026
 **Author:** Michael Darius Eastwood
 
@@ -19,3 +20,5 @@ All experiment scripts and results are in [`experiments/`](./experiments/).
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).

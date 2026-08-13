@@ -1,7 +1,8 @@
 # Paper I: The ARC Principle
 
 **Full title:** The ARC Principle: Formalisation and Preliminary Validation of Recursive Capability Scaling
-**Version:** v1.1
+**Version:** v1.4
+**Version date:** revised 12 August 2026
 **First published:** 17 January 2026
 **Author:** Michael Darius Eastwood
 
@@ -17,3 +18,5 @@ All experiment scripts, results, and data are in [`experiments/`](./experiments/
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).

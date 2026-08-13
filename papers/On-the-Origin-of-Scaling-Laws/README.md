@@ -1,7 +1,8 @@
 # On the Origin of Scaling Laws
 
 **Full title:** On the Origin of Scaling Laws
-**Version:** v2.0
+**Version:** v3.1
+**Version date:** Working Paper, 13 August 2026
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
 
@@ -25,3 +26,5 @@ See [`../Foundational/experiments/`](../Foundational/experiments/).
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).

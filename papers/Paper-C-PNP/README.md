@@ -1,9 +1,10 @@
-# Paper C — Polymathy and Neurodivergent Cognition
+# Paper C - Polymathy and Neurodivergent Cognition
 
-**Full title:** Polymathy and Neurodivergent Cognition: A Hypothesis at the Intersection of Giftedness, Monotropic Cognition, and Institutional Misrecognition — the Polymathic Neurodivergent Profile (PNP)
+**Full title:** Polymathy and Neurodivergent Cognition: A Hypothesis at the Intersection of Giftedness, Monotropic Cognition, and Institutional Misrecognition - the Polymathic Neurodivergent Profile (PNP)
 
 **Author:** Michael Darius Eastwood
-**Version:** Working Paper v1.0 · 30 June 2026
+**Version:** Working Paper
+**Version date:** 3 July 2026 (revised 10 August 2026)
 **Paper number:** Paper C (companion volume to Papers I-X)
 
 ## Summary
@@ -15,8 +16,8 @@ Proposes the Polymathic Neurodivergent Profile (PNP) as a descriptive, non-diagn
 - Gumbau Mezquita (2026), arXiv:2606.28639
 - NICE CG142 (2021/2025)
 - Woods & Estes (2023), Ferreira (2025), Russell et al. (2019)
-- Murray, Lesser & Lawson (2005) — monotropism
-- Cage & Troxell-Whitman (2019), Raymaker et al. (2020) — burnout/masking
+- Murray, Lesser & Lawson (2005) - monotropism
+- Cage & Troxell-Whitman (2019), Raymaker et al. (2020) - burnout/masking
 
 ## PDF generation
 Same as all other papers: Chrome headless with MathJax rendering.
@@ -31,3 +32,5 @@ Same as all other papers: Chrome headless with MathJax rendering.
 - Evidence spine: new claim or extension of claim 6 (37 original concepts)
 - Convergence 29: neurodivergence proof
 - Credibility: independent citation from Oxford/KCL/Turing Institute/Tokyo
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).
