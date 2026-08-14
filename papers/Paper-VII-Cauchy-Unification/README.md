@@ -1,7 +1,8 @@
 # Paper VII: Cauchy Unification
 
 **Full title:** Paper VII: Cauchy Unification
-**Version:** v2.0
+**Version:** v3.3
+**Version date:** Working Paper, 13 August 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 
@@ -17,9 +18,11 @@ All experiment scripts, results, data, and preregistration materials are in [`ex
 
 | File | Purpose |
 |------|---------|
-| `PAPER-VII-V3-UPDATE-INSTRUCTIONS.md` | Exact change instructions for updating Paper VII to v3.0. Eight specified changes: Demetrius convergence section, dimensional ladder with geometric speed limit, d=2 cnidarian correction, d=4 maximum metabolic rate, Glazier asymptotic confirmation, prior art updates, new references, and new implications. |
+| `PAPER-VII-V3-UPDATE-INSTRUCTIONS.md` | Exact change instructions for updating Paper VII to v3.0. Eight specified changes: Demetrius convergence section, dimensional ladder with geometric scaling limit, d=2 cnidarian correction, d=4 maximum metabolic rate, Glazier asymptotic confirmation, prior art updates, new references, and new implications. |
 
 ## Links
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).

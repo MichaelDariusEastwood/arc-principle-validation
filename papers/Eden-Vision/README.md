@@ -1,7 +1,8 @@
 # Eden Protocol: Philosophical Vision
 
 **Full title:** Eden Protocol: Philosophical Vision
-**Version:** v3.0
+**Version:** v6.1
+**Version date:** Working Paper, 16 March 2026 (revised 2 August 2026)
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
 
@@ -18,3 +19,5 @@ See [`../Paper-V-Stewardship-Gene/experiments/`](../Paper-V-Stewardship-Gene/exp
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).

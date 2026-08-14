@@ -1,7 +1,8 @@
 # ARC/Eden Research Programme: Executive Summary
 
 **Full title:** ARC/Eden Research Programme: Executive Summary
-**Version:** v7.0
+**Version:** v1.2
+**Version date:** Working Paper, 24 March 2026 (updated 10 August 2026)
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
 
@@ -17,3 +18,5 @@ This is a summary document. Experiments are distributed across the individual pa
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).

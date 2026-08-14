@@ -2,6 +2,7 @@
 
 **Full title:** Paper VI: The Honey Architecture
 **Version:** v1.1
+**Version date:** Working Paper, 17 March 2026 (embedded 10 simulation figures)
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 
@@ -17,3 +18,5 @@ All experiment scripts, results, and figures are in [`experiments/`](./experimen
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).

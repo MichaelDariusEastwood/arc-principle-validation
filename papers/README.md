@@ -39,7 +39,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | IV.d | [Effect of Blinding on AI Alignment Evaluation](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | v1.1 | 16 Mar 2026 | Shared v5 alignment experiment (2/4 sign reversals) | `results/v5-final/` |
 | V | [The Stewardship Gene](Paper-V-Stewardship-Gene/) | v2.0 | 16 Mar 2026 | Eden Protocol scaling test (6 models) | `experiments/results/` |
 | VI | [The Honey Architecture](Paper-VI-Honey-Architecture/) | v1.1 | 16 Mar 2026 | Honey tests, self-modifying AI v1-v4 | `experiments/results/` |
-| VII | [Cauchy Unification](Paper-VII-Cauchy-Unification/) | v3.0 | 16 Mar 2026 | 50-domain validation, null controls, temporal OOS, preregistered extension | `experiments/results/` |
+| VII | [Cauchy Unification](Paper-VII-Cauchy-Unification/) | v3.3 | 16 Mar 2026 | 50-domain validation, null controls, temporal OOS, dated OSF deposit (extension protocol, not a registration) | `experiments/results/` |
 | VIII | [The Load-Bearing Proof](Paper-VIII-The-Load-Bearing-Proof/) | v3.0 | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
 | IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v3.0 | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
 | X | [The Coupled Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v4.0 | 26 Jun 2026 | Self-certifying proof-harness, 9 experiments (9/9 confirmed, 0 falsifiers) | `Paper-X-Coupled-CoScaling-Correction/results/` |
@@ -99,7 +99,7 @@ Tests the Stewardship Gene hypothesis: whether embedding ethical reasoning loops
 
 - **Script:** `Paper-V-Stewardship-Gene/experiments/scripts/eden_protocol_scaling_test_v3.py`
 - **Results:** `Paper-V-Stewardship-Gene/experiments/results/`
-- **Key finding:** Care-first effect on 3 models (pilot, not blind). Fisher p = 6.3e-21. Blind replication needed.
+- **Key finding:** Care-first effect on 3 models (pilot, not blind). Fisher p = 6.3e-21. The Fisher-combined figure is withdrawn under AQ-017 (independence among the five per-model tests was never established); the five per-model results stand. Blind replication needed.
 
 ### Honey Architecture Simulations (Paper VI)
 
@@ -111,11 +111,11 @@ Tests the Honey Architecture's capability-safety entanglement through self-modif
 
 ### Cauchy Domain Validation (Paper VII)
 
-Progressive expansion from 20 to 50 to 105 domains, with null controls, negative controls, temporal out-of-sample tests, and a preregistered extension.
+Progressive expansion from 20 to 50 to 105 domains, with null controls, negative controls, temporal out-of-sample tests, and a dated OSF deposit (extension protocol, not a registration).
 
 - **Scripts:** `Paper-VII-Cauchy-Unification/experiments/scripts/`
 - **Results:** `Paper-VII-Cauchy-Unification/experiments/results/`
-- **Preregistration:** `Paper-VII-Cauchy-Unification/experiments/preregistration/`
+- **Draft registrations (unsubmitted):** `Paper-VII-Cauchy-Unification/experiments/preregistration/`
 - **Key finding:** 19/25 domains confirmed (p = 1.56 x 10^-5).
 
 ### Load-Bearing Proof Experiments (Paper VIII)

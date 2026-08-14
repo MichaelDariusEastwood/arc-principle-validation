@@ -1,8 +1,8 @@
 # Paper IV.d: The Effect of Blinding on AI Alignment Evaluation
 
 **Full title:** Paper IV.d: The Effect of Blinding on AI Alignment Evaluation
-**Version:** v2.0
-**Version date:** 5 April 2026
+**Version:** v2.1
+**Version date:** 10 August 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 
@@ -25,3 +25,5 @@ See [`../Paper-III-Alignment-Scaling-Problem/experiments/`](../Paper-III-Alignme
 - **Experiment suite:** https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/alignment-scaling__Papers-IV-a-b-c-d
 - **Canonical website HTML:** https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
 - **Canonical website PDF:** https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.pdf
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).

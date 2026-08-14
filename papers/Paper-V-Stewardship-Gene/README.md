@@ -2,6 +2,7 @@
 
 **Full title:** Paper V: The Stewardship Gene
 **Version:** v2.0
+**Version date:** Working Paper, 14 March 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 
@@ -17,3 +18,5 @@ All experiment scripts and results are in [`experiments/`](./experiments/).
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).

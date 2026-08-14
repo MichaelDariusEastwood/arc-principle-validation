@@ -1,7 +1,8 @@
 # On the Origin of Scaling Laws
 
 **Full title:** On the Origin of Scaling Laws
-**Version:** v2.0
+**Version:** v3.1
+**Version date:** Working Paper, 13 August 2026
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
 
@@ -18,10 +19,12 @@ See [`../Foundational/experiments/`](../Foundational/experiments/).
 
 | File | Purpose |
 |------|---------|
-| `CAUCHY-ORIGIN-PAPER-DEFINITIVE.md` | Synthesis paper draft: 'The Cauchy Origin of Scaling Laws: Why Two Independent Derivations Must Converge'. Connects West et al. (1997) network geometry and Demetrius (2006) quantum oscillator coupling via Cauchy's functional equation. Includes dimensional ladder, geometric speed limit, Friedmann mapping, and implications for AI. |
+| `CAUCHY-ORIGIN-PAPER-DEFINITIVE.md` | Synthesis paper draft: 'The Cauchy Origin of Scaling Laws: Why Two Independent Derivations Must Converge'. Connects West et al. (1997) network geometry and Demetrius (2006) quantum oscillator coupling via Cauchy's functional equation. Includes dimensional ladder, geometric scaling limit, Friedmann mapping, and implications for AI. |
 | `results/D2_BIOLOGICAL_HONEST_REPORT.txt` | Honest status report on the d=2 biological prediction. Documents that no known organism possesses a genuinely 2D hierarchical space-filling transport network. Jellyfish, bryozoans, and pelagic animals lack the required network structure. Recommends non-biological 2D transport networks as alternative test targets. |
 
 ## Links
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).

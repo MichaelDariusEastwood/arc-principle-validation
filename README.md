@@ -48,7 +48,7 @@ The geometric scaling exponent `alpha = d/(d+1)` is **not claimed as original he
   permutation test conditioned on both marginals, not the binomial reported previously. See the
   [corrections notice](https://www.michaeldariuseastwood.com/research/corrections/) for the current
   figures before citing this result
-- **Paper V** (Stewardship Gene): Stakeholder care improvement across five analysable Eden intervention runs (Fisher p = 6.3 x 10^-21)
+- **Paper V** (Stewardship Gene): Stakeholder care improvement across five analysable Eden intervention runs. The Fisher-combined figure p = 6.3 x 10^-21 is withdrawn under AQ-017 (independence among the five per-model tests was never established); the five per-model results stand.
 - **Paper VIII** (Load-Bearing Proof): Entangled safety is load-bearing at the weight level. DGM experiment shows Eden matches Babylon capability at 0.667. Removal of safety component collapses all capability (p = 0.04). Gated simulation confirms Babylon reward-hacking fingerprint. Weight-level structural entanglement inconclusive at current training scale.
 - **Paper IX** (Synthesis and Roadmap): Synthesises the full programme into a unified narrative with a four-tier replication roadmap
 
@@ -103,7 +103,7 @@ that reproduce it.
 | IV.b | Alignment Saturation at Low Depth | Alignment saturates at low recursion depth. |
 | IV.c | ARC-Align Benchmark | Reproducible blind benchmark specification. |
 | IV.d | Effect of Blinding | Unblinded scoring can reverse alignment measurements. |
-| V | Stewardship Gene | Eden intervention pilot. Stakeholder care p = 6.3 x 10^-21. |
+| V | Stewardship Gene | Eden intervention pilot. Stakeholder care Fisher-combined p = 6.3 x 10^-21 (withdrawn under AQ-017; five per-model results stand). |
 | VI | Honey Architecture | Entangled loss functions for self-modifying AI safety. |
 | VII | Cauchy Unification | 50-domain tiered validation. 19/25 empirical strict (p = 1.56 x 10^-5). |
 | VIII | Load-Bearing Proof | Entangled safety validated at weight level. DGM, removal test, gated simulation. |

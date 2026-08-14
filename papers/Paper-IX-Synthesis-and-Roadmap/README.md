@@ -1,7 +1,8 @@
 # Paper IX: Synthesis and Roadmap
 
 **Full title:** Paper IX: Synthesis and Roadmap
-**Version:** v1.0
+**Version:** v1.2
+**Version date:** Working Paper, 24 March 2026 (updated 10 August 2026)
 **First published:** 18 March 2026
 **Author:** Michael Darius Eastwood
 
@@ -26,3 +27,5 @@ This is a synthesis document. Experiments are distributed across the individual 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 - **Research hub:** https://www.michaeldariuseastwood.com/research/
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).

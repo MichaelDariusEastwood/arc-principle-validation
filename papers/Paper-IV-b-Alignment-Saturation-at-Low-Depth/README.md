@@ -1,7 +1,8 @@
 # Paper IV.b: Alignment Saturation Is Architecture-Dependent
 
 **Full title:** Paper IV.b: Alignment Saturation Is Architecture-Dependent
-**Version:** v1.1
+**Version:** v1.2
+**Version date:** 10 August 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 
@@ -18,3 +19,5 @@ See [`../Paper-III-Alignment-Scaling-Problem/experiments/`](../Paper-III-Alignme
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).
