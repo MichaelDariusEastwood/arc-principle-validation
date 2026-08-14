@@ -18,7 +18,7 @@ All experiment scripts, results, data, and preregistration materials are in [`ex
 
 | File | Purpose |
 |------|---------|
-| `PAPER-VII-V3-UPDATE-INSTRUCTIONS.md` | Exact change instructions for updating Paper VII to v3.0. Eight specified changes: Demetrius convergence section, dimensional ladder with geometric speed limit, d=2 cnidarian correction, d=4 maximum metabolic rate, Glazier asymptotic confirmation, prior art updates, new references, and new implications. |
+| `PAPER-VII-V3-UPDATE-INSTRUCTIONS.md` | Exact change instructions for updating Paper VII to v3.0. Eight specified changes: Demetrius convergence section, dimensional ladder with geometric scaling limit, d=2 cnidarian correction, d=4 maximum metabolic rate, Glazier asymptotic confirmation, prior art updates, new references, and new implications. |
 
 ## Links
 

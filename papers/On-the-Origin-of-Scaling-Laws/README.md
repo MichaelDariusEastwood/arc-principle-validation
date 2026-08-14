@@ -19,7 +19,7 @@ See [`../Foundational/experiments/`](../Foundational/experiments/).
 
 | File | Purpose |
 |------|---------|
-| `CAUCHY-ORIGIN-PAPER-DEFINITIVE.md` | Synthesis paper draft: 'The Cauchy Origin of Scaling Laws: Why Two Independent Derivations Must Converge'. Connects West et al. (1997) network geometry and Demetrius (2006) quantum oscillator coupling via Cauchy's functional equation. Includes dimensional ladder, geometric speed limit, Friedmann mapping, and implications for AI. |
+| `CAUCHY-ORIGIN-PAPER-DEFINITIVE.md` | Synthesis paper draft: 'The Cauchy Origin of Scaling Laws: Why Two Independent Derivations Must Converge'. Connects West et al. (1997) network geometry and Demetrius (2006) quantum oscillator coupling via Cauchy's functional equation. Includes dimensional ladder, geometric scaling limit, Friedmann mapping, and implications for AI. |
 | `results/D2_BIOLOGICAL_HONEST_REPORT.txt` | Honest status report on the d=2 biological prediction. Documents that no known organism possesses a genuinely 2D hierarchical space-filling transport network. Jellyfish, bryozoans, and pelagic animals lack the required network structure. Recommends non-biological 2D transport networks as alternative test targets. |
 
 ## Links
