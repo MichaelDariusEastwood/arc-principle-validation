@@ -1,0 +1,126 @@
+Title: The ARC Equation Measured: Blinded Cross-Architecture Replication and the Retraction of a Super-Linear Estimate (Paper II)
+Author: Michael Darius Eastwood
+Publication date: 2026-01-22
+Version: v2.4
+Revised: 2026-08-16
+OSF DOI: 10.17605/OSF.IO/8FJMA
+Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-ii-experimental-validation.html
+
+Abstract
+--------
+This paper presents experimental validation of the ARC Principle (Artificial
+Recursive Creation), a mathematical framework proposing that error rates in
+intelligent systems decrease according to a power law with recursive depth. The
+principle, first articulated in Infinite Architects (Eastwood, December 2024)
+and formalised in Paper I (Eastwood, 17 January 2026), predicts that the form of
+recursion determines the scaling regime: sequential recursion should yield
+super-linear error suppression (scaling exponent $\alpha > 1$), while parallel
+recursion should yield sub-linear suppression ($\alpha < 1$).
+
+We conducted controlled experiments in two phases. Phase 1 (the initial
+single-model study) used DeepSeek R1 with visible reasoning tokens on 12
+competition-level mathematics problems, finding $\alpha_{\text{sequential}}
+\approx 2.24$ (95% CI: 1.5-3.0) and $\alpha_{\text{parallel}} \approx 0.0$.
+Phase 2 (the six-model study) extended testing to six frontier models on 18
+AIME/Putnam-level problems (n=54 per depth per model) with bootstrap confidence
+intervals and 4-layer cross-verification.
+
+Cross-architecture replication: The original $\alpha \approx 2.24$ (quadratic)
+does not replicate across architectures. Only Gemini 3 Flash produced clean,
+monotonic scaling data: $\alpha_{\text{seq}} = 0.49$ (regression, $r^2 = 0.86$,
+SE = 0.20, boot CI [−1.3, 2.9]). DeepSeek R1 reached ceiling (94.4%-100%).
+GPT-5.4 exhibited a binary step function (50% → 100%). Grok 4.1 Fast achieved
+100% at all depths. Groq Qwen3 showed no trend (~50%).
+
+Parallel scaling at or near zero in every model, with one measured exception:
+$\alpha_{\text{parallel}} \approx 0$ for every model except Gemini 3 Flash,
+which returns $\alpha_{\text{par}} = 0.31$ at $r^2 = 0.93$. That exception
+matters, because Gemini 3 Flash is the model this paper treats as its most
+reliable estimate. The replicated finding is therefore that parallel scaling is
+at or near zero in every model measured, with one measured exception, not that
+it is universally zero. Sequential outperformed parallel for every model where
+both were measurable.
+
+Revised parameter estimate: The most robust cross-architecture estimate is
+$\alpha_{\text{sequential}} \approx 0.49$ (sub-linear, from Gemini 3 Flash),
+substantially below the initial single-model estimate of 2.24. Under the
+Intelligence Formula $\alpha = 1/(1 - \beta)$ from Paper I, $\alpha < 1$ places
+current models in the physical regime (multiplicative composition through
+finite-dimensional networks) rather than the intelligence regime (recursive
+self-reference with $\alpha > 1$). The fundamental inequality
+$\alpha_{\text{sequential}} > \alpha_{\text{parallel}}$ remains confirmed.
+
+Key findings (quotable)
+-----------------------
+- This paper presents experimental validation of the ARC Principle (Artificial Recursive Creation), a mathematical framework proposing that error rates in intelligent systems decrease according to a power law with recursive depth.
+- Phase 1 (the initial single-model study) used DeepSeek R1 with visible reasoning tokens on 12 competition-level mathematics problems, finding $\alpha_{\text{sequential}} \approx 2.24$ (95% CI: 1.5-3.0) and $\alpha_{\text{parallel}} \approx 0.0$.
+- Phase 2 (the six-model study) extended testing to six frontier models on 18 AIME/Putnam-level problems (n=54 per depth per model) with bootstrap confidence intervals and 4-layer cross-verification.
+- Cross-architecture replication: The original $\alpha \approx 2.24$ (quadratic) does not replicate across architectures.
+- Only Gemini 3 Flash produced clean, monotonic scaling data: $\alpha_{\text{seq}} = 0.49$ (regression, $r^2 = 0.86$, SE = 0.20, boot CI [−1.3, 2.9]).
+- "alpha ~ 2.24 (quadratic) does not replicate across architectures" - the initial single-model estimate is retracted; the robust cross-architecture estimate is alpha ~ 0.49 (sub-linear).
+
+Priority claims relevant to this paper
+--------------------------------------
+- PC-025 (2026-01-22): Paper II - experimental validation across a six-model
+frontier panel (Claude, DeepSeek, Gemini, Grok, Groq Qwen, GPT) - was first
+published on 22 January 2026 under OSF DOI 10.17605/OSF.IO/6C5XB (sister DOI
+10.17605/OSF.IO/8FJMA).
+- PC-026 (2026-01-22): The parallel-recursion sub-linear scaling exponent
+alpha_parallel of approximately zero was first reported across the six-model
+panel in Paper II on 22 January 2026. Single-lab result; awaits external
+independent replication.
+- PC-027 (2026-01-22): The initial single-model sequential exponent estimate
+alpha_sequential of approximately 2.24 (95 per cent CI 1.5 to 3.0) reported in
+Paper II is now formally retracted. Never cite as a current finding; always pair
+with the retraction. Correct framing: Eastwood published, then self-corrected,
+an early single-model estimate.
+- PC-028 (2026-01-22): The revised robust sequential exponent alpha_sequential
+of approximately 0.49 (r-squared 0.86, SE 0.20; Gemini 3 Flash) is a sub-linear
+point estimate with a wide bootstrap CI whose lower bound extends below zero
+(approx. -1.3), so the effect is not statistically distinguishable from zero at
+the reported CI. alpha > 1 remains an open prediction, not an observed finding.
+- PC-029 (2026-01-22): The empirical observation alpha_sequential >
+alpha_parallel across the tested six-model panel was first published in the
+specific formulation of Paper II on 22 January 2026. The site's own ledger
+records this as concurrent with Sharma and Chopra (arXiv:2511.02309, 4 November
+2025); concurrent work must be cited whenever this claim is used.
+- PC-030 (2026-01-22): The six-frontier-model empirical panel (Claude, DeepSeek,
+Gemini, Grok, Groq Qwen, GPT) was first published as this specific comparative
+study on 22 January 2026. Priority is over this specific study on this date, not
+over panel-testing methodology in general.
+- PC-011 (2026-01-02): The ARC Principle equation - book form U = I x R squared,
+paper form U = I x R^alpha - was first published as a conjecture in Infinite
+Architects on 2 January 2026 and formally in Paper I on 17 January 2026. Framing
+is conjecture throughout. The early alpha of approximately 2.24 is retracted;
+the robust v13 estimate is approximately 0.49 with interval [-1.3, 2.9]
+(sub-linear); alpha > 1 remains an open prediction. Bare d/(d+1) form is prior
+work.
+
+Citation
+--------
+Michael Darius Eastwood (2026). The ARC Equation Measured: Blinded
+Cross-Architecture Replication and the Retraction of a Super-Linear Estimate
+(Paper II). The ARC Theory (the Theory of Artificial Recursive Creation) ·
+ARC/Eden experiments, OSF DOI 10.17605/OSF.IO/8FJMA.
+https://www.michaeldariuseastwood.com/research/papers/paper-ii-experimental-validation.html
+
+Notes
+-----
+Hardware framings held at the site's already-published two-sentence concept
+ceiling: safety constraints at hardware level through cryptographic tokens in
+silicon, TRL 0-1, no prototype. No enabling implementation detail is stated in
+this companion file. Balanced-ternary computing is prior work (Setun 1958);
+recursion as a structural concept is prior work (evolutionary theory,
+self-modifying computation, quantum error correction).
+
+Generated from master
+---------------------
+master_path: research/papers/paper-ii-experimental-validation.html
+master_sha256: 1cdfb95fe4f7924a82a443b07e5ed2308d173421c3aa8f8de7fdd17722ec0f31
+builder: scripts/build-paper-companions.py
+
+This block records the SHA-256 of the HTML master that produced this .txt. A
+check tool re-hashing master_path can decide freshness without any external
+state. If the master's current SHA-256 does not match master_sha256, this file
+is stale and must not be published: regenerate first with `python3
+scripts/build-paper-companions.py --slug paper-ii-experimental-validation`.
