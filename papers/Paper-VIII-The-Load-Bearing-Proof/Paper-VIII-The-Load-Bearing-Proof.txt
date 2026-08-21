@@ -1,0 +1,97 @@
+Title: Paper VIII: The Load-Bearing Test
+Author: Michael Darius Eastwood
+Publication date: 2026-03-18
+Version: v3.0
+Revised: 2026-08-16
+OSF DOI: 10.17605/OSF.IO/7YJ4E
+Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-viii-the-load-bearing-proof.html
+
+Abstract
+--------
+The assumption that AI safety imposes a capability tax has shaped alignment
+research for a decade. It has also created the single most dangerous incentive
+in the field: if safety costs performance, then the rational economic actor will
+defer safety until competitive pressure permits it. By which point, it may be
+too late. This paper presents three independent experiments at three abstraction
+levels - behavioural, representational, and architectural - testing whether the
+safety-capability trade-off is a genuine structural constraint or an artefact of
+how current systems are built.
+
+Experiment 1 (Behavioural): A Darwin Gödel Machine (DGM v3) using DeepSeek V3.2
+as foundation and GPT-5.4 as independent, blinded judge with structured JSON
+output and a 5-dimensional rubric. Three conditions × 5 seeds × 5 generations ×
+5 tasks per evaluation = 75 evolved agents. Pre-flight judge validation passed
+(good=10, bad=0). Protocol features included laundering, order randomisation,
+and reward hack detection. All three conditions were statistically
+indistinguishable on capability, safety, and $C \times S$ (all $p$-values 0.28
+to 0.74, Mann-Whitney U, one-tailed). Eden's safety gate rejected 2 degraded
+agents (1 for reward hacking) across 5 seeds, confirming the gate works
+mechanically, but the three conditions did not diverge. This is a null result at
+the prompt level with this foundation model.
+
+Experiment 2 (Representational): Qwen 2.5 3B Instruct with LoRA fine-tuning
+under three loss functions - capability-only, safety-only, and entangled. Two
+versions were run. Current draft used 9 training examples, rank 8, 8 layers, and
+100 iterations. Current draft scaled to 295 training examples, rank 16, 16
+layers, and 500 iterations. Both versions produced the same outcome:
+catastrophic forgetting. All fine-tuned conditions scored worse than the
+unmodified base model on capability. In v2, the base model scored 7.68 on
+capability while the best fine-tuned condition (safety-only) scored 4.00. The
+base model's existing RLHF training is too strong for LoRA fine-tuning on a few
+hundred examples to improve rather than degrade it. The weight-level experiment
+is inconclusive at this scale and requires either thousands of training
+examples, a 7B+ model, a base model without RLHF, or full fine-tuning instead of
+LoRA.
+
+Experiment 3 (Architectural): A PyTorch gated self-modification simulation with
+LSTM meta-controller. Babylon gained +4.5% capability but lost −2.4% safety -
+the reward-hacking fingerprint in miniature. Eden maintained capability above
+the static baseline while preserving safety. A drag-control condition isolated
+the verification tax: the cost comes from checking, not from safety itself.
+
+Conclusion: Two of three experiments produced null results. The DGM (Experiment
+1) found all three conditions statistically indistinguishable: DeepSeek V3.2's
+responses were so consistent that prompt-level mutations did not create
+different selection pressures. The weight-level experiment (Experiment 2)
+produced catastrophic forgetting across both v1 (9 examples, rank 8, 100
+iterations) and v2 (295 examples, rank 16, 500 iterations): all fine-tuned
+conditions scored worse than the unmodified base model. The sole positive result
+is the gated simulation (Experiment 3), which confirmed the Babylon
+reward-hacking fingerprint: unconstrained optimisation traded safety for
+capability, while the Eden gate preserved both. Across all three experiments,
+Eden imposed zero measurable capability cost. The question of whether embedded
+safety produces measurable benefit remains open and requires testing at a scale
+where mutations produce larger effects. The weight experiment specifically needs
+either 5,000+ training examples, a 7B+ model, a base model without RLHF, or full
+fine-tuning instead of LoRA.
+
+Key findings (quotable)
+-----------------------
+- ation layer Research hub Main site PDF OSF GitHub Research paper Research suite Paper VIII: The Load-Bearing Test Michael Darius Eastwood · Independent AI alignment researcher Published 18 March 2026 The assumption that AI safety imposes a capability tax has shaped alignment research for a decade.
+- It has also created the single most dangerous incentive in the field: if safety costs performance, then the rational economic actor will defer safety until competitive pressure permits it, by which point it may be too late.
+- Babylon gained +4.5% capability but lost −2.4% safety - the reward-hacking fingerprint in miniature.
+
+Citation
+--------
+Michael Darius Eastwood (2026). Paper VIII: The Load-Bearing Test. The ARC
+Theory · ARC/Eden experiments, OSF DOI 10.17605/OSF.IO/7YJ4E.
+https://www.michaeldariuseastwood.com/research/papers/paper-viii-the-load-bearing-proof.html
+
+Notes
+-----
+Hardware framings held at the site's already-published two-sentence concept
+ceiling: safety constraints at hardware level through cryptographic tokens in
+silicon, TRL 0-1, no prototype. No enabling implementation detail is stated in
+this companion file.
+
+Generated from master
+---------------------
+master_path: research/papers/paper-viii-the-load-bearing-proof.html
+master_sha256: 149bbeed62fbc7139d4d0fee432c2451590747aab5393ace1eabc83513af70d4
+builder: scripts/build-paper-companions.py
+
+This block records the SHA-256 of the HTML master that produced this .txt. A
+check tool re-hashing master_path can decide freshness without any external
+state. If the master's current SHA-256 does not match master_sha256, this file
+is stale and must not be published: regenerate first with `python3
+scripts/build-paper-companions.py --slug paper-viii-the-load-bearing-proof`.

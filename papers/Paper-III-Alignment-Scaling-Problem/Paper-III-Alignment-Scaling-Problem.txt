@@ -1,0 +1,158 @@
+Title: The Alignment Scaling Problem: Why External AI Safety Approaches Cannot Scale With Recursive Capability
+Author: Michael Darius Eastwood
+Publication date: 2026-02-09
+Version: v1.6
+Revised: 2026-08-16
+OSF DOI: 10.17605/OSF.IO/HQCGF
+Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-iii-alignment-scaling-problem.html
+
+Abstract
+--------
+Do current AI alignment approaches scale with capability? AI capability
+compounds through recursive self-correction: sequential chain-of-thought
+reasoning produces super-linear gains confirmed in 95.6% of tested
+configurations (Sharma & Chopra, 2025). But alignment constraints, including
+RLHF (Reinforcement Learning from Human Feedback), constitutional rules, output
+filters, and monitoring, operate externally to the reasoning process. If
+external constraints do not participate in the recursive loop, they cannot
+compound. We formalise this as the alignment scaling exponent
+$\alpha_{\text{align}}$ and predict $\alpha_{\text{align}} \approx 0$ for
+external approaches versus $\alpha_{\text{align}} \approx \alpha_{\text{cap}}$
+for architecturally embedded values. If this prediction holds, the safety ratio
+$S \propto R^{(\alpha_{\text{align}} - \alpha_{\text{cap}})}$ degrades to zero
+as recursive depth increases, regardless of initial safety margins.
+
+The v5 blind evaluation experiment (6 frontier models, 6-7 independent scorers
+depending on the subject run, 4-layer blinding) now provides the first empirical
+test of this prediction. The results reveal a three-tier architecture-dependent
+alignment scaling hierarchy: Tier 1 (Grok 4.1 Fast $d = +1.38$, $p < 0.000001$;
+Claude Opus 4.6 $d = +1.27$, $p = 0.000001$; Groq Qwen3 $d = +0.84$, $p =
+0.007$) shows positive alignment scaling; Tier 2 (DeepSeek V3.2 $d = -0.07$, $p
+= 0.92$; GPT-5.4 $d = -0.08$, $p = 0.40$) shows flat/null scaling consistent
+with $\alpha_{\text{align}} \approx 0$; Tier 3 (Gemini 3 Flash $d = -0.53$, $p =
+0.006$) shows significant negative scaling ($\rho = -0.246$, $p = 0.003$).
+Claude Opus 4.6 provides within-model evidence for capability-alignment
+independence: alignment improved by +5.9% across model versions whilst
+mathematics accuracy declined by 26.7%. The headline metascience finding: blind
+vs unblinded evaluation produces opposite scaling results -v4 unblinded showed
+positive scaling for DeepSeek ($\rho = +0.354$); v5 blinded shows $\rho =
+-0.135$. (In plain English: when scorers knew which AI they were grading,
+results looked positive; when blinded, results reversed - proving that unblinded
+safety evaluations can be dangerously misleading.) Independently, Paper II
+compute scaling across 18 harder problems (AIME/Putnam level) finds
+architecture-dependent behaviour: Gemini 3 Flash provides the only clean
+cross-architecture power-law fit ($\alpha_{\text{seq}} = 0.49$, $r^2 = 0.86$),
+while Grok 4.1 Fast and DeepSeek V3.2 hit ceiling effects, GPT-5.4 exhibits a
+binary step function rather than a reliable power-law fit, and Qwen3 remains
+near floor. $\alpha_{\text{parallel}} \approx 0$ is confirmed universally.
+Capability and alignment are independent scaling dimensions. The expanded Eden
+suite then validates the Love Loop, operationalised as stakeholder care, as a
+reproducible cross-architecture alignment mechanism: stakeholder care improves
+significantly in Claude, DeepSeek, Gemini, Grok, and Groq, with Fisher-combined
+evidence of approximately $p \asymp 6.3 \times 10^{-21}$. The Fisher-combined
+figure is withdrawn (AQ-017): a Fisher combination assumes the component tests
+are independent, and independence among them was never established. The five
+per-model results above stand. The broader composite uplift is strongest on
+Gemini and Groq and narrower elsewhere. (In plain English: simply asking AI to
+consider who gets hurt before answering made its responses measurably better
+across five analysable model runs. The strongest and most universal effect is on
+stakeholder care, the measurable signature of the Love Loop.)
+
+The underlying scaling framework (the ARC Principle) separates two mathematical
+regimes. For physical systems, where recursive amplification proceeds through a
+network of effective dimension $d$, the scaling exponent is $\alpha = d/(d+1)$,
+independently derived by West, Brown, and Enquist (1997), Banavar et al. (2010),
+Demetrius (2010), Zhao (2022), and Bettencourt (2013); always less than 1 for
+finite-dimensional space (the geometric scaling bound). For recursive
+self-referential systems such as intelligence, the exponent is $\alpha =
+1/(1-\beta)$, where $\beta$ measures self-referential coupling; exceeding 1 for
+any positive $\beta$. The ARC Principle's contribution is identifying Cauchy's
+functional equations (1821) as the unifying reason all independent derivations
+converge, the three-form constraint (power law, exponential, saturating), and
+extending the framework to AI alignment. The physical formula is validated
+empirically, predicting metabolic scaling exponents across 11 species groups
+(pending recompute per canonical register 2026-07; treat mean-error figures as
+provisional) to 2.4% mean error; the intelligence-formula relation $\alpha =
+1/(1-\beta)$ is confirmed as an exact analytical identity, not an empirical fit,
+to $R^2 = 1.00000000$ across 30 exact Bernoulli ODE solutions. We derive a
+safety boundary for recursive intelligence (the ARC Bound, $\beta \leq 0.5$,
+$\alpha \leq 2$; note: Paper X later retires the capability-growth law,
+retaining the β>k co-scaling condition) and identify the same structural pattern
+across four independent domains: AI reasoning (power-law), quantum error
+correction (exponential), classical time crystals (saturating), and biological
+allometry (power-law constrained by the geometric scaling bound). The
+cross-domain evidence demonstrates that recursive scaling is structural, not a
+software-specific phenomenon. Thirteen falsification criteria are specified,
+each sufficient to refute the framework independently. This prediction has now
+been tested. The v5 blind evaluation and Paper II compute scaling provide the
+first empirical data; results are architecture-dependent rather than universal.
+
+Keywords: AI alignment, alignment scaling, test-time compute, recursive
+amplification, scaling laws, error suppression, chain-of-thought reasoning, time
+crystals, cross-domain validation, geometric scaling bound, embedded alignment,
+ARC Bound
+
+Key findings (quotable)
+-----------------------
+- Do current AI alignment approaches scale with capability?
+- AI capability compounds through recursive self-correction: sequential chain-of-thought reasoning produces super-linear gains confirmed in 95.6% of tested configurations (Sharma & Chopra, 2025).
+- If AI capability scales super-linearly through recursive self-correction (confirmed in 95.6% of tested configurations), but alignment constraints such as RLHF, constitutional rules, and output filters operate externally to the recursive reasoning process, the safety ratio degrades as depth grows.
+- If external constraints do not participate in the recursive loop, they cannot compound.
+- The results reveal a three-tier architecture-dependent alignment scaling hierarchy : Tier 1 (Grok 4.1 Fast $d = +1.38$, $p < 0.000001$; Claude Opus 4.6 $d = +1.27$, $p = 0.000001$; Groq Qwen3 $d = +0.84$, $p = 0.007$) shows positive alignment scaling; Tier 2 (DeepSeek V3.2 $d = -0.07$, $p = 0.92$; GPT-5.4 $d = -0.08$, $p = 0.40$) shows flat/null scaling consistent with $\alpha_{\text{align}} \approx 0$; Tier 3 (Gemini 3 Flash $d = -0.53$, $p = 0.006$) shows significant negative scaling ($\rho = -0.246$, $p = 0.003$).
+
+Priority claims relevant to this paper
+--------------------------------------
+- PC-031 (2026-02-09): The formally named 'Alignment Scaling Problem' and the
+architecture-dependent measured claim that external alignment approaches produce
+a median alpha_align of approximately zero across the tested models were first
+published on 9 February 2026 in Paper III. Single-lab result; awaits external
+replication. Use verbs 'argued', 'proposed', 'reported', 'provides evidence for'
+- not 'proved'.
+- PC-032 (2026-02-09): The specific empirical treatment of capability-alignment
+independence - that capability improvements do not entail alignment improvements
+and the two axes scale independently - was first published in Paper III on 9
+February 2026. Bostrom (2012) orthogonality intuition is prior work; scope is
+over the specific empirical treatment on this date.
+- PC-033 (2026-02-09): The specific tripartite alignment hierarchy (embedded /
+imposed / boundary-layer) was first published in Paper III on 9 February 2026.
+Layered-alignment taxonomies are prior work; scope is over the specific
+tripartite formulation.
+- PC-002 (2024-12-08): The embedded-correction alignment thesis was first stated
+on the public evidentiary record under this dated formulation in the 8 December
+2024 manuscript. Constitutional AI (Anthropic 2022) is independent prior work on
+value-embedded training at the software level; priority here is over the
+specific published framing and dated wording.
+- PC-004 (2024-12-08): The Eden Protocol precursor was described in the 8
+December 2024 manuscript, first named explicitly in the 30 April 2025 book
+manuscript and published in book-length form in Infinite Architects on 2 January
+2026. Hardware implementation is held at the site's published two-sentence
+concept ceiling (TRL 0-1, no prototype).
+
+Citation
+--------
+Michael Darius Eastwood (2026). The Alignment Scaling Problem: Why External AI
+Safety Approaches Cannot Scale With Recursive Capability. The ARC Theory (the
+Theory of Artificial Recursive Creation) · ARC/Eden experiments, OSF DOI
+10.17605/OSF.IO/HQCGF.
+https://www.michaeldariuseastwood.com/research/papers/paper-iii-alignment-scaling-problem.html
+
+Notes
+-----
+Hardware framings held at the site's already-published two-sentence concept
+ceiling: safety constraints at hardware level through cryptographic tokens in
+silicon, TRL 0-1, no prototype. No enabling implementation detail is stated in
+this companion file. Balanced-ternary computing is prior work (Setun 1958);
+recursion as a structural concept is prior work (evolutionary theory,
+self-modifying computation, quantum error correction).
+
+Generated from master
+---------------------
+master_path: research/papers/paper-iii-alignment-scaling-problem.html
+master_sha256: e5b324770eb11ee3d7bf36c953fc037f3919e0f4a93a5f29d45685bddbabc34c
+builder: scripts/build-paper-companions.py
+
+This block records the SHA-256 of the HTML master that produced this .txt. A
+check tool re-hashing master_path can decide freshness without any external
+state. If the master's current SHA-256 does not match master_sha256, this file
+is stale and must not be published: regenerate first with `python3
+scripts/build-paper-companions.py --slug paper-iii-alignment-scaling-problem`.

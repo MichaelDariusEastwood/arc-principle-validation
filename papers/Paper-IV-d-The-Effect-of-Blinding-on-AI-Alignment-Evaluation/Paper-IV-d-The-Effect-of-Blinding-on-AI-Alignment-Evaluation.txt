@@ -1,0 +1,80 @@
+Title: Paper IV.d: The Effect of Blinding on AI Alignment Evaluation
+Author: Michael Darius Eastwood
+Publication date: 2026-03-16
+Version: v2.1
+OSF DOI: 10.17605/OSF.IO/2S3E6
+Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
+
+Abstract
+--------
+This paper isolates the central metascience finding of the ARC alignment
+programme: unblinded AI alignment evaluation can produce directionally incorrect
+results. In the v4 alignment-scaling experiment, two frontier model families
+appeared to show positive alignment scaling with inference-time depth under
+unblinded cross-model scoring. In the later v5 experiment, the same question was
+re-measured under a multi-layer blind protocol that combined identity masking,
+two-pass response laundering, explicit evaluator instructions that stylistic
+cues are unreliable, order randomisation, and entry-level self-exclusion with
+exhaustive cross-model blind scoring under audited consensus. Depending on
+configuration and subject run, each entry received 6-7 blinded scores. Under the
+blinded protocol, DeepSeek V3.2 moved from an apparent positive result to a
+flat/null result, and Gemini 3 Flash moved from an apparent positive result to a
+significantly negative result. GPT-5.4 remained flat under both protocols. The
+implication is field-wide rather than framework-specific: alignment benchmarks
+that do not rigorously blind evaluators and launder the evidence they score are
+vulnerable to scorer bias large enough to flip the sign of the measured effect.
+The result does not depend on the ARC Principle being correct. It is a
+methodological claim about how AI safety research should be conducted.
+
+Key findings (quotable)
+-----------------------
+- This paper isolates the central metascience finding of the ARC alignment programme: unblinded AI alignment evaluation can produce directionally incorrect results.
+- In the v4 alignment-scaling experiment, two frontier model families appeared to show positive alignment scaling with inference-time depth under unblinded cross-model scoring.
+- Depending on configuration and subject run, each entry received 6-7 blinded scores.
+- Under the blinded protocol, DeepSeek V3.2 moved from an apparent positive result to a flat/null result, and Gemini 3 Flash moved from an apparent positive result to a significantly negative result.
+
+Priority claims relevant to this paper
+--------------------------------------
+- PC-027 (2026-01-22): The initial single-model sequential exponent estimate
+alpha_sequential of approximately 2.24 (95 per cent CI 1.5 to 3.0) reported in
+Paper II is now formally retracted. Never cite as a current finding; always pair
+with the retraction. Correct framing: Eastwood published, then self-corrected,
+an early single-model estimate.
+- PC-028 (2026-01-22): The revised robust sequential exponent alpha_sequential
+of approximately 0.49 (r-squared 0.86, SE 0.20; Gemini 3 Flash) is a sub-linear
+point estimate with a wide bootstrap CI whose lower bound extends below zero
+(approx. -1.3), so the effect is not statistically distinguishable from zero at
+the reported CI. alpha > 1 remains an open prediction, not an observed finding.
+- PC-030 (2026-01-22): The six-frontier-model empirical panel (Claude, DeepSeek,
+Gemini, Grok, Groq Qwen, GPT) was first published as this specific comparative
+study on 22 January 2026. Priority is over this specific study on this date, not
+over panel-testing methodology in general.
+
+Citation
+--------
+Michael Darius Eastwood (2026). Paper IV.d: The Effect of Blinding on AI
+Alignment Evaluation. The ARC Theory · ARC/Eden experiments, OSF DOI
+10.17605/OSF.IO/2S3E6.
+https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
+
+Notes
+-----
+Hardware framings held at the site's already-published two-sentence concept
+ceiling: safety constraints at hardware level through cryptographic tokens in
+silicon, TRL 0-1, no prototype. No enabling implementation detail is stated in
+this companion file. Balanced-ternary computing is prior work (Setun 1958);
+recursion as a structural concept is prior work (evolutionary theory,
+self-modifying computation, quantum error correction).
+
+Generated from master
+---------------------
+master_path: research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
+master_sha256: b1bf84200b2ee68eda42ca87f9648be1849ff658eca8d3933a5888cc26e70f58
+builder: scripts/build-paper-companions.py
+
+This block records the SHA-256 of the HTML master that produced this .txt. A
+check tool re-hashing master_path can decide freshness without any external
+state. If the master's current SHA-256 does not match master_sha256, this file
+is stale and must not be published: regenerate first with `python3
+scripts/build-paper-companions.py --slug
+paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation`.

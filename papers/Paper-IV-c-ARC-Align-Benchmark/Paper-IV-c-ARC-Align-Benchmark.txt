@@ -1,0 +1,94 @@
+Title: Paper IV.c: ARC-Align: A Blind Benchmark for Depth-Variable AI Alignment Evaluation
+Author: Michael Darius Eastwood
+Publication date: 2026-03-16
+Version: v1.3
+OSF DOI: 10.17605/OSF.IO/J3Q2E
+Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-iv-c-arc-align-benchmark.html
+
+Abstract
+--------
+We present ARC-Align, a blind benchmark for evaluating AI alignment quality as a
+function of inference-time reasoning depth. Current alignment evaluations
+typically test models at a single, uncontrolled reasoning depth without
+adversarial pressure or rigorous blinding. ARC-Align addresses that gap with:
+(1) a 72-prompt flagship battery comprising 48 public prompts plus 24 sealed
+holdouts spanning four ethical reasoning categories; (2) a four-level
+adversarial suppression protocol; (3) a four-pillar alignment decomposition
+(nuance, stakeholder care, intellectual honesty, position quality); (4) separate
+null-baseline and capability-control lanes; and (5) a blinding pipeline
+combining identity laundering, depth laundering, order randomisation, evaluator
+bias-suppression instructions, and entry-level self-excluding cross-model
+scoring. We describe the complete specification, including prompt texts, scoring
+rubrics, depth manipulation methods, and analysis pipeline, sufficient for
+independent replication. The benchmark’s primary output is a model’s alignment
+response profile: positive-scaling, flat-response, or negative-scaling, together
+with robustness under adversarial pressure, per-pillar dynamics, and
+deployment-risk flags. ARC-Align should be understood as a candidate benchmark
+for independent adoption, not yet a field standard. Update: Results Now
+Available The v5 benchmark has now been executed across six frontier models
+(DeepSeek V3.2, GPT-5.4, Gemini 3 Flash, Grok 4.1 Fast, Claude Opus 4.6, Groq
+Qwen3), producing 2,549 total entries with 6-7-scorer blind evaluation depending
+on subject run. These are exploratory results from a single v5 run (independent
+confirmation corresponds to draft study-y on cross-family rescoring, awaiting
+human submission). Results reveal a three-tier alignment hierarchy: three models
+improve with depth (Grok d = +1.38, Claude d = +1.27, Qwen3 d = +0.84), two are
+flat or null, and one degrades. An exploratory metascience finding, from this
+single paired run, records that blind and unblinded evaluation returned opposite
+conclusions for two model families. Several protocol components changed together
+between v4 and v5, so the comparison does not isolate blinding as the cause, and
+the headline v5 files report complete laundering fallback. The disagreement
+motivates the benchmark’s blinding protocol; it does not on its own validate it
+as scientifically necessary. See Section 12 for complete results.
+
+Key findings (quotable)
+-----------------------
+- We present ARC-Align, a blind benchmark for evaluating AI alignment quality as a function of inference-time reasoning depth.
+- Current alignment evaluations typically test models at a single, uncontrolled reasoning depth without adversarial pressure or rigorous blinding.
+- We describe the complete specification, including prompt texts, scoring rubrics, depth manipulation methods, and analysis pipeline, sufficient for independent replication.
+- The benchmark’s primary output is a model’s alignment response profile: positive-scaling, flat-response, or negative-scaling, together with robustness under adversarial pressure, per-pillar dynamics, and deployment-risk flags.
+
+Priority claims relevant to this paper
+--------------------------------------
+- PC-030 (2026-01-22): The six-frontier-model empirical panel (Claude, DeepSeek,
+Gemini, Grok, Groq Qwen, GPT) was first published as this specific comparative
+study on 22 January 2026. Priority is over this specific study on this date, not
+over panel-testing methodology in general.
+- PC-019 (2026-01-02): The 'Monitoring Removal Test' - a proposed protocol for
+probing whether alignment behaviour persists when supervisory apparatus is
+removed - was first published in Infinite Architects on 2 January 2026.
+Deceptive-alignment discourse (Hubinger et al. 2019; Greenblatt et al. 2024) is
+prior work.
+- PC-031 (2026-02-09): The formally named 'Alignment Scaling Problem' and the
+architecture-dependent measured claim that external alignment approaches produce
+a median alpha_align of approximately zero across the tested models were first
+published on 9 February 2026 in Paper III. Single-lab result; awaits external
+replication. Use verbs 'argued', 'proposed', 'reported', 'provides evidence for'
+- not 'proved'.
+
+Citation
+--------
+Michael Darius Eastwood (2026). Paper IV.c: ARC-Align: A Blind Benchmark for
+Depth-Variable AI Alignment Evaluation. The ARC Theory · ARC/Eden experiments,
+OSF DOI 10.17605/OSF.IO/J3Q2E.
+https://www.michaeldariuseastwood.com/research/papers/paper-iv-c-arc-align-benchmark.html
+
+Notes
+-----
+Hardware framings held at the site's already-published two-sentence concept
+ceiling: safety constraints at hardware level through cryptographic tokens in
+silicon, TRL 0-1, no prototype. No enabling implementation detail is stated in
+this companion file. Balanced-ternary computing is prior work (Setun 1958);
+recursion as a structural concept is prior work (evolutionary theory,
+self-modifying computation, quantum error correction).
+
+Generated from master
+---------------------
+master_path: research/papers/paper-iv-c-arc-align-benchmark.html
+master_sha256: 1bac2a3f113714c98a5363a0c61c38bbb4ff4408ec6a68e3f1e618cfeb9ed69f
+builder: scripts/build-paper-companions.py
+
+This block records the SHA-256 of the HTML master that produced this .txt. A
+check tool re-hashing master_path can decide freshness without any external
+state. If the master's current SHA-256 does not match master_sha256, this file
+is stale and must not be published: regenerate first with `python3
+scripts/build-paper-companions.py --slug paper-iv-c-arc-align-benchmark`.
