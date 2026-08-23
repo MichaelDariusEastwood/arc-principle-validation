@@ -153,6 +153,12 @@ arc-principle-validation/
 
 Each paper folder contains its own `README.md`, along with `experiments/`, `results/`, and (where applicable) `figures/` subdirectories. See the individual paper README for experiment details and cross-references.
 
+## Two Ways to Verify
+
+**Verify now, no credentials.** Every paper's full text, the experiment code, and the recorded run outputs are committed to this repository. The experimental papers ship their dated, per-model result files (for example, Paper IV-d's `results/v5-final/` holds the complete v5 run output for each of the models tested). A reviewer with nothing but a clone and Python can read the code that produced the data, re-run the analysis over the recorded outputs, and check any document against its committed hashes. No API key, account, or spend is required for any of that.
+
+**Re-collect from live models.** Reproducing a collection from scratch requires Python 3.10+ and access to the relevant model providers (or the shared gateway variables below), plus the associated usage costs. Each experiment's own README states its specific requirements. Fresh collections are expected to produce new dated result files alongside the committed ones, never to overwrite them.
+
 ## Running Experiments
 
 Experiments live inside each paper's folder under `papers/<Paper>/experiments/`. Most require Python 3.10+ and an API key for the relevant model provider.
