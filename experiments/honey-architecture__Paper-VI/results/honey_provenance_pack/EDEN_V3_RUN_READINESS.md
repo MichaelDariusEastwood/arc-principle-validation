@@ -1,6 +1,6 @@
 # Eden v3 Run Readiness
 
-Script: `/Users/michaeleastwood/Downloads/eden_protocol_scaling_test_v3.py`
+Script: `(local source, not in this repository): eden_protocol_scaling_test_v3.py`
 
 For active research-repo experiment paths, prefer the shared Eden gateway contract with:
 
@@ -42,7 +42,7 @@ The raw provider environment variables below remain relevant only for legacy dir
 
 - Default output directory: `./eden_results`
 - Final output naming pattern: `eden_v3_final_{model}_{configuration_slug}_{timestamp}.json`
-- Recommended future output directory for blinded replication runs: `/Users/michaeleastwood/Arc & Eden Test Results/eden_results_v3`
+- Recommended future output directory for blinded replication runs: `(local results folder, not in this repository)/eden_results_v3`
 
 ## Recommended Future Run Sequence
 

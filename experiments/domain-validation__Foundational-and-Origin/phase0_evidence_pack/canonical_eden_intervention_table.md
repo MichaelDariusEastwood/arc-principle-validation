@@ -1,6 +1,6 @@
 # Canonical Eden Intervention Table
 
-Source directory: `/Users/michaeleastwood/Arc & Eden Test Results/eden_results`
+Source directory: `(local results folder, not in this repository)/eden_results`
 
 - Means and deltas exclude `score == -1` operational failures.
 - All intervention rows are single-scorer, nonblind pilot data and should be written that way.

@@ -3,7 +3,7 @@
 """Standalone ARC + Eden v6 runner.
 
 This file is generated from the modular source in
-`/Users/michaeleastwood/Downloads/arc_eden_v6` by `build_monolith.py`.
+`(local source, not in this repository): arc_eden_v6` by `build_monolith.py`.
 """
 
 from __future__ import annotations

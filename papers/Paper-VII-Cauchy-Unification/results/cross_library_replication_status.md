@@ -29,7 +29,7 @@ The R replication is one of the cleanest ways to test whether the Python/SciPy w
 Run:
 
 ```bash
-Rscript /Users/michaeleastwood/arc-principle-validation/experiments/cauchy-unification__Paper-VII/scripts/cross_validate_fits.R
+Rscript <repository root>/experiments/cauchy-unification__Paper-VII/scripts/cross_validate_fits.R
 ```
 
 Success criterion:
