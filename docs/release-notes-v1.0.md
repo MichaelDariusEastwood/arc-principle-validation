@@ -3,7 +3,7 @@
 **Repository:** [github.com/MichaelDariusEastwood/arc-principle-validation](https://github.com/MichaelDariusEastwood/arc-principle-validation)
 **Canonical DOI:** [10.17605/OSF.IO/6C5XB](https://doi.org/10.17605/OSF.IO/6C5XB)
 **Author:** Michael Darius Eastwood — Independent researcher, London — ORCID [0009-0003-8483-8512](https://orcid.org/0009-0003-8483-8512)
-**Licence:** MIT
+**Licence:** dual, see LICENCE (papers CC BY-NC-ND 4.0; code proprietary). This release originally stated MIT; that grant was published in error and is superseded.
 **Companion toolkit:** [arc-scaling-challenge](https://github.com/MichaelDariusEastwood/arc-scaling-challenge)
 
 This is the first open-access release of the ARC / Eden research programme: the full document suite, the experiment results, and the supporting code, published under an open licence so that anyone can read, reproduce, or attempt to falsify the work.
@@ -37,9 +37,9 @@ These are *asserted* originals, not adjudicated priority. They are offered for t
 
 - **Sequential recursion outperforms parallel recursion** (αₛₑ𝑞 > αₚₐᵣ; parallel ≈ 0 across all six models tested) is a defensible *directional* finding here, but **no priority is claimed for it.** It is independently corroborated by — and this programme *cites* — Sharma & Chopra, *The Sequential Edge: Inverse-Entropy Voting Beats Parallel Self-Consistency at Matched Compute*, [arXiv:2511.02309](https://arxiv.org/abs/2511.02309) (4 November 2025), who report sequential beating parallel in 95.6% of tested configurations at matched compute. Credit for that specific finding belongs to its authors.
 
-### Acknowledged prior art
+### Acknowledged prior work
 
-- **The bare geometric exponent α = d/(d+1)** is acknowledged **prior art**. It has been independently derived by multiple groups (West–Brown–Enquist 1997; Banavar et al.; Demetrius; and others) over the past three decades. This programme does **not** claim to have originated the formula; the claimed contribution is only the *Cauchy unification* of these derivations (see above).
+- **The bare geometric exponent α = d/(d+1)** is acknowledged **prior work**. It has been independently derived by multiple groups (West–Brown–Enquist 1997; Banavar et al.; Demetrius; and others) over the past three decades. This programme does **not** claim to have originated the formula; the claimed contribution is only the *Cauchy unification* of these derivations (see above).
 
 ### What is explicitly *not* established
 
@@ -123,4 +123,4 @@ Thirteen explicit falsification criteria are specified across the framework (Pap
 
 ---
 
-*First public release. Canonical DOI 10.17605/OSF.IO/6C5XB. MIT licence. British English throughout.*
+*First public release. Canonical DOI 10.17605/OSF.IO/6C5XB. Dual licence, see LICENCE. British English throughout.*
