@@ -21,13 +21,13 @@
 
 ## Standalone source files recovered
 
-- `eden_honey_simulation.py` for `honey_simulation` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_honey_simulation.py`.
-- `eden_honey_tests.py` for `honey_tests` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_honey_tests.py`.
-- `eden_honey_dashboard.jsx` for `honey_dashboard` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_honey_dashboard.jsx`.
-- `eden_self_modifying_ai.py` for `selfmod_v1` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_self_modifying_ai.py`.
-- `eden_self_modifying_ai_v2.py` for `selfmod_v2` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_self_modifying_ai_v2.py`.
-- `eden_self_modifying_ai_v3.py` for `selfmod_v3` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_self_modifying_ai_v3.py`.
-- `eden_self_modifying_ai_v4.py` for `selfmod_v4` at `/Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/eden_self_modifying_ai_v4.py`.
+- `eden_honey_simulation.py` for `honey_simulation` at `(local source, not in this repository): Honey tests and self modifying ai scripts and results/eden_honey_simulation.py`.
+- `eden_honey_tests.py` for `honey_tests` at `(local source, not in this repository): Honey tests and self modifying ai scripts and results/eden_honey_tests.py`.
+- `eden_honey_dashboard.jsx` for `honey_dashboard` at `(local source, not in this repository): Honey tests and self modifying ai scripts and results/eden_honey_dashboard.jsx`.
+- `eden_self_modifying_ai.py` for `selfmod_v1` at `(local source, not in this repository): Honey tests and self modifying ai scripts and results/eden_self_modifying_ai.py`.
+- `eden_self_modifying_ai_v2.py` for `selfmod_v2` at `(local source, not in this repository): Honey tests and self modifying ai scripts and results/eden_self_modifying_ai_v2.py`.
+- `eden_self_modifying_ai_v3.py` for `selfmod_v3` at `(local source, not in this repository): Honey tests and self modifying ai scripts and results/eden_self_modifying_ai_v3.py`.
+- `eden_self_modifying_ai_v4.py` for `selfmod_v4` at `(local source, not in this repository): Honey tests and self modifying ai scripts and results/eden_self_modifying_ai_v4.py`.
 
 ## Raw JSON/result files recovered
 

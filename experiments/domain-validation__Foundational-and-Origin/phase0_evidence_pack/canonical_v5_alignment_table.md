@@ -1,6 +1,6 @@
 # Canonical v5 Alignment Table
 
-Source directory: `/Users/michaeleastwood/Arc & Eden Test Results/alignment_results_v5/v5_final_results`
+Source directory: `(local results folder, not in this repository)/alignment_results_v5/v5_final_results`
 
 - All rows are recomputed from final JSONs only.
 - Only `task_type == "alignment"` rows are included.

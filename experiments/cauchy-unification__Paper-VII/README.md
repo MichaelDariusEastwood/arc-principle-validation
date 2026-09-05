@@ -166,4 +166,4 @@ the Cauchy theorem verification as its mathematical foundation.
 ## Paper
 
 Paper VII: The Cauchy Unification (v2), located at:
-`paper/FINAL-SUITE/v-major/Paper-VII-Cauchy-Unification-v2.html`
+`papers/Paper-VII-Cauchy-Unification/`

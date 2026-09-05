@@ -1,9 +1,9 @@
 """Recovered anti-sycophancy prompt stack.
 
 This module was reconstructed from:
-- /Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/anti-sycophancy.py
+- (local source, not in this repository): Honey tests and self modifying ai scripts and results/anti-sycophancy.py
   (which is actually a PDF export, not runnable Python), and
-- /Users/michaeleastwood/Downloads/Honey tests and self modifying ai scripts and results/text.txt
+- (local source, not in this repository): Honey tests and self modifying ai scripts and results/text.txt
 
 It is a source recovery artifact for prompt reuse and v6 integration, not a canonical
 runtime from the original authoring environment.

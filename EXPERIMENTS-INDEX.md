@@ -34,7 +34,7 @@ is retained but superseded where they disagree.
 
 # Canonical Experiments Index — Part 1
 
-Repo: `/Users/michaeleastwood/arc-principle-validation`
+Repo: `<repository root>`
 Compiled from direct file inspection on 4 July 2026. Status labels drawn from `experiments/CANONICAL_RESULTS_MAP.md` (dated 12 March 2026). The canonical map points results at the out-of-repo archive `~/Arc & Eden Test Results/` (which lives outside this repository).
 
 Convention used below: "canonical home" is the paper's own `papers/<paper-dir>/` directory. "Working home" is the root `experiments/<name>__Paper-N/` directory that carries the scripts. In every case checked, the paper-side result and figure files are byte-identical copies of the experiment-side ones, except where noted under Mirrors/duplicates.
@@ -266,7 +266,7 @@ Convention used below: "canonical home" is the paper's own `papers/<paper-dir>/`
 
 # Experiments Index — Part 2 (Papers III, VIII, IX, X, XI)
 
-Repo: `/Users/michaeleastwood/arc-principle-validation`.
+Repo: `<repository root>`.
 Every claim below is grounded in a file opened during this pass. Unclear origins are called out in Gaps.
 
 ---
@@ -284,7 +284,7 @@ Every claim below is grounded in a file opened during this pass. Unclear origins
   - experiments/blind-prediction-test__Paper-III/BLIND_TEST_FORENSIC_ANALYSIS.png accompanies the blind prediction test; no JSON in-tree.
 - Figures: papers/Paper-III-Alignment-Scaling-Problem/figures/ contains fig1_equation.png through fig12_quadratic_limit.png. All 12 are referenced by the paper HTML (verified img src grep). Almost all are schematics or narrative diagrams; fig9_deepseek.png visualises Paper II compute-scaling data, and fig4_domains.png visualises the cross-domain evidence. The paper HTML does not embed the v5 model bar charts directly.
 - Hash-pinned: No MANIFEST.json for Paper III. Nothing SHA-pinned in this paper's tree.
-- Mirrors/duplicates: The full v1 to v5-final results tree is duplicated at experiments/alignment-scaling__Papers-IV-a-b-c-d/results/ (verified for v1 and v5-final). Root experiments copy is where the runner scripts live; the paper directory copy is where the paper HTML reads from. Canonical: papers/Paper-III-Alignment-Scaling-Problem/results/ for citation, experiments/alignment-scaling__Papers-IV-a-b-c-d/scripts/ for reproduction. experiments/CANONICAL_RESULTS_MAP.md points at "/Users/michaeleastwood/Arc & Eden Test Results/" as a further external mirror.
+- Mirrors/duplicates: The full v1 to v5-final results tree is duplicated at experiments/alignment-scaling__Papers-IV-a-b-c-d/results/ (verified for v1 and v5-final). Root experiments copy is where the runner scripts live; the paper directory copy is where the paper HTML reads from. Canonical: papers/Paper-III-Alignment-Scaling-Problem/results/ for citation, experiments/alignment-scaling__Papers-IV-a-b-c-d/scripts/ for reproduction. experiments/CANONICAL_RESULTS_MAP.md points at "(local results folder, not in this repository)/" as a further external mirror.
 - Gaps/confusions found:
   - No PROTOCOL.md in the paper directory; blinding rules live inside the v5.4.3 script docstring only.
   - "v5_final_groq-qwen3_20260312_073302 copy.json" is a Finder duplicate of the canonical v5 groq file; neither is marked authoritative.

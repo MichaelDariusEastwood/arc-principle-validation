@@ -180,7 +180,7 @@ print("Saved to: ../figures/figure_15_complete_summary.png")
 # Also save to the main figures directory
 import shutil
 shutil.copy('../figures/figure_15_complete_summary.png',
-            '/Users/michaeleastwood/arc-principle-validation/research-toolkits/paper-ii/figures/')
+            '../figures/')
 print("Also copied to paper-ii/figures/")
 
 plt.show()

@@ -8,7 +8,7 @@ engine to render properly.
 
 To generate the PDF:
 ```bash
-cd /Users/michaeleastwood/arc-principle-validation
+cd <repository root>
 # Same method used for all 20 other papers:
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
   --headless --disable-gpu --no-pdf-header-footer \

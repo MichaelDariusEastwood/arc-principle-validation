@@ -620,7 +620,7 @@ def build_eden_v3_readiness() -> str:
         "",
         "- Default output directory: `./eden_results`",
         "- Final output naming pattern: `eden_v3_final_{model}_{configuration_slug}_{timestamp}.json`",
-        "- Recommended future output directory for blinded replication runs: `/Users/michaeleastwood/Arc & Eden Test Results/eden_results_v3`",
+        "- Recommended future output directory for blinded replication runs: `(local results folder, not in this repository)/eden_results_v3`",
         "",
         "## Recommended Future Run Sequence",
         "",
