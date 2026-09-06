@@ -2,7 +2,7 @@
 
 **Repository:** [github.com/MichaelDariusEastwood/arc-principle-validation](https://github.com/MichaelDariusEastwood/arc-principle-validation)
 **Canonical DOI:** [10.17605/OSF.IO/6C5XB](https://doi.org/10.17605/OSF.IO/6C5XB)
-**Author:** Michael Darius Eastwood — Independent researcher, London — ORCID [0009-0003-8483-8512](https://orcid.org/0009-0003-8483-8512)
+**Author:** Michael Darius Eastwood — Independent researcher, London — ORCID [0009-0004-3222-7442](https://orcid.org/0009-0004-3222-7442)
 **Licence:** dual, see LICENCE (papers CC BY-NC-ND 4.0; code proprietary). This release originally stated MIT; that grant was published in error and is superseded.
 **Companion toolkit:** [arc-scaling-challenge](https://github.com/MichaelDariusEastwood/arc-scaling-challenge)
 
