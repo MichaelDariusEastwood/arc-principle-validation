@@ -12,6 +12,9 @@ is retained but superseded where they disagree.
 - **`experiments/<name>__Paper-N/`** is the by-experiment working view: shared estates
   (e.g. the alignment suite serving Papers III and IV.a-d) live here. Where both homes hold
   copies, THIS INDEX states which copy is canonical.
+- **`instruments/`** holds reference code for confirmatory runs that have not been made. It is
+  not an experiment home and carries no result; its row is below and its own README is
+  [`instruments/README.md`](instruments/README.md).
 - **Nothing is ever deleted.** Duplicates and superseded files move to `_archive/` folders
   local to their home (operator rule, 2026-07-04).
 - The out-of-repo folder `~/Arc & Eden Test Results/` is the raw capture archive; every
@@ -27,6 +30,12 @@ is retained but superseded where they disagree.
 | Real-model v3 | realmodel_coscaling_v3.py | RUN_REAL_MODEL_EXPERIMENT.md | results/realmodel_v3/ (deepseek-v4, 2 Jul) | none |
 | Drift engine (the 45-trajectory headline) | experiments/scripts/drift_engine.py | RUN_REAL_MODEL_EXPERIMENT.md | results/drift/ (gpt-3.5-turbo, 2 Jul) | none |
 | Hard-tasks battery | hard_tasks_v3.py + run_hard_tasks.py | (script header) | results/hard/ (deepseek-v4 null, 2 Jul) | none |
+
+## Instruments in one row (code, not results)
+
+| Folder | Supports | What it is | Evidence tier |
+|---|---|---|---|
+| `instruments/arc-instruments` | the twenty-two propositions of the theory-level registration | executable decision rules, design-sensitivity simulators and the P5 and P16 runner, with the analysis code's recorded operating characteristics in `instruments/evidence/` | reference code, not a result |
 
 ---
 
