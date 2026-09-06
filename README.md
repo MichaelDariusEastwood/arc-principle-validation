@@ -28,12 +28,29 @@ arc-principle-validation/
 ├── EXPERIMENTS-INDEX.md       every experiment, indexed by claim
 ├── papers/                    23 document folders, each with its own README
 ├── experiments/               9 experiments plus shared code, mapped in experiments/README.md
+├── instruments/               reference code for runs not yet made, mapped in instruments/README.md
 ├── priority-claims/           the dated provenance record
 └── docs/                      reproducibility notes, release notes, PDF checksums
 ```
 
 Every folder has a `README.md` saying what is in it and what it is for. Start with
 [`experiments/README.md`](experiments/README.md) if you came to check a result.
+
+## Rules this repository follows
+
+**Every paper has its own registry component.** Each document is deposited as its own
+component under the parent record rather than folded into a single suite deposit, so that a
+paper can be cited, versioned and corrected on its own identifier. The parent record in the
+deposit table below is the suite, and it is not a substitute for the per-paper component.
+
+**Nothing is ever deleted.** Superseded and duplicated material moves to an `_archive/` folder
+local to its own home rather than leaving the repository.
+
+**A recorded result is never overwritten.** A fresh collection writes a new dated file beside
+the existing one.
+
+**Code that has produced no result is not filed as an experiment.** `experiments/` holds runs
+that produced results; `instruments/` holds instruments for runs that have not been made.
 
 ## The ARC Principle
 
@@ -189,6 +206,9 @@ This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitH
 | Deposit | DOI |
 |---------|-----|
 | Complete suite, parent record | [10.17605/OSF.IO/6C5XB](https://doi.org/10.17605/OSF.IO/6C5XB) |
+
+The deposit record's own description is author-held and refreshed at deposit time rather than
+by branches, so its document count can trail `CITATION.cff`, which carries the current one.
 
 ## Related
 
