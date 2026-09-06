@@ -9,7 +9,7 @@ The kit is deposited with a citable DOI at the freeze of the theory-level regist
 
 ## Confirmed by the author before upload
 1. The ORCID: the site and the validation repository carry different identifiers; one is chosen and written into `CITATION.cff` and the deposit form.
-2. The licence: `.zenodo.json` mirrors the validation repository's dual licence (code proprietary, all rights reserved). The validation repository's `CITATION.cff` carries no licence field and its `LICENCE` records that the MIT grant was published in error, so the two no longer disagree; confirmed against that repository before the deposit points at it.
+2. The licence: `.zenodo.json` mirrors the validation repository's dual licence (code proprietary, all rights reserved). The validation repository's `CITATION.cff` carries no `license:` field, only a `license-url:` pointing at `LICENCE`, and its `LICENCE` records that the MIT grant was published in error, so the two no longer disagree; confirmed against that repository before the deposit points at it.
 3. The version string and the date match the frozen commit and the registration's manifest.
 4. `related_identifiers` gains the theory-level registration's identifier after the submission click.
 

@@ -109,11 +109,17 @@ and the interval columns carry that uncertainty rather than hiding it. Read ever
 battery was run, and `run_from` names the directory it was run from at that time.
 
 **Nine of those eighty hashes differ here, and seventy-one agree.** Publication removed internal
-cross-references from comments and documentation in `arc_instruments/costing.py`,
-`arc_instruments/parity.py`, `arc_instruments/regions.py`, `arc_runner/code_domain.py`,
-`arc_runner/ladder.py`, `arc_runner/p16.py`, `arc_runner/p16_contract.py`, `arc_runner/p5.py` and
-`arc_runner/p5_observation.py`. No executable statement was touched in any of them, and the suite
-passes the same 515 tests in this home. The manifest is left exactly as the run produced it, because
+cross-references from nine files: `arc_instruments/costing.py`, `arc_instruments/parity.py`,
+`arc_instruments/regions.py`, `arc_runner/code_domain.py`, `arc_runner/ladder.py`,
+`arc_runner/p16.py`, `arc_runner/p16_contract.py`, `arc_runner/p5.py` and
+`arc_runner/p5_observation.py`. In seven of them the rewritten text is comment and docstring only.
+In `arc_instruments/costing.py` it is one human-facing string literal, the pilot row label in the
+table `flagship_menu()` returns. In `arc_runner/p16_contract.py` it is the module docstring and one
+entry of the `limitations` list the adjudication returns. Those two functions therefore return one
+phrase of prose that differs from the manifest run. No logic, control flow, numeric constant or data
+value changed in any of the nine, no test asserts either string, and the suite passes the same 515
+tests in this home. The manifest's two pinned output files match byte for byte, so the battery
+result is the one the manifest records. The manifest is left exactly as the run produced it, because
 an evidence record that is edited after the fact is no longer a record.
 
 ## The decisions this code did not make

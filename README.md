@@ -207,6 +207,9 @@ This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitH
 |---------|-----|
 | Complete suite, parent record | [10.17605/OSF.IO/6C5XB](https://doi.org/10.17605/OSF.IO/6C5XB) |
 
+The deposit record's own description is author-held and refreshed at deposit time rather than
+by branches, so its document count can trail `CITATION.cff`, which carries the current one.
+
 ## Related
 
 - **Book.** Eastwood, M.D. (2026). *Infinite Architects: Intelligence, Recursion, and the
