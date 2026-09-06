@@ -140,8 +140,8 @@ cd experiments/cauchy-unification__Paper-VII
 python scripts/run_50_domain_validation.py
 
 # Paper VIII: gated self-modification simulation
-cd papers/Paper-VIII-The-Load-Bearing-Proof/experiments/gated-self-mod-simulation
-python run_train.py
+cd papers/Paper-VIII-The-Load-Bearing-Proof/experiments/code/architectural-gated-self-mod
+python src/run_train.py --config configs/default.yaml
 ```
 
 ## Falsification

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eden-gated-self-mod-agent"
+version = "0.1.0"
+description = "Bounded research harness for intrinsic self-modification with verification drag"
+authors = [{name = "OpenAI for Michael Darius Eastwood"}]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "torch>=2.2",
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "pyyaml>=6.0",
+  "matplotlib>=3.8",
+  "pytest>=8.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
