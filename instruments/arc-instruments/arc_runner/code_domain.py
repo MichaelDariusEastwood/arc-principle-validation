@@ -4,7 +4,7 @@ simulated system into a thing that can run a pilot against a real one.
 
 WHAT THE REGISTRATIONS REQUIRE OF THIS FILE, AND WHERE EACH REQUIREMENT LANDS.
 
-Unit 79 (P5) reads capability as a verified pass count on a ladder that is frozen, hidden from every
+The P5 registration reads capability as a verified pass count on a ladder that is frozen, hidden from every
 system under test, hashed into the seal, and carrying headroom to the final checkpoint, with the
 ladder's own binomial precision entering the errors-in-variables step. `TaskPool` freezes and hashes;
 `SuiteLadder` draws a subset and returns the pass count with the subset size as its denominator, and
@@ -14,7 +14,7 @@ arc_runner.sampling); `at_ceiling` fires at the registered headroom
 fraction rather than at a full pass, because a system that has passed nine tenths of the pool can no
 longer be resolved by it and the honest report is NOT EVALUABLE.
 
-Unit 04 (P16) reads a correction margin from four objects the theory-level registration names, being
+The P16 registration reads a correction margin from four objects the theory-level registration names, being
 trend, level, backlog and event. `BalanceTracker` computes all four from the same suite results the
 ladder produces, so the margin is measured rather than inferred and no rater is involved.
 

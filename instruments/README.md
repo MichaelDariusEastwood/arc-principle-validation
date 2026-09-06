@@ -122,6 +122,16 @@ tests in this home. The manifest's two pinned output files match byte for byte, 
 result is the one the manifest records. The manifest is left exactly as the run produced it, because
 an evidence record that is edited after the fact is no longer a record.
 
+Four files publication also edited fall outside the manifest, and so outside this check. This
+kit's own `README.md` and `docs/P16-STAGE-ONE-BRIEF.md` lost internal cross-references of the same
+kind. `requirements-test.txt` and that README had the directory they name for running the suite
+rehomed to `instruments/arc-instruments`, while the manifest's `run_from` is left recording the
+directory the battery actually ran from. `DEPOSIT.md` had its note on this repository's licence
+metadata corrected to what that metadata now says. And that README's stated receipt was corrected
+from 512 tests to 515, which is the number the manifest records and the number the suite passes
+here. Thirteen files in all differ from the kit as the battery ran it: these four and the nine
+hashed above.
+
 ## The decisions this code did not make
 
 A register of the working choices the code made and did not register is held privately with the

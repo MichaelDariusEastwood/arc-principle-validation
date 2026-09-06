@@ -245,7 +245,7 @@ python3 -m pytest tests/test_p5_final_comparison.py -q   # the five acceptance c
 
 ### What the tree contains, and what it does not (integration, 6 September 2026)
 
-The nine findings above and the repairs from an independent review of the same code were developed on
+The nine findings above and the repairs from a review of the same code were developed on
 two branches at once, and this is the tree in which both landed. What follows is a list of what is
 actually here, so that a reader can check the claim against the files rather than against this
 paragraph.
