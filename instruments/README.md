@@ -13,10 +13,18 @@ instruments/
     └── 2026-09-06-runner-battery-a1-a9/   what the kit's analysis code does, world by world
 ```
 
+## Independent output-scoring development
+
+[`oversight-assay/`](oversight-assay/README.md) adds a standard-library arithmetic
+checker, hashed panels, raw-response intake and separate detection/repair/utility
+metrics. Its 12 regression tests include missing replies, malformed JSON, self-rating
+fields, reject-all and always-accept controls. No real-model collection is included.
+It does not replace or approve the P5/P16 runner.
+
 ## What the kit is
 
-`arc-instruments/` is executable decision rules for the twenty-two registered propositions of the
-theory-level preregistration, design-sensitivity simulators for the deciding experiments (form
+`arc-instruments/` is executable decision rules for the twenty-two propositions in the
+theory-level preregistration draft, design-sensitivity simulators for the deciding experiments (form
 discrimination, ceiling-chain precision, coupling identification, burden identification, corrector
 dependence, blinding integrity, and the P5 and P16 designs), sealed-prediction and held-out
 partition tooling, and a runner that carries the P5 and P16 charters as code.
@@ -143,3 +151,4 @@ no recommendation, and where two readings are both defensible it says so rather 
 
 Every number in this kit sits under that register until the author rules. Nothing in the code is
 registered by being in the code.
+
