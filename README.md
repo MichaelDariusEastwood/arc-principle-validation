@@ -52,22 +52,35 @@ the existing one.
 **Code that has produced no result is not filed as an experiment.** `experiments/` holds runs
 that produced results; `instruments/` holds instruments for runs that have not been made.
 
+## Current implementation entry point (7 September 2026)
+
+The new [exact arithmetic oversight assay](instruments/oversight-assay/README.md)
+provides an independent scorer for raw model responses, with fixed denominators and
+explicit failure handling. It is an instrument-development task, not a new empirical
+result or a validated alignment metric. The [decision-study proposal](docs/oversight-decision-study-20260907.md)
+connects a measurable oversight failure, comparison and potential configuration decision.
+
+The theory-level public document currently shows draft predictions. Code, a DOI,
+a timestamp or a repository deposit does not make an experiment registered, tested,
+peer reviewed or independently replicated. The current protocol and paper versions
+are listed on the [research website](https://www.michaeldariuseastwood.com/research/).
+
 ## The ARC Principle
 
 ```
-U = I x R^alpha     where alpha = 1/(1 - beta)
+U = I x R^alpha     proposed relationship, conditional on the measured domain
 ```
 
 | Symbol | Meaning |
 |--------|---------|
 | `U` | effective capability |
-| `I` | base potential, structured asymmetry |
+| `I` | baseline capability in the specified measurement model |
 | `R` | recursive depth |
-| `beta` | self-referential coupling |
-| `alpha` | scaling exponent, derived rather than fitted |
+| `alpha` | scaling exponent to estimate and compare against rival functional forms |
 
-**The core prediction is `alpha_sequential > 1 > alpha_parallel`, and only half of it is
-supported.** The ordering `alpha_sequential > alpha_parallel` is supported by Paper II. The
+**The historical prediction was `alpha_sequential > 1 > alpha_parallel`.** Paper II
+reports an exploratory sequential/parallel ordering. A general compute-matched causal
+advantage and a universal scaling law are not established by that observation. The
 early super-linearity estimate of approximately 2.24 was retracted; the robust v13
 cross-architecture estimate is approximately 0.49, which is sub-linear. Super-linearity
 remains an open prediction and is not confirmed. The `R^2 = 1.00000000` fit reported in an
@@ -78,7 +91,7 @@ earlier version was an algebraic identity check and never an empirical validatio
 | Document | What it reports | Status |
 |----------|-----------------|--------|
 | Paper I | the original statement, `U = I x R^alpha` | published |
-| Paper II | sequential recursion outperforms parallel at lower compute | supported for the ordering only, see above |
+| Paper II | sequential recursion outperforms parallel at lower compute | exploratory ordering; the general advantage remains unresolved |
 | Paper III | external constraints cannot compound where embedded values can; 13 falsification criteria | published |
 | Paper IV.a | architecture-dependent alignment response classes | pilot |
 | Paper IV.b | alignment saturates at low recursion depth | pilot |
@@ -246,3 +259,4 @@ sender copy carries the date in its header and a SHA-256 authenticates the bytes
 priority record is in [`priority-claims/`](priority-claims/).
 
 **Copyright 2026 Michael Darius Eastwood.**
+
