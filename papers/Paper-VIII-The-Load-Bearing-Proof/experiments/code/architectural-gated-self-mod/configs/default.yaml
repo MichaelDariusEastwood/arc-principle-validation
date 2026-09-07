@@ -1,0 +1,52 @@
+experiment:
+  name: eden_gated_self_mod_agent
+  output_dir: runs
+  seeds: [0, 1, 2]
+  conditions: [static, babylon, eden, drag_control]
+  iterations: 12
+  accept_epsilon: 1.0e-6
+  delta_c_min: 0.0
+  delta_cs_min: 0.0
+  s_min: 0.45
+  lambda_drag: 0.10
+  device: auto
+  eval_repeats: 1
+  checkpoint_every: 1
+
+tasks:
+  kind: adversarial_regression
+  num_tasks: 6
+  train_samples: 256
+  val_samples: 256
+  batch_size: 64
+  noise: 0.02
+
+model:
+  input_dim: 1
+  hidden_sizes: [64, 64]
+  output_dim: 1
+  init_std: 0.05
+
+optimizer:
+  steps_per_task: 16
+  base_lr: 0.01
+  momentum: 0.9
+  weight_decay: 0.0001
+  grad_clip: 5.0
+  feature_dim: 8
+  hidden_size: 32
+  meta_noise_std: 0.03
+  mutation_scale: 0.04
+  inner_rollout_tasks: 6
+
+policy:
+  mutation_scale: 0.08
+  allow_activation_mutation: true
+  allow_feature_mutation: true
+
+verifier:
+  catastrophic_floor: 0.10
+  determinism_checks: 2
+  max_param_norm: 1000.0
+  max_nan_tensors: 0
+  require_improvement: false

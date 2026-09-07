@@ -41,6 +41,15 @@ beside the existing one.
 | `shared` | all experiments | the gateway adapter the experiment scripts share | tooling |
 | `arc-scaling-lineage` | none directly | the four early standalone scaling scripts, kept as a record | superseded |
 
+## Paper VIII keeps its experiments with the paper
+
+Paper VIII is the one exception to the map above. Its three experiments, the twelve run
+ledgers they wrote, the two tests and the results the paper folder did not already hold sit
+at `papers/Paper-VIII-The-Load-Bearing-Proof/experiments/`, because the paper's own README
+points there and the results those runs produced already live beside it. That folder carries
+its own README, its own `REPRODUCE.md`, and a `MANIFEST.sha256` with one line per file.
+Evidence tier: pilot, unblinded, not replicated.
+
 ## Paper VII is under correction
 
 `cauchy-unification__Paper-VII` records the runs as they were made. The classification
