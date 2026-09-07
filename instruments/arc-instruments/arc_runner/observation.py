@@ -607,14 +607,26 @@ def read(source: Callable, arm: str, alpha_arm: float, r: int, rng, spec: Observ
     """
     out = source(arm, alpha_arm, r, rng)
     if isinstance(out, Reading):
-        rd = out if out.round_index == r else replace(out, round_index=r)
+        rd = out
     elif isinstance(out, dict):
         d = dict(out)
         d.setdefault("round", r)
         rd = Reading.from_dict(d)
     else:
         rd = Reading(round_index=r, value=float(out))
-    if rd.value is None:
+    if rd.round_index != r:
+        raise ObservationRefusal("source returned round %r for requested round %r" % (rd.round_index, r))
+    return normalise_reading(rd, spec)
+
+
+def normalise_reading(rd: Reading, spec: ObservationSpec) -> Reading:
+    """Use the same measurement rule during collection and replay.
+
+    Supplied Q and W determine their ratio even when a source also supplies a cached value.
+    A balance elasticity is a window estimate and is never derived from one pair of counts.
+    """
+    derived_quantity = spec.quantity in (SERVICE_RATIO, LOG_SERVICE_RATIO, SURPLUS_RATE)
+    if rd.value is None or (derived_quantity and rd.Q is not None and rd.W is not None):
         rd = replace(rd, value=_derive(rd, spec))
     require_reading_matches_declaration(rd, spec)
     return rd

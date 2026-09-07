@@ -445,7 +445,8 @@ def verifier_identity(ladder: Any) -> Dict[str, Any]:
                         # already hashed, and hashing it twice would make a comment on a check look
                         # like a change of check.
                         "attests_exact_check": _marked(fn, "exact_check"),
-                        "declares_substring_smoke_test": _marked(fn, "substring_smoke_test")})
+                        "declares_substring_smoke_test": _marked(fn, "substring_smoke_test"),
+                        "development_only": _marked(fn, "development_only")})
         for part in (name, qual, module or "", src_sha or "unbound"):
             pb = part.encode("utf-8")
             h.update(str(len(pb)).encode()); h.update(b":"); h.update(pb)
@@ -473,6 +474,16 @@ def attest_exact_check(fn: Any) -> Any:
     """
     fn.exact_check = True
     return fn
+
+
+def mark_development_only(fn: Any) -> Any:
+    """The grader executes trusted development fixtures only, without a protected judging boundary."""
+    fn.development_only = True
+    return fn
+
+
+def development_verifiers(ladder: Any) -> List[str]:
+    return [name for name, fn in _verifier_callables(ladder) if _marked(fn, "development_only")]
 
 
 def mark_substring_smoke_test(fn: Any) -> Any:
@@ -609,6 +620,17 @@ def adapter_metadata(adapter: Any) -> Dict[str, Any]:
 # --------------------------------------------------------------------------------------------------
 # The anchor receipt
 # --------------------------------------------------------------------------------------------------
+
+def parse_utc(value: Any):
+    """Parse an explicit, timezone-aware ISO timestamp; strings alone prove no chronology."""
+    import datetime
+    if not isinstance(value, str):
+        raise ValueError("timestamp must be an ISO string with a timezone")
+    parsed = datetime.datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        raise ValueError("timestamp has no timezone")
+    return parsed.astimezone(datetime.timezone.utc)
+
 
 def utc_now() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
@@ -922,6 +944,14 @@ def custody_failures(manifest: Dict[str, Any], predictions: Optional[Dict[str, A
                                "when it was made, and a sentence that cannot be placed before the "
                                "seal cannot say the material was unseen when the predictions were "
                                "fixed")
+        if external_anchor_required and not att.get("mock"):
+            try:
+                # Legacy seals have second resolution: equality is permitted at that resolution.
+                # The externally issued receipt still has to substantiate the chronology.
+                if parse_utc(att.get("attested_utc")) > parse_utc(seal.get("sealed_at_utc")):
+                    out.append("prior-inspection attestation was made after the prediction seal")
+            except (ValueError, TypeError, OverflowError):
+                out.append("prior-inspection attestation and seal need valid timezone-aware ISO timestamps")
         if heldout_sha256 is not None and str(heldout_sha256) != att.get("heldout_sha256"):
             out.append("the prior-inspection attestation speaks about the material whose digest is "
                        "%s and the material in hand hashes to %s; an attestation for another "
@@ -1180,6 +1210,7 @@ class EvidenceBundle:
     rows, the reads, the replicate series, the margin series, the verdicts and the provider metadata.
     """
 
+    PRECOLLECTION_MANIFEST = "precollection-manifest.json"
     MANIFEST = "manifest.json"
     SEAL = "seal.json"
     BUNDLE = "bundle.json"
@@ -1187,7 +1218,7 @@ class EvidenceBundle:
 
     def __init__(self, root: str):
         self.root = str(root)
-        os.makedirs(self.root, exist_ok=True)
+        os.makedirs(self.root, exist_ok=False)  # one new directory per run; never mix or truncate evidence
         self.written: List[str] = []
         self._reads: Optional[List[Dict[str, Any]]] = None
         self._reads_flushed = 0
@@ -1216,7 +1247,6 @@ class EvidenceBundle:
         new_reads: List[Dict[str, Any]] = []
         if self._reads is not None:
             new_reads = list(self._reads[self._reads_flushed:])
-            self._reads_flushed = len(self._reads)
         line = {"schema": BUNDLE_SCHEMA, "stage": str(stage), "written_utc": utc_now(),
                 "reads": new_reads, **(payload or {})}
         removed: List[str] = []
@@ -1228,6 +1258,8 @@ class EvidenceBundle:
             fh.write(json.dumps(clean, sort_keys=True, default=_jsonable) + "\n")
             fh.flush()
             os.fsync(fh.fileno())
+        if self._reads is not None:
+            self._reads_flushed += len(new_reads)
         if p not in self.written:
             self.written.append(p)
         return p
@@ -1239,11 +1271,16 @@ class EvidenceBundle:
             clean = dict(clean)
             clean["redacted_paths"] = sorted(set(removed))
         p = self.path(name)
-        with open(p, "w", encoding="utf-8") as fh:
+        with open(p, "x", encoding="utf-8") as fh:
             json.dump(clean, fh, indent=1, sort_keys=True, default=_jsonable)
+            fh.flush()
+            os.fsync(fh.fileno())
         if p not in self.written:
             self.written.append(p)
         return p
+
+    def write_precollection_manifest(self, manifest: Dict[str, Any]) -> str:
+        return self._write(self.PRECOLLECTION_MANIFEST, manifest)
 
     def write_manifest(self, manifest: Dict[str, Any]) -> str:
         return self._write(self.MANIFEST, manifest)
@@ -1441,8 +1478,30 @@ def recompute_verdicts(bundle: Dict[str, Any]) -> Dict[str, Any]:
     if exp == "P16":
         from . import p16
         cfg = _config_from(p16.P16Config, bundle.get("config") or {})
-        return p16.verdicts(man, bundle["sealed_predictions"], bundle["arms"], cfg,
-                            bundle.get("replication"))
+        differences = config_differences(man.get("config") or {}, cfg)
+        if differences:
+            raise CustodyRefusal("P16 replay configuration differs from its seal: " + "; ".join(differences))
+        from . import observation as OBS
+        preds = bundle["sealed_predictions"]
+        spec = OBS.ObservationSpec.from_record(preds["observation"])
+        arms = []
+        expected = {("dose%+.1f" % o, k): cfg.alpha_crit_hat + o
+                    for o in cfg.dose_offsets for k in range(cfg.systems_per_arm)}
+        expected.update({(name, k): cfg.alpha_crit_hat
+                         for name in ("sham", "baseline") for k in range(cfg.systems_per_arm)})
+        seen = set()
+        for saved in bundle["arms"]:
+            key = (saved.get("arm"), saved.get("replicate_id"))
+            if key not in expected or key in seen or saved.get("alpha") != expected[key]:
+                raise CustodyRefusal("P16 arm identity, replicate or exposure differs from the sealed design")
+            seen.add(key)
+            rebuilt = p16.analyse_arm([OBS.Reading.from_dict(rd) for rd in saved["readings"]],
+                                     key[0], expected[key], cfg, spec)
+            rebuilt["replicate_id"] = key[1]
+            arms.append(rebuilt)
+        if seen != set(expected):
+            raise CustodyRefusal("P16 bundle is missing scheduled arms")
+        return p16.verdicts(man, preds, arms, cfg, bundle.get("replication"))
     raise CustodyRefusal("no analysis is registered for experiment %r" % bundle.get("experiment"))
 
 

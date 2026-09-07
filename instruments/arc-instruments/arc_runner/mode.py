@@ -353,7 +353,7 @@ def _anchor_refusals(inputs: ConfirmatoryInputs) -> List[str]:
 
 
 def _ladder_refusals(inputs: ConfirmatoryInputs) -> List[str]:
-    from .custody import smoke_verifiers, unattested_verifiers
+    from .custody import smoke_verifiers, unattested_verifiers, development_verifiers
     from .sampling import unit_refusals
 
     lad = inputs.ladder
@@ -370,6 +370,11 @@ def _ladder_refusals(inputs: ConfirmatoryInputs) -> List[str]:
     # substring check is not a measurement of whether its tasks were solved: a response enumerating
     # candidate answers passes it. Barring the reference pool leaves that check free to be attached
     # to a better pool, so the check is refused on its own marker.
+    development = development_verifiers(lad)
+    if development:
+        out.append("domain-ladder: development-only verifier(s) %s share hidden checks or grading "
+                   "state with submitted code; use an independently validated external judging boundary"
+                   % ", ".join(development))
     smoke = smoke_verifiers(lad)
     if smoke:
         out.append("domain-ladder: the verifier(s) %s declare themselves substring smoke tests. A "
@@ -1057,6 +1062,8 @@ def _config_refusals(inputs: ConfirmatoryInputs) -> List[str]:
         # already been paid for. They are P16 rules because the quantities belong to the titration's
         # components and its sequential rule, which a P5 bank configuration does not have.
         out += _p16_registered_quantity_refusals(cfg)
+        from .calibration_gate import refusals as calibration_refusals
+        out += calibration_refusals(cfg)
     if kind == "P5":
         # AND THE INTERVAL CONVENTION THE COMPARISON WILL BE READ UNDER (finding A7). It is checked
         # here, with the rest of the configuration and before the first paid call, because a run
@@ -1134,6 +1141,12 @@ def _attestation_refusals(inputs: ConfirmatoryInputs) -> List[str]:
                 "sentence and the time are the attester's own words, and a digest written by this "
                 "code would be the party being checked answering the question asked of it"
                 % ", ".join(absent)]
+    from .custody import parse_utc, utc_now
+    try:
+        if parse_utc(rec["attested_utc"]) > parse_utc(utc_now()):
+            return ["prior-inspection: attestation is dated in the future"]
+    except (ValueError, TypeError, OverflowError):
+        return ["prior-inspection: invalid timezone-aware attestation timestamp"]
     return []
 
 

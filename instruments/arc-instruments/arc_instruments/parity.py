@@ -33,7 +33,7 @@ def compare_trees(reference: str, copy: str) -> Dict[str, object]:
     missing_in_copy: List[str] = sorted(k for k in a if k not in b)
     extra_in_copy: List[str] = sorted(k for k in b if k not in a)
     return {"files_compared": len(set(a) & set(b)), "differ": differ, "missing_in_copy": missing_in_copy,
-            "extra_in_copy": extra_in_copy, "parity": not (differ or missing_in_copy)}
+            "extra_in_copy": extra_in_copy, "parity": bool(a and b) and not (differ or missing_in_copy or extra_in_copy)}
 
 
 def main(argv=None) -> int:

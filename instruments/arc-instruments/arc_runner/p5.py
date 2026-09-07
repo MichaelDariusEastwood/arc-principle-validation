@@ -1268,7 +1268,7 @@ def run_p5(adapter: ModelAdapter, ladder: Ladder, cfg: P5Config, seed: int, plac
                                          "capability_manipulations": manipulation_records},
                          adapter.name, mode=m, confirmatory_inputs=inputs_record, ladder=ladder)
     if bundle is not None:
-        bundle.write_manifest(man)      # on disk before the first paid call, not after the last one
+        bundle.write_precollection_manifest(man)  # preserve the initial and later sealed manifests separately
     bank = run_bank(adapter, ladder, cfg, rng, place_at_state)
     if bundle is not None:
         # THE BANK REACHES DISK AS SOON AS IT EXISTS (finding A8's second crash case). The bank is the

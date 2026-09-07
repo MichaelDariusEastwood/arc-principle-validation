@@ -406,6 +406,10 @@ def require_released_apparatus(manifest: Dict[str, Any]) -> None:
     """
     if not mode_of(manifest).scoreable:
         return
+    verifiers = (manifest.get("ladder_identity") or {}).get("verifiers") or []
+    if any(v.get("development_only") or v.get("declares_substring_smoke_test")
+           or not v.get("attests_exact_check") for v in verifiers):
+        raise InstrumentNotReleased("the sealed verifier is a development/smoke check or lacks an exact-check attestation")
     record = manifest.get("confirmatory_inputs") or {}
     declarations = list(record.get("observing_systems") or ())
     if not declarations:

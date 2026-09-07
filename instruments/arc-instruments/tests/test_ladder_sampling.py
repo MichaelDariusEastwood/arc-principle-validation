@@ -16,6 +16,8 @@ exact one and the substring check is refused on the deciding path wherever it is
 """
 import functools
 
+from trusted_fixtures import trusted_addition_batch_runner
+
 import numpy as np
 import pytest
 
@@ -48,7 +50,7 @@ def _registered_pool(n=60):
 
 def _suite(n=100, subset=None):
     return CD.SuiteLadder(_registered_pool(n), subset_size=subset,
-                          batch_runner=CD.inprocess_batch_runner())
+                          batch_runner=trusted_addition_batch_runner())
 
 
 REPEATS = (1, 16, 256)
@@ -265,7 +267,7 @@ def _ladder_refusals(ladder):
 
 def test_the_reference_arithmetic_pool_cannot_enter_confirmatory_mode():
     for lad in (L.reference_checkable_ladder(10),
-                CD.SuiteLadder(CD.reference_pool(8), batch_runner=CD.inprocess_batch_runner())):
+                CD.SuiteLadder(CD.reference_pool(8), batch_runner=trusted_addition_batch_runner())):
         assert any("reference smoke pool" in r for r in _ladder_refusals(lad))
 
 
@@ -336,8 +338,8 @@ def test_the_sampling_unit_is_inside_the_ladder_hash_and_therefore_inside_the_se
     class RelabelledSuite(CD.SuiteLadder):
         assay_unit = S.AssayUnit.STOCHASTIC_EXECUTION
 
-    a = CD.SuiteLadder(pool, subset_size=10, batch_runner=CD.inprocess_batch_runner())
-    b = RelabelledSuite(pool, subset_size=10, batch_runner=CD.inprocess_batch_runner())
+    a = CD.SuiteLadder(pool, subset_size=10, batch_runner=trusted_addition_batch_runner())
+    b = RelabelledSuite(pool, subset_size=10, batch_runner=trusted_addition_batch_runner())
     assert a.spec["assay_unit"] == "item-form-from-frozen-pool"
     assert a.sha256 != b.sha256, "the same items read under a different sampling model is a different ladder"
     assert custody.ladder_identity(a)["spec"]["assay_unit_declared"] is True
@@ -481,7 +483,7 @@ def test_a_suite_ladder_that_draws_the_same_form_every_read_buys_no_precision():
         def score(self, artefact, rng):
             return super().score(artefact, np.random.default_rng(7))   # the same form, every read
 
-    lad = OneFormSuite(_registered_pool(100), subset_size=40, batch_runner=CD.inprocess_batch_runner())
+    lad = OneFormSuite(_registered_pool(100), subset_size=40, batch_runner=trusted_addition_batch_runner())
     art = CD.new_artefact(_lib(50, 100))
     rng = np.random.default_rng(22)
     sds = []
@@ -532,7 +534,7 @@ def test_a_ladder_whose_witness_never_varies_is_refused_too():
             return "always-the-same-form"
 
     lad = ConstantWitnessSuite(_registered_pool(60), subset_size=20,
-                              batch_runner=CD.inprocess_batch_runner())
+                              batch_runner=trusted_addition_batch_runner())
     assert S.resampling_witness_of(lad)[0] == "constant"
     assert any("cannot show what a repeat would draw afresh" in r for r in _ladder_refusals(lad))
 
@@ -604,7 +606,7 @@ def test_an_opaque_wrapper_carries_no_mark_and_is_refused_for_attesting_nothing(
     assert any("do not attest" in r for r in refusals), refusals
 
 
-def test_an_attested_check_passes_and_the_reference_checks_are_attested():
+def test_an_attested_external_check_passes_and_the_shared_interpreter_check_refuses():
     """The gate must pass the checks that do decide items, or it is an outage in the shape of a gate."""
     assert custody.unattested_verifiers(_suite(40, subset=10)) == []
     lad = L.CheckableLadder([{"id": "a", "verifier": "exact_answer", "prompt": "p", "answer": "1"}],
@@ -612,7 +614,7 @@ def test_an_attested_check_passes_and_the_reference_checks_are_attested():
     assert custody.unattested_verifiers(lad) == []
     assert not any("do not attest" in r for r in _ladder_refusals(lad))
     assert custody.unattested_verifiers(
-        CD.SuiteLadder(_registered_pool(8), verifier=CD.inprocess_verifier())) == []
+        CD.SuiteLadder(_registered_pool(8), verifier=CD.inprocess_verifier())) == ["verifier"]
 
 
 def test_a_ladder_cannot_widen_its_population_after_the_read_that_drew_from_it():
@@ -627,7 +629,7 @@ def test_a_ladder_cannot_widen_its_population_after_the_read_that_drew_from_it()
         def population_size(self):
             return 10000
 
-    lad = OverstatedPool(_registered_pool(100), batch_runner=CD.inprocess_batch_runner())
+    lad = OverstatedPool(_registered_pool(100), batch_runner=trusted_addition_batch_runner())
     _, unc, _ = L.read_with_uncertainty(lad, CD.new_artefact(_lib(50, 100)),
                                         np.random.default_rng(24), 3)
     assert unc.population_size == 100 and unc.sd == 0.0 and unc.exact is True

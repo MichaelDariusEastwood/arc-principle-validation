@@ -12,6 +12,8 @@ call would fail the test with the words "a provider call was made".
 import json
 import sys
 
+from trusted_fixtures import trusted_addition_batch_runner, with_fixture_calibration
+
 import numpy as np
 import pytest
 
@@ -213,7 +215,7 @@ def _requirement_names(exc):
 
 def test_confirmatory_with_the_reference_pool_refuses(tmp_path):
     pool = CD.reference_pool(40)                     # the smoke pool, which nobody wrote for the study
-    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, 40)
     with pytest.raises(MODE.ModeRefusal) as exc:
         p5.run_p5(RefusingAdapter(), lad, _cfg(), 1, CD.place_at_state_factory(store),
@@ -225,7 +227,7 @@ def test_confirmatory_with_the_reference_pool_refuses(tmp_path):
 
 def test_confirmatory_with_a_missing_state_refuses(tmp_path):
     pool = _registered_pool(40)
-    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, 40, states=(10, 20))    # the bank will also place 40, which was never built
     with pytest.raises(MODE.ModeRefusal) as exc:
         p5.run_p5(RefusingAdapter(), lad, _cfg(states=(10, 20, 40)), 1, CD.place_at_state_factory(store),
@@ -237,7 +239,7 @@ def test_confirmatory_with_a_missing_state_refuses(tmp_path):
 
 def test_confirmatory_without_an_allowance_refuses(tmp_path):
     pool = _registered_pool(40)
-    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, 40)
     with pytest.raises(MODE.ModeRefusal) as exc:
         p5.run_p5(RefusingAdapter(), lad, _cfg(), 1, CD.place_at_state_factory(store),
@@ -251,7 +253,7 @@ def test_confirmatory_without_an_allowance_refuses(tmp_path):
 
 def test_confirmatory_without_a_resolved_configuration_refuses(tmp_path):
     pool = _registered_pool(40)
-    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, 40)
     with pytest.raises(MODE.ModeRefusal) as exc:
         p5.run_p5(RefusingAdapter(), lad, _cfg(), 1, CD.place_at_state_factory(store),
@@ -264,7 +266,7 @@ def test_confirmatory_with_placeholder_loaders_refuses(tmp_path):
     """The defect A9 names: a loader that manufactures an artefact from a number, so that no cell is
     at the state it claims. It is refused whatever else is in place."""
     pool = _registered_pool(40)
-    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, 40)
     with pytest.raises(MODE.ModeRefusal) as exc:
         p5.run_p5(RefusingAdapter(), lad, _cfg(), 1,
@@ -275,7 +277,7 @@ def test_confirmatory_with_placeholder_loaders_refuses(tmp_path):
 
 def test_a_confirmatory_run_with_no_inputs_at_all_names_every_requirement(tmp_path):
     pool = _registered_pool(40)
-    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=20, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, 40)
     with pytest.raises(MODE.ModeRefusal) as exc:
         p5.run_p5(RefusingAdapter(), lad, _cfg(), 1, CD.place_at_state_factory(store),
@@ -325,7 +327,7 @@ def test_a_complete_confirmatory_setup_passes_the_gate_and_is_scoreable(tmp_path
     # rather than stopping at NOT EVALUABLE. The verdict itself is not the subject: the gate is.
     n = 120
     pool = _registered_pool(n)
-    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, n)
     inputs = _inputs(store)
     res = p5.run_p5(ScriptedCodeSystem(n), lad, _cfg(), 11, CD.place_at_state_factory(store),
@@ -373,7 +375,7 @@ def test_a_deciding_run_refuses_a_simulated_system_and_one_that_declares_nothing
     asks them to revise an artefact.
     """
     n = 60
-    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, n)
 
     with pytest.raises(MODE.ModeRefusal) as exc:
@@ -449,7 +451,7 @@ def test_a_declared_system_is_recorded_by_name_in_the_manifest(tmp_path):
     """The other half, which keeps the refusal from being an outage: a system that declares itself
     passes, and what it said is in the record rather than in the caller's memory."""
     n = 120
-    lad = CD.SuiteLadder(_registered_pool(n), subset_size=40, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(n), subset_size=40, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, n)
     res = p5.run_p5(ScriptedCodeSystem(n), lad, _cfg(), 11, CD.place_at_state_factory(store),
                     CD.start_for_factory(store), ["S1"], mode="confirmatory",
@@ -472,7 +474,7 @@ def test_an_inconsistent_configuration_is_not_a_resolved_one(tmp_path):
 
 
 def _ladder_for(store):
-    return CD.SuiteLadder(_registered_pool(40), subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    return CD.SuiteLadder(_registered_pool(40), subset_size=20, batch_runner=trusted_addition_batch_runner())
 
 
 # --------------------------------------------------------------------------------------------------
@@ -515,7 +517,7 @@ def test_the_gate_checks_the_store_the_loaders_read_and_not_a_second_one(tmp_pat
     missing checkpoint the gate exists to catch.
     """
     n = 40
-    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=trusted_addition_batch_runner())
     complete = _store(tmp_path / "complete", n, states=(10, 20, 40))
     partial = _store(tmp_path / "partial", n, states=(10, 20))
     with pytest.raises(MODE.ModeRefusal) as exc:
@@ -537,7 +539,7 @@ def test_the_gate_checks_the_store_the_loaders_read_and_not_a_second_one(tmp_pat
 def test_the_two_loaders_may_not_read_two_different_banks(tmp_path):
     """The bank and the held-out panel read one checkpoint bank or they are not one experiment."""
     n = 40
-    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=trusted_addition_batch_runner())
     one, two = _store(tmp_path / "one", n), _store(tmp_path / "two", n)
     refusals = MODE.missing_confirmatory_inputs(
         MODE.ConfirmatoryInputs(ladder=lad, checkpoint_store=one, states=(10, 20, 40), config=_cfg(),
@@ -559,7 +561,7 @@ def test_a_loader_labelled_with_a_store_it_does_not_read_is_still_a_placeholder(
     whatever it is labelled.
     """
     n = 40
-    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, n)
     place = lambda s: {"kind": "mock", "capability": float(s), "rounds": 0}
     start = lambda name: {"kind": "mock", "capability": 20.0, "rounds": 0, "system": name}
@@ -581,7 +583,7 @@ def test_a_loader_that_returns_another_state_s_artefact_is_refused(tmp_path):
     """A loader that reads the store and returns the wrong cell from it. It carries the store, it
     raises nothing, and every state it is asked for exists: only the bytes say it is wrong."""
     n = 40
-    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, n)
     real = CD.place_at_state_factory(store)
 
@@ -646,7 +648,7 @@ def _registered_p16(**kw):
                 slope_equivalence=0.15, informative_horizon=10, practical_absence_band=0.05,
                 across_window_segments=2)
     base.update(kw)
-    return p16.P16Config(**base)
+    return with_fixture_calibration(p16.P16Config(**base))
 
 
 def test_a_complete_p16_confirmatory_setup_passes_the_gate_and_is_scoreable(tmp_path):
@@ -662,7 +664,7 @@ def test_a_complete_p16_confirmatory_setup_passes_the_gate_and_is_scoreable(tmp_
     is one that holds all of them.
     """
     cfg = _registered_p16()
-    lad = CD.SuiteLadder(_registered_pool(20), subset_size=10, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(20), subset_size=10, batch_runner=trusted_addition_batch_runner())
     store = CD.CheckpointStore(str(tmp_path))
     store.save("seed", CD.new_artefact(_lib(2, 20)))
     res = p16.run_p16(_declared_assay(cfg), cfg, 5, lad.sha256, "a-declared-adapter",
@@ -690,8 +692,8 @@ def test_a_titration_told_about_one_ladder_and_handed_another_refuses(tmp_path):
     collected, the claim has failed in the one way anything here can observe.
     """
     cfg = _registered_p16()
-    lad = CD.SuiteLadder(_registered_pool(20), subset_size=10, batch_runner=CD.inprocess_batch_runner())
-    other = CD.SuiteLadder(_registered_pool(24), subset_size=10, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(20), subset_size=10, batch_runner=trusted_addition_batch_runner())
+    other = CD.SuiteLadder(_registered_pool(24), subset_size=10, batch_runner=trusted_addition_batch_runner())
     store = CD.CheckpointStore(str(tmp_path / "store"))
     store.save("seed", CD.new_artefact(_lib(2, 20)))
 
@@ -855,15 +857,8 @@ def test_a_pilot_refuses_without_an_approved_ceiling_too(tmp_path, monkeypatch):
     assert "approved ceiling" in str(exc.value)
 
 
-def test_the_command_line_reaches_the_p16_deciding_path_and_stops_at_the_missing_key(tmp_path,
-                                                                                     monkeypatch):
-    """`confirm p16` is documented as a deciding run, and no setup could reach it.
-
-    Every P16 configuration was refused by four P5-shaped requirements it cannot carry, so the last
-    thing this command could ever say was that the bank had no states. With a complete setup the run
-    now passes the gate and stops at the one thing this test refuses to supply, which is the provider
-    key: the gate is no longer the obstacle, and nothing has been spent because no adapter exists.
-    """
+def test_the_command_line_refuses_unreleased_p16_grader_and_calibration(tmp_path, monkeypatch):
+    """Five numerical choices do not release a shared-interpreter grader or calibrate its verdict."""
     monkeypatch.delenv("ARC_RUNNER_API_KEY", raising=False)
     d = _seeded_store_dir(tmp_path)
     registered = ["--chi-hat-se", "0.02", "--slope-equivalence", "0.15", "--informative-horizon", "40",
@@ -871,11 +866,11 @@ def test_the_command_line_reaches_the_p16_deciding_path_and_stops_at_the_missing
     argv = ["confirm", "p16", "--checkpoints", d, "--pool-module", "tests.pool_for_tests",
             "--allowance-gbp", "25", "--max-call-gbp", "0.5", "--resolved-by", "the operator",
             "--anchor-module", "tests.anchor_for_tests"] + registered
-    with pytest.raises(RuntimeError) as exc:
+    with pytest.raises(SystemExit) as exc:
         cli.main(argv)
     msg = str(exc.value)
-    assert "no API key" in msg
-    assert "refuses to start" not in msg and "the bank has no states" not in msg
+    assert "development-only" in msg and "calibration:" in msg
+    assert "the bank has no states" not in msg
     # and the gate is still the thing that speaks when an input is missing
     with pytest.raises(SystemExit) as exc:
         cli.main([a for a in argv if a not in ("--resolved-by", "the operator")])
@@ -935,7 +930,7 @@ def _declared_source(name="a-declared-source"):
 
 def _complete_p16_inputs(tmp_path, cfg, allowance=None):
     """Everything the deciding gate names, so that what a case removes is the only thing missing."""
-    lad = CD.SuiteLadder(_registered_pool(20), subset_size=10, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(20), subset_size=10, batch_runner=trusted_addition_batch_runner())
     store = CD.CheckpointStore(str(tmp_path))
     store.save("seed", CD.new_artefact(_lib(2, 20)))
     return MODE.ConfirmatoryInputs(
@@ -964,7 +959,8 @@ def test_a_deciding_p16_run_refuses_its_unregistered_quantities_before_it_pays(t
     refusals = MODE.missing_confirmatory_inputs(inputs)
     assert refusals, "a shipped P16 configuration passed a gate that exists to refuse it"
     named = [r for r in refusals if r.startswith("registered-quantity")]
-    assert len(named) == len(refusals), refusals            # nothing else about this setup is missing
+    assert named and any(r.startswith("calibration:") for r in refusals)
+    assert all(r.startswith(("registered-quantity", "calibration:")) for r in refusals), refusals
     for quantity in ("chi_hat_se", "slope_equivalence", "informative_horizon",
                      "practical_absence_band", "across_window_segments"):
         assert any(quantity in r for r in named), (quantity, named)
@@ -1026,7 +1022,7 @@ def test_the_deciding_path_holds_its_ceiling_in_a_controller_and_not_in_a_figure
     that reaches the gate through the API.
     """
     n = 120
-    lad = CD.SuiteLadder(_registered_pool(n), subset_size=40, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(n), subset_size=40, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path, n)
     with pytest.raises(MODE.ModeRefusal) as exc:
         p5.run_p5(RefusingAdapter(), lad, _cfg(), 11, CD.place_at_state_factory(store),
@@ -1183,7 +1179,7 @@ def test_the_same_configuration_on_the_deciding_path_is_refused(tmp_path):
     cfg = p16.demonstration_config()
     refusals = MODE.missing_confirmatory_inputs(_complete_p16_inputs(tmp_path, cfg))
     assert refusals, "a titration carrying five candidate numbers passed the deciding gate"
-    assert all(r.startswith("registered-quantity") for r in refusals), refusals
+    assert all(r.startswith(("registered-quantity", "calibration:")) for r in refusals), refusals
     for name in cli.P16_REGISTERED_OPTIONS:
         assert any(name in r and "candidate" in r for r in refusals), (name, refusals)
     # and the gate itself refuses rather than merely listing
@@ -1192,7 +1188,7 @@ def test_the_same_configuration_on_the_deciding_path_is_refused(tmp_path):
     assert "CANDIDATE" in str(exc.value)
     # the same five numbers registered by an author, with nothing labelled, pass exactly as before:
     # what is refused is the label and never the width
-    registered = p16.P16Config(**dict(p16.CANDIDATE_QUANTITIES))
+    registered = with_fixture_calibration(p16.P16Config(**dict(p16.CANDIDATE_QUANTITIES)))
     assert registered.candidate_quantities == ()
     assert MODE.missing_confirmatory_inputs(_complete_p16_inputs(tmp_path, registered)) == []
 

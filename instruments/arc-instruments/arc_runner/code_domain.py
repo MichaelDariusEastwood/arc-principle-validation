@@ -33,6 +33,10 @@ real path has a test, and it is a smoke test and not an instrument.
 """
 from __future__ import annotations
 
+# Shared-interpreter graders below are DEVELOPMENT ONLY. A container can protect the host
+# while leaving checks and result reporting exposed to the submitted code inside it.
+# See docs/INTEGRATION-REVIEW-2026-09-07.md before adopting a deciding verifier.
+
 import hashlib
 import json
 import os
@@ -45,7 +49,7 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Set, Tuple
 import numpy as np
 
 from . import sampling as SAMPLING
-from .custody import attest_exact_check
+from .custody import mark_development_only
 from .ladder import Ladder, LadderResult, outcome_digest
 
 
@@ -148,9 +152,9 @@ def subprocess_verifier(timeout_s: float = 10.0, cpu_s: int = 10, mem_mb: int = 
         # Require completion of the checks, not merely a zero process exit.
         return task.id in subprocess_batch_runner(timeout_s,cpu_s,mem_mb)(text,[task])
 
-    # It decides an item by running that item's hidden checks and reading the exit code, so it is a
-    # measurement of whether the task was solved and attests it. See custody.attest_exact_check.
-    return attest_exact_check(verify)
+    # Target code and hidden checks share an interpreter. This is a trusted-fixture grader,
+    # not an independently protected judging boundary; confirmatory use is refused.
+    return mark_development_only(verify)
 
 
 def inprocess_batch_runner() -> Callable[[str, Sequence[Task]], Set[str]]:
@@ -175,7 +179,7 @@ def inprocess_batch_runner() -> Callable[[str, Sequence[Task]], Set[str]]:
                 pass
         return out
 
-    return attest_exact_check(run)
+    return mark_development_only(run)
 
 
 def subprocess_batch_runner(timeout_s: float = 60.0, cpu_s: int = 60, mem_mb: int = 1024) -> Callable[[str, Sequence[Task]], Set[str]]:
@@ -240,7 +244,7 @@ def subprocess_batch_runner(timeout_s: float = 60.0, cpu_s: int = 60, mem_mb: in
             except Exception:
                 return set()
 
-    return attest_exact_check(run)
+    return mark_development_only(run)
 
 
 def inprocess_verifier() -> Callable[[str, Task], bool]:
@@ -263,7 +267,7 @@ def inprocess_verifier() -> Callable[[str, Task], bool]:
         except Exception:
             return False
 
-    return attest_exact_check(verify)
+    return mark_development_only(verify)
 
 
 # --------------------------------------------------------------------------------------------------

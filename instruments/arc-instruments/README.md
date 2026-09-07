@@ -11,6 +11,16 @@ Why it exists in this repository and not in the estate: on the model that wrote 
 estate is a protected publication surface. The applying session copies each module into the unit that
 decides the proposition, re-pins the hashes, and the estate copy becomes the registered one.
 
+## Integration repair (7 September 2026)
+
+The shipped Python graders are now explicitly development-only and refused in confirmatory mode.
+P16 additionally requires a reviewed calibration record for the complete final decision procedure;
+the legacy 0.052 alarm-rate estimate is insufficient. Saved P16 results are recomputed from round
+measurements, and existing evidence directories cannot be reused. See the
+[integration review](docs/INTEGRATION-REVIEW-2026-09-07.md) for all seven findings, the calibration
+contract and the limits of these repairs. This remains reference software; no deciding instrument
+is released by passing its tests.
+
 ## Modules, and the guidance items they implement
 
 | Module | Guidance item | What it does |
