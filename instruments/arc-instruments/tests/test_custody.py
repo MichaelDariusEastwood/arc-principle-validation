@@ -16,6 +16,8 @@ import json
 import os
 import shutil
 
+from trusted_fixtures import trusted_addition_batch_runner, with_fixture_calibration
+
 import numpy as np
 import pytest
 
@@ -187,7 +189,7 @@ def _inputs(store, anchor=anchor_service, attestation=_STUB_ATTESTATION):
 
 def _confirmatory_run(tmp_path, bundle=None, n=120, attestation=_STUB_ATTESTATION):
     pool = _registered_pool(n)
-    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path / "store", n)
     return p5.run_p5(ScriptedCodeSystem(n), lad, _cfg(), 11, CD.place_at_state_factory(store),
                      CD.start_for_factory(store), ["S1"], mode="confirmatory",
@@ -443,8 +445,8 @@ def test_a_manifest_cannot_name_one_ladder_at_the_top_and_bind_another_below(tmp
     object itself produced and had nothing to say. A reader of such a record cannot tell which pool
     was read.
     """
-    lad = CD.SuiteLadder(_registered_pool(20), subset_size=10, batch_runner=CD.inprocess_batch_runner())
-    other = CD.SuiteLadder(_registered_pool(24), subset_size=10, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(20), subset_size=10, batch_runner=trusted_addition_batch_runner())
+    other = CD.SuiteLadder(_registered_pool(24), subset_size=10, batch_runner=trusted_addition_batch_runner())
     assert lad.sha256 != other.sha256
     with pytest.raises(custody.CustodyRefusal) as exc:
         M.new_manifest("P16", False, other.sha256, {"seed": 1}, "mock", ladder=lad)
@@ -485,7 +487,7 @@ def test_a_bundle_says_whether_an_empty_read_list_is_no_log_or_no_reading(tmp_pa
     n_arms = (len(cfg.dose_offsets) + 2) * cfg.systems_per_arm
 
     def _real_source(where):
-        lad = CD.SuiteLadder(_registered_pool(n), subset_size=n, batch_runner=CD.inprocess_batch_runner())
+        lad = CD.SuiteLadder(_registered_pool(n), subset_size=n, batch_runner=trusted_addition_batch_runner())
         store = CD.CheckpointStore(str(where))
         store.save("seed", CD.new_artefact(_lib_of({0, 1}, n)))
         adapter = RevisingCodeSystem(n)
@@ -509,7 +511,7 @@ def test_a_bundle_says_whether_an_empty_read_list_is_no_log_or_no_reading(tmp_pa
 
     # A LOG THAT RECORDED NOTHING while the arms were collected: the named ladder is not the ladder
     # this source reads, and the identity sealed beside it is about a pool nothing here touched
-    unread = CD.SuiteLadder(_registered_pool(n), subset_size=n, batch_runner=CD.inprocess_batch_runner())
+    unread = CD.SuiteLadder(_registered_pool(n), subset_size=n, batch_runner=trusted_addition_batch_runner())
     res = p16.run_p16(p16.mock_margin_source(cfg, true_alpha_crit=2.0), cfg, 5, unread.sha256, "mock",
                       bundle=str(tmp_path / "unread"), ladder=unread)
     b = custody.load_bundle(str(tmp_path / "unread"))
@@ -552,7 +554,7 @@ def test_a_changed_verifier_changes_the_ladder_identity():
     """A pool hash says which items were asked. It says nothing about what counted as passing them,
     which is why the verifier implementation is bound beside it."""
     pool = _registered_pool(20)
-    one = CD.SuiteLadder(pool, subset_size=10, batch_runner=CD.inprocess_batch_runner())
+    one = CD.SuiteLadder(pool, subset_size=10, batch_runner=trusted_addition_batch_runner())
 
     def permissive_batch_runner(text, items):
         return {it.id for it in items}                 # a different rule for what counts as a pass
@@ -639,7 +641,7 @@ def test_a_p16_bundle_from_a_real_ladder_carries_every_read_and_the_provider_rec
     """
     n = 16
     pool = _registered_pool(n)
-    lad = CD.SuiteLadder(pool, subset_size=n, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=n, batch_runner=trusted_addition_batch_runner())
     store = CD.CheckpointStore(str(tmp_path / "store"))
     store.save("seed", CD.new_artefact(_lib_of({0, 1}, n)))
     adapter = RevisingCodeSystem(n)
@@ -692,7 +694,8 @@ def test_a_p16_bundle_from_a_real_ladder_carries_every_read_and_the_provider_rec
     assert _table(again) == _table(res["verdicts"])          # every field of it, not the word alone
     thinned = json.loads(json.dumps(bundle))
     thinned["arms"] = thinned["arms"][:1]
-    assert _table(custody.recompute_verdicts(thinned)) != _table(again)
+    with pytest.raises(custody.CustodyRefusal, match="missing scheduled arms"):
+        custody.recompute_verdicts(thinned)
     # and the hidden suite never travels with the evidence
     text = open(os.path.join(str(out), "bundle.json"), encoding="utf-8").read()
     assert "assert add_0(3, 4) == 7" not in text
@@ -747,7 +750,7 @@ class _DiesAfterTheSeal:
 def test_a_crash_after_the_seal_leaves_the_seal_and_the_receipt_on_disk(tmp_path):
     n = 120
     pool = _registered_pool(n)
-    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path / "store", n)
     cfg = _cfg()
     # enough calls for the bank and the calibration window, then nothing: the run dies with its
@@ -772,14 +775,14 @@ def test_the_manifest_reaches_disk_before_the_first_paid_call(tmp_path):
     """A run that dies inside the bank has spent money and must still leave the setup it spent under."""
     n = 120
     pool = _registered_pool(n)
-    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path / "store", n)
     out = tmp_path / "evidence"
     with pytest.raises(RuntimeError):
         p5.run_p5(_DiesAfterTheSeal(n, 0), lad, _cfg(), 11, CD.place_at_state_factory(store),
                   CD.start_for_factory(store), ["S1"], mode="confirmatory",
                   confirmatory_inputs=_inputs(store), bundle=str(out))
-    manifest = json.load(open(os.path.join(str(out), "manifest.json"), encoding="utf-8"))
+    manifest = json.load(open(os.path.join(str(out), "precollection-manifest.json"), encoding="utf-8"))
     assert manifest["execution_mode"] == "confirmatory" and manifest["seal"] is None
     assert manifest["confirmatory_inputs"]["anchor_service"] == "test-stub"
 
@@ -796,7 +799,7 @@ def test_a_confirmatory_run_without_an_anchoring_service_refuses_before_the_firs
             raise AssertionError("a provider call was made after a confirmatory run should have refused")
 
     n = 40
-    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(_registered_pool(n), subset_size=20, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path / "store", n)
     with pytest.raises(MODE.ModeRefusal) as exc:
         p5.run_p5(RefusingAdapter(), lad, _cfg(), 1, CD.place_at_state_factory(store),
@@ -972,7 +975,7 @@ def test_a_verifier_swapped_after_the_seal_refuses_at_scoring(tmp_path):
     from the live object."""
     n = 120
     pool = _registered_pool(n)
-    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path / "store", n)
     cfg = _cfg()
     res = p5.run_p5(ScriptedCodeSystem(n), lad, cfg, 11, CD.place_at_state_factory(store),
@@ -1040,7 +1043,7 @@ def test_a_crash_midway_through_collection_leaves_what_had_been_collected(tmp_pa
     acceptance case was satisfied only by the record the first one already produced."""
     n = 120
     pool = _registered_pool(n)
-    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=CD.inprocess_batch_runner())
+    lad = CD.SuiteLadder(pool, subset_size=40, batch_runner=trusted_addition_batch_runner())
     store = _store(tmp_path / "store", n)
     cfg = _cfg()
     n_bank = len(cfg.states) * len(cfg.fractions) * (

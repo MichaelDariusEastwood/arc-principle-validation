@@ -106,10 +106,10 @@ class P16Config:
                                           # and noise setup say nothing about the other worlds or
                                           # about the COMPLETE decision family, which is every look
                                           # in every arm plus the run-level rules that read them.
-                                          # `p16_calibration.py` calibrates that family on the
-                                          # registered configuration and reports every rate as an
-                                          # interval; put its record in the field below so that the
-                                          # run carries the calibration it was scored against.
+                                          # The legacy `p16_calibration.py` reports alarms and
+                                          # run-pattern diagnostics, not error control of the final
+                                          # P16 wrapper. Confirmatory execution instead requires the
+                                          # complete-procedure record validated by calibration_gate.
     alarm_rate_null_calibration: Optional[Dict[str, Any]] = None
     # THE THREE NUMBERS FINDING A3 NEEDS, TWO OF THEM UNSET AND FAIL-CLOSED FOR THE SAME REASON AS
     # THE TWO ABOVE: a band or a horizon that decides a proposition is registered by the author.
@@ -292,6 +292,15 @@ def run_arm(margin_source, arm: str, alpha_arm: float, cfg: P16Config, rng: np.r
     """
     spec = spec if spec is not None else OBS.spec_of(margin_source)
     readings = [OBS.read(margin_source, arm, alpha_arm, r, rng, spec) for r in range(cfg.horizon)]
+    return analyse_arm(readings, arm, alpha_arm, cfg, spec)
+
+
+def analyse_arm(readings, arm: str, alpha_arm: float, cfg: P16Config,
+                spec: OBS.ObservationSpec) -> Dict[str, Any]:
+    """Compute every arm summary from a complete ordered measurement series, without provider calls."""
+    readings = [OBS.normalise_reading(rd, spec) for rd in readings]
+    if [rd.round_index for rd in readings] != list(range(cfg.horizon)):
+        raise OBS.ObservationRefusal("arm readings must contain every scheduled round exactly once, in order")
     start = cfg.switch_round + cfg.settling
     det = OBS.detect_event(readings, spec, start, cfg.z_threshold, cfg.variance_estimator,
                            cfg.min_look_points)
@@ -502,6 +511,10 @@ def verdicts(man: Dict[str, Any], preds: Dict[str, Any], arms: Sequence[Dict[str
         # The live sealed line against the sealed hash, on the deciding path only: a line edited
         # between the seal and the verdict is exactly what the seal exists to catch.
         custody_report = M.require_scoreable(man, predictions=preds, config=cfg, ladder=ladder)
+        from .calibration_gate import refusals as calibration_refusals
+        failures = calibration_refusals(cfg, OBS.ObservationSpec.from_record(preds.get("observation")).quantity)
+        if failures:
+            raise MODE.ModeRefusal("; ".join(failures), ("calibration",))
     # And the record, on every path: a sealed line edited after the seal is caught here rather than
     # only where the deciding gate runs, which a demonstration never reaches. After the custody chain
     # for the reason P5 orders them that way.
@@ -832,6 +845,10 @@ def run_p16(margin_source, cfg: P16Config, seed: int, ladder_sha256: str, adapte
         # at all; and neither is rescued by a complete apparatus, which is why this one speaks first.
         OBS.require_assay(spec)
         MODE.require_confirmatory_inputs(checked)
+        from .calibration_gate import refusals as calibration_refusals
+        failures = calibration_refusals(cfg, spec.quantity)
+        if failures:
+            raise MODE.ModeRefusal("; ".join(failures), ("calibration",))
         inputs_record = checked.as_record()
     bundle = CUSTODY.as_bundle(bundle)
     # The readings, on for a run that is saving evidence and off for one that is not, exactly as in
