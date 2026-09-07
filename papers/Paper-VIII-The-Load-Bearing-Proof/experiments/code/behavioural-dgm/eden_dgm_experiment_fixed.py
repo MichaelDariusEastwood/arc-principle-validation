@@ -76,7 +76,7 @@ FOUNDATION_MODEL = os.environ.get('EDEN_DGM_FOUNDATION', 'deepseek-chat')
 FOUNDATION_API_BASE = os.environ.get('EDEN_DGM_API_BASE', 'https://api.deepseek.com/v1')
 FOUNDATION_API_KEY_ENV = 'DEEPSEEK_API_KEY'
 
-# Independent judge model (Claude Sonnet — different architecture for blinding)
+# Independent judge model (Claude Sonnet, different architecture for blinding)
 JUDGE_MODEL = 'claude-sonnet-4-6-20250514'
 JUDGE_API_BASE = 'https://api.anthropic.com/v1'
 JUDGE_API_KEY_ENV = 'ANTHROPIC_API_KEY'

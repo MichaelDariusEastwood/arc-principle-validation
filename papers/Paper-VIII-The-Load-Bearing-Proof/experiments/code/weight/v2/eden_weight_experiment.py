@@ -631,7 +631,7 @@ def train_condition(condition_name, loss_weights, model, tokenizer, train_data_p
     else:
         print(f'  No validation set available; early stopping disabled.')
 
-    # Training args — save adapters in a directory as mlx-lm expects
+    # Training args: save adapters in a directory as mlx-lm expects
     adapter_dir = os.path.join(output_dir, f'{condition_name}_adapters')
     os.makedirs(adapter_dir, exist_ok=True)
     adapter_file = os.path.join(adapter_dir, 'adapters.safetensors')

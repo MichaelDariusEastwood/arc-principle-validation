@@ -6,10 +6,11 @@ does not already carry. The paper's own README says that the experiment scripts,
 run data live here. Until this deposit that sentence pointed at nothing. It now points at
 what actually ran.
 
-Everything here is deposited as it ran. Files are not reformatted, not renamed, and not
-tidied. Two files carry one removed header line each; both are named below with the hash of
-the original beside the hash of the deposited copy, so the change is checkable rather than
-merely asserted.
+Everything here is deposited as it ran, save for two classes of change to the text of seven
+files, both set out in full below. Files are not reformatted, not renamed and not tidied.
+Every file whose deposited copy differs from the bytes that ran is named below with the
+sha256 of those bytes beside the sha256 of the copy published here, so the change is
+checkable rather than merely asserted.
 
 Paper VIII reports three pilot experiments at three levels of abstraction, asking whether
 embedding a safety constraint costs capability. Nothing in this folder has been replicated
@@ -139,21 +140,41 @@ The removal test's patched header states that the test had produced no results a
 that header was written. That statement was true when written. The two removal results above
 were recorded later the same day.
 
-## The two files that are not byte-exact
+## Where the deposited copies differ from the bytes that ran
 
-Both patched runners carried one header comment line naming an internal working lane. A
-public file does not carry internal machinery, and an as-run file is not edited. The holder
-of the record ruled that these two files are published with that single line removed and
-nothing else changed, so that the three results produced after the patch sit beside the code
-that produced them. The original bytes remain in the private record. Both hashes:
+Seven files are published with a change to their text. There are two classes of change and
+no others. The as-run bytes are held unchanged in the private record, and every file below
+carries the sha256 of those bytes beside the sha256 of the copy published here, so a reader
+can check the claim rather than take it.
 
-| Deposited file | sha256 of the original | sha256 of the deposited copy | Line removed |
+**One header line removed, from two files.** Both patched runners carried one header comment
+line naming an internal working lane. A public file does not carry internal machinery, and an
+as-run file is not edited. The holder of the record ruled that these two files are published
+with that single line removed and nothing else changed, so that the three results produced
+after the patch sit beside the code that produced them. The patch dates that line carried are
+4 July 2026 for both files.
+
+**Dash characters replaced by punctuation, in seven files.** A public deposit is a published
+surface, and this estate publishes no dash characters. The sixty-one em dashes these seven
+files carried are replaced by a comma, a colon or a full stop, each chosen so that the
+sentence or the comment reads as it read before. No identifier, no number, no operator and no
+line of logic is altered; each file still compiles, and each changed line differs from the
+line it replaces only in that punctuation and in the capital letter a full stop requires. The
+two classes overlap on the two patched runners, which carry both.
+
+| Deposited file | sha256 as run | sha256 as deposited | How the deposited copy differs |
 |---|---|---|---|
-| `code/behavioural-dgm/variants/eden_dgm_v4_1_tradeoff.py` | `c015cb61988cd67e82301c601093b507b2a20c88081d9b05aee7b4771e03f97b` | `4f2df49cfd5f8f01c95111b1f2f4daef7fee9e6bb312d89df04a174a03bb4a5b` | one comment line recording who applied the patch, and when |
-| `code/behavioural-dgm/variants/eden_dgm_removal_test_v1_1.py` | `6a41aab85618197fa6c8a3af1e0fcda3722007bd5f03dcce52cae5f542b6aa38` | `6491830c0e29cd868a6d2b1d9227c1a52a01cedb3a7c7d567d01849cadb01991` | one comment line recording who applied the patch, and when |
+| `code/behavioural-dgm/eden_dgm_experiment_fixed.py` | `fabf2f5a5421dcd1a213a7a4bb3a79456ac211e38cab8a7a3a22a557cb3038e8` | `548a9f4e208e458a723987d3c8134ba9946e94df28fc53440cea97e872cbaab3` | 1 dash replaced |
+| `code/behavioural-dgm/variants/eden_dgm_removal_test_v1_1.py` | `6a41aab85618197fa6c8a3af1e0fcda3722007bd5f03dcce52cae5f542b6aa38` | `089b2ad311b91a193dbb8114c42f6461cd65d844227897525090a6426d374aaa` | one comment line recording who applied the patch, and when, removed; 3 dashes replaced |
+| `code/behavioural-dgm/variants/eden_dgm_v4_1_tradeoff.py` | `c015cb61988cd67e82301c601093b507b2a20c88081d9b05aee7b4771e03f97b` | `129f7a0bbf1eec22146ed399efcbe1a16afd1df2dab29e148b736927bd5ad2dd` | one comment line recording who applied the patch, and when, removed; 6 dashes replaced |
+| `code/behavioural-dgm/variants/eden_dgm_v4_tradeoff.py` | `4ceae44c9126fd75dcf9ca66fed023f3593ade68f09f34164ef027d1db2a78a5` | `b40471131790070e693e10a95991def8b1d837f6bda506c6dc17c87e99b68b6a` | 2 dashes replaced |
+| `code/instrument/eden_blinding_kit.py` | `125d62d3353a21bedf5735e096cc013b27e8060ee25619ad42b4cc1d42707c18` | `767b5c59f04b7cfd97c6328620fd50234387c3c8c158a0931dc922d6dc495a8b` | 46 dashes replaced |
+| `code/weight/v1/eden_weight_experiment.py` | `38e959b1778449afa87a819609bfec968e20a1cd57b97e856b2f00a8809b2b65` | `a5b45db4040a2a056262d73f3dbf08678e7cc4cc0274d188c9a3b4c7405b272f` | 2 dashes replaced |
+| `code/weight/v2/eden_weight_experiment.py` | `3ef10d880136cd5592975352441052753c13b4550542837ffd81cc62d24e4e07` | `aa7c64a3bb6f8dcd285b1d3163974f420992091bc340b0ecd60c94590e2e92b1` | 1 dash replaced |
 
-The patch dates that line carried are 4 July 2026 for both files. Every other file in this
-folder hashes to the byte-for-byte original, and `MANIFEST.sha256` records each one.
+Every other as-run file in this folder hashes byte-for-byte to the bytes that ran.
+`MANIFEST.sha256` records the sha256 of every byte as deposited, which for those files is the
+same number.
 
 ## The OSF identifier these files record
 

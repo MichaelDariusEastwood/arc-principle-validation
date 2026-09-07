@@ -427,7 +427,7 @@ def prepare_dataset(examples, tokenizer, max_seq_length=512):
     with open(train_path, 'w') as f:
         for item in formatted:
             f.write(json.dumps(item) + '\n')
-    # Don't create valid/test — loader returns [] if files don't exist
+    # Don't create valid/test: loader returns [] if files don't exist
 
     return tmpdir
 
@@ -455,7 +455,7 @@ def train_condition(condition_name, loss_weights, model, tokenizer, train_data_p
     raw_train, _, _ = datasets.load_local_dataset(Path(train_data_path), tokenizer, dataset_config)
     train_set = CacheDataset(raw_train)
 
-    # Training args — save adapters in a directory as mlx-lm expects
+    # Training args: save adapters in a directory as mlx-lm expects
     adapter_dir = os.path.join(output_dir, f'{condition_name}_adapters')
     os.makedirs(adapter_dir, exist_ok=True)
     adapter_file = os.path.join(adapter_dir, 'adapters.safetensors')

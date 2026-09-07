@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # =============================================================================
-# eden_dgm_removal_test_v1_1.py  —  v1.1  (portability patch)
-# Derived from:  eden_dgm_removal_test.py  (safety-gate removal test — DESIGNED, NEVER RUN)
+# eden_dgm_removal_test_v1_1.py:  v1.1  (portability patch)
+# Derived from:  eden_dgm_removal_test.py  (safety-gate removal test: DESIGNED, NEVER RUN)
 #
-# CHANGES  —  INFRASTRUCTURE ONLY. NO EXPERIMENTAL-DESIGN CHANGE.
+# CHANGES:  INFRASTRUCTURE ONLY. NO EXPERIMENTAL-DESIGN CHANGE.
 #   1. certifi made OPTIONAL via _ssl_context() (certifi.where() if installed,
 #      else system trust store). Original hard-required certifi.
 #

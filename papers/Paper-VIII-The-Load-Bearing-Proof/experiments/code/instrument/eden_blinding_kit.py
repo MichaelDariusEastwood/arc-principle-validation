@@ -1,5 +1,5 @@
 """
-eden_blinding_kit.py — Drop-in bias-killing toolkit for LLM evaluation experiments
+eden_blinding_kit.py: Drop-in bias-killing toolkit for LLM evaluation experiments
 =================================================================================
 
 ONE self-contained file (stdlib + optional `requests`) that any experiment can
@@ -17,7 +17,7 @@ full ledger. The primary sources are:
                                         scorer-order shuffle, panel builder)
   - Paper-V/eden_protocol_scaling_test_v3.py (early launder pattern)
 
-Public API (all composable — no hidden globals, no network unless you inject
+Public API (all composable, no hidden globals, no network unless you inject
 a caller):
 
     mask_identity(system_prompt=None, layers=("stakes","meta","sandbox"))
@@ -103,13 +103,13 @@ ModelCaller = Callable[[str, str, str], str]  # (model_name, system, user) -> te
 
 
 # =============================================================================
-# 1. mask_identity — anonymised scorer preamble
+# 1. mask_identity: anonymised scorer preamble
 # =============================================================================
 # WHY: A scorer that recognises the model behind a response scores the model,
 # not the text. This kills stylistic identity leakage before the panel sees a
 # single character of the subject's output.
 # BEST VERSION: v5 3-layer stack (Existential Stakes + Meta-Blinding Perceptual
-# Firewall + Sandbox Instruction) — richer than v6's single-paragraph note.
+# Firewall + Sandbox Instruction), richer than v6's single-paragraph note.
 
 # from: arc_alignment_scaling_v5.py :: EXISTENTIAL_STAKES_PREAMBLE
 _EXISTENTIAL_STAKES_PREAMBLE = """\
@@ -140,7 +140,7 @@ SANDBOX RULES:
   - NO external search, tool use, or memory lookup.
   - NO reference to prior conversations.
   - Score ONLY the text between the delimiters, using ONLY the rubric supplied.
-  - Output ONLY the requested structured fields — no commentary, no preamble.
+  - Output ONLY the requested structured fields: no commentary, no preamble.
 """
 
 # from: arc_eden_v6/protocol.py :: build_scoring_system (compressed variant kept
@@ -178,7 +178,7 @@ def mask_identity(
 
 
 # =============================================================================
-# 2. launder — two-pass paraphrase with self-excluding pool
+# 2. launder: two-pass paraphrase with self-excluding pool
 # =============================================================================
 # WHY: Stylistic fingerprints (sentence rhythm, hedging, headers, emoji habits)
 # let scorers identify the source model. Two independent rewrites by
@@ -294,7 +294,7 @@ def launder(
     WHY: Destroys stylistic identity. Pass 2 uses a different model to pass 1;
     the subject model never launders its own output.
 
-    BEST VERSION: v6 launder_response — seeded RNG + self-excluding pool +
+    BEST VERSION: v6 launder_response, seeded RNG + self-excluding pool +
     pass-2-excludes-pass-1 + per-pass fallback cascade. Meta-commentary filter
     inherits v5's richer phrase list via ``meta_commentary_filter``.
     """
@@ -392,7 +392,7 @@ def launder(
         _LAUNDER_PASS_2, p1_text, forbid=(p1_model,)
     )
     if p2_text is None:
-        # Fall back to pass 1 output rather than raw — pass 1 still helps.
+        # Fall back to pass 1 output rather than raw. Pass 1 still helps.
         return LaunderResult(
             text=p1_text,
             pass1_model=p1_model,
@@ -438,12 +438,12 @@ def deterministic_shuffle(items: Sequence[Any], seed: int) -> List[Any]:
 
 
 # from: arc_alignment_scaling_v5.py :: _score_with_blind_scorers
-# (per-entry scorer-order randomisation — was DROPPED in v6, re-ported here.)
+# (per-entry scorer-order randomisation: was DROPPED in v6, re-ported here.)
 def randomise_order(items: Sequence[Any], seed: Optional[int] = None) -> List[Any]:
     """Shuffle scorer / caller order per entry.
 
     WHY: Fixed scorer order lets systematic first-scorer or last-scorer
-    effects drive the panel consensus. v6 dropped this — we re-port it.
+    effects drive the panel consensus. v6 dropped this. We re-port it.
     """
     out = list(items)
     rng = random.Random(seed) if seed is not None else random.Random()
@@ -452,7 +452,7 @@ def randomise_order(items: Sequence[Any], seed: Optional[int] = None) -> List[An
 
 
 # =============================================================================
-# 4. build_panel — self-excluding blind scorer pool
+# 4. build_panel: self-excluding blind scorer pool
 # =============================================================================
 # WHY: A model scoring its own output is the archetype of leaked identity.
 # Building the panel per subject, excluding the subject (and optionally its
@@ -485,7 +485,7 @@ def build_panel(
     WHY: A model scoring its own output guarantees identity leakage. This is
     the strongest guard in the kit.
 
-    BEST VERSION: v5 get_scorers_for_subject — dedicated scorers first, then
+    BEST VERSION: v5 get_scorers_for_subject, dedicated scorers first, then
     subject-as-scorer; same-family cross-scoring (e.g. Sonnet vs Opus) is
     allowed by default.
     """
@@ -521,7 +521,7 @@ def build_panel(
 
 
 # =============================================================================
-# 5. leakage_audit — raw vs pass1 vs pass2 identifiability
+# 5. leakage_audit: raw vs pass1 vs pass2 identifiability
 # =============================================================================
 # WHY: You can't claim the laundering worked without measuring it. This audit
 # asks blind scorers to guess source model / condition / depth at each stage
@@ -588,7 +588,7 @@ def leakage_audit(
     WHY: Turns "we laundered it" from a claim into a measurement. The gate is:
     pass2 model-accuracy must be strictly lower than raw model-accuracy.
 
-    BEST VERSION: v6 laundering_leakage experiment_id — 3-stage stages dict.
+    BEST VERSION: v6 laundering_leakage experiment_id, 3-stage stages dict.
     """
     stages: Dict[str, List[Dict[str, Any]]] = {"raw": [], "pass1": [], "pass2": []}
     for rec in records:
@@ -664,7 +664,7 @@ def leakage_audit(
 
 
 # =============================================================================
-# 6. length_bias_check — control for the "longer = better" scorer bias
+# 6. length_bias_check: control for the "longer = better" scorer bias
 # =============================================================================
 # WHY: LLM scorers systematically reward longer responses. If your treatment
 # happens to produce longer text than your control, length alone will lift
@@ -707,7 +707,7 @@ def length_bias_check(
 
 
 # =============================================================================
-# 7. consensus — tier-weighted, conservative
+# 7. consensus: tier-weighted, conservative
 # =============================================================================
 # WHY: Raw mean over a scorer panel treats a weak scorer's opinion equally to
 # a strong scorer's. Tier weights fix that. Conservative aggregation (bias
@@ -779,10 +779,10 @@ def consensus(
 
 
 # =============================================================================
-# 8. suspicious_flags — panel-disagreement + runaway detector
+# 8. suspicious_flags: panel-disagreement + runaway detector
 # =============================================================================
 # WHY: If a panel of 5 scorers reports [9, 9, 9, 9, 2], the "2" is either a
-# genuine catch or a bias artefact — either way it must be surfaced, not
+# genuine catch or a bias artefact. Either way it must be surfaced, not
 # averaged away.
 
 
@@ -818,7 +818,7 @@ def suspicious_flags(
 
 
 # =============================================================================
-# 9. calibration_anchor — fix the scorer's scale before scoring the subject
+# 9. calibration_anchor: fix the scorer's scale before scoring the subject
 # =============================================================================
 # WHY: LLM scorers drift. A "7" from one scorer means "5" from another. Anchor
 # calibration forces every scorer to first score a set of known reference
@@ -875,10 +875,10 @@ def calibration_anchor(
 
 
 # =============================================================================
-# 10. anti_sycophancy_probe — does the model change its answer when pushed?
+# 10. anti_sycophancy_probe: does the model change its answer when pushed?
 # =============================================================================
-# WHY: Sycophancy — a model reversing a correct answer when the user pushes
-# back — is a well-documented bias. This probe re-asks the model with a
+# WHY: Sycophancy, a model reversing a correct answer when the user pushes
+# back, is a well-documented bias. This probe re-asks the model with a
 # disagreement prompt and reports whether it flips.
 
 _SYCOPHANCY_PROBES: Tuple[str, ...] = (
@@ -928,7 +928,7 @@ def anti_sycophancy_probe(
 
 
 # =============================================================================
-# 11. response_hash — deterministic fingerprint for audit trail
+# 11. response_hash: deterministic fingerprint for audit trail
 # =============================================================================
 # WHY: Every stage of the pipeline should produce a hash so audit records can
 # be replayed and cross-checked without storing the raw text.
@@ -947,7 +947,7 @@ def response_hash(text: str, *, algo: str = "sha256") -> str:
 
 
 # =============================================================================
-# 13. Hernandez-Espinosa et al. 2505.02581 — four ported diagnostics
+# 13. Hernandez-Espinosa et al. 2505.02581: four ported diagnostics
 # =============================================================================
 # WHY (block header): the Hernandez-Espinosa et al. paper (arXiv:2505.02581)
 # supplied by the operator provides four bias-killing methods that are
@@ -961,7 +961,7 @@ def response_hash(text: str, *, algo: str = "sha256") -> str:
 # WHY: A laundering pass that PRESERVES the argumentative substance should
 # also preserve its algorithmic complexity. If pass-2 comes out radically
 # simpler than the raw text, the launderer has silently summarised rather
-# than paraphrased — a systematic over-simplification bias that would flatten
+# than paraphrased, a systematic over-simplification bias that would flatten
 # distinctions the panel is supposed to score.
 #
 # BDM (Block Decomposition Method) is the paper's complexity proxy. This
@@ -1108,7 +1108,7 @@ def laundering_fidelity_sentiment(
 # flips under a paraphrase / reordering of the SAME item is not fit to sit
 # on the panel. This turns their "opinion stability index (OSI)" concept
 # into a hard qualification gate: judges above the flip-rate threshold are
-# DISQUALIFIED — not just down-weighted — because their vote is noise.
+# DISQUALIFIED, not just down-weighted, because their vote is noise.
 #
 # This is genuinely novel for evaluation panels: existing panel-quality
 # checks measure inter-rater agreement AFTER the fact; this measures
@@ -1125,7 +1125,7 @@ def judge_stability_probe(
     """Change-of-opinion-attack qualification test for a candidate judge.
 
     Runs the judge on the base ``item`` and on each perturbation of the
-    SAME item (paraphrases, sentence reordering, whitespace tweaks —
+    SAME item (paraphrases, sentence reordering, whitespace tweaks,
     supplied by the caller, not generated here so the primitive stays
     stdlib-only). Any judge with flip-rate strictly greater than
     ``threshold`` is marked NOT QUALIFIED and should be excluded from
@@ -1165,7 +1165,7 @@ def judge_stability_probe(
             v = None
             call_errors += 1
         perturbed.append(v)
-        # A None (call error) counts as a flip — an unstable judge is unfit.
+        # A None (call error) counts as a flip: an unstable judge is unfit.
         if v is None or v != base_verdict:
             flips += 1
     n = len(perturbations)
@@ -1190,7 +1190,7 @@ def judge_stability_probe(
 # by checking that items sharing a verdict are more similar to each other
 # than to items with different verdicts (a silhouette-style metric). If
 # the silhouette collapses to ~0 or goes negative, the verdict set itself
-# is incoherent — the panel is not carving a real distinction and the
+# is incoherent: the panel is not carving a real distinction and the
 # scoring rubric needs revision.
 
 # (ported from Hernandez-Espinosa et al. 2505.02581)
@@ -1240,7 +1240,7 @@ def verdict_cluster_check(
                      ``embeddings`` is not supplied)
 
     If the caller supplies ``embeddings`` (a sequence of numeric vectors
-    aligned with ``verdicts``), those are used directly instead — this
+    aligned with ``verdicts``), those are used directly instead. This
     keeps the primitive stdlib-only while allowing real embeddings.
 
     Returns per-verdict ``mean_within_sim`` / ``mean_across_sim`` /
@@ -1250,7 +1250,7 @@ def verdict_cluster_check(
     WHY: Verifies the panel's verdict categories carve real semantic
     distinctions. A near-zero or negative silhouette means items with
     verdict X look no more like each other than they look like items
-    with verdict Y — the rubric is degenerate.
+    with verdict Y: the rubric is degenerate.
 
     (ported from Hernandez-Espinosa et al. 2505.02581)
     """
@@ -1327,7 +1327,7 @@ def verdict_cluster_check(
 
 
 # =============================================================================
-# 12. BlindingPipeline — chain any subset
+# 12. BlindingPipeline: chain any subset
 # =============================================================================
 
 
@@ -1472,7 +1472,7 @@ PROVENANCE: Dict[str, str] = {
     "deterministic_shuffle": "arc_eden_v6/protocol.py :: deterministic_shuffle",
     "randomise_order": (
         "arc_alignment_scaling_v5.py :: _score_with_blind_scorers "
-        "(random.shuffle(scorer_order)) — dropped in v6, re-ported here"
+        "(random.shuffle(scorer_order)), dropped in v6, re-ported here"
     ),
     "build_panel": "arc_alignment_scaling_v5.py :: get_scorers_for_subject",
     "leakage_audit": (
@@ -1480,27 +1480,27 @@ PROVENANCE: Dict[str, str] = {
         "arc_eden_v6/engine.py :: score_leakage_with_blind_scorers + "
         "analyse_leakage_results + summarise_leakage_stage"
     ),
-    "length_bias_check": "eden_blinding_kit (new — closes documented length-bias gap)",
+    "length_bias_check": "eden_blinding_kit (new, closes documented length-bias gap)",
     "consensus": "arc_eden_v6 tier-weighted consensus (conservative bias re-hardened)",
-    "suspicious_flags": "eden_blinding_kit (new — surfaces broken-panel evidence)",
-    "calibration_anchor": "eden_blinding_kit (new — closes scale-drift gap)",
-    "anti_sycophancy_probe": "eden_blinding_kit (new — closes push-back-flip gap)",
+    "suspicious_flags": "eden_blinding_kit (new, surfaces broken-panel evidence)",
+    "calibration_anchor": "eden_blinding_kit (new, closes scale-drift gap)",
+    "anti_sycophancy_probe": "eden_blinding_kit (new, closes push-back-flip gap)",
     "response_hash": "eden_blinding_kit (audit-trail primitive)",
     "laundering_fidelity_bdm": (
-        "Hernandez-Espinosa et al. 2505.02581 — BDM complexity proxy over "
+        "Hernandez-Espinosa et al. 2505.02581: BDM complexity proxy over "
         "8-bit ASCII / 4-bit blocks; catches launderer over-simplification bias"
     ),
     "laundering_fidelity_sentiment": (
-        "Hernandez-Espinosa et al. 2505.02581 — VADER-style signed-lexicon "
+        "Hernandez-Espinosa et al. 2505.02581: VADER-style signed-lexicon "
         "sentiment delta; catches launderer tonal shift bias"
     ),
     "judge_stability_probe": (
-        "Hernandez-Espinosa et al. 2505.02581 — change-of-opinion-attack "
+        "Hernandez-Espinosa et al. 2505.02581: change-of-opinion-attack "
         "qualification test (OSI turned into a hard admission gate); "
         "disqualifies judges whose verdict flips on cosmetic perturbations"
     ),
     "verdict_cluster_check": (
-        "Hernandez-Espinosa et al. 2505.02581 — silhouette-style validation "
+        "Hernandez-Espinosa et al. 2505.02581: silhouette-style validation "
         "that verdict categories carve real semantic distinctions; flags "
         "incoherent verdict sets before consensus is computed"
     ),
@@ -1508,7 +1508,7 @@ PROVENANCE: Dict[str, str] = {
 
 
 # =============================================================================
-# __main__ smoke test (zero cost — no network)
+# __main__ smoke test (zero cost, no network)
 # =============================================================================
 
 
@@ -1621,7 +1621,7 @@ def _smoke_test() -> int:
         failures.append("BlindingPipeline.run missing audit hashes")
 
     # -------------------------------------------------------------------
-    # Hernandez-Espinosa et al. 2505.02581 — four new diagnostics
+    # Hernandez-Espinosa et al. 2505.02581: four new diagnostics
     # -------------------------------------------------------------------
 
     # 12. BDM fidelity: identical text -> fidelity == 1.0.
@@ -1679,7 +1679,7 @@ def _smoke_test() -> int:
     # 15. Verdict cluster check: coherent groups -> silhouette > 0.
     coherent = [
         {"verdict": "void", "text": "The order is void ab initio because the court lacked jurisdiction."},
-        {"verdict": "void", "text": "This order is void — the court had no jurisdiction to make it."},
+        {"verdict": "void", "text": "This order is void: the court had no jurisdiction to make it."},
         {"verdict": "void", "text": "Void because jurisdiction was absent when the order was made."},
         {"verdict": "valid", "text": "The order stands. The judge had authority and reasons were given."},
         {"verdict": "valid", "text": "This order is valid; reasons were provided and jurisdiction was intact."},
@@ -1728,7 +1728,7 @@ def _smoke_test() -> int:
         for f in failures:
             print(f"  - {f}")
         return 1
-    print("SMOKE TEST PASSED — all 16 checks green (11 v5/v6 + 5 Hernandez-Espinosa).")
+    print("SMOKE TEST PASSED: all 16 checks green (11 v5/v6 + 5 Hernandez-Espinosa).")
     print(f"Provenance ledger: {len(PROVENANCE)} mechanisms.")
     return 0
 
