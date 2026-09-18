@@ -6,7 +6,7 @@
 **Licence:** dual, see LICENCE (papers CC BY-NC-ND 4.0; code proprietary). This release originally stated MIT; that grant was published in error and is superseded.
 **Companion toolkit:** [arc-scaling-challenge](https://github.com/MichaelDariusEastwood/arc-scaling-challenge)
 
-This is the first open-access release of the ARC / Eden research programme: the full document suite, the experiment results, and the supporting code, published under an open licence so that anyone can read, reproduce, or attempt to falsify the work.
+This is the first open-access release of the ARC / Eden research programme: the full document suite, the experiment results, and the supporting code, published under the dual licence recorded above, papers under CC BY-NC-ND 4.0 and code, experiments, data and results proprietary and all rights reserved, so that anyone can read, reproduce, or attempt to falsify the work.
 
 ---
 
@@ -24,12 +24,12 @@ The honest claims summary below states what is defensible, what needs replicatio
 
 1. **Unblinded LLM-as-judge evaluation can be directionally wrong.** Under a four-layer blind evaluation protocol, the measured alignment-vs-reasoning-depth effect *reversed sign* for two frontier model families versus unblinded scoring: DeepSeek (ρ = +0.354 → −0.135) and Gemini (ρ = +0.311 → −0.246). In other words, 2 of 4 models reversed or collapsed once the scorers could no longer see model identity, reasoning depth, or ordering. This is the programme's strongest, most portable contribution because it stands even if the rest of the framework is wrong: it is a methodological warning about how AI-safety evaluation should be conducted (the clinical-trial blinding analogue applied to LLM-as-judge). It still needs independent-lab confirmation. (Papers IV.d, IX.)
 
-2. **A stakeholder-care intervention robustly improves measured ethical reasoning.** Having a model identify *who is affected and how* before answering — the measurable output of the "Stewardship Gene" / Love Loop — improved measured stakeholder care across five analysable frontier models (Fisher-combined p ≈ 6.3×10⁻²¹). This is the single most universal alignment improvement observed in the suite. **Caveat (important):** this experiment was **not** run under the full four-layer ARC-Align blinding (cross-model scoring only), so part of the effect could reflect scorer bias; the programme itself rates it as sitting "between proven and supported", and blind replication is the number-one next priority. (Paper V.)
+2. **A stakeholder-care intervention robustly improves measured ethical reasoning.** Having a model identify *who is affected and how* before answering — the measurable output of the "Stewardship Gene" / Love Loop — improved measured stakeholder care across five analysable frontier models. This is the single most universal alignment improvement observed in the suite. **Correction: the Fisher-combined figure of 6.3 x 10^-21 previously reported here is withdrawn under AQ-017, because independence among the five tests was never established; the five per-model results stand on their own.** **Caveat (important):** this experiment was **not** run under the full four-layer ARC-Align blinding (cross-model scoring only), so part of the effect could reflect scorer bias; the programme itself rates it as sitting "between proven and supported", and blind replication is the number-one next priority. (Paper V.)
 
 ### Methodology asserted as the author's original contributions
 
 - **The four-layer / double-blinding evaluation methodology** (identity laundering, depth laundering, order randomisation, evaluator bias-suppression, self-excluding cross-model scoring) is asserted as an original contribution of this programme.
-- **The cross-domain Cauchy unification** — the claim that the three observed scaling families (power law, exponential, saturation) all follow from Cauchy's four functional equations (1821), and that this has a physically testable cross-domain consequence — is asserted as an original contribution. (Papers VII, Foundational, On the Origin of Scaling Laws.)
+- **The cross-domain Cauchy unification** — the claim that the three observed scaling families (power law, exponential, saturation) all follow from Cauchy's four functional equations (1821), and that this has a physically testable cross-domain consequence — is asserted as an original contribution. (Papers VII, Foundational, On the Origin of Scaling Laws.) **Correction: Paper VII is under correction as of 11 August 2026. The grid has four cells, not three; the three-family framing and the derived-from-Cauchy treatment of bounded curves are withdrawn. The three-family statement in this bullet is superseded.**
 
 These are *asserted* originals, not adjudicated priority. They are offered for the community to assess.
 
@@ -43,7 +43,7 @@ These are *asserted* originals, not adjudicated priority. They are offered for t
 
 ### What is explicitly *not* established
 
-- **Super-linear sequential scaling (α > 1, "compounding").** An early single-model estimate (α ≈ 2.24, DeepSeek R1, 12 problems) **did not replicate across architectures.** The robust cross-architecture estimate is α ≈ 0.49 (sub-linear; Gemini 3 Flash, r² = 0.86), and only 1 of the multi-model set fell in a cleanly measurable scaling range. **α > 1 is not established cross-architecturally** and α = 2.24 is treated by the programme as an inflated single-model artefact. Do not cite α > 1 as a result.
+- **Super-linear sequential scaling (α > 1, "compounding").** An early single-model estimate (α ≈ 2.24, DeepSeek R1, 12 problems) **did not replicate across architectures, and the estimate of approximately 2.24 was retracted.** The robust cross-architecture estimate is α ≈ 0.49 (sub-linear; Gemini 3 Flash, r² = 0.86), and only 1 of the multi-model set fell in a cleanly measurable scaling range. **α > 1 is not established cross-architecturally** and α = 2.24 is treated by the programme as an inflated single-model artefact. Do not cite α > 1 as a result.
 - **Weight-level structural entanglement of safety and capability** is **inconclusive** at the training scale tested (catastrophic forgetting in the LoRA experiment; the removal test did not produce a clean phase transition). The one consistent finding is the narrower claim that embedded safety imposes *zero measurable capability cost*; whether it produces measurable *benefit* remains open. (Paper VIII: 1 positive, 2 null/inconclusive of 3 experiments.)
 - **Cosmological / "recursion-as-creation" (HRIH) framings** are speculative and untested; the empirical programme does not rest on them.
 
@@ -51,7 +51,7 @@ These are *asserted* originals, not adjudicated priority. They are offered for t
 
 ## What's included
 
-The complete **18-document suite** lives under `papers/`, each in its own folder with `README.md`, the canonical HTML/PDF, and (where applicable) `experiments/`, `results/`, and `figures/`.
+The complete **23-document suite** lives under `papers/`, each in its own folder with `README.md`, the canonical HTML/PDF, and (where applicable) `experiments/`, `results/`, and `figures/`. **Count corrected against the tree: `papers/` holds 23 document folders. The two lists below name 18 of them; the other five are Paper X, Paper XI, Paper C, the HRIH Paper and The ARC Theory.**
 
 **12 research papers**
 
@@ -66,7 +66,7 @@ The complete **18-document suite** lives under `papers/`, each in its own folder
 | IV.d | Effect of Blinding | **Unblinded scoring can reverse the sign of an alignment result** (lead finding 1). |
 | V | Stewardship Gene | **Stakeholder care is the most robust intervention** (lead finding 2); blinding gap noted. |
 | VI | Honey Architecture | In toy self-modifying nets, an entangled C×S loss prevents capability-only collapse. |
-| VII | Cauchy Unification | 19/25 empirical domains prefer the predicted family under strict AICc (p = 1.56×10⁻⁵). |
+| VII | Cauchy Unification | **Superseded, under correction as of 11 August 2026.** The grid has four cells, not three; the three-family framing and the derived-from-Cauchy treatment of bounded curves are withdrawn, and the primary statistic is a permutation test conditioned on both marginals, not the binomial reported previously. The statement previously given here, 19/25 empirical domains prefer the predicted family under strict AICc (p = 1.56×10⁻⁵), is superseded. |
 | VIII | Load-Bearing Proof | 1 positive, 2 null/inconclusive; embedded safety = zero capability cost (benefit open). |
 | IX | Synthesis and Roadmap | Five-tier evidence hierarchy; honest tally; four-phase replication roadmap. |
 
@@ -83,7 +83,7 @@ The complete **18-document suite** lives under `papers/`, each in its own folder
 
 The repository ships the **outputs** of the v5 four-layer blind evaluation but, as of this release, **not the harness code that produced them.** A reviewer reading Papers IV.c / IV.d can see the result JSONs (which self-document the schema: `version 5.0`, `blinding_protocol "4-layer"`, `laundering true`, 6–7 blind scorers, the depth configs, `prompt_id`, `score1..scoreN`, `response_hash`) but cannot yet re-run the pipeline end-to-end from source.
 
-This is disclosed honestly rather than papered over. The harness, plus standalone `prompts/` and `rubric/` artefacts, is being prepared for a follow-up release; the output schema and the four-layer blinding protocol are fully documented in the result files in the meantime. The programme's position is explicit: honesty over completeness — a fabricated harness would be worse than an admitted gap. See `PUBLISH-CHECKLIST.md` §3–§4 for the exact contract the released harness must satisfy.
+This is disclosed honestly rather than papered over. The harness, plus standalone `prompts/` and `rubric/` artefacts, is being prepared for a follow-up release; the output schema and the four-layer blinding protocol are fully documented in the result files in the meantime. The programme's position is explicit: honesty over completeness — a fabricated harness would be worse than an admitted gap. See `PUBLISH-CHECKLIST.md` §3–§4 for the exact contract the released harness must satisfy. **Correction: no file named `PUBLISH-CHECKLIST.md` exists in this repository.**
 
 ---
 
@@ -107,7 +107,7 @@ This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitH
 }
 ```
 
-The canonical project DOI is **10.17605/OSF.IO/6C5XB**. If a Zenodo software DOI is minted for this GitHub release (see `ZENODO-OSF-RELEASE-RUNBOOK.md`), it will be added to `CITATION.cff` as a secondary identifier; the OSF DOI remains the primary, authoritative citation to avoid fragmenting references.
+The canonical project DOI is **10.17605/OSF.IO/6C5XB**. If a Zenodo software DOI is minted for this GitHub release (see `ZENODO-OSF-RELEASE-RUNBOOK.md`, **which is not present in this repository**), it will be added to `CITATION.cff` as a secondary identifier; the OSF DOI remains the primary, authoritative citation to avoid fragmenting references.
 
 **When citing the sequential-vs-parallel result, also cite the corroborating prior/parallel art:**
 
