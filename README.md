@@ -24,7 +24,6 @@ arc-principle-validation/
 ├── LICENCE                    which licence governs which material
 ├── LICENCE-CODE.md            code, experiments, data and results
 ├── LICENCE-PAPERS.md          papers, text, figures and PDFs
-├── CITATION.cff               machine-readable citation
 ├── EXPERIMENTS-INDEX.md       every experiment, indexed by claim
 ├── papers/                    23 document folders, each with its own README
 ├── experiments/               9 experiments plus shared code, mapped in experiments/README.md
@@ -109,7 +108,7 @@ earlier version was an algebraic identity check and never an empirical validatio
 | The ARC Theory | the theory-level statement | published |
 | Foundational | the axiomatic derivation and the `d/(d+1)` prediction | published |
 | On the Origin of Scaling Laws | the cross-domain evidence catalogue | published |
-| Eden Engineering | the protocol architecture specification | specification |
+| Eden Engineering | Non-enabling historical research note; expanded specification withdrawn pending patent and disclosure review | note |
 | Eden Vision | the philosophical foundations | position paper |
 | Executive Summary | the programme overview | overview |
 | Master Table of Contents | suite navigation | index |
@@ -176,9 +175,8 @@ python src/run_train.py --config configs/default.yaml
 
 ## Falsification
 
-Thirteen falsification criteria are specified across the ARC framework and the Eden
-Protocol, each independently sufficient to refute the claim it attaches to. See Paper III
-section 4 and Eden Engineering section 11.
+The ARC framework's explicit falsification criteria are set out in Paper III Section 4. Each is
+independently sufficient to refute the relevant claim.
 
 ## Prior and parallel work this programme does not claim
 
@@ -198,8 +196,8 @@ correction, and Paper VII's row above says so.
 
 ## Citation
 
-This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitHub, use the
-**Cite this repository** button in the sidebar to export APA or BibTeX from it.
+Use the canonical OSF DOI and preferred citation below. It is the public citation authority for
+this research suite.
 
 > Eastwood, M.D. (2026). *The ARC Principle and Eden Protocol: Recursive Intelligence Scaling
 > and Embedded AI Alignment.* OSF. https://doi.org/10.17605/OSF.IO/6C5XB

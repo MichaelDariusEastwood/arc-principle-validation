@@ -50,7 +50,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 |-------|---------|-----------------|---------|
 | [Foundational](Foundational/) | v5.0 | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
 | [On the Origin of Scaling Laws](On-the-Origin-of-Scaling-Laws/) | v3.0 | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
-| [Eden Engineering](Eden-Engineering/) | v6.1 | 22 Feb 2026 | Protocol specification for implementing Eden in production AI systems |
+| [Eden Engineering](Eden-Engineering/) | Public note | 22 Feb 2026 | Historical, non-enabling note; expanded specification withdrawn 14 Jul 2026 pending patent and disclosure review |
 | [Eden Vision](Eden-Vision/) | v3.0 | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
 | [Executive Summary](Executive-Summary/) | v8.0 | 22 Feb 2026 | Grant-facing summary of the full programme |
 | [Master Table of Contents](Master-Table-of-Contents/) | v1.2 | 16 Mar 2026 | Navigation document linking all papers |
