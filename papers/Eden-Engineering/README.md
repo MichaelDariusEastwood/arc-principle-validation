@@ -1,20 +1,20 @@
-# Eden Protocol: Engineering Specification
+# Eden Engineering: public research note
 
-**Full title:** The Eden Protocol v6.1: Engineering Specification for Embedded AI Alignment
-**Version:** v6.1
-**First published:** 22 February 2026
+**Status:** Expanded specification withdrawn from current circulation on 14 July 2026 pending patent and disclosure review
+**Historical record:** A conceptual Eden Engineering paper first entered the public record on 22 February 2026
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-Current alignment approaches produce alignment scaling exponents of approximately zero, meaning safety degrades relative to capability as recursive depth increases. If AI capability scales super-linearly while external alignment constraints do not participate in the recursive process, then the capability-alignment gap widens without bound. The Eden Protocol provides a complete engineering specification for embedded alignment -- safety mechanisms that participate in the recursive computation itself rather than constraining it from outside. This document specifies the technical architecture, governance framework, and implementation pathway.
+The Eden research programme asks whether safety properties can remain effective as recursively improving systems become more capable, and distinguishes developmental alignment from constraints applied only at the boundary. The greatly expanded engineering specification and its rendered PDF are not supplied here while their disclosure and patent position is reviewed.
+
+This notice is deliberately non-enabling and contains no implementation detail.
 
 ## Experiments
 
-Experiment data supporting this paper is distributed across the alignment-scaling and Eden intervention suites.
-See [`../Paper-III-Alignment-Scaling-Problem/experiments/`](../Paper-III-Alignment-Scaling-Problem/experiments/) and [`../Paper-V-Stewardship-Gene/experiments/`](../Paper-V-Stewardship-Gene/experiments/).
+Published empirical claims remain governed by their individual papers, evidence classifications and limitations. Withdrawal of the expanded specification does not retract those separate results.
 
 ## Links
 
-- **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
+- **Research programme DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
