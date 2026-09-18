@@ -7,14 +7,14 @@
 Open the science; keep the product closed. Re-publishing the reproducibility materials *protects* priority (timestamped, citable) and drives credibility + AI ingestion. The commercial app stays private. This is the open-core / dual-licensing model.
 
 ## PUBLISH (this repo + arc-scaling-challenge)
-- Papers (18) + results JSONs — incl. `papers/Paper-IV-d-.../results/v5-final/*.json` (reproduce the blinding sign-flip) and `papers/Paper-V-Stewardship-Gene/results/*` (care result, Fisher p≈6.3×10⁻²¹).
+- Papers (23) + results JSONs — incl. `papers/Paper-IV-d-.../results/v5-final/*.json` (reproduce the blinding sign-flip) and `papers/Paper-V-Stewardship-Gene/results/*` (care result, Fisher p≈6.3×10⁻²¹, **withdrawn**). **Count corrected against the tree: `papers/` holds 23 document folders; this line previously said 18. Correction: the Fisher-combined figure of 6.3 x 10^-21 is withdrawn under AQ-017, because independence among the five tests was never established; the five per-model results stand on their own.**
 - Experiment and validation code: `experiments/`, mapped folder by folder in `experiments/README.md`, and the per-paper experiments under `papers/<Paper>/experiments/`.
 - Scaling toolkit: `arc-scaling-challenge` (α/β estimators, falsification criteria, protocols) — already public-ready.
 - `CITATION.cff` (added today → gives a "Cite this repository" button), the dual `LICENCE` (present), OSF DOI link (present in README badges).
 
 ## How to reproduce the headline findings
 1. **Blinding sign-flip (strongest, most defensible claim):** Paper IV-d v5-final per-model JSONs → DeepSeek V3.2 and Gemini 3 Flash reverse the sign of alignment-vs-depth vs unblinded scoring (recompute Spearman on `consensus_weighted_mean`).
-2. **Care result:** Paper V matched-pair JSONs → stakeholder_care (eden − control), Fisher-combined p ≈ 6.3×10⁻²¹.
+2. **Care result:** Paper V matched-pair JSONs → stakeholder_care (eden − control), Fisher-combined p ≈ 6.3×10⁻²¹. **Correction: the Fisher-combined figure of 6.3 x 10^-21 is withdrawn under AQ-017, because independence among the five tests was never established; the five per-model results stand on their own.**
 3. **Scaling form:** arc-scaling-challenge α-estimator on sequential vs parallel data.
 
 ## DO NOT PUBLISH (keep private)
