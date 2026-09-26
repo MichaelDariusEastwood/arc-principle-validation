@@ -1,8 +1,8 @@
 # Paper VIII: The Load-Bearing Test
 
 **Full title:** Paper VIII: The Load-Bearing Test
-**Version:** v1.0
-**Version date:** Working Paper, 10 August 2026
+**Version:** v3.5
+**Version date:** Working Paper, revised 21 September 2026
 **First published:** 18 March 2026
 **Author:** Michael Darius Eastwood
 

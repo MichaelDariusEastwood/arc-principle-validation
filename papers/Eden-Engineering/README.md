@@ -1,7 +1,8 @@
 # Eden Protocol: Engineering Specification
 
-**Full title:** The Eden Protocol v6.1: Engineering Specification for Embedded AI Alignment
-**Version:** v6.1
+**Full title:** Eden Engineering: The Eden Protocol Engineering Specification
+**Version:** v6.3
+**Version date:** revised 19 September 2026
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
 
@@ -16,5 +17,6 @@ See [`../Paper-III-Alignment-Scaling-Problem/experiments/`](../Paper-III-Alignme
 
 ## Links
 
-- **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
+- **OSF DOI:** https://doi.org/10.17605/OSF.IO/AWJR4
+- **OSF programme DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation

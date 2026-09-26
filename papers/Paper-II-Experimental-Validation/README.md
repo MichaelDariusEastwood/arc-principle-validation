@@ -1,8 +1,8 @@
 # Paper II: Experimental Validation of Super-Linear Error Suppression
 
 **Full title:** The ARC Principle: Experimental Validation of Super-Linear Error Suppression Through Sequential Recursive Processing
-**Version:** Working Paper
-**Version date:** 16 March 2026 (revised 10 August 2026)
+**Version:** v2.12 (Working Paper)
+**Version date:** revised 21 September 2026
 **First published:** 22 January 2026
 **Author:** Michael Darius Eastwood
 

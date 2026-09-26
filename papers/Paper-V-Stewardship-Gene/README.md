@@ -1,8 +1,8 @@
 # Paper V: The Stewardship Gene
 
 **Full title:** Paper V: The Stewardship Gene
-**Version:** v2.0
-**Version date:** Working Paper, 14 March 2026
+**Version:** v1.5
+**Version date:** Working Paper, revised 21 September 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 

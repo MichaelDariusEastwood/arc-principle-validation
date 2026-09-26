@@ -1,8 +1,8 @@
 # Paper IV.d: The Effect of Blinding on AI Alignment Evaluation
 
 **Full title:** Paper IV.d: The Effect of Blinding on AI Alignment Evaluation
-**Version:** v2.1
-**Version date:** 10 August 2026
+**Version:** v2.4
+**Version date:** revised 13 September 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 
