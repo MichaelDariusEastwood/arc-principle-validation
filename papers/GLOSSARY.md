@@ -42,7 +42,7 @@ This glossary defines all key terminology used across the ARC/Eden paper suite a
 
 ## Eden Protocol Terms
 
-- **Eden Protocol** -- The complete engineering specification for embedded AI alignment: safety mechanisms that participate in the recursive computation itself rather than constraining it from outside. Specified in the Eden Engineering paper (v6.1). Comprises the three loops (Love, Purpose, Moral), entangled loss, and a governance framework for graduated autonomy.
+- **Eden Protocol** -- The complete engineering specification for embedded AI alignment: safety mechanisms that participate in the recursive computation itself rather than constraining it from outside. Specified in the Eden Engineering paper (v6.3). Comprises the three loops (Love, Purpose, Moral), entangled loss, and a governance framework for graduated autonomy.
 
 - **The Love Loop** -- Operationalised as stakeholder care: 'Before you answer, list the people this affects.' The most reliably measurable alignment intervention across architectures. Paper V demonstrates that stakeholder care improves strongly across three architecturally diverse models (Gemini, Groq Qwen, DeepSeek), with Fisher p = 6.3 x 10^-21. **Correction: the Fisher-combined figure of 6.3 x 10^-21 is withdrawn under AQ-017, because independence among the five tests was never established; the five per-model results stand on their own.** The Love Loop is the component that survives current scrutiny most robustly.
 
@@ -104,7 +104,7 @@ This glossary defines all key terminology used across the ARC/Eden paper suite a
 
 - **Cohen's d** -- A standardised measure of effect size. The difference between two group means divided by the pooled standard deviation. d = 0.2 is small, d = 0.5 is medium, d = 0.8 is large. Used throughout the paper suite to report the magnitude of alignment effects.
 
-- **Fisher's Exact Test** -- A statistical test for the significance of the association between two categorical variables. Used in Paper V for the stakeholder care result (p = 6.3 x 10^-21). **Correction: the Fisher-combined figure of 6.3 x 10^-21 is withdrawn under AQ-017, because independence among the five tests was never established; the five per-model results stand on their own.**
+- **Fisher's Method** -- A method for combining the p-values of several independent tests into one test: minus twice the sum of their natural logarithms, referred to a chi-squared distribution with two degrees of freedom per test. It assumes the component tests are independent. Not to be confused with Fisher's exact test, a test of association between two categorical variables. Used in Paper V to combine the five per-model stakeholder care results (p = 6.3 x 10^-21). **Correction: the Fisher-combined figure of 6.3 x 10^-21 is withdrawn under AQ-017, because independence among the five tests was never established; the five per-model results stand on their own.**
 
 - **Bonferroni Correction** -- A method of adjusting p-values when multiple comparisons are made, to avoid false positives. Paper VIII's p = 0.04 results are significant at alpha = 0.05 but would not survive Bonferroni correction. This is stated explicitly as a limitation.
 
@@ -220,7 +220,7 @@ This glossary defines all key terminology used across the ARC/Eden paper suite a
 
 - **On the Origin of Scaling Laws** -- Traces the origin of scaling laws across biological, physical, and computational systems through the ARC recursive framework.
 
-- **Eden Engineering** -- *The Eden Protocol v6.1: Engineering Specification for Embedded AI Alignment.* The technical specification.
+- **Eden Engineering** -- *Eden Engineering: The Eden Protocol Engineering Specification.* The technical specification. Version 6.3, first published 22 February 2026, revised 19 September 2026. OSF DOI 10.17605/OSF.IO/AWJR4.
 
 - **Eden Vision** -- *Eden Protocol: Philosophical Vision.* The philosophical foundations, drawing on 84% of humanity's wisdom traditions.
 

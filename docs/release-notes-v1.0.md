@@ -70,7 +70,7 @@ The complete **23-document suite** lives under `papers/`, each in its own folder
 | VIII | Load-Bearing Proof | 1 positive, 2 null/inconclusive; embedded safety = zero capability cost (benefit open). |
 | IX | Synthesis and Roadmap | Five-tier evidence hierarchy; honest tally; four-phase replication roadmap. |
 
-**6 supporting documents:** Foundational (axioms; α = 1/(1−β), ARC bound α ≤ 2), On the Origin of Scaling Laws (cross-domain d/(d+1) catalogue), Eden Engineering (protocol spec, v6.1), Eden Vision (philosophical position paper), Executive Summary (grant-facing overview), Master Table of Contents (navigation).
+**6 supporting documents:** Foundational (axioms; α = 1/(1−β), ARC bound α ≤ 2), On the Origin of Scaling Laws (cross-domain d/(d+1) catalogue), Eden Engineering (protocol spec, v6.3, first published 22 February 2026, revised 19 September 2026, OSF DOI [10.17605/OSF.IO/AWJR4](https://doi.org/10.17605/OSF.IO/AWJR4)), Eden Vision (philosophical position paper), Executive Summary (grant-facing overview), Master Table of Contents (navigation).
 
 **Code, results and data**
 - Per-paper `experiments/` scripts and raw `results/` JSON/TXT for the validation, alignment, Cauchy, Honey, and Load-Bearing experiments.

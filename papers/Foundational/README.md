@@ -1,8 +1,8 @@
 # Foundational Paper: The ARC Principle as a Cross-Domain Structural Principle
 
 **Full title:** The ARC Principle: Recursive Amplification as a Cross-Domain Structural Principle
-**Version:** v5.2
-**Version date:** Working Paper, 12 August 2026 (related-work and corrections pass)
+**Version:** v5.16
+**Version date:** Working Paper, revised 21 September 2026
 **First published:** 13 February 2026
 **Author:** Michael Darius Eastwood
 

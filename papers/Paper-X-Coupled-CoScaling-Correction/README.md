@@ -1,8 +1,8 @@
 # Paper X: The Coupled Co-Scaling Law
 
 **Full title:** The Coupled Co-Scaling Law - A Falsifiable Threshold Criterion for the Stability of Recursive Self-Improvement, Sharing the Threshold Form of the Quantum Error-Correction Criterion
-**Version:** v1.3
-**Version date:** Updated 12 August 2026
+**Version:** v1.11
+**Version date:** revised 21 September 2026
 **First published:** 3 July 2026
 **Author:** Michael Darius Eastwood
 
