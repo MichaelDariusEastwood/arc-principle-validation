@@ -1,13 +1,14 @@
 cff-version: 1.2.0
-version: '1.6'
+version: '1.11'
 message: 'If you use or discuss this paper, please cite it using this metadata.'
 title: 'The ARC Co-Scaling Law (Paper X)'
 authors:
   - family-names: 'Eastwood'
     given-names: 'Michael Darius'
     orcid: 'https://orcid.org/0009-0004-3222-7442'
-date-released: '2026-08-22'
+date-released: '2026-09-21'
 url: 'https://www.michaeldariuseastwood.com/research/papers/paper-x-coupled-coscaling-correction.html'
+license: 'CC-BY-4.0'
 identifiers:
   - type: doi
     value: '10.17605/OSF.IO/BSE2Q'
@@ -24,7 +25,6 @@ preferred-citation:
       orcid: 'https://orcid.org/0009-0004-3222-7442'
   date-published: '2026-07-03'
   url: 'https://www.michaeldariuseastwood.com/research/papers/paper-x-coupled-coscaling-correction.html'
-  journal: 'The ARC Theory · ARC/Eden experiments'
   doi: '10.17605/OSF.IO/BSE2Q'
   identifiers:
     - type: doi
@@ -33,12 +33,17 @@ preferred-citation:
     - type: doi
       value: '10.17605/OSF.IO/6C5XB'
       description: 'OSF umbrella DOI for the ARC / Eden Research Programme'
+    - type: doi
+      value: '10.17605/OSF.IO/P8CKQ'
+      description: 'Theory-level predictions preregistered on OSF: DOI 10.17605/OSF.IO/P8CKQ, registered 8 September 2026 (version 1.100), updated 13 September 2026 (version 1.102), twenty-two propositions. Companion: Operational Definitions of the ARC Programme, version 1.7.1, 3 September 2026.'
   abstract: |
-    Abstract
+    This paper proves a theorem about a minimal dynamical model. The verification harness checks theorem-to-code consistency only; no claim is made that current frontier systems obey the model. The empirical contribution is a proposed blind protocol for measuring whether they do.
+
+    A widely held intuition holds that recursive self-improvement is dangerous because capability can grow explosively, and that safety therefore depends on limiting the rate of growth. Using a minimal model of a self-modifying system, capability $C$, a blind-scored misalignment magnitude $D$, and the misalignment fraction $d=D/C$, I show the rate is the wrong control variable. The steady-state misalignment fraction is $d^\star=\gamma_1 r/(A+r)$, which reduces to the drift-to-correction ratio $\rho=\gamma_1 r/A$ in the regime $A\gg r$; the long-run fate is governed by the relationship between two scaling exponents, not by the growth rate. Under exponential growth the stability condition is $\beta>0$ (correction co-scales with capability); under accelerating growth, where the specific growth rate itself rises as $r\propto C^{k}$, the condition sharpens to $\beta>k$, correction must out-scale not the growth rate but its acceleration. I prove an exact transient solution (Theorem 1), global boundedness that corrects an over-claim in the prior draft, the misalignment fraction never diverges to infinity but, in the gain-only model ($\gamma_2=\gamma_3=0$), saturates at the gain-drift coefficient $\gamma_1$ (Theorem 2), and a Hard-Takeoff Depth-Regularity Theorem (Theorem 3): when capability reaches infinity in finite wall-clock time, re-expressing the dynamics in the natural clock of self-improvement depth $\tau=\ln C$ renders them regular, and the verdict is set by $\mathrm{sign}(\beta-k)$ independently of the speed and of the finiteness of the singularity time. I locate genuine divergence in a distinct compounding drift channel whose threshold $\rho_{\mathrm{prop}}=(\gamma_3-1)r/A<1$ shares the form of the quantum error-correction sub-threshold condition $p<p_{\mathrm{th}}$ (Theorem 4; the suppression law is power-law, a known disanalogy with QEC's exponential law), and I extend the criterion to vector misalignment (a spectral threshold, Theorem 5), to stochastic drift (a tail bound, Theorem 6), and to the finite-capacity corrector every real system must have (Theorem 7): saturation converts safety from an asymptote into a computable window, centre $C_{\mathrm{opt}}=C_s((\beta-k)/k)^{1/\beta}$, closed-form depth, and the criterion survives unchanged as a condition on the capacity exponent, $\beta_{\mathrm{cap}}>k$. A real-model drift run (gpt-3.5-turbo engine, gpt-4o-mini evaluator, 45 trajectories over three task domains) produced directionally consistent numbers, the decoupled configuration drifted while coupled correction held misalignment at zero across all 30 trajectories at higher final capability, but the run is withdrawn as mechanism evidence (see the Correction above): both models are OpenAI-family, so the scoring was not cross-family, and the merged-harness run contained empty evaluator panels. $\beta/k$ remains unmeasured. Ten experiments, packaged as a verification harness, check that these closed-form predictions are correctly derived and numerically reproduced: internal-consistency and integrator checks (the code matches the maths), not a test of the model against real systems, which remains the open empirical problem. The claim is deliberately narrow: it concerns operationally measurable systems, makes no cosmological assertion, and treats the quantum-error-correction correspondence itself as a falsifiable hypothesis. The criterion certifies that correction keeps pace with capability; it does not certify that the correction target itself is well specified, and it is therefore not quotable as an alignment certificate on its own.
 
 # --- generated-from-master ---
 # master_path: research/papers/paper-x-coupled-coscaling-correction.html
-# master_sha256: 5bd38faf680a37e86e877db32a58caf446995f249f6783550b1eb9537157617b
+# master_sha256: f082a7fbfabb79f9ebd0d7908df786b8ba90e65f8f2a0a1e305093048393740d
 # builder: scripts/build-paper-cff.py
 # A check tool re-hashing master_path can decide freshness without any
 # external state. If the master's current SHA-256 does not match
