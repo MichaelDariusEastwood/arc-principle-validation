@@ -1,0 +1,47 @@
+name: Five-minute checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  requirements-files-parse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Every requirements file holds requirements and nothing else
+        run: |
+          python - <<'PY'
+          import pathlib, re, sys
+          spec = r'(==|>=|<=|~=|!=|>|<)\s*[A-Za-z0-9.*+!_-]+'
+          pat = re.compile(r'^[A-Za-z0-9][A-Za-z0-9._-]*(\[[A-Za-z0-9,._-]+\])?\s*(' + spec + r'(\s*,\s*' + spec + r')*)?\s*(;.*)?$')
+          bad = []
+          for p in sorted(pathlib.Path('.').rglob('requirements*.txt')):
+              for n, line in enumerate(p.read_text(encoding='utf-8', errors='replace').splitlines(), 1):
+                  s = re.split(r'\s#', line, 1)[0].strip()
+                  if not s or s.startswith('#') or s.startswith('-'):
+                      continue
+                  if not pat.match(s):
+                      bad.append(f'{p}:{n}: {line[:80]}')
+          if bad:
+              print('Lines that are not requirements:')
+              print('\n'.join(bad))
+              sys.exit(1)
+          print('Every requirements file parses.')
+          PY
+
+  paper-x-five-minute-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: The published check, exactly as the README gives it (expected 14 passed)
+        working-directory: papers/Paper-X-Coupled-CoScaling-Correction
+        run: |
+          pip install -r requirements.txt && python code/test_theorems_independent.py | tee check-output.txt
+          grep -q "14 passed" check-output.txt
