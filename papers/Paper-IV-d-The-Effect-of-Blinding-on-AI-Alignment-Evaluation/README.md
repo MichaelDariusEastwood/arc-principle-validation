@@ -15,7 +15,7 @@ Version 2.0 finalises the canonical publication framing for Paper IV.d, removes 
 ## Experiments
 
 Experiments for Papers IV.a through IV.d are shared with Paper III.
-See [`../Paper-III-Alignment-Scaling-Problem/experiments/`](../Paper-III-Alignment-Scaling-Problem/experiments/).
+See [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](../../experiments/alignment-scaling__Papers-IV-a-b-c-d/).
 
 ## Links
 

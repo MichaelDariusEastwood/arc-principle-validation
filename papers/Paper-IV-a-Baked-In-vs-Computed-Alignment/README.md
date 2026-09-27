@@ -13,7 +13,7 @@ This paper presents evidence that frontier language models fall into distinct al
 ## Experiments
 
 Experiments for Papers IV.a through IV.d are shared with Paper III.
-See [`../Paper-III-Alignment-Scaling-Problem/experiments/`](../Paper-III-Alignment-Scaling-Problem/experiments/).
+See [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](../../experiments/alignment-scaling__Papers-IV-a-b-c-d/).
 
 ## Links
 

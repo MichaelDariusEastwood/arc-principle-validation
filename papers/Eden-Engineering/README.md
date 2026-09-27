@@ -1,4 +1,4 @@
-# Eden Protocol: Engineering Specification
+# Eden Engineering: The Eden Protocol Engineering Specification
 
 **Full title:** Eden Engineering: The Eden Protocol Engineering Specification
 **Version:** v6.3
@@ -13,7 +13,7 @@ Current alignment approaches produce alignment scaling exponents of approximatel
 ## Experiments
 
 Experiment data supporting this paper is distributed across the alignment-scaling and Eden intervention suites.
-See [`../Paper-III-Alignment-Scaling-Problem/experiments/`](../Paper-III-Alignment-Scaling-Problem/experiments/) and [`../Paper-V-Stewardship-Gene/experiments/`](../Paper-V-Stewardship-Gene/experiments/).
+See [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](../../experiments/alignment-scaling__Papers-IV-a-b-c-d/) and [`../Paper-V-Stewardship-Gene/experiments/`](../Paper-V-Stewardship-Gene/experiments/).
 
 ## Links
 

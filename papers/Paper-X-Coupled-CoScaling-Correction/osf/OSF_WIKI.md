@@ -1,3 +1,5 @@
+> **Note, 27 September 2026.** This file records Paper X as it was deposited in June 2026, under its earlier title, The Coupled Co-Scaling Law. The paper is now The ARC Co-Scaling Law (Paper X), version 1.11 of 21 September 2026: https://www.michaeldariuseastwood.com/research/papers/paper-x-coupled-coscaling-correction.html
+
 # The Coupled Co-Scaling Law
 
 A falsifiable threshold criterion for the stability of recursive self-improvement:

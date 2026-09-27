@@ -1,4 +1,6 @@
-# Paper II: Experimental Validation of Super-Linear Error Suppression
+# Paper II: The ARC Equation Measured: Blinded Cross-Architecture Replication and the Retraction of a Super-Linear Estimate
+
+**Earlier title:** Experimental Validation of Super-Linear Error Suppression (superseded: the super-linear estimate is retracted).
 
 **Full title:** The ARC Principle: Experimental Validation of Super-Linear Error Suppression Through Sequential Recursive Processing
 **Version:** v2.12 (Working Paper)

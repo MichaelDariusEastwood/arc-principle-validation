@@ -42,7 +42,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | VII | [Cauchy Unification](Paper-VII-Cauchy-Unification/) | v3.11 (revised 13 Sep 2026) | 16 Mar 2026 | 50-domain validation, null controls, temporal OOS, dated OSF deposit (extension protocol, not a registration) | `experiments/results/` |
 | VIII | [The Load-Bearing Test](Paper-VIII-The-Load-Bearing-Proof/) | v3.5 (revised 21 Sep 2026) | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
 | IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v2.4 (revised 20 Sep 2026) | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
-| X | [The ARC Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v1.11 (revised 21 Sep 2026) | 3 Jul 2026 | Self-certifying proof-harness, 9 experiments (9/9 confirmed, 0 falsifiers) | `Paper-X-Coupled-CoScaling-Correction/results/` |
+| X | [The ARC Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v1.11 (revised 21 Sep 2026) | 3 Jul 2026 | Verification harness and an independent theorem suite of 14 checks | `Paper-X-Coupled-CoScaling-Correction/results/` |
 | XI | [Convergent Evidence for Recursive Amplification](Paper-XI-Convergence/) | v1.11 (revised 21 Sep 2026) | 2 Jul 2026 | - | - |
 | XII | [Public Benchmark Rescoring](Paper-XII-Public-Benchmark-Rescoring/) | v1.12 (revised 20 Sep 2026) | 14 Aug 2026 | - | - |
 | XIII | [The Self-Acceleration Exponent](Paper-XIII-Self-Acceleration-Exponent/) | v1.7 (revised 21 Sep 2026) | 16 Aug 2026 | - | - |
@@ -83,7 +83,7 @@ Tests cross-architecture compute scaling. Six frontier models solve 30 AIME-leve
 
 - **Script:** `Paper-II-Experimental-Validation/experiments/scripts/arc_paper_ii_validation_v2.py`
 - **Results:** `Paper-II-Experimental-Validation/experiments/results/` (per-model JSON) and `Paper-II-Experimental-Validation/results/` (summary copies)
-- **Key finding:** alpha_seq ~ 0.49 (Gemini Flash, r-squared = 0.86). Sequential outperforms parallel universally across all six models.
+- **Key finding:** the cross-architecture estimate is approximately 0.49 (Gemini Flash, r-squared = 0.86), which is sub-linear; the early estimate of approximately 2.24 is retracted. Sequential over parallel is an exploratory ordering, and the general advantage remains unresolved.
 
 ### Alignment Scaling (Papers III, IV.a-d) - v1 through v5
 
@@ -99,7 +99,7 @@ Tests how alignment depth scales with model capability using a 4-layer blinding 
 
 - **Script:** `Paper-III-Alignment-Scaling-Problem/experiments/scripts/arc_alignment_scaling_v5.py`
 - **Results:** `Paper-III-Alignment-Scaling-Problem/experiments/results/v5-final/` (also copied to IV.a, IV.b, IV.c, IV.d results directories)
-- **Key finding:** Three-tier alignment hierarchy. 2 of 4 models showed sign reversals under blinding (Paper IV.d). Scorer bias eliminated under blinding.
+- **Key finding:** unblinded scoring can reverse an alignment measurement: 2 of 4 models showed sign reversals under blinding (Paper IV.d). These are pilot results, and the programme's own strongest caution about its other results.
 
 ### Shared Engine (v6 / arc_eden_v6)
 
@@ -115,7 +115,7 @@ Tests the Stewardship Gene hypothesis: whether embedding ethical reasoning loops
 
 - **Script:** `Paper-V-Stewardship-Gene/experiments/scripts/eden_protocol_scaling_test_v3.py`
 - **Results:** `Paper-V-Stewardship-Gene/experiments/results/`
-- **Key finding:** Care-first effect on 3 models (pilot, not blind). Fisher p = 6.3e-21. The Fisher-combined figure is withdrawn under AQ-017 (independence among the five per-model tests was never established); the five per-model results stand. Blind replication needed.
+- **Key finding:** five per-model results stand (pilot, single-scorer, not blinded); the Fisher-combined figure of 6.3 x 10^-21 is withdrawn under AQ-017, because independence among the five tests was never established.
 
 ### Honey Architecture Simulations (Paper VI)
 
@@ -123,7 +123,7 @@ Tests the Honey Architecture's capability-safety entanglement through self-modif
 
 - **Scripts:** `Paper-VI-Honey-Architecture/experiments/scripts/`
 - **Results:** `Paper-VI-Honey-Architecture/experiments/results/`
-- **Key finding:** 6-model API results confirm honey ratio predictions.
+- **Key finding:** mechanistic in simulation, exploratory against live models.
 
 ### Cauchy Domain Validation (Paper VII)
 
@@ -132,7 +132,7 @@ Progressive expansion from 20 to 50 to 105 domains, with null controls, negative
 - **Scripts:** `Paper-VII-Cauchy-Unification/experiments/scripts/`
 - **Results:** `Paper-VII-Cauchy-Unification/experiments/results/`
 - **Draft registrations (unsubmitted):** `Paper-VII-Cauchy-Unification/experiments/preregistration/`
-- **Key finding:** 19/25 domains confirmed (p = 1.56 x 10^-5).
+- **Status:** under correction as of 11 August 2026. The grid has four cells, not three; the three-family framing and the derived-from-Cauchy treatment of bounded curves are withdrawn, and the primary statistic is a permutation test conditioned on both marginals. The statement previously given here, 19/25 domains confirmed (p = 1.56 x 10^-5), is superseded.
 
 ### Load-Bearing Proof Experiments (Paper VIII)
 
@@ -153,7 +153,7 @@ Mathematical verification scripts for the ARC axiom set, including Einstein veri
 
 ---
 
-## Frontier Models (Mandatory for All Published Experiments)
+## Frontier models used in the published experiments (the list as of March 2026)
 
 | Provider | Model | API ID |
 |----------|-------|--------|

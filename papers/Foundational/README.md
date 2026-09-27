@@ -1,4 +1,4 @@
-# Foundational Paper: The ARC Principle as a Cross-Domain Structural Principle
+# Foundational Paper: The ARC Principle: Recursive Amplification as a Cross-Domain Structural Principle
 
 **Full title:** The ARC Principle: Recursive Amplification as a Cross-Domain Structural Principle
 **Version:** v5.16
@@ -12,7 +12,7 @@ In the past eighteen months, at least four independent research programmes have 
 
 ## Experiments
 
-All experiment scripts and results are in [`experiments/`](./experiments/).
+All experiment scripts and results are in [`experiments/domain-validation__Foundational-and-Origin/`](../../experiments/domain-validation__Foundational-and-Origin/) and [`experiments/blind-prediction-test__Paper-III-and-Foundational/`](../../experiments/blind-prediction-test__Paper-III-and-Foundational/).
 
 ## Links
 
