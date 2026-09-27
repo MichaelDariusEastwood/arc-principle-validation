@@ -69,7 +69,7 @@ problem, §8). It exits 0 iff every check matches its closed-form prediction.
 
 ```bash
 cd code
-pip install numpy scipy matplotlib       # or: pip install -r ../../../requirements.txt
+pip install numpy scipy matplotlib       # or: pip install -r ../requirements.txt
 python experiment_coscaling.py           # runs all 10 experiments, writes figures/ + results/
 pytest test_coscaling.py -q              # 12 internal-consistency assertions
 ```
