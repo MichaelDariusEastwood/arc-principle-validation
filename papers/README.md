@@ -1,6 +1,6 @@
 # ARC/Eden Research Programme - Paper Directory
 
-**Updated: 24 March 2026**
+**Updated: 27 September 2026.** Versions and first-publication dates follow the paper register on the website, and every folder holds the published files byte for byte.
 
 This directory contains all papers in the ARC/Eden Research Programme. Each paper has its own directory following the standard layout described in `VERSION-CONTROL-STANDARDS.md`.
 
@@ -30,30 +30,46 @@ Version numbers live inside the document header, never in the filename. See Sect
 
 | # | Paper | Version | First Published | Key Experiment | Results Location |
 |---|-------|---------|-----------------|----------------|-----------------|
-| I | [ARC Principle](Paper-I-ARC-Principle/) | v1.1 | 17 Jan 2026 | Scaling toolkit validation | `Paper-I-ARC-Principle/results/` |
-| II | [Experimental Validation](Paper-II-Experimental-Validation/) | v13.0 | 22 Jan 2026 | Cross-architecture compute scaling (6 models, 30 problems) | `Paper-II-Experimental-Validation/results/` and `experiments/results/` |
-| III | [Alignment Scaling Problem](Paper-III-Alignment-Scaling-Problem/) | v11.1 | 9 Feb 2026 | Alignment scaling v1-v5 (6 models, 6-7 blind scorers) | `experiments/results/v5-final/` |
-| IV.a | [Baked-In vs Computed Alignment](Paper-IV-a-Baked-In-vs-Computed-Alignment/) | v1.1 | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
-| IV.b | [Alignment Saturation at Low Depth](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.1 | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
-| IV.c | [ARC-Align Benchmark](Paper-IV-c-ARC-Align-Benchmark/) | v1.1 | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
-| IV.d | [Effect of Blinding on AI Alignment Evaluation](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | v1.1 | 16 Mar 2026 | Shared v5 alignment experiment (2/4 sign reversals) | `results/v5-final/` |
-| V | [The Stewardship Gene](Paper-V-Stewardship-Gene/) | v2.0 | 16 Mar 2026 | Eden Protocol scaling test (6 models) | `experiments/results/` |
-| VI | [The Honey Architecture](Paper-VI-Honey-Architecture/) | v1.1 | 16 Mar 2026 | Honey tests, self-modifying AI v1-v4 | `experiments/results/` |
-| VII | [Cauchy Unification](Paper-VII-Cauchy-Unification/) | v3.3 | 16 Mar 2026 | 50-domain validation, null controls, temporal OOS, dated OSF deposit (extension protocol, not a registration) | `experiments/results/` |
-| VIII | [The Load-Bearing Proof](Paper-VIII-The-Load-Bearing-Proof/) | v3.0 | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
-| IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v3.0 | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
-| X | [The Coupled Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v4.0 | 26 Jun 2026 | Self-certifying proof-harness, 9 experiments (9/9 confirmed, 0 falsifiers) | `Paper-X-Coupled-CoScaling-Correction/results/` |
+| I | [The ARC Equation](Paper-I-ARC-Principle/) | v1.13 (revised 20 Sep 2026) | 17 Jan 2026 | Scaling toolkit validation | `Paper-I-ARC-Principle/results/` |
+| II | [The ARC Equation Measured](Paper-II-Experimental-Validation/) | v2.12 (revised 21 Sep 2026) | 22 Jan 2026 | Cross-architecture compute scaling (6 models, 30 problems) | `Paper-II-Experimental-Validation/results/` and `experiments/results/` |
+| III | [The Alignment Scaling Problem](Paper-III-Alignment-Scaling-Problem/) | v1.13 (revised 21 Sep 2026) | 9 Feb 2026 | Alignment scaling v1-v5 (6 models, 6-7 blind scorers) | `experiments/results/v5-final/` |
+| IV.a | [Alignment Response Classes Under Inference-Time Depth](Paper-IV-a-Baked-In-vs-Computed-Alignment/) | v1.7 (revised 21 Sep 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
+| IV.b | [Alignment Saturation Is Architecture-Dependent](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.7 (revised 21 Sep 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
+| IV.c | [ARC-Align](Paper-IV-c-ARC-Align-Benchmark/) | v1.8 (revised 21 Sep 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
+| IV.d | [The Effect of Blinding on AI Alignment Evaluation](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | v2.4 (revised 13 Sep 2026) | 16 Mar 2026 | Shared v5 alignment experiment (2/4 sign reversals) | `results/v5-final/` |
+| V | [The Stewardship Gene](Paper-V-Stewardship-Gene/) | v1.5 (revised 21 Sep 2026) | 16 Mar 2026 | Eden Protocol scaling test (6 models) | `experiments/results/` |
+| VI | [The Honey Architecture](Paper-VI-Honey-Architecture/) | v3.8 (revised 21 Sep 2026) | 16 Mar 2026 | Honey tests, self-modifying AI v1-v4 | `experiments/results/` |
+| VII | [Cauchy Unification](Paper-VII-Cauchy-Unification/) | v3.11 (revised 13 Sep 2026) | 16 Mar 2026 | 50-domain validation, null controls, temporal OOS, dated OSF deposit (extension protocol, not a registration) | `experiments/results/` |
+| VIII | [The Load-Bearing Test](Paper-VIII-The-Load-Bearing-Proof/) | v3.5 (revised 21 Sep 2026) | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
+| IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v2.4 (revised 20 Sep 2026) | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
+| X | [The ARC Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v1.11 (revised 21 Sep 2026) | 3 Jul 2026 | Self-certifying proof-harness, 9 experiments (9/9 confirmed, 0 falsifiers) | `Paper-X-Coupled-CoScaling-Correction/results/` |
+| XI | [Convergent Evidence for Recursive Amplification](Paper-XI-Convergence/) | v1.11 (revised 21 Sep 2026) | 2 Jul 2026 | - | - |
+| XII | [Public Benchmark Rescoring](Paper-XII-Public-Benchmark-Rescoring/) | v1.12 (revised 20 Sep 2026) | 14 Aug 2026 | - | - |
+| XIII | [The Self-Acceleration Exponent](Paper-XIII-Self-Acceleration-Exponent/) | v1.7 (revised 21 Sep 2026) | 16 Aug 2026 | - | - |
 
 ## Infrastructure Papers (Unnumbered)
 
 | Paper | Version | First Published | Purpose |
 |-------|---------|-----------------|---------|
-| [Foundational](Foundational/) | v5.0 | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
-| [On the Origin of Scaling Laws](On-the-Origin-of-Scaling-Laws/) | v3.0 | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
+| [Foundational](Foundational/) | v5.16 (revised 21 Sep 2026) | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
+| [On the Origin of Scaling Laws](On-the-Origin-of-Scaling-Laws/) | v3.7 (revised 21 Sep 2026) | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
 | [Eden Engineering](Eden-Engineering/) | v6.3 (revised 19 Sep 2026) | 22 Feb 2026 | Protocol specification for implementing Eden in production AI systems. OSF DOI [10.17605/OSF.IO/AWJR4](https://doi.org/10.17605/OSF.IO/AWJR4) |
-| [Eden Vision](Eden-Vision/) | v3.0 | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
-| [Executive Summary](Executive-Summary/) | v8.0 | 22 Feb 2026 | Grant-facing summary of the full programme |
-| [Master Table of Contents](Master-Table-of-Contents/) | v1.2 | 16 Mar 2026 | Navigation document linking all papers |
+| [Eden Vision](Eden-Vision/) | v2.6 (revised 21 Sep 2026) | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
+| [Executive Summary](Executive-Summary/) | v3.1 (revised 21 Sep 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
+| [Master Table of Contents](Master-Table-of-Contents/) | v3.8 (revised 21 Sep 2026) | 16 Mar 2026 | Navigation document linking all papers |
+| [The ARC Theory](The-ARC-Theory/) | v6.7 (revised 21 Sep 2026) | 14 Aug 2026 | The theory-level statement paper |
+| [The ARC Theory, two-page form](The-ARC-Theory-Two-Page-Form/) | v2.1 (revised 21 Sep 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
+| [Recursive Dynamics: the founding paper](Recursive-Dynamics-Founding-Paper/) | v2.9 | 31 Aug 2026 | Recursive Dynamics: The Proposal of a Field |
+| [Paper C](Paper-C-PNP/) | v1.8 (revised 21 Sep 2026) | 3 Jul 2026 | Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy |
+| [HRIH Paper](HRIH-Paper/) | v3.48 (revised 16 Sep 2026) | 3 Jul 2026 | The Hyperspace Recursive Intelligence Hypothesis; speculative, outside the empirical core |
+
+## Registration, register and working report
+
+| Document | Version | First Published | What it is |
+|----------|---------|-----------------|------------|
+| [Theory-level predictions registration](ARC-Theory-Predictions-Registration/) | v1.102 (revised 13 Sep 2026) | 8 Sep 2026 | The theory's twenty-two severable propositions, registered on OSF on 8 September 2026 (DOI 10.17605/OSF.IO/P8CKQ); the frozen v1.100 PDF sits beside the current text |
+| [The Dated Prediction Register](Dated-Prediction-Register/) | v1.1 (revised 13 Sep 2026) | 25 Aug 2026 | Forward predictions as one verifiable chain |
+| [The ARC Alignment-Scaling Working Report](ARC-Alignment-Scaling-Working-Report/) | working report | commenced 10 Mar 2026 | The live laboratory notebook of the alignment-scaling work (OSF record j6mkb) |
 
 ---
 
