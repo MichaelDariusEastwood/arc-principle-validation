@@ -1,4 +1,6 @@
-# Paper I: The ARC Principle
+# Paper I: The ARC Equation: the Law of Conversion
+
+**Earlier title:** The ARC Principle.
 
 **Full title:** The ARC Principle: Formalisation and Preliminary Validation of Recursive Capability Scaling
 **Version:** v1.13
@@ -12,7 +14,7 @@ This paper formalises and preliminarily tests the ARC Principle (Artificial Recu
 
 ## Experiments
 
-All experiment scripts, results, and data are in [`experiments/`](./experiments/).
+All experiment scripts, results, and data are in [`experiments/paper-i-foundational__Paper-I/`](../../experiments/paper-i-foundational__Paper-I/).
 
 ## Links
 

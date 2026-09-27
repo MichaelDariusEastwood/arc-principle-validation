@@ -13,7 +13,7 @@ A mouse's heart beats 600 times per minute; an elephant's beats 28; a blue whale
 ## Experiments
 
 This paper shares its experimental foundation with the Foundational paper.
-See [`../Foundational/experiments/`](../Foundational/experiments/).
+See [`experiments/domain-validation__Foundational-and-Origin/`](../../experiments/domain-validation__Foundational-and-Origin/).
 
 ## Additional Files
 

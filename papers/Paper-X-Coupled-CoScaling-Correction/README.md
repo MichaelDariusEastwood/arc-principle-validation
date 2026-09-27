@@ -1,6 +1,10 @@
-# Paper X: The Coupled Co-Scaling Law
+# Paper X: The ARC Co-Scaling Law
 
-**Full title:** The Coupled Co-Scaling Law - A Falsifiable Threshold Criterion for the Stability of Recursive Self-Improvement, Sharing the Threshold Form of the Quantum Error-Correction Criterion
+**Earlier title:** The Coupled Co-Scaling Law (June 2026).
+
+**Full title at its first deposit (June 2026):** The Coupled Co-Scaling Law - A Falsifiable Threshold Criterion for the Stability of Recursive Self-Improvement, Sharing the Threshold Form of the Quantum Error-Correction Criterion
+
+**Current title:** The ARC Co-Scaling Law (Paper X), version 1.11, revised 21 September 2026: https://www.michaeldariuseastwood.com/research/papers/paper-x-coupled-coscaling-correction.html
 **Version:** v1.11
 **Version date:** revised 21 September 2026
 **First published:** 3 July 2026

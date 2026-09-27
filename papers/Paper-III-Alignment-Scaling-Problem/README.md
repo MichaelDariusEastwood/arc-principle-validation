@@ -12,7 +12,7 @@ This paper demonstrates that current AI alignment approaches produce alignment s
 
 ## Experiments
 
-All experiment scripts and results are in [`experiments/`](./experiments/).
+All experiment scripts and results are in [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](../../experiments/alignment-scaling__Papers-IV-a-b-c-d/) and [`experiments/blind-prediction-test__Paper-III-and-Foundational/`](../../experiments/blind-prediction-test__Paper-III-and-Foundational/).
 
 **Note:** Papers IV.a through IV.d share this same experiment suite (alignment-scaling v1 through v5). See also Paper-IV-a, IV-b, IV-c, and IV-d folders.
 

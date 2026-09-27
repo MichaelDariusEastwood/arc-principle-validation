@@ -1,3 +1,5 @@
+> **Note, 27 September 2026.** This plain-language summary was written for the June 2026 version, under the paper's earlier title. The paper is now The ARC Co-Scaling Law (Paper X), version 1.11 of 21 September 2026, and where the two differ the paper stands: https://www.michaeldariuseastwood.com/research/papers/paper-x-coupled-coscaling-correction.html
+
 # The Coupled Co-Scaling Law - plain-language summary
 
 *A one-page explainer for non-specialists - journalists, funders, and general readers.

@@ -13,6 +13,8 @@ reader can check that date without taking the author's word for it.
 The three copies of the record are the same content in three formats. Start with
 `PRIORITY-VERIFY.md` if what you want is to check a date rather than read the account.
 
+The record here is the version published on OSF on 31 July 2026 (https://osf.io/h3r95/), byte for byte. The dated claims register has been extended and corrected since; its current form is the site's priority claims page (https://www.michaeldariuseastwood.com/priority-claims.html) and its data file (https://www.michaeldariuseastwood.com/research/priority.json).
+
 ## What a date here does and does not establish
 
 A date establishes when a statement existed. It does not establish that the statement is

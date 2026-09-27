@@ -89,7 +89,7 @@ This is disclosed honestly rather than papered over. The harness, plus standalon
 
 ## How to cite
 
-This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitHub, use the **"Cite this repository"** button (top-right of the repo page) to export APA or BibTeX.
+This repository ships a machine-readable [`CITATION.cff`](../CITATION.cff). On GitHub, use the **"Cite this repository"** button (top-right of the repo page) to export APA or BibTeX.
 
 **Preferred citation:**
 
