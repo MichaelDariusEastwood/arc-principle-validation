@@ -1,101 +1,664 @@
-<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Priority and Provenance — The ARC Principle / Eden Protocol</title>
-<style>
-body{font-family:Charter,Georgia,'Times New Roman',serif;font-size:10.5pt;line-height:1.44;
-color:#1b1b1f;max-width:780px;margin:0 auto;padding:2rem 1.2rem;text-align:justify;}
-h1{font-size:19pt;line-height:1.18;color:#14141a;margin:0 0 4pt;letter-spacing:-0.01em;}
-.masthead{border-top:3px solid #14532d;border-bottom:1px solid #d4d4d8;padding:10pt 0 8pt;margin-bottom:14pt;}
-.sub{font-size:9.5pt;color:#3f3f46;margin-top:5pt;}
-h2{font-size:12.5pt;color:#14532d;margin:16pt 0 5pt;padding-bottom:2pt;border-bottom:1px solid #e4e4e7;text-align:left;}
-p{margin:0 0 6pt;}
-table{border-collapse:collapse;width:100%;font-size:8.6pt;margin:7pt 0;text-align:left;}
-th{background:#14532d;color:#fff;padding:4pt 6pt;text-align:left;font-weight:600;}
-td{border:0.5pt solid #d4d4d8;padding:4pt 6pt;vertical-align:top;}
-tr:nth-child(even) td{background:#fafaf9;}
-code{font-family:'SF Mono',Menlo,monospace;font-size:8pt;background:#f4f4f5;padding:0 2.5pt;
-border-radius:2pt;overflow-wrap:anywhere;word-break:break-all;}
-.warn{border-left:3pt solid #14532d;background:#f6f7f4;padding:7pt 12pt;margin:9pt 0;color:#27272a;}
-.warn strong{color:#14532d;}
-ul{margin:3pt 0 7pt;padding-left:17pt;text-align:left;}li{margin:0 0 3pt;}
-.foot{margin-top:16pt;padding-top:8pt;border-top:1px solid #e4e4e7;font-size:8.4pt;color:#52525b;}
-strong{color:#111114;}
-</style></head><body>
-<div class="masthead">
-<h1>Priority and Provenance</h1>
-<div class="sub">The ARC Principle &amp; the Eden Protocol · Michael Darius Eastwood · OSF DOI 10.17605/OSF.IO/6C5XB<br>
-Read this first if you are assessing when this work was created.</div>
-</div>
-
-<div class="warn">
-<strong>OSF deposit dates are not creation dates.</strong> Public deposit of this project began
-on <strong>17 March 2026</strong>; individual working papers were deposited between March and July 2026.
-The underlying thesis is cryptographically timestamped from <strong>8 December 2024</strong> — fifteen
-months before the first deposit. Do not read a file's OSF upload date, or its position in the version
-stack, as the date the idea was created. The priority anchors below are independently checkable; the
-deposit dates are not the evidence of priority and were never intended to be.
-</div>
-
-<h2>The priority timeline (with independently verifiable anchors)</h2>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>@page{size:A4;margin:16mm}body{font-family:Georgia,serif;font-size:9.5pt;line-height:1.5;color:#1a1a1a;margin:0;max-width:none}
+h1{font-size:15pt;border-bottom:2px solid #b8860b;padding-bottom:5pt;line-height:1.25}h2{font-size:11.5pt;margin-top:12pt;color:#2c2c28;page-break-after:avoid}
+table{border-collapse:collapse;width:100%;font-size:7.8pt;margin:6pt 0}th,td{border:1px solid #c9c6bd;padding:3.5pt 5pt;text-align:left;vertical-align:top}
+th{background:#f4f2ec;font-family:Helvetica,sans-serif;font-size:7pt;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid #b8860b}
+tr{page-break-inside:avoid}code{font-family:Menlo,monospace;font-size:7.5pt}pre{background:#faf8f2;border:1px solid #c9c6bd;padding:6pt;font-size:7.5pt;overflow-wrap:anywhere}
+p{margin:0 0 5pt}</style></head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="priority-and-provenance-version-2">Priority and Provenance,
+version 2</h1>
+<h2
+id="the-arc-principle-and-the-eden-protocol-michael-darius-eastwood-programme-doi-10.17605osf.io6c5xb">The
+ARC Principle and the Eden Protocol · Michael Darius Eastwood ·
+programme DOI 10.17605/OSF.IO/6C5XB</h2>
+<p><strong>Read this first if you are assessing when this work was
+created.</strong> OSF deposit dates are not creation dates. Public
+deposit began on 17 March 2026; the underlying thesis is
+cryptographically timestamped from 8 December 2024, fifteen months
+earlier. The anchors below are independently checkable. This version
+supersedes the 4 July 2026 record: it corrects the attachment count of
+the December bundle (five, not four), re-anchors the Eden Protocol name
+to 8 December 2024, states the timestamp mechanism precisely, and
+carries, for the first time, the complete priority-claims ledger rather
+than the anchors alone.</p>
+<h2 id="the-timestamp-anchors">1. The timestamp anchors</h2>
 <table>
-<tr><th>Date</th><th>Event</th><th>Independent anchor — how to verify</th></tr>
-<tr><td><strong>8 Dec 2024</strong><br>02:45:18 UTC</td>
-<td>Core thesis — the substrate-level correction requirement and the governing relation U = I × R —
-written into a self-emailed manuscript bundle (four .txt attachments, 189,355 words).</td>
-<td>Exported <code>.eml</code> SHA-256 <code>f0d1f38ffd8546152d9d9d28dc5ec083c16a35858f2c12b63e69db7ed50901ad</code>.
-Gmail Message-ID <code>CAGPsKAnp-DLDBOeBAh4t9XsqJBKdoe07uORGF86meoSMFnin7w@mail.gmail.com</code>,
-Google-server-timestamped, DKIM-verified in transit. Recompute the hash on the original .eml to confirm.</td></tr>
-<tr><td><strong>30 Apr 2025</strong></td>
-<td>Expanded manuscript (562 pages). First appearance of the name <em>Eden Protocol</em> and the
-<em>Babylon vs Eden</em> framing; the thesis itself was already timestamped in December 2024.</td>
-<td>Manuscript SHA-256 <code>09f5b5e156ed96f8883eaf668495fd350898ce62be6294b8f788e0e2d6dcb664</code>.</td></tr>
-<tr><td><strong>2 Jan 2026</strong></td>
-<td><em>Infinite Architects: Intelligence, Recursion, and the Creation of Everything</em> published
-(print; ebook 6 Jan 2026).</td>
-<td>ISBN 978-1806056200 — public bookseller and national-deposit records carry the publication date.</td></tr>
-<tr><td><strong>17 Mar 2026</strong></td>
-<td><strong>First OSF deposit</strong> of the document suite (this is a deposit date, not a creation date).</td>
-<td>OSF Storage — version 1 of the earliest-deposited files (Executive Summary, Eden Vision, Foundational,
-Paper I) is dated 17 Mar 2026 in each file's <em>Revisions</em> tab.</td></tr>
-<tr><td><strong>26 Jun 2026</strong></td>
-<td>Paper X (The Coupled Co-Scaling Correction) working paper — first 45-trajectory real-model run.</td>
-<td>OSF component DOI and git history (github.com/MichaelDariusEastwood/arc-principle-validation).</td></tr>
-<tr><td><strong>3 Jul 2026</strong></td>
-<td>HRIH (Hyperspace Recursive Intelligence Hypothesis) first public release; original manuscript
-8 Dec 2024, SHA-256-anchored above.</td>
-<td>OSF component DOI 10.17605/OSF.IO/UYDXQ; the underlying 8 Dec 2024 anchor is the .eml hash above.</td></tr>
-<tr><td><strong>Jul 2026</strong></td>
-<td>Papers C (Polymathy and Neurodivergent Cognition) and XI (Convergent Evidence) deposited.</td>
-<td>OSF component DOIs 10.17605/OSF.IO/RBHDP (C) and the Paper XI component; git history.</td></tr>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Date</th>
+<th>Artefact</th>
+<th>Anchor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 Dec 2024, 02:45:18 UTC</td>
+<td>Self-emailed manuscript bundle: five attachments, 221,236 words
+(four essays totalling 189,355 words plus the 31,881-word book draft
+v3.2). Contains U = I x R (Version 2, lines 6 to 9), the control-failure
+passage (HRIH line 14005), the embedded-correction thesis, and the name
+Eden Protocol itself (“Chapter 20: The Eden Protocol: Intelligence Born
+in the Garden”, 31 occurrences in the draft).</td>
+<td>.eml SHA-256
+f0d1f38ffd8546152d9d9d28dc5ec083c16a35858f2c12b63e69db7ed50901ad · Gmail
+Message-ID CAGPsKAnp-DLDBOeBAh4t9XsqJBKdoe07uORGF86meoSMFnin7w</td>
+</tr>
+<tr>
+<td>30 Apr 2025, 13:37:05 +0100</td>
+<td>Expanded 562-page draft manuscript. Expands the Eden Protocol; first
+names Caretaker Doping and Meltdown Triggers; Babylon versus Eden
+framing (106 / 552 whole-word occurrences).</td>
+<td>.eml SHA-256
+09f5b5e156ed96f8883eaf668495fd350898ce62be6294b8f788e0e2d6dcb664</td>
+</tr>
+<tr>
+<td>2 Jan 2026</td>
+<td>Infinite Architects published in print (ebook 6 Jan 2026). 37 named
+original concepts; 127 verified sources (Appendix E).</td>
+<td>ISBN 978-1806056200</td>
+</tr>
+<tr>
+<td>7 Jan 2026</td>
+<td>Correspondence to the BBC (Faisal Islam) on the day of the Willow
+broadcast, the book already published.</td>
+<td>.eml original SHA-256
+28ada54653d866fc308674cf417bb68015f494fa813f4d28ccec366c9a1ee7b3 (served
+copy b996883b, redacted for a third party’s address)</td>
+</tr>
+<tr>
+<td>22 Jan 2026</td>
+<td>BBC quantum evidence package, self-sent.</td>
+<td>.eml original SHA-256
+af863bfa2fc992efc84c656d216894721ef205443774c7804d26907f6fc06c72 (served
+copy f97e12f5, Drive links redacted)</td>
+</tr>
+<tr>
+<td>17 Mar 2026</td>
+<td>First OSF deposit of the document suite (a deposit date, not a
+creation date).</td>
+<td>OSF Revisions tabs: version 1 entries dated 17 Mar 2026</td>
+</tr>
+</tbody>
 </table>
-
-<h2>How this project's files are organised (so nothing is misread)</h2>
-<ul>
-<li><strong>Canonical files at OSF Storage root</strong> carry no version number in the filename. Each
-document has exactly one canonical name; its full history is the <em>Revisions</em> tab on that file.</li>
-<li><strong>The version stack IS the history.</strong> Uploading a corrected file under the same name adds
-a new version on top — it never overwrites the earlier one. Example: <em>Executive-Summary.pdf</em> holds
-four versions, version 1 dated 17 March 2026, the latest dated 4 July 2026. Click <em>Revisions</em> on any
-file to see every dated version.</li>
-<li><strong>The <code>archive/</code> folder</strong> holds superseded, separately-named earlier drafts
-(e.g. <em>Eden-Vision-v2</em>, <em>Executive-Summary-v6</em>) from the pre-canonical naming era. They are kept
-for the record and carry their own original March 2026 dates. They are historical copies, not the primary
-priority record — the primary record is the anchors in the table above and the Revisions tabs.</li>
-<li><strong>Nothing is ever deleted.</strong> Superseded material is moved to <code>archive/</code>, never removed.</li>
-</ul>
-
-<h2>What priority is, and is not, claimed</h2>
-<p>Priority is claimed only for what the anchored artifacts actually contain on their timestamped dates —
-the correction-requirement thesis and the U = I × R relation (8 Dec 2024), and the named Eden Protocol
-framing (30 Apr 2025). Where independent researchers reached related results, priority is credited to them
-in Paper XI wherever their dates require it; several convergences are explicitly logged as concurrent or
-later than the external work, not as claims against it. This document establishes when this author's own
-artifacts existed; it does not assert that no one else has reasoned about recursion, correction, or scaling.</p>
-
-<div class="foot">
-Verification is invited, not asserted: recompute the SHA-256 of the original .eml and manuscript to confirm
-the hashes above; check the OSF <em>Revisions</em> tabs for the deposit-version dates; check ISBN 978-1806056200
-for the publication date. This document is part of the ARC/Eden research programme and is authored with
-AI assistance under human direction and authorship (see any programme paper's closing Declaration).
-</div>
-</body></html>
+<p><strong>What the timestamps establish, stated precisely.</strong> A
+self-sent Gmail message carries Google’s server timestamp via its
+Message-ID and Received trail; that establishes existence-by-date of the
+exact hashed bytes. The DKIM signature operates in transit and is not
+preserved by the .eml export, so no claim here is phrased as
+“DKIM-verified”: these are Google-server-timestamped, SHA-256-anchored
+artefacts, which is the checkable claim.</p>
+<p><strong>Where the source emails live.</strong> The two self-sent
+manuscript .emls are held in a companion private component of this
+project and are available to serious verifiers on request
+(michael@michaeldariuseastwood.com). The published SHA-256 hashes above
+verify any provided copy byte for byte. Gating access does not alter
+evidence: the hash, not the hosting, is the proof.</p>
+<h2 id="the-artefact-chain">2. The artefact chain</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Date</th>
+<th>Artefact</th>
+<th>Date type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2024-12-08</td>
+<td>8 December 2024 manuscript</td>
+<td>Gmail server timestamp on self-sent email carrying the
+manuscript</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2025-04-30</td>
+<td>30 April 2025 manuscript</td>
+<td>Gmail server timestamp on self-sent email</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2026-01-02</td>
+<td>Infinite Architects paperback</td>
+<td>Public print publication date</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2026-01-06</td>
+<td>Infinite Architects ebook</td>
+<td>Public ebook publication date</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2026-01-17</td>
+<td>Paper I</td>
+<td>Public paper release</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2026-01-22</td>
+<td>Paper II</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>2026-02-09</td>
+<td>Paper III</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>2026-02-13</td>
+<td>Foundational paper</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>2026-02-22</td>
+<td>Eden Engineering public note</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>2026-03-16</td>
+<td>Paper IV series</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>2026-03-16 to 2026-03-18</td>
+<td>Papers V through IX</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-complete-priority-claims-ledger-37-claims">3. The complete
+priority-claims ledger (37 claims)</h2>
+<p>Machine-readable canonical source:
+https://www.michaeldariuseastwood.com/research/priority.json (version
+1.2, 2026-07-31), where each claim carries its full claim text, evidence
+pointers and risk notes. Categories: timeline (dated events), concepts
+(named concepts with first-publication dates), findings (results with
+release dates).</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>ID</th>
+<th>First date</th>
+<th>Category</th>
+<th>Claim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC-001</td>
+<td>2024-12-08</td>
+<td>timeline</td>
+<td>8 December 2024 self-emailed manuscript as earliest timestamped
+anchor</td>
+</tr>
+<tr>
+<td>PC-002</td>
+<td>2024-12-08</td>
+<td>concepts</td>
+<td>Embedded-correction alignment thesis first stated</td>
+</tr>
+<tr>
+<td>PC-003</td>
+<td>2024-12-08</td>
+<td>concepts</td>
+<td>ARC Principle - Artificial Recursive Creation as a named
+cross-domain framework</td>
+</tr>
+<tr>
+<td>PC-004</td>
+<td>2024-12-08</td>
+<td>concepts</td>
+<td>Eden Protocol - precursor description of substrate-embedded
+alignment governance</td>
+</tr>
+<tr>
+<td>PC-005</td>
+<td>2024-12-08</td>
+<td>concepts</td>
+<td>Hyperspace Recursive Intelligence Hypothesis (HRIH)</td>
+</tr>
+<tr>
+<td>PC-006</td>
+<td>2024-12-09</td>
+<td>timeline</td>
+<td>Willow first-below-threshold QEC one day after the 8 December 2024
+anchor</td>
+</tr>
+<tr>
+<td>PC-007</td>
+<td>2024-12-18</td>
+<td>timeline</td>
+<td>AI-control-failure prediction recorded ten days before Anthropic’s
+alignment-faking paper</td>
+</tr>
+<tr>
+<td>PC-008</td>
+<td>2025-01-20</td>
+<td>timeline</td>
+<td>DeepSeek R1 thinking-mode release convergent with
+sequential-recursion anchor</td>
+</tr>
+<tr>
+<td>PC-009</td>
+<td>2025-04-30</td>
+<td>timeline</td>
+<td>30 April 2025 manuscript expands the Eden Protocol; first names
+Caretaker Doping and Meltdown Triggers; Babylon and Eden framing</td>
+</tr>
+<tr>
+<td>PC-010</td>
+<td>2026-01-02</td>
+<td>timeline</td>
+<td>Infinite Architects paperback first published 2 January 2026</td>
+</tr>
+<tr>
+<td>PC-011</td>
+<td>2026-01-02</td>
+<td>concepts</td>
+<td>ARC Principle equation U = I x R^alpha formally published as a
+conjecture</td>
+</tr>
+<tr>
+<td>PC-012</td>
+<td>2026-01-02</td>
+<td>concepts</td>
+<td>37 named original concepts of Infinite Architects</td>
+</tr>
+<tr>
+<td>PC-013</td>
+<td>2026-01-02</td>
+<td>concepts</td>
+<td>Caretaker Doping - alignment-anchoring mechanism (published concept,
+TRL 0-1)</td>
+</tr>
+<tr>
+<td>PC-014</td>
+<td>2026-01-02</td>
+<td>concepts</td>
+<td>Three-state ethical evaluation (Affirm / Deny / Investigate) as an
+alignment application framing</td>
+</tr>
+<tr>
+<td>PC-015</td>
+<td>2026-01-02</td>
+<td>concepts</td>
+<td>Three Ethical Loops - nested-loop alignment architecture</td>
+</tr>
+<tr>
+<td>PC-016</td>
+<td>2026-01-02</td>
+<td>concepts</td>
+<td>Semiconductor Chokepoint Mechanism</td>
+</tr>
+<tr>
+<td>PC-017</td>
+<td>2026-01-02</td>
+<td>concepts</td>
+<td>HARI Treaty proposal</td>
+</tr>
+<tr>
+<td>PC-018</td>
+<td>2026-01-02</td>
+<td>concepts</td>
+<td>Meltdown Alignment</td>
+</tr>
+<tr>
+<td>PC-019</td>
+<td>2026-01-02</td>
+<td>concepts</td>
+<td>Monitoring Removal Test</td>
+</tr>
+<tr>
+<td>PC-020</td>
+<td>2026-01-02</td>
+<td>concepts</td>
+<td>Orchard Caretaker Vow</td>
+</tr>
+<tr>
+<td>PC-021</td>
+<td>2026-01-02</td>
+<td>concepts</td>
+<td>Infinite Covenant</td>
+</tr>
+<tr>
+<td>PC-022</td>
+<td>2026-01-06</td>
+<td>timeline</td>
+<td>Infinite Architects ebook edition first published 6 January
+2026</td>
+</tr>
+<tr>
+<td>PC-023</td>
+<td>2026-01-07</td>
+<td>timeline</td>
+<td>BBC broadcast of Willow and parallel universes with Hartmut Neven
+five days after paperback</td>
+</tr>
+<tr>
+<td>PC-024</td>
+<td>2026-01-17</td>
+<td>timeline</td>
+<td>OSF programme DOI issued and Paper I first released 17 January
+2026</td>
+</tr>
+<tr>
+<td>PC-025</td>
+<td>2026-01-22</td>
+<td>timeline</td>
+<td>Paper II experimental validation first released 22 January 2026</td>
+</tr>
+<tr>
+<td>PC-026</td>
+<td>2026-01-22</td>
+<td>findings</td>
+<td>Parallel-recursion sub-linear scaling exponent alpha_parallel
+approximately zero</td>
+</tr>
+<tr>
+<td>PC-027</td>
+<td>2026-01-22</td>
+<td>findings</td>
+<td>Initial sequential exponent estimate alpha_sequential approximately
+2.24 - formally retracted</td>
+</tr>
+<tr>
+<td>PC-028</td>
+<td>2026-01-22</td>
+<td>findings</td>
+<td>Revised robust sequential-recursion exponent alpha_sequential
+approximately 0.49 (sub-linear)</td>
+</tr>
+<tr>
+<td>PC-029</td>
+<td>2026-01-22</td>
+<td>findings</td>
+<td>Sequential &gt; parallel fundamental inequality across tested
+models</td>
+</tr>
+<tr>
+<td>PC-030</td>
+<td>2026-01-22</td>
+<td>findings</td>
+<td>Six-frontier-model empirical panel design (Claude, DeepSeek, Gemini,
+Grok, Groq Qwen, GPT)</td>
+</tr>
+<tr>
+<td>PC-031</td>
+<td>2026-02-09</td>
+<td>concepts</td>
+<td>Paper III released - Alignment Scaling Problem formalisation</td>
+</tr>
+<tr>
+<td>PC-032</td>
+<td>2026-02-09</td>
+<td>findings</td>
+<td>Capability-alignment independence finding</td>
+</tr>
+<tr>
+<td>PC-033</td>
+<td>2026-02-09</td>
+<td>findings</td>
+<td>Three-tier alignment hierarchy</td>
+</tr>
+<tr>
+<td>PC-034</td>
+<td>2026-02-13</td>
+<td>timeline</td>
+<td>ARC Principle foundational cross-domain paper released 13 February
+2026</td>
+</tr>
+<tr>
+<td>PC-035</td>
+<td>2026-02-13</td>
+<td>findings</td>
+<td>Cross-domain recursive-amplification convergence across four
+independent programmes</td>
+</tr>
+<tr>
+<td>PC-036</td>
+<td>2026-02-13</td>
+<td>findings</td>
+<td>Application of the bare alpha = d / (d + 1) scaling exponent to
+recursive AI capability</td>
+</tr>
+<tr>
+<td>PC-037</td>
+<td>2026-02-22</td>
+<td>timeline</td>
+<td>Eden Engineering research note released 22 February 2026; expanded
+specification withdrawn 14 July 2026</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-is-claimed-and-what-is-not">4. What is claimed, and what is
+not</h2>
+<p>Priority is claimed only for what the anchored artefacts contain on
+their timestamped dates. The 8 December 2024 control-failure passage
+establishes the structural thesis ten days before Anthropic’s
+alignment-faking result (Greenblatt et al., arXiv:2412.14093, 18
+December 2024); no claim is made to their specific RL-training
+mechanism, and any citation of their 78 per cent figure carries both the
+RL-training condition and the 12 per cent baseline. Where independent
+researchers reached related results, credit runs to them wherever their
+dates require it: the register classes such rows concurrent or prior art
+explicitly (Sharma and Chopra on the quantified sequential result;
+Kitaev and Preskill on quantum error correction; o1 preceding the
+manuscript on deployed sequential reasoning). The convergence register
+stands at 26 dated events as at 31 July 2026, of which 22 are claimed as
+independent convergence and 4 are disclosed and not claimed. This
+document establishes when this author’s artefacts existed; it does not
+assert that no one else has reasoned about recursion, correction, or
+scaling.</p>
+<h2 id="how-the-files-are-organised">5. How the files are organised</h2>
+<p>Canonical files at OSF Storage root carry no version number; each
+file’s history is its Revisions tab. Uploading a corrected file under
+the same name adds a version, never overwrites. The archive folder holds
+superseded early drafts under their original names. Nothing is deleted;
+superseded material moves to archive.</p>
+<p><em>Version 2 · 31 July 2026 · Michael Darius Eastwood · verify,
+don’t believe.</em></p>
+</body>
+</html>

@@ -1,7 +1,7 @@
 # The ARC Principle and the Eden Protocol
 
 **The code, data and recorded outputs behind a research programme on recursive intelligence
-scaling and embedded AI alignment.** Twenty-three documents, nine experiments, every result
+scaling and embedded AI alignment.** Thirty documents, nine experiments, every result
 file the papers cite.
 
 [![OSF DOI](https://img.shields.io/badge/OSF-10.17605%2FOSF.IO%2F6C5XB-blue)](https://doi.org/10.17605/OSF.IO/6C5XB)
@@ -26,7 +26,7 @@ arc-principle-validation/
 ├── LICENCE-PAPERS.md          papers, text, figures and PDFs
 ├── CITATION.cff               machine-readable citation
 ├── EXPERIMENTS-INDEX.md       every experiment, indexed by claim
-├── papers/                    23 document folders, each with its own README
+├── papers/                    30 document folders, each with its own README
 ├── experiments/               9 experiments plus shared code, mapped in experiments/README.md
 ├── instruments/               reference code for runs not yet made, mapped in instruments/README.md
 ├── priority-claims/           the dated provenance record
@@ -104,9 +104,16 @@ earlier version was an algebraic identity check and never an empirical validatio
 | Paper IX | synthesis of the programme and a four-tier replication roadmap | synthesis |
 | Paper X | coupled co-scaling of capability and correction | published |
 | Paper XI | convergence across independent traditions | published |
+| Paper XII | public benchmark rescoring | published |
+| Paper XIII | the self-acceleration exponent | published |
 | Paper C | a complexity-theoretic treatment | published |
 | HRIH Paper | a cosmological hypothesis | **speculative, outside the empirical core.** No result in this repository bears on it and it is not part of the evidence base |
 | The ARC Theory | the theory-level statement | published |
+| The ARC Theory, two-page form | the theory in two pages | published |
+| Recursive Dynamics, the founding paper | the proposal of a field | published |
+| The theory-level predictions registration | twenty-two severable propositions, registered before any admissible confirmatory outcome | registered on OSF, 8 September 2026 |
+| The Dated Prediction Register | forward predictions as one verifiable chain | published |
+| The ARC Alignment-Scaling Working Report | the live laboratory notebook of the alignment-scaling work | working report |
 | Foundational | the axiomatic derivation and the `d/(d+1)` prediction | published |
 | On the Origin of Scaling Laws | the cross-domain evidence catalogue | published |
 | Eden Engineering | the protocol architecture specification | specification |
