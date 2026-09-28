@@ -1,3 +1,5 @@
+> Working note, written for the version 3.0 update that this file dates 24 March 2026. It is a set of drafting instructions, not part of the paper; its wording, figures and status labels are draft material, and where they differ from the paper, the paper's current version stands. For the paper itself, the site's paper register records version 3.11, status published, latest version 13 September 2026, at https://www.michaeldariuseastwood.com/research/papers/paper-vii-cauchy-unification.html
+
 # PAPER VII v3.0 UPDATE: EXACT CHANGES
 # Each change specifies WHERE in the paper and WHAT to insert/replace.
 # Copy each passage directly into the HTML source.

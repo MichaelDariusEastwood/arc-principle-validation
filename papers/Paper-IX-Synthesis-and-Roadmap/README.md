@@ -8,13 +8,13 @@
 
 ## Summary
 
-The synthesis paper for the ARC/Eden research programme. Integrates findings from all 12 research papers into a single honest assessment of what is proven, what is inconclusive, and what remains to be tested.
+The synthesis paper for the ARC/Eden research programme. Integrates the papers that precede it into a single honest assessment of what it classes as 'proven at pilot scale', what is inconclusive, and what remains to be tested.
 
 ## Key Contents
 
-- Five-tier evidence hierarchy (proven, supported, inconclusive, methodological, theoretical)
-- Complete programme map of all 18 documents
-- What the programme got wrong (five corrections documented)
+- Five-tier evidence hierarchy (in the paper's own terms: 'proven at pilot scale', supported, inconclusive, methodological, theoretical)
+- Complete programme map as of 20 September 2026 (Table 3): twenty-five rows over the twenty-nine documents the register carries
+- What the programme got wrong (nineteen corrections documented)
 - Phased roadmap with costs (Phase A: 60-140k through Phase C: 10-50M)
 - Separate sections for funders and peer reviewers
 

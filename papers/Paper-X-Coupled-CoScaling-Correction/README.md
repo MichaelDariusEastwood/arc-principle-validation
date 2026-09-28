@@ -12,7 +12,7 @@
 
 ## Summary
 
-The keystone safety result of the ARC/Eden programme. It proves that the stability of a
+This paper proves a theorem about a minimal dynamical model. In that model the stability of a
 self-improving system is **not** governed by how fast capability grows, but by a single
 inequality between two scaling exponents: the exponent with which **correction** strengthens
 as the system becomes more capable (β) must exceed the exponent with which **drift**
@@ -43,8 +43,8 @@ Theorem, and (d) the verification harness. The paper credits these precursors up
 contribution is positioned precisely rather than over-claimed.
 
 **Audited.** The paper was put through a multi-agent adversarial red-team (5 fronts; 24
-objections, 21 confirmed, **0 fatal**) and revised accordingly; the full report is in
-`results/redteam.md`. Every surviving objection was a framing/wording/edge-case fix - none
+objections, 21 upheld on internal review, **0 fatal**) and revised accordingly; the full report is in
+`results/redteam.md`. The surviving objections reduce to about six distinct defects: two one-line maths corrections, one of them a false iff in Theorem 5, and the rest wording, framing or code fixes; none
 touched the β > k result.
 
 ## Key Contents
