@@ -161,7 +161,7 @@ the Cauchy theorem verification as its mathematical foundation.
   (manifest-driven mathematical/computational validation with tiered evidence)
 - **Legacy (`arc_20_domain_universal_test.py`):** Supporting exploratory
   comparison (mixed provenance, permissive legacy scoring)
-- **Supporting scripts:** Supporting (mathematical validation, numerical verification of proven theorems)
+- **Supporting scripts:** Supporting (mathematical validation, numerical verification of stated theorems)
 
 ## Paper
 

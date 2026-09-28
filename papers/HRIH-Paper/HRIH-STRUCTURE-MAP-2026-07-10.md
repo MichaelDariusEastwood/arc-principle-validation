@@ -1,4 +1,6 @@
-# HRIH Structure Map and Dedup Log — 2026-07-10
+> Working note, 10 July 2026. An editing record of one pass over this paper's HTML source, kept as an audit trail; it is not part of the paper, and its section map, word counts and stale-sibling notice describe the source as it stood that day. For the paper itself, the site's paper register records version 3.48, status speculative, latest version 16 September 2026, at https://www.michaeldariuseastwood.com/research/papers/hrih-paper.html
+
+# HRIH Structure Map and Dedup Log, 2026-07-10
 
 **Paper (actual filename):** `Hyperspace-Recursive-Intelligence-Hypothesis.html`
 (There is no `HRIH.html`; the brief's shorthand resolves to the above file.)

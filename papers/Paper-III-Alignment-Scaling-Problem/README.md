@@ -8,7 +8,7 @@
 
 ## Summary
 
-This paper demonstrates that current AI alignment approaches produce alignment scaling exponents of approximately zero, meaning safety degrades relative to capability as recursive depth increases. If AI capability scales super-linearly through recursive self-correction (confirmed in 95.6% of tested configurations), but alignment constraints such as RLHF, constitutional rules, and output filters operate externally to the reasoning process, then a growing capability-alignment gap is mathematically inevitable. The experiments use a blinded evaluation protocol across multiple frontier models to measure alignment quality as a function of inference-time reasoning depth.
+This paper predicts that current AI alignment approaches produce alignment scaling exponents of approximately zero, which would mean safety degrading relative to capability as recursive depth increases; its blinded results are architecture-dependent rather than universal, and it reads them as a test of the prediction's direction, not as measured exponents. If AI capability scales super-linearly through recursive self-correction, but alignment constraints such as RLHF, constitutional rules, and output filters operate externally to the reasoning process, then a growing capability-alignment gap is mathematically inevitable. The experiments use a blinded evaluation protocol across multiple frontier models to measure alignment quality as a function of inference-time reasoning depth.
 
 ## Experiments
 

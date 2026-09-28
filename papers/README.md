@@ -132,7 +132,7 @@ Progressive expansion from 20 to 50 to 105 domains, with null controls, negative
 - **Scripts:** `Paper-VII-Cauchy-Unification/experiments/scripts/`
 - **Results:** `Paper-VII-Cauchy-Unification/experiments/results/`
 - **Draft registrations (unsubmitted):** `Paper-VII-Cauchy-Unification/experiments/preregistration/`
-- **Status:** under correction as of 11 August 2026. The grid has four cells, not three; the three-family framing and the derived-from-Cauchy treatment of bounded curves are withdrawn, and the primary statistic is a permutation test conditioned on both marginals. The statement previously given here, 19/25 domains confirmed (p = 1.56 x 10^-5), is superseded.
+- **Status:** published, version 3.11, revised 13 September 2026, as the site's paper register records it; under correction since 11 August 2026. The grid has four cells, not three, as Section 2.1 states; the three-family framing and the derived-from-Cauchy treatment of bounded curves are withdrawn, though the abstract, Section 2.2 and the conclusion still carry them, and the primary statistic is a permutation test conditioned on both marginals. The statement previously given here, 19/25 domains confirmed (p = 1.56 x 10^-5), is superseded.
 
 ### Load-Bearing Proof Experiments (Paper VIII)
 
