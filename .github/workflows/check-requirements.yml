@@ -1,0 +1,19 @@
+name: requirements files
+
+# Every requirements file must stay a list of packages pip can read (see .github/scripts/check_requirements.py:
+# a release sync once wrote a paper's text over Paper X's requirements.txt, and the paper's five-minute check
+# stopped at its first step).
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --quiet packaging
+      - run: python .github/scripts/check_requirements.py
