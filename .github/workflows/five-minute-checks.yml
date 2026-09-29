@@ -1,0 +1,19 @@
+name: Five-minute checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  paper-x-five-minute-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: The published check, exactly as the README gives it (expected 14 passed)
+        working-directory: papers/Paper-X-Coupled-CoScaling-Correction
+        run: |
+          pip install -r requirements.txt && python code/test_theorems_independent.py | tee check-output.txt
+          grep -q "14 passed" check-output.txt
