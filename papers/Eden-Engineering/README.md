@@ -1,6 +1,6 @@
-# Eden Engineering: The Eden Protocol Engineering Specification
+# Engineering Specification · The ARC Theory · The Eden Protocol · Eden Engineering: Architecture for Embedded AI Alignment That Scales With Capability
 
-**Full title:** Eden Engineering: The Eden Protocol Engineering Specification
+**Full title:** Engineering Specification · The ARC Theory · The Eden Protocol · Eden Engineering: Architecture for Embedded AI Alignment That Scales With Capability
 **Version:** v7.0.1
 **Version date:** revised 7 October 2026
 **First published:** 22 February 2026

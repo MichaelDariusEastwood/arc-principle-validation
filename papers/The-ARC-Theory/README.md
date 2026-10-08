@@ -1,4 +1,4 @@
-# The ARC Theory (statement paper)
+# Statement Paper · The ARC Theory · Five Laws of Recursive Growth, Correction and Persistence
 
 **Version:** v7.3
 **Version date:** revised 7 October 2026

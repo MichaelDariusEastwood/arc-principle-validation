@@ -1,4 +1,4 @@
-# The Self-Acceleration Exponent (Paper XIII)
+# Paper XIII · The ARC Theory · Laws I and II, the ARC Principle and the ARC Co-Scaling Law · The Self-Acceleration Exponent: a Measurable Threshold Joining Growth to Stability
 
 **Version:** v1.10
 **Version date:** revised 5 October 2026

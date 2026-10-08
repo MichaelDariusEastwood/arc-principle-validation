@@ -1,4 +1,4 @@
-# Recursive Dynamics: The Proposal of a Field (founding paper)
+# Founding Paper · Recursive Dynamics · The Science of Systems That Improve Themselves
 
 **Version:** v3.4
 **First published:** 31 August 2026

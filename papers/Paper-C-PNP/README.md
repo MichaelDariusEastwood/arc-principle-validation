@@ -1,6 +1,6 @@
-# Paper C - Polymathy and Neurodivergent Cognition
+# Paper C · Standalone · Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy
 
-**Full title:** Polymathy and Neurodivergent Cognition: A Hypothesis at the Intersection of Giftedness, Monotropic Cognition, and Institutional Misrecognition - the Polymathic Neurodivergent Profile (PNP)
+**Full title:** Paper C · Standalone · Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy
 
 **Author:** Michael Darius Eastwood
 **Version:** v1.10 (Working Paper)

@@ -1,6 +1,6 @@
-# Paper VI: The Honey Architecture
+# Paper VI · The ARC Theory · The Eden Protocol · The Honey Architecture: Safety Built into the Objective
 
-**Full title:** Paper VI: The Honey Architecture
+**Full title:** Paper VI · The ARC Theory · The Eden Protocol · The Honey Architecture: Safety Built into the Objective
 **Version:** v3.11
 **Version date:** Working Paper, revised 5 October 2026
 **First published:** 16 March 2026

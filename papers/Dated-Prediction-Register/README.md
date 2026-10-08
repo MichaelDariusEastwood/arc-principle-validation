@@ -1,4 +1,4 @@
-# The Dated Prediction Register: Forward Predictions as One Verifiable Chain
+# Register · The ARC Theory · The Dated Prediction Register: Forward Predictions as One Verifiable Chain
 
 **Version:** v2.1
 **Version date:** revised 5 October 2026

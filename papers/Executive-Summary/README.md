@@ -1,6 +1,6 @@
-# ARC/Eden Research Programme: Executive Summary
+# Executive Summary · Recursive Dynamics · The ARC/Eden Research Programme
 
-**Full title:** ARC/Eden Research Programme: Executive Summary
+**Full title:** Executive Summary · Recursive Dynamics · The ARC/Eden Research Programme
 **Version:** v3.24
 **Version date:** Working Paper, revised 8 October 2026
 **First published:** 22 February 2026
