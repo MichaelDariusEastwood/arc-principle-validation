@@ -32,3 +32,11 @@ Published registrations remain frozen. A text correction requires a successor ve
 approved and registered by the author. Historical files and licence grants retain their
 history. T2 prepares documents and deposits; T4 reviews and merges them and carries
 matching files to the website.
+
+## Document metadata before release
+
+Before local checks, provide the document-only dependencies with `python3 -m pip install -r scripts/requirements-documents.txt` in the chosen environment. The hosted document workflow installs the same pinned dependencies.
+
+After exporting a document, apply its recorded metadata with `python3 scripts/document_pdf_metadata.py --slug <document-slug> --apply`. Check the citation identity first; a metadata revision must not relabel an old document. This tool refuses changes to existing content objects and preserves the original render dates. Record the resulting PDF hash in `papers/publication-manifest.json`, then run `python3 scripts/check_document_release.py`. Its default checks all current document exports; a lost HARI metadata record must be restored before release.
+
+The metadata-only HARI repair of 8 October 2026 keeps Paper 2.4 and Instruments 2.3 at their original visible dates. Both documents retain their working-draft status and outstanding review. The website and OSF must receive these canonical PDF bytes; neither mirror independently stamps or re-renders them.

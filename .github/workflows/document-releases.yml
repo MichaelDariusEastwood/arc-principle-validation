@@ -6,6 +6,9 @@ on:
     paths:
       - 'papers/**'
       - 'scripts/check_document_release.py'
+      - 'scripts/document_pdf_metadata.py'
+      - 'scripts/test_document_pdf_metadata.py'
+      - 'scripts/requirements-documents.txt'
       - '.github/workflows/document-releases.yml'
 permissions:
   contents: read
@@ -16,6 +19,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Install document-only dependencies
+        run: python3 -m pip install -r scripts/requirements-documents.txt
+      - name: Check metadata repair behaviour
+        run: python3 -m unittest discover -s scripts -p 'test_document_pdf_metadata.py'
       - name: Check released export records
         run: python3 scripts/check_document_release.py
       - name: Refuse changed documents without verified export records
