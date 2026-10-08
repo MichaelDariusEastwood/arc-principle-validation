@@ -1,7 +1,7 @@
 # Paper VI: The Honey Architecture
 
 **Full title:** Paper VI: The Honey Architecture
-**Version:** v3.8
+**Version:** v3.9
 **Version date:** Working Paper, revised 21 September 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
