@@ -6,6 +6,9 @@ Only explicitly recorded document metadata is applied. No study code is imported
 Discovery: eden_capabilities_index searched 4,267 items across 10 kinds, no exact
 match and 240 near misses. The existing website stamp-pdf-metadata.py was read;
 its Info/XMP routines are reused here with canonical-source and content checks.
+Discovery: eden_capabilities_index.py search 'canonical PDF metadata lost record
+validation' searched 4,268 items in 10 kinds, with 234 near misses. The existing
+canonical module and website stamper were inspected and reused for this repair.
 """
 import argparse
 import hashlib
@@ -14,6 +17,7 @@ import os
 from pathlib import Path
 import re
 import sys
+import yaml
 from xml.sax.saxutils import escape
 from pypdf import PdfReader, PdfWriter
 from pypdf.generic import DecodedStreamObject, NameObject
@@ -102,24 +106,30 @@ def identity_issues(row, root=ROOT):
     for key in ('title', 'version', 'doi'):
         if f.get(key) != row.get(key):
             issues.append('metadata ' + key + ' disagrees with document manifest')
-    cff = (root / row['files']['cff']['path']).read_text()
+    cff = yaml.safe_load((root / row['files']['cff']['path']).read_text())
+    if not isinstance(cff, dict):
+        return issues + ['citation is not a mapping']
     for key, expected in [('title', f['title']), ('version', f['version']),
                           ('url', f['url']), ('date-released', f['dates'][-1])]:
-        match = re.search(r'^' + key + r':\s*[\x27\"]?(.*?)[\x27\"]?\s*$', cff, re.M)
-        if not match or match.group(1).replace("''", "'") != expected:
+        if str(cff.get(key, '')) != expected:
             issues.append('metadata ' + key + ' disagrees with citation')
-    given = re.search(r'^\s+given-names:\s*[\x27\"]?([^\x27\"\n]+)', cff, re.M)
-    family = re.search(r'^\s+-?\s*family-names:\s*[\x27\"]?([^\x27\"\n]+)', cff, re.M)
-    if not given or not family or f['authors'] != [given.group(1).strip() + ' ' + family.group(1).strip()]:
+    authors = [' '.join(str(a.get(k, '')).strip() for k in ('given-names', 'family-names')).strip()
+               if not a.get('name') else str(a['name']) for a in cff.get('authors', [])]
+    if not authors or f['authors'] != authors:
         issues.append('metadata author disagrees with citation')
-    if f['doi'].removeprefix('https://doi.org/') not in cff:
-        issues.append('metadata DOI absent from citation')
+    preferred = cff.get('preferred-citation') or {}
+    normalise_doi = lambda d: str(d).removeprefix('https://doi.org/').removeprefix('http://doi.org/').casefold()
+    primary_dois = [value for value in (preferred.get('doi'), cff.get('doi')) if value]
+    if not primary_dois or any(normalise_doi(d) != normalise_doi(f['doi']) for d in primary_dois):
+        issues.append('metadata DOI disagrees with authoritative citation DOI')
+    if not f.get('dates') or str(preferred.get('date-published', '')) != f['dates'][0]:
+        issues.append('metadata original publication date disagrees with preferred citation')
     return issues
 
 
 def metadata_findings(row, root=ROOT):
     if not row.get('pdf_metadata'):
-        return []
+        return ['repaired document has lost its required metadata record'] if row.get('metadata_revision') else []
     problems = identity_issues(row, root)
     ok, missing = state(root / row['files']['pdf']['path'], row['pdf_metadata'])
     if not ok:

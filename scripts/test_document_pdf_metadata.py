@@ -8,7 +8,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from pypdf import PdfReader, PdfWriter
-from document_pdf_metadata import stamp, state, identity_issues
+from document_pdf_metadata import stamp, state, identity_issues, metadata_findings
 
 
 class DocumentMetadataTests(unittest.TestCase):
@@ -34,6 +34,9 @@ class DocumentMetadataTests(unittest.TestCase):
         self.assertIn('/Author', missing)
         self.assertIn('XMP', missing)
 
+    def test_repaired_document_cannot_drop_metadata_record(self):
+        self.assertTrue(metadata_findings({'metadata_revision': {'date': '2026-10-08'}}))
+
     def test_append_only_repair_is_idempotent(self):
         before = self.path.read_bytes()
         report = stamp(self.path, self.fields)
@@ -50,12 +53,28 @@ class DocumentMetadataTests(unittest.TestCase):
         self.assertEqual(state(self.path, next_fields), (False, ['XMP']))
 
     def test_wrong_author_cannot_be_stamped_as_current(self):
-        self.root.joinpath('citation.cff').write_text("title: 'Document title'\nversion: '2.4'\nurl: 'https://example.org/document'\ndate-released: '2026-10-08'\nauthors:\n  - family-names: 'Eastwood'\n    given-names: 'Michael Darius'\ndoi: '10.17605/OSF.IO/WXPCE'\n")
+        self.root.joinpath('citation.cff').write_text("title: 'Document title'\nversion: '2.4'\nurl: 'https://example.org/document'\ndate-released: '2026-10-08'\nauthors:\n  - family-names: 'Eastwood'\n    given-names: 'Michael Darius'\npreferred-citation:\n  doi: '10.17605/OSF.IO/WXPCE'\n  date-published: '2026-10-08'\nmessage: 'Earlier reference 10.17605/OSF.IO/WXPCE'\n")
         row = {'title': self.fields['title'], 'version': '2.4', 'doi': self.fields['doi'],
                'files': {'cff': {'path': 'citation.cff'}}, 'pdf_metadata': copy.deepcopy(self.fields)}
         self.assertEqual(identity_issues(row, self.root), [])
         row['pdf_metadata']['authors'] = ['Someone Else']
         self.assertIn('metadata author disagrees with citation', identity_issues(row, self.root))
+
+    def test_conflicting_primary_doi_is_not_rescued_by_prose(self):
+        self.test_wrong_author_cannot_be_stamped_as_current()
+        p = self.root / 'citation.cff'
+        p.write_text(p.read_text().replace("  doi: '10.17605/OSF.IO/WXPCE'", "  doi: '10.17605/OSF.IO/67MX8'"))
+        row = {k: self.fields[k] for k in ('title', 'version', 'doi')}
+        row.update(files={'cff': {'path': 'citation.cff'}}, pdf_metadata=self.fields)
+        self.assertIn('metadata DOI disagrees with authoritative citation DOI', identity_issues(row, self.root))
+
+    def test_wrong_original_date_is_rejected(self):
+        self.test_wrong_author_cannot_be_stamped_as_current()
+        row = {k: self.fields[k] for k in ('title', 'version', 'doi')}
+        fields = copy.deepcopy(self.fields)
+        fields['dates'] = ['2025-10-08', '2026-10-08']
+        row.update(files={'cff': {'path': 'citation.cff'}}, pdf_metadata=fields)
+        self.assertIn('metadata original publication date disagrees with preferred citation', identity_issues(row, self.root))
 
 
 if __name__ == '__main__':

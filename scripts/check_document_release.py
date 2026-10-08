@@ -70,7 +70,7 @@ def findings(row, root=ROOT):
                 out.append('citation version disagrees with manifest')
         if ext == 'txt' and len(data) < row.get('minimum_text_bytes', 1000):
             out.append('text companion below recorded full-text floor')
-    if row.get('pdf_metadata'):
+    if row.get('pdf_metadata') or row.get('metadata_revision'):
         try:
             from document_pdf_metadata import metadata_findings
             out.extend(metadata_findings(row, root))
