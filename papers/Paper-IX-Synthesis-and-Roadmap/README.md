@@ -1,7 +1,7 @@
 # Paper IX: Synthesis and Roadmap
 
 **Full title:** Paper IX: Synthesis and Roadmap
-**Version:** v2.4
+**Version:** v2.5
 **Version date:** Working Paper, revised 20 September 2026
 **First published:** 18 March 2026
 **Author:** Michael Darius Eastwood
