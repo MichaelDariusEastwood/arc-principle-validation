@@ -9,6 +9,11 @@ its Info/XMP routines are reused here with canonical-source and content checks.
 Discovery: eden_capabilities_index.py search 'canonical PDF metadata lost record
 validation' searched 4,268 items in 10 kinds, with 234 near misses. The existing
 canonical module and website stamper were inspected and reused for this repair.
+Discovery: eden_capabilities_index.py search 'canonical PDF required metadata empty
+subject prevention' searched 4268 items in 10 kinds; no exact match, 184 near misses.
+The existing document_pdf_metadata.py was read; extend it without a second checker.
+The installed PdfWriter.xmp_metadata setter was inspected and reused to replace
+existing XMP safely on a later incremental update.
 """
 import argparse
 import hashlib
@@ -20,9 +25,10 @@ import sys
 import yaml
 from xml.sax.saxutils import escape
 from pypdf import PdfReader, PdfWriter
-from pypdf.generic import DecodedStreamObject, NameObject
+from pypdf.generic import NameObject
 
 ROOT = Path(__file__).resolve().parents[1]
+REQUIRED_METADATA_SLUGS = frozenset({'hari-treaty-paper', 'hari-treaty-draft-instruments'})
 
 XMP_NS = (
     'xmlns:dc="http://purl.org/dc/elements/1.1/" '
@@ -36,9 +42,8 @@ def info_dict(f):
         "/Title": f["title"],
         "/Author": ", ".join(f["authors"]),
         "/Keywords": "; ".join(f["keywords"]),
+        "/Subject": f["subject"],
     }
-    if f["subject"]:
-        d["/Subject"] = f["subject"]
     return d
 
 def xmp_packet(f):
@@ -129,7 +134,8 @@ def identity_issues(row, root=ROOT):
 
 def metadata_findings(row, root=ROOT):
     if not row.get('pdf_metadata'):
-        return ['repaired document has lost its required metadata record'] if row.get('metadata_revision') else []
+        required = row.get('slug') in REQUIRED_METADATA_SLUGS or row.get('metadata_revision')
+        return ['repaired document has lost its required metadata record'] if required else []
     problems = identity_issues(row, root)
     ok, missing = state(root / row['files']['pdf']['path'], row['pdf_metadata'])
     if not ok:
@@ -180,11 +186,10 @@ def stamp(path, fields):
                       for k in ('/CreationDate', '/ModDate', '/Creator', '/Producer')}
     writer = PdfWriter(str(path), incremental=True)
     writer.add_metadata(info_dict(fields))
-    stream = DecodedStreamObject()
-    stream.set_data(xmp_packet(fields).encode('utf-8'))
+    writer.xmp_metadata = xmp_packet(fields).encode('utf-8')
+    stream = writer.root_object['/Metadata'].get_object()
     stream[NameObject('/Type')] = NameObject('/Metadata')
     stream[NameObject('/Subtype')] = NameObject('/XML')
-    writer._root_object[NameObject('/Metadata')] = writer._add_object(stream)
     temporary = path.with_suffix(path.suffix + '.metadata-tmp')
     try:
         writer.write(temporary)

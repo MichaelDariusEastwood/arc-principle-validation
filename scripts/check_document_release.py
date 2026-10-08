@@ -70,12 +70,12 @@ def findings(row, root=ROOT):
                 out.append('citation version disagrees with manifest')
         if ext == 'txt' and len(data) < row.get('minimum_text_bytes', 1000):
             out.append('text companion below recorded full-text floor')
-    if row.get('pdf_metadata') or row.get('metadata_revision'):
-        try:
-            from document_pdf_metadata import metadata_findings
-            out.extend(metadata_findings(row, root))
-        except Exception as exc:
-            out.append('metadata verification failed: ' + type(exc).__name__ + ': ' + str(exc))
+    # Required document identities are fixed in the checker, not removable row flags.
+    try:
+        from document_pdf_metadata import metadata_findings
+        out.extend(metadata_findings(row, root))
+    except Exception as exc:
+        out.append('metadata verification failed: ' + type(exc).__name__ + ': ' + str(exc))
     return sorted(set(out))
 
 

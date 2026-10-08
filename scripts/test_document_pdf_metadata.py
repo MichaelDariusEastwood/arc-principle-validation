@@ -4,11 +4,13 @@ Discovery: the existing website metadata stamper and canonical document checker
 were inspected; this covers lost export metadata, identity drift and safe repair.
 """
 import copy
+import json
 from pathlib import Path
 import tempfile
 import unittest
 from pypdf import PdfReader, PdfWriter
 from document_pdf_metadata import stamp, state, identity_issues, metadata_findings
+from check_document_release import findings, ROOT
 
 
 class DocumentMetadataTests(unittest.TestCase):
@@ -36,6 +38,26 @@ class DocumentMetadataTests(unittest.TestCase):
 
     def test_repaired_document_cannot_drop_metadata_record(self):
         self.assertTrue(metadata_findings({'metadata_revision': {'date': '2026-10-08'}}))
+
+    def test_required_documents_cannot_remove_both_metadata_fields(self):
+        rows = json.loads((ROOT / 'papers/publication-manifest.json').read_text())['documents']
+        for row in rows:
+            if row['slug'] not in {'hari-treaty-paper', 'hari-treaty-draft-instruments'}:
+                continue
+            with self.subTest(slug=row['slug']):
+                row = copy.deepcopy(row)
+                row.pop('pdf_metadata', None)
+                row.pop('metadata_revision', None)
+                self.assertIn('repaired document has lost its required metadata record', findings(row))
+
+    def test_empty_subject_clears_stale_nonempty_subject(self):
+        stamp(self.path, self.fields)
+        empty = {**self.fields, 'subject': ''}
+        self.assertIn('/Subject', state(self.path, empty)[1])
+        stamp(self.path, empty)
+        self.assertEqual(PdfReader(self.path).metadata.get('/Subject'), '')
+        self.assertEqual(state(self.path, empty), (True, []))
+        self.assertFalse(stamp(self.path, empty)['changed'])
 
     def test_append_only_repair_is_idempotent(self):
         before = self.path.read_bytes()
