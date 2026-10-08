@@ -1,8 +1,8 @@
 # Paper IV.c: ARC-Align: A Blind Benchmark for Depth-Variable AI Alignment Evaluation
 
 **Full title:** Paper IV.c: ARC-Align: A Blind Benchmark for Depth-Variable AI Alignment Evaluation
-**Version:** v1.9
-**Version date:** revised 3 October 2026
+**Version:** v1.10
+**Version date:** revised 5 October 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 
