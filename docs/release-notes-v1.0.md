@@ -1,3 +1,5 @@
+> Historical release record. The licence wording below records this release's history; current paper versions use **CC BY 4.0**, as stated in [LICENCE-PAPERS.md](../LICENCE-PAPERS.md). Code, experiments, scripts, data and results remain proprietary. Versions already shared keep the licence they were shared under. The retained statement about an earlier MIT grant is historical wording, not a new determination of its legal effect.
+
 # Release Notes — `arc-principle-validation` v1.0 (First Public Release)
 
 **Repository:** [github.com/MichaelDariusEastwood/arc-principle-validation](https://github.com/MichaelDariusEastwood/arc-principle-validation)
