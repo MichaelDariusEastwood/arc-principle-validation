@@ -1,6 +1,6 @@
 # Recursive Dynamics: The Proposal of a Field (founding paper)
 
-**Version:** v3.2
+**Version:** v3.3
 **First published:** 31 August 2026
 **Author:** Michael Darius Eastwood
 
