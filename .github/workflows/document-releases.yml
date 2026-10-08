@@ -1,0 +1,24 @@
+# Discovery: the existing research PDF renderer was inspected; this workflow invokes
+# the repository's document-release check and never imports a study or runs an experiment.
+name: Document release consistency
+on:
+  pull_request:
+    paths:
+      - 'papers/**'
+      - 'scripts/check_document_release.py'
+      - '.github/workflows/document-releases.yml'
+permissions:
+  contents: read
+jobs:
+  documents:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check released export records
+        run: python3 scripts/check_document_release.py
+      - name: Refuse changed documents without verified export records
+        env:
+          DOCUMENT_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python3 scripts/check_document_release.py --changed-since "$DOCUMENT_BASE_SHA"
