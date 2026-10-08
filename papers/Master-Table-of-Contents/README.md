@@ -1,8 +1,8 @@
 # ARC Principle Paper Suite: Master Table of Contents and Glossary
 
 **Full title:** ARC Principle Paper Suite: Master Table of Contents and Glossary
-**Version:** v3.9 (Working Paper)
-**Version date:** revised 28 September 2026
+**Version:** v3.10 (Working Paper)
+**Version date:** revised 29 September 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 
