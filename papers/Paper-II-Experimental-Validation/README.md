@@ -3,8 +3,8 @@
 **Earlier title:** Experimental Validation of Super-Linear Error Suppression (superseded: the super-linear estimate is retracted).
 
 **Full title:** The ARC Equation Measured: Blinded Cross-Architecture Replication and the Retraction of a Super-Linear Estimate
-**Version:** v2.15 (Working Paper)
-**Version date:** revised 3 October 2026
+**Version:** v2.16 (Working Paper)
+**Version date:** revised 4 October 2026
 **First published:** 22 January 2026
 **Author:** Michael Darius Eastwood
 
