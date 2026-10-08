@@ -3,7 +3,7 @@
 **Full title:** Polymathy and Neurodivergent Cognition: A Hypothesis at the Intersection of Giftedness, Monotropic Cognition, and Institutional Misrecognition - the Polymathic Neurodivergent Profile (PNP)
 
 **Author:** Michael Darius Eastwood
-**Version:** v1.8 (Working Paper)
+**Version:** v1.9 (Working Paper)
 **Version date:** 3 July 2026 (revised 21 September 2026)
 **Paper number:** Paper C (companion volume to Papers I-X)
 
