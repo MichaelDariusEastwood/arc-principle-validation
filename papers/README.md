@@ -62,6 +62,8 @@ Version numbers live inside the document header, never in the filename. See Sect
 | [Recursive Dynamics: the founding paper](Recursive-Dynamics-Founding-Paper/) | v3.4 (revised 5 Oct 2026) | 31 Aug 2026 | Recursive Dynamics: The Proposal of a Field |
 | [Paper C](Paper-C-PNP/) | v1.10 (revised 5 Oct 2026) | 3 Jul 2026 | Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy |
 | [HRIH Paper](HRIH-Paper/) | v3.51 (revised 5 Oct 2026) | 3 Jul 2026 | The Hyperspace Recursive Intelligence Hypothesis; speculative, outside the empirical core |
+| [The HARI Treaty paper](HARI-Treaty-Paper/) | v2.4 (working draft, revised 8 Oct 2026) | 29 Sep 2026 | The case for a conditional international treaty on hardware-aligned recursive intelligence, prepared for consultation; a working draft |
+| [The HARI Treaty: Draft Instruments](HARI-Treaty-Draft-Instruments/) | v2.3 (working draft, revised 5 Oct 2026) | 29 Sep 2026 | The treaty's draft text, prepared for consultation; not a negotiated or agreed text; a working draft |
 
 ## Registration, register and working report
 

@@ -26,7 +26,7 @@ arc-principle-validation/
 ├── LICENCE-PAPERS.md          papers, text, figures and PDFs
 ├── CITATION.cff               machine-readable citation
 ├── EXPERIMENTS-INDEX.md       every experiment, indexed by claim
-├── papers/                    32 document folders, each with its own README
+├── papers/                    34 document folders, each with its own README
 ├── experiments/               9 experiments plus shared code, mapped in experiments/README.md
 ├── instruments/               reference code for runs not yet made, mapped in instruments/README.md
 ├── priority-claims/           the dated provenance record
