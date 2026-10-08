@@ -1,6 +1,6 @@
-# Paper III: The Alignment Scaling Problem
+# Paper III · The ARC Theory · Law II, the ARC Co-Scaling Law · The Alignment Scaling Problem: Why External AI Safety Approaches Cannot Scale With Recursive Capability
 
-**Full title:** The Alignment Scaling Problem: Why External AI Safety Approaches Cannot Scale With Recursive Capability
+**Full title:** Paper III · The ARC Theory · Law II, the ARC Co-Scaling Law · The Alignment Scaling Problem: Why External AI Safety Approaches Cannot Scale With Recursive Capability
 **Version:** v1.16
 **Version date:** Working Paper, revised 7 October 2026
 **First published:** 9 February 2026

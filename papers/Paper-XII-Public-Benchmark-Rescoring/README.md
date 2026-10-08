@@ -1,4 +1,4 @@
-# Public Benchmark Rescoring (Paper XII)
+# Paper XII · The ARC Theory · Public Benchmark Rescoring: an External-Validity Protocol for the Blinding Finding
 
 **Version:** v1.14
 **Version date:** revised 5 October 2026

@@ -1,4 +1,4 @@
-# Paper XI - Convergent Evidence for Recursive Amplification
+# Paper XI · The ARC Theory · Law I, the ARC Principle · Convergent Evidence for Recursive Amplification: a Graded Cross-Domain Register
 Full title: Convergent Evidence for Recursive Amplification as a Cross-Domain Structural Principle
 Author: Michael Darius Eastwood · Version 1.14 · Published 2 July 2026 · Updated 5 October 2026
 

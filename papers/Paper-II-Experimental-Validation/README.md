@@ -1,8 +1,8 @@
-# Paper II: The ARC Equation Measured: Blinded Cross-Architecture Replication and the Retraction of a Super-Linear Estimate
+# Paper II · The ARC Theory · Law I, the ARC Principle · Blinded Cross-Architecture Replication and the Retraction of a Super-Linear Estimate
 
 **Earlier title:** Experimental Validation of Super-Linear Error Suppression (superseded: the super-linear estimate is retracted).
 
-**Full title:** The ARC Equation Measured: Blinded Cross-Architecture Replication and the Retraction of a Super-Linear Estimate
+**Full title:** Paper II · The ARC Theory · Law I, the ARC Principle · Blinded Cross-Architecture Replication and the Retraction of a Super-Linear Estimate
 **Version:** v2.17 (Working Paper)
 **Version date:** revised 5 October 2026
 **First published:** 22 January 2026

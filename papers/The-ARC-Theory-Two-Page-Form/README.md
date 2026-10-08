@@ -1,4 +1,4 @@
-# Does Control Survive Recursive Self-Improvement?
+# Two-Page Form · The ARC Theory · Does Control Survive Recursive Self-Improvement?
 
 **Version:** v3.1
 **Version date:** revised 5 October 2026

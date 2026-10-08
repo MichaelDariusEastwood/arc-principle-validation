@@ -1,6 +1,6 @@
-# HRIH: The Hyperspace Recursive Intelligence Hypothesis
+# Monograph · The ARC Theory · The Hyperspace Recursive Intelligence Hypothesis: a Testable Creation Theory
 
-**Full title:** The Hyperspace Recursive Intelligence Hypothesis: A Testable Creation Theory
+**Full title:** Monograph · The ARC Theory · The Hyperspace Recursive Intelligence Hypothesis: a Testable Creation Theory
 **Version:** v3.51
 **Version date:** revised 5 October 2026
 **First published:** 3 July 2026

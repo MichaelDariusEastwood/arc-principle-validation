@@ -1,6 +1,6 @@
-# Paper IV.b: Alignment Saturation Is Architecture-Dependent
+# Paper IV.b · The ARC Theory · Alignment Saturation Is Architecture-Dependent
 
-**Full title:** Paper IV.b: Alignment Saturation Is Architecture-Dependent
+**Full title:** Paper IV.b · The ARC Theory · Alignment Saturation Is Architecture-Dependent
 **Version:** v1.9
 **Version date:** revised 5 October 2026
 **First published:** 16 March 2026

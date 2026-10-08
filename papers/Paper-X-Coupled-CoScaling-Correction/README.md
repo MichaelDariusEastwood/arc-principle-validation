@@ -1,4 +1,4 @@
-# Paper X: The ARC Co-Scaling Law
+# Paper X · The ARC Theory · Law II, the ARC Co-Scaling Law · Correction That Out-Scales Drift
 
 **Earlier title:** The Coupled Co-Scaling Law (June 2026).
 

@@ -1,6 +1,6 @@
-# Paper V: The Stewardship Gene
+# Paper V · The ARC Theory · The Eden Protocol · The Stewardship Gene: Stakeholder Care as a Probe of Embedded Values
 
-**Full title:** Paper V: The Stewardship Gene
+**Full title:** Paper V · The ARC Theory · The Eden Protocol · The Stewardship Gene: Stakeholder Care as a Probe of Embedded Values
 **Version:** v1.7
 **Version date:** Working Paper, revised 5 October 2026
 **First published:** 16 March 2026

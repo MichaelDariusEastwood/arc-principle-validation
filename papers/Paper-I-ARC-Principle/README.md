@@ -1,8 +1,8 @@
-# Paper I: The ARC Equation: the Law of Conversion
+# Paper I · The ARC Theory · Law I, the ARC Principle · The ARC Equation, the Law of Conversion
 
 **Earlier title:** The ARC Principle.
 
-**Full title:** The ARC Principle: Formalisation and Preliminary Validation of Recursive Capability Scaling
+**Full title:** Paper I · The ARC Theory · Law I, the ARC Principle · The ARC Equation, the Law of Conversion
 **Version:** v1.16
 **Version date:** revised 5 October 2026
 **First published:** 17 January 2026

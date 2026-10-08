@@ -1,6 +1,6 @@
-# Paper VII: Cauchy Unification
+# Paper VII · The ARC Theory · Law I, the ARC Principle · Cauchy Unification: the Classification Behind the Law’s Form
 
-**Full title:** Paper VII: Cauchy Unification
+**Full title:** Paper VII · The ARC Theory · Law I, the ARC Principle · Cauchy Unification: the Classification Behind the Law’s Form
 **Version:** v3.15
 **Version date:** Working Paper, revised 5 October 2026
 **First published:** 16 March 2026

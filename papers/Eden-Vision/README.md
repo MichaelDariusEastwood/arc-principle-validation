@@ -1,6 +1,6 @@
-# Eden Protocol: Philosophical Vision
+# Philosophical Statement · The ARC Theory · The Eden Protocol · A Vision for Intelligence That Tends Rather Than Consumes
 
-**Full title:** Eden Protocol: Philosophical Vision
+**Full title:** Philosophical Statement · The ARC Theory · The Eden Protocol · A Vision for Intelligence That Tends Rather Than Consumes
 **Version:** v2.9
 **Version date:** Working Paper, revised 5 October 2026
 **First published:** 22 February 2026

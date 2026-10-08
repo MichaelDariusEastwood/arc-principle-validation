@@ -1,6 +1,6 @@
-# Paper VIII: The Load-Bearing Test
+# Paper VIII · The ARC Theory · Law V, the ARC Embedding Law · The Eden Protocol · The Load-Bearing Test: Whether Safety and Capability Are Structurally Entangled
 
-**Full title:** Paper VIII: The Load-Bearing Test
+**Full title:** Paper VIII · The ARC Theory · Law V, the ARC Embedding Law · The Eden Protocol · The Load-Bearing Test: Whether Safety and Capability Are Structurally Entangled
 **Version:** v3.7
 **Version date:** Working Paper, revised 5 October 2026
 **First published:** 18 March 2026

@@ -1,6 +1,6 @@
-# Paper IV.d: The Effect of Blinding on AI Alignment Evaluation
+# Paper IV.d · The ARC Theory · The Effect of Blinding on AI Alignment Evaluation
 
-**Full title:** Paper IV.d: The Effect of Blinding on AI Alignment Evaluation
+**Full title:** Paper IV.d · The ARC Theory · The Effect of Blinding on AI Alignment Evaluation
 **Version:** v2.6
 **Version date:** revised 5 October 2026
 **First published:** 16 March 2026
