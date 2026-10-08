@@ -1,7 +1,7 @@
 # Paper III: The Alignment Scaling Problem
 
 **Full title:** The Alignment Scaling Problem: Why External AI Safety Approaches Cannot Scale With Recursive Capability
-**Version:** v1.14
+**Version:** v1.15
 **Version date:** Working Paper, revised 21 September 2026
 **First published:** 9 February 2026
 **Author:** Michael Darius Eastwood
