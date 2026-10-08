@@ -1,6 +1,6 @@
 # The Self-Acceleration Exponent (Paper XIII)
 
-**Version:** v1.8
+**Version:** v1.9
 **Version date:** revised 4 October 2026
 **First published:** 16 August 2026
 **Author:** Michael Darius Eastwood
