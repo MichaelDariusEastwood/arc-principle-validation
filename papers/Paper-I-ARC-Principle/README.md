@@ -3,8 +3,8 @@
 **Earlier title:** The ARC Principle.
 
 **Full title:** The ARC Principle: Formalisation and Preliminary Validation of Recursive Capability Scaling
-**Version:** v1.13
-**Version date:** revised 20 September 2026
+**Version:** v1.14
+**Version date:** revised 3 October 2026
 **First published:** 17 January 2026
 **Author:** Michael Darius Eastwood
 
