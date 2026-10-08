@@ -242,7 +242,7 @@ This repository is **dual-licensed**, and which licence applies depends on the m
 
 | Material | Licence |
 |----------|---------|
-| Papers, text, figures and PDFs | Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International, see [LICENCE-PAPERS.md](LICENCE-PAPERS.md) |
+| Papers, text, figures and PDFs | Creative Commons Attribution 4.0 International (CC BY 4.0), see [LICENCE-PAPERS.md](LICENCE-PAPERS.md) |
 | Code, experiments, scripts, data and results | proprietary, all rights reserved, see [LICENCE-CODE.md](LICENCE-CODE.md) |
 
 [LICENCE](LICENCE) states the split. Reading, checking and re-analysing the committed
