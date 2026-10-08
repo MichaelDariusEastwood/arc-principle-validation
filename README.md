@@ -1,7 +1,7 @@
 # The ARC Principle and the Eden Protocol
 
 **The code, data and recorded outputs behind a research programme on recursive intelligence
-scaling and embedded AI alignment.** Thirty documents, nine experiments, every result
+scaling and embedded AI alignment.** 34 document folders, nine experiments, every result
 file the papers cite.
 
 [![OSF DOI](https://img.shields.io/badge/OSF-10.17605%2FOSF.IO%2F6C5XB-blue)](https://doi.org/10.17605/OSF.IO/6C5XB)
@@ -108,6 +108,8 @@ earlier version was an algebraic identity check and never an empirical validatio
 | Paper XIII | the self-acceleration exponent | published |
 | Paper C | a complexity-theoretic treatment | published |
 | HRIH Paper | a cosmological hypothesis | **speculative, outside the empirical core.** No result in this repository bears on it and it is not part of the evidence base |
+| [The HARI Treaty paper](papers/HARI-Treaty-Paper/) | The case for a conditional international treaty on hardware-aligned recursive intelligence | version 2.4, revised 8 October 2026; prepared for consultation; a working draft |
+| [The HARI Treaty: Draft Instruments](papers/HARI-Treaty-Draft-Instruments/) | The treaty's draft text | version 2.3, revised 5 October 2026; prepared for consultation; not a negotiated or agreed text; a working draft |
 | The ARC Theory | the theory-level statement | published |
 | The ARC Theory, two-page form | the theory in two pages | published |
 | Recursive Dynamics, the founding paper | the proposal of a field | published |
