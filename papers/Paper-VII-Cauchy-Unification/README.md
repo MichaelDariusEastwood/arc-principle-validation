@@ -1,7 +1,7 @@
 # Paper VII: Cauchy Unification
 
 **Full title:** Paper VII: Cauchy Unification
-**Version:** v3.14
+**Version:** v3.15
 **Version date:** Working Paper, revised 13 September 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
