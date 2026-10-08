@@ -1,7 +1,7 @@
 # The ARC Principle and the Eden Protocol
 
 **The code, data and recorded outputs behind a research programme on recursive intelligence
-scaling and embedded AI alignment.** Thirty documents, nine experiments, every result
+scaling and embedded AI alignment.** 34 document folders, nine experiments, every result
 file the papers cite.
 
 [![OSF DOI](https://img.shields.io/badge/OSF-10.17605%2FOSF.IO%2F6C5XB-blue)](https://doi.org/10.17605/OSF.IO/6C5XB)
@@ -9,7 +9,7 @@ file the papers cite.
 ## What this repository claims, and what it does not
 
 It ships the material a reader needs to check the programme's results: the code that was
-run, the outputs that code recorded, and a mirror of each paper.
+run, the outputs that code recorded, and the canonical released documents under papers/.
 
 **Nothing here has been independently replicated, and nothing here has been through peer
 review.** Two results have been withdrawn by the author and are marked as withdrawn where
@@ -26,7 +26,7 @@ arc-principle-validation/
 ├── LICENCE-PAPERS.md          papers, text, figures and PDFs
 ├── CITATION.cff               machine-readable citation
 ├── EXPERIMENTS-INDEX.md       every experiment, indexed by claim
-├── papers/                    32 document folders, each with its own README
+├── papers/                    34 document folders, each with its own README
 ├── experiments/               9 experiments plus shared code, mapped in experiments/README.md
 ├── instruments/               reference code for runs not yet made, mapped in instruments/README.md
 ├── priority-claims/           the dated provenance record
@@ -35,6 +35,8 @@ arc-principle-validation/
 
 Every folder has a `README.md` saying what is in it and what it is for. Start with
 [`experiments/README.md`](experiments/README.md) if you came to check a result.
+
+See [the publication canon](docs/PUBLICATION-CANON.md) and [release manifest](papers/publication-manifest.json) for the separation of document exports from website pages.
 
 ## Rules this repository follows
 

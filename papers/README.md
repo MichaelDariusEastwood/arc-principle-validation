@@ -1,6 +1,6 @@
 # ARC/Eden Research Programme - Paper Directory
 
-**Updated: 8 October 2026.** Versions and first-publication dates follow the paper register on the website, and every folder holds the published files byte for byte.
+**Updated: 8 October 2026.** This is the canonical home for released research documents. The website receives the released PDFs and presents its own pages. OSF receives document exports. The [release manifest](publication-manifest.json) records completed exports and remaining conversion work. See [Publication canon](../docs/PUBLICATION-CANON.md).
 
 This directory contains all papers in the ARC/Eden Research Programme. Each paper has its own directory following the standard layout described in `VERSION-CONTROL-STANDARDS.md`.
 
@@ -11,7 +11,7 @@ Every paper directory follows this structure:
 ```
 Paper-Name/
   Paper-Name.html          <-- Generic filename (no version number)
-  Paper-Name.pdf           <-- Generated via scripts/export-pdfs.sh
+  Paper-Name.pdf           <-- Official PDF paired with document HTML
   README.md                <-- Title, version, summary, links
   experiments/
     scripts/               <-- Python scripts, R scripts
@@ -179,3 +179,7 @@ When referencing another paper in running text, do NOT include the version numbe
 ## OSF Project
 
 All papers are deposited at OSF under project DOI: [10.17605/OSF.IO/6C5XB](https://doi.org/10.17605/OSF.IO/6C5XB)
+
+- [Treaty Paper · The HARI Treaty · Hardware to Buy Time, Architecture to Last](HARI-Treaty-Paper/), version 2.4, 8 October 2026.
+
+- [Draft Instruments · The HARI Treaty · The Draft Treaty on Hardware-Aligned Recursive Intelligence](HARI-Treaty-Draft-Instruments/), version 2.3, 5 October 2026.
