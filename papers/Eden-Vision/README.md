@@ -1,7 +1,7 @@
 # Eden Protocol: Philosophical Vision
 
 **Full title:** Eden Protocol: Philosophical Vision
-**Version:** v2.6
+**Version:** v2.7
 **Version date:** Working Paper, revised 21 September 2026
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
