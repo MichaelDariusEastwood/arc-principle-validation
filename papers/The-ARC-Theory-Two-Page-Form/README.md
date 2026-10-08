@@ -1,7 +1,7 @@
 # Does Control Survive Recursive Self-Improvement?
 
-**Version:** v3.0
-**Version date:** revised 3 October 2026
+**Version:** v3.1
+**Version date:** revised 5 October 2026
 **First published:** 17 August 2026
 **Author:** Michael Darius Eastwood
 
