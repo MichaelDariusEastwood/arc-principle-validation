@@ -1,7 +1,7 @@
 # The ARC Theory (statement paper)
 
-**Version:** v7.1
-**Version date:** revised 3 October 2026
+**Version:** v7.2
+**Version date:** revised 5 October 2026
 **First published:** 14 August 2026
 **Author:** Michael Darius Eastwood
 
