@@ -1,7 +1,7 @@
 # Public Benchmark Rescoring (Paper XII)
 
-**Version:** v1.13
-**Version date:** revised 3 October 2026
+**Version:** v1.14
+**Version date:** revised 5 October 2026
 **First published:** 14 August 2026
 **Author:** Michael Darius Eastwood
 
