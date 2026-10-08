@@ -1,6 +1,6 @@
 # Recursive Dynamics: The Proposal of a Field (founding paper)
 
-**Version:** v2.9
+**Version:** v3.4
 **First published:** 31 August 2026
 **Author:** Michael Darius Eastwood
 
@@ -15,4 +15,4 @@ The founding paper of Recursive Dynamics, the proposed science of systems that i
 - **Programme OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror of the published version, byte for byte from the website on 27 September 2026 (the site pages are the manuscript masters; this repository receives each version after it is published there).
+Mirror of the published version, byte for byte from the website on 8 October 2026 (the site pages are the manuscript masters; this repository receives each version after it is published there).

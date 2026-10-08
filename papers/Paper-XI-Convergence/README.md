@@ -1,6 +1,6 @@
 # Paper XI - Convergent Evidence for Recursive Amplification
 Full title: Convergent Evidence for Recursive Amplification as a Cross-Domain Structural Principle
-Author: Michael Darius Eastwood · Version 1.11 · Published 2 July 2026 · Updated 21 September 2026
+Author: Michael Darius Eastwood · Version 1.14 · Published 2 July 2026 · Updated 5 October 2026
 
 The synthesis paper. 19 independently sourced convergences documented with exact dates, sources, and gap measurements. The closed loop: ND brain → manuscript → validations → protective proof → formal vindication → clinical documentation.
 

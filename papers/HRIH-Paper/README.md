@@ -1,8 +1,8 @@
 # HRIH: The Hyperspace Recursive Intelligence Hypothesis
 
 **Full title:** The Hyperspace Recursive Intelligence Hypothesis: A Testable Creation Theory
-**Version:** v3.48
-**Version date:** revised 16 September 2026
+**Version:** v3.51
+**Version date:** revised 5 October 2026
 **First published:** 3 July 2026
 **Author:** Michael Darius Eastwood
 

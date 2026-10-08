@@ -1,8 +1,8 @@
 # Paper IV.a: Alignment Response Classes Under Inference-Time Depth
 
 **Full title:** Paper IV.a: Alignment Response Classes Under Inference-Time Depth
-**Version:** v1.7
-**Version date:** Empirical Working Paper, revised 21 September 2026
+**Version:** v1.9
+**Version date:** Empirical Working Paper, revised 5 October 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 

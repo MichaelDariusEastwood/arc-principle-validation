@@ -1,8 +1,8 @@
 # Paper IV.b: Alignment Saturation Is Architecture-Dependent
 
 **Full title:** Paper IV.b: Alignment Saturation Is Architecture-Dependent
-**Version:** v1.7
-**Version date:** revised 21 September 2026
+**Version:** v1.9
+**Version date:** revised 5 October 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 

@@ -1,8 +1,8 @@
 # ARC/Eden Research Programme: Executive Summary
 
 **Full title:** ARC/Eden Research Programme: Executive Summary
-**Version:** v3.1
-**Version date:** Working Paper, revised 21 September 2026
+**Version:** v3.24
+**Version date:** Working Paper, revised 8 October 2026
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
 
