@@ -1,7 +1,8 @@
 # Laws IV and V: the mathematics
 
 **Version:** v1.0
-**First published:** 1 October 2026
+**First published:** 1 October 2026 (version 0.2.1)
+**Version date:** 3 October 2026 (version 1.0, frozen)
 **Author:** Michael Darius Eastwood
 
 ## Links

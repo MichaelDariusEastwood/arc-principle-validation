@@ -70,7 +70,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | [Theory-level predictions registration](ARC-Theory-Predictions-Registration/) | v1.102 (revised 13 Sep 2026) | 8 Sep 2026 | The theory's twenty-two severable propositions, registered on OSF on 8 September 2026 (DOI 10.17605/OSF.IO/P8CKQ); the frozen v1.100 PDF sits beside the current text |
 | [The Dated Prediction Register](Dated-Prediction-Register/) | v2.1 (revised 5 Oct 2026) | 25 Aug 2026 | Forward predictions as one verifiable chain |
 | [Operational Definitions](Operational-Definitions/) | v1.9.1 (revised 5 Oct 2026) | 22 Aug 2026 | The register of the programme's operational definitions of its terms (OSF DOI 10.17605/OSF.IO/GVQ82) |
-| [Laws IV and V: the mathematics](Laws-IV-V-Mathematics/) | v1.0 (revised 3 Oct 2026) | 1 Oct 2026 | The mathematics of the ARC Theory's Laws IV and V (added 24 September 2026), in development |
+| [Laws IV and V: the mathematics](Laws-IV-V-Mathematics/) | v1.0 (revised 3 Oct 2026) | 1 Oct 2026 (v0.2.1) | The mathematics of the ARC Theory's Laws IV and V (added 24 September 2026), in development |
 | [The ARC Alignment-Scaling Working Report](ARC-Alignment-Scaling-Working-Report/) | working report | commenced 10 Mar 2026 | The live laboratory notebook of the alignment-scaling work (OSF record j6mkb) |
 
 ---
@@ -134,7 +134,7 @@ Progressive expansion from 20 to 50 to 105 domains, with null controls, negative
 - **Scripts:** `Paper-VII-Cauchy-Unification/experiments/scripts/`
 - **Results:** `Paper-VII-Cauchy-Unification/experiments/results/`
 - **Draft registrations (unsubmitted):** `Paper-VII-Cauchy-Unification/experiments/preregistration/`
-- **Status:** published, version 3.11, revised 13 September 2026, as the site's paper register records it; under correction since 11 August 2026. The grid has four cells, not three, as Section 2.1 states; the three-family framing and the derived-from-Cauchy treatment of bounded curves are withdrawn, though the abstract, Section 2.2 and the conclusion still carry them, and the primary statistic is a permutation test conditioned on both marginals. The statement previously given here, 19/25 domains confirmed (p = 1.56 x 10^-5), is superseded.
+- **Status:** published, version 3.15, revised 5 October 2026, as the site's paper register records it. The grid has four cells, not three, as Section 2.1 states, and the three-family framing is withdrawn. Since version 3.12 (3 October 2026) the abstract says what Section 2.2 states: a power law for multiplicative composition and an exponential for additive composition, with saturation curves compatible with bounded composition and the proof that they exhaust that case still open; the conclusion says that this case is not strictly Cauchy-derived. The primary statistic is a permutation test conditioned on both marginals. The statement previously given here, 19/25 domains confirmed (p = 1.56 x 10^-5), is superseded.
 
 ### Load-Bearing Proof Experiments (Paper VIII)
 

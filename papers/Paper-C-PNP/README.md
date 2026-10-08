@@ -4,7 +4,7 @@
 
 **Author:** Michael Darius Eastwood
 **Version:** v1.10 (Working Paper)
-**Version date:** 3 July 2026 (revised 21 September 2026)
+**Version date:** 3 July 2026 (revised 5 October 2026)
 **Paper number:** Paper C (companion volume to Papers I-X)
 
 ## Summary

@@ -26,7 +26,7 @@ arc-principle-validation/
 ├── LICENCE-PAPERS.md          papers, text, figures and PDFs
 ├── CITATION.cff               machine-readable citation
 ├── EXPERIMENTS-INDEX.md       every experiment, indexed by claim
-├── papers/                    30 document folders, each with its own README
+├── papers/                    32 document folders, each with its own README
 ├── experiments/               9 experiments plus shared code, mapped in experiments/README.md
 ├── instruments/               reference code for runs not yet made, mapped in instruments/README.md
 ├── priority-claims/           the dated provenance record
@@ -99,7 +99,7 @@ earlier version was an algebraic identity check and never an empirical validatio
 | Paper IV.d | unblinded scoring can reverse an alignment measurement | pilot, and the programme's own strongest caution about its other results |
 | Paper V | the Eden intervention on stakeholder care | five per-model results stand; the Fisher-combined figure of 6.3 x 10^-21 is **withdrawn** under AQ-017, because independence among the five tests was never established |
 | Paper VI | entangled loss functions for self-modifying AI safety | mechanistic in simulation, exploratory against live models |
-| Paper VII | the cross-domain functional-equation classification | **published, version 3.11, revised 13 September 2026, as the site's paper register records it; under correction since 11 August 2026.** The grid has four cells, not three, as Section 2.1 states; the three-family framing and the derived-from-Cauchy treatment of bounded curves are withdrawn, though the abstract, Section 2.2 and the conclusion still carry them; the primary statistic is a permutation test conditioned on both marginals, not the binomial reported previously |
+| Paper VII | the cross-domain functional-equation classification | **published, version 3.15, revised 5 October 2026, as the site's paper register records it.** The grid has four cells, not three, as Section 2.1 states, and the three-family framing is withdrawn. Since version 3.12 (3 October 2026) the abstract says what Section 2.2 states: a power law for multiplicative composition and an exponential for additive composition, with saturation curves compatible with bounded composition and the proof that they exhaust that case still open; the conclusion says that this case is not strictly Cauchy-derived. The primary statistic is a permutation test conditioned on both marginals, not the binomial reported previously |
 | Paper VIII | whether entangled safety is load-bearing | the removal test collapses capability (p = 0.04) and the gated simulation reproduces the reward-hacking fingerprint; **weight-level structural entanglement is inconclusive at the training scale tested** |
 | Paper IX | synthesis of the programme and a four-tier replication roadmap | synthesis |
 | Paper X | coupled co-scaling of capability and correction | published |

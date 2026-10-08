@@ -7,7 +7,7 @@
 
 ## Summary
 
-Working paper v1.1: the ARC programme's forward predictions assembled as one dated, verifiable chain, with the ensemble doctrine, the graded book appendices, the minute-resolution correction record and the standing unproven wagers.
+Working paper v2.1: the ARC programme's forward predictions assembled as one dated, verifiable chain, with the ensemble doctrine, the graded book appendices, the minute-resolution correction record and the standing unproven wagers.
 
 ## Links
 
