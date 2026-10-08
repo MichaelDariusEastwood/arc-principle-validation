@@ -1,7 +1,7 @@
 # The Dated Prediction Register: Forward Predictions as One Verifiable Chain
 
-**Version:** v2.0
-**Version date:** revised 4 October 2026
+**Version:** v2.1
+**Version date:** revised 5 October 2026
 **First published:** 25 August 2026
 **Author:** Michael Darius Eastwood
 
