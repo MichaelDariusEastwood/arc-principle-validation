@@ -1,7 +1,7 @@
 # On the Origin of Scaling Laws
 
 **Full title:** On the Origin of Scaling Laws
-**Version:** v3.7
+**Version:** v3.8
 **Version date:** Working Paper, revised 21 September 2026
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
