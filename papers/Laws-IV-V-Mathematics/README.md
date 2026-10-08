@@ -1,6 +1,6 @@
 # Laws IV and V: the mathematics
 
-**Version:** v0.2.1
+**Version:** v0.2.4
 **First published:** 1 October 2026
 **Author:** Michael Darius Eastwood
 
