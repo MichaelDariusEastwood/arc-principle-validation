@@ -1,6 +1,6 @@
 # Register · The ARC Theory · Operational Definitions
 
-**Version:** v1.9.0
+**Version:** v1.9.1
 **First published:** 22 August 2026
 **Author:** Michael Darius Eastwood
 
