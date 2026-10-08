@@ -1,8 +1,8 @@
 # Eden Engineering: The Eden Protocol Engineering Specification
 
 **Full title:** Eden Engineering: The Eden Protocol Engineering Specification
-**Version:** v6.3
-**Version date:** revised 19 September 2026
+**Version:** v7.0
+**Version date:** revised 5 October 2026
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
 
