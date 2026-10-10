@@ -1,8 +1,8 @@
 # Executive Summary · Recursive Dynamics · The ARC/Eden Research Programme
 
 **Full title:** Executive Summary · Recursive Dynamics · The ARC/Eden Research Programme
-**Version:** v3.24
-**Version date:** Working Paper, revised 8 October 2026
+**Version:** v3.25
+**Version date:** Working Paper, revised 10 October 2026
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
 
