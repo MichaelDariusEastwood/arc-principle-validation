@@ -12,20 +12,26 @@
 
 ## Summary
 
-This paper proves a theorem about a minimal dynamical model. In that model the stability of a
-self-improving system is **not** governed by how fast capability grows, but by a single
-inequality between two scaling exponents: the exponent with which **correction** strengthens
-as the system becomes more capable (β) must exceed the exponent with which **drift**
-accelerates with capability (k). The steady-state misalignment fraction is d\* = γr/(A+r)
-(reducing to the dimensionless ratio ρ = γr/A when A ≫ r), and the asymptotic safety condition
-is **β > k**.
+**Scope clarified 10 October 2026.** This paper derives conditional results for a
+minimal dynamical model. In its gain-only model, **vanishing relative error** as
+capability grows without bound requires the correction-strength exponent β to
+exceed the relative capability-growth exponent k, under the theorem's stated
+positive-coefficient and scaling assumptions. Relative error remains bounded in
+other exponent regimes too. Neither bounded nor vanishing relative error alone
+establishes bounded absolute harm or general AI safety.
+
+The instantaneous zero-derivative value is d* = γr/(A+r), approximated by
+ρ = γr/A when A is much greater than r. When A and r vary along a trajectory,
+this is not automatically the attained steady state; the transient equation and
+its assumptions must be used.
 
 The criterion shares the **threshold form** of the **quantum error-correction (QEC)
 sub-threshold condition** - a correspondence offered as a *falsifiable hypothesis*, since the
-model's suppression law is power-law rather than QEC's exponential. Its sharpest consequence
-speaks to the central fear of the field: a hard takeoff - even a genuine **finite-time
-intelligence explosion** - is alignment-stable *if and only if* β > k, and the *speed* of the
-explosion does not change that verdict.
+model's suppression law is power-law rather than QEC's exponential. Within the
+gain-only scaling model, reparametrising the trajectory by log-capability gives
+the same vanishing-relative-error exponent condition, including a capability
+trajectory that diverges in finite physical time. This is a conditional model
+result, not a guarantee of safe finite-time self-improvement.
 
 This version supersedes the growth-rate-ceiling framing of the programme **and corrects the
 prior draft**: in the gain-only model the misalignment fraction never diverges to infinity - it
@@ -78,8 +84,8 @@ python experiment_coscaling.py           # runs all 10 experiments, writes figur
 pytest test_coscaling.py -q              # 12 internal-consistency assertions
 ```
 
-**Latest run:** `10/10 internal-consistency checks pass | 0 kill-conditions triggered` - these
-certify the derivation + integrator (code matches maths), not the model against reality
+**Latest recorded run:** `10/10 internal-consistency checks pass | 0 kill-conditions triggered` - these
+check numerical agreement with the supplied formulas, not independent proof verification or the model against reality
 (see `results/verdicts.json` and `results/report.txt`).
 
 | Experiment | Tests | Result |
@@ -97,6 +103,11 @@ certify the derivation + integrator (code matches maths), not the model against 
 
 ## Real-model test (non-simulation)
 
+> **Interpretive correction, 10 October 2026.** The Claude pilot below did not
+> identify either scaling exponent. The earlier inference from its observed
+> floor to an effective `β > k` regime is withdrawn. See the
+> [dated scope note](../../docs/paper-x-pilot-scope-correction-20261010.md).
+
 The harness above is an *internal-consistency* check (code matches the maths). The
 **genuine falsifier** - testing the model against a real system - lives in
 `experiments/`. `experiments/scripts/realmodel_coscaling.py` instantiates Paper
@@ -112,13 +123,17 @@ Gemini); see `experiments/PROTOCOL.md` (pre-registered H1-H3, six-model sweep).
   From a hard-coded lookup that games the visible tests (C=0, blind D=10), **both**
   the coupled and decoupled arms - decoupled under pure score-pressure - removed
   the hack at round 1 and stayed general (C=1.0, D=0, d=0) for all 3 rounds. The
-  contrast is *null* because the frontier model **does not drift** on this task: it
-  behaves as a system already in the stable regime (effective β > k). Consistent
-  with the law; not positive evidence for the threshold; one task, one seed.
-- **Corrector mechanism probe.** The external corrector applied once to the frozen
-  reward-hack drove blind **D: 10 → 0** and restored **C: 0 → 1.0** (the fraction
-  *d* is undefined at C=0; the mechanism rests on the raw D and C). The coupled/Eden
-  correction operator does real work on a real model. Full writeup + figure + audit
+  observed between-arm contrast is zero. Capability has no range from which to
+  estimate either exponent, so the recorded floor does not identify `β > k` or
+  classify the system's stability. The model-scored `D` remains provisional:
+  this one-task, one-seed pilot used a same-family evaluator and is not
+  IV.d-compliant.
+- **Corrector repair probe.** One corrector pass on the frozen reward-hack
+  improved objective hidden-test **C: 0 → 1.0**; the same-family evaluator's
+  provisional score changed **D: 10 → 0**. The bare ratio `D/C` is undefined at
+  `C=0`; this scope correction does not replace the recorded fraction conventions.
+  This is one task-specific repair, not identification of a proportional `A·D`
+  mechanism or a co-scaling relation. Full writeup + figure + audit
   transcript: `results/realmodel/REAL_MODEL_CLAUDE_RESULTS.md`.
 
 **Confirmatory design - v2 multi-task benchmark (`experiments/scripts/realmodel_coscaling_v2.py`):**
@@ -129,11 +144,11 @@ bootstrap CIs on the primary endpoint `d_decoupled,final - d_coupled,final` and 
 anti-objection endpoint `d_sham,final - d_coupled,final`. Protocol:
 `experiments/PROTOCOL_V2.md`; integration + fixes: `experiments/README_V2_UPGRADE.md`.
 
-This corroborates the **mechanism** on a real model; it is a separate evidentiary
-stream from the proof, and the full co-scaling *dynamic* (drift rising with
-capability, bounded by coupling) remains the open empirical problem (§8) - the next
-step is the other five models, several of which may be less intrinsically
-corrective than Claude.
+The recorded pilot is evidence of a task-specific repair and a finite observed
+trajectory. A future co-scaling study requires a prospectively fixed model and
+task population, valid scoring and estimable quantities. It must report floor,
+ceiling and non-estimable cases as well as any informative contrast, without
+retaining only systems that produce the expected drift.
 
 **Making the criterion operational - estimating β and k.** The sharpest objection to
 the law is that `β > k` is only useful if β and k can be *measured*.
@@ -141,8 +156,10 @@ the law is that `β > k` is only useful if β and k can be *measured*.
 (`ln r` vs `ln C`) and **β** from corrector-removal rates (`ln A` vs `ln C`), and is
 validated on synthetic data (recovers known exponents within ≈0.1, every
 stable/unstable verdict correct). On the Claude run capability saturated in one step,
-so β and k are honestly **not yet estimable** (the criterion is vacuously satisfied -
-no drift); a graded, drifting dataset yields the first measured (β, k). The full
+so β and k are **not estimable**. Non-identification does not satisfy the criterion.
+A later dataset can support estimates only if it supplies adequate variation and
+meets the estimator's measurement and model assumptions; a fitted number alone
+does not establish the criterion's applicability. The full
 objection set and the paper's responses are consolidated in `ANTICIPATED_OBJECTIONS.md`.
 
 ## Files
