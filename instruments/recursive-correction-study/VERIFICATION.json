@@ -1,0 +1,89 @@
+{
+  "status": "SOFTWARE_VERIFICATION_ONLY",
+  "verified_at_utc": "2026-10-10T17:55:08.069896+00:00",
+  "runtime": "3.12.14",
+  "checks": [
+    {
+      "component": "harness",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "harness",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "test_count": 25
+    },
+    {
+      "component": "analysis",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "analysis",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "test_count": 34
+    },
+    {
+      "component": "forecast",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "forecast",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "test_count": 29
+    }
+  ],
+  "total_tests": 88,
+  "integrated_demo": {
+    "confirmatory_eligible": false,
+    "dependency_waves": 10,
+    "endpoints": 64,
+    "inference_calls_executed": 0,
+    "recorded_calls": 456,
+    "registered": false,
+    "scheduled_calls": 456,
+    "status": "SYNTHETIC_INSTRUMENT_DEVELOPMENT_ONLY"
+  },
+  "forecast_demo_stdout": {
+    "explanation": "The remaining errors become concentrated in the harder stratum although each stratum has stationary transitions.",
+    "initial_error": 1,
+    "ledger_sha256": "9355acf440947bf76430199fe1ca6e8b3947a0eb7d3a51027372a824465ffd4a",
+    "mixture_error_depth_1": 0.5,
+    "mixture_error_depth_2": 0.3400000000000001,
+    "pooled_prediction_depth_2": 0.25,
+    "status": "exact synthetic counterexample, not empirical evidence",
+    "stratum_regression_probabilities": [
+      0,
+      0
+    ],
+    "stratum_repair_probabilities": [
+      0.8,
+      0.2
+    ],
+    "weights": [
+      0.5,
+      0.5
+    ]
+  },
+  "source_manifest_sha256": "165aba743deed7884c3ac8895a48df9ca78989a07681c284a2e73d0bac79f8d6",
+  "empirical_model_calls": 0,
+  "training_runs": 0,
+  "registration_submitted": false,
+  "confirmation_permitted": false
+}

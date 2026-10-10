@@ -1,0 +1,36 @@
+name: Recursive correction instrument
+
+on:
+  pull_request:
+    paths:
+      - 'instruments/recursive-correction-study/**'
+      - '.github/workflows/recursive-correction-study.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    defaults:
+      run:
+        working-directory: instruments/recursive-correction-study
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Harness, analysis and forecast checks
+        run: |
+          python -m unittest discover -s harness -p 'test_*.py'
+          python -m unittest discover -s analysis -p 'test_*.py'
+          python -m unittest discover -s forecast -p 'test_*.py'
+      - name: Integrated synthetic demonstration
+        run: python run_demo.py --pairs 2 --out demo-ci
+      - name: Frozen forecast demonstration
+        run: python forecast/frozen_baselines.py demo --out-dir forecast-demo-ci
