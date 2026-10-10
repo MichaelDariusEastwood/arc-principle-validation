@@ -1,8 +1,8 @@
 # Framework Paper · The ARC Theory · Law I, the ARC Principle · On the Origin of Scaling Laws: Functional Equations and the Scaling Forms Behind the Law
 
 **Full title:** Framework Paper · The ARC Theory · Law I, the ARC Principle · On the Origin of Scaling Laws: Functional Equations and the Scaling Forms Behind the Law
-**Version:** v3.11
-**Version date:** Working Paper, revised 5 October 2026
+**Version:** v3.12
+**Version date:** Working Paper, revised 10 October 2026
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
 
