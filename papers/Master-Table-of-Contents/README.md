@@ -1,8 +1,8 @@
 # Master Table of Contents · Recursive Dynamics · The ARC Theory Paper Suite and Glossary
 
 **Full title:** Master Table of Contents · Recursive Dynamics · The ARC Theory Paper Suite and Glossary
-**Version:** v3.28 (Working Paper)
-**Version date:** revised 8 October 2026
+**Version:** v3.29 (Working Paper)
+**Version date:** revised 10 October 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 
