@@ -5,7 +5,9 @@ on:
   pull_request:
     paths:
       - 'papers/**'
+      - 'docs/paper-pdf-sha256sums.txt'
       - 'scripts/check_document_release.py'
+      - 'scripts/check_paper_records.py'
       - 'scripts/document_pdf_metadata.py'
       - 'scripts/test_document_pdf_metadata.py'
       - 'scripts/requirements-documents.txt'
@@ -25,6 +27,8 @@ jobs:
         run: python3 -m unittest discover -s scripts -p 'test_document_pdf_metadata.py'
       - name: Check released export records
         run: python3 scripts/check_document_release.py
+      - name: Check the papers index and PDF checksum record move with the files
+        run: python3 scripts/check_paper_records.py
       - name: Refuse changed documents without verified export records
         env:
           DOCUMENT_BASE_SHA: ${{ github.event.pull_request.base.sha }}

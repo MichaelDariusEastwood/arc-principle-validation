@@ -108,7 +108,7 @@ earlier version was an algebraic identity check and never an empirical validatio
 | Paper XI | convergence across independent traditions | published |
 | Paper XII | public benchmark rescoring | published |
 | Paper XIII | the self-acceleration exponent | published |
-| Paper C | a complexity-theoretic treatment | published |
+| Paper C | polymathy and neurodivergent cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy | published |
 | HRIH Paper | a cosmological hypothesis | **speculative, outside the empirical core.** No result in this repository bears on it and it is not part of the evidence base |
 | The ARC Theory | the theory-level statement | published |
 | The ARC Theory, two-page form | the theory in two pages | published |
@@ -122,6 +122,8 @@ earlier version was an algebraic identity check and never an empirical validatio
 | Eden Vision | the philosophical foundations | position paper |
 | Executive Summary | the programme overview | overview |
 | Master Table of Contents | suite navigation | index |
+| The HARI Treaty paper | hardware to buy time, architecture to last | working draft; its existing review remains open |
+| The HARI Treaty draft instruments | the Draft Treaty on Hardware-Aligned Recursive Intelligence | working draft; its existing review remains open |
 
 Where a result is under correction or withdrawn, the
 [corrections notice](https://www.michaeldariuseastwood.com/research/corrections/) is

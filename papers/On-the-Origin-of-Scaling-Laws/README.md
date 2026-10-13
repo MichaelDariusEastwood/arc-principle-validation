@@ -24,7 +24,8 @@ See [`experiments/domain-validation__Foundational-and-Origin/`](../../experiment
 
 ## Links
 
-- **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
+- **OSF DOI:** https://doi.org/10.17605/OSF.IO/XZY9U
+- **OSF programme DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.
