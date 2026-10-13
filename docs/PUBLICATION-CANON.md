@@ -28,6 +28,11 @@ This verifies recorded bytes, formats, citation versions, the full-text floor an
 representation. It does not prove the science or replace visual PDF review. It imports
 no study code and performs no experiment.
 
+Then run `python3 scripts/check_paper_records.py`. It confirms that `papers/README.md`
+states each document's manifest version and date, and that `docs/paper-pdf-sha256sums.txt`
+lists every paper PDF with its current hash. A release updates both records in the same
+pull request; the pull-request workflow runs this check as well.
+
 Published registrations remain frozen. A text correction requires a successor version
 approved and registered by the author. Historical files and licence grants retain their
 history. T2 prepares documents and deposits; T4 reviews and merges them and carries

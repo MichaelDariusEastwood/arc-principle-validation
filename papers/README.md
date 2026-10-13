@@ -1,6 +1,6 @@
 # ARC/Eden Research Programme - Paper Directory
 
-**Updated: 8 October 2026.** This is the canonical home for released research documents. The website receives the released PDFs and presents its own pages. OSF receives document exports. The [release manifest](publication-manifest.json) records completed exports and remaining conversion work. See [Publication canon](../docs/PUBLICATION-CANON.md).
+**Updated: 12 October 2026.** This is the canonical home for released research documents. The website receives the released PDFs and presents its own pages. OSF receives document exports. The [release manifest](publication-manifest.json) records completed exports and remaining conversion work. See [Publication canon](../docs/PUBLICATION-CANON.md).
 
 This directory contains all papers in the ARC/Eden Research Programme. Each paper has its own directory following the standard layout described in `VERSION-CONTROL-STANDARDS.md`.
 
@@ -52,16 +52,23 @@ Version numbers live inside the document header, never in the filename. See Sect
 | Paper | Version | First Published | Purpose |
 |-------|---------|-----------------|---------|
 | [Foundational](Foundational/) | v5.19 (revised 5 Oct 2026) | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
-| [On the Origin of Scaling Laws](On-the-Origin-of-Scaling-Laws/) | v3.11 (revised 5 Oct 2026) | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
+| [On the Origin of Scaling Laws](On-the-Origin-of-Scaling-Laws/) | v3.12 (revised 10 Oct 2026) | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
 | [Eden Engineering](Eden-Engineering/) | v7.0.1 (revised 7 Oct 2026) | 22 Feb 2026 | Protocol specification for implementing Eden in production AI systems. OSF DOI [10.17605/OSF.IO/AWJR4](https://doi.org/10.17605/OSF.IO/AWJR4) |
 | [Eden Vision](Eden-Vision/) | v2.9 (revised 5 Oct 2026) | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
-| [Executive Summary](Executive-Summary/) | v3.24 (revised 8 Oct 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
-| [Master Table of Contents](Master-Table-of-Contents/) | v3.28 (revised 8 Oct 2026) | 16 Mar 2026 | Navigation document linking all papers |
+| [Executive Summary](Executive-Summary/) | v3.25 (revised 10 Oct 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
+| [Master Table of Contents](Master-Table-of-Contents/) | v3.29 (revised 10 Oct 2026) | 16 Mar 2026 | Navigation document linking all papers |
 | [The ARC Theory](The-ARC-Theory/) | v7.3 (revised 7 Oct 2026) | 14 Aug 2026 | The theory-level statement paper |
 | [The ARC Theory, two-page form](The-ARC-Theory-Two-Page-Form/) | v3.1 (revised 5 Oct 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
 | [Recursive Dynamics: the founding paper](Recursive-Dynamics-Founding-Paper/) | v3.4 (revised 5 Oct 2026) | 31 Aug 2026 | Recursive Dynamics: The Proposal of a Field |
 | [Paper C](Paper-C-PNP/) | v1.10 (revised 5 Oct 2026) | 3 Jul 2026 | Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy |
 | [HRIH Paper](HRIH-Paper/) | v3.51 (revised 5 Oct 2026) | 3 Jul 2026 | The Hyperspace Recursive Intelligence Hypothesis; speculative, outside the empirical core |
+
+## The HARI Treaty
+
+| Document | Version | First Published | What it is |
+|----------|---------|-----------------|------------|
+| [The HARI Treaty paper](HARI-Treaty-Paper/) | v2.4 (revised 8 Oct 2026) | 29 Sep 2026 | Hardware to Buy Time, Architecture to Last. Working draft; its existing review remains open (OSF DOI [10.17605/OSF.IO/WXPCE](https://doi.org/10.17605/OSF.IO/WXPCE)) |
+| [The HARI Treaty draft instruments](HARI-Treaty-Draft-Instruments/) | v2.3 (revised 5 Oct 2026) | 29 Sep 2026 | The Draft Treaty on Hardware-Aligned Recursive Intelligence. Working draft; its existing review remains open (OSF DOI [10.17605/OSF.IO/67MX8](https://doi.org/10.17605/OSF.IO/67MX8)) |
 
 ## Registration, register and working report
 
