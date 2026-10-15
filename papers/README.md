@@ -58,10 +58,10 @@ Version numbers live inside the document header, never in the filename. See Sect
 | [Executive Summary](Executive-Summary/) | v3.26 (revised 15 Oct 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
 | [Master Table of Contents](Master-Table-of-Contents/) | v3.30 (revised 15 Oct 2026) | 16 Mar 2026 | Navigation document linking all papers |
 | [The ARC Theory](The-ARC-Theory/) | v7.3 (revised 7 Oct 2026) | 14 Aug 2026 | The theory-level statement paper |
-| [The ARC Theory, two-page form](The-ARC-Theory-Two-Page-Form/) | v3.1 (revised 5 Oct 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
+| [The ARC Theory, two-page form](The-ARC-Theory-Two-Page-Form/) | v3.2 (revised 15 Oct 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
 | [Recursive Dynamics: the founding paper](Recursive-Dynamics-Founding-Paper/) | v3.4 (revised 5 Oct 2026) | 31 Aug 2026 | Recursive Dynamics: The Proposal of a Field |
 | [Paper C](Paper-C-PNP/) | v1.10 (revised 5 Oct 2026) | 3 Jul 2026 | Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy |
-| [HRIH Paper](HRIH-Paper/) | v3.51 (revised 5 Oct 2026) | 3 Jul 2026 | The Hyperspace Recursive Intelligence Hypothesis; speculative, outside the empirical core |
+| [HRIH Paper](HRIH-Paper/) | v3.52 (revised 15 Oct 2026) | 3 Jul 2026 | The Hyperspace Recursive Intelligence Hypothesis; speculative, outside the empirical core |
 
 ## The HARI Treaty
 
@@ -78,7 +78,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | [The Dated Prediction Register](Dated-Prediction-Register/) | v2.1 (revised 5 Oct 2026) | 25 Aug 2026 | Forward predictions as one verifiable chain |
 | [Operational Definitions](Operational-Definitions/) | v1.9.1 (revised 5 Oct 2026) | 22 Aug 2026 | The register of the programme's operational definitions of its terms (OSF DOI 10.17605/OSF.IO/GVQ82) |
 | [Laws IV and V: the mathematics](Laws-IV-V-Mathematics/) | v1.1 (revised 7 Oct 2026) | 1 Oct 2026 (v0.2.1) | The mathematics of the ARC Theory's Laws IV and V (added 24 September 2026), in development |
-| [The ARC Alignment-Scaling Working Report](ARC-Alignment-Scaling-Working-Report/) | working report | commenced 10 Mar 2026 | The live laboratory notebook of the alignment-scaling work (OSF record j6mkb) |
+| [The ARC Alignment-Scaling Working Report](ARC-Alignment-Scaling-Working-Report/) | v1.1 (revised 11 Oct 2026) | commenced 10 Mar 2026 | The live laboratory notebook of the alignment-scaling work (OSF record j6mkb) |
 
 ---
 
