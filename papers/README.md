@@ -78,7 +78,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | [The Dated Prediction Register](Dated-Prediction-Register/) | v2.1 (revised 5 Oct 2026) | 25 Aug 2026 | Forward predictions as one verifiable chain |
 | [Operational Definitions](Operational-Definitions/) | v1.9.1 (revised 5 Oct 2026) | 22 Aug 2026 | The register of the programme's operational definitions of its terms (OSF DOI 10.17605/OSF.IO/GVQ82) |
 | [Laws IV and V: the mathematics](Laws-IV-V-Mathematics/) | v1.1 (revised 7 Oct 2026) | 1 Oct 2026 (v0.2.1) | The mathematics of the ARC Theory's Laws IV and V (added 24 September 2026), in development |
-| [The ARC Alignment-Scaling Working Report](ARC-Alignment-Scaling-Working-Report/) | working report | commenced 10 Mar 2026 | The live laboratory notebook of the alignment-scaling work (OSF record j6mkb) |
+| [The ARC Alignment-Scaling Working Report](ARC-Alignment-Scaling-Working-Report/) | v1.1 (revised 11 Oct 2026) | commenced 10 Mar 2026 | The live laboratory notebook of the alignment-scaling work (OSF record j6mkb) |
 
 ---
 
