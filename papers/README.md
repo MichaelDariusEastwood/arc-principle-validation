@@ -61,7 +61,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | [The ARC Theory, two-page form](The-ARC-Theory-Two-Page-Form/) | v3.1 (revised 5 Oct 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
 | [Recursive Dynamics: the founding paper](Recursive-Dynamics-Founding-Paper/) | v3.4 (revised 5 Oct 2026) | 31 Aug 2026 | Recursive Dynamics: The Proposal of a Field |
 | [Paper C](Paper-C-PNP/) | v1.10 (revised 5 Oct 2026) | 3 Jul 2026 | Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy |
-| [HRIH Paper](HRIH-Paper/) | v3.51 (revised 5 Oct 2026) | 3 Jul 2026 | The Hyperspace Recursive Intelligence Hypothesis; speculative, outside the empirical core |
+| [HRIH Paper](HRIH-Paper/) | v3.52 (revised 15 Oct 2026) | 3 Jul 2026 | The Hyperspace Recursive Intelligence Hypothesis; speculative, outside the empirical core |
 
 ## The HARI Treaty
 

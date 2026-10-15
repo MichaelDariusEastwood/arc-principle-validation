@@ -1,8 +1,8 @@
 # Monograph · The ARC Theory · The Hyperspace Recursive Intelligence Hypothesis: a Testable Creation Theory
 
 **Full title:** Monograph · The ARC Theory · The Hyperspace Recursive Intelligence Hypothesis: a Testable Creation Theory
-**Version:** v3.51
-**Version date:** revised 5 October 2026
+**Version:** v3.52
+**Version date:** revised 15 October 2026
 **First published:** 3 July 2026
 **Author:** Michael Darius Eastwood
 
