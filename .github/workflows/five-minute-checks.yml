@@ -4,17 +4,30 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   paper-x-five-minute-check:
-    if: ${{ false }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      - name: The published check, exactly as the README gives it (expected 14 passed)
+          python-version: ${{ matrix.python-version }}
+      - name: Install Paper X dependencies
         working-directory: papers/Paper-X-Coupled-CoScaling-Correction
+        run: python -m pip install -r requirements.txt
+      - name: Independent theorem regressions (exit status is authoritative)
+        working-directory: papers/Paper-X-Coupled-CoScaling-Correction
+        shell: bash
         run: |
-          pip install -r requirements.txt && python code/test_theorems_independent.py | tee check-output.txt
-          grep -q "14 passed" check-output.txt
+          set -euo pipefail
+          python --version
+          python -m pip freeze
+          python -m pytest -q code/test_theorems_independent.py --junitxml=theorem-test-results.xml
