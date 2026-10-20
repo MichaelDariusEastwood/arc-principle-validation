@@ -10,6 +10,7 @@ on:
       - 'scripts/check_paper_records.py'
       - 'scripts/document_pdf_metadata.py'
       - 'scripts/test_document_pdf_metadata.py'
+      - 'scripts/test_document_release_scope.py'
       - 'scripts/requirements-documents.txt'
       - '.github/workflows/document-releases.yml'
 permissions:
@@ -24,7 +25,7 @@ jobs:
       - name: Install document-only dependencies
         run: python3 -m pip install -r scripts/requirements-documents.txt
       - name: Check metadata repair behaviour
-        run: python3 -m unittest discover -s scripts -p 'test_document_pdf_metadata.py'
+        run: python3 -m unittest discover -s scripts -p 'test_document*.py'
       - name: Check released export records
         run: python3 scripts/check_document_release.py
       - name: Check the papers index and PDF checksum record move with the files
