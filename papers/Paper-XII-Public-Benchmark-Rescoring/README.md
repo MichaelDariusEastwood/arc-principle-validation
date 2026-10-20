@@ -16,4 +16,4 @@ Paper XII: the public-benchmark rescoring protocol, the keystone external test o
 - **Programme OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror of the published version, byte for byte from the website on 8 October 2026 (the site pages are the manuscript masters; this repository receives each version after it is published there).
+Mirror of the published version, byte for byte from the website on 8 October 2026 (this repository receives each version after it is published).

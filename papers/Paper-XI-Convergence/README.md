@@ -20,4 +20,4 @@ Chrome headless:
   papers/Paper-XI-Convergence/Paper-XI-Convergent-Evidence.html
 ```
 
-Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).
+Mirror refreshed 2026-08-13 from the website's published copy.

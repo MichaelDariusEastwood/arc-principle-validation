@@ -11,4 +11,4 @@
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/GW5MX
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror of the published version, byte for byte from the website (the site pages are the manuscript masters; this repository receives each version after it is published there). The two-page form is in The-ARC-Theory-Two-Page-Form.
+Mirror of the published version, byte for byte from the website (this repository receives each version after it is published). The two-page form is in The-ARC-Theory-Two-Page-Form.

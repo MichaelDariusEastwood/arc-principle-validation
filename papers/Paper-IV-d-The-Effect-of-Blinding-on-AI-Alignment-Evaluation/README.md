@@ -26,4 +26,4 @@ See [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](../../experiments/alig
 - **Canonical website HTML:** https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
 - **Canonical website PDF:** https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.pdf
 
-Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).
+Mirror refreshed 2026-08-13 from the website's published copy.

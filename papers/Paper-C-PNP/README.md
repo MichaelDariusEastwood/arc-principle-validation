@@ -33,4 +33,4 @@ Same as all other papers: Chrome headless with MathJax rendering.
 - Convergence 29: neurodivergence proof
 - Credibility: independent citation from Oxford/KCL/Turing Institute/Tokyo
 
-Mirror refreshed 2026-08-13 from the site master (Option A: site HTML pages are the manuscript masters).
+Mirror refreshed 2026-08-13 from the website's published copy.
