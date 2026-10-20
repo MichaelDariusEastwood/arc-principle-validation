@@ -131,19 +131,17 @@ authoritative and this page is not.
 
 ## Where the master copy lives
 
-As of 11 August 2026 the master copy of each paper is its page on
-[michaeldariuseastwood.com](https://www.michaeldariuseastwood.com/research/papers/), and this
-repository receives each version after it is published there. The published page carries
-structured metadata, figures and mathematics that a plain-text copy drops silently, so
-editing anywhere else loses information. The canon previously said the reverse; the canon
-was wrong, and every revision for two months went to the site.
+Each paper is written and versioned privately by the author. Each approved release is
+published under its DOI on OSF and on
+[michaeldariuseastwood.com](https://www.michaeldariuseastwood.com/research/papers/), which carry
+the same PDF, and this repository receives the same files after each release. Until October
+2026 this section said the website pages were the master copies; they are published copies.
 
 **This repository is authoritative for reproduction.** The code, data and experiment runners
 here are the ones that produced the results. If a paper mirror here disagrees with the
-published page, the published page is correct and this copy is behind. Please
-[open an issue](https://github.com/MichaelDariusEastwood/arc-principle-validation/issues) if
+release published under its DOI, the published release is correct and this copy is behind.
+Please [open an issue](https://github.com/MichaelDariusEastwood/arc-principle-validation/issues) if
 you find that, because a lagging mirror is a defect rather than a variant.
-
 ## Two ways to check this work
 
 **Without credentials, from a clone.** Every paper's full text, the experiment code and the
