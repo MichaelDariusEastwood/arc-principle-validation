@@ -7,6 +7,9 @@ writeExportHtml: it produces print HTML but does not guard this repository's rel
 This check consumes those exports and verifies the published document manifest.
 Discovery follow-up: eden_capabilities_index.py search covered changed-file validation;
 the existing renderer was read above. No existing repository export-release gate was found.
+Discovery, 20 October 2026: eden_capabilities_index.py search 'frozen registration release
+profile changed-file document release check' searched 4,341 items in 10 kinds; no exact
+match, 628 near misses, the nearest being this checker, which the release profiles extend.
 """
 import argparse
 import hashlib
@@ -18,6 +21,13 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+# Release profiles: the representations under which a manifest row can pass. A row is checked only when its
+# representation is exactly one of these names; any other value, conversion-pending among them, is refused.
+# Each profile runs every check in findings(): the four required formats, the recorded hashes, the PDF
+# signature, the export layout of the HTML, the citation version, the full-text floor and the fixed document
+# identities. A published registration keeps its own profile, frozen-registration, because its text is frozen
+# and a correction is a successor version; it is never relabelled as an ordinary paper in order to pass.
+RELEASE_PROFILES = ('document-export', 'frozen-registration')
 
 
 class Representation(HTMLParser):
@@ -40,7 +50,7 @@ class Representation(HTMLParser):
 
 
 def findings(row, root=ROOT):
-    if row.get('representation') != 'document-export':
+    if row.get('representation') not in RELEASE_PROFILES:
         return ['official document export still required']
     out = []
     for ext in ['html', 'pdf', 'txt', 'cff']:
@@ -101,7 +111,7 @@ def main():
                     and Path(p).suffix in {'.html', '.pdf', '.txt', '.cff'}
                     and p.split('/')[1] not in folders]
     elif not selected:
-        selected.update(r['slug'] for r in rows if r['representation'] == 'document-export')
+        selected.update(r['slug'] for r in rows if r['representation'] in RELEASE_PROFILES)
     known = {r['slug'] for r in rows}
     errors = {s: ['unknown document'] for s in selected - known}
     if unlisted:
@@ -112,7 +122,7 @@ def main():
             if found:
                 errors[row['slug']] = found
     print(json.dumps({'checked': sorted(selected), 'errors': errors,
-                      'remaining_export_conversions': [r['slug'] for r in rows if r['representation'] != 'document-export']}, indent=2))
+                      'remaining_export_conversions': [r['slug'] for r in rows if r['representation'] not in RELEASE_PROFILES]}, indent=2))
     return bool(errors)
 
 
