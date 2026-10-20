@@ -89,6 +89,25 @@ def findings(row, root=ROOT):
     return sorted(set(out))
 
 
+def affected_documents(rows, changed):
+    """README-only maintenance is not a new document edition.
+
+    Preserve the existing conservative folder rule for every other file. A
+    README explicitly named by a publication manifest still counts as an
+    artefact; a filename alone cannot exempt a declared release file.
+    """
+    selected = set()
+    for row in rows:
+        declared = {item['path'] for item in row.get('files', {}).values()
+                    if isinstance(item, dict) and 'path' in item}
+        prefix = 'papers/' + row['folder'] + '/'
+        if any(path.startswith(prefix) and
+               (Path(path).name != 'README.md' or path in declared)
+               for path in changed):
+            selected.add(row['slug'])
+    return selected
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--slug', action='append')
@@ -103,9 +122,7 @@ def main():
     elif args.changed_since:
         changed = subprocess.check_output(['git', '-C', str(ROOT), 'diff', '--name-only',
                                            args.changed_since, 'HEAD', '--', 'papers/'], text=True).splitlines()
-        for row in rows:
-            if any(p.startswith('papers/' + row['folder'] + '/') for p in changed):
-                selected.add(row['slug'])
+        selected.update(affected_documents(rows, changed))
         folders = {r['folder'] for r in rows}
         unlisted = [p for p in changed if len(p.split('/')) == 3
                     and Path(p).suffix in {'.html', '.pdf', '.txt', '.cff'}
