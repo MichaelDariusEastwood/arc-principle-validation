@@ -16,4 +16,4 @@ Twenty-two predictions about self-improving AI, each with the observation that w
 - **Programme OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror of the published version, byte for byte from the website on 18 October 2026 (the site pages are the manuscript masters; this repository receives each version after it is published there).
+Mirror of the published version, byte for byte from the website on 18 October 2026 (the website's copies are the mirror source for this approved registration release; this repository receives each version after it is published there).
