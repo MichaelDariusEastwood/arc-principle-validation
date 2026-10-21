@@ -8,7 +8,9 @@
 
 ## Summary
 
-This paper presents empirical evidence from a six-model Eden Protocol intervention suite (Claude Opus, DeepSeek, Gemini Flash, Grok Fast, Groq Qwen, GPT), testing whether embedding stakeholder care -- the explicit enumeration and consideration of affected parties before ethical reasoning -- is the most robust response to embedded ethical intervention. Under paired testing, stakeholder care emerges as the single most reliable predictor of alignment improvement, functioning as a "stewardship gene" that, once activated, improves ethical reasoning quality across architecturally diverse models.
+From the abstract (version 1.7):
+
+> We present empirical evidence from a six-model Eden Protocol intervention suite (Claude Opus 4.6, DeepSeek V3.2, Gemini 3 Flash, Grok 4.1 Fast, Groq Qwen3, GPT-5.4), of which five runs produced analysable matched-pair data and one (GPT-5.4) failed in the scoring phase. The Love Loop, operationalised as stakeholder care (the explicit enumeration and consideration of affected parties before ethical reasoning), is the most robust response to embedded ethical intervention. ... The strongest defensible empirical claim is therefore narrower than the original pilot framing: stakeholder care is the universal response to the Eden intervention, while the downstream cascade into nuance, honesty, and overall quality is real but architecture-dependent.
 
 ## Experiments
 
@@ -19,4 +21,4 @@ All experiment scripts and results are in [`experiments/`](./experiments/).
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

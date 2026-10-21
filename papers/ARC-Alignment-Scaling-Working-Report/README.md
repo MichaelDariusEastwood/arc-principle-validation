@@ -7,7 +7,9 @@
 
 ## Summary
 
-Current ARC-Align running report covering the six-model blind benchmark, scorer architecture, blinding progression, and current alignment-scaling results.
+In the report's own words (version 1.1):
+
+> Current ARC-Align running report covering the six-model blind benchmark, scorer architecture, blinding progression, and current alignment-scaling results.
 
 ## Links
 

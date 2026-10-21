@@ -8,7 +8,9 @@
 
 ## Summary
 
-Cauchy's four functional equations -- additive, multiplicative, exponential, and logarithmic -- are the only continuous solutions to their respective composition constraints. This paper argues that this 200-year-old mathematical result has a physically testable consequence: under the stated axioms, it constrains scaling laws to one of three functional families (power law, exponential, or saturation curve). The family is determined by the composition operator of the underlying recursive amplification process. Empirical validation across 50 domains confirms that observed scaling behaviours fall within these Cauchy-predicted families, providing a unifying mathematical framework for the ARC Principle.
+From the abstract (version 3.15):
+
+> Cauchy's four functional equations - additive, multiplicative, exponential, and logarithmic - are the only continuous solutions to their respective composition constraints. We argue that this 200-year-old mathematical result has a physically testable consequence: under the stated axioms, it forces a power law where composition is multiplicative and an exponential where depth adds while output multiplies; where output is bounded, the compatible forms are saturation curves, and a formal proof that they exhaust the bounded case is not provided here and remains an open problem. ... Primary result (computed on the six-model candidate set, which contained no logarithmic and no pure linear candidate (Section 3.2)): 19 out of 25 empirical curve-fit domains confirm the Cauchy-predicted family under strict AICc model selection. (The rerun of 11 August 2026, which added the logarithmic candidate, returns 18 of 25.) ... This result is strong enough to publish as a structured prediction comparison under a publicly stated rule rather than a per-domain advance timestamp, but not strong enough to claim as proven. ... Independent replication is needed.
 
 ## Experiments
 
@@ -25,4 +27,4 @@ All experiment scripts, results, data, and preregistration materials are in [`ex
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

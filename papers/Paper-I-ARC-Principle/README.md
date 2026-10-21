@@ -10,7 +10,9 @@
 
 ## Summary
 
-This paper formalises and preliminarily tests the ARC Principle (Artificial Recursive Creation), first proposed in *Infinite Architects* (Eastwood, 2026): that capability in intelligent systems scales super-linearly with recursive depth. The principle is expressed mathematically as U = I x R^alpha, where effective capability (U) scales with base intelligence (I) multiplied by recursive depth (R) raised to an empirically determined power alpha. Preliminary evidence across multiple AI models confirms alpha > 1, supporting the core claim that recursion is a multiplicative amplifier of intelligence rather than a mere additive accumulator.
+From the abstract (version 1.16):
+
+> This paper formalises and preliminarily tests the ARC Principle (Artificial Recursive Creation), first proposed in *Infinite Architects* (Eastwood, 2026): that capability in intelligent systems scales super-linearly with recursive depth. ... On Gemini 3 Flash, the only model that produced clean, monotonic scaling data, Paper II reports an endpoint sequential exponent of 0.59 with a bootstrap 95 per cent interval of −1.3 to 2.9, a regression sequential exponent of 0.49 with a standard error of 0.20 and a coefficient of determination of 0.86, and a compute-matched parallel exponent of 0.31. That is one model’s fit and inconclusive, so the super-linearity claim is unresolved rather than established. ... We propose that $\alpha = 2$ is a stability ceiling, not an impossibility limit: it is the proposed stable limit, the most a recursively self-correcting system can grow and stay correctable, a scaling limit and not a speed limit.
 
 ## Experiments
 
@@ -21,4 +23,4 @@ All experiment scripts, results, and data are in [`experiments/paper-i-foundatio
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

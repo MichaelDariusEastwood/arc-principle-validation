@@ -8,7 +8,9 @@
 
 ## Summary
 
-A mouse's heart beats 600 times per minute; an elephant's beats 28; a blue whale's beats 6. This paper traces the origin of scaling laws across biological, physical, and computational systems, arguing that the recursive amplification mechanism identified by the ARC Principle provides a unifying explanation for why power-law scaling relationships emerge so consistently across nature. The analysis connects allometric scaling in biology, neural scaling laws in AI, and physical scaling relationships through a common recursive structural framework.
+From the abstract (version 3.12):
+
+> Where a recursive amplification process has a well defined composition operator on its input and output, and satisfies the regularity conditions Cauchy's functional equations require, the admissible functional forms are constrained to a small named family. That is a conditional mathematical classification, not a survey of nature: it does not establish that every empirical scaling process is such a homomorphism, and the bounded family's exhaustiveness remains an open problem, as Paper VII states. The grid is four-celled rather than three, the fourth cell being the logarithmic family.
 
 ## Experiments
 

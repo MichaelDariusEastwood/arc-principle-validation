@@ -8,7 +8,9 @@
 
 ## Summary
 
-The synthesis paper for the ARC/Eden research programme. Integrates the papers that precede it into a single honest assessment of what it classes as 'proven at pilot scale', what is inconclusive, and what remains to be tested.
+From the abstract (version 2.7):
+
+> This synthesis paper integrates all findings into a single honest assessment. ... This paper maps exactly what has been proven, what has not, and what experiments would resolve each open question. It also documents the programme's errors and corrections, because a framework built on iterative self-correction must practise what it preaches.
 
 ## Key Contents
 
@@ -28,4 +30,4 @@ This is a synthesis document. Experiments are distributed across the individual 
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 - **Research hub:** https://www.michaeldariuseastwood.com/research/
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

@@ -8,7 +8,9 @@
 
 ## Summary
 
-Current alignment approaches produce alignment scaling exponents of approximately zero, meaning safety degrades relative to capability as recursive depth increases. If AI capability scales super-linearly while external alignment constraints do not participate in the recursive process, then the capability-alignment gap widens without bound. The Eden Protocol provides a complete engineering specification for embedded alignment -- safety mechanisms that participate in the recursive computation itself rather than constraining it from outside. This document specifies the technical architecture, governance framework, and implementation pathway.
+From the abstract (version 7.0.1):
+
+> This paper specifies the Eden Protocol (protocol version 6.0), an engineering architecture for alignment built into a system's reasoning rather than applied from outside it. ... Its hypothesis is that alignment which takes part in recursive self-improvement keeps pace with capability, where alignment applied from outside falls behind. This is a specification, not a result: most components are specified and not built, a private software model of the three-state gate has not been released, and no hardware exists. The Eden Protocol follows from no law of the ARC Theory; the theory registration carries it on four propositions, P12, P13, P15 and P21, none yet tested.
 
 ## Experiments
 

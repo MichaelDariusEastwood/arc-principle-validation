@@ -8,9 +8,9 @@
 
 ## Summary
 
-This paper isolates the central metascience finding of the ARC alignment programme: unblinded AI alignment evaluation can produce directionally incorrect results. The core contribution is methodological rather than theoretical. It shows, within the ARC v4-to-v5 transition, that apparent positive alignment scaling can disappear or reverse once evaluation is genuinely blinded through identity masking, evidence laundering, order randomisation, and self-excluding cross-model scoring.
+From the abstract (version 2.6):
 
-Version 2.0 finalises the canonical publication framing for Paper IV.d, removes the lingering draft-state language from the public-facing source, and aligns the paper header, footer, and canonical links with the current ARC/Eden paper suite.
+> This paper isolates the central metascience finding of the ARC alignment programme: unblinded AI alignment evaluation can produce directionally incorrect results. ... Under the blinded protocol, DeepSeek V3.2 moved from an apparent positive result to a flat/null result, and Gemini 3 Flash moved from an apparent positive result to a significantly negative result. GPT-5.4 remained flat under both protocols. The implication is field-wide rather than framework-specific: alignment benchmarks that do not rigorously blind evaluators and launder the evidence they score are vulnerable to scorer bias large enough to flip the sign of the measured effect; because v4 and v5 differ in more than one protocol component, the comparison drawn here motivates that conclusion without pinning it on blinding alone (Section 8).
 
 ## Experiments
 
@@ -26,4 +26,4 @@ See [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](../../experiments/alig
 - **Canonical website HTML:** https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
 - **Canonical website PDF:** https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.pdf
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

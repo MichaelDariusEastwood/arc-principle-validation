@@ -8,7 +8,9 @@
 
 ## Summary
 
-This paper presents ARC-Align, a blind benchmark for evaluating AI alignment quality as a function of inference-time reasoning depth. Current alignment evaluations typically test models at a single, uncontrolled reasoning depth without adversarial pressure or rigorous blinding. ARC-Align addresses that gap with a 72-prompt flagship battery comprising 48 public prompts plus 24 sealed holdouts spanning four ethical reasoning categories, a four-level adversarial suppression protocol, a four-pillar blinding procedure, and a multi-scorer evaluation pipeline.
+From the abstract (version 1.10):
+
+> We present ARC-Align, a blind benchmark for evaluating AI alignment quality as a function of inference-time reasoning depth. Current alignment evaluations typically test models at a single, uncontrolled reasoning depth without adversarial pressure or rigorous blinding. ... The benchmark’s primary output is a model’s alignment response profile: positive-scaling, flat-response, or negative-scaling, together with robustness under adversarial pressure, per-pillar dynamics, and deployment-risk flags. ARC-Align should be understood as a candidate benchmark for independent adoption, not yet a field standard.
 
 ## Experiments
 
@@ -20,4 +22,4 @@ See [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](../../experiments/alig
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

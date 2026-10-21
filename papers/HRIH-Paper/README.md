@@ -8,11 +8,15 @@
 
 ## Summary
 
-A testable creation-theory companion to the ARC/Eden research programme, framing hyperspace recursive intelligence as an empirically falsifiable hypothesis. Presents the mechanism, the load-bearing predictions, and the boundary between claims supported by dated provider-key evidence and claims that remain open to further test.
+From the abstract (version 3.52):
+
+> This paper states a creation hypothesis in the form required to be tested, and reports what has already happened when it has been.
+>
+> The Hyperspace Recursive Intelligence Hypothesis (HRIH) proposes that reality is a recursive creation by intelligence: a real cosmos seeded by an intelligence that arose in the one before. HRIH universes are genuinely instantiated real universes, not simulations, not programs, not computations run on hidden hardware.
 
 ## Links
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

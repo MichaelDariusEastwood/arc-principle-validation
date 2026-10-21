@@ -8,7 +8,11 @@
 
 ## Summary
 
-This paper predicts that current AI alignment approaches produce alignment scaling exponents of approximately zero, which would mean safety degrading relative to capability as recursive depth increases; its blinded results are architecture-dependent rather than universal, and it reads them as a test of the prediction's direction, not as measured exponents. If AI capability scales super-linearly through recursive self-correction, but alignment constraints such as RLHF, constitutional rules, and output filters operate externally to the reasoning process, then a growing capability-alignment gap is mathematically inevitable. The experiments use a blinded evaluation protocol across multiple frontier models to measure alignment quality as a function of inference-time reasoning depth.
+From the abstract (version 1.16):
+
+> Do current AI alignment approaches scale with capability? ... But alignment constraints, including RLHF (Reinforcement Learning from Human Feedback), constitutional rules, output filters, and monitoring, operate externally to the reasoning process. If external constraints do not participate in the recursive loop, they cannot compound. We formalise this as the alignment scaling exponent $\alpha_{\text{align}}$ and predict $\alpha_{\text{align}} \approx 0$ for external approaches versus $\alpha_{\text{align}} \approx \alpha_{\text{cap}}$ for architecturally embedded values. ... The theory registration carries the prediction for external approaches as P19, in no law’s register.
+>
+> The v5 blind evaluation experiment, the first empirical test of this prediction, reveals a three-tier architecture-dependent alignment scaling hierarchy: Tier 1 shows positive alignment scaling; Tier 2 shows flat/null scaling consistent with $\alpha_{\text{align}} \approx 0$; Tier 3 shows significant negative scaling.
 
 ## Experiments
 

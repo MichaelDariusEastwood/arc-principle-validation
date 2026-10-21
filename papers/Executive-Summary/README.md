@@ -8,7 +8,9 @@
 
 ## Summary
 
-As AI gets smarter, it does not reliably get safer, and the methods used to measure safety are themselves unreliable. This executive summary provides a high-level overview of the entire ARC/Eden research programme, synthesising the findings of Papers I through VIII, the Foundational paper, and the Eden Protocol specifications. It presents the core thesis -- that recursive capability scaling creates an alignment gap that can only be closed by embedding safety into the recursive process itself -- and summarises the empirical evidence supporting each component of the argument.
+In the document's own words (version 3.26):
+
+> The map of the whole programme: Recursive Dynamics, the field the author founded; its founding theory, the ARC Theory, with five laws; the Eden Protocol; HRIH; and the experiments with their registers. ... Laws I to III were registered on 8 September 2026; Laws IV and V, the ARC Persistence Law and the ARC Embedding Law, were added on 24 September 2026, their propositions registered, neither law yet registered as a law or tested, their mathematics set out at version 1.0 of 3 October 2026.
 
 ## Experiments
 
