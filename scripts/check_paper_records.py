@@ -13,6 +13,17 @@ Discovery, 12 October 2026: eden_capabilities_index.py search 'paper pdf sha256s
 version check github mirror' searched 4,275 items in 10 kinds; no exact match, 463 near misses. The nearest, the
 website's check-paper-version-drift.py and check-paper-file-versions.py, read the website's own surfaces;
 check_document_release.py verifies the manifest's hashes, not these two records. No study code is imported or run.
+
+Aliases: a manifest row may list files kept under an earlier name so that old links keep working. Each entry
+gives the alias's path and the format of its primary file in the row's files, and the alias must carry that
+primary file's bytes exactly. Why: on 15 October 2026 the HRIH 3.52 release (commit 61e19be) updated
+HRIH-Paper.txt and HRIH-Paper.cff but left both legacy-named alias files at the earlier text, and no check
+noticed until the census of 21 October 2026.
+
+Discovery, 21 October 2026: eden_capabilities_index.py search 'alias file primary bytes identical legacy name
+check manifest' searched 4,347 items in 10 kinds; no exact match, 459 near misses. The website's
+canonical_pdf_errors compares its own download routes with this manifest; check_document_release.py hashes only
+the files a row declares. Neither reads an alias file, so the alias check extends this record check.
 """
 import hashlib
 import json
@@ -80,11 +91,58 @@ def index_findings(root=ROOT):
     return out
 
 
+def alias_findings(root=ROOT):
+    """Every alias a manifest row lists must carry its primary file's bytes (see Aliases above).
+
+    This extends the record check; the discover-first search of 21 October 2026 is recorded in the module docstring.
+    """
+    out = []
+    for row in json.loads((root / MANIFEST).read_text(encoding='utf-8'))['documents']:
+        if 'aliases' not in row:
+            continue
+        slug, aliases = row.get('slug'), row['aliases']
+        if not isinstance(aliases, list) or not aliases:
+            out.append(f'{MANIFEST}: {slug} aliases must be a non-empty list')
+            continue
+        files = row.get('files') or {}
+        declared = {item.get('path') for item in files.values() if isinstance(item, dict)}
+        prefix = 'papers/' + row['folder'] + '/'
+        seen = set()
+        for alias in aliases:
+            if (not isinstance(alias, dict) or not isinstance(alias.get('path'), str)
+                    or not isinstance(alias.get('primary'), str)):
+                out.append(f'{MANIFEST}: {slug} has an alias entry without a "path" and a "primary" format')
+                continue
+            rel, fmt = alias['path'], alias['primary']
+            if rel in seen:
+                out.append(f'{MANIFEST}: {slug} lists the alias {rel} twice')
+                continue
+            seen.add(rel)
+            primary = files.get(fmt, {}).get('path') if isinstance(files.get(fmt), dict) else None
+            if not primary:
+                out.append(f'{MANIFEST}: {slug} alias {rel} names the primary format "{fmt}", which the row does not declare')
+                continue
+            if (not rel.startswith(prefix) or '/' in rel[len(prefix):] or rel in declared
+                    or Path(rel).suffix != Path(primary).suffix):
+                out.append(f'{MANIFEST}: {slug} alias {rel} must be a separate {Path(primary).suffix} file directly in {prefix}')
+                continue
+            if not (root / rel).is_file():
+                out.append(f'{rel}: listed as an alias of {primary}, but no such file exists')
+            elif not (root / primary).is_file():
+                out.append(f'{primary}: the primary of the alias {rel} does not exist')
+            elif (root / rel).read_bytes() != (root / primary).read_bytes():
+                out.append(f'{rel}: differs from its primary {primary}; copy the primary file\'s bytes to it')
+    return out
+
+
 def main():
-    problems = checksum_findings() + index_findings()
+    problems = checksum_findings() + index_findings() + alias_findings()
     for problem in problems:
         print(problem)
-    print(json.dumps({'checksum_record': SUMS, 'index': INDEX, 'problems': len(problems)}))
+    # The alias count shows that the alias check, which extends the record check, has run.
+    aliases = sum(len(row['aliases']) for row in json.loads((ROOT / MANIFEST).read_text(encoding='utf-8'))['documents']
+                  if isinstance(row.get('aliases'), list))
+    print(json.dumps({'checksum_record': SUMS, 'index': INDEX, 'aliases': aliases, 'problems': len(problems)}))
     return 1 if problems else 0
 
 
