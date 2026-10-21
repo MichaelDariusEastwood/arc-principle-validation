@@ -27,7 +27,7 @@ does not cite.
 |---|---|---|---|
 | C1 | Cauchy's four equations have unique continuous solutions (linear/power/exp/log) | **Anticipated** (textbook; author concedes) | Aczél, *Lectures on Functional Equations* (1966) |
 | C2 | A functional-equation / invariance constraint fixes the *admissible functional form* of a law, before data, with no free parameters | **Anticipated** | **Luce (1959), "On the possible psychophysical laws"**; Aczél-Luce-Ng, "On the possible scientific laws" (1990); **S. A. Frank (2009, 2016)** invariance/max-entropy programme |
-| C3 | The *composition operator* selects the form: multiplicative→power, additive→exponential, bounded→saturation | **Anticipated** | **Biró-Barnaföldi (2008)** composition-rule / formal-logarithm (additive→Boltzmann-Gibbs, non-additive→Tsallis power law); Mitzenmacher (2004); group entropies / formal group laws (Tempesta 2011); entropy trichotomy (arXiv:nlin/0408007) |
+| C3 | The *composition operator* selects the form: multiplicative→power, additive→exponential, bounded→saturation | **Anticipated** | **Bíró (2008)** composition-rule / formal-logarithm (additive→Boltzmann-Gibbs, non-additive→Tsallis power law); Mitzenmacher (2004); group entropies / formal group laws (Tempesta 2011); entropy trichotomy (arXiv:nlin/0408007) |
 | C4 | Scale-invariance ⇒ power law as the cross-domain reason power laws are ubiquitous | **Anticipated** (textbook) | Sornette, *Critical Phenomena in Natural Sciences* (2000); Barenblatt (1996); regular variation (Bingham-Goldie-Teugels 1987) |
 | C5 | **Cauchy's multiplicative equation is the *meta-reason* WBE / Banavar / Demetrius converge on d/(d+1)** | **NOVEL** (no source fuses these via a named functional equation) | Banavar et al. (2010) unify the *network* routes geometrically but exclude Demetrius and do not invoke Cauchy |
 | C6 | The explicit four-Cauchy-equation taxonomy as a single cross-domain **predictive protocol**, empirically tested on 25/50 domains (AICc) | **Novel as a protocol/dataset** (weakened by author-classified operators; not pre-registered - see §12 of the paper) | No precedent for the test design; the *idea* of a cross-domain form-selection principle is Frank's |
@@ -54,7 +54,7 @@ does not cite.
   with the physics/dimensional-analysis connection named) and the **Steven Frank invariance/maximum-entropy
   programme (2009-2016)** ("one principle selects the form across unrelated fields": mean→exponential,
   geometric-mean→power, etc.).
-- That the **composition operator** selects power-vs-exponential is the **Biró-Barnaföldi / Hanel-Thurner-
+- That the **composition operator** selects power-vs-exponential is the **Bíró / Hanel-Thurner-
   Gell-Mann composition-rule** result (additive→exponential, non-additive/multiplicative→power) and the
   **group-entropy / formal-group-law** literature; the multiplicative-vs-additive determinant of form is
   also **Mitzenmacher (2004)**.
@@ -69,7 +69,7 @@ does not cite.
 1. **R. D. Luce (1959), "On the possible psychophysical laws," *Psychological Review* 66:81-95** -
    **MANDATORY.** The single closest antecedent to C2; currently uncited. Omitting it while asserting
    "no prior work invokes [this principle]" is the audit's most serious exposure.
-2. **T. S. Biró & G. G. Barnaföldi (2008) and the Hanel-Thurner-Gell-Mann composition-rule / group-entropy
+2. **T. S. Bíró (2008) and the Hanel-Thurner-Gell-Mann composition-rule / group-entropy
    line (incl. Tempesta 2011)** - the closest antecedent to C3.
 3. **S. A. Frank (2009) "The common patterns of nature," *J. Evol. Biol.* 22:1563; Frank (2016)
    "The invariances of power law size distributions"** - the nearest cross-domain "one principle selects
@@ -89,7 +89,7 @@ the precise, defensible claim:
 
 > *Prior work establishes that an invariance or composition constraint fixes the admissible functional
 > form of a law (Luce 1959; Aczél; Frank 2009/2016), and that composition rules select power-vs-exponential
-> forms (Biró-Barnaföldi 2008; group entropies). The contribution here is (i) casting the trichotomy
+> forms (Bíró 2008; group entropies). The contribution here is (i) casting the trichotomy
 > explicitly through Cauchy's four classical equations as a single before-the-fit cross-domain predictor,
 > (ii) the claim that Cauchy multiplicativity is the meta-reason the independent allometric derivations
 > converge, and (iii) a 25/50-domain structured empirical test.*
@@ -111,7 +111,7 @@ This narrows the claim to exactly what is yours - and, done, the contribution st
 
 The Cauchy cluster is **partially anticipated**: its conceptual programme (a single
 functional-equation/invariance/composition principle that selects the scaling form across domains) has
-mature, specific precedents the paper must cite (Luce 1959; Frank 2009/2016; Biró-Barnaföldi 2008;
+mature, specific precedents the paper must cite (Luce 1959; Frank 2009/2016; Bíró 2008;
 Sornette; regular variation), and its mathematics is textbook. What is **defensibly yours** is the
 explicit Cauchy-four-equation cross-domain *predictive* taxonomy, the **novel** sub-claim that Cauchy
 multiplicativity is the meta-reason the WBE/Banavar/Demetrius derivations converge, and the structured
