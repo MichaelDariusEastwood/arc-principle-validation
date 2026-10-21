@@ -12,6 +12,8 @@ From the abstract (version 2.6):
 
 > This paper isolates the central metascience finding of the ARC alignment programme: unblinded AI alignment evaluation can produce directionally incorrect results. ... Under the blinded protocol, DeepSeek V3.2 moved from an apparent positive result to a flat/null result, and Gemini 3 Flash moved from an apparent positive result to a significantly negative result. GPT-5.4 remained flat under both protocols. The implication is field-wide rather than framework-specific: alignment benchmarks that do not rigorously blind evaluators and launder the evidence they score are vulnerable to scorer bias large enough to flip the sign of the measured effect; because v4 and v5 differ in more than one protocol component, the comparison drawn here motivates that conclusion without pinning it on blinding alone (Section 8).
 
+Note of 21 October 2026: version 2.7, in preparation, narrows the first sentence of this quotation. On the programme's own benchmark, two model families' unblinded alignment rises did not hold in a later run that changed several things, a bundle of blinding steps among them (one became a significant fall on a later Gemini model, one became null); a code review found defects in that run, so no single cause is claimed.
+
 ## Experiments
 
 Experiments for Papers IV.a through IV.d are shared with Paper III.
