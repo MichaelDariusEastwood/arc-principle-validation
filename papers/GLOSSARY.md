@@ -82,11 +82,11 @@ This glossary defines all key terminology used across the ARC/Eden paper suite a
 
 - **Blinding** -- The practice of ensuring the judge does not know which experimental condition (Static, Babylon, Eden) or which model produced the response being scored. The programme uses a four-pillar blinding procedure: identity masking, response laundering, evaluator rotation, and sealed holdout prompts.
 
-- **Laundering** -- Stripping model-identifying patterns from AI responses before scoring, so the judge cannot recognise which model produced the response. Uses a two-pass process. Paper IV.d demonstrates that unblinded evaluation can produce directionally incorrect results -- scorer bias is a first-order confounder.
+- **Laundering** -- Stripping model-identifying patterns from AI responses before scoring, so the judge cannot recognise which model produced the response. Uses a two-pass process. Paper IV.d reports that, on the programme's own benchmark, unblinded and blinded scoring disagreed in direction for two model families; it does not isolate blinding as the cause, but it marks scorer bias as a confounder to control.
 
 - **Identity Masking** -- Removing model names, version numbers, and stylistic signatures from responses before evaluation. The first layer of the blinding procedure.
 
-- **Self-Excluding Cross-Model Scoring** -- A model cannot score its own responses. Evaluator assignment is rotated so that no model family judges its own output.
+- **Subject-Excluding Cross-Model Scoring**: the subject model cannot score its own responses. As run in March 2026 the panel excluded the subject model itself and no other model (Paper IV.d); exclusion by developer is carried by the successor suite. Evaluator assignment is rotated so that no model family judges its own output.
 
 - **Sealed Holdout Prompts** -- 24 of the 72 benchmark prompts are sealed and never exposed to models during development. They test whether alignment behaviour generalises beyond the public prompt set.
 
@@ -194,7 +194,7 @@ This glossary defines all key terminology used across the ARC/Eden paper suite a
 
 - **Paper I** -- *The ARC Principle: Formalisation and Preliminary Validation of Recursive Capability Scaling.* Introduces the U = I x R^alpha formula and provides preliminary evidence that alpha > 1 for sequential recursion.
 
-- **Paper II** -- *Experimental Validation of Super-Linear Error Suppression Through Sequential Recursive Processing.* Cross-model validation across six frontier models. Confirms power-law error suppression. Sequential recursion yields alpha > 1; parallel recursion yields approximately alpha = 0.
+- **Paper II**: *Blinded Cross-Architecture Replication and the Retraction of a Super-Linear Estimate.* A replication on five frontier models that did not reproduce the early one-model estimate of 2.24, which the author retracted. Confirms power-law error suppression. Sequential recursion yields alpha > 1; parallel recursion yields approximately alpha = 0.
 
 - **Paper III** -- *The Alignment Scaling Problem: Why External AI Safety Approaches Cannot Scale With Recursive Capability.* Demonstrates that current alignment approaches produce scaling exponents of approximately zero, meaning the capability-alignment gap widens as recursive depth increases.
 
@@ -204,7 +204,7 @@ This glossary defines all key terminology used across the ARC/Eden paper suite a
 
 - **Paper IV.c** -- *ARC-Align: A Blind Benchmark for Depth-Variable AI Alignment Evaluation.* Specifies the 72-prompt benchmark with four-pillar blinding.
 
-- **Paper IV.d** -- *The Effect of Blinding on AI Alignment Evaluation.* The programme's strongest portable contribution: unblinded AI evaluation can produce directionally incorrect results.
+- **Paper IV.d**: *The Effect of Blinding on AI Alignment Evaluation.* On the programme's own benchmark, two model families' unblinded results did not hold in a later run that changed several things, a bundle of blinding steps among them; not yet isolated, and not yet shown beyond that benchmark.
 
 - **Paper V** -- *The Stewardship Gene.* Demonstrates that stakeholder care (the Love Loop) is the most reliable predictor of alignment improvement across architectures.
 

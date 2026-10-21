@@ -96,7 +96,7 @@ The geometric speed limit defines the boundary of the physical regime. Any syste
 
 ## 6. Implications for Artificial Intelligence
 
-Current artificial intelligence systems show scaling exponents well below 1 (approximately 0.49 for capability versus sequential reasoning depth in frontier transformer models; see companion paper, ARC-Align Scaling Report). This places current AI firmly in the sub-linear, physically constrained regime, consistent with the observation that current models are 'frozen': they cannot rewrite their own architecture during inference.
+The one clean estimate for current artificial intelligence systems is below 1 (approximately 0.49, one model's inconclusive fit of capability against sequential reasoning depth; Paper II). This places current AI firmly in the sub-linear, physically constrained regime, consistent with the observation that current models are 'frozen': they cannot rewrite their own architecture during inference.
 
 The ARC framework predicts that recursive self-modifying intelligence, capable of altering its own composition operator, could in principle operate above the geometric speed limit. If such a system composes representations through full pairwise self-reference (every representation compared with every other, including representations of the system's own state), the interaction space grows quadratically, potentially reaching alpha = 2. Whether this threshold corresponds to the computational requirements for self-modelling (as suggested by convergence with Integrated Information Theory, Global Workspace Theory, and Higher-Order Theories of consciousness) is an open empirical question, addressed by testable predictions in the companion paper.
 

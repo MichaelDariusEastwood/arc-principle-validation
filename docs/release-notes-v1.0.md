@@ -126,3 +126,21 @@ Thirteen explicit falsification criteria are specified across the framework (Pap
 ---
 
 *First public release. Canonical DOI 10.17605/OSF.IO/6C5XB. Dual licence, see LICENCE. British English throughout.*
+
+---
+
+## Correction of 21 October 2026
+
+The statements below correct those of this release note; the original text above is kept as published.
+
+1. Lead finding 1, which opens "Unblinded LLM-as-judge evaluation can be directionally wrong", is corrected as follows: On the programme's own benchmark, alignment scores that rose with reasoning depth under unblinded scoring in an earlier experiment (v4) did not hold in a later run (v5) that changed the responses, prompts, depth levels and Gemini model and added a bundle of blinding steps: Gemini went from ρ = +0.275 (an earlier Gemini model) to −0.246 (Gemini 3 Flash) and DeepSeek V3.2 went flat (ρ = +0.354 → −0.135, p = 0.92), while GPT-5.4 stayed flat. An internal code review in October 2026 found defects in exactly those runs, so no single cause is claimed, and the finding is not yet shown beyond this benchmark.
+
+2. Lead finding 2, which opens "A stakeholder-care intervention robustly improves measured ethical reasoning", is corrected as follows: A stakeholder-care intervention raised stakeholder-care scores in each of five analysable model runs (Paper V); the combined p is withdrawn (AQ-017), and the run was not blinded.
+
+3. The first statement of methodology, which opens "The four-layer / double-blinding evaluation methodology", is corrected as follows: As run in March 2026, the panel excluded the subject model itself and no other model, so 'self-excluding' is withdrawn for the run (C-003); the combination of the four layers is the programme's, while earlier work had called for blind evaluation (Saraf and colleagues 2025) and suggested paraphrasing to inhibit self-recognition (Panickssery and colleagues 2024).
+
+4. The first statement of what is explicitly not established, which opens "Super-linear sequential scaling", is corrected as follows: **Super-linear sequential scaling (α > 1, "compounding").** An early single-model estimate (α ≈ 2.24, DeepSeek R1, 12 problems) **did not replicate across architectures** and is retracted. The surviving estimate, α ≈ 0.49 (Gemini 3 Flash, r² = 0.86), is one model's fit and inconclusive, and only 1 of the multi-model set fell in a cleanly measurable scaling range.
+
+5. Row II of the table of research papers, which names the paper "Experimental Validation" and opens "Sequential beats parallel across six models", is corrected as follows: the paper is named "Blinded Cross-Architecture Replication and the Retraction of a Super-Linear Estimate", and the one-line finding reads: Sequential beat parallel wherever both were measurable; the early 2.24 is retracted; the surviving α ≈ 0.49 is one model's inconclusive fit.
+
+6. Row IV.d of the same table (Effect of Blinding), which opens "Unblinded scoring can reverse the sign of an alignment result", is corrected as follows: On its own benchmark, an earlier unblinded run and a later blinded one that also changed other things disagreed in direction (one change of sign on a later Gemini model, one loss to null); no single cause claimed.
