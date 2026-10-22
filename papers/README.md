@@ -42,7 +42,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | VII | [Cauchy Unification](Paper-VII-Cauchy-Unification/) | v3.15 (revised 5 Oct 2026) | 16 Mar 2026 | 50-domain validation, null controls, temporal OOS, dated OSF deposit (extension protocol, not a registration) | `experiments/results/` |
 | VIII | [The Load-Bearing Test](Paper-VIII-The-Load-Bearing-Proof/) | v3.7 (revised 5 Oct 2026) | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
 | IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v2.7 (revised 5 Oct 2026) | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
-| X | [The ARC Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v1.14 (revised 5 Oct 2026) | 3 Jul 2026 | Verification harness and an independent theorem suite of 14 checks | `Paper-X-Coupled-CoScaling-Correction/results/` |
+| X | [The ARC Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v1.16 (revised 21 Oct 2026) | 3 Jul 2026 | Verification harness and an independent theorem suite of 14 checks | `Paper-X-Coupled-CoScaling-Correction/results/` |
 | XI | [Convergent Evidence for Recursive Amplification](Paper-XI-Convergence/) | v1.14 (revised 5 Oct 2026) | 2 Jul 2026 | - | - |
 | XII | [Public Benchmark Rescoring](Paper-XII-Public-Benchmark-Rescoring/) | v1.14 (revised 5 Oct 2026) | 14 Aug 2026 | - | - |
 | XIII | [The Self-Acceleration Exponent](Paper-XIII-Self-Acceleration-Exponent/) | v1.10 (revised 5 Oct 2026) | 16 Aug 2026 | - | - |
