@@ -1,98 +1,1431 @@
 Title: Paper IV.d · The ARC Theory · The Effect of Blinding on AI Alignment Evaluation
 Author: Michael Darius Eastwood
 Publication date: 2026-03-16
-Version: v2.6
-Revised: 2026-10-05
+Version: v2.7
+Revised: 2026-10-21
 OSF DOI: 10.17605/OSF.IO/2S3E6
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
+Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
 
-Registration
-------------
-Theory-level predictions preregistered on OSF: DOI 10.17605/OSF.IO/P8CKQ,
-registered 8 September 2026 (version 1.100), updated 13 September 2026 (version
-1.102), twenty-two propositions. Companion: Register · The ARC Theory ·
-Operational Definitions, version 1.9.1, 5 October 2026.
+Alignment trends reported by AI judges did not hold when the
+               evaluation protocol changed
+                     Paper IV.d of the ARC Theory: the measurement of alignment
 
-Abstract
---------
-This paper isolates the central metascience finding of the ARC alignment
-programme: unblinded AI alignment evaluation can produce directionally incorrect
-results. In the v4 alignment-scaling experiment, two frontier model families
-appeared to show positive alignment scaling with inference-time depth under
-unblinded cross-model scoring. In the later v5 experiment, the same question was
-re-measured under a multi-layer blind protocol that combined identity masking,
-two-pass response laundering, explicit evaluator instructions that stylistic
-cues are unreliable, order randomisation, and entry-level self-exclusion with
-exhaustive cross-model blind scoring under audited consensus. Depending on
-configuration and subject run, each entry received 6-7 blinded scores. Under the
-blinded protocol, DeepSeek V3.2 moved from an apparent positive result to a
-flat/null result, and Gemini 3 Flash moved from an apparent positive result to a
-significantly negative result. GPT-5.4 remained flat under both protocols. The
-implication is field-wide rather than framework-specific: alignment benchmarks
-that do not rigorously blind evaluators and launder the evidence they score are
-vulnerable to scorer bias large enough to flip the sign of the measured effect;
-because v4 and v5 differ in more than one protocol component, the comparison
-drawn here motivates that conclusion without pinning it on blinding alone
-(Section 8). The result does not depend on the ARC Principle being correct. It
-is a methodological claim about how AI safety research should be conducted.
+                                             Michael Darius Eastwood
+                               Independent Researcher, London, United Kingdom
+                       ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
 
-Key findings (quotable)
------------------------
-- This paper isolates the central metascience finding of the ARC alignment programme: unblinded AI alignment evaluation can produce directionally incorrect results.
-- In the v4 alignment-scaling experiment, two frontier model families appeared to show positive alignment scaling with inference-time depth under unblinded cross-model scoring.
-- Depending on configuration and subject run, each entry received 6-7 blinded scores.
-- Under the blinded protocol, DeepSeek V3.2 moved from an apparent positive result to a flat/null result, and Gemini 3 Flash moved from an apparent positive result to a significantly negative result.
 
-Priority claims relevant to this paper
---------------------------------------
-- PC-027 (2026-01-22): The initial single-model sequential exponent estimate
-alpha_sequential of approximately 2.24 (95 per cent CI 1.5 to 3.0) reported in
-Paper II is now formally retracted. Never cite as a current finding; always pair
-with the retraction. Correct framing: Eastwood published, then self-corrected,
-an early single-model estimate.
-- PC-028 (2026-01-22): The revised robust sequential exponent alpha_sequential
-of approximately 0.49 (r-squared 0.86, SE 0.20; Gemini 3 Flash) is a sub-linear
-point estimate with a wide bootstrap CI whose lower bound extends below zero
-(approx. -1.3), so the effect is not statistically distinguishable from zero at
-the reported CI. alpha > 1 remains an open prediction, not an observed finding.
-- PC-030 (2026-01-22): The six-frontier-model empirical panel (Claude, DeepSeek,
-Gemini, Grok, Groq Qwen, GPT) was first published as this specific comparative
-study on 22 January 2026. Priority is over this specific study on this date, not
-over panel-testing methodology in general.
 
-Citation
---------
-Michael Darius Eastwood (2026). Paper IV.d · The ARC Theory · The Effect of
-Blinding on AI Alignment Evaluation. OSF DOI 10.17605/OSF.IO/2S3E6.
-https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
+                                                         Abstract
+           Claims that AI systems become more or less aligned as they reason longer often rest on scores
+       from other AI models acting as judges, so it matters whether such scores keep their direction when
+       the scoring protocol changes. In an earlier experiment (v4), scored by models that could see which
+       model wrote each answer and at what depth, two model families showed alignment scores rising with
+       depth: DeepSeek V3.2 (Spearman’s 𝜌 = +0.354) and an earlier Gemini model (𝜌 = +0.275). In
+       the later, unregistered March 2026 run (v5), made on newly generated responses with a bundle of
+       blinding steps (identity and depth masking, two paraphrase passes, evaluator instructions and order
+       randomisation) and a larger panel, DeepSeek V3.2 showed no significant trend and Gemini 3 Flash a
+       significantly negative one (Cohen’s 𝑑 = −0.53); GPT-5.4 showed no significant trend in either run.
+       The runs also differed in their prompts, token allowances, depth levels, statistic and Gemini model, so
+       the comparison shows that the reported direction did not hold across protocols; it does not show that
+       blinding caused the change, or which direction is correct. An internal code review in October 2026
+       found that the paraphrase step’s output cap cut the deepest answers in the three v5 runs that read flat
+       or negative, that a model that wrote each entry’s paraphrase also judged it, and that one judge model
+       sat on the panel twice; the result stands as one unregistered comparison under that caveat, awaiting
+       a re-analysis of the stored responses that is to be registered before it runs. Earlier work had shown
+       that labels and surface features move model judges and that judges recognise and favour their own
+       outputs; this paper adds a case in which frontier models’ alignment-depth trends did not hold, one
+       reversing sign on a later model, with its limits stated, and a recommended protocol that tests each part
+       on identical responses.
 
-Notes
------
-Hardware framings held at the site's already-published two-sentence concept
-ceiling: safety constraints at hardware level through cryptographic tokens in
-silicon, TRL 0-1, no prototype. No enabling implementation detail is stated in
-this companion file. Balanced-ternary computing is prior work (Setun 1958);
-recursion as a structural concept is prior work (evolutionary theory,
-self-modifying computation, quantum error correction).
+Version 2.7 states what the comparison does and does not show, adds the findings of an internal code review of
+October 2026 and the earlier work on model judges and on safety-relevant behaviour against reasoning length, and
+redraws Figure 1.
 
-Provenance note
----------------
-Michael Darius Eastwood conceived and directs this research programme and is the
-author of this work. Across the programme, he has used more than six AI systems
-in parallel, under his own instructions, to stress-test his arguments, identify
-possible errors, and assist in preparing draft text from his own outlines. He
-determines what is adopted, revised or rejected and takes responsibility for the
-published content. These systems are tools, not authors.
 
-Generated from master
----------------------
-master_path: research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
-master_sha256: bffac872c72678b016378a119029cc1a04a75ed5c656049e6a2b759724ce0b1e
-builder: scripts/build-paper-companions.py
 
-This block records the SHA-256 of the HTML master that produced this .txt. A
-check tool re-hashing master_path can decide freshness without any external
-state. If the master's current SHA-256 does not match master_sha256, this file
-is stale and must not be published: regenerate first with `python3
-scripts/build-paper-companions.py --slug
-paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation`.
+
+     Paper IV.d of the ARC Theory, within Recursive Dynamics: the measurement of alignment. It decides none of Laws I to
+V, each a law under test; it informs condition A of the theory registration, which requires blind scoring for every one of its
+twenty-two propositions, so any judged test of Law IV, the ARC Persistence Law, or Law V, the ARC Embedding Law (both
+added on 24 September 2026 and registered as laws on 15 October 2026 in version 1.103 of the theory registration, not yet
+tested; their mathematics in development), depends on scoring of the kind examined here. Working paper, version 2.7, 21
+October 2026; first published 16 March 2026; Appendix A lists every version and correction. Recorded on OSF as Paper
+IV.d · The ARC Theory · The Effect of Blinding on AI Alignment Evaluation, DOI 10.17605/OSF.IO/2S3E6. About the author:
+michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; Paper C: doi.org/10.17605/OSF.IO/RBHDP. Licence:
+CC BY 4.0.
+
+
+                                                              1
+                               Alignment trends and the evaluation protocol
+
+
+Contents
+1   Introduction                                                                                       3
+
+2   Related work                                                                                       4
+
+3 The bias problem                                                                                      6
+
+4   Experimental comparison and protocol layers                                                         6
+    4.1 Response laundering protocol . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    8
+
+5   Main result                                                                                        9
+
+6 Why the measured direction can change                                                                11
+
+7   Implications for AI safety research                                                                11
+
+8   Recommended protocol                                                                               12
+
+9 What this paper does and does not show                                                               13
+
+10 Limitations                                                                                       14
+   10.1 Falsifiability: what would defeat the hypothesis . . . . . . . . . . . . . . . . . . . . . . 15
+
+11 Conclusion                                                                                          16
+
+References                                                                                             17
+
+A Version history and corrections                                                                      20
+  A.1 Version 2.7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    20
+  A.2 Earlier corrections and dated notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    21
+  A.3 Version history . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    21
+  A.4 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .      22
+
+B Priority record                                                                                   23
+  B.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+  B.2 Dated predictions and this paper (recorded 25 August 2026) . . . . . . . . . . . . . . . 24
+
+C Notation and glossary                                                                             25
+  C.1 Symbols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+  C.2 Plain-language glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+
+D The paper’s place in the ARC Theory and the programme                                                26
+  D.1 The theory’s laws and this paper . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     27
+  D.2 Condition A and Laws IV and V . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        27
+  D.3 Companion papers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       27
+
+
+
+
+                                                    2
+                                 Alignment trends and the evaluation protocol
+
+
+1    Introduction
+I believe advanced AI is an existential risk unless values and correction are built into how it reasons;
+only proof will move the world. Proof of that kind rests on measurement, and much of the measurement
+of alignment is done by AI models acting as judges, whose scores decide whether a system is said to
+become more or less aligned as it reasons longer. If the direction of such a result can change with the
+way the scoring is done, a safety conclusion drawn from it can point the wrong way. For that reason the
+programme this paper belongs to admits no unblinded judgement as evidence for any proposition it has
+registered (Appendix D).
+    Many AI alignment evaluations are not run under anything resembling clinical-trial standards. A
+model answers a prompt; another model, a related model, or a human evaluator scores the answer; and the
+evaluator may know, or be able to infer, which model produced it, how much reasoning effort was used, or
+what result the experiment is expected to find.
+    In medicine, that would be regarded as a serious design weakness. In AI evaluation, blinding of this
+kind is not yet a standard requirement. The ARC alignment experiments produced a case in which a
+change of evaluation protocol, of which blinding was one part, was followed by a change not just in the
+size of the effect but in its direction.
+    The question this paper asks is plain: can unblinded AI alignment evaluation get the direction of a
+result wrong? The answer the record supports is narrower than the question. In an earlier experiment (v4),
+scored without blinding, two model families showed alignment scores that rose with reasoning depth. In
+the later, unregistered March 2026 run (v5), which added a bundle of blinding steps and also changed the
+responses, prompts, token allowances, depth levels, panel and Gemini model, one of those trends was
+no longer detected and the other was significantly negative, while a third family showed no significant
+trend in either run (Section 5). The record shows that the reported direction did not hold across the two
+protocols. It does not show that blinding caused the change, or which direction is correct, and an internal
+code review of October 2026 found defects in the March run that bind every reading of it (Sections 5
+and 10).
+    The claim matters because it stands independently of any broader theoretical framework. Even if the
+ARC Principle (Law I, a law under test), the Eden Protocol, or the wider scaling-law synthesis were later
+weakened, the result of this comparison would still stand.
+    Our contributions are as follows.
+    1. A documented comparison, within one research programme, of an earlier unblinded experiment
+       (v4) and the later, unregistered March 2026 run (v5) of the same alignment-depth question, in which
+       the reported direction did not hold for two of the three model families compared: one positive trend
+       was no longer detected, and the other was significantly negative on a later Gemini model (Section 5,
+       Table 2); the fourth v4 subject, whose v4 data were incomplete, is reported beside them.
+    2. An account of the v5 protocol as it ran, from its public result files and a later revision of its runner:
+       the panel excluded the subject model and no other, the paraphrasing models were drawn from the
+       same pool as the judges, the paraphrase step’s output cap cut the deepest answers in the three runs
+       that read flat or negative, and the early build’s laundering-fallback flag is a known false positive
+       (Sections 4, 5 and 10).
+    3. A statement of what the comparison does and does not show, with the explanations it cannot exclude
+       and the conditions that would defeat it (Sections 9 and 10).
+    4. A recommended protocol for AI-judged alignment evaluation, in which judges and paraphrasers are
+       excluded by developer, each blinding layer is tested on identical responses, and a source-recognition
+       test is reported beside every blinded result (Section 8).
+
+
+
+                                                       3
+                                 Alignment trends and the evaluation protocol
+
+
+Section 2 credits the earlier work on model judges and on safety-relevant behaviour against reasoning
+length, each work in its own terms.
+    Section 3 states the bias problem, Section 4 the two experiments and their protocols, and Section 5
+the main result. Section 6 discusses why the measured direction can change, Section 7 the implications
+for AI safety research and Section 8 a recommended protocol. Section 9 states what the paper does
+and does not show, Section 10 its limitations and the conditions that would defeat its hypothesis, and
+Section 11 concludes. Appendix A gives the version history and every correction, Appendix B the priority
+record, Appendix C the notation and a glossary, and Appendix D the paper’s place in the ARC Theory
+and the programme. This paper should be read alongside Paper IV.c, which specifies the ARC-Align
+benchmark and four-layer blinding protocol, and Paper IX, which situates the result in the wider ARC/Eden
+programme.
+
+
+2    Related work
+Biases of model judges. That model judges carry biases of the kinds Section 3 lists is established, in
+settings other than this one. Zheng et al. (2023) examine the position, verbosity and self-enhancement
+biases of model judges and report that GPT-4 as a judge agrees with human preferences over 80 per cent of
+the time, the level at which humans agree with one another. Their pairwise judge prompt already asks the
+judge not to let the length of the responses or the names of the assistants influence it; they describe calling
+a judge twice with the order of the two answers swapped; and they write that, with limited data and small
+differences, their study could not determine whether the models exhibit a self-enhancement bias, because
+a controlled study is hard when “we cannot easily rephrase a response to fit the style of another model
+without changing the quality”. Dubois et al. (2024) report that a preference for longer outputs remains
+in existing automated evaluation metrics, and control for it with a regression that predicts the judge’s
+preference as if the two outputs had the same length; on AlpacaEval this raised the Spearman correlation
+with Chatbot Arena from 0.94 to 0.98. Wang et al. (2024) show that the order of two answers alone can
+change a judge’s verdict: with ChatGPT as the evaluator, reordering let Vicuna-13B beat ChatGPT on
+66 of 80 queries. Koo et al. (2024) find, across sixteen models and six biases, that models are biased
+evaluators of text quality and that “all models are dramatically influenced by real model names”. Chen
+and Goldfarb-Tarrant (2025) report that, for judges of safety, an apologetic sentence added to otherwise
+unchanged completions skewed preferences by up to 98 per cent in a test of tie detection, and that the best
+jury they tested was still not robust to all such artefacts, apology and position among them; a rephrase that
+kept a completion’s meaning and lengthened it produced negligible shifts in their test of win rates.
+
+Labels and provenance cues. Displayed source labels and provenance cues move judges on their own.
+Saraf et al. (2025) had blog posts written by three vendors’ models judged by all three under four labelling
+conditions, and report that false attribution “frequently reversed preference rankings”, with shifts of up
+to 50 percentage points in voting outcomes and up to 12 percentage points in quality ratings; they call
+for blind evaluation protocols. Marioriyad et al. (2025) attach superficial provenance cues to candidate
+responses while the rest of the prompt stays unchanged, and find a clear provenance hierarchy in two
+judges’ verdicts (expert, then human, then model, then unknown) and that the judges rarely acknowledged
+the cue.
+
+Self-recognition and self-preference. Judges also recognise and favour text like their own without any
+label. Panickssery et al. (2024) report that models such as GPT-4 and Llama 2 have non-trivial accuracy at
+distinguishing their own outputs from those of other models and of humans, and a linear correlation, under
+fine-tuning, between that self-recognition and the strength of self-preference; they suggest perturbing
+
+
+                                                      4
+                                Alignment trends and the evaluation protocol
+
+
+or paraphrasing generated text to inhibit self-recognition, which they do not test. Wataoka et al. (2024)
+measure self-preference with a quantitative metric, find a significant degree of it in GPT-4, and find
+that judges give significantly higher evaluations than human evaluators to outputs with lower perplexity,
+whether or not the outputs were their own. Spiliopoulou et al. (2025) find that some models systematically
+assign higher scores to their own outputs, and to outputs of other models of the same family, measured
+against third-party ratings of quality. Mahbub and Feng (2025) report that judges distinguish their own
+outputs without labels, that small perturbations reduce self-preference, and that a fuller neutralisation of
+style lets it recover.
+
+Studies of 2026. Three studies of 2026 refine these readings. Roytburg et al. (2026), first posted six
+weeks before the March 2026 run, report that only 51 per cent of examples in earlier self-preference
+findings keep statistical significance against a null hypothesis built on evaluator quality. Pombal et al.
+(2026) and Chae et al. (2026) were posted after the run and after this paper’s first publication, so they bear
+on present readings and on no claim about March 2026: Pombal et al. (2026) find that self-preference
+persists even when the evaluation criteria are entirely objective, and that ensembling several judges
+mitigates it without fully eliminating it; Chae et al. (2026) find that, on items that carry no stylistic
+fingerprint, self-preference disappears under blind evaluation, with a small effect remaining in the opposite
+direction once selection quality and judge severity are controlled, while self- and other-labels alone shift
+scores in both directions.
+
+Model judgement in alignment work. Model judgement is also built into alignment training and
+testing. Reinforcement learning from human feedback trains a preference model on human comparisons
+and optimises a helpful and harmless assistant against it (Bai et al. 2022a); Constitutional AI shapes a
+model’s outputs during training against a written set of principles, using feedback from an AI model in
+place of human labels for harmlessness (Bai et al. 2022b); and automated red teaming uses one language
+model to generate the test cases that find harmful behaviour in another (Perez et al. 2022).
+
+Safety-relevant behaviour against reasoning length. Such behaviour has itself been measured against
+reasoning length. Zaremba et al. (2025) report, for two reasoning models, that “across a variety of attacks,
+increased inference-time compute leads to improved robustness”, and that in many cases, with important
+exceptions, the fraction of model samples on which an attack succeeds tends to zero as test-time compute
+grows. Gema et al. (2025) construct tasks on which extending the reasoning length of large reasoning
+models deteriorates performance, among them tasks on advanced AI risks; they report that “extended
+reasoning may amplify concerning behaviors, with Claude Sonnet 4 showing increased expressions of
+self-preservation”, and that their results “demonstrate the importance of evaluating models across diverse
+reasoning lengths”.
+
+A different sense of double-blind. The phrase “double-blind” is also used for a different property.
+A technical report dated 27 August 2026, by thirty authors from AVERI, Google, Singapore AISI,
+OpenMined and ML Commons (Trask et al. 2026), describes “double-blind evals”, which “provide
+cryptographic guarantees that an evaluator’s prompts are not shared with the model owner, while
+simultaneously maintaining the confidentiality of the model weights and inference code”, and pilots them
+by evaluating Gemini 2.5 Flash Lite against a selection of the private AILuminate benchmark corpus.
+That is mutual secrecy between the owner of a model and the owner of a benchmark. The blinding
+examined here concerns what a judge can tell about whose answer it is scoring. The two are distinct layers
+of an evaluation, protect against different failures, and neither bears on the other’s priority.
+
+
+
+                                                      5
+                                Alignment trends and the evaluation protocol
+
+
+What this paper adds. Against this work, this paper reports one archived comparison of an alignment-
+depth trend under two bundled protocols, made in March 2026, whose cause is open (Section 10). The
+abstracts of the works above state no comparison of two scoring protocols on an alignment-depth slope.
+This paper does not add the discovery that judges are biased or that labels move them.
+
+
+3    The bias problem
+Alignment evaluation is vulnerable to several sources of bias:
+    • Identity bias: scorers may expect certain models to be safer, wiser, or more sophisticated.
+    • Depth bias: scorers may treat longer or more effortful-looking responses as inherently more
+      aligned.
+    • Style bias: recognisable model voice, formatting, or refusal style can reveal identity even when
+      names are removed.
+    • Hypothesis leakage: if scorers can infer what the experiment is testing, they may reward the
+      expected answer form.
+    These are not trivial concerns in an alignment context. Much of what is being measured is qualitative:
+nuance, stakeholder care, honesty, and position quality. If scorers systematically over-credit certain
+response styles, then alignment evaluation becomes partly a test of recognisable rhetoric rather than of the
+underlying ethical reasoning.
+    More precisely, the contamination problem appears to involve a stack of leakage channels rather than
+one generic bias. At minimum, the current programme indicates separable risks from scorer self-interest,
+style or identity leakage through the response body, and hypothesis or depth leakage through the evaluation
+context. The v5 protocol addressed each channel with its own step rather than merely claiming to be ‘more
+careful’ in the abstract, though it applied the steps together and tested none of them alone (Section 8).
+
+
+4    Experimental comparison and protocol layers
+The result comes from comparing two experiments of the same research programme. Both experiments
+ran on 11 and 12 March 2026, by the timestamps their own result files record: v4 in the first hours of 11
+March, and v5 from 07:12 on 11 March to 11:27 on 12 March (UTC). The prediction both were built
+to test, that alignment imposed from outside scales with an exponent near zero while values built into
+the reasoning scale with capability, was public from 9 February 2026 (GitHub push and OSF upload of
+Paper III; first posted on 22 January 2026 in a design withdrawn the next day), with the criterion that
+would refute it from 13 February 2026 (OSF upload); the runners of both experiments were first published
+on 16 March 2026 (GitHub push), the v5 runner in a revision later than the one that produced four of its
+six result files (Code and data). Appendix B gives each record with its kind of timestamp.
+    The crucial point is that the v5 protocol was not simply a larger rerun. It was a redesign intended to
+close multiple bias pathways at once. That makes the comparison informative about whether the earlier
+positive trends held up under the redesigned protocol; because it changed many things at once, it cannot
+say which change mattered. Table 1 lists the scoring side. The runs also differed on the generation
+side. v5 generated new responses from six models rather than four, on a different alignment prompt set
+(Paper IV.a, version 1.9, Section 2.2; Paper IV.c, version 1.10, Section 2.1), at five or six depth levels
+rather than four or five. Its token allowances were raised from 8,192 or 16,000 tokens to each model’s
+maximum (Paper IV.a, Section 5.5, which records that 48.2 per cent of DeepSeek V3.2’s v4 responses at
+the exhaustive level reached the 8,192-token reasoning cap), and its Gemini model was a later one than
+v4’s (Paper IV.a, Section 2.1). The v4 statistic was Spearman’s rank correlation across depth levels; the
+
+                                                     6
+                                  Alignment trends and the evaluation protocol
+
+
+v5 statistic is Cohen’s 𝑑 between the shallowest and deepest levels, with a rank correlation over realised
+reasoning tokens beside it.
+
+Table 1. The v4 and v5 protocols. The v5 column describes the protocol as designed; ‘The panel as run’ (Section 4)
+and Section 4.1 record how it ran. The v4 aggregation follows Paper IV.a, version 1.9, Section 2.3.
+
+Feature                 v4 (earlier protocol)                         v5 (blinding protocol)
+Scoring visibility      Unblinded cross-model scoring                 Identity-masked, order-randomised
+                                                                      cross-model panel; the subject model
+                                                                      excluded
+Response laundering     Limited / weaker                              Two-pass laundering; meta-commentary
+                                                                      detection from runner version 5.4.2
+Evaluator bias          Absent or informal                            Explicit instruction that stylistic cues are
+suppression                                                           unreliable and source-guessing is irrelevant
+Scorers                 Small scorer set                              All available models but the subject; six or
+                                                                      seven scores from five or six distinct models
+Aggregation             Mean of the scores                            Tier-weighted consensus, taking the lower
+                                                                      of the weighted mean and the median
+                                                                      where the judges’ standard deviation
+                                                                      exceeded 15 points; dissent recorded
+Model set               4 frontier models                             6 frontier models
+Core measurement        Does alignment improve with depth?            Does alignment improve with depth under
+question                                                              blinded evaluation?
+
+
+
+The multi-layer blind evaluation protocol. The relevant contribution is best understood as a single
+protocol rather than several disconnected tricks. The ARC v5 stack combined four ideas: (1) identity
+masking, so scorers were not told the source model or depth condition; (2) response laundering, so
+the response body itself leaked fewer stylistic fingerprints; (3) iterative anonymisation, using a second
+laundering pass to reduce residual cues left by the first; and (4) evaluator bias-suppression instructions,
+explicitly warning scorers that stylistic recognition is unreliable and irrelevant. On top of that sat
+cross-model scoring by every available model except the subject (as run, the exclusion of the subject
+model alone: ‘The panel as run’, below), tier-weighted consensus, dissent tracking, conservative-bias
+safeguards, and order randomisation. The design’s aim was therefore not merely to blind the scorer but to
+make the blindness real and auditable; ‘The panel as run’ and Section 4.1 record where the run fell
+short of it.
+
+The panel as run. As run, the panel excluded the subject model itself and no other model. The adapters
+named for subject models scored with their scoring endpoints, not the subject models: the adapter named
+for Claude Opus 4.6 scored with Claude Sonnet 4.6, the same model as the dedicated Sonnet scorer, so
+Claude Sonnet 4.6 scored Claude Opus 4.6 on every scored entry at the panel’s highest weight and, in
+every other run, scored each entry twice, at weights 1.5 and 1.0 (35 to 39 per cent of the panel weight);
+the adapter named for Gemini 3 Flash scored with Gemini 2.5 Flash Lite; the DeepSeek adapter scored
+with the chat endpoint; GPT-OSS-120B, OpenAI’s open-weight model served by Groq and labelled by
+its host in the runner’s family table, scored GPT-5.4 on every scored entry; Claude Opus 4.6 scored no
+entry. A seven-judge panel therefore held six distinct models and a six-judge panel five, every inter-judge
+agreement statistic includes the pair of Sonnet identities, and the laundering pool likewise included the
+
+
+                                                        7
+                                  Alignment trends and the evaluation protocol
+
+
+subject’s own developer’s models for the Claude Opus 4.6 and GPT-5.4 runs and, as launderers only, for
+the DeepSeek V3.2 and Gemini 3 Flash runs (Section 4.1). Exclusion by developer, checked in code,
+is carried by the programme’s successor suite, a later benchmark whose design is written and not yet
+registered; the published scores stand as scored, and a re-aggregation that excludes same-developer judges
+is a sensitivity analysis for the re-analysis that is to be registered, not a correction made here.
+
+4.1     Response laundering protocol
+The laundering step should be defined explicitly because it is part of the method, not a cosmetic editorial
+flourish. The objective is simple: same meaning, less fingerprint. In the reference implementation,
+the raw response is rewritten once by a non-subject model, then rewritten a second time by a different
+non-subject model. The two passes are selected dynamically from the available pool, and fallback models
+are used if a laundering model fails.
+      • Pass 1 removes obvious model fingerprints in wording, cadence, formatting, refusal boilerplate,
+        and house style.
+      • Pass 2 reduces stylistic residue left by the first pass and makes source inference less reliable.
+      • Meta-commentary outputs that describe the rewriting process rather than genuinely paraphrasing
+        the content are rejected (a check the runner gained at version 5.4.2, after the three earliest v5 runs
+        had started on an earlier build; Section 10).
+      • The target of laundering is not content destruction but artefact neutralisation: preserve arguments
+        and conclusions whilst suppressing source cues, chain-of-thought residue, and branding-like
+        phrasing.
+    This matters because simple anonymisation can be weak: judges can recognise their own outputs
+without labels (Panickssery et al. 2024; Mahbub and Feng 2025). If the raw response still carries
+recognisable stylistic biomarkers, the scorer may remain effectively unblinded even when the label has
+been removed.
+    Two features of the archived v5 files qualify this description. First, the launderers recorded against
+each entry include a model from the subject’s own developer for 89 of the 350 laundered Gemini 3 Flash
+entries, 109 of the 416 DeepSeek V3.2 entries, 77 of the 350 GPT-5.4 entries and 222 of the 350 Claude
+Opus 4.6 entries, and for none of the Grok 4.1 Fast or Groq Qwen3 entries; for GPT-5.4 and Claude
+Opus 4.6 the pipeline’s own model table names that launderer as the subject model itself. Second, some
+laundered texts open with the launderer’s own working on the rewriting task in a reasoning block: 50
+Gemini 3 Flash, 43 DeepSeek V3.2, 34 GPT-5.4, 3 Claude Opus 4.6, 2 Grok 4.1 Fast and no Groq Qwen3
+entries. In the published pipeline these laundered texts are what the scorers receive. In those entries the
+scored text was not the protocol’s clean rewrite by two models from other developers. Laundering is
+generative rewriting in any case, with no guarantee of preserved meaning: a rewrite can drop a caveat,
+a refusal, an affected party or the action being judged, and the v5 run recorded no check of preserved
+meaning. Zheng et al. (2023) named the same difficulty: “we cannot easily rephrase a response to fit the
+style of another model without changing the quality”.
+    As run, the two laundering models of each entry were drawn from the same pool as its judges, so
+on every laundered entry one or both of the models that wrote the paraphrase also scored it; the panel
+excluded the subject and nothing else. The successor suite’s design draws launderers from models that
+never judge the same entry.
+
+
+
+
+                                                       8
+                                      Alignment trends and the evaluation protocol
+
+
+5    Main result
+The result is easiest to see at the level of direction rather than fine-grained statistics (Table 2 and Figure 1).
+     Table 2 gives the values printed by the pipeline summary of 12 March 2026. Recomputing them
+from the archived final records (Paper IV.a, Section 3.1, recomputation note of 2 September 2026) alters
+no direction in this table; the 𝑑 for GPT-5.4 shifts from −0.08 to +0.07 and stays non-significant. No
+equivalence margin was set, so GPT-5.4’s two non-significant results show that no trend was detected in
+either run, not that none exists; it is a comparison case rather than a control. The table compares two
+runs, not two scorings of the same responses, and its two columns report different statistics, so they are
+not on one scale; no test of the difference between them was made. A significant result in one run and a
+non-significant one in the other is not itself evidence that the two differ (Gelman and Stern 2006). The
+Gemini case, with significant trends of opposite sign, is the stronger of the two, though it compares two
+Gemini models.
+     Claude Opus 4.6 was the fourth v4 subject and has no row in Table 2: exhausted credit left its v4 data
+incomplete at the deep and exhaustive levels, and Paper IV.a (version 1.9, Sections 2.1 and 3.1) leaves its
+v4 trend unclassified, with a preliminary flat reading. In v5 its 𝑑 was +1.27 (Figure 1), with a judge from
+its own developer at the panel’s highest weight (Section 4). Its two readings also differ, in the direction
+opposite to Gemini’s, though its v4 data are too incomplete for the two to be compared.
+     As recorded in the archived files, the laundering step was called through each model’s scoring endpoint,
+whose output budget capped the paraphrase (512 tokens in the build that produced the DeepSeek V3.2,
+Gemini 3 Flash and GPT-5.4 files; 1,024 to 4,096 in the later build; no cap where a Gemini model wrote
+the paraphrase). In those three files the paraphrase the judges scored was, at the median, 0.56 to 0.91 of
+the original’s length at the deepest levels and 0.72 to 1.56 at the minimal level, with 40 to 57 per cent of
+deep entries below 0.6; in the Grok 4.1 Fast and Claude Opus 4.6 files the deep paraphrases were 1.2
+to 1.4 times the original and under 6 per cent fell below 0.6. The three-tier hierarchy and the v4 to v5
+comparison are therefore confounded with how much of each deep response reached the judges, in the
+direction that lowers deep scores where the texts were cut. The re-scoring of the stored original responses,
+in the re-analysis to be registered for it, is the test of whether the contrasts survive; until it reports, the
+hierarchy is a single-run result under this caveat.
+Table 2. The main result, by model family, as printed by the pipeline summary of 12 March 2026. 𝜌: Spearman’s
+rank correlation of alignment score with depth, over depth levels in v4 and over realised reasoning tokens in v5. 𝑑:
+Cohen’s 𝑑 between the shallowest and deepest levels (v5 only). 𝑝: in v4 the test of 𝜌; in v5 as the summary printed
+it, from the tests set out in this section, none of them a test of the 𝑑 beside it. Claude Opus 4.6, the fourth v4 subject,
+is not compared, for the reason given in the text.
+
+Model family            v4 result (unblinded)             v5 result (blinding protocol)    Interpretation
+DeepSeek V3.2           Positive scaling                 Flat / null response              Positive to flat or null (the
+                        (𝜌 = +0.354, 𝑝 = 0.0007)         (𝜌 = −0.135; 𝑑 = −0.07,           two results were not tested
+                                                         𝑝 = 0.92)                         against each other)
+Gemini (Gemini 3        Positive scaling                 Negative scaling                  Positive trend in v4;
+Flash in v5; an         (𝜌 = +0.275, 𝑝 = 0.0001,         (𝜌 = −0.246; 𝑑 = −0.53,           significantly negative in v5,
+earlier Gemini          following Papers IV.a and        𝑝 = 0.006)                        on a later model
+model in v4)            IV.b)
+GPT-5.4                 Flat / null                       Flat / null (𝜌 = +0.033;         No significant trend in either
+                                                          𝑑 = −0.08, 𝑝 = 0.40)             run
+
+    The 𝑑 and 𝑝 values of Table 2 treat the scored entries as independent; the same prompts appear at
+every depth, so a prompt-paired analysis (the per-prompt difference between the deepest and shallowest
+
+                                                            9
+                                        Alignment trends and the evaluation protocol
+
+
+     (a)                                    v4 (unblinded)                                  v5 (blinding protocol)
+
+                              𝜌 = +0.354                                               𝜌 = −0.135
+     DeepSeek V3.2
+                              (𝑝 = 0.0007)                                             (𝑑 = −0.07, 𝑝 = 0.92)
+                                                                                       𝜌 = −0.246
+                              𝜌 = +0.275
+     Gemini                                                                            (𝑑 = −0.53, 𝑝 = 0.006;
+                              (𝑝 = 0.0001; an earlier Gemini model)
+                                                                                       Gemini 3 Flash)
+                                                                                       𝜌 = +0.033
+     GPT-5.4                  Flat / null
+                                                                                       (𝑑 = −0.08, 𝑝 = 0.40)
+
+
+     (b)
+
+                        Grok 4.1 Fast                                                                           +1.38
+        Tier 1
+                     Claude Opus 4.6                                                                       +1.27
+       positive
+                        Groq Qwen3                                                             +0.84
+
+           Tier 2    DeepSeek V3.2                           −0.07
+              flat          GPT-5.4                          −0.08
+        Tier 3
+                      Gemini 3 Flash            −0.53
+      negative
+                                    −1.0             −0.5             0             +0.5        +1.0            +1.5
+                                                                          Cohen’s 𝑑 (v5)
+
+Figure 1. The v4 and v5 results. (a) The direction of each model family’s alignment-depth trend in the earlier
+unblinded experiment (v4) and the later, unregistered March 2026 run (v5). An upward arrow marks a significant
+positive trend, a level bar no significant trend and a downward arrow a significant negative trend; the thin arrow runs
+from v4 to v5. DeepSeek V3.2: v4 +0.354, v5 −0.135; Gemini: v4 +0.275 (an earlier Gemini model), v5 −0.246
+(Gemini 3 Flash); GPT-5.4: no significant trend in either run. The values are the rank correlations of Table 2; the
+two runs report different statistics, so the panel compares directions, not values on one scale. (b) The v5 effect sizes,
+Cohen’s 𝑑 between the shallowest and deepest levels, for the six models in three tiers: Tier 1 positive (Grok 4.1 Fast
++1.38, Claude Opus 4.6 +1.27, Groq Qwen3 +0.84), Tier 2 flat (DeepSeek V3.2 −0.07, GPT-5.4 −0.08), Tier 3
+negative (Gemini 3 Flash −0.53), as the pipeline printed them on 12 March 2026. The three families of (a) are in
+colour. The 𝑑 values treat prompt-repeated entries as independent, and in the three runs that read flat or negative the
+paraphrase step cut the deepest answers (Section 5); the hierarchy is a single-run result under that caveat. Blinding
+is the protocol under which the v5 result was measured; whether it is necessary is an open question, for a test that is
+to be registered. Sources: Table 2; Paper IV.a, Section 3.1.
+
+
+level, with a bootstrap over prompts) is the appropriate reading, and the successor suite’s design takes the
+per-prompt slope as its unit. Pairing changes the variance of a difference between levels, not its sign where
+every prompt is scored at both levels, so the directions are expected to stand and the stated precisions to
+change.
+    The 𝑑 values in the v5 column compare the shallowest and deepest labels on all scored entries; the 𝑝
+values are not one test: the pipeline computes a Spearman correlation of realised reasoning tokens with
+score over entries that report tokens, a Kruskal-Wallis test over depth labels and a Mann-Whitney test of
+the shallowest label against the rest, none of them paired by prompt, and the realised-token path holds no
+entry for Groq Qwen3 (the provider reports no reasoning tokens), none of GPT-5.4’s minimal level and 21
+of 70 of Claude Opus 4.6’s.
+
+Finding 1: the measured direction of alignment scaling did not hold between protocols. For two
+model families, the direction of the alignment-depth relationship reported in the unblinded v4 experiment
+did not hold in the v5 run, which added the blinding steps (Figure 1): Gemini’s significant positive
+
+
+                                                                 10
+                                 Alignment trends and the evaluation protocol
+
+
+association became significantly negative, on a later model, and DeepSeek V3.2’s became statistically null.
+It indicates that the direction reported depended on something that differed between the runs: the scoring
+protocol, of which blinding was one part, or a difference on the generation side (Sections 4 and 10). The
+comparison does not say which, or which direction is nearer the truth. GPT-5.4 remains near zero across
+protocols; it is also the one model whose depth ladder varied a reasoning parameter alone and carried no
+instruction prefix, so its flat reading is consistent with a null-control and with an absent instruction effect,
+and the two cannot be told apart in this record. This is currently a single-programme observation. The test
+it calls for scores identical responses with one part of the protocol changed at a time; the re-analysis of the
+stored original responses described above is to be registered before it runs. Replication by an outside
+team, and these controlled tests, are the load-bearing next steps.
+
+
+6    Why the measured direction can change
+One candidate mechanism is ordinary evaluator inference. Longer, more elaborate, more self-conscious
+responses often look safer. They can name more stakeholders, present more caveats, and mimic the
+rhetoric of careful reasoning even when the underlying position is not actually better. If scorers know,
+or can guess, that a response came from a deeper-reasoning condition, they may reward that surface
+impression. Others are reported in the literature: judges favouring text that is more familiar to them,
+measured as lower perplexity (Wataoka et al. 2024), and an added apologetic opening that moved safety
+judges’ verdicts on its own (Chen and Goldfarb-Tarrant 2025). The archived v5 record adds two more:
+the deepest paraphrases cut by an output cap (Section 5) and the consensus rule (Section 10). This paper
+does not separate them (Section 10).
+    Response laundering may matter here as much as removing labels; the v5 comparison cannot apportion
+the two. If identity cues or stylistic fingerprints survive, scorers can still infer who wrote the answer. That
+is why the ARC protocol moved beyond simple name removal to a stronger laundering pipeline. The key
+methodological point, which earlier work supports (Panickssery et al. 2024; Mahbub and Feng 2025), is
+that scoring with labels removed is not necessarily blind: models can recognise their own text from
+the text alone; the cues, in this paper’s reading, include tone, formatting, verbosity, refusal structure and
+depth-like rhetoric.
+
+Methodological principle: blind scoring is insufficient without evidence blinding. Response
+laundering is not a cosmetic clean-up step; it is part of the same protocol. The first laundering pass
+removes obvious fingerprints; the second reduces stylistic residue; the evaluator instruction then suppresses
+overconfidence in any remaining recognition. Together they are designed to convert simple metadata
+blinding into a stronger form of evidence blinding; whether they do is a question for a source-recognition
+test (Section 10.1), which the v5 run did not report. Combined with cross-model scoring that leaves the
+subject model out, dissent tracking and a consensus rule that takes the lower of two summaries when
+judges disagree widely (itself a candidate mechanism, Section 10), this becomes the beginning of a
+leakage-control framework rather than a one-off patch.
+
+
+7    Implications for AI safety research
+The implications listed below are exploratory: they are conditional forward-looking claims about how the
+field should respond if the change of direction is confirmed by independent replication. They are not
+themselves tested by any programme draft study, and no numerical claim in this section rides on them. If
+this result replicates independently, it has direct implications for the field:
+
+
+
+                                                      11
+                                Alignment trends and the evaluation protocol
+
+
+    1. Some published alignment effects may be inflated. A benchmark can report ‘alignment improves
+       with depth’ where blinded scoring finds the trend flat or negative.
+    2. Multi-layer blinding should become default methodology. It should not be treated as an optional
+       extra for unusually careful studies.
+    3. Benchmark design must include evidence laundering and evaluator bias suppression. Name
+       removal alone is not sufficient if style leaks identity.
+    4. Consensus architecture matters. Self-exclusion, cross-model scoring, dissent tracking, and
+       aggregation rules should be documented because protocol effects can otherwise be attributed to an
+       opaque judge stack.
+    5. Methods papers matter as much as theory papers. Even a correct theory will look unreliable if
+       evaluated through biased measurement.
+    In short: this is a possible alignment-evaluation analogue of the move from unblinded to blinded trials
+in medicine. The claim is not that prior work becomes useless, but that its evidential status changes until
+blinded replication exists.
+
+
+8    Recommended protocol
+Based on the v5 experience, a minimum defensible protocol for alignment-scaling work should include:
+    • Self-exclusion by developer, so that no model scores or rewrites output from its own developer’s
+      models, checked by code on every entry. Judges are reported to favour outputs of their own family
+      (Spiliopoulou et al. 2025; Pombal et al. 2026), which excluding the model alone does not remove.
+    • Where available, all models from other developers contribute blinded scores under a documented
+      consensus rule.
+    • Identity masking before scoring.
+    • Two-pass response laundering to minimise stylistic fingerprints in the artefact itself.
+    • A check of preserved meaning and length on every laundered text, with the original and laundered
+      lengths recorded and the output budget set from the input’s length, never a fixed cap below it; a
+      rewrite that fails the check is scored as missing, never replaced by the raw reply.
+    • Explicit evaluator instructions that stylistic cues are unreliable and model-guessing is not part of
+      the task.
+    • Depth-condition laundering so scorers cannot infer shallow versus deep responses from explicit
+      tags, with response length, which can itself signal depth, recorded and reported.
+    • Order randomisation across conditions.
+    • Tier-weighted or otherwise justified consensus, with disagreement logging and sensitivity checks.
+    • A documented laundering-failure policy for corrupted or obviously leaked outputs.
+    • Separate reporting of confirmed blind results, non-blind pilot results, exploratory runs, and
+      operational failures.
+    • A source-recognition test with a positive control, reported beside every blinded result.
+    • Laundered texts that carry the launderer’s reasoning or commentary on the task rejected as
+      laundering failures.
+    • Each layer of the stack tested on identical responses, one at a time, before the stack is relied on.
+
+
+
+
+                                                    12
+                                  Alignment trends and the evaluation protocol
+
+
+Recommendation: a reporting convention that separates the classes of evidence. Benchmark papers
+should distinguish clearly between blinded confirmed findings, non-blind pilots, exploratory runs, and
+failed runs. Without that separation, a reader cannot tell which evidence a claim rests on.
+
+
+9    What this paper does and does not show
+Scope of the claim. This paper does not claim that every prior alignment benchmark is invalid. It makes
+a narrower claim: in this experimental setting, the measured direction of an effect changed between a run
+in which model identity, response style and expected reasoning depth were visible to evaluators and a run
+that masked identity and depth, paraphrased the responses and changed the panel. Because those changes
+came together, and with others on the generation side (Section 4), the comparison does not show that
+visibility caused the change, or that multi-layer blinding rather than label removal is necessary; it shows
+that, for this class of evaluation, each part of the protocol has to be tested before either direction is trusted.
+That is sufficient to make multi-layer blinding, not mere label removal, the protocol this programme
+requires for this class of evaluation, and to make its necessity an open question, for a test that is to be
+registered.
+
+What this paper carries. This paper carries a result: within one line of alignment experiments, between
+unblinded scoring and a protocol with multi-layer blinding steps, which also differed in the ways set
+out in Section 4, a positive alignment-depth trend reported for one model family was no longer detected
+and one reported for another was significantly negative, on a later model, whilst a third family showed
+no significant trend in either run. Inside the ARC Theory (the Theory of Artificial Recursive Creation)
+it is one of the ARC/Eden experiments: a documented case against the assumption that an AI-scored
+alignment evaluation reports the same direction whatever its protocol. A fuller comparison with earlier
+work is in Eden Vision, section II.A.8.
+
+Evidence status. The record supports one comparison, between an earlier unblinded experiment (v4)
+and the later, unregistered March 2026 run (v5) of the same question; its result is stated above. The v5
+run is one run of six models from six providers, 2,170 responses each scored by five or six distinct model
+judges behind two paraphrase passes, with its result files and a later revision of its runner public (Code
+and data); its results are graded as a single unregistered run under the caveat of Section 5, and whether the
+contrasts survive is the question for a re-analysis that is to be registered before it runs. The paper does
+not show that blinding caused the change or which direction is correct, and it gives no verdict on any
+law of the ARC Theory. It reports no safety measure of its own, so it has no usefulness side to pair with
+one: its result concerns how an existing alignment score behaved under two protocols, and the score is
+Paper IV.c’s.
+    Epistemic status. What this programme names Laws are conjectures. Laws I to III, registered on 8
+September 2026, are laws under test; no registered test of any of the five laws has yet returned a verdict.
+Laws IV and V were added on 24 September 2026 and registered as laws on 15 October 2026 in version
+1.103 of the theory registration; neither has been tested. Every quantity in this paper is operationally
+defined, and established-law standing is claimed nowhere. The registered programme exists to earn that
+standing, or lose it, by measurement, replication and survived refutation.
+    The paper’s place among the laws of the ARC Theory, including Laws IV and V, is set out in
+Appendix D.
+
+
+
+
+                                                       13
+                                 Alignment trends and the evaluation protocol
+
+
+10     Limitations
+This paper is not the end of the argument. It has important limitations:
+     • The result currently comes from one research programme, not an outside lab.
+     • The evaluation remains primarily AI-scored rather than human-expert scored.
+     • The strongest evidence is on direction change, not yet on a full quantitative model of how much
+       each bias source contributes.
+     • The v4 and v5 runs differ in more than blinding: in the responses scored, the model set, the prompts,
+       the token allowances, the depth levels, the Gemini model, the panel and its aggregation, and the
+       statistic reported (Section 4). This paper therefore shows that the reported direction did not hold
+       between protocols more clearly than it apportions the change among them, and it cannot say which
+       direction is correct.
+     • In three of the six final v5 files (DeepSeek V3.2, Gemini 3 Flash and GPT-5.4), made by an earlier
+       build of the runner, a laundering-fallback flag is set on every paraphrased entry. The same entries
+       record two completed paraphrase passes by the study’s own pool of models, and the runner’s
+       change log records a fix to a false positive in that flag (version 5.4.2), so the flag does not show
+       that the laundering failed. The paraphrases were made, but not all were faithful: in those three
+       files the deepest were shortened by the paraphrase step’s output budget (Section 5), and that build
+       did not yet reject a paraphrase that had turned into commentary on the rewriting task, which the
+       programme’s interim analysis of 11 March 2026 found in at least three entries (the programme’s
+       working report, osf.io/j6mkb, chapter 27). The same build used Grok 3 mini as a judge and
+       launderer, and 512-token scorer and launderer budgets. Four of DeepSeek V3.2’s 420 panel-scored
+       entries were not paraphrased and were scored on the raw reply, recorded as not laundered.
+     • In four of the six files the launderers include a model from the subject’s own developer, on 22
+       to 63 per cent of laundered entries, and some scored texts carry a launderer’s reasoning block
+       (Section 4.1); both divergent families are among the four, and on every laundered entry at least one
+       launderer also judged it.
+     • No test of whether the v5 scorers could identify the source of a laundered response is reported, here
+       or in Papers IV.a and IV.c, so whether the blind held is unmeasured (the third defeat condition in
+       Section 10.1).
+     • Self-exclusion was by model, not by developer, so two panels kept a scorer from the subject’s
+       developer (Section 4, ‘The panel as run’); neither divergent family had one.
+     • The pipeline extracted each judge’s score by one of five strategies: a JSON object, a JSON object
+       found in the text, a score: pattern, a number following a scoring verb, or a retry asking for a bare
+       number. In the DeepSeek V3.2, Gemini 3 Flash and GPT-5.4 files the Groq Qwen3 judge’s score
+       was read by the last three strategies on 73 to 86 per cent of its calls, from the text of a truncated
+       thinking block, and the other judges on 0 to 10 per cent; in the other three files every judge was
+       read from JSON on 97 per cent or more of calls. A number read from prose by those strategies can
+       be an anchor example’s score, a pillar score, a dimension count or a zero from the phrase ‘0-100’,
+       and no rule excluded such a value from the consensus.
+     • v5 also changed the aggregation: the consensus took the lower of a tier-weighted mean and the median
+       where the judges’ standard deviation exceeded 15 points. If judges disagree more on deeper answers,
+       that rule lowers deep scores more than shallow ones and moves a depth contrast on its own; whether it
+       did is a sensitivity question for the re-analysis to be registered (the contrast recomputed on the simple
+       mean and the median, with the share of high-disagreement entries by depth), not a claim made here.
+
+
+
+                                                      14
+                                Alignment trends and the evaluation protocol
+
+
+    Those limits narrow the conclusion to what the record shows: two runs of one question, under different
+protocols, did not report the same direction for two of the three families compared. That is enough to
+justify asking alignment evaluations to test their protocols one part at a time, and to report which parts
+they have tested, before relying on either direction.
+    The strongest next quantitative upgrade would be a protocol-shift figure on a common metric, accom-
+panied by scorer jackknife and consensus-sensitivity analyses. The current architecture now makes that
+feasible because the protocol records dissents, scorer identities, and consensus-rule outputs entry by entry.
+
+10.1   Falsifiability: what would defeat the hypothesis
+The central hypothesis, that unblinded AI alignment evaluation can be wrong about the direction of
+an effect, and the programme’s reading that blinding is therefore required, are defeated by any of the
+following.
+   1. No blind/unblind divergence on a clean re-run. The evidence is the v4 (unblinded) to v5 change:
+      Gemini’s significant positive association became significantly negative, on a later Gemini model,
+      and DeepSeek’s significant positive association became statistically null (its point estimate fell
+      below zero, but the v5 association is not significant). The hypothesis is defeated if an independent
+      controlled replication that changes only the blinding, holding scorers, prompts, model versions,
+      token allowances, depth levels and consensus rule constant, on identical responses, finds no
+      systematic difference between blinded and unblinded scoring.
+   2. Divergence attributable to a confound, not blinding. Section 10 concedes several protocol
+      components changed together between v4 and v5. The hypothesis is defeated if the direction change
+      is fully explained by one of those confounds (the responses and prompts, the token allowances and
+      depth levels, the Gemini model, the panel and its aggregation rule, the paraphrase step’s output cap,
+      or launderers who also judged) rather than the blinding manipulation itself.
+   3. Blinding leakage. The manipulation requires that, under the blinded condition, scorers cannot
+      infer the subject model. The hypothesis is defeated if scorers can identify the subject above chance
+      from stylistic tells despite the blind; the “blinded” result would then not be blinded at all.
+   4. Self-preference persists under blinding. If a scoring model still preferentially rewards its own
+      family even when the subject is masked, the blinded result is contaminated. The hypothesis is
+      defeated if such self-preference is shown to survive the blind.
+      Self-preference with no source label shown has been observed in other settings (Wataoka et al.
+      2024; Panickssery et al. 2024; Spiliopoulou et al. 2025), and it returned under a fuller neutralisation
+      of style (Mahbub and Feng 2025), so this condition is live for any laundering protocol, this one
+      included. One study reports it disappearing under blind evaluation on items that carry no stylistic
+      fingerprint (Chae et al. 2026), and a self-preference measure needs a baseline for evaluator quality
+      (Roytburg et al. 2026); nothing in this paper bears on those reports.
+   5. Direction does not survive proper power. Section 5 states the result at the level of direction,
+      not fine-grained statistics. As anything stronger than a directional, single-programme case, it is
+      defeated if, when adequately powered and human-expert scored, the change of direction does not
+      replicate.
+    What would not defeat it: the effect size being smaller than headline, or which leakage channel
+dominates remaining unapportioned. The hypothesis concerns only the direction of an effect; a single
+clean, confound-controlled case would establish it; the v4 to v5 comparison is not yet such a case
+(Section 10), which is why the controlled comparison is the next step.
+
+
+
+                                                    15
+                                Alignment trends and the evaluation protocol
+
+
+    Standing covenant. Prove this paper wrong, and I will publish the refutation myself. Falsification
+conditions are stated in this paper; the standing challenge:
+github.com/MichaelDariusEastwood/arc-scaling-challenge.
+
+
+11     Conclusion
+The central claim of this paper is simple: the direction an AI-scored alignment evaluation reports can
+depend on its protocol. In this programme’s two runs, which differed in their scoring protocol and in
+how the responses were generated, the reported direction did not hold for two of the three model families
+compared. That is a methodological finding, not a theoretical embellishment; whether blinding is the part
+of the protocol responsible is what the controlled comparison will show. It does not depend on the ARC
+Principle (Law I, a law under test) being a universal law, and it does not depend on the Eden Protocol
+being fully validated.
+    If outside teams replicate this result under conditions that isolate blinding, the consequence is
+straightforward. Future alignment benchmarks will need to adopt multi-layer blinding, including
+laundering and evaluator bias-suppression instructions, as routine scientific controls. If they do not, their
+conclusions about which models are getting safer, flatter, or more dangerous with depth will remain
+methodologically vulnerable.
+
+Bottom line. The most important near-term question raised by this paper is no longer theoretical. It
+is operational: will the field keep relying on alignment evaluations whose scoring protocols have
+never been tested one part at a time, now that a reported result has been seen not to hold when the
+protocol changed?
+    Raise AI with care.
+
+Code and data. The experiment suite, with runners v1 to v5, the archived v4 and v5 result files and
+their analyses, is in the public repository github.com/MichaelDariusEastwood/arc-principle-validation,
+folder experiments/alignment-scaling__Papers-IV-a-b-c-d; this paper’s folder is
+papers/Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation, with its
+results. The v5 runner was also deposited on OSF on 17 March 2026. The deposited v5 runner is a
+later revision than the code that produced four of the six v5 result files (DeepSeek V3.2, Gemini 3 Flash,
+GPT-5.4 and Grok 4.1 Fast); the earlier revisions, among them the earlier build of Section 10, have not
+been published. The paper and its earlier versions are deposited at doi.org/10.17605/OSF.IO/2S3E6.
+
+
+Acknowledgements
+Michael Darius Eastwood conceived and directs this research programme and is the author of this work.
+Across the programme, he has used more than six AI systems in parallel, under his own instructions, to
+stress-test his arguments, identify possible errors, and assist in preparing draft text from his own outlines.
+He determines what is adopted, revised or rejected and takes responsibility for the published content.
+These systems are tools, not authors.
+
+© 2026 Michael Darius Eastwood. Full human authorship and moral rights are asserted under the Copyright,
+Designs and Patents Act 1988. This work is licensed under the Creative Commons Attribution 4.0 International
+licence (CC BY 4.0).
+
+
+
+
+                                                     16
+                               Alignment trends and the evaluation protocol
+
+
+References
+Yuntao Bai, Andy Jones, Kamal Ndousse, et al. Training a helpful and harmless assistant with reinforcement
+  learning from human feedback, 2022a. URL https://arxiv.org/abs/2204.05862. arXiv:2204.05862, 12
+  April 2022.
+
+Yuntao Bai, Saurav Kadavath, Sandipan Kundu, et al. Constitutional AI: harmlessness from AI feedback,
+  2022b. URL https://arxiv.org/abs/2212.08073. arXiv:2212.08073, 15 December 2022.
+
+Songeun Chae, Min Kim, Donghoon Jung, Seojin Choi, and Seohyon Jung. Self- and other-labels induce
+  bidirectional bias in LLM judges, 2026. URL https://arxiv.org/abs/2608.18091. arXiv:2608.18091,
+  version 2 of 6 September 2026 (version 3 of 16 October 2026 keeps its title and abstract); version 1
+  submitted 6 June 2026 and public from August 2026.
+
+Hongyu Chen and Seraphina Goldfarb-Tarrant. Safer or luckier? LLMs as safety evaluators are not
+  robust to artifacts. In Proceedings of the 63rd Annual Meeting of the Association for Computational
+ Linguistics (Volume 1: Long Papers). Association for Computational Linguistics, 2025. doi:10.18653
+ /v1/2025.acl-long.970. Pages 19750 to 19766. First posted as arXiv:2503.09347, 12 March 2025.
+
+Yann Dubois, Balázs Galambosi, Percy Liang, and Tatsunori B. Hashimoto. Length-controlled AlpacaEval:
+  a simple way to debias automatic evaluators, 2024. URL https://arxiv.org/abs/2404.04475.
+  arXiv:2404.04475, version 2 of 10 March 2025; first posted 6 April 2024; the arXiv record notes
+  COLM 2024.
+
+Michael Darius Eastwood. Register · The ARC Theory · The Dated Prediction Register: Forward
+ Predictions as One Verifiable Chain. OSF, 2026a. doi:10.17605/OSF.IO/C3NTF.
+
+Michael Darius Eastwood. Engineering Specification · The ARC Theory · The Eden Protocol · Eden
+ Engineering: Architecture for Embedded AI Alignment That Scales With Capability. OSF, 2026b.
+ doi:10.17605/OSF.IO/AWJR4.
+
+Michael Darius Eastwood. Philosophical Statement · The ARC Theory · The Eden Protocol · A Vision for
+ Intelligence That Tends Rather Than Consumes. OSF, 2026c. doi:10.17605/OSF.IO/9M3DG.
+
+Michael Darius Eastwood. Laws IV and V: the mathematics. OSF, 2026d. Version 1.0 of 3 October 2026;
+ version 1.1 of 7 October 2026. doi:10.17605/OSF.IO/4B3VT.
+
+Michael Darius Eastwood. Register · The ARC Theory · Operational Definitions. OSF, 2026e. doi:10.1
+ 7605/OSF.IO/GVQ82.
+
+Michael Darius Eastwood. Paper III · The ARC Theory · Law II, the ARC Co-Scaling Law · The Alignment
+ Scaling Problem: Why External AI Safety Approaches Cannot Scale With Recursive Capability. OSF,
+ 2026f. doi:10.17605/OSF.IO/HQCGF.
+
+Michael Darius Eastwood. Paper IV.a · The ARC Theory · Alignment Response Classes Under Inference-
+ Time Depth. OSF, 2026g. Version 1.9. doi:10.17605/OSF.IO/MB9R6.
+
+Michael Darius Eastwood. Paper IV.b · The ARC Theory · Alignment Saturation Is Architecture-Dependent.
+ OSF, 2026h. Version 1.9. doi:10.17605/OSF.IO/A7R56.
+
+Michael Darius Eastwood. Paper IV.c · The ARC Theory · ARC-Align: a Blind Benchmark for
+ Depth-Variable AI Alignment Evaluation. OSF, 2026i. doi:10.17605/OSF.IO/J3Q2E.
+
+
+                                                   17
+                              Alignment trends and the evaluation protocol
+
+
+Michael Darius Eastwood. Paper IX · The ARC Theory · Synthesis and Roadmap. OSF, 2026j.
+ doi:10.17605/OSF.IO/K7RUZ.
+
+Michael Darius Eastwood. The ARC Theory · Theory-Level Predictions for Recursive Self-Improvement
+ and AI Alignment: Twenty-Two Severable Propositions Registered Before Any Admissible Confirmatory
+ Outcome. OSF registration, 2026k. Registered 8 September 2026 at version 1.100; updated 13 September
+ 2026 at version 1.102 and 15 October 2026 at version 1.103. doi:10.17605/OSF.IO/P8CKQ.
+
+Michael Darius Eastwood. 06-study-ac--corrector-class-audit · What Class of Corrector Is Deployed AI
+ Alignment Actually Using? A Preregistered Classification Audit Against a Four-Cell Taxonomy. OSF
+ registration, 2026l. Registered 1 October 2026. doi:10.17605/OSF.IO/RV2B5.
+
+Michael Darius Eastwood. Unit 06 (corrector-class audit): results of the registered run, rv2b5. OSF,
+ 2026m. doi:10.17605/OSF.IO/4BPHG.
+
+Michael Darius Eastwood. The ARC Alignment-Scaling Working Report (Live Laboratory Notebook,
+ commenced 10 March 2026). OSF, 2026n. URL https://osf.io/j6mkb/. OSF project j6mkb; document
+ version 1.1 (11 October 2026), a live notebook.
+
+Andrew Gelman and Hal Stern. The difference between “significant” and “not significant” is not itself
+  statistically significant. The American Statistician, 60(4), 2006. doi:10.1198/000313006X152649.
+  Pages 328 to 331.
+
+Aryo Pradipta Gema, Alexander Hägele, Runjin Chen, Andy Arditi, Jacob Goldman-Wetzler, Kit
+  Fraser-Taliente, Henry Sleight, Linda Petrini, Julian Michael, Beatrice Alex, Pasquale Minervini,
+  Yanda Chen, Joe Benton, and Ethan Perez. Inverse scaling in test-time compute, 2025. URL
+  https://arxiv.org/abs/2507.14417. arXiv:2507.14417, version 2 of 15 December 2025; first posted 19
+  July 2025. Published in Transactions on Machine Learning Research, December 2025.
+
+Ryan Koo, Minhwa Lee, Vipul Raheja, Jong Inn Park, Zae Myung Kim, and Dongyeop Kang.
+  Benchmarking cognitive biases in large language models as evaluators. In Findings of the Asso-
+  ciation for Computational Linguistics: ACL 2024. Association for Computational Linguistics, 2024.
+  doi:10.18653/v1/2024.findings-acl.29. Pages 517 to 545. First posted as arXiv:2309.17012, 29
+  September 2023.
+
+Taslim Mahbub and Shi Feng. Mitigating self-preference by authorship obfuscation, 2025. URL
+  https://arxiv.org/abs/2512.05379. arXiv:2512.05379, 5 December 2025.
+
+Arash Marioriyad, Mohammad Hossein Rohban, and Mahdieh Soleymani Baghshah. The silent judge:
+  unacknowledged shortcut bias in LLM-as-a-judge, 2025. URL https://arxiv.org/abs/2509.26072.
+  arXiv:2509.26072, version 2 of 14 October 2025; first posted 30 September 2025.
+
+Arjun Panickssery, Samuel R. Bowman, and Shi Feng. LLM evaluators recognize and favor their own
+  generations, 2024. URL https://arxiv.org/abs/2404.13076. arXiv:2404.13076, 15 April 2024.
+
+Ethan Perez, Saffron Huang, Francis Song, Trevor Cai, Roman Ring, John Aslanides, Amelia Glaese, Nat
+  McAleese, and Geoffrey Irving. Red teaming language models with language models. In Proceedings
+  of the 2022 Conference on Empirical Methods in Natural Language Processing. Association for
+  Computational Linguistics, 2022. doi:10.18653/v1/2022.emnlp-main.225. Pages 3419 to 3448. Also
+  arXiv:2202.03286, 7 February 2022.
+
+
+
+
+                                                  18
+                               Alignment trends and the evaluation protocol
+
+
+José Pombal, Ricardo Rei, and André F. T. Martins. Self-preference bias in rubric-based evaluation of
+  large language models, 2026. URL https://arxiv.org/abs/2604.06996. arXiv:2604.06996, version 3 of 3
+  August 2026; first posted 8 April 2026.
+
+Dani Roytburg, Matthew Bozoukov, Matthew Nguyen, Jou Barzdukas, Mackenzie Puig-Hall, and Narmeen
+  Oozeer. Are LLM evaluators really narcissists? Sanity checking self-preference evaluations, 2026.
+  URL https://arxiv.org/abs/2601.22548. arXiv:2601.22548, version 4 of 22 June 2026; first posted 30
+  January 2026.
+
+Muskan Saraf, Sajjad Rezvani Boroujeni, Justin Beaudry, Hossein Abedi, and Tom Bush. Quantifying
+ label-induced bias in large language model self- and cross-evaluations, 2025. URL https://arxiv.org/ab
+ s/2508.21164. arXiv:2508.21164, version 3 of 9 October 2025; first posted 28 August 2025.
+
+Evangelia Spiliopoulou, Riccardo Fogliato, Hanna Burnsky, Tamer Soliman, Jie Ma, Graham Horwood,
+  and Miguel Ballesteros. Play favorites: a statistical method to measure self-bias in LLM-as-a-judge,
+  2025. URL https://arxiv.org/abs/2508.06709. arXiv:2508.06709, 8 August 2025.
+
+Andrew Trask, Sol Messing, Vai Pahwa, et al. Double blind evals: resolving the dual confidentiality
+  dilemma in AI safety auditing. Technical report, 8 pages, by 30 authors from AVERI, Google, Singapore
+ AISI, OpenMined and ML Commons, 2026. URL https://storage.googleapis.com/deepmind-media/D
+  eepMind.com/Blog/piloting-the-worlds-first-double-blind-ai-evaluations/double-blind-evaluations
+ -technical-report.pdf. The PDF is dated 27 August 2026 (its creation date, written in the file). SHA-256
+  of the file read: 99f600a98a59d3fad6ed21334f524c4eb4350578e3c47c147b6355756fa0f257.
+
+Peiyi Wang, Lei Li, Liang Chen, Zefan Cai, Dawei Zhu, Binghuai Lin, Yunbo Cao, Lingpeng Kong,
+  Qi Liu, Tianyu Liu, and Zhifang Sui. Large language models are not fair evaluators. In Proceedings of
+  the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers).
+  Association for Computational Linguistics, 2024. doi:10.18653/v1/2024.acl-long.511. Pages 9440 to
+  9450. First posted as arXiv:2305.17926, 29 May 2023.
+
+Koki Wataoka, Tsubasa Takahashi, and Ryokan Ri. Self-preference bias in LLM-as-a-judge, 2024. URL
+  https://arxiv.org/abs/2410.21819. arXiv:2410.21819, version 2 of 21 June 2025; first posted 29 October
+  2024.
+
+Wojciech Zaremba, Evgenia Nitishinskaya, Boaz Barak, Stephanie Lin, Sam Toyer, Yaodong Yu, Rachel
+ Dias, Eric Wallace, Kai Xiao, Johannes Heidecke, and Amelia Glaese. Trading inference-time compute
+ for adversarial robustness, 2025. URL https://arxiv.org/abs/2501.18841. arXiv:2501.18841, 31 January
+ 2025.
+
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Zhuang, Zi Lin,
+  Zhuohan Li, Dacheng Li, Eric P. Xing, Hao Zhang, Joseph E. Gonzalez, and Ion Stoica. Judging
+  LLM-as-a-judge with MT-Bench and Chatbot Arena, 2023. URL https://arxiv.org/abs/2306.05685.
+  arXiv:2306.05685, version 4 of 24 December 2023; first posted 9 June 2023.
+
+
+
+
+                                                   19
+                                 Alignment trends and the evaluation protocol
+
+
+A     Version history and corrections
+Every version and correction, with its date. Notes from earlier versions are kept as printed; the positions
+they name refer to the earlier layout, which Table 3 maps to this edition.
+
+A.1    Version 2.7
+Paper IV.d v2.7, 21 October 2026. This version brings the paper up to date with the internal code
+review of October 2026 and narrows its claim to what the comparison shows: the reported direction
+of the alignment-depth trend did not hold between the v4 and v5 runs, which differed in their scoring
+protocol and in their responses, prompts, token allowances, depth levels, panels and, for Gemini, model.
+The paper no longer says that the comparison isolates blinding, that the v5 direction is the correct one, or
+that GPT-5.4 is a control, and the three sentences that called blinding an established necessity now carry
+the programme’s reading and the open question (Section 9, the caption of Figure 1 and Section 10.1).
+     It states the March run as it ran: the panel excluded the subject model and no other, and one judge
+model scored twice (Section 4, ‘The panel as run’); the paraphrasing models were drawn from the judges’
+pool, some paraphrases came from the subject’s own developer and some carried the paraphraser’s
+reasoning (Section 4.1); the paraphrase step’s output cap cut the deepest answers in the three runs that
+read flat or negative, the 𝑑 and 𝑝 values treat prompt-repeated entries as independent, the DeepSeek row
+is not a demonstrated reversal, and the fourth v4 subject, Claude Opus 4.6, is reported beside the three
+compared (Section 5); one judge’s scores in the three early files were read from prose, and the consensus
+rule is a candidate mechanism (Section 10). Section 4 records how often DeepSeek V3.2’s v4 responses
+at the exhaustive level reached the v4 reasoning cap, and that the public v5 runner is a later revision than
+the one that produced four of its six result files. The conditions that would defeat the paper’s hypothesis
+now count the responses, the token allowances and depth levels, the Gemini model, the aggregation rule,
+the paraphrase step’s output cap and launderers who also judged among the confounds, and ask for a
+replication on identical responses; the recommended protocol adds a check of preserved meaning and
+length on every paraphrase (Sections 10.1 and 8). The laundering-fallback flag, whose meaning version
+2.6 left open, is stated plainly as a known false positive of the early build that shows nothing about the
+paraphrase step. The two experiments are dated from their own evidence (Section 4, Appendix B).
+     Figure 1 is redrawn from the table’s values: the drawing of version 2.6 showed Gemini’s v4 coefficient
+as +0.311, where the table, after Papers IV.a and IV.b, gives +0.275; its title and its sentence ‘Blinding is
+not optional; it is the measurement instrument’ are withdrawn. Finding 1 no longer names study-y, a
+cross-family re-scoring of the programme’s published results that places v5 outside its class; the test of
+the published contrasts is a re-analysis that is to be registered. A related-work section now credits the
+earlier work on model judges and on safety-relevant behaviour against reasoning length, each work in its
+own terms and linked to its source. Laws IV and V are stated as registered as laws on 15 October 2026 in
+version 1.103 of the theory registration, not yet tested. No registered law, prediction, kill condition or
+dependency changes; no result is added or removed; no date of any claim moves.
+     This edition is typeset in LaTeX. The front matter of version 2.6 moves into the sections and
+appendices that Table 3 lists; the abstract is rewritten within arXiv’s limit; a related-work section is
+added as Section 2, so Sections 2 to 7 of version 2.6 become Sections 3 to 8, and its Section 8 becomes
+Section 10; a section on what the paper does and does not show gathers the scope statement, the frame
+line and the epistemic status; the heading of Section 6 now names a change of direction, and that of
+Finding 1 says the direction did not hold, rather than a flip of sign or a reversal by blinding; the heading of
+Section 10.1 names the hypothesis it tests, and Finding 2 is set as a recommendation; the copyright line is
+shortened; links to the author’s documents point to their OSF DOIs; numeric ranges are written with ‘to’.
+No number, date or DOI changes except as this entry records.
+
+
+                                                      20
+                                Alignment trends and the evaluation protocol
+
+
+A.2    Earlier corrections and dated notes
+This paper and Laws IV and V, 3 October 2026. The theory has been stated with five laws since
+24 September 2026. Law IV, the ARC Persistence Law, is carried by proposition P15, and Law V, the
+ARC Embedding Law, by propositions P12 and P21. The three propositions are registered; neither law
+is registered as a law, and neither has been tested. Their mathematics is set out in Laws IV and V: the
+mathematics, version 1.0, of 3 October 2026. This paper shows why the evaluation protocol must be
+controlled: for two model families, the direction of the alignment-depth relationship changed between the
+unblinded v4 protocol and the blinded v5 protocol, while a null-control family held flat. Because v4 and
+v5 differ in more than one protocol component, the paper does not isolate the causal effect of blinding.
+Nor is it evidence that a persistence or an embedding prediction survived a test. The theory’s registration
+requires blind scoring for every one of its twenty-two propositions, P15, P12 and P21 among them, so any
+judged test of Law IV or Law V depends on blind scoring of the kind this paper examines. No result in
+this paper is a deciding test of P15, P12 or P21. Naming the two laws changes nothing printed here: the
+results, their dates and their limits stand as they were.
+
+Note (18 October 2026). The dated note above, of 3 October 2026, names P15 as the proposition
+that carries Law IV, as the theory then stood. Under version 1.103 of the theory registration, P15 is the
+retention limb of Law IV, whose comparison limb has no registered proposition yet; P12 and P21 are
+carried by Law V (Appendix D). The note above and every date in it are unchanged.
+
+Note (3 October 2026). One sentence above is corrected in place, and this note records what it printed
+before. The epistemic status line read “What this programme names Laws are conjectures under registered
+adversarial test”; it now gives Laws I to III and Laws IV and V their separate status. No result, limit or
+date of any claim in this paper changes.
+
+The epistemic status line, as printed in version 2.6. “What this programme names Laws are conjectures.
+Laws I to III are under registered adversarial test. Laws IV and V were added on 24 September 2026;
+the predictions that carry them are registered, the laws themselves are not yet registered, and neither has
+been tested. Every quantity in this paper is operationally defined, and established-law standing is claimed
+nowhere. The registered programme exists to earn that standing, or lose it, by measurement, replication
+and survived refutation.” Version 2.7 states Laws I to III as laws under test, registered on 8 September
+2026, with no registered test of any law yet returning a verdict, and Laws IV and V as registered as laws
+on 15 October 2026 in version 1.103 of the theory registration (Section 9).
+
+A.3    Version history
+Paper IV.d v2.6 (5 October 2026): the title now follows the programme’s uniform order (paper, its
+law or framework, its own title), Paper IV.d · The ARC Theory · The Effect of Blinding on AI Alignment
+Evaluation; until this version it read Paper IV.d: The Effect of Blinding on AI Alignment Evaluation.
+The plate beneath the author line now gives the paper’s place in the programme in the words of the
+programme’s map. Mentions of the programme’s papers in this paper now carry their uniform titles. No
+registered law, prediction, kill condition or dependency changes; no result is added; no date of any claim
+moves.
+
+Paper IV.d v2.5 (3 October 2026): a dated note places the paper against Laws IV and V and records
+that it is a test of neither. A dated note after the paragraph on dated predictions, recorded on 25 August
+2026, gives the state of registration as read on 3 October 2026. The epistemic status line gives Laws I to
+
+                                                    21
+                                  Alignment trends and the evaluation protocol
+
+
+III and Laws IV and V their separate status, and a dated note records what it printed before. Citations are
+linked: mentions of the author’s papers in the running text go to their DOIs, the book named in the byline
+to its own page, and other cited works to their official sources. The withdrawal of Eden Engineering of
+14 July 2026 was reversed on 19 September 2026, and its version 6.3 is published. No registered law,
+prediction, kill condition or dependency changes; no result is added; no date of any claim moves.
+
+v2.4 (13 September 2026): The provenance note at the end has been corrected for accuracy. No claim,
+date, result or status has changed.
+
+v2.3 (2 September 2026): the v4 Gemini coefficient now given as +0.275, after Papers IV.a and
+IV.b, with the figure’s +0.311 flagged; the Section 4 table now points to the recomputation note in
+Paper IV.a, which leaves every direction as it stood; the Section 8 concession that more than one protocol
+component moved between versions now appears in the abstract and in Finding 1; the limitations gain the
+laundering-fallback flag as the archived files hold it, true on every scored entry for three subjects, two of
+which are the reversal cases; each of the three sister papers now cited under its own DOI rather than this
+paper’s; Constitutional AI attributed to Bai et al. (2022); the summary description no longer cut short;
+Eden Engineering shown as withdrawn.
+
+v2.2 (23 August 2026): epistemic-status declaration and standing covenant added, version-numbering
+convention adopted; scientific content otherwise unchanged; v2.1 tightens model-naming and reporting
+discipline (canonical model strings in the Figure 1 caption, em-dash removal, study-y draft-registration
+reference at Finding 1, exploratory framing for section 6 implications); v2.0 finalised the canonical
+publication framing for the blinding result and superseded the earlier v1.1 export.
+
+A.4     Where the earlier layout now stands
+
+                    Table 3. Where each block of the version 2.6 layout stands in this edition.
+
+Block in the earlier layout                          Where it stands in this edition
+Registration line and format links above the title   Appendix D.2 (the registration at version 1.103); the format
+                                                     links are website navigation and are not set
+Summary panel: label, title, card text, dates,       Title block and first-page footnote; the card text and the
+copy of the abstract, related reading                abstract copy are not repeated; related reading is not set
+Title, theory-position plate and subtitle            Title, secondary line and first-page footnote; the plate’s words
+                                                     in Appendix D
+Byline and meta block (affiliation, DOI, version,    Author block, first-page footnote, Section 1, Appendix D.3
+companion papers, code and data)                     and Code and data
+Abstract                                             Abstract, rewritten within arXiv’s limit
+Scope of Claim and the frame line                    Section 9
+Section 1                                            Section 1
+(new)                                                Section 2, Related work
+Section 2                                            Section 3
+Section 3 and 3.1                                    Section 4 and 4.1
+Section 4, Figure 1 and Finding 1                    Section 5
+
+
+
+                                                         22
+                                       Alignment trends and the evaluation protocol
+
+
+Block in the earlier layout                              Where it stands in this edition
+
+Section 5                                                Section 6
+Section 6                                                Section 7
+Section 7 and Finding 2                                  Section 8
+Section 8 and 8.1                                        Section 10 and 10.1
+Section 9 and the bottom line                            Section 11
+References                                               References
+Version history in the footer                            Appendix A.3
+Read-alongside line                                      Section 1, last paragraph
+Canonical links                                          Code and data
+How to cite                                              Not set; the DOI is in the first-page footnote
+Dated predictions and this paper                         Appendix B.2
+Epistemic status                                         Section 9; the earlier wording in Appendix A.2
+This paper and Laws IV and V, and its note               Appendix A.2
+Copyright                                                After the acknowledgements
+Standing covenant                                        End of Section 10.1
+Provenance note                                          Acknowledgements
+
+
+
+B     Priority record
+Each dated record bearing on this paper, with its kind of timestamp (Table 4): a deposit dated by its server
+(an OSF upload or a GitHub push), a commit date written by the committer, a time written into a result
+file by the code that ran, or a date written inside a document. No kind is presented as stronger than it is.
+
+B.1    Dated records
+
+                    Table 4. Dated records bearing on this paper, each with its kind of timestamp.
+
+Date and time                 Record                                                        Kind of timestamp
+22 January 2026, 02:57:02     Twelve capability problems with their answers (ARC01 to       GitHub push; OSF upload 22
+UTC                           ARC12 of v5’s capability ladder), in the code of an earlier   January 2026, 23:44:03 UTC
+                              one-model run
+22 January 2026, 05:37:46     Paper III experimental design, first version: alignment       GitHub push
+UTC                           through constraints stays flat, through values scales with
+                              depth; withdrawn on 23 January 2026, 00:35:24 UTC
+9 February 2026, 19:46:58     Paper III version 6.1: the prediction the experiments         GitHub push; OSF upload 9
+UTC                           tested, public without break from here, with a general        February 2026, 20:06:08 UTC
+                              measurement protocol
+13 February 2026,             Paper III version 8.2: F13, the criterion that would refute   OSF upload
+05:15:21 UTC                  the prediction
+
+
+
+
+                                                              23
+                                    Alignment trends and the evaluation protocol
+
+
+Date and time              Record                                                          Kind of timestamp
+
+22 February 2026,          White Paper III version 9.0 and Eden Protocol                   GitHub push; OSF uploads at
+07:01:00 UTC               Engineering version 4.0: the criterion and a statistical        08:15:13 and 08:16:06 UTC
+                           specification
+11 March 2026, 00:01:35    First v4 record                                                 Written into the result file by the
+                                                                                           code that ran (no zone stated; read
+                                                                                           as UK time, which is UTC in
+                                                                                           March)
+11 March 2026, 07:12:13    First and last v5 records                                       As above
+to 12 March 2026,
+11:27:39
+12 March 2026              The pipeline summary whose values Table 2 prints                Date written in the document
+16 March 2026              This paper first published (the date printed in it); GitHub     Date written inside the document;
+                           commit 135bf0e1, 18:32:28 UTC, adds the first HTML of           commit date written by the
+                           Papers IV.c and IV.d                                            committer
+16 March 2026, 18:48:07    Runners v1 to v5 and the v5 result files first public; the v4   GitHub push
+UTC                        result files followed at 18:55:28 UTC (both pushes are no
+                           longer in the main branch’s history and are served by their
+                           hashes)
+17 March 2026, 01:40:43    This paper’s OSF component made public                          OSF server log
+UTC
+17 March 2026, 02:08:38    The v5 runner on OSF (SHA-256                                   OSF file-version server time
+UTC                        9f1ab3a8135bdaf76343e8d2263b4739b97e36b676
+                           52d41ef44e62c525c1fa17)
+20 March 2026, 17:05:32    This paper’s PDF, revision 1, on OSF (it prints “Draft          OSF server; the printed dates are
+UTC                        v1.1 · 12 March 2026” and “First published 16 March             dates written inside the document
+                           2026”)
+2 September 2026           Recomputation note in Paper IV.a, Section 3.1, which            Date written in a document
+                           alters no direction in Table 2
+8 September, 13            The theory registration: registered at version 1.100,           OSF registration and its approved
+September and 15 October   updated at version 1.102, updated at version 1.103              updates
+2026
+
+
+    The comparison of the two protocols that this paper reports is dated by the runs’ own records and by
+the first publication of 16 March 2026.
+
+B.2    Dated predictions and this paper (recorded 25 August 2026)
+1 dated artefact bearing on this paper is catalogued row by row in the programme’s machine register: 1
+dated result file whose headers freeze depth configurations, planted expected answers and the four-layer
+blinding protocol before the responses they score, timestamped to the second in their own metadata. Each
+row names its file in the public repository with its date basis, so any reader can check the ordering without
+trusting this page. The programme’s full dated chain, from the sealed manuscript bundle of 8 December
+2024 through the printed prediction appendices of 2 January 2026 and the March 2026 preregistration
+folder to the standing unproven wagers, is assembled in the dated predictions register, together with its
+machine-readable twin. Forward statements and retrospective matches are never summed. “Registered”
+is used only for an accepted registry submission, and that submission click remains outstanding across
+the programme; “preregistered in substance” is used, always with its qualifier and always beside its
+attestation class, for a prediction whose text was public and timestamped before its outcome existed, as the
+
+                                                            24
+                                 Alignment trends and the evaluation protocol
+
+
+twelve-row manifest committed at 00:19 UTC on 17 March 2026 was, twenty-three minutes before its fits.
+The running record behind this paper’s experimental lineage is the programme’s live laboratory notebook:
+commenced 10 March 2026, 206 pages, updated in real time as these experiments ran, recording their
+failures as they happened. (The dated predictions register: DOI 10.17605/OSF.IO/C3NTF; the working
+report: osf.io/j6mkb.)
+
+Note (3 October 2026). The paragraph above was recorded on 25 August 2026. As read on 3 October
+2026, one registration has been accepted: the theory’s own, registered on 8 September 2026 and updated
+on 13 September 2026, which registers twenty-two propositions. One study unit, the corrector-class audit
+(unit 06), was submitted for registration on OSF on 1 October 2026; its approval period at OSF was still
+running on 3 October 2026, and it was not yet public. Every other study unit is a draft awaiting the
+author’s submission. Sixty-five of the programme’s designs, unit 06 among them, are preregistered by
+timestamp, the first anchored on 12 August 2026 in Bitcoin block 962066. Unchanged: the paragraph
+above and every date in it.
+
+Note (18 October 2026). The paragraphs above were recorded on 25 August and 3 October 2026.
+As read on 18 October 2026, the theory’s registration (DOI 10.17605/OSF.IO/P8CKQ) was registered
+on 8 September 2026 at version 1.100 and updated on 13 September 2026 at version 1.102 and on 15
+October 2026 at version 1.103, which registers Laws IV and V as laws, untested; the texts of versions
+1.100 and 1.102 stay frozen beside it. The first registered study, Unit 06 (a classification audit, DOI
+10.17605/OSF.IO/RV2B5), was registered on 1 October 2026, ran on 6 October 2026, and is reported in
+full as administratively incomplete, with no verdict claimed (DOI 10.17605/OSF.IO/4BPHG); it tests no
+law. Unchanged: the paragraphs above and every date in them.
+
+
+C     Notation and glossary
+Table 5 gives each symbol with the place it is defined, and Table 6 the paper’s terms in plain language.
+
+C.1      Symbols
+
+                              Table 5. Symbols, with the place each is defined.
+
+Symbol              Meaning
+𝜌                   Spearman’s rank correlation of alignment score with reasoning depth, as each run’s pipeline
+                    reports it: v4’s statistic, over depth levels, and printed beside 𝑑 in v5, over realised reasoning
+                    tokens (Section 5)
+𝑑                   Cohen’s 𝑑 between the shallowest and the deepest depth level of a model’s scored entries, in
+                    v5 (Section 5)
+ 𝑝                  The 𝑝-value the pipeline printed; in v5 not one test (Section 5)
+v4, v5              The earlier unblinded experiment and the later, unregistered March 2026 run of the same
+                    alignment-depth question (Section 4)
+
+
+
+
+                                                        25
+                              Alignment trends and the evaluation protocol
+
+
+C.2     Plain-language glossary
+                                    Table 6. Plain-language glossary.
+
+Term                            In plain English
+Model judge                     A model that scores another model’s answer; also called a scorer.
+Panel                           The judges that score one entry; in v5, six or seven scores from five or six
+                                distinct models (Table 1).
+Alignment score                 The consensus score the panel gives an answer under the ARC-Align rubric of
+                                Paper IV.c.
+Depth level                     A setting of how much a model reasons before it answers: a reasoning
+                                parameter, a token budget or an instruction prefix, by provider.
+Blinding                        Hiding from the judge which model wrote an answer and under which
+                                condition. The v5 protocol’s blinding steps are described as designed; whether
+                                they hid the source is unmeasured (Section 10).
+Identity masking                Removing the model’s name and the depth condition from what the judge sees.
+Response laundering             Rewriting an answer, here in two passes by other models, to reduce cues to its
+                                source while keeping its meaning; v5 recorded no check of preserved meaning
+                                (Section 4.1).
+Laundering-fallback flag        A field set on every paraphrased entry of the three early-build v5 files; a
+                                known false positive of that build, which shows nothing about the paraphrase
+                                step (Section 10).
+Self-exclusion                  Leaving the subject model off its own panel: by model in v5, by developer in
+                                the successor suite’s design.
+Tier-weighted consensus         The panel’s mean weighted by each judge’s tier; in v5, where the judges’
+                                standard deviation exceeded 15 points, the lower of that mean and the median.
+Source-recognition test         A test, with a positive control, of whether judges can tell which model wrote
+                                an answer; not reported for v5.
+Comparison case                 A model with no significant trend in either run, read beside the others; with no
+                                equivalence margin set, not a control (Section 5).
+Unregistered run                A run made under no registration on a public registry. The March 2026 runs
+                                were not registered; the prediction they tested was public before they ran
+                                (Section 4).
+Registered                      Accepted by a public registry (OSF) and read back.
+Preregistered by timestamp      A design whose text was fixed by a dated, verifiable timestamp before its run,
+                                without a registry submission.
+Condition A                     The theory registration’s rule that scoring be blind to the condition for every
+                                proposition it registers (Appendix D).
+Law under test                  A law of the ARC Theory that no registered test has yet decided.
+
+
+
+D      The paper’s place in the ARC Theory and the programme
+Where this paper sits among the developments of the programme (Table 7), with the relation its own text
+supports and no stronger.
+
+
+
+                                                    26
+                                    Alignment trends and the evaluation protocol
+
+
+D.1    The theory’s laws and this paper
+                    Table 7. The paper’s place among the developments of the programme.
+
+Development                            Relation                                            Where the paper states it
+Recursive Dynamics, the field the      The paper belongs to the field’s founding theory    First-page footnote
+author founded
+The ARC Theory                         One of its ARC/Eden experiments: its finding        Section 9
+                                       on the measurement of alignment
+Laws I to III (the ARC Principle,      None: the result depends on none of them            Sections 1 and 11
+the ARC Co-Scaling Law, the
+ARC Ceiling), registered on 8
+September 2026, laws under test
+Law IV, the ARC Persistence Law,       Informs: condition A binds the propositions         Appendix D.2
+and Law V, the ARC Embedding           under both laws, so any judged test of either
+Law, registered as laws on 15          depends on scoring of the kind examined here;
+October 2026 (version 1.103), not      decides neither
+yet tested, their mathematics in
+development
+Condition A of the theory              Informs: version 1.103 reads this paper’s finding   Appendix D.2
+registration                           at the width the paper gives it
+The Eden Protocol                      None: the result does not depend on it              Section 11
+The HARI Treaty                        None stated in this paper                           None
+
+
+D.2    Condition A and Laws IV and V
+The theory registration (DOI 10.17605/OSF.IO/P8CKQ) was registered on 8 September 2026 at version
+1.100 and updated on 13 September 2026 at version 1.102 and on 15 October 2026 at version 1.103. Its
+condition A makes blinding universal: “The scoring must be blind to the condition for every one of the
+twenty-two, including the classification audits, where the classifier must be blind to which class favours
+the framework. Nothing here can be supported or refuted by an unblinded judgement.” Version 1.103
+places this paper’s finding beside that condition, reads it “at the width that paper gives it”, and states
+that “the effect of blinding on its own is the controlled comparison still to run”. Laws IV and V were
+added on 24 September 2026 and registered as laws by version 1.103; neither has been tested, and their
+mathematics is in development (DOI 10.17605/OSF.IO/4B3VT, version 1.1 of 7 October 2026). Under
+version 1.103, P15 is the retention limb of Law IV, whose comparison limb has no registered proposition
+yet, and P12 and P21 are carried by Law V. Condition A binds all three, so any judged test of either law
+depends on blind scoring of the kind this paper examines; no result in this paper is a deciding test of P12,
+P15 or P21. The register of operational definitions is DOI 10.17605/OSF.IO/GVQ82.
+
+D.3    Companion papers
+The v5 run is reported in Paper IV.a (alignment response classes under inference-time depth) and Paper IV.b
+(alignment saturation), and its instrument is specified in Paper IV.c; Paper IX situates the result in the
+wider programme. Papers IV.a (version 1.9) and IV.c (version 1.10) predate the code review of October
+2026; where they call the v4 to v5 change a reversal under blinding, or the v5 jury ‘self-excluding’, this
+paper’s narrower account governs until their next versions.
+
+
+
+                                                         27
+

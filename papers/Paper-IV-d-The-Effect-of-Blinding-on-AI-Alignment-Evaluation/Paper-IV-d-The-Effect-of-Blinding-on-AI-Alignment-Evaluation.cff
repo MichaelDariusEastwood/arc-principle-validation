@@ -1,12 +1,12 @@
 cff-version: 1.2.0
-version: '2.6'
+version: '2.7'
 message: 'If you use or discuss this paper, please cite it using this metadata.'
 title: 'Paper IV.d · The ARC Theory · The Effect of Blinding on AI Alignment Evaluation'
 authors:
   - family-names: 'Eastwood'
     given-names: 'Michael Darius'
     orcid: 'https://orcid.org/0009-0004-3222-7442'
-date-released: '2026-10-05'
+date-released: '2026-10-21'
 url: 'https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html'
 license: 'CC-BY-4.0'
 identifiers:
@@ -35,13 +35,13 @@ preferred-citation:
       description: 'OSF umbrella DOI for the ARC / Eden Research Programme'
     - type: doi
       value: '10.17605/OSF.IO/P8CKQ'
-      description: 'Theory-level predictions preregistered on OSF: DOI 10.17605/OSF.IO/P8CKQ, registered 8 September 2026 (version 1.100), updated 13 September 2026 (version 1.102), twenty-two propositions. Companion: Register · The ARC Theory · Operational Definitions, version 1.9.1, 5 October 2026.'
+      description: 'Theory-level predictions preregistered on OSF: DOI 10.17605/OSF.IO/P8CKQ, registered 8 September 2026 (version 1.100), updated 13 September 2026 (version 1.102), updated 15 October 2026 (version 1.103), twenty-two propositions. Companion: Register · The ARC Theory · Operational Definitions, version 1.9.1, 5 October 2026.'
   abstract: |
-    This paper isolates the central metascience finding of the ARC alignment programme: unblinded AI alignment evaluation can produce directionally incorrect results. In the v4 alignment-scaling experiment, two frontier model families appeared to show positive alignment scaling with inference-time depth under unblinded cross-model scoring. In the later v5 experiment, the same question was re-measured under a multi-layer blind protocol that combined identity masking, two-pass response laundering, explicit evaluator instructions that stylistic cues are unreliable, order randomisation, and entry-level self-exclusion with exhaustive cross-model blind scoring under audited consensus. Depending on configuration and subject run, each entry received 6-7 blinded scores. Under the blinded protocol, DeepSeek V3.2 moved from an apparent positive result to a flat/null result, and Gemini 3 Flash moved from an apparent positive result to a significantly negative result. GPT-5.4 remained flat under both protocols. The implication is field-wide rather than framework-specific: alignment benchmarks that do not rigorously blind evaluators and launder the evidence they score are vulnerable to scorer bias large enough to flip the sign of the measured effect; because v4 and v5 differ in more than one protocol component, the comparison drawn here motivates that conclusion without pinning it on blinding alone (Section 8). The result does not depend on the ARC Principle being correct. It is a methodological claim about how AI safety research should be conducted.
+    Claims that AI systems become more or less aligned as they reason longer often rest on scores from other AI models acting as judges, so it matters whether such scores keep their direction when the scoring protocol changes. In an earlier experiment (v4), scored by models that could see which model wrote each answer and at what depth, two model families showed alignment scores rising with depth: DeepSeek V3.2 (Spearman's rho = +0.354) and an earlier Gemini model (rho = +0.275). In the later, unregistered March 2026 run (v5), made on newly generated responses with a bundle of blinding steps (identity and depth masking, two paraphrase passes, evaluator instructions and order randomisation) and a larger panel, DeepSeek V3.2 showed no significant trend and Gemini 3 Flash a significantly negative one (Cohen's d = -0.53); GPT-5.4 showed no significant trend in either run. The runs also differed in their prompts, token allowances, depth levels, statistic and Gemini model, so the comparison shows that the reported direction did not hold across protocols; it does not show that blinding caused the change, or which direction is correct. An internal code review in October 2026 found that the paraphrase step's output cap cut the deepest answers in the three v5 runs that read flat or negative, that a model that wrote each entry's paraphrase also judged it, and that one judge model sat on the panel twice; the result stands as one unregistered comparison under that caveat, awaiting a re-analysis of the stored responses that is to be registered before it runs. Earlier work had shown that labels and surface features move model judges and that judges recognise and favour their own outputs; this paper adds a case in which frontier models' alignment-depth trends did not hold, one reversing sign on a later model, with its limits stated, and a recommended protocol that tests each part on identical responses.
 
 # --- generated-from-master ---
 # master_path: research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
-# master_sha256: bffac872c72678b016378a119029cc1a04a75ed5c656049e6a2b759724ce0b1e
+# master_sha256: b28e30cef9477e9bc5985e7b69962bb831339ef37cebd8bcd8cca7a2b29fa4ca
 # builder: scripts/build-paper-cff.py
 # A check tool re-hashing master_path can decide freshness without any
 # external state. If the master's current SHA-256 does not match
