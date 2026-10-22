@@ -18,13 +18,15 @@ constant versus time-varying compounding, left-null matrix projection, stochasti
 marginal versus pathwise risk, and finite-capacity trajectories are now stated
 separately. The proof of each corrected result is included in `THEOREMS.md`.
 
-The historical HTML/PDF manuscript mirrors and experiment outputs remain
-unchanged. **They are not corrected publication editions.** The repository
-mirror at the baseline is v1.14; the PDF supplied for this review is v1.15.
+The manuscript mirrors (PDF, HTML, text and citation files) are now version 1.16
+of 21 October 2026, the edition typeset in LaTeX and the manuscript release that
+carries these corrections: its Appendix B.1 lists each change, and its Appendix A
+proves each theorem as now stated. The mirror at the baseline of this review was
+v1.14; the PDF supplied for the review was v1.15, which was held before deposit
+and is superseded by v1.16. The experiment outputs remain unchanged.
 The old README is preserved byte-for-byte as
 [`archive/README-before-2026-10-19.md`](archive/README-before-2026-10-19.md)
-for provenance, not as a statement of current results. Website/OSF publication
-requires a separate, explicit manuscript release incorporating these replacements.
+for provenance, not as a statement of current results.
 
 ## Run the independent checks
 

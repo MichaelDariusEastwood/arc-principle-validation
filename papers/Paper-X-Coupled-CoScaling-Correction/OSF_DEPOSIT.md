@@ -1,4 +1,4 @@
-> **Note, 27 September 2026.** This file records Paper X as it was deposited in June 2026, under its earlier title, The Coupled Co-Scaling Law. The paper is now The ARC Co-Scaling Law (Paper X), version 1.11 of 21 September 2026: https://www.michaeldariuseastwood.com/research/papers/paper-x-coupled-coscaling-correction.html
+> **Note, 22 October 2026.** This file records Paper X as it was deposited in June 2026, under its earlier title, The Coupled Co-Scaling Law. The paper is now Paper X · The ARC Theory · Law II, the ARC Co-Scaling Law · Correction That Out-Scales Drift, version 1.16 of 21 October 2026, DOI 10.17605/OSF.IO/BSE2Q: https://www.michaeldariuseastwood.com/research/papers/paper-x-coupled-coscaling-correction.html
 
 # OSF deposit pack — copy-paste descriptions for posting Paper X
 
