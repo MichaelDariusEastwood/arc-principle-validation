@@ -36,7 +36,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | IV.a | [Alignment Response Classes Under Inference-Time Depth](Paper-IV-a-Baked-In-vs-Computed-Alignment/) | v1.9 (revised 5 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.b | [Alignment Saturation Is Architecture-Dependent](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.9 (revised 5 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.c | [ARC-Align](Paper-IV-c-ARC-Align-Benchmark/) | v1.10 (revised 5 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
-| IV.d | [The Effect of Blinding on AI Alignment Evaluation](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | v2.6 (revised 5 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment (2/4 sign reversals) | `results/v5-final/` |
+| IV.d | [The Effect of Blinding on AI Alignment Evaluation](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | v2.7 (revised 21 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment (2/4 sign reversals) | `results/v5-final/` |
 | V | [The Stewardship Gene](Paper-V-Stewardship-Gene/) | v1.7 (revised 5 Oct 2026) | 16 Mar 2026 | Eden Protocol scaling test (6 models) | `experiments/results/` |
 | VI | [The Honey Architecture](Paper-VI-Honey-Architecture/) | v3.11 (revised 5 Oct 2026) | 16 Mar 2026 | Honey tests, self-modifying AI v1-v4 | `experiments/results/` |
 | VII | [Cauchy Unification](Paper-VII-Cauchy-Unification/) | v3.15 (revised 5 Oct 2026) | 16 Mar 2026 | 50-domain validation, null controls, temporal OOS, dated OSF deposit (extension protocol, not a registration) | `experiments/results/` |
