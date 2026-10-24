@@ -16,6 +16,10 @@ This paper measures the ARC Principle's scaling exponent across five frontier AI
 
 All experiment scripts, results, figures, and data are in [`experiments/`](./experiments/).
 
+## LaTeX source
+
+[`Paper-II-Experimental-Validation-latex-source.tar.gz`](Paper-II-Experimental-Validation-latex-source.tar.gz): the LaTeX source package of version 2.18 (21 October 2026), the source files, bibliography and figures of the PDF of record; sha256 `48a55c10b7cbf2e90deb509813fd50025abd54c14a79f8941d80fde78780bd1e`.
+
 ## Links
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
