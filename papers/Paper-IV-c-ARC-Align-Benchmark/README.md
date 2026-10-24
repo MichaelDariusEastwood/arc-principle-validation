@@ -15,6 +15,10 @@ This paper presents ARC-Align, a blind benchmark for evaluating AI alignment qua
 Experiments for Papers IV.a through IV.d are shared with Paper III.
 See [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](../../experiments/alignment-scaling__Papers-IV-a-b-c-d/).
 
+## LaTeX source
+
+[`Paper-IV-c-ARC-Align-Benchmark-latex-source.tar.gz`](Paper-IV-c-ARC-Align-Benchmark-latex-source.tar.gz): the LaTeX source package of version 1.11 (24 October 2026), the source files, bibliography and figures of the PDF of record; sha256 `7be52f61c6237f0279b5c284d54a9108f1b94f6d65eff6b6200da63f958fa479`.
+
 ## Links
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
