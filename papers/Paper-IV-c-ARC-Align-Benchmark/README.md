@@ -1,8 +1,8 @@
 # Paper IV.c · The ARC Theory · ARC-Align: a Blind Benchmark for Depth-Variable AI Alignment Evaluation
 
 **Full title:** Paper IV.c · The ARC Theory · ARC-Align: a Blind Benchmark for Depth-Variable AI Alignment Evaluation
-**Version:** v1.10
-**Version date:** revised 5 October 2026
+**Version:** v1.11
+**Version date:** revised 24 October 2026
 **First published:** 16 March 2026
 **Author:** Michael Darius Eastwood
 
