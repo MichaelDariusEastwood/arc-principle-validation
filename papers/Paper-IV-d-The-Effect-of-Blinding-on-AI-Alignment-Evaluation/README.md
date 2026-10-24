@@ -17,6 +17,10 @@ Version 2.7 states what the comparison does and does not show, adds the findings
 Experiments for Papers IV.a through IV.d are shared with Paper III.
 See [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](../../experiments/alignment-scaling__Papers-IV-a-b-c-d/).
 
+## LaTeX source
+
+[`Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation-latex-source.tar.gz`](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation-latex-source.tar.gz): the LaTeX source package of version 2.7 (21 October 2026), the source files, bibliography and figures of the PDF of record; sha256 `c42e5dce1992858f14496865122034bc73556b8a9b81fe72cec4a1de1ea0e3fc`.
+
 ## Links
 
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/2S3E6
