@@ -17,7 +17,7 @@ This note provides a disciplined bridge between the existing programme and its p
 
 | Programme element | What it can support | What it does not establish |
 |---|---|---|
-| ARC equation, \(U=I R^\alpha\) | A candidate scaling form when \(U\), \(I\), \(R\), the reference scale and the measurement procedure are operationally fixed | A universal law of nature; acceleration in spacetime; a subjective experience of time |
+| ARC equation, $U=I R^\alpha$ | A candidate scaling form when $U$, $I$, $R$, the reference scale and the measurement procedure are operationally fixed | A universal law of nature; acceleration in spacetime; a subjective experience of time |
 | Paper VII / Cauchy Unification | Conditional classification of functional forms under specified composition and regularity assumptions | That all physical laws obey those assumptions; that the bounded/saturation family has been exhaustively derived from Cauchy; a theory of gravity |
 | On the Origin of Scaling Laws | A geometric-network scaling hypothesis where the stated partition, conservation and network assumptions apply | A universal exponent for every 3-D physical system; that software is outside physics |
 | Paper III | The proposal that selected cross-domain dynamics may help constrain or challenge ARC mechanisms | That time crystals, quantum error correction and AI instantiate the same law merely because their curves look similar |
@@ -29,12 +29,12 @@ This table is a status boundary, not a recommendation to hide the cosmological w
 
 ## 3. Four meanings of “time” that must not be merged
 
-1. **Relativistic time.** Proper time \(\tau\) is the time accumulated along a physical worldline. Coordinate time and distant simultaneity depend on the frame and coordinate convention. Motion and gravitational potential affect clock comparisons; spacetime curvature is governed by the relativistic field equations. A change in a distant simultaneity convention does not transmit information or cause a distant event to change.
+1. **Relativistic time.** Proper time $\tau$ is the time accumulated along a physical worldline. Coordinate time and distant simultaneity depend on the frame and coordinate convention. Motion and gravitational potential affect clock comparisons; spacetime curvature is governed by the relativistic field equations. A change in a distant simultaneity convention does not transmit information or cause a distant event to change.
 2. **Thermodynamic arrow.** Entropy production and irreversible processes help explain the macroscopic time-asymmetry seen in the world. Entropy is not the unit of time and is not a replacement for proper time or a clock. Landauer's bound concerns the thermodynamic cost of logically irreversible information erasure/reset; it does not assert that every computational step must dissipate the same minimum energy.
 3. **Cycle time and dynamics.** An oscillator has a period and a count of cycles. A recurrent dynamical state can be periodic without being an algorithm that improves itself. A system counts as *self-correcting* for a specified target only if a perturbation protocol demonstrates recovery toward that target, with a measured error, recovery time and baseline comparison.
 4. **Computational or experienced time.** For an AI experiment, record wall-clock time, hardware/energy use, inference steps, tokens and any actual weight/code updates separately. More iterations per second do not establish that a model subjectively experiences more time. Current benchmark results measure behaviour, not phenomenological experience.
 
-The working bridge should therefore model at least distinct quantities: \(N\) (physical cycles or algorithmic updates), \(\tau\) (elapsed proper time where relevant), measured output \(Q\), and energy/temperature/entropy variables where available. A correspondence between them is a hypothesis to test, not a definitional identity.
+The working bridge should therefore model at least distinct quantities: $N$ (physical cycles or algorithmic updates), $\tau$ (elapsed proper time where relevant), measured output $Q$, and energy/temperature/entropy variables where available. A correspondence between them is a hypothesis to test, not a definitional identity.
 
 ## 4. The conceptual gate: periodicity is not automatically recursion
 
@@ -43,7 +43,7 @@ The Grier, Morrell and Elliott acoustic system is a valuable candidate physical 
 Before applying ARC notation, state the proposed physical feedback map explicitly:
 
 - **State vector:** bead positions/velocities, phase and amplitude variables chosen from the paper's model.
-- **Input and update:** how the state at step \(n\) influences the next state, through which wave-mediated interactions and external drive.
+- **Input and update:** how the state at step $n$ influences the next state, through which wave-mediated interactions and external drive.
 - **Target:** a defined periodic orbit or phase-coherent state, not a normative “good” state.
 - **Disturbance:** a registered displacement, phase kick or brief drive perturbation.
 - **Correction/recovery metric:** distance from the target orbit over time, recovery probability and/or recovery time.
@@ -53,21 +53,21 @@ If the state-transition map is not meaningfully iterative, or no recovery is obs
 
 ## 5. Operationalising the ARC equation in a physical system
 
-Do not set \(U=\) “intelligence” or \(R=\) “time” in the physical experiment. Define the physical output first.
+Do not set $U=$ “intelligence” or $R=$ “time” in the physical experiment. Define the physical output first.
 
-For one candidate endpoint, let \(Q(N)\) be a preregistered phase-coherence or recovery score derived from the measured trajectory. Fix its normalisation, range, estimator and measurement noise before the confirmatory run. If a power-law model is tested, use a dimensionless cycle ratio \(R=N/N_0\), with a declared reference count \(N_0\), and state the mapped equation as:
+For one candidate endpoint, let $Q(N)$ be a preregistered phase-coherence or recovery score derived from the measured trajectory. Fix its normalisation, range, estimator and measurement noise before the confirmatory run. If a power-law model is tested, use a dimensionless cycle ratio $R=N/N_0$, with a declared reference count $N_0$, and state the mapped equation as:
 
-\[
+$
 \frac{Q(N)}{Q(N_0)} \approx \left(\frac{N}{N_0}\right)^{\alpha_{\mathrm{phys}}}
-\]
+$
 
 This is an **operationalisation to test**, not a claim that coherence must rise as a power law. A transient may grow, decay, saturate, oscillate or follow a known stability equation. The analysis must include the published system's mechanistic linear-instability/transient account, an appropriate saturation model, and a power-law alternative. The decisive comparison is out-of-sample predictive performance across whole experimental realisations—not which curve looks best when fitted and judged on the same trace.
 
-The equation \(U=I R^\alpha\) can be used as shorthand only when the paper explicitly maps \(U\) to \(Q\), \(I\) to the reference output, \(R\) to the dimensionless iteration/cycle ratio, and \(\alpha\) to the estimated slope. If that mapping is unnatural or fails dimensional and causal checks, do not force it.
+The equation $U=I R^\alpha$ can be used as shorthand only when the paper explicitly maps $U$ to $Q$, $I$ to the reference output, $R$ to the dimensionless iteration/cycle ratio, and $\alpha$ to the estimated slope. If that mapping is unnatural or fails dimensional and causal checks, do not force it.
 
 ### Why alpha = 0.75 must not be imposed on the time crystal
 
-The \(d/(d+1)\) expression belongs to a conditional physical-network hypothesis requiring a derivation for the domain's geometry, network and transport assumptions. “The apparatus is three-dimensional” is not such a derivation. The Grier system is a two-particle nonreciprocal oscillator, not automatically a three-dimensional hierarchical transport network. The value 0.75 therefore must not be hard-coded as its predicted exponent unless a separate derivation demonstrates that the required assumptions hold and fixes the measurement before new data are examined.
+The $d/(d+1)$ expression belongs to a conditional physical-network hypothesis requiring a derivation for the domain's geometry, network and transport assumptions. “The apparatus is three-dimensional” is not such a derivation. The Grier system is a two-particle nonreciprocal oscillator, not automatically a three-dimensional hierarchical transport network. The value 0.75 therefore must not be hard-coded as its predicted exponent unless a separate derivation demonstrates that the required assumptions hold and fixes the measurement before new data are examined.
 
 Likewise, the observed frozen-model estimate near 0.49 is an AI-domain estimate, not a value to transfer into the physical experiment. A true cross-domain claim requires each mapping to be independently justified and the predicted relation between exponents declared before measuring the test domain.
 
@@ -114,7 +114,7 @@ The current dated register lists study-t as **draft (working)**. Maintain that s
 Before a new-data confirmatory study, freeze and timestamp:
 
 - the exact research question and which proposition it informs;
-- the physical meaning of \(Q\), \(N\), \(N_0\), \(\tau\), and every other symbol;
+- the physical meaning of $Q$, $N$, $N_0$, $\tau$, and every other symbol;
 - the apparatus, treatment/control conditions, exclusions, sample unit and stopping rule;
 - primary model families, fitting windows, priors/constraints if any, and the out-of-sample scoring rule;
 - sample-size or precision justification based on simulation of the complete scoring pipeline;
@@ -147,7 +147,7 @@ For a genuine physical scaling test:
 3. Set the admissible candidate models before fitting, including reasonable domain-specific physical rivals; avoid selecting only models that match ARC.
 4. Use new or genuinely held-out domains for confirmatory evaluation. If a domain informed the hypothesis, label its fit exploratory or retrospective.
 5. Report per-domain results, failed fits, uncertainty, dependence between datasets and sensitivity to the candidate set. Do not combine identities, reference values, retrospective matches and independent empirical tests into one “validation” number.
-6. Test \(d/(d+1)\) only in systems whose network geometry and assumptions derive it. Do not treat the spatial dimension alone as explanatory evidence.
+6. Test $d/(d+1)$ only in systems whose network geometry and assumptions derive it. Do not treat the spatial dimension alone as explanatory evidence.
 7. For cosmology, derive the predicted scale-factor behaviour from the specified cosmological model and compare it with established Friedmann solutions and observational uncertainties. A shared exponent is suggestive, not proof of a shared recursive mechanism.
 
 ## 9. Connection to Recursive Creation / HRIH
@@ -162,7 +162,7 @@ Keep the name and the hypothesis. Do not dilute it to avoid a first impression, 
 
 Higher-dimensional spaces are serious mathematical and theoretical-physics objects; that fact alone does not establish a timeless substrate outside our spacetime or a creator process. A credible HRIH test must identify its model space, geometry/metric (if applicable), rules of causal or informational composition, connection to observable 3+1-dimensional quantities, and a result that would differ from competing cosmological models. If it has no distinctive observable consequence yet, label it philosophical/speculative, rather than saying that established physics proves it.
 
-The sentence “time exists because minds cannot be grown without it” can remain as the thesis's philosophical interpretation. It should not be presented as the conclusion of relativity, the entropy law, or \(U=I R^\alpha\) unless a separate derivation supplies the missing steps.
+The sentence “time exists because minds cannot be grown without it” can remain as the thesis's philosophical interpretation. It should not be presented as the conclusion of relativity, the entropy law, or $U=I R^\alpha$ unless a separate derivation supplies the missing steps.
 
 ## 10. Suggested research-programme wording
 
