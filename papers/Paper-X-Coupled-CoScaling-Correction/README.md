@@ -72,3 +72,7 @@ The paper's deposit is [OSF BSE2Q](https://doi.org/10.17605/OSF.IO/BSE2Q).
 The original publication record, research framing and historical file inventory
 remain available in the manuscript mirrors and the archived README; statements
 there that conflict with `THEOREMS.md` are superseded for this test specification.
+
+## LaTeX source
+
+[`Paper-X-Coupled-CoScaling-Correction-latex-source.tar.gz`](Paper-X-Coupled-CoScaling-Correction-latex-source.tar.gz): the LaTeX source package of version 1.16 (21 October 2026), the source files, bibliography and figures of the PDF of record; sha256 `2206d6c1bdf861ec9b7e8509614c7c2c27c2ada432d1445ed32b236216b0225d`.
