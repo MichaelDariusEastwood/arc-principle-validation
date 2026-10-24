@@ -9,6 +9,14 @@ paper or instrument, its figures, references and contents, without website navig
 menus or other website controls. The text companion holds the full document text;
 the citation file carries that document's version and date.
 
+A document typeset in LaTeX also carries its LaTeX source package in the same folder, under the
+name the export gives it, `<Folder>-latex-source.tar.gz`: the source files, bibliography and
+figures of its PDF of record, with the working comments taken out. The folder README names the
+package's version and SHA-256, and each new version is committed onto the same file name. The
+release check selects a document whenever a file in its folder other than its README changes,
+so a package goes in with or after that document's export release, never before it. Working
+drafts and their notes remain private.
+
 The website has its own presentation pages and receives the released PDF bytes.
 OSF receives the document HTML and that same PDF, retaining the oldest file identity
 and version history. A website page is never an OSF export merely because it is HTML.
