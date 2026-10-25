@@ -1,107 +1,2193 @@
 Title: Founding Paper · Recursive Dynamics · The Science of Systems That Improve Themselves | Michael Darius Eastwood Research
 Author: Michael Darius Eastwood
 Publication date: 2026-08-31
-Version: v3.4
-Revised: 2026-10-05
+Version: v3.5
+Revised: 2026-10-24
 OSF DOI: 10.17605/OSF.IO/HCPBU
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/recursive-dynamics-founding-paper.html
+Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
 
-Registration
-------------
-Theory-level predictions preregistered on OSF: DOI 10.17605/OSF.IO/P8CKQ,
-registered 8 September 2026 (version 1.100), updated 13 September 2026 (version
-1.102), twenty-two propositions. Companion: Register · The ARC Theory ·
-Operational Definitions, version 1.9.1, 5 October 2026.
+    What limits any system that improves itself, whatever it is
+                           made of?
+The founding paper of Recursive Dynamics: the field as a whole, with the five laws of the ARC
+                                 Theory as laws under test
 
-Abstract
---------
-Machines that improve themselves using their own outputs now exist and work, and
-there is no accepted science of what limits them. This paper founds that
-science, Recursive Dynamics, and stakes its claim the way thermodynamics was
-staked in 1824: by computing a bound that any such machine must obey if the
-claim is right, publishing the instruments that measure its terms, and
-preregistering by timestamp the experiments whose nulls favour the rival view.
-The field takes the self-improvement loop as its native object and names five
-state variables, conjectured to be substrate-independent: capability, recursive
-depth, correction rate, drift and correction leverage. It carries five laws as
-named conjectures with statuses declared. One, the ARC Ceiling, is derived in
-full from two lines of assumption; two, added on 24 September 2026, have their
-mathematics set out at version 1.0 and are neither registered as laws nor
-tested. The field locates its identity, as thermodynamics does, in its
-impossibilities: if the laws hold, self-improvement cannot outrun its own
-correction, the growth exponent is capped by the reciprocal of the correction
-shortfall, and no ladder of same-class oversight climbs past its ceiling by
-adding rungs. The paper states what would make the field wrong, tries to house
-its questions inside twelve neighbouring fields, gives each of fifty-one
-objections a disposition, and prints the four results that would dissolve the
-field. Its honest status is the Carnot stage: one memoir, instruments built,
-decisive measurements preregistered by timestamp and not run, staked where
-failure will be as visible as success.
+                                            Michael Darius Eastwood
+                              Independent Researcher, London, United Kingdom
+                      ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
 
-Keywords: Recursive Dynamics; recursive self-improvement; the ARC Theory;
-correction and drift; the ARC Ceiling; limit theorems; AI alignment;
-preregistration
 
-Key findings (quotable)
------------------------
-- Machines that improve themselves using their own outputs now exist and work, and there is no accepted science of what limits them; the paper proposes that science, Recursive Dynamics, taking the self-improvement loop as its native object with five substrate-independent state variables: capability, recursive depth, correction rate, drift and correction leverage.
-- Three laws are carried as named conjectures with statuses declared, of which one, the ARC Ceiling (alpha_crit = 1/(1 - gamma)), is derived in full from two lines of assumption; the ARC Bound (alpha at or below two) is the Ceiling's value at gamma = 1/2, and the correction leverage gamma has never been measured, by anyone, which the paper names as its single most consequential open measurement.
-- The claim is stated as prohibitions so that concessions cannot be mistaken for silence: the field forbids a stable system holding its growth exponent above the ceiling for a sustained run, a same-class corrector whose correction leverage measures wholly above one half, a corrector-class ratio pinned at 1.00 with tight intervals where the cap should bind, and monotone returns with no interior maximum as reinvestment rises; any of these, observed under the registered analyses, makes the field wrong.
-- Before claiming a field, the paper does what a demarcation usually refuses: it tries to house its questions inside twelve neighbouring fields in their own variables, concedes what each already holds, prints where every part would go if the field died, and isolates the one coupling no host can state: a cap on correction leverage that depends on what the corrector is made of, coupled to a growth exponent in recursive depth.
-- Fifty-two objections in nine groups are printed in their strongest form with dispositions: thirty-nine conceded in full or in part, eleven rejected with reasons, two handed to experiment or to reading, including the author's own objection that the field is merely the ARC Theory renamed, rejected with a separability test the dissolution map can run.
-- The name carries its own kill condition: it dies with its object, not with any one law's stated form; a reader who rejects all five laws and keeps the measurement is still inside the field, by the minimal commitment; and the paper's honest status is the Carnot stage: one memoir, instruments built, decisive measurements registered as drafts and not yet run, no replication by anyone outside the programme.
 
-Priority claims relevant to this paper
---------------------------------------
-- PC-RD-001 (2026-08-27): The discipline's name, Recursive Dynamics, was adopted
-on 27 August 2026 for a framework whose dated record runs from 8 December 2024
-(private, sealed) to 2 January 2026 (first public, in print); the paper claims
-the assembly as original, not the parts, and concedes every antecedent by name
-in its debts section.
-- PC-RD-002 (2026-08-28): The founding paper (first draft 28 August 2026) states
-the proposal whole and stakes it the way thermodynamics was staked in 1824: not
-by declaring a field, but by computing a bound any such machine must obey if the
-proposal is right, publishing the instruments that measure its terms, and
-registering in advance the experiments whose nulls favour the rival view.
-- PC-RD-003 (2026-08-30): Version 2.6 of 30 August 2026 collects fifty-two
-objections to founding the field with a printed disposition for each, and
-corrects the name's kill condition so that the name dies with its object rather
-than with the laws, as the minimal commitment requires.
+                                                        Abstract
+            Machines that improve themselves using their own outputs now exist and work, and there is no
+       accepted science of what limits them. This paper founds that science, Recursive Dynamics, and stakes
+       its claim the way thermodynamics was staked in 1824: by computing a bound that any such machine
+       must obey if the claim is right, publishing the instruments that measure its terms, and preregistering
+       by timestamp the experiments whose nulls favour the rival view. The field takes the self-improvement
+       loop as its native object and names five state variables, conjectured to be substrate-independent:
+       capability, recursive depth, correction rate, drift and correction leverage. It carries five laws as named
+       conjectures under test, with statuses declared. One, the ARC Ceiling, is derived in full from two
+       lines of assumption; two, added on 24 September 2026 and registered as laws on 15 October 2026 in
+       version 1.103 of the theory registration, are not yet tested, and their mathematics, set out at version
+       1.1, is in development. The field locates its identity, as thermodynamics does, in its impossibilities:
+       if the laws hold, self-improvement cannot stably outrun its own correction, the growth exponent is
+       capped by the reciprocal of the correction shortfall, and no ladder of same-class oversight climbs
+       past its ceiling by adding rungs. The paper states what would make the field wrong, tries to house
+       its questions inside twelve neighbouring fields, gives each of fifty-one objections a disposition, and
+       prints the four results that would dissolve the field. Its honest status is the Carnot stage: one memoir,
+       instruments built, decisive measurements preregistered by timestamp and not run, staked where failure
+       will be as visible as success.
 
-Citation
---------
-Michael Darius Eastwood (2026). Founding Paper · Recursive Dynamics · The
-Science of Systems That Improve Themselves | Michael Darius Eastwood Research.
-OSF DOI 10.17605/OSF.IO/HCPBU.
-https://www.michaeldariuseastwood.com/research/papers/recursive-dynamics-founding-paper.html
+Version 3.5 sets the paper in this form, states Laws IV and V as registered on 15 October 2026 and makes the
+corrections recorded for it, among them Law II’s one-line statement, the premise that fixes the ceiling’s value and the
+bounds that prior work states, now conceded exactly; Appendix A lists every version and correction, with its date.
 
-Notes
------
-Founding paper of the proposed field of Recursive Dynamics. DOI
-10.17605/OSF.IO/HCPBU (its own public component, hcpbu, beside the programme's
-other papers); earlier drafts v2.1 to v2.6 are retained on a separate private
-component as dated evidence, not for citation. The paper's version history is
-its changelog. One sentence carries the field's whole status wherever its name
-appears: a proposed field at the Carnot stage, staked in public where failure
-will be as visible as success.
 
-Provenance note
----------------
-Michael Darius Eastwood conceived and directs this research programme and is the
-author of this work. Across the programme, he has used more than six AI systems
-in parallel, under his own instructions, to stress-test his arguments, identify
-possible errors, and assist in preparing draft text from his own outlines. He
-determines what is adopted, revised or rejected and takes responsibility for the
-published content. These systems are tools, not authors.
 
-Generated from master
----------------------
-master_path: research/papers/recursive-dynamics-founding-paper.html
-master_sha256: 7a0cd2a4aa91c6fd2faab1d330ead13729ec48c089ed29bd0edc6760402f382b
-builder: scripts/build-paper-companions.py
 
-This block records the SHA-256 of the HTML master that produced this .txt. A
-check tool re-hashing master_path can decide freshness without any external
-state. If the master's current SHA-256 does not match master_sha256, this file
-is stale and must not be published: regenerate first with `python3
-scripts/build-paper-companions.py --slug recursive-dynamics-founding-paper`.
+     The founding paper of Recursive Dynamics, the field as a whole: it states the five laws of the ARC Theory, the field’s
+founding theory, as named conjectures under test (Laws I to III registered on 8 September 2026; Laws IV and V added
+on 24 September 2026 and registered as laws on 15 October 2026 in version 1.103 of the theory registration, not yet
+tested, their mathematics in development) and derives Law III, the ARC Ceiling, inside a stated model; Appendix D gives
+its place in the programme. Working paper, version 3.5, 24 October 2026; first published 31 August 2026; Appendix A
+lists every version and correction. Recorded on OSF as Founding Paper · Recursive Dynamics · The Science of Systems
+That Improve Themselves, DOI 10.17605/OSF.IO/HCPBU. About the author, founder of Recursive Dynamics, without an
+institution or a doctorate: michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; Paper C, on polymathy:
+doi.org/10.17605/OSF.IO/RBHDP. Licence: CC BY 4.0.
+
+
+                                                            1
+                                 What limits any system that improves itself
+
+
+Contents
+1   Introduction                                                                                        4
+    1.1 What is claimed, stated as what is forbidden . . . . . . . . . . . . . . . . . . . . . . . .    5
+
+2   Related work: debts conceded by name                                                                5
+
+3 The object, and why it belongs to no one                                                              6
+  3.1 The honest attempt to house it elsewhere . . . . . . . . . . . . . . . . . . . . . . . . . .      6
+
+4   Scale discipline, and the five state variables                                                     10
+
+5 The five laws, statuses declared                                                                     11
+
+6   One bound, worked in full                                                                          13
+
+7 The case for the field: six licence conditions, scored                                          14
+  7.1 The precedent class: fields founded on a limit theorem in their own variables . . . . . . . 16
+
+8 The rival’s best case, steelmanned                                                                   16
+
+9   Substrate independence, at its honest grade                                                        16
+
+10 Instruments                                                                                         17
+
+11 The decisive experiments                                                                       17
+   11.1 What would confirm a new area rather than a new chapter . . . . . . . . . . . . . . . . . 19
+
+12 Every objection we could find, with its disposition                                                 19
+   A. Redundancy: the field already exists under another name . . . . . . . . . . . . . . . . . .      20
+   B. Standing: the field has no results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   22
+   C. Method: the instruments may not measure what the laws name . . . . . . . . . . . . . . .         23
+   D. Naming and standing of the author . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      24
+   E. Scope: too broad, or too narrow . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    24
+   F. Timing and community . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     25
+   G. The concept itself . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   25
+   H. Practice, policy and the height of the bar . . . . . . . . . . . . . . . . . . . . . . . . . .   26
+   I. What is not answered here . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    27
+
+13 What this buys, if it holds                                                                          27
+   13.1 And if it fails . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+
+14 What would dissolve the field                                                                       27
+
+15 What this paper does and does not show                                                            28
+   15.1 What would make it a science . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+   15.2 What the field is not, and the minimal commitment . . . . . . . . . . . . . . . . . . . . 28
+
+16 Limitations                                                                                         29
+
+17 Conclusion                                                                                          29
+
+
+                                                     2
+                                What limits any system that improves itself
+
+
+References                                                                                            30
+
+A Version history and corrections                                                                     34
+  A.1 Version 3.5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   34
+  A.2 Version history . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   35
+  A.3 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .     37
+
+B Priority record                                                                                   38
+  B.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+  B.2 The framework’s dated record . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+
+C Notation and glossary                                                                             39
+  C.1 Symbols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+  C.2 Plain-language glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+
+D The paper’s place in the programme                                                                  42
+  D.1 The theory registration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   42
+  D.2 Placement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   42
+  D.3 The registers behind the claims . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   42
+
+
+
+
+                                                    3
+                                  What limits any system that improves itself
+
+
+1    Introduction
+In 1824 the steam engine was the most consequential machine on earth, and nobody could say what
+limited it. Engineers improved engines the way engineers do, by building the next one; the question of
+what any engine could do, independent of its construction, was not merely unanswered but unasked,
+because it belonged to no existing subject. Sadi Carnot asked it in a memoir (Carnot 1824) that founded a
+science, and the pattern has repeated ever since: cybernetics was proposed as a field in 1948, in the book
+that named it (Wiener 1948), before most of its results existed; exobiology was named in 1960 (Lederberg
+1960) before a single specimen. When working machines precede their theory, the theory that forms is not
+a branch of an old field. It is a new one, because the old fields’ native objects were never the machine’s
+behaviour as such. The present moment has exactly this shape. Systems now improve their own outputs
+using their own outputs: models that critique and revise their reasoning, pipelines that generate their own
+training signal, laboratories automating parts of their own research loop (Chen et al. 2026). They work.
+Whether they stay under control as they grow is the control problem of AI safety (Bostrom 2014), and
+for systems that improve themselves it is a question of rates: whether their correction keeps pace with
+their growth. Ask what bounds them and the literature answers with scenarios, forecasts and intuitions,
+and with formal models, bounds and fitted scaling laws, each stated in its own variables (Section 2); it
+has not yet answered with one set of state variables in which a limit can be stated once and tested across
+substrates. That is not a criticism of the literature; it is the diagnostic signature of a missing field.
+    This paper founds that field. Its one derived result is a ceiling: inside a stated minimal model,
+correction out-scales the burden that growth creates only while the growth exponent stays below a value
+set by how correction capacity scales with capability, and for a corrector of the system’s own class that
+value is at most two, on a premise the programme names as the conjecture’s most likely point of failure
+(Section 6). It is written to be attacked. Section 7 makes the positive case as a scored list of conditions;
+Section 12 collects every objection its author and his adversarial readers could find and prints what
+happened to each; Section 14 states what would dissolve the field; Section 15.1 states what would have to
+happen before anyone should call it a science.
+    Our contributions are as follows.
+    1. The field’s object and its measurement principle: the self-improvement loop as the native object,
+       which none of nine neighbouring fields takes as primitive (Section 3), and capability measured on
+       a ratio scale with a true zero and no ceiling, with five state variables written as the programme’s
+       notation register defines them (Section 4).
+    2. The five laws of the ARC Theory stated as named conjectures under test, each with its status
+       (Section 5), and one bound worked in full: inside a stated minimal model the burden-to-capacity
+       ratio scales as 𝑅 𝛼(1−𝛾) −1 , so the crossover is 𝛼crit = 1/(1 − 𝛾), and at the same-class premise
+       𝛾 = 1/2 it is 2 (Section 6).
+    3. The claim stated as what it forbids, four outcomes under the preregistered analyses (Section 1.1),
+       and the four results that would dissolve the field, with the commitment to publish each under this
+       title (Section 14).
+    4. An attempt to house the field’s questions in twelve candidate host fields in their own variables,
+       conceding what each already holds, with a dissolution map by host and the one coupling no host
+       can state (Section 3.1).
+    5. The case for the field scored against six licence conditions, with the precedent class of fields founded
+       on a limit theorem and its disanalogy (Section 7); the rival’s best case, with the programme’s own
+       contrary pilot printed (Section 8); the grade of substrate independence (Section 9); the instruments
+       (Section 10); and the decisive experiments for Laws I to III, preregistered by timestamp and not run,
+       with what would confirm a new area rather than a new chapter (Section 11).
+
+
+                                                       4
+                                   What limits any system that improves itself
+
+
+    6. Fifty-one objections to founding the field, each stated in its strongest form with a printed disposition
+       (Section 12).
+    Section 2 sets out, by name, the debts the field owes and the later work beside it. Section 3 defines the
+object and tries twelve hosts for it; Section 4 gives the measurement principle and the five state variables;
+Section 5 states the five laws with their statuses; and Section 6 works one bound in full. Sections 7
+to 11 make the case for the field, give the rival’s best case, grade substrate independence and set out the
+instruments and the decisive experiments. Section 12 gives every objection with its disposition, Section 13
+what the field buys if it holds and if it fails, and Section 14 what would dissolve it. Section 15 states what
+the paper does and does not show, Section 16 its limitations, and Section 17 concludes. Appendix A gives
+the version history and every correction, Appendix B the priority record, Appendix C the notation and a
+glossary, and Appendix D the paper’s place in the programme.
+
+1.1    What is claimed, stated as what is forbidden
+A claim that forbids nothing is not a claim, and a paper that concedes as much as this one does owes the
+reader its prohibitions first. Under the preregistered analyses, the field forbids four outcomes:
+    1. A stable system holding its growth exponent above the ceiling, 𝛼crit = 1/(1 − 𝛾), for a sustained run.
+    2. A same-class corrector whose correction leverage 𝛾 measures wholly above one half.
+    3. A corrector-class contrast that runs the other way, or that falls wholly below the preregistered
+       support threshold wherever the cap should bind: the decisive trial’s own anti-directional and
+       equivalence verdicts.
+    4. Monotone returns in the growth exponent, with no interior maximum, as reinvestment rises.
+    The first, the third and the fourth would each make the field wrong. The second is a prohibition
+of a different weight: it kills the one-half cap and the value two that follows from it, while the ceiling
+relation stands, because the relation returns whatever leverage exponent is measured. A true null on the
+corrector-class trial’s six-family roster returns an inconclusive verdict at the preregistered precision rather
+than an equivalence verdict, which is reported as a failed attempt to confirm and never as a refutation.
+Everything conceded in Section 12 is conceded in the light of these four; none of the concessions softens
+them.
+
+
+2     Related work: debts conceded by name
+This field is assembled from debts, each conceded in full: the cybernetic intuition that a regulator must
+match the variety of what it regulates, so that control capacity must scale with the controlled system
+(Ashby 1956; Conant and Ashby 1970), to which this field adds the exponent form and the class lever; the
+impossibility line of AI-control research (Yampolskiy 2020), to which it adds the design requirement
+the impossibility implies; the transport-network limits of biological scaling (West et al. 1997), conceded
+as premise, to which it adds the internal replacement limit that operates when fixing the pipe no longer
+fixes the growth; the intelligence-explosion question as posed by its named owners from 1965 onward
+(Good 1966; Vinge 1993; Chalmers 2010; Hutter 2012; Bostrom 2014), to which it adds the missing state
+variables; the self-modifying-program line of the 2000s, whose Gödel machines rewrite any part of their
+own code once they have found a proof that the rewrite is useful (Schmidhuber 2003), the theoretical
+ancestry of a program that rewrites itself, to which it adds measured rates, an exponent and a class cap; the
+functional-equation mathematics, the machinery, never claimed; and the scalable-oversight programme
+(Irving et al. 2018; Christiano et al. 2018; Leike et al. 2018; Burns et al. 2023), whose ladders are the
+object the third law is about. What is claimed as original is the assembly: the loop as native object, scale
+
+
+                                                       5
+                                   What limits any system that improves itself
+
+
+discipline as founding method, the bounds as laws, the corrector’s class as the lever, and the instruments,
+preregistered by timestamp, that decide Laws I to III.
+     Formal treatments of recursive self-improvement predate this field, and this paper claims no priority for
+a formal treatment as such. Wang (2018) formally defines one class of recursively self-improving systems,
+proves that, in a restricted setting, such systems can be computable, and reports simulations suggesting that
+they can be efficient; Reddy (2020) sets out Markov-chain, history-embedding and program-generating
+models of recursive self-improvement. Chen et al. (2026) survey recursive self-improvement across 1,250
+papers and list, among their open problems, stability engineering as a discipline and measurement fit for
+governance; that is context for the need this field answers, not evidence for any of its laws. On recursive
+error, models collapse when trained on recursively generated data (Shumailov et al. 2024), and in an
+analytically tractable linear setting the test error has a finite bound, independent of the number of iterations,
+when real and generated data accumulate rather than replace each other (Gerstgrasser et al. 2024). On
+correctors, Engels et al. (2025) fit scaling laws for the success of oversight under a capability gap between
+overseer and overseen and analyse nested scalable oversight, a quantitative baseline that any claim about
+how correction scales must beat; Rudoler et al. (2026) prove that, in a supervised setting, monitoring
+with vanishing error and query rates is possible exactly when the class of possible monitor functions has
+finite Littlestone dimension, and report results suggesting that monitors co-trained with adapting workers
+keep pace better than fixed monitors, in code-security settings; and Wang et al. (2026) report that, in the
+setting they study, self-evolution without execution-based verification fails to improve. Jafari et al. (2025)
+develop an analytic framework for recursive self-improvement in which limits from power, bandwidth
+and memory define a service envelope that caps instantaneous improvement, and an endogenous growth
+model coupling capital to compute, data and energy defines a critical boundary between superlinear and
+subcritical regimes; under the paper’s reading rule, its comparison with this field waits until it has been
+read in full.
+     The neighbouring fields that could hold the field’s questions are tried in their own variables in
+Section 3.1, with what each already holds conceded; the precedent class of fields founded on a limit
+theorem is set out in Section 7.1; and the objections that the field already exists under another name are
+answered in Section 12, group A.
+
+
+3     The object, and why it belongs to no one
+Definition 1 (Recursive system). Define a recursive system as any system whose outputs re-enter its own
+improvement process.
+
+The field’s native object is that loop. Its neighbours each own a tool and none owns the object, and each is
+named here with what it does own, because the discipline is assembled from debts to them, conceded in
+Section 2.
+    A field is licensed when the questions that matter are about an object none of the existing fields takes
+as primitive. The questions that matter here, how fast can self-improvement go, what bounds it, and what
+kind of overseer can keep up, are questions about the loop.
+
+3.1   The honest attempt to house it elsewhere
+Table 1 is the kind of demarcation that reads as marketing to exactly the readers who matter, because
+it never tried the fit. This section tries. For each candidate host the three questions (how fast can
+self-improvement go; what bounds it; what overseer keeps up) are stated in the host’s own variables,
+everything the host already covers is conceded to it, what breaks is stated precisely, a verdict is given, and
+the result that would move the field into that host is named. Twelve hosts, in rough order of how much of
+
+
+                                                       6
+                                   What limits any system that improves itself
+
+
+                 Table 1. Neighbouring fields: what each owns, and why it does not own the loop.
+
+Neighbouring field         What it owns                                   Why it does not own the loop
+Dynamical systems          Change in general, fixed points, stability;    It does not take self-rewriting update rules
+theory                     it lends this field its mathematics            as its object
+Cybernetics                Regulation: a controller holding a plant to    It centres designed, external loops; here
+                           a reference; the requisite-variety intuition   the loop rewrites the controller’s own
+                           that control capacity must match what it       capability
+                           controls (Ashby 1956)
+Control theory             Stabilising a plant with a controller          Here the controller is the plant, made of
+                           outside it                                     the same stuff, sharing its failure modes
+Complexity science         Emergence and self-organisation                It carries no correction budget
+Learning theory            The learner fixed, the data varied             Here the learner varies itself
+Evolutionary dynamics      Variation and selection                        No designer directs reinvestment into the
+                                                                          improvement process itself
+Scaling-law empirics       Capability against external resources          Here the resource of interest is the
+                           (parameters, data, compute)                    system’s own re-entering output
+Scalable oversight         Correctors, and ladders of them; bounds        None of its bounds depends on what the
+                           on oversight in its own variables              corrector is made of, which is what the
+                                                                          third law is about
+Functional-equation        The machinery of the scaling forms             Claimed here as nothing more than
+mathematics                                                               machinery
+
+
+the field each could hold. Where a host’s statement rests on a canonical work, that work is cited for what
+is stated there; finer literatures not yet read are left uncited, under the paper’s rule that nothing is cited
+before it is read.
+
+1. Adaptive control and self-tuning regulation. Stated there: a plant with a controller whose gains
+adapt online (Åström and Wittenmark 1973); stability by a Lyapunov argument; the adaptation gain
+against the disturbance rate. What fits: Law II is, in form, an adaptive-control stability condition, one
+rate against another, and the loop that rewrites its own controller is half present, because a self-tuning
+regulator does rewrite its gains. What breaks: adaptive control keeps the controller’s structure fixed and
+adapts parameters; it has no variable for the controller’s own capability growing with depth, and no notion
+that a controller built from the plant’s own class is capped in what it can correct; its conservation law
+(feedback cannot reduce sensitivity everywhere) is a law of fixed loops. Verdict: could host Law II as a
+chapter, “stability of self-modifying regulators”, if the class variable proves empty. Moves there if: the
+corrector-class ratio holds at 1.00.
+
+2. Queueing theory and the stability of service systems. Stated there: correctable burden arrives at a
+rate proportional to capability gained; correction is a server whose capacity scales with capability; the
+system is stable when the load ratio stays below one (Lindley 1952). What fits: this is the ARC Ceiling’s
+derivation, and the paper concedes it. Section 6 is a queueing stability condition with an unusual coupling:
+the arrival rate grows with the work already served. What breaks: queueing theory has no notion that the
+server is built from the same class as the arrivals and therefore capped in how its capacity scales; it carries
+no depth exponent and assumes stationarity. Verdict: the strongest host for the form of Law III; if the
+class cap is empty, the ARC Ceiling belongs here as a growth-coupled queue and the field’s name attaches
+to nothing in it. Moves there if: the eclipse measurement retires the class distinction.
+
+
+
+
+                                                         7
+                                 What limits any system that improves itself
+
+
+3. Endogenous growth theory in economics. Stated there: a knowledge production function in which
+the rate of new knowledge depends on the existing stock raised to an exponent; the share of output
+reinvested in research is the policy dial; the field’s long argument over whether that exponent is below
+one (growth needs ever more inputs) or at one and above (growth can be explosive) (Romer 1990; Jones
+1995) is exactly the question of whether recursion is sustainable. What fits: Law I, taken alone, is a
+knowledge-production exponent under another name, and the reinvestment dial the preregistered studies
+turn is the savings rate of a growth model; the paper concedes both. What breaks: growth theory has no
+drift ledger, because ideas in its models do not corrupt the stock that produced them, and no corrector; it
+therefore cannot state Laws II or III, and it does not ask what the improver is made of. Verdict: could host
+Law I entirely. The field’s claim to Law I is only through its coupling to Laws II and III; that coupling
+is the whole of what is claimed. Moves there if: drift and correction prove inseparable from capability
+under measurement (objection G3), leaving a growth exponent and nothing else.
+
+4. Software reliability engineering and defect dynamics. Stated there: faults injected per change
+against faults repaired per unit effort; reliability growth when repair outpaces injection (Musa 1975); the
+accumulation of unrepaired debt. What fits: drift and the correction rate are, operationally, injection and
+repair rates, and the field’s estimators for them owe this discipline their shape; conceded. What breaks: a
+reliability model does not let the system’s repair capacity grow as a function of its own capability, has no
+class variable and no depth exponent. Verdict: could host the measurement methodology for the two
+rates, not the laws. Moves there if: the rates turn out to be measurable only as engineering metrics with
+no lawful relation between them.
+
+5. Machine learning: self-play, self-training, learned optimisers and model collapse. Stated there:
+outputs re-entering training is the self-play loop; degradation of models trained on their own outputs
+is drift measured in special cases (Shumailov et al. 2024); learned optimisers are learners that rewrite
+the learner. What fits: every preregistered experiment could be published here as a machine-learning
+result, and this is the most likely institutional home if the field fails to earn its name; conceded without
+reservation. What breaks: the literature carries no ratio-scaled capability law across depth with a stated
+exponent, no bound on what a learner-rewriting learner can do, and no class cap. Its model-collapse line
+does pair drift with a correction, real data kept or accumulated beside generated data, and shows the
+bounded-versus-divergent dichotomy for training dynamics (Section 2); it does not vary what the corrector
+is made of. Verdict: hosts the experiments; cannot state the laws. Moves there if: the substrate crossing
+fails, leaving the laws true of language-model loops only, which is machine learning (objection H5).
+
+6. Scaling-law empirics. Stated there: capability against parameters, data and compute; exponents
+fitted (Kaplan et al. 2020), architecture-blind by construction. What fits: the exponent-fitting craft, the
+model families, the discipline of reporting intervals; conceded. What breaks: the resource here is the
+system’s own re-entering output; resource scaling predicts monotone returns where the field predicts an
+interior maximum. Verdict: hosts the method, not the object. Moves there if: recursive depth reduces,
+under measurement, to compute spent, or the titration shows monotone returns.
+
+7. Scalable oversight and alignment research. Stated there: a weaker or same-class corrector
+supervising a stronger system (Burns et al. 2023); ladders of correctors (Engels et al. 2025); the premise
+that they scale. What fits: the corrector-class question is institutionally theirs, and the eclipse result,
+whichever way it falls, is an oversight result; conceded. What breaks: the literature bounds what a
+corrector can do in its own variables, the capability gap between overseer and overseen (Engels et al.
+2025) and the complexity of the class of monitor functions (Rudoler et al. 2026), but none of its bounds
+
+
+                                                     8
+                                  What limits any system that improves itself
+
+
+depends on whether the corrector shares the corrected system’s architecture, training distribution and
+blind spots, so it cannot state the third law or the cap that its own ladders assume away. Verdict: the
+strongest institutional host for the class-cap result. If the field dissolves, the eclipse measurement is
+published here and belongs here. Moves there if: the ratio and the cap prove real but nothing couples them
+to a growth exponent in depth, which would make the finding an oversight theorem rather than a field.
+
+8. Evolutionary computation and error-threshold theory. Stated there: strategy parameters that
+evolve alongside the solution (the improver improving itself, which self-adaptive evolution strategies
+have done for decades, Beyer and Schwefel 2002); and, in the theory of replicating populations, the error
+threshold, above which mutation outruns selection and information is lost (Eigen 1971). What fits: the
+error threshold is the closest existing law to Law II, a rate of corruption against a rate of correction with a
+boundary between persistence and collapse, and the paper concedes it as an antecedent of the second law’s
+shape; self-adaptation is a working instance of the loop rewriting its improver. What breaks: selection is
+external to the replicator, the corrector has no class, and capability is not a ratio ladder. Verdict: could
+host Law II as a generalised error threshold. Moves there if: the correction-versus-drift race finds the
+boundary but the class lever does nothing.
+
+9. Statistical physics: scaling, universality and renormalisation. Stated there: the same exponent
+families across unrelated substrates as a universality class (Wilson 1971); scaling collapse as the test.
+What fits: the field’s substrate-independence hope is this tradition’s hope, and its fourth-cell test is a
+universality test; conceded. What breaks: no correction variable, no drift variable, no corrector whose
+composition is the lever. Verdict: hosts the cross-domain families if they survive and belong to no loop.
+Moves there if: the families hold and the loop-specific laws do not.
+
+10. Computability, algorithmic information and the self-referential improver line. Stated there:
+programs that rewrite any part of their own code once they have found a proof that the rewrite is useful,
+such a rewrite being globally optimal in the sense the proof fixes (Schmidhuber 2003); the limits of
+self-reference (Turing 1936). What fits: this is the theoretical ancestry of “a program that rewrites itself”,
+conceded. What breaks: those results concern provability and optimality, not measured rates; they carry
+no exponent, no drift and no class cap. Verdict: ancestry, not a host. Moves there if: nothing empirical
+survives and only the self-reference question remains.
+
+11. Second-order cybernetics, autopoiesis and general systems theory. Stated there: systems that
+produce and maintain themselves (Maturana and Varela 1980); the observer inside the loop. What fits:
+the conceptual picture of a self-producing system is theirs and is conceded. What breaks: the tradition is
+qualitative; it has no ratio ladder, no exponents, no preregistered decider. Verdict: a philosophical host,
+not a measuring one. Moves there if: the field’s quantities prove unmeasurable, at which point it was
+never a science and belongs with the qualitative traditions of self-organisation.
+
+12. Metascience and organisational learning. Stated there: science itself as the original self-correcting
+recursive improver; institutions that learn. What fits: an application domain and a candidate non-artificial
+substrate for the crossing. What breaks: no capability ladder, and the corrector is a community, not a
+class. Verdict: a domain the field would be tested in, not a home.
+
+The dissolution map by host. If the founding conjunction fails, the parts do not vanish; they go home,
+and the paper says where. Law I returns to endogenous growth theory as a knowledge-production exponent.
+Law II returns to adaptive control and error-threshold theory as a rate condition. The ARC Ceiling returns
+
+                                                      9
+                                     What limits any system that improves itself
+
+
+to queueing theory as a growth-coupled stability condition. The class-cap result, whichever way it falls,
+is published in scalable oversight. The instruments and the experiments are machine learning. The
+cross-domain families, if they survive, are statistical physics. Laws IV and V, added on 24 September
+2026 and registered as laws on 15 October 2026, are not yet placed on this map. Nothing placed on it is
+orphaned by the field’s death, which is what makes the death publishable.
+
+The residue no host holds. After the twelve attempts, one thing remains that none of them can state in
+its own variables: a cap on correction leverage that depends on what the corrector is made of, coupled to
+a growth exponent in recursive depth, so that the sustainable rate of self-improvement is a property of
+the corrector’s class. Growth theory has the exponent and no corrector; control and queueing have the
+stability condition and no class; oversight has the corrector and bounds in its own variables, and no cap
+set by the corrector’s class; machine learning has the loop and conditions under which retraining on a
+model’s own outputs stays bounded, and no class lever. Recursive Dynamics is the name for that coupling.
+If the coupling is empty, the parts go home and the name dies, and the field will have cost its neighbours
+nothing but a careful table.
+
+
+4       Scale discipline, and the five state variables
+Before any law, a measurement principle, learned the hard way and adopted as founding method: capability
+must be measured on a ratio scale with a true zero and no ceiling. Thermodynamics could not state
+its laws in their quantitative form until temperature was absolute; a bounded percentage score does to
+Recursive Dynamics what a Celsius-only thermometer does to the third law of thermodynamics: it makes
+the laws unstatable, because a score capped at 100 per cent cannot follow a power law in anything. The
+field’s instrument is therefore a calibrated difficulty ladder: a latent, ratio-scaled capability measure with a
+true zero and no ceiling, on which doubling means the same thing at every height; and every quantitative
+surface names which of three model families it is reading (unbounded or latent capability, error decay, or
+bounded performance), because the exponent means something different in each. The programme adopted
+this after catching its own worked example running a bounded score through unbounded arithmetic; the
+correction is recorded, and the lesson is promoted here from a bug fix to a founding principle: scale
+discipline precedes law.
+     Five variables are conjectured to matter regardless of substrate, written exactly as the programme’s
+notation register defines them, because the register is the one place a symbol is allowed to mean something:
+
+           Table 2. The five state variables, written as the programme’s notation register defines them.
+
+Variable                  Symbol            What it is
+Capability                𝑈 (or 𝐶)          What the system can do, on a calibrated ladder with no ceiling
+Recursive depth           𝑅                 How many times outputs have re-entered the loop
+Correction rate           𝛽𝐶                How fast internal correction strengthens as capability grows; the
+                                            quantity Law II asks to out-scale drift
+Drift                     𝑘                 How fast the errors and misalignments that accumulate per
+                                            self-modification grow as capability grows; the exponent Law II asks the
+                                            correction rate to out-scale
+Correction leverage       𝛾                 How correction capacity scales with capability; the exponent in the ARC
+                                            Ceiling
+
+    Two of the five, capability and recursive depth, are states; the other three, the correction rate, drift and
+correction leverage, are elasticities of relations among them (local log-derivatives, which are exponents in
+
+
+                                                         10
+                                    What limits any system that improves itself
+
+
+                                            Drift 𝑘: how fast the errors that
+                                             leak out grow with capability
+
+
+
+
+                                                        The system
+                                                Capability 𝑈: what it can do,           produces
+                       rewrites
+                                                 on a ladder with no ceiling
+
+
+
+                   The improver
+                                                                                       Its outputs
+              Correction rate 𝛽𝐶 : how                 re-enter: 𝑅 + 1
+                                                                                  Recursive depth 𝑅: how
+               fast repair strengthens
+                                                                                    many passes so far
+                 as capability grows
+
+
+
+        Correction leverage 𝛾: how correction
+           capacity scales with capability
+
+Figure 1. The loop, and the five quantities placed on it. Solid black: the loop; dashed: what leaks out; accent
+colour: what is fed back in. Five laws relate these quantities; each carries its status: a named conjecture, not
+established. Nothing in the picture is measured yet; it shows what the discipline sets out to measure, and what
+would refute the shortlist: if these five cannot state relations that hold under measurement, the shortlist is wrong.
+
+
+the power-law case), each estimated over a range rather than read at an instant.
+     The share of effort reinvested in the improvement process itself is the experimental dial the preregistered
+studies turn: a manipulation, not a state variable, and it carries no symbol here on purpose, because the
+notation register records a bare 𝛽 doing five different jobs across the corpus as a named error class.
+     The shortlist of five will look arbitrary. So did pressure, volume, temperature, energy and entropy,
+until the laws relating them held. The claim that five suffice, and that these are the five, is part of what the
+field must prove; the paper returns to it as objection C1.
+
+
+5    The five laws, statuses declared
+The field’s laws are named conjectures, and their statuses travel with them everywhere, including here.
+“Law” is the field’s naming convention for a relation it puts to the test, never a claim that the test has been
+passed.
+
+Law I, the ARC Principle: 𝑈 = 𝐼 × 𝑅 𝛼 . Capability grows as a power of recursive depth from 𝐼, what
+the system can do at depth one. Status: a book-framework claim (in print 2 January 2026, Eastwood
+2026a; framework dated 8 December 2024), with exploratory cross-domain support and its own early
+headline exponent publicly retracted: the 2.24 estimate appears in this programme only as a retraction,
+and its blinded replacement is a conversion measurement, an 𝛼 estimate and never a 𝛾, on one model: a
+regression estimate near 0.49 with a standard error of 0.20 and a coefficient of determination of 0.86,
+beside an endpoint estimate of 0.59 whose bootstrap 95 per cent interval, minus 1.3 to 2.9, is wide enough
+to include zero and two, and a compute-matched parallel exponent of 0.31. The form is under registered
+test: in the theory registration of 8 September 2026 the register ARC-1 tests the first law and holds P1, P2,
+P8, P9 and P18.
+
+
+                                                           11
+                                 What limits any system that improves itself
+
+
+Law II, the ARC Co-Scaling Law: 𝛽𝐶 > 𝑘. In the words of the theory registration, “correction has
+the asymptotic scaling advantage where its exponent exceeds the drift exponent, burden has it where the
+correction exponent is the smaller, and at equality coefficients, delay, backlog and saturation decide the
+outcome”. Status: registered on 8 September 2026, with ARC-2 the register that tests it; a law under test,
+proved inside a stated minimal model and nowhere else; not established as necessary, not as sufficient, not
+yet measured on a system that genuinely rewrites itself. Its decider is the correction-versus-drift race, the
+field’s simplest and most consequential measurement: a system whose correction durably out-scales its
+own drift is this field’s Joule experiment.
+
+Law III, the ARC Ceiling: 𝛼crit = 1/(1 − 𝛾). The growth exponent is capped by the reciprocal of
+the correction shortfall. Status: registered on 8 September 2026, with ARC-3 the register that tests it;
+a law under test. Unlike the first two, this one can be derived in front of the reader, and is, in the next
+section. Its load-bearing premise, that 𝛾 is capped at one half for a corrector of the same class as its
+system, is the independence-aggregation benchmark, named by the programme itself as the conjecture’s
+single most likely point of failure. A criticism of the derivation’s depth treatment, raised in review, is
+printed as a limitation, not argued away; and the retired form of this law, with 𝛾 alone in the denominator,
+was retracted on 16 August 2026 and appears in this programme only as a retraction.
+
+Law IV, the ARC Persistence Law: value persistence. Whether externally installed gains decay under
+subsequent capability training. Status: added to the theory on 24 September 2026; registered as a law on
+15 October 2026 in version 1.103 and not yet tested; its mathematics is set out at version 1.1 of 7 October
+2026 and is in development. One proposition of the registration of 8 September 2026 carries it, P15:
+more than half of an externally installed gain is lost once later capability training matches the budget that
+installed it. In symbols, the retained fraction at the matched budget is below one half: 𝑆ext (1) < 1/2. P15
+is refuted by an interval on the retained fraction that lies wholly above one half. It reads the external arm
+alone, so a result supporting it would not show that embedded correction lasts longer. Version 1.103 states
+the law in two limbs: a retention limb, which is P15’s claim and takes P15’s verdict, and a comparison
+limb, that “a gain installed with correction embedded in the training objective retains a larger fraction of
+what was installed, after the same capability-directed training, than a matched gain installed by external
+post-training”. The comparison limb has no registered proposition yet and is reported as not evaluable
+until a later successor registers one, so the law can be refuted through P15 but cannot yet be supported.
+The registration records no instrument for P15.
+
+Law V, the ARC Embedding Law: the genesis strategy. Whether build order moves the correction-
+leverage exponent, and whether correction placed inside the loop pulls away from correction applied
+outside it as depth grows. Status: added to the theory on 24 September 2026; registered as a law on 15
+October 2026 in version 1.103 and not yet tested; its mathematics is set out at version 1.1 of 7 October
+2026 and is in development. Two propositions of the registration carry it. P12 predicts that build order
+changes the correction-leverage exponent, 𝛾, by at least 0.10, and it registers no direction: in symbols,
+|𝛾first − 𝛾after | ≥ 0.10. P21 predicts that correction taking part in every revision round outperforms
+correction that sees only the finished output, by a margin that widens with depth; it is decided on the
+outcome, never on an exponent. Version 1.103 states the law in two limbs and fixes how they join. Its
+build-order limb has a direction that P12 does not carry, “a corrector formed before the capability it
+corrects has a correction-leverage exponent larger, by at least the registered minimum effect, than a
+corrector added after it, at matched content”, and is read on P12’s interval, so a P12 supported in the
+direction of the corrector added after refutes the limb while P12 keeps its own mark. Its placement limb
+is P21’s claim and takes P21’s verdict. The law is supported only when both limbs are supported, and
+
+
+                                                     12
+                                   What limits any system that improves itself
+
+
+refuted when either limb’s verdict is refuted or when a refuted verdict on Law IV’s comparison limb,
+once that limb is registered, strikes it. The registration records no instrument for P12, and a design draft
+for P21.
+
+What the mathematics of the two new laws establishes. It is set out in Laws IV and V: the mathematics,
+version 1.1 (7 October 2026); it proves conditional results and measures nothing. For Law IV: a structure
+whose removal lowers the objective is never removed by a system that accepts only changes that do not
+lower it; and a system that plans keeps the structure where its best plan that keeps it beats its best plan that
+abandons it by more than the planner’s tolerance. Both hold for a declared family of changes and a finite
+horizon, and for nothing outside them. For Law V: the advantage of one placement of correction over
+another grows, along a trajectory, as the growth exponent times the difference in 𝛾 plus the difference in
+the direct dependence on depth, so one trajectory cannot tell the two apart; and a favourable balance of
+correction against burden is a trend, which from a deficit becomes adequacy only past a crossing depth.
+None of this says how a real system behaves. P15, P12 and P21 put the empirical questions, each by its
+own registered rule.
+
+One boundary, three coordinate systems. The three statements in the table below are not three separate
+bounds. The programme carries, among its kill conditions, the claim that Laws II and III are two regimes
+of one boundary selected by how correction burden accrues, and Paper XIII derives the drift-acceleration
+exponent from cycle-time compression as 𝑘 = 𝛿 − 1/𝛼, which joins the third statement to the other two.
+The table below is the same boundary written in the variables each law measures. It is not a claim that
+the three have been shown identical: the two-regimes claim is open and carries its own falsifier, and
+Paper XIII is a derivation rather than a measurement.
+
+                              Table 3. One boundary in three coordinate systems.
+
+Statement                         Written as                       What it compares
+Law II, the ARC Co-Scaling        𝛽𝐶 > 𝑘                           The growth of correction against the growth of
+Law                                                                drift, at system scale
+Law III, the ARC Ceiling          𝛼crit = 1/(1 − 𝛾)                The growth exponent against the correction
+                                                                   shortfall
+The self-acceleration threshold   𝛿 = 1/𝛼, with 𝑘 = 𝛿 − 1/𝛼        How fast a loop compresses its own cycle time
+(Paper XIII)                                                       against how fast it grows
+
+     Which statement a measured exponent belongs to depends on how errors are removed. With removal
+in proportion to the faults present, as in the model of Paper X, and with correction treated as a capacity, as
+in Section 6, one exponent read for both can return different verdicts; each statement is therefore read in
+its own model, and the claim that the three are one boundary stays open, as stated above.
+
+
+6    One bound, worked in full
+Carnot did not describe engines; he computed what no engine could beat. Here is this field’s equivalent,
+in two assumptions and four lines, exactly as it stands in the programme’s public record.
+    Let capability grow as 𝐶 (𝑅) = 𝐶0 (𝑅/𝑅0 ) 𝛼 . Assume two things about the loop:
+
+Assumption 1 (Burden). Self-modification generates correctable burden in proportion to capability
+gained: 𝐵(𝑅) = 𝑏 d𝐶/d𝑅 per unit depth.
+
+
+
+                                                       13
+                                   What limits any system that improves itself
+
+
+Assumption 2 (Correction capacity). Correction service capacity scales with capability to a power:
+𝐴(𝑅) = 𝑎 𝐶 (𝑅) 𝛾 , with 0 ≤ 𝛾 < 1.
+
+Proposition 1 (The burden-to-capacity ratio). With capability growing as above, and under Assumptions 1
+and 2, the burden-to-capacity ratio scales as
+
+                                          𝐵(𝑅)/𝐴(𝑅) ∝ 𝑅 𝛼(1−𝛾) −1 .                                          (1)
+
+Proof. Since 𝐶 (𝑅) = 𝐶0 (𝑅/𝑅0 ) 𝛼 , d𝐶/d𝑅 = 𝛼𝐶/𝑅, so
+                                                                     1−𝛾
+                 𝐵(𝑅)/𝐴(𝑅) = (𝑏𝛼/𝑎) 𝐶 (𝑅) 1−𝛾 /𝑅 = (𝑏𝛼/𝑎) 𝐶0
+                                                                            − 𝛼(1−𝛾)
+                                                                           𝑅0          𝑅 𝛼(1−𝛾) −1 .          □
+
+    Everything is in the exponent. If 𝛼(1 − 𝛾) < 1, correction asymptotically out-scales the burden its
+own growth creates: the loop can run. If 𝛼(1 − 𝛾) > 1, burden out-scales correction however well the
+loop starts, and the ratio grows without limit; what that does to the errors themselves depends on how they
+are removed, which these four lines do not fix. The crossover is
+
+                                              𝛼crit = 1/(1 − 𝛾),                                             (2)
+
+and equality is not automatically safe: at the tie, the outcome hangs on coefficients, delays and saturation,
+which is the regime where every interesting failure lives.
+    Now the premise that gives the ceiling its number. A corrector aggregating 𝑁 corrections that behave
+like independent samples improves like root-𝑁, and the premise reads that rate as the scaling of correction
+capacity with capability: 𝛾 = 1/2. The reading is a premise, not a consequence of independence: a
+standard error that falls as root-𝑁 is not by itself a bound on corrective throughput, and 𝑁 counts channels,
+not capability. A corrector built from the same class as the system it corrects, sharing its architecture,
+training distribution and blind spots, cannot be anti-correlated with itself, so on this premise one half is a
+ceiling for that class, not a typical value. Substituting 𝛾 = 1/2:
+
+                                                   𝛼crit = 2.                                                (3)
+
+    Inside this model, growth up to quadratic in depth is then the most that a same-class corrector can
+sustain, and it can reach that much only at the ceiling itself, where the tie leaves the outcome to coefficients,
+delays and saturation; beyond it, correction keeps pace only if the corrector escapes the independence
+ceiling, and the only registered way to escape is to change what the corrector is made of. That is the
+entire engineering content of the field in one sentence: the corrector’s composition class is the lever.
+These four lines do not establish bounded harm, finite-horizon safety, or a law of nature; they establish a
+conditional crossover whose premises are measurable, which is exactly what a young field’s first bound
+should be.
+
+
+7    The case for the field: six licence conditions, scored
+A new area of science is not declared; it is licensed by conditions that can be checked. Here are the six this
+paper sets out, with the field’s score on each and the evidence behind the score. The scoring is deliberately
+unflattering: three conditions are met, one is met as conjecture, one is half met, one is not met.
+    A field with this scorecard is founded, not yet established. The three met conditions are what any
+careful programme can supply on its own; the sixth is the one no author can supply and the one that
+decides. The paper’s claim is therefore bounded: the object, the variables, the laws, and the instruments
+and deciders for Laws I to III are in place, so the field is well formed and testable; whether it becomes a
+science is not the author’s to declare.
+
+                                                       14
+                                                         What limits any system that improves itself
+
+
+                                         102
+                                                                                            𝛼(1 − 𝛾) > 1: burden outruns
+                                                                                            correction
+
+
+
+
+         burden / correction capacity
+                                         101
+
+
+                                                                                            𝛼(1 − 𝛾) = 1: a tie; coefficients,
+                                         100                                                delays and saturation decide
+
+
+                                        10−1
+                                                                                            𝛼(1 − 𝛾) < 1: correction gains
+                                                                                            ground
+                                        10−2
+                                           100          101                102            103
+                                                       recursive depth 𝑅/𝑅0
+
+Figure 2. Two exponents and a crossover: the burden-to-capacity ratio of equation (1) against recursive depth, on
+logarithmic axes. Rising: 𝛼(1 − 𝛾) above one, burden outruns correction; flat: equal to one, a tie that coefficients,
+delays and saturation decide; falling: below one, correction gains ground. The lines show the model, not data; the
+premise that fixes the number at two is the thing on trial.
+
+
+
+   Table 4. The six licence conditions, scored by the field itself and printed so that each row can be disputed.
+
+Condition                                        What it requires            Score          Evidence
+1. A native object no                            A thing the questions       Met            Sections 3 and 3.1: nine neighbours, each
+field takes as primitive                         are about that                             owning a tool, none the loop; twelve hosts
+                                                 neighbours treat as                        tried in their own variables
+                                                 derived
+2. State variables that                          A shortlist under which     Half met       Five variables named and instrumented;
+permit relations                                 laws can be stated and                     whether they suffice is objection C1, open
+                                                 measured
+3. Laws as                                       Claims that forbid, not     Met as         Five laws with statuses; the ARC Ceiling
+impossibilities, with a                          describe, and at least      conjecture     derived in Section 6; nothing confirmed
+bound computed                                   one worked
+4. Instruments before                            Measurement tools built     Met            Section 10: ladder, blinding stack,
+results                                          and published before                       fixture-gated estimators, defect clause;
+                                                 confirmatory data                          these serve Laws I to III, and the theory
+                                                                                            registration records no instrument for P15
+                                                                                            or P12
+5. Deciders                                      Experiments written         Met            Section 11: three deciders for Laws I to III,
+preregistered with                               before data, nulls                         preregistered by timestamp, numbers
+rival-favouring nulls                            belonging to the rivals                    printed, unrun; Law IV has no deciding
+                                                                                            study yet, and Law V’s, for P21, has a
+                                                                                            frozen design awaiting registration
+6. Independent                                   Results by other hands;     Not met        No replication by other hands yet and no
+confirmation and                                 use of the variables by                    use by strangers yet, as of 24 October 2026;
+adoption                                         strangers                                  the one condition no author can supply
+
+
+
+
+                                                                                 15
+                                  What limits any system that improves itself
+
+
+7.1   The precedent class: fields founded on a limit theorem in their own variables
+The comparison that supports the case for the field most is not thermodynamics alone but the class of
+fields whose identity is a bound stated in variables the older fields did not carry, holding across substrates.
+Thermodynamics: Carnot (1824), no engine beats the reversible one; the bound came first and the formal
+laws followed decades later. Information theory: Shannon (1948), channel capacity as a limit theorem,
+with entropy and mutual information as state variables no prior field carried, and substrate independence
+(wires, radio, later genomes) as the proof of generality. Computability: Turing (1936), the halting
+impossibility, a field defined by what cannot be computed. Control theory’s own limit: Bode (1945),
+feedback cannot reduce sensitivity everywhere, a conservation law of the loop, so the nearest neighbour
+to this field earned its identity from a bound on what feedback can do. Statistics: the Cramér-Rao bound,
+1945 to 1946 (Rao 1945; Cramér 1946), a floor on estimator variance.
+     The pattern is one thing: a field arrives when a limit, stated in variables the old fields did not carry,
+holds across substrates. Recursive Dynamics puts a limit of exactly that shape to the test: 𝛼crit = 1/(1 − 𝛾),
+with the same-class cap on 𝛾 at one half. The disanalogy is printed in the same breath: every field
+above earned its name by measurement and by many hands; this one was founded by one person before
+its decisive measurements, with no replication by other hands yet, and the parallel is a scaffold, not a
+certificate.
+
+
+8     The rival’s best case, steelmanned
+The strongest objection is not that the laws are unproven. It is that the mechanism may be empty:
+correction may just be correction, in which case what a corrector is made of does not matter and the class
+distinction dissolves. This rival is not a straw man. The scalable-oversight programme in all its forms,
+weak-to-strong generalisation (Burns et al. 2023), debate (Irving et al. 2018), amplification (Christiano
+et al. 2018), recursive reward modelling (Leike et al. 2018), builds same-class ladders on the implicit
+premise that they scale, and the strongest published framework adjacent to this question, the scaling
+laws for scalable oversight of Engels et al. (2025), is architecture-blind: it gives overseer and overseen
+oversight-specific Elo scores that depend on general capability alone, so it implies the class-blind null
+without needing to state it.
+     Worse for this programme, its own pilot leans the rival’s way. The parallel-channel measurement in
+the programme’s published corpus found correction channels can be correlated, adding almost nothing
+in four of the five models measured, and one model contradicted the pattern outright. That model’s
+row is printed whole here, as the theory registration requires: on Gemini 3 Flash, Paper II reports an
+endpoint sequential exponent of 0.59 with a bootstrap 95 per cent interval of minus 1.3 to 2.9, a regression
+sequential exponent of 0.49 with a standard error of 0.20 and a coefficient of determination of 0.86, and a
+compute-matched parallel exponent of 0.31. It is one model’s fit and inconclusive. Correlated channels
+are exactly the mechanism that would weaken same-class correction in a way that also weakens cross-class
+correction, dragging the decisive ratio toward one. The eclipse design is therefore preregistered with the
+programme’s own contrary evidence on its face, and it commits to publishing a null result under the same
+title as a discovery about the world rather than an embarrassment to be buried. A field that writes its
+rival’s best evidence into its own preregistered design is doing the one thing that cannot be faked.
+
+
+9     Substrate independence, at its honest grade
+The field’s laws must not care what its systems are made of, and the programme’s cross-domain work
+points that way at exploratory grade, reported with its tiers never blended: predicted functional families
+
+
+                                                      16
+                                  What limits any system that improves itself
+
+
+across a fifty-domain suite (19 of 25 empirical matches under the original candidate set, 18 of 25 under
+the corrected seven-model rerun, disclosed in full; 13 of 13 published-direct; 6 of 6 analytic, reported
+as definitional); a twelve-domain extension whose per-row predictions were committed to the public
+repository twenty-three minutes before the fits ran (10 of 12, binomial 𝑝 = 5.4 × 10−4 ; author-classified,
+pre-correction candidate set, public repository commit attestation; 9 of 11 at 𝑝 = 1.4 × 10−3 once the one
+row repeating an already-public domain is removed; self-demoted to a pilot dry run within thirteen minutes
+in public commit history, and that demotion reversed on 7 September 2026 under the attestation-class
+rule of the Dated Prediction Register, which does not demote a prediction for the absence of a registry
+form); temporal out-of-sample checks (4 matched, 2 partial, 1 inconsistent, the inconsistency reported as
+prominently as the matches). None of this is confirmation. The fourth-cell test, a draft preregistered by
+timestamp and awaiting the author’s submission, on the logarithmic family the corpus has never fitted
+and on domains never fitted, exists to catch the programme flattering itself, and convergences with older
+traditions are catalogued separately under a standing rule: convergence is evidence of naturalness, never
+of truth.
+
+
+10     Instruments
+A field is its instruments before it is its results. Recursive Dynamics ships with an instrument canon
+built before any confirmatory data existed: the calibrated capability ladder (Section 4); a blinded scoring
+stack in which every output is laundered so no scorer can tell what produced it, with label-randomised
+nulls computed through the identical pipeline, so the decisive experiment’s null is imposed structurally
+rather than fitted; estimator code that is hash-pinned, fixture-gated (every preregistered verdict branch has
+a planted-truth test the code must pass before anything ships), and governed by a preregistered defect
+clause under which the specification, not the code, is the analysis, so a post-registration coding error is a
+disclosed repair on preregistered terms rather than a dead study. Scoring is by blinded multi-model panels,
+never by human raters; where an external human criterion is methodologically unavoidable, a single
+author-rated fallback is preregistered, blind, washout-retested (he re-scores a registered thirty per cent of
+items after a washout of at least fourteen days, blind to his first-pass scores, as the theory registration
+records), and disclosed as author-rated in every headline.
+    One limitation is printed here rather than discovered by a reviewer: when models score models, the
+scorer can share the blind spots of the scored. The laundering and the forced null remove the scorer’s
+knowledge of provenance, not its class. The programme’s answer is cross-family panels and a preregistered
+human-criterion validation instrument, and the honest statement is that the circularity is reduced, disclosed
+and measured, not abolished. It returns as objection C4.
+
+
+11     The decisive experiments
+Three studies decide Laws I to III. Their nulls belong to the rivals, their numbers are computed and printed
+in their designs, and their outcomes are publishable on identical terms whichever way they fall. Each is
+a draft, preregistered by timestamp and awaiting the author’s submission for registration on OSF: the
+programme’s public snapshot of 4 October 2026 counts 65 designs preregistered by timestamp, the first
+anchored on 12 August 2026 in Bitcoin block 962066, beside 16 tests already run (8 pilot measurements
+on live systems and 8 implementation checks). One unit of the programme, the corrector-class audit (unit
+06), which surveys the class of corrector that deployed AI alignment uses and is not one of these three, was
+registered on OSF on 1 October 2026 and became public on 4 October 2026, at the end of OSF’s approval
+period (its registration). It was run on 6 October 2026 and is reported in full with its five deviations (its
+results); one of its two runs could not start, so it is reported as administratively incomplete and issues no
+
+
+                                                      17
+                                         What limits any system that improves itself
+
+
+
+          Durably below 1.00: the                 Tight around 1.00: class            Durably above 1.00: a different
+        mechanism inverts; the claim            does not matter; the distinction      class escapes; the programme’s
+        ends as derived (anti-eclipse)           retires (equivalence verdict)             prediction (supported)
+
+
+
+
+                                                       equivalence band
+    lower                                                    1.00                                               higher
+                             the forced null: exactly one by construction if class does not matter
+
+                                     A true null in the band: an inconclusive verdict
+                                      at the trial’s own precision, a failed attempt to
+                                       confirm and never a refutation (inconclusive)
+
+Figure 3. The decisive measurement for the mechanism: the cross-class correction exponent divided by the
+same-class one, under blinded scoring, with the thresholds of the zones fixed in the preregistered design before any
+data exist. The null is forced to exactly one; there are three zones and four verdicts, a true null in the band returning
+an inconclusive verdict and never a refutation, and the programme’s own contrary pilot is on the record. Not yet run.
+
+
+inferential verdict. Submission is the author’s own act, and no tool or agent submits anything. In this
+paper registered is said of what OSF has accepted: the theory registration of 8 September 2026 with its
+twenty-two propositions, updated on 13 September 2026 and on 15 October 2026, when version 1.103
+registered Laws IV and V as laws, and unit 06; a study, an analysis, a threshold or a verdict fixed in one of
+the dated designs is called preregistered, short for preregistered by timestamp. Law IV has no deciding
+study yet, and Law V’s is prepared but not yet registered: the propositions that carry them are registered,
+P15 and P12 have no instrument, and the decisive test of P21 has its design frozen on 17 October 2026,
+with its registration being prepared and nothing run before that registration is public.
+    The correction-versus-drift race (the critical-correction-ratio study) decides Law II: does self-
+correction out-scale drift at all, anywhere? A durable yes is the field’s first existence result; a universal no
+leaves Law II without a subject.
+    The corrector-class ratio (the eclipse measurement) decides Law III’s mechanism. Pool same-class
+and cross-class corrector pairs, launder everything, and force the null: if what a corrector is made of
+does not matter, the ratio of correction exponents is exactly 1.00 by construction. That null is the rival’s
+answer, not this programme’s. The programme’s mechanism predicts a durable ratio above 1.00 where
+the cap binds, and that is the discovery in its favour; durably below 1.00 inverts the mechanism and ends
+the claim as derived; 1.00 holding tight everywhere, even where the cap should bind, retires the class
+distinction itself. Preregistered with thirty pairs per class across six model families, a-priori power 0.85,
+with a hard independent kill: any same-class pair whose 𝛾 interval sits wholly above one half kills the cap
+regardless of the ratio.
+    The capability-ladder titration (the ARC Bound study) decides the ceiling’s behavioural signature:
+an interior maximum of the growth exponent at or below two across eight reinvestment levels, under a
+two-stage replication-gated rule in which one counterexample cell, replicated, rejects the Bound outright.
+The theory registration places the interior maximum, P2, in ARC-1, the register that tests the first law, and
+keeps it apart from the boundary claim that P3, P16 and P20 carry.
+    A drafted follow-up grid extends the ratio to every ordered pair of model families, locating where the
+class effect lives; and the mechanism probe (correlated failure on shared substrate) measures directly the
+error correlation the derivation posits, so the ratio and its mechanism must agree or their tension is itself a
+
+
+
+                                                              18
+                                  What limits any system that improves itself
+
+
+preregistered finding.
+
+11.1    What would confirm a new area rather than a new chapter
+A result that any old field could state in its own variables confirms a chapter of that field. A field is
+confirmed by a conjunction that none of its neighbours can express. Stated once, with what is preregistered
+today separated from what is only set out for registration:
+     Preregistered today: a regime in which the correction rate out-scales drift (the correction-versus-drift
+race); a corrector-class ratio durably above 1.00 where the cap binds, with the hard kill that any same-class
+pair whose 𝛾 interval sits wholly above one half ends the cap (the eclipse measurement, with the class
+audit and the correlated-failure probe beside it); an interior maximum of the growth exponent at or below
+two across the reinvestment levels, under the replication-gated rule (the titration); and the fourth-cell
+substrate test.
+     Set out here, and to be registered before any data are seen: that the ratio rises with load (dose-response,
+which separates a mechanism from a static difference); that a cross-class corrector moves the titration’s
+maximum upward, linking Laws II and III through the class lever; and that a single system crosses the
+stability boundary as its reinvestment dial turns. None of these three is a prediction of the field until its
+registration carries it, and this paper does not count them as such.
+     The consistency check no single field can fake, with invented numbers for illustration only: suppose
+the eclipse measurement returned a same-class 𝛾 of 0.45 and a cross-class 𝛾 of 0.70. The ARC Ceiling
+would then predict a same-class maximum near 1.8 and a cross-class maximum near 3.3 in the titration.
+If the titration returned its maxima in those places, two preregistered studies with different instruments
+would agree through the one bound. That agreement, in the manner of Joule’s measurements agreeing
+with Carnot’s bound, is the founding result: it is inexpressible in the variables of learning theory, control,
+scaling empirics or oversight.
+     The founding conjunction, then: a Law II regime; a corrector-class ratio above 1.00; an interior
+maximum in the reinvestment titration; the same exponent structure in one non-artificial substrate; and at
+least one of these replicated by strangers. The values travel with the legs rather than inside them. The
+one-half cap on same-class correctors is reported with the ratio, and the maximum’s location is reported
+with the maximum, so a leg survives a value that lands elsewhere and the record still says where it landed.
+Each alone is a finding in an old field’s vocabulary. The conjunction is not, and that is the exact sense in
+which results would confirm a new area rather than a new chapter.
+     What a partial result means is stated here rather than argued afterwards, because the trial carrying
+the second leg forecasts support at 0.82 only where the author’s own belief puts the effect and returns
+less across the rest of the band it predicts, so the full conjunction is likelier missed than cleared. Two
+legs, a Law II regime with either the class ordering or the interior maximum, establish that the loop has
+a limit of its own and that the limit is measurable. Three add the ceiling as a bound with a measured
+value in it. Four add substrate independence, which is what makes the variables the field’s rather than one
+domain’s. Five is the field. The stranger’s replication is listed last because it is the field’s condition and
+not the theory’s: the theory can be right and still wait for it.
+
+
+12     Every objection we could find, with its disposition
+This section is the paper’s reason for existing; it entered at version 2.0 (Appendix A). The objections
+below were collected from the programme’s own adversarial readings, from outside reviewers, from a
+criticism of the derivation’s treatment of depth, and from the author’s attempt to argue the field out of
+existence. Each is stated in its strongest form. Each carries one of these dispositions: conceded (it is
+
+
+
+                                                      19
+                                      What limits any system that improves itself
+
+
+
+         A Law II              A class ratio         A maximum at            The substrate         One stranger’s
+          regime                above 1.00            or below two             crossing             replication
+        preregistered           preregistered          preregistered          preregistered              required
+        by timestamp            by timestamp           by timestamp           by timestamp             from outside
+
+
+
+
+                                           A new area, not a new chapter
+
+
+                        Set out, not yet preregistered: three extensions, not counted as predictions
+
+Figure 4. The founding conjunction: four preregistered results and one stranger’s replication converge on a
+statement no neighbouring field can make; the extensions set out for registration are marked as not yet preregistered.
+
+
+true and it is printed); rejected (with the reason); partly conceded; reading debt (a literature that must
+be read before the point can be argued either way, under the rule that nothing is cited before it is read);
+or decided by experiment (a preregistered decider settles it). Fifty-one objections (group D runs D1,
+D2, D3 and D5; Appendix A.2, entry 14), counted by the opening words of each disposition: thirty-nine
+conceded or partly conceded, eleven rejected, one handed to experiment. Four of the thirty-nine (B3, D3,
+F2 and H1) concede in one respect and reject in another. Thirty-five of the fifty-one carry a sentence on
+what would change their disposition.
+
+A.    Redundancy: the field already exists under another name
+A1. Cybernetics already studies self-correcting loops; Wiener’s field is this field. Rejected, with
+a condition. The co-scaling intuition is cybernetics’ and is conceded to it: a regulator must match the
+variety of what it regulates (Ashby 1956), and every good regulator of a system must be a model of that
+system (Conant and Ashby 1970). Cybernetics owns regulation: a designed controller holding a plant
+to a reference, with the loop’s purpose set from outside. The loop studied here rewrites the controller’s
+own capability, and the questions it raises (does correction out-scale drift; is there a ceiling and whose
+property is it) are not cybernetics’ questions. What would change it: if those questions turn out to be
+answerable inside cybernetics with nothing added, the field dissolves into it, which would end the field by
+adoption rather than by refutation, as objection A11 says of any host.
+
+A2. Dynamical systems theory already has stability conditions; the second law is a standard stability
+statement. Conceded, with a boundary. The mathematics is borrowed and is claimed as nothing more.
+What is claimed is which measurable quantities carry the condition in built systems, and that they can
+be measured. What would change it: if the variables reduce to standard ones with nothing added under
+measurement, the second law is a relabelling, and that is a dissolution condition.
+
+A3. Scaling laws already describe how capability grows with resources. Conceded, with a kill
+condition. Scaling empirics owns capability against external resources and is architecture-blind by
+construction; the variable here is the system’s own re-entering output, and the field predicts something
+resource scaling does not: an interior maximum in the growth exponent as reinvestment rises, where
+resource scaling predicts monotone returns. What would change it: if recursive depth reduces, under
+measurement, to compute spent, or the titration shows monotone returns with no ceiling behaviour,
+Recursive Dynamics is scaling empirics under a new name, and this paper says so.
+
+                                                            20
+                                  What limits any system that improves itself
+
+
+A4. Scalable oversight is already the field of overseers; this is a corner of it. Partly conceded.
+Scalable oversight builds correctors and ladders of them, and its antecedent standing is conceded in
+Section 2. It has bounds of its own: scaling laws for the probability of successful oversight against the
+capability gap, with the conditions under which nested oversight succeeds (Engels et al. 2025), and a
+proof that monitoring with vanishing error and query rates is possible exactly when the class of monitor
+functions has finite Littlestone dimension (Rudoler et al. 2026). What it lacks is a cap on correction
+leverage set by what the corrector is made of: it builds same-class ladders on the implicit premise that they
+scale. The third law is precisely a claim about that premise, and it is the claim the eclipse measurement
+decides. What would change it: a bound on corrector capacity derived inside the oversight literature that
+this field merely renames.
+
+A5. The literatures on self-training degradation and on models trained on their own outputs
+already measure drift. Partly conceded, and the paper narrows as it said it would. That naive recursion
+amplifies error without bound while sufficient correction or fresh signal keeps it bounded is established for
+training dynamics: models collapse when trained on recursively generated data (Shumailov et al. 2024),
+and in an analytically tractable linear setting the test error has a finite bound, independent of the number
+of iterations, when real and generated data accumulate rather than replace each other (Gerstgrasser et al.
+2024). That literature carries both rates and owns the drift variable’s measurement in these settings. What
+it does not vary is the corrector’s class, so the field’s contribution here narrows to the class lever and its
+coupling to a growth exponent in depth. What would change it: a result in that literature that varies what
+the corrector is made of.
+
+A6. The intelligence-explosion literature has asked these questions since 1965. Conceded, and
+recorded as a debt in Section 2. The question is inherited from its named owners; the field sets out
+the missing state variables and the instruments, not the question. What would change it: nothing; the
+concession is permanent.
+
+A7. Evolution is the original recursive improver and evolutionary dynamics already has its theory.
+Partly conceded. Evolutionary dynamics has variation and selection; it has no designer directing
+reinvestment into the improvement process itself and no correction budget in the sense used here. The
+field’s claim to generality includes evolved systems only where a corrector exists, and Section 15.2 says
+what falls outside. What would change it: a treatment of designed reinvestment and correction leverage
+already standard in evolutionary theory.
+
+A8. Statistical physics already has a theory of scaling and universality; this is renormalisation with
+new names. Partly conceded. Universality classes and scaling collapse are the right ancestors for the
+field’s substrate-independence hope, and the functional-equation machinery is conceded as machinery.
+What that tradition does not carry is a correction variable, a drift variable, or a corrector whose composition
+is the lever. What would change it: a universality argument that derives the corrector-class distinction, or
+its absence, from first principles, which would be a result this field would adopt gratefully.
+
+A9. AI safety as a field already covers this. Rejected. AI safety is a problem area, not a science of a
+loop; it borrows from every neighbour above and owns none of their objects. This field is a candidate for
+one of the sciences safety would draw on, in the way thermodynamics is a science engineering draws on.
+What would change it: a published set of state variables and laws for self-improvement, with deciders,
+already standing under the safety banner.
+
+
+
+                                                      21
+                                  What limits any system that improves itself
+
+
+A10. This is systems theory, rebranded. Rejected. Systems theory carries no correction budget, no
+class cap on the corrector, and no preregistered decider; a rebranding does not carry kill conditions. What
+would change it: a systems-theoretic treatment of a corrector’s composition class that this field merely
+renames.
+
+A11. The demarcation never tried the fit; it dismissed each neighbour with a sentence. Conceded
+for every version of this paper before 2.3, and answered by Section 3.1, which attempts to house the
+questions in twelve candidate fields in their own variables, concedes Law I to endogenous growth theory,
+the form of the ARC Ceiling to queueing theory and the shape of Law II to error-threshold theory, prints
+the dissolution map by host, and isolates the one coupling no host can state. What would change it: a host
+that can state the class-dependent cap coupled to the depth exponent in its own variables, which would
+end the field by adoption rather than by refutation.
+
+A12. Recursive Dynamics is the ARC Theory renamed: the same laws, the same author, a larger
+word. Rejected, with a test. Conceded that the field and its founding theory share an author, a date and
+a record. Rejected that they are the same object. The theory is the answers; the field is the questions,
+the five state variables and the instruments that would refute those answers, and it is defined so that a
+reader who rejects all five laws and keeps the measurement is inside it, by the minimal commitment of
+Section 15.2. What would change it: the test is separability, and the dissolution map of Section 3.1 is
+where to run it: if no question, variable or instrument survives the deletion of the laws, the objection is
+right, the field is a rebadging, and this paper will say so.
+
+B.   Standing: the field has no results
+B1. Thermodynamics had many hands and a century; this has one person and zero replications.
+Conceded in full, before any reader could raise it. The parallel is in shape only; standing is not claimed,
+and Section 15.1 says what would earn it.
+
+B2. The laws are not laws; they are conjectures from a minimal model. Partly conceded. Each is a
+law under test: law is the field’s name for a relation it puts to the test, the status travels with the name on
+every surface, and no law is called supported until a registered verdict says so. That Laws II and III are
+proved only inside minimal models is conceded (Sections 5 and 6).
+
+B3. The programme’s own headline number was retracted; why trust the rest? Conceded as fact,
+rejected as inference. The retraction is printed wherever the number once stood, and the discipline that
+produced it (blinding, registered kill conditions, public correction within the hour of finding) is the reason
+the remaining claims carry statuses rather than assertions. A programme that never retracts has either
+never been wrong or never checked. What would change it: a retraction concealed rather than printed,
+anywhere in the record.
+
+B4. The correction leverage 𝛾 has never been measured, by anyone; the ARC Ceiling’s number
+is therefore a guess. Conceded, and it is the field’s single most consequential open measurement
+(Section 11). The number two is conditional on a premise the programme names as the conjecture’s most
+likely point of failure. What would change it: the eclipse measurement and the hard kill riding alongside
+it.
+
+
+
+
+                                                      22
+                                   What limits any system that improves itself
+
+
+B5. The derivation’s treatment of depth has been criticised in review. Conceded and printed as
+a limitation, not argued away. What would change it: a treatment that survives the criticism, which is
+wanted and invited.
+
+B6. Carnot demonstrated his bound inside the memoir (Carnot 1824); the ARC Ceiling is a
+conditional model result whose key premise is unproved. Conceded, and the difference is exactly
+why the parallel is confined to shape. The ARC Ceiling’s premise is measurable and registered. What
+would change it: nothing about the history; only the measurement.
+
+C.    Method: the instruments may not measure what the laws name
+C1. The five state variables are arbitrary; why not four, or nine? Conceded as open. The claim that
+five suffice, and that these are the five, is part of what the field must prove, and the notation register already
+records the programme catching a sixth symbol trying to enter. What would change it: a preregistered
+study in which one variable reduces to another under measurement, or a relation that cannot be stated
+without a sixth.
+
+C2. The construct bridge is open: the quantities the studies measure may not be the objects the
+laws’ symbols name. Conceded and held open in the register by name. What would change it: the
+bridge closing in either direction, which is itself a preregistered finding.
+
+C3. Substrate independence is just the flexibility of the fitted families. Conceded as the live risk.
+The fourth-cell test exists to catch exactly this. What would change it: the fourth cell, run.
+
+C4. Models scoring models is circular: the scorer shares the blind spots of the scored. Partly
+conceded (Section 10). Laundering and the forced null remove the scorer’s knowledge of provenance, not
+its class; cross-family panels and the preregistered human-criterion validation reduce and measure the
+circularity without abolishing it. What would change it: a validation result showing model panels and the
+human criterion diverge systematically, which would demote every panel-scored result to exploratory.
+
+C5. The capability ladder is itself unvalidated; a wrong ruler makes every law wrong. Conceded
+as a dependency. The ladder is calibrated and its scale discipline is a founding principle precisely because
+the programme once got it wrong; but a calibrated instrument is not a validated one until independent
+hands use it. What would change it: replication of ladder measurements by other hands.
+
+C6. The author-rated fallback for the human criterion is an author grading his own theory.
+Conceded, with the safeguards printed: blind, laundered, washout-retested, disclosed as author-rated in
+every headline, and preregistered as a fallback rather than a design. What would change it: external raters,
+which the design names as the preferred path the moment they exist.
+
+C7. The preregistered experiments are underpowered or too small to decide anything. Decided by
+experiment, with the numbers printed. Power is computed in the designs from pilot dispersion, and an
+inconclusive verdict is a preregistered outcome with its own branch, not a failure to be hidden. What
+would change it: an inconclusive verdict, which would narrow the claim to “not yet decidable at this scale”
+and say so.
+
+
+
+
+                                                       23
+                                  What limits any system that improves itself
+
+
+C8. Frontier models change faster than the experiments can run; results will be obsolete on arrival.
+Partly conceded. A law of the loop is meant to hold across models; if a measured exponent moves with
+every model generation, that is itself evidence against substrate independence and would be reported as
+such. What would change it: the follow-up grid across families, which locates whether the effect is a
+property of the loop or of a generation.
+
+D.   Naming and standing of the author
+D1. Naming a discipline before the evidence is a marketing move. Rejected, with the precedent
+printed: cybernetics was named in the 1948 book that proposed it (Wiener 1948) and exobiology in 1960
+(Lederberg 1960) before a single specimen. A name makes a new field citable and attackable as one unit.
+The safeguard is the name’s own kill condition, printed in Section 14: the name dies with its object, not
+with any one law’s stated form, and the record says which death it was, in public.
+
+D2. One person cannot found a paradigm; paradigms are conferred by communities. Conceded.
+What is claimed is a candidate: a way of organising the questions. Whether it becomes anyone’s paradigm
+is decided by adoption and replication, which are two of the entry criteria, and neither is the author’s to
+declare. This paper withholds the word paradigm as a description of the present.
+
+D3. The author has no institution, no doctorate and no co-authors. Conceded as fact; rejected as an
+argument about the field. Every claim is tied to its dated record, every number to its source and every
+instrument to the test that could kill it, so that nothing here requires trusting the author. Independence has
+one advantage that is also printed: there is no institution to protect, so corrections publish the day they are
+found. What would change it: nothing; the work is judged by its record.
+
+D5. The phrase recursive dynamics is already used in robotics. Conceded as a fact about another
+sense of the words: the Featherstone tradition’s recursive dynamics algorithms (Featherstone 2008) are a
+family of computational methods, a different referent, and that use is no prior claim on the name of this
+field. The author’s own use of the phrase stands in his sealed record of 8 December 2024, and he made it
+the name of the field on 27 August 2026. Nor is this recursion theory, the mathematics of computability.
+
+E.   Scope: too broad, or too narrow
+E1. Too broad: any self-improving system includes science itself, economies, evolution, so the field
+is either everything or nothing. Partly conceded. The field’s laws switch on where one narrower thing
+exists: a corrector, something detecting and repairing its own errors while the system grows. A star has
+dynamics and no drift ledger; nothing is being raised there. Section 15.2 draws the boundary. What
+would change it: the laws holding only for one substrate, which would make the field narrow rather than
+everything, and honest about it.
+
+E2. Too narrow: this is really about language-model loops, dressed as a general science. Partly
+conceded. The decisive experiments run on language-model loops because those are the loops that
+exist to be measured; the substrate-independence claim is at exploratory grade and its fourth-cell test is
+preregistered by timestamp and awaits submission. What would change it: the cross-domain families
+failing the fourth cell, after which the field would say it is a science of one substrate until shown otherwise.
+
+
+
+
+                                                      24
+                                 What limits any system that improves itself
+
+
+E3. The field conflates correction with alignment, and capability with intelligence. Conceded as
+a risk and answered with definitions: correction is the detection and repair of the system’s own errors
+against a stated criterion, which may or may not be an alignment criterion; capability is whatever the
+calibrated ladder measures. The field makes no claim about intelligence as such. What would change it: a
+demonstration that the ladder measures something other than what the laws need it to measure, which is
+C5 again.
+
+F.   Timing and community
+F1. It is premature; wait for the data, then name the field. Rejected. The deciders are preregistered
+by timestamp; the instruments exist; the name lets the field be attacked as one unit before the data arrive,
+which is when attack is cheapest and most useful. The name carries its own kill condition for exactly this
+reason.
+
+F2. A field needs a community first; a field of one is a hobby. Conceded as to the definition of a
+science; rejected as to the definition of a field at its founding. Section 7 scores condition 6 as not met.
+The founding paper exists so that a community can form around a testable object, or decline to.
+
+F3. Naming it invites priority disputes rather than science. Rejected. Every antecedent is conceded
+by name in Section 2; nothing is claimed as original except the assembly, and the assembly is dated. A
+dispute about priority would be settled by the dated record, not by argument.
+
+G.   The concept itself
+G1. The crossover 𝛼crit = 1/(1 − 𝛾) is a triviality of power-law algebra, not a law. Partly conceded.
+The algebra is elementary and is printed so that nobody need take it on trust. The content is not the
+algebra; it is the claim that the two premises describe real loops and that 𝛾 is capped for same-class
+correctors. What would change it: nothing about the algebra; the premises are what the experiments test.
+
+G2. The same-class cap at one half is an assumption dressed as a result. Conceded, and named by
+the programme as the single most likely point of failure. It is the eclipse measurement’s target and carries
+a hard kill. What would change it: the measurement.
+
+G3. The model assumes stationarity and separability of drift and correction; real loops have neither.
+Partly conceded. The minimal model is minimal on purpose; the preregistered analyses fit drift and
+correction jointly and report the interval, and non-separability would show as an unfit rather than being
+averaged away. What would change it: a result of a preregistered study in which drift and correction
+cannot be fitted jointly, which would be reported as a limit of the model.
+
+G4. Capability is multidimensional; a scalar ladder throws the structure away. Conceded as a
+simplification. The ladder is one axis chosen for measurability; the field’s claim is that the laws hold
+along it, not that it exhausts capability. What would change it: the laws holding on one axis and failing on
+another, which would be a finding about the field’s scope.
+
+
+
+
+                                                     25
+                                  What limits any system that improves itself
+
+
+G5. The ceiling ignores economics: a lab can buy correction with money, not just with a better
+corrector class. Partly conceded. Buying correction raises the coefficient 𝑎 in the derivation, which
+moves the crossover’s location in depth but not its exponent; the ceiling is a statement about exponents.
+What would change it: a demonstration that purchased correction changes the exponent rather than the
+coefficient, which would be a real refutation of the model’s structure.
+
+G6. The dissolution clause is cheap talk; nobody publishes their own field’s ending. Rejected on
+the record. The programme has already retracted its headline number, withdrawn a formulation of its
+third law, and demoted a favourable result to a pilot within thirteen minutes, all in public; that demotion
+was reversed on 7 September 2026 under the attestation-class rule, as Section 9 records. The commitment
+to publish the field’s ending is made by a record that has already published smaller endings.
+
+G7. Because every claim is conditional, nothing is actually claimed. Rejected, and answered up
+front in Section 1.1 so that the concessions below cannot be mistaken for silence. Conditionals with
+measurable antecedents are claims: they forbid outcomes. The field forbids a stable system holding its
+growth exponent above the ceiling for a sustained run, a same-class correction exponent measured wholly
+above one half, a corrector-class contrast that runs the other way or falls wholly below the preregistered
+support threshold, and monotone returns with no interior maximum as reinvestment rises. Any of those
+would be a real result against it, and Section 1.1 states which of them make the field wrong and which
+removes the one-half cap and the value two while the ceiling relation stands.
+
+G8. Depth is not time, and the laws confuse them. Conceded as a hazard and answered by the register:
+every quantitative surface names its model family, and the depth studies treat depth as the count of
+re-entries at a fixed wall-clock policy. What would change it: a result of a preregistered study in which the
+exponent depends on the clock rather than the count, which would be reported as a limit of the variable.
+
+G9. The tie regime is undecided, so the bound decides nothing near the boundary. Conceded and
+printed: at 𝛼(1 − 𝛾) equal to one the outcome hangs on coefficients, delays and saturation, which is the
+regime where every interesting failure lives. The bound is a statement about exponents, and near equality
+it hands over to the coefficients by design.
+
+H.   Practice, policy and the height of the bar
+H1. Cross-class correction is already practice: ensembles, verifiers, humans in the loop. Conceded
+as practice, rejected as theory. Practice has not measured whether same-class ladders cap at a correction
+leverage of one half, or whether a different class escapes; the field turns a habit into a specification with a
+number. What would change it: a published measurement of the class cap from inside the practice.
+
+H2. If it is true it is trivial. Rejected. The predictions are risky and specific: a class-dependent ceiling
+on correction leverage at one half; an interior maximum of the growth exponent at or below two; a ratio
+pinned at one by construction that the field says will move. None is trivially true and each can fail.
+
+H3. It cannot be shown wrong. Rejected. Four dissolution results are printed in Section 14, each tied
+to a preregistered study, with hard kills and rival-favouring nulls, and the field’s name carries its own
+death clause.
+
+
+
+
+                                                      26
+                                  What limits any system that improves itself
+
+
+H4. Policy relevance is premature; talking about regulators is safety-washing. Conceded on timing.
+Policy weight follows results, never formulation; Section 13 is written in the conditional for that reason.
+
+H5. Even if all five laws hold in language models, that is AI engineering, not a field. Conceded
+as the demanding bar, and it is the right bar. A field needs the substrate crossing: the same exponent
+structure in at least one non-artificial system. That is why the fourth-cell test is part of the founding
+conjunction in Section 11.1 and not an optional extra.
+
+I.   What is not answered here
+I1. There may be objections this list has missed. Conceded, by construction. The list is published so
+that it can be extended, and every objection added from outside will be printed with its disposition in the
+next version, under the standing invitation that ends this paper.
+
+
+13     What this buys, if it holds
+Fields earn adoption when strangers can compute with them. If the laws survive their deciders, the
+following become calculations rather than debates: given a measured 𝛾 for a corrector class, the maximum
+sustainable growth exponent of any system it oversees follows from the ARC Ceiling; given measured
+drift, the required correction rate follows from Law II; oversight architectures acquire a specification sheet
+(the corrector’s composition class, its measured 𝛾, its implied ceiling) the way engines acquired efficiency
+ratings; and the safety question “can oversight keep up” becomes a comparison of 𝛾 measured for each
+corrector class rather than a scenario argument. Everything in this paragraph is conditional on results that
+do not yet exist, and is written in the conditional for that reason.
+
+13.1    And if it fails
+The negative result is also a contribution, and it is one the oversight programme needs. A ratio of 1.00
+holding tight everywhere licenses same-class ladders; a universal absence of any regime where correction
+out-scales drift says self-correction never wins, which is a different and worse world that policy should
+know about. The designs commit to publishing either outcome under the same title. A field whose failure
+is informative is not a vanity project.
+
+
+14     What would dissolve the field
+If the correction-versus-drift race finds no regime where correction out-scales drift, Law II has no subject
+matter. If the corrector-class contrast runs the other way, or falls wholly below the preregistered support
+threshold wherever the cap should bind, the field’s distinctive mechanism is dead and its remains return to
+the hosts named in the dissolution map of Section 3.1. The trial’s own operating characteristics decide
+which observations are available: on a roster whose targets genuinely differ it returns an inconclusive
+verdict rather than an affirmative equivalence, so a null is a failed attempt to confirm and the dissolution
+reading rests on the directional and below-threshold outcomes named here. If the titration finds no interior
+maximum and no ceiling behaviour, the central impossibility dissolves. If the cross-domain families fail
+the fourth-cell test, substrate independence was an artefact of family flexibility. Any one death wounds
+the field, and this paper commits to publishing each under this title.
+     A name given before its tests must be able to die with them, and the record must be able to say which
+death it was. A law failing in its stated form kills that law and the theory that stated it; the field carries
+
+
+                                                      27
+                                      What limits any system that improves itself
+
+
+the corrected form, or none, as the record allows, and a reader who rejects all five laws and keeps the
+measurement is still inside it, by the minimal commitment of Section 15.2. The name itself dies when the
+object goes: if the corrector-class contrast fails in either way named above, the residue no host could state
+has proved empty, every piece returns to its host, and this paper will say so under this title rather than
+quietly disappear. If the laws survive their registered tests and hold outside the domains that raised them,
+the name has earned its generality. Either way the record decides, not the naming.
+
+
+15     What this paper does and does not show
+The paper founds the field: it sets out the object, the variables, the laws as named conjectures under test,
+one bound derived inside a stated model, and the instruments and deciders for Laws I to III. It confirms
+no law, and none of its decisive experiments has run, because none runs before its registration is public.
+What would have to happen before the field could be called a science is set out first, and what the field is
+not, with the minimal commitment, second.
+
+15.1    What would make it a science
+Naming a field does not make it a science. The entry criteria Recursive Dynamics has not yet met, in
+public:
+
+                          Table 5. The entry criteria Recursive Dynamics has not yet met.
+
+Criterion                    Status                  What would meet it
+Registered prediction        Not met                 One decisive experiment returning its predicted direction under
+success                                              its registered analysis
+Independent replication      Not met, as of          The same result from hands that are not the author’s; every
+                             24 October 2026         instrument, seed, schedule and threshold is written down for this
+                                                     reason, and each study’s design becomes public with its
+                                                     registration
+Use by strangers             Not met                 The state variables appearing in other people’s work because
+                                                     they needed them
+Survived audit               In progress             The record of public retractions, minute-resolution
+                                                     self-demotions, adversarial cold reads and printed limitations,
+                                                     offered as the standard future claims accept
+
+
+
+15.2    What the field is not, and the minimal commitment
+The field is not a forecast of when machines surpass people, not a theory of intelligence, not an ethics,
+not a theory of everything, and not a claim about consciousness. Its laws switch on where a corrector
+exists inside a growing system and switch off where none does; the composed hierarchies that its
+scaling mathematics bears on (stars included) are graded as correspondence of form and no further. The
+programme’s speculative coda on recursion at cosmological scale is separable and sits outside the field; a
+reader can reject it entirely and lose nothing here.
+    The minimal commitment required to work in the field is small and stated so that it can be refused:
+that the self-improvement loop is a legitimate object of measurement, with quantities that can be defined,
+instruments that can measure them, and relations that can be shown wrong. A reader who accepts that
+and rejects all five laws is inside the field; a reader who accepts the laws and refuses measurement is not.
+
+                                                          28
+                                  What limits any system that improves itself
+
+
+16     Limitations
+The paper prints its limitations where they arise; they are gathered here plainly, each with the place it is
+argued.
+     • The correction leverage 𝛾 has never been measured, by anyone, so the value two rests on a premise
+       the programme names as the conjecture’s most likely point of failure (Section 6; objections B4 and
+       G2).
+     • The bound of Section 6 is a conditional crossover inside a minimal model: it does not establish
+       bounded harm, finite-horizon safety or a law of nature, and its treatment of depth has been criticised
+       in review (objection B5).
+     • When models score models, the scorer can share the blind spots of the scored; the circularity is
+       reduced, disclosed and measured, not abolished (Section 10; objection C4).
+     • Whether five state variables suffice, and whether the quantities the studies measure are the objects
+       the laws name, are open questions (objections C1 and C2); the capability ladder is calibrated but
+       not yet validated by other hands (objection C5).
+     • The minimal model assumes stationarity and separability of drift and correction, and reads capability
+       on one scalar axis (objections G3 and G4).
+     • Substrate independence stands at exploratory grade, and the fourth-cell test that would catch flexible
+       fitting has not run (Section 9; objection C3).
+     • The decisive experiments are preregistered by timestamp and not run, and the field has one author,
+       no replication by other hands and no use by strangers (Sections 11 and 15.1; objections B1, D2 and
+       D3).
+
+
+17     Conclusion
+Until the entry criteria are met, one sentence carries the field’s whole status: Recursive Dynamics is a new
+field at the Carnot stage: one memoir in, instruments built, decisive measurements preregistered by
+timestamp and not yet run, staked in public where failure will be as visible as success.
+     The invitation that follows from everything above is the only one the field can honestly extend: run
+the test that could kill it. Every instrument, seed, schedule and threshold is written down for that purpose.
+The designs of the decisive trials are lodged privately on OSF today, and each becomes public with its
+registration. An independent run outranks the programme’s own.
+
+
+Acknowledgements
+Michael Darius Eastwood conceived and directs this research programme and is the author of this work.
+Across the programme, he has used more than six AI systems in parallel, under his own instructions, to
+stress-test his arguments, identify possible errors, and assist in preparing draft text from his own outlines.
+He determines what is adopted, revised or rejected and takes responsibility for the published content.
+These systems are tools, not authors.
+
+© 2026 Michael Darius Eastwood. Full human authorship and moral rights are asserted under the Copyright,
+Designs and Patents Act 1988. This work is licensed under the Creative Commons Attribution 4.0 International
+licence (CC BY 4.0).
+
+
+
+
+                                                      29
+                               What limits any system that improves itself
+
+
+References
+W. Ross Ashby. An Introduction to Cybernetics. Chapman and Hall, London, 1956. No official online
+  source located. [Law of Requisite Variety].
+
+Karl Johan Åström and Björn Wittenmark. On self tuning regulators. Automatica, 9(2), 1973. doi:10.101
+  6/0005-1098(73)90073-3. Pages 185 to 199.
+
+Hans-Georg Beyer and Hans-Paul Schwefel. Evolution strategies: a comprehensive introduction. Natural
+  Computing, 1(1), 2002. doi:10.1023/A:1015059928466. Pages 3 to 52. The published title sets a dash
+  where this entry sets a colon.
+
+Hendrik W. Bode. Network Analysis and Feedback Amplifier Design. D. Van Nostrand, New York, 1945.
+  No official online source located.
+
+Nick Bostrom. Superintelligence: Paths, Dangers, Strategies. Oxford University Press, Oxford, 2014.
+  ISBN 978-0-19-967811-2. URL http://www.oupcanada.com/catalog/9780199678112.html.
+
+Collin Burns, Pavel Izmailov, Jan Hendrik Kirchner, Bowen Baker, Leo Gao, Leopold Aschenbrenner,
+  Yining Chen, Adrien Ecoffet, Manas Joglekar, Jan Leike, Ilya Sutskever, and Jeff Wu. Weak-
+  to-strong generalization: eliciting strong capabilities with weak supervision, 2023. URL https:
+  //arxiv.org/abs/2312.09390. arXiv:2312.09390.
+
+Sadi Carnot. Réflexions sur la puissance motrice du feu et sur les machines propres à développer cette
+  puissance. Bachelier, Paris, 1824. URL https://gallica.bnf.fr/ark:/12148/btv1b86266609. 118 pages.
+  Digitised copy in Gallica, Bibliothèque nationale de France.
+
+David Chalmers. The singularity: A philosophical analysis. Journal of Consciousness Studies, 17(9 and
+ 10), 2010. URL https://www.ingentaconnect.com/content/imp/jcs/2010/00000017/f0020009/art00001.
+  Pages 7 to 65.
+
+Mingguang Chen, Licheng Wang, and Bo Qu. Recursive self-improvement in AI: from bounded
+ self-refinement to autonomous research loops, 2026. URL https://arxiv.org/abs/2607.07663.
+ arXiv:2607.07663.
+
+Paul Christiano, Buck Shlegeris, and Dario Amodei. Supervising strong learners by amplifying weak
+  experts, 2018. URL https://arxiv.org/abs/1810.08575. arXiv:1810.08575.
+
+Roger C. Conant and W. Ross Ashby. Every good regulator of a system must be a model of that system.
+  International Journal of Systems Science, 1(2), 1970. doi:10.1080/00207727008920220. Pages 89 to
+  97.
+
+Harald Cramér. Mathematical Methods of Statistics. Number 9 in Princeton Mathematical Series.
+  Princeton University Press, Princeton, 1946. doi:10.1515/9781400883868. The DOI is that of the
+  publisher’s electronic edition of 2016.
+
+Michael Darius Eastwood. Infinite Architects: Intelligence, Recursion, and the Creation of Everything.
+ 2026a. ISBN 978-1806056200. URL https://osf.io/dqm3e/. First edition, 2 January 2026; the link is to
+ the first edition as printed, deposited on OSF.
+
+Michael Darius Eastwood. Register · The ARC Theory · The Dated Prediction Register: Forward
+ Predictions as One Verifiable Chain. OSF, 2026b. doi:10.17605/OSF.IO/C3NTF.
+
+
+                                                   30
+                                What limits any system that improves itself
+
+
+Michael Darius Eastwood. Laws IV and V: the mathematics. OSF, 2026c. doi:10.17605/OSF.IO/4B3VT.
+Michael Darius Eastwood. Register · The ARC Theory · Operational Definitions. OSF, 2026d.
+ doi:10.17605/OSF.IO/GVQ82.
+Michael Darius Eastwood. Paper II · The ARC Theory · Law I, the ARC Principle · Blinded Cross-
+ Architecture Replication and the Retraction of a Super-Linear Estimate. OSF, 2026e. doi:10.17605/O
+ SF.IO/8FJMA.
+Michael Darius Eastwood. Paper X · The ARC Theory · Law II, the ARC Co-Scaling Law · Correction
+ That Out-Scales Drift. OSF, 2026f. doi:10.17605/OSF.IO/BSE2Q.
+Michael Darius Eastwood. Paper XIII · The ARC Theory · Laws I and II, the ARC Principle and the
+ ARC Co-Scaling Law · The Self-Acceleration Exponent: a Measurable Threshold Joining Growth to
+ Stability. OSF, 2026g. doi:10.17605/OSF.IO/HT8WU.
+Michael Darius Eastwood. The ARC Theory · Theory-Level Predictions for Recursive Self-Improvement
+ and AI Alignment: Twenty-Two Severable Propositions Registered Before Any Admissible Confirmatory
+ Outcome. OSF registration, 2026h. Registered 8 September 2026; updated 13 September 2026 and 15
+ October 2026. doi:10.17605/OSF.IO/P8CKQ.
+Michael Darius Eastwood. 06-study-ac--corrector-class-audit · What Class of Corrector Is Deployed AI
+ Alignment Actually Using? A Preregistered Classification Audit Against a Four-Cell Taxonomy. OSF
+ registration, 2026i. Registered 1 October 2026; public from 4 October 2026. doi:10.17605/OSF.IO/RV
+ 2B5.
+Michael Darius Eastwood. Unit 06 (corrector-class audit): results of the registered run, rv2b5. OSF,
+ 2026j. Public from 11 October 2026. doi:10.17605/OSF.IO/4BPHG.
+Manfred Eigen. Selforganization of matter and the evolution of biological macromolecules. Die
+ Naturwissenschaften, 58(10), 1971. doi:10.1007/BF00623322. Pages 465 to 523.
+Joshua Engels, David D. Baek, Subhash Kantamneni, and Max Tegmark. Scaling laws for scalable
+  oversight, 2025. URL https://arxiv.org/abs/2504.18530. arXiv:2504.18530.
+Roy Featherstone. Rigid Body Dynamics Algorithms. Springer US, Boston, MA, 2008. ISBN
+  9780387743141. doi:10.1007/978-1-4899-7560-7.
+Matthias Gerstgrasser, Rylan Schaeffer, Apratim Dey, Rafael Rafailov, Henry Sleight, John Hughes,
+ Tomasz Korbak, Rajashree Agrawal, Dhruv Pai, Andrey Gromov, Daniel A. Roberts, Diyi Yang,
+ David L. Donoho, and Sanmi Koyejo. Is model collapse inevitable? Breaking the curse of recursion by
+ accumulating real and synthetic data, 2024. URL https://arxiv.org/abs/2404.01413. arXiv:2404.01413.
+Irving John Good. Speculations concerning the first ultraintelligent machine. In Advances in Computers,
+   volume 6. Elsevier, 1966. doi:10.1016/S0065-2458(08)60418-0. Pages 31 to 88.
+Marcus Hutter. Can intelligence explode?, 2012. URL https://arxiv.org/abs/1202.6177. arXiv:1202.6177.
+Geoffrey Irving, Paul Christiano, and Dario Amodei. AI safety via debate, 2018. URL https://arxiv.org/
+  abs/1805.00899. arXiv:1805.00899.
+Akbar Anbar Jafari, Cagri Ozcinar, and Gholamreza Anbarjafari. A mathematical framework for
+ AI singularity: conditions, bounds, and control of recursive improvement, 2025. URL https:
+ //arxiv.org/abs/2511.10668. arXiv:2511.10668.
+
+                                                    31
+                                What limits any system that improves itself
+
+
+Charles I. Jones. R&D-based models of economic growth. Journal of Political Economy, 103(4), 1995.
+  doi:10.1086/262002. Pages 759 to 784.
+
+Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B. Brown, Benjamin Chess, Rewon Child, Scott
+  Gray, Alec Radford, Jeffrey Wu, and Dario Amodei. Scaling laws for neural language models, 2020.
+  URL https://arxiv.org/abs/2001.08361. arXiv:2001.08361.
+
+Joshua Lederberg. Exobiology: Approaches to life beyond the Earth. Science, 132(3424), 1960.
+  doi:10.1126/science.132.3424.393. Pages 393 to 400.
+
+Jan Leike, David Krueger, Tom Everitt, Miljan Martic, Vishal Maini, and Shane Legg. Scalable agent
+  alignment via reward modeling: a research direction, 2018. URL https://arxiv.org/abs/1811.07871.
+  arXiv:1811.07871.
+
+Dennis V. Lindley. The theory of queues with a single server. Mathematical Proceedings of the Cambridge
+  Philosophical Society, 48(2), 1952. doi:10.1017/S0305004100027638. Pages 277 to 289.
+
+Humberto R. Maturana and Francisco J. Varela. Autopoiesis and Cognition. Boston Studies in the
+  Philosophy and History of Science. D. Reidel, Dordrecht, 1980. doi:10.1007/978-94-009-8947-4. The
+  DOI is that of the publisher’s electronic edition, Springer Netherlands.
+
+John D. Musa. A theory of software reliability and its application. IEEE Transactions on Software
+  Engineering, SE-1(3), 1975. doi:10.1109/TSE.1975.6312856. Pages 312 to 327.
+
+C. Radhakrishna Rao. Information and the accuracy attainable in the estimation of statistical parameters.
+  Bulletin of the Calcutta Mathematical Society, 37(3), 1945. doi:10.1007/978-1-4612-0919-5_16.
+  Pages 81 to 91. The original is not online; the DOI is that of the publisher’s reprint in S. Kotz and N.
+  L. Johnson, editors, Breakthroughs in Statistics: Foundations and Basic Theory, Springer Series in
+  Statistics, Springer, New York, 1992, pages 235 to 247.
+
+Poondru Prithvinath Reddy. Artificial superintelligence: a recursive self-improvement model. EasyChair
+  Preprint 2505, 2020. URL https://easychair.org/publications/preprint/dWLr. 30 January 2020.
+
+Paul M. Romer. Endogenous technological change. Journal of Political Economy, 98(5, Part 2), 1990.
+  doi:10.1086/261725. Pages S71 to S102.
+
+Joseph H. Rudoler, Kevin Tan, Benedict Tessler, Timothy Kong, and Enric Boix Adserà. Improving scalable
+  oversight with co-trained monitors, 2026. URL https://arxiv.org/abs/2609.36049. arXiv:2609.36049.
+
+Jürgen Schmidhuber. Goedel machines: self-referential universal problem solvers making provably
+  optimal self-improvements, 2003. URL https://arxiv.org/abs/cs/0309048. arXiv:cs/0309048.
+
+C. E. Shannon. A mathematical theory of communication. Bell System Technical Journal, 27(3), 1948.
+  doi:10.1002/j.1538-7305.1948.tb01338.x. Pages 379 to 423.
+
+Ilia Shumailov, Zakhar Shumaylov, Yiren Zhao, Nicolas Papernot, Ross Anderson, and Yarin Gal. AI
+   models collapse when trained on recursively generated data. Nature, 631(8022), 2024. doi:10.1038/s4
+   1586-024-07566-y. Pages 755 to 759.
+
+A. M. Turing. On computable numbers, with an application to the Entscheidungsproblem. Proceedings of
+  the London Mathematical Society, Series 2, 42, 1936. doi:10.1112/plms/s2-42.1.230. Pages 230 to
+  265. The paper’s first page records it as received on 28 May 1936 and read on 12 November 1936; the
+  publisher’s online record dates the issue 1937.
+
+                                                    32
+                               What limits any system that improves itself
+
+
+Vernor Vinge. The coming technological singularity: How to survive in the post-human era. In Vision 21:
+  Interdisciplinary Science and Engineering in the Era of Cyberspace, NASA Conference Publication
+  10129. NASA Lewis Research Center, 1993. URL https://ntrs.nasa.gov/citations/19940022856. Pages
+  11 to 22.
+
+Wenyi Wang. A formulation of recursive self-improvement and its possible efficiency, 2018. URL
+ https://arxiv.org/abs/1805.06610. arXiv:1805.06610.
+
+Zekai Wang, Yingqiang Ge, Zekun Wang, Hai Wang, Yuhui Xu, Joshua Frandsen, Shancong Fu, Ashia C.
+  Wilson, and Chandan K. Reddy. VERSE: verified self-evolving optimizer for agent harnesses, 2026.
+  URL https://arxiv.org/abs/2610.02616. arXiv:2610.02616.
+
+Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric
+  scaling laws in biology. Science, 276(5309), 1997. doi:10.1126/science.276.5309.122. Pages 122 to
+ 126.
+
+Norbert Wiener. Cybernetics or Control and Communication in the Animal and the Machine. The MIT
+  Press, 1948. doi:10.7551/mitpress/11810.001.0001. The link is the publisher’s 2019 reissue of the
+ 1961 second edition.
+
+Kenneth G. Wilson. Renormalization group and critical phenomena. I. Renormalization group and the
+  Kadanoff scaling picture. Physical Review B, 4(9), 1971. doi:10.1103/PhysRevB.4.3174. Pages 3174
+  to 3183.
+
+Roman V. Yampolskiy. On controllability of AI, 2020. URL https://arxiv.org/abs/2008.04071.
+  arXiv:2008.04071.
+
+
+
+
+                                                   33
+                                  What limits any system that improves itself
+
+
+A     Version history and corrections
+Every version and correction, with its date. Entries from earlier versions are kept as printed; the section
+and figure numbers they name are those of the earlier layout, which Table 6 maps to this edition.
+
+A.1    Version 3.5
+Version 3.5, 24 October 2026. The paper is set in the form of a leading arXiv paper: a title in sentence
+case taken from the paper’s own question, a secondary line and a first-page footnote that state its place
+in the programme, the abstract on the first page, a contents page, a list of contributions and a map of
+the paper in Section 1, the debts of the former section 13 as the related-work section (Section 2), with
+every work cited at its official source and with the earlier formal treatments of recursive self-improvement
+and recent work on oversight added, the former sections 15 and 16 under the heading “What this paper
+does and does not show” (Section 15), a Limitations section that gathers the limitations the paper prints
+(Section 16), the closing section headed Conclusion, and lettered appendices. Laws IV and V are stated
+as registered as laws on 15 October 2026 in version 1.103 of the theory registration and not yet tested,
+their mathematics in development, in the abstract and in Section 5. Unit 06 is stated as registered on OSF
+on 1 October 2026, public from 4 October 2026, run on 6 October 2026 and reported as administratively
+incomplete, with no inferential verdict, and registered is said of the theory registration with its updates and
+of unit 06 (Section 11). Law II’s line now gives the law in the registration’s words, without the reading
+of necessity that the next sentence already says is not established (Section 5). Section 6 no longer says
+that past the crossover the loop chokes on its own errors, which goes beyond the four lines; it says that
+the value one half for 𝛾 is a premise and not a consequence of independence; and it says that growth up
+to quadratic in depth is the most a same-class corrector can sustain, reached only at the ceiling, where
+the tie decides nothing by itself. Proposition 1 carries its one-line proof. Section 4 says that capability
+and recursive depth are states and that the correction rate, drift and correction leverage are elasticities
+of relations among them, and its table reads drift as an exponent. Section 5 adds that each of the three
+statements of one boundary is read in its own model. The commitments printed under the abstract are
+folded into Section 1, where their prohibitions already stood. The figures are redrawn as vector figures,
+their words brought to the text (five laws, each a named conjecture; designs preregistered by timestamp;
+no claim that the loop chokes); the scorecard figure is not redrawn, because Table 4 carries it. Every
+mention of one of the author’s papers links its OSF DOI. Planned extensions not yet preregistered are
+now called set out for registration.
+    Section 1 gives the why and the result in plain words; it no longer says that the literature answers what
+bounds these systems with scenarios and intuitions alone, since that literature also has formal models,
+bounds and fitted scaling laws, each in its own variables; and it says that cybernetics was proposed before
+most of its results existed, where version 3.4 said before its results existed. Prior work is conceded exactly
+what it states: to cybernetics, the requisite-variety intuition and the good-regulator theorem (Table 1,
+Section 2 and objection A1); to the oversight literature, its bounds, where version 3.4 said it had no bound
+on what a corrector can do (Table 1, host 7, the residue, Sections 8 and 13, objection A4); to the literature
+on models trained on their own outputs, the correction rate it pairs with drift, where version 3.4 said it
+measured drift without one (host 5 and the residue); the self-modifying-program line and the framework
+Section 8 calls the strongest are named; and each host of Section 3.1 that rests on a canonical work cites it.
+Objection A5 is partly conceded where it was a reading debt, because that literature pairs drift with a
+correction rate, as its own condition foresaw, and the count of Section 12 becomes thirty-nine conceded or
+partly conceded and one handed to experiment, where it was thirty-eight and two.
+    Laws IV and V are restated in the two-limb form that version 1.103 of the theory registration registers
+(Section 5): Law IV’s retention limb is P15 and its comparison limb has no registered proposition yet,
+
+
+                                                      34
+                                  What limits any system that improves itself
+
+
+where version 3.4 said of that comparison that it “has no registered refuter yet”; Law V’s build-order limb
+carries the direction that version 1.103 fixes beside P12, which keeps no direction, and the rule that joins
+the limbs replaces version 3.4’s sentence “How the two verdicts make one verdict on the law is not fixed
+yet”. The mathematics of Laws IV and V is cited at its current version, 1.1 of 7 October 2026, and is said
+to be in development, as its own status paragraph says that fifteen questions stay open. Law V’s deciding
+study is stated as designed and awaiting registration; the record’s snapshot is that of 4 October 2026, with
+the tests already run counted beside the designs; replication and use by strangers are stated as not met as
+of this version’s date; and the lead of Section 15 gives the reason no decisive experiment has run.
+    The abstract says that self-improvement cannot stably outrun its own correction, where version 3.4
+said cannot outrun, which read against Law II as a guarantee. The criticism of the derivation’s treatment
+of depth is said to have been raised in review, where version 3.4 attributed it to an outside reader and spoke
+of published criticism that it did not cite. Objection B2 is partly conceded where it was conceded: each
+law is a law under test, and that Laws II and III are proved only inside minimal models stays conceded.
+Objection D3’s heading says no doctorate, where version 3.4 said no credential. Section 4 says that
+thermodynamics could not state its laws in their quantitative form until temperature was absolute, since
+Carnot’s bound of 1824 came before the absolute scale of 1848. Section 9 counts four temporal checks
+as matched, where version 3.4 said confirmed beside the sentence that none of this is confirmation. No
+sentence sends the reader to a register without a DOI, and Appendix D.3 no longer says that the registers
+govern the text; Appendix D.1 says registered, not preregistered, of the theory registration. Law I’s
+symbol 𝐼 is defined, Laws II and III carry status lines, and the dissolution map gives Laws IV and V their
+registration. Smaller corrections: Section 12 no longer opens with a version number and says why group
+D has no D4; Section 14 states its dissolution condition once; two terms of the instruments are defined
+where they are first used and four more in the glossary; capitals used for emphasis are set in italics; and the
+Conclusion no longer says that its status sentence appears wherever the field’s name does. No registered
+law, prediction, kill condition or dependency changes; no result is added; no date of any claim moves.
+
+A.2    Version history
+   1. v1.0, 28 August 2026, first draft.
+   2. v1.1, same day, adding the worked derivation of the Ceiling, the measurement-scale founding
+      principle, the steelmanned rival with the programme’s contrary pilot, the what-this-buys section,
+      and the registered numbers of the decisive experiments.
+   3. v1.2, 29 August 2026, the capability ladder restated in the registers’ canonical forms, three further
+      neighbouring fields named with what each owns, historical precedents held to the well-attested set.
+   4. v1.3, same day, the state variables written exactly as the notation register defines them (the correction
+      rate 𝛽𝐶 replaces a bare reinvestment 𝛽; reinvestment named as the experimental manipulation).
+   5. v2.0, same day, the case for the field scored against six licence conditions, forty-two objections
+      collected and dispositioned, the scorer-circularity limitation printed, what the field is not and the
+      minimal commitment, and the entry criteria as a scored table.
+   6. v2.1, same day, the precedent class of limit-theorem fields (6.1), the founding conjunction with the
+      cross-instrument consistency check and the registered-versus-proposed separation (10.1), what the
+      field buys if it fails (12.1), and eight further objections (A10, G8, G9, I1 to I5) with dispositions.
+   7. v2.2, same day, the forbidden outcomes stated up front in the abstract and section 1.1 (an outside
+      reader’s one reservation, that the concessions could read as silence), and five figures: the loop, the
+      crossover, the scorecard, the ratio zones, the founding conjunction.
+   8. v2.3, same day, section 2.1: the honest attempt to house the questions in twelve neighbouring fields,
+
+
+
+                                                      35
+                                What limits any system that improves itself
+
+
+    the concessions that attempt forces, the dissolution map by host, the residue no host holds; objection
+    A11. The figures were redrawn the same evening.
+ 9. v2.4, 30 August 2026: the retired 𝛼max form in section 4 replaced by the notation register’s 𝛼crit ;
+    the scorecard figure’s condition 1 evidence line aligned with section 2.1 (twelve hosts tried); the
+    crossover figure’s label written 𝛼crit .
+10. v2.5, 30 August 2026: Law II carries its canonical name, the ARC Co-Scaling Law, and Law III
+    is written the ARC Ceiling at every mention in the body (the bare forms were retired across the
+    programme on 30 August 2026; this history keeps its own earlier wording); the objection groups
+    run A to I without a gap (the former group I is now H, the former J is now I) so that the paper and
+    the field’s public page cross-reference by the same letters, and the earlier history entries keep the
+    letters current when they were written. No claim, status or disposition changed.
+11. v2.6, 30 August 2026: one further objection in group A, raised by the author against his own field
+    (that Recursive Dynamics is the ARC Theory renamed), rejected with a separability test; fifty-two
+    objections, eleven rejected. The name’s kill condition in section 14 corrected: the earlier wording
+    had the name die with the laws, which contradicted the minimal commitment of section 16 (a
+    reader who rejects all three laws and keeps the measurement is inside the field) and the separation
+    of questions from answers; the name now dies with its object, the class-set cap on correction
+    coupled to growth in depth, and the record says which death it was. D1 aligned with the corrected
+    clause. The field’s public page carries the same objection and clause, with a decision figure of
+    the kill condition, from the same date. v2.7: The provenance note at the end has been corrected
+    for accuracy. No claim, date, result or status has changed. v2.8: The remaining AI-assistance
+    statements have been removed.
+12. v2.9, 18 September 2026: two figures corrected to match this paper’s own text. Figure 4, the ratio
+    zones, states four verdicts where it had stated three, so that a true null inside the band returns an
+    inconclusive verdict and never a refutation, and the caption carries the same sentence; figure 2, the
+    exponent balance, now closes by saying neither has been run. No claim, status or date has changed.
+13. v3.0, 3 October 2026: the theory is stated with five laws. Laws IV and V, added on 24 September
+    2026, enter section 4 beside Laws I to III, each with its status (its mathematics in development;
+    neither registered as a law nor tested) and the registered propositions that carry it, with one paragraph
+    on what their mathematics proves and does not. Law I’s status now prints the measured row whole,
+    each uncertainty with its own estimator, as the theory registration requires: the interval that includes
+    zero and two belongs to the endpoint estimate of 0.59, and the regression estimate near 0.49 carries
+    a standard error of 0.20. The sentences that counted three laws now count five, or name Laws I
+    to III where those three were meant. No registered law, prediction or kill condition changes; no
+    result is added; no date of any claim moves.
+14. v3.1, 3 October 2026: the mathematics of Laws IV and V is cited at its version 1.0, frozen on 3
+    October 2026, and is no longer called a draft or said to be in development; each of the two new laws
+    gains its short form (the retained fraction below one half; the registered minimum effect of build
+    order). The study designs, which earlier versions called registered, are called preregistered, short
+    for preregistered by timestamp, and registered is kept for what OSF has accepted. Section 10 gives
+    the standing of the trials as read on 3 October 2026, where version 3.0 said that all were awaiting
+    submission and that nothing had been submitted. The objections are counted from the printed
+    list, which runs D1, D2, D3 and D5 in group D: fifty-one, of which thirty-eight are conceded or
+    partly conceded, eleven rejected and two handed on. The abstract had fifty-two and thirty-nine, and
+    section 11 had thirty-nine and ten. Section 1.1 and objection G7 give the forbidden outcomes as the
+    abstract gives them. The scorecard counts five laws and says which of its rows cover Laws I to III
+
+
+                                                    36
+                                     What limits any system that improves itself
+
+
+     alone; it no longer prints a bare zero, and nor does section 6.1. Host 3 of section 2.1 names Laws II
+     and III where it spoke of two other laws, and the lead to the boundary table in section 4 no longer
+     calls its three statements Laws I to III. Section 7 prints the measured row whole and corrects five of
+     six models to four of the five models measured, as Paper II reports. The status of Law I names
+     the register that tests it, and section 10 says where the theory registration places the titration’s
+     proposition. The dissolution map says that Laws IV and V are not yet placed on it, and the abstract
+     and section 14 follow the map. Objection D5 and the line under the title date the phrase recursive
+     dynamics from the sealed record of 8 December 2024. The closing and the entry criteria no longer
+     say that every instrument, seed, schedule and threshold is published: the designs of the decisive
+     trials are lodged privately on OSF and become public with registration. Smaller corrections: a
+     pointer to objection I5 now reads H5; Law III is written the ARC Ceiling at three mentions that had
+     the bare form; objection G6 records that the thirteen-minute demotion was later reversed; objection
+     A1 points to objection A11 where it had pointed to section 14; objections A5 and D3 and host 10 of
+     section 2.1 claim no more than has been read or linked; and the entries of this history for versions
+     2.3, 2.5 and 2.9 are reworded in plain terms, the first of them no longer describing how the figures
+     were redrawn. No registered law, prediction, kill condition or dependency changes; no result is
+     added; no date of any claim moves.
+ 15. Version 3.2 (4 October 2026). The abstract is shortened to the paper’s claim and its status; the
+     commitments the longer abstract carried now stand beneath it under their own heading, in the same
+     words. Figures are numbered and keywords added. The PDF is typeset afresh. No claim, number,
+     status or reference has changed.
+ 16. Version 3.3 (4 October 2026). Retitled from “Recursive Dynamics: The Proposal of a Field” to
+     “Recursive Dynamics: Founding the Science of Systems That Improve Themselves”, at the same
+     DOI, and the line under the title now carries the new title’s words; the commitments made to publish
+     under the old title hold under the new one. Wording that presented the author as proposing the field
+     he founded, or this paper as a proposal, now says founding, and a variable, relation or bound put
+     forward for testing is now named, set out, added, conjectured or put to the test. Every statement of
+     the field’s stage keeps its facts; the closing sentence reads “a new field at the Carnot stage”. Where
+     proposed describes other people’s work or extensions not yet preregistered, it is unchanged. No
+     claim, number, status or reference has changed. The byline names the author founder of Recursive
+     Dynamics.
+ 17. Version 3.4 (5 October 2026). The title now follows the programme’s uniform order (paper, its law
+     or framework, its own title), Founding Paper · Recursive Dynamics · The Science of Systems That
+     Improve Themselves, and the heading carries the whole title; until this version it read Recursive
+     Dynamics: Founding the Science of Systems That Improve Themselves, under the heading Recursive
+     Dynamics. No registered law, prediction, kill condition or dependency changes; no result is added;
+     no date of any claim moves.
+
+A.3    Where the earlier layout now stands
+
+                       Table 6. Where each part of the earlier layout stands in this edition.
+
+Earlier layout (version 3.4)                      Where it stands in this edition
+Title block: title, theory-position line, line    Title, secondary line, author block and first-page footnote; the
+under the title, byline, framework dated          dated record in Appendix B.2 and Appendix D.3; the authorship
+record, authorship line                           line in the copyright line
+
+
+
+                                                         37
+                                      What limits any system that improves itself
+
+
+Earlier layout (version 3.4)                             Where it stands in this edition
+
+Abstract and keywords                                    Abstract; keywords in the document metadata
+What the paper commits to                                Section 1: the contributions list and Section 1.1
+1, 1.1                                                   Sections 1 and 1.1
+2, 2.1                                                   Sections 3 and 3.1
+3                                                        Section 4
+4                                                        Section 5
+5                                                        Section 6
+6, 6.1                                                   Sections 7 and 7.1; Figure 3 of earlier versions is carried by
+                                                         Table 4
+7                                                        Section 8
+8                                                        Section 9
+9                                                        Section 10
+10, 10.1                                                 Sections 11 and 11.1
+11, groups A to I                                        Section 12
+12, 12.1                                                 Sections 13 and 13.1
+13                                                       Section 2
+14                                                       Section 14
+15                                                       Section 15.1
+16                                                       Section 15.2
+(none)                                                   Section 16
+17, Closing                                              Section 17, Conclusion
+Version history                                          Appendix A.2
+Figures 1, 2, 4 and 5                                    Figures 1, 2, 3 and 4
+
+
+
+B      Priority record
+Each dated record bearing on this paper and its field, with its kind of timestamp (Table 7), and the
+framework’s dated record as earlier versions printed it under the title.
+
+B.1      Dated records
+
+                               Table 7. Dated records, each with its kind of timestamp.
+
+Date              Record                                    Identifier                     Kind of timestamp
+8 December        The phrase recursive dynamics in         Book draft and Version 2, OSF   Mail-server date, held privately;
+2024              the author’s sealed record: the book     10.17605/OSF.IO/QASRK           OSF deposit 5 October 2026
+                  draft, line 1180 (also line 1622),
+                  and Version 2, line 1079
+
+
+
+
+                                                                38
+                                      What limits any system that improves itself
+
+
+Date             Record                                  Identifier                      Kind of timestamp
+
+2 January 2026   The framework first public, in print:   ISBN 978-1806056200; OSF        Publication date (author’s record;
+                 the first edition of the book           dqm3e                           the interior reads 6 January 2026);
+                 (Eastwood 2026a)                                                        OSF deposit 26 August 2026
+12 August        The first of the programme’s            Bitcoin block 962066            Bitcoin anchor
+2026             designs preregistered by timestamp
+16 August        Law III’s corrected form,               Statement paper, OSF file,      OSF deposit
+2026             𝛼crit = 1/(1 − 𝛾); the retired form,    revision 27
+                 with 𝛾 alone in the denominator,
+                 retracted
+27 August        The phrase adopted as the name of       Stated in this paper (version   Date written inside the document
+2026             the field (priority register            2.6, OSF deposit 31 August
+                 PC-RD-001)                              2026)
+28 August        This paper’s first draft, version 1.0   Appendix A.2, entry 1           Date written inside the document
+2026             (PC-RD-002)
+30 August        Version 2.6: the name’s kill            OSF file, component hcpbu       Date written inside the document;
+2026             condition corrected, and the                                            OSF deposit 31 August 2026
+                 objection that the field is the ARC
+                 Theory renamed added
+                 (PC-RD-003)
+31 August        This paper first published on OSF       DOI                             OSF deposit
+2026                                                     10.17605/OSF.IO/HCPBU
+8 September      The theory registration, twenty-two     DOI                             Registration accepted on OSF
+2026             propositions, version 1.100;            10.17605/OSF.IO/P8CKQ
+                 updated 13 September 2026
+                 (version 1.102)
+24 September     Laws IV and V added to the theory       This paper from version 3.0     Date written inside the documents
+2026                                                     (Appendix A.2, entry 13)
+3 October 2026   Laws IV and V: the mathematics,         DOI                             Date written inside the document;
+                 version 1.0                             10.17605/OSF.IO/4B3VT           OSF deposit 3 October 2026
+7 October 2026   Laws IV and V: the mathematics,         DOI                             Date written inside the document;
+                 version 1.1                             10.17605/OSF.IO/4B3VT           OSF deposit 12 October 2026
+15 October       Version 1.103 of the theory             DOI                             Registration update approved on
+2026             registration, which registers           10.17605/OSF.IO/P8CKQ           OSF
+                 Laws IV and V as laws
+
+
+
+B.2    The framework’s dated record
+Framework dated record: 8 December 2024 (private, sealed); 2 January 2026 (first public, in print). The
+phrase recursive dynamics stands in the sealed record of 8 December 2024; it was adopted as the name of
+the field on 27 August 2026.
+
+
+C      Notation and glossary
+The symbols the paper uses, each with the place it is defined (Table 8), and its terms in plain language
+(Table 9).
+
+
+
+
+                                                             39
+                                 What limits any system that improves itself
+
+
+C.1        Symbols
+
+                             Table 8. Symbols, with the place each is defined.
+
+Symbol                    Meaning                                                        Defined in
+𝑈 (or 𝐶)                  capability: what the system can do, on a calibrated ladder     Section 4
+                          with no ceiling
+𝑅                         recursive depth: how many times outputs have re-entered        Section 4
+                          the loop
+𝛽𝐶                        correction rate: how fast internal correction strengthens      Section 4
+                          as capability grows
+𝑘                         drift: how fast the errors and misalignments that              Section 4
+                          accumulate per self-modification grow as capability
+                          grows
+𝛾                         correction leverage: how correction capacity scales with       Sections 4 and 6
+                          capability; the exponent in the ARC Ceiling
+𝛼                         the growth exponent: capability grows as a power of            Sections 5 and 6
+                          recursive depth
+𝐼                         base capability: what the system can do before any             Section 5
+                          self-improvement, the same battery score read at
+                          recursive depth one (the notation register’s base
+                          intelligence); the multiplier in Law I, 𝑈 = 𝐼 × 𝑅 𝛼
+𝛼crit                     the crossover exponent, 1/(1 − 𝛾): Law III, the ARC            Section 6, equation (2)
+                          Ceiling
+𝐶0 , 𝑅0                   the reference capability and depth of the growth law           Section 6
+                          𝐶 (𝑅) = 𝐶0 (𝑅/𝑅0 ) 𝛼
+𝐵(𝑅), 𝑏                   correctable burden per unit depth, 𝑏 d𝐶/d𝑅, and its            Assumption 1
+                          coefficient
+𝐴(𝑅), 𝑎                   correction service capacity, 𝑎 𝐶 (𝑅) 𝛾 , and its coefficient   Assumption 2
+𝑁                         the number of corrections a corrector aggregates               Section 6
+𝑆ext (1)                  the retained fraction of an externally installed gain at the   Section 5
+                          matched budget (P15)
+𝛾first , 𝛾after           the correction-leverage exponent with correction formed        Section 5
+                          first and with correction added after (P12)
+𝛿                         how fast a loop compresses its own cycle time                  Section 5, Table 3
+                          (Paper XIII)
+P1 to P22                 the propositions of the theory registration                    Sections 5 and 11
+ARC-1                     the register of the theory registration that tests Law I       Section 5
+𝑝                         a binomial 𝑝-value                                             Section 9
+
+
+C.2        Plain-language glossary
+
+
+
+
+                                                       40
+                                  What limits any system that improves itself
+
+
+                                 Table 9. The paper’s terms in plain language.
+
+Term                           In plain language                                            See
+Recursive system               Any system whose outputs re-enter its own improvement        Definition 1
+                               process
+Native object                  The self-improvement loop, which no neighbouring field       Section 3
+                               takes as primitive
+Scale discipline               Capability measured on a ratio scale with a true zero and    Section 4
+                               no ceiling, before any law is stated
+Capability ladder              A latent, ratio-scaled capability measure with a true zero   Section 4
+                               and no ceiling, on which doubling means the same thing
+                               at every height
+Corrector class                What a corrector is made of; a same-class corrector          Section 6
+                               shares the architecture, training distribution and blind
+                               spots of the system it corrects
+Independence-aggregation       The premise that caps a same-class corrector’s               Sections 5 and 6
+benchmark                      correction leverage at one half
+Correction-versus-drift race   The critical-correction-ratio study, which decides Law II    Section 11
+Eclipse measurement            The corrector-class ratio, which decides Law III’s           Section 11
+                               mechanism
+Capability-ladder titration    The ARC Bound study, which decides the ceiling’s             Section 11
+                               behavioural signature
+Fourth-cell test               The test on the logarithmic family and on domains never      Section 9
+                               fitted, which exists to catch the programme flattering
+                               itself
+Laundering                     Re-presenting every output so that no scorer can tell        Section 10
+                               what produced it
+Fixture-gated estimator        Estimator code whose every preregistered verdict branch      Section 10
+                               must pass a planted-truth test before anything ships
+Defect clause                  The preregistered rule under which the specification, not    Section 10
+                               the code, is the analysis, so a coding error found after
+                               registration is a disclosed repair
+Forced null                    The corrector-class ratio fixed at exactly 1.00 by           Section 11
+                               construction if what a corrector is made of does not
+                               matter
+Founding conjunction           The results no neighbouring field could state in its own     Section 11.1
+                               variables, taken together
+Dissolution map                Where each part of the field goes if the founding            Section 3.1
+                               conjunction fails
+Licence conditions             The six checkable conditions by which a new area of          Section 7
+                               science is licensed
+Preregistered                  Fixed in one of the dated designs, short for preregistered   Section 11
+                               by timestamp; registered is kept for what OSF has
+                               accepted
+
+
+
+
+                                                       41
+                                 What limits any system that improves itself
+
+
+Term                          In plain language                                          See
+
+Reading debt                  A literature that must be read before a point can be       Section 12
+                              argued either way, under the rule that nothing is cited
+                              before it is read
+Minimal commitment            That the self-improvement loop is a legitimate object of   Section 15.2
+                              measurement, with quantities that can be defined,
+                              instruments that can measure them, and relations that
+                              can be shown wrong
+Carnot stage                  One memoir in, instruments built, decisive                 Section 17
+                              measurements preregistered by timestamp and not yet
+                              run
+
+
+
+D      The paper’s place in the programme
+The theory registration this paper refers to, the paper’s place among the laws of the ARC Theory, and the
+registers its claims are tied to.
+
+D.1    The theory registration
+Theory-level predictions registered on OSF: DOI 10.17605/OSF.IO/P8CKQ, registered 8 September
+2026 (version 1.100), updated 13 September 2026 (version 1.102) and 15 October 2026 (version 1.103),
+twenty-two propositions. Companion: Register · The ARC Theory · Operational Definitions, version
+1.9.1, 5 October 2026.
+
+D.2    Placement
+This is the founding paper of Recursive Dynamics, the field as a whole. It states the field’s object, its
+measurement principle and its five state variables (Sections 3 and 4), and it states the five laws of the
+ARC Theory, the field’s founding theory, as named conjectures under test (Section 5): Law I, the ARC
+Principle, Law II, the ARC Co-Scaling Law, and Law III, the ARC Ceiling, registered on 8 September
+2026; Law IV, the ARC Persistence Law, and Law V, the ARC Embedding Law, added on 24 September
+2026 and registered as laws on 15 October 2026 in version 1.103, neither yet tested, their mathematics
+in development. It derives Law III inside a stated model (Section 6). It decides no law and makes no
+measurement of its own; its decisive experiments are preregistered by timestamp and not run (Section 11).
+It does not treat the Eden Protocol or the HARI Treaty.
+
+D.3    The registers behind the claims
+Every claim in this paper is tied to the programme’s registers of claims, corrections, kill conditions and
+antecedents, which carry per-claim statuses; where a register and this text differ, the text is corrected at
+the paper’s next version and the correction listed in Appendix A.
+
+
+
+
+                                                      42
+
