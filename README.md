@@ -82,11 +82,12 @@ U = I x R^alpha     proposed relationship, conditional on the measured domain
 
 **The historical prediction was `alpha_sequential > 1 > alpha_parallel`.** Paper II
 reports an exploratory sequential/parallel ordering. A general compute-matched causal
-advantage and a universal scaling law are not established by that observation. The
-early super-linearity estimate of approximately 2.24 was retracted; the robust v13
-cross-architecture estimate is approximately 0.49, which is sub-linear. Super-linearity
-remains an open prediction and is not confirmed. The `R^2 = 1.00000000` fit reported in an
-earlier version was an algebraic identity check and never an empirical validation.
+advantage and a universal scaling law are not established by that observation. The early
+super-linearity estimate of approximately 2.24 was retracted; the surviving v13 estimate,
+approximately 0.49 from one model (0.59 by endpoint estimate, interval [-1.3, 2.9]), is
+inconclusive. Super-linearity remains an open prediction and is not confirmed. The
+`R^2 = 1.00000000` fit reported in an earlier version was an algebraic identity check and
+never an empirical validation.
 
 ## Results, with their current status
 
@@ -98,7 +99,7 @@ earlier version was an algebraic identity check and never an empirical validatio
 | Paper IV.a | architecture-dependent alignment response classes | pilot |
 | Paper IV.b | alignment saturates at low recursion depth | pilot |
 | Paper IV.c | a reproducible blind benchmark specification | specification, not a result |
-| Paper IV.d | unblinded scoring can reverse an alignment measurement | pilot, and the programme's own strongest caution about its other results |
+| Paper IV.d | on the programme's own benchmark, unblinded rises did not hold in a later run that changed several things, a bundle of blinding steps among them (one reversal, one loss to null) | pilot; several components changed together and a code review found defects, so no single cause is claimed |
 | Paper V | the Eden intervention on stakeholder care | five per-model results stand; the Fisher-combined figure of 6.3 x 10^-21 is **withdrawn** under AQ-017, because independence among the five tests was never established |
 | Paper VI | entangled loss functions for self-modifying AI safety | mechanistic in simulation, exploratory against live models |
 | Paper VII | the cross-domain functional-equation classification | **published, version 3.15, revised 5 October 2026, as the site's paper register records it.** The grid has four cells, not three, as Section 2.1 states, and the three-family framing is withdrawn. Since version 3.12 (3 October 2026) the abstract says what Section 2.2 states: a power law for multiplicative composition and an exponential for additive composition, with saturation curves compatible with bounded composition and the proof that they exhaust that case still open; the conclusion says that this case is not strictly Cauchy-derived. The primary statistic is a permutation test conditioned on both marginals, not the binomial reported previously |

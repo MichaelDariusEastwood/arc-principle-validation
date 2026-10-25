@@ -33,7 +33,7 @@ falsifiable hypothesis · **Cond** conditional implication.
 - **Novelty** (new to the literature): the co-scaling *intuition* has ancestors (Ashby 1956;
   Conant-Ashby 1970; scalable oversight; Lyapunov drift), credited in §2. The defensible *novel*
   residue is: the closed-form $\beta > k$ criterion + the Hard-Takeoff Depth-Regularity theorem
-  (this paper); the IV.d blinding-reversal measurement law (companion); and the runnable $\beta/k$
+  (this paper); the IV.d blinding finding (companion; no single cause claimed); and the runnable $\beta/k$
   estimator + protocol. Programme-wide prior-art audits are committed under each paper's `results/`.
 
 ## What would falsify or materially weaken the central claim

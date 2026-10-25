@@ -57,9 +57,11 @@ and certify, instead of an unenforceable speed limit.
 Much of the underlying mathematics is classical and is credited as such. The original
 contributions, stated precisely, are: (1) the **beta > k** criterion as a compact,
 measurable test of whether a self-improving system stays correctable; (2) a companion
-result that **unblinded safety evaluations can reverse their own conclusions** - so
-safety must be measured blind; and (3) a working, blind **measurement instrument** for
-running the test on real models.
+record that, on the programme's own benchmark, **two unblinded alignment rises did not
+hold in a later run that changed several things, a bundle of blinding steps among
+them** (no single cause claimed), which is why the author argues safety should be
+measured blind; and (3) a working, blind **measurement instrument** for running the
+test on real models.
 
 ## Who
 

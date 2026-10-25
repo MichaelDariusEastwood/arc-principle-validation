@@ -7,7 +7,9 @@
 
 ## Summary
 
-Working paper v2.1: the ARC programme's forward predictions assembled as one dated, verifiable chain, with the ensemble doctrine, the graded book appendices, the minute-resolution correction record and the standing unproven wagers.
+From the abstract (version 2.1):
+
+> This working paper assembles the programme's forward predictions as a single dated chain and states exactly what that chain does and does not establish. It does not make the programme preregistered in the registry sense, and it never uses that word on its own for anything except an accepted registry submission: a design fixed by a dated timestamp before its run is called preregistered by timestamp. It establishes something narrower and checkable: every core quantitative claim has at least one dated artefact fixing it before the measurement that tested it, with the exception of Paper VII’s fifty-domain cohort, whose predictions were not timestamped in advance of their own fits, and a stranger can verify each link in minutes from public materials.
 
 ## Links
 
@@ -15,4 +17,4 @@ Working paper v2.1: the ARC programme's forward predictions assembled as one dat
 - **Programme OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror of the published version, byte for byte from the website on 8 October 2026 (this repository receives each version after it is published).
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

@@ -9,7 +9,9 @@
 
 ## Summary
 
-Proposes the Polymathic Neurodivergent Profile (PNP) as a descriptive, non-diagnostic framework. Central claim: capability in one domain does not remove support needs in another (the Capability–Adjustment Fallacy). Situated within established literatures on strengths-based autism assessment, monotropism, twice-exceptionality, and autistic underemployment. Connected to the independent finding by Hernández-Espinosa et al. (2026, PNAS Nexus) that neurodivergent cognition is a protective factor for AI alignment.
+From the abstract (version 1.10):
+
+> This paper sets out the Polymathic Neurodivergent Profile (PNP) as a descriptive, non-diagnostic framework for a rare but practically important pattern: unusually strong cross-domain learning, structural pattern transfer between fields, intense self-directed research, and high output in complex, high-interest domains, coexisting with clinically significant difficulty in routine administration, pacing, timekeeping, task-switching, and low-stimulation procedural work. The central proposition is the Capability-Adjustment Fallacy: the institutional inference that visible high performance is evidence that reasonable adjustments are unnecessary. That inference is unsafe, and is contradicted by existing clinical guidance.
 
 ## Key references cited
 - Hernández-Espinosa et al. (2026), PNAS Nexus 5(4):pgag076
@@ -30,7 +32,7 @@ Same as all other papers: Chrome headless with MathJax rendering.
 
 ## Integration
 - Evidence spine: new claim or extension of claim 6 (37 original concepts)
-- Convergence 29: neurodivergence proof
-- Credibility: independent citation from Oxford/KCL/Turing Institute/Tokyo
+- Convergence, in the paper's words: "A convergence analysis connecting the profile to independent results in AI alignment: agent diversity as a counterbalance under a neurodivergence analogy (PNAS Nexus, 2026) and the structural insufficiency of external verification (arXiv:2606.28639), with a precise, timestamp-anchored account of what preceded what."
+- Relation to that work, in the paper's words: "the framework's central claim about neurodivergent cognition found adjacent territory in Hernández-Espinosa and colleagues (PNAS Nexus, 14 April 2026), whose subject is artificial agents"
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

@@ -28,4 +28,4 @@ This is a synthesis document. Experiments are distributed across the individual 
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 - **Research hub:** https://www.michaeldariuseastwood.com/research/
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

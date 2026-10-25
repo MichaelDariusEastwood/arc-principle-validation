@@ -7,7 +7,9 @@
 
 ## Summary
 
-Paper XIII of the ARC Theory: a derivation, not a measurement. It resolves the notation collision between the programme’s scaling and corrective frameworks, defines the self-acceleration exponent delta (how fast a system compresses its own iteration time), and derives k = delta minus 1/alpha, giving the threshold delta = 1/alpha and a survivable hard-takeoff window whose width is exactly the correction exponent. Three of the four quantities in the central result have never been measured in any system; the paper states what would refute it.
+From the abstract (version 1.10):
+
+> Two frameworks in this programme describe recursive self-improvement and have never been related. ... This paper resolves the notation, derives the relation between the frameworks, and finds that the quantity deciding the outcome is neither capability nor speed but how fast a system compresses its own iteration time. ... β\_X and β′\_L have never been measured; δ has not either, and it is the one that could be measured within a month of a loop existing.
 
 ## Links
 
@@ -16,4 +18,4 @@ Paper XIII of the ARC Theory: a derivation, not a measurement. It resolves the n
 - **Programme OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror of the published version, byte for byte from the website on 8 October 2026 (this repository receives each version after it is published).
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

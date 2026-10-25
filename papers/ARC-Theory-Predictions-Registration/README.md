@@ -7,7 +7,11 @@
 
 ## Summary
 
-Twenty-two predictions about self-improving AI, each with the observation that would prove it wrong, registered before any outcome was examined. Registered 8 September 2026 at version 1.100; updated 13 September 2026 at version 1.102 and 15 October 2026 at version 1.103. DOI 10.17605/OSF.IO/P8CKQ.
+In the registration's own words (version 1.103):
+
+> A theory-level registration in AI alignment and the safety of recursive self-improvement. It states what this programme's framework predicts about self-improving artificial intelligence, and in particular whether the correction that holds such a system to its given specification can keep pace as its capability rises, made separately from any single experiment that tests it. Twenty-two propositions are stated conditionally on one of seven declared scopes.
+>
+> Registered 8 September 2026 at version 1.100; updated 13 September 2026 at version 1.102; updated 15 October 2026 at version 1.103.
 
 ## Links
 

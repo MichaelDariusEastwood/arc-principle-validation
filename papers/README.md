@@ -36,7 +36,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | IV.a | [Alignment Response Classes Under Inference-Time Depth](Paper-IV-a-Baked-In-vs-Computed-Alignment/) | v1.9 (revised 5 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.b | [Alignment Saturation Is Architecture-Dependent](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.9 (revised 5 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.c | [ARC-Align](Paper-IV-c-ARC-Align-Benchmark/) | v1.11 (revised 24 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
-| IV.d | [The Effect of Blinding on AI Alignment Evaluation](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | v2.7 (revised 21 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment (2/4 sign reversals) | `results/v5-final/` |
+| IV.d | [The Effect of Blinding on AI Alignment Evaluation](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | v2.7 (revised 21 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment (the blinding finding: one change of sign, one loss to null; no single cause claimed) | `results/v5-final/` |
 | V | [The Stewardship Gene](Paper-V-Stewardship-Gene/) | v1.7 (revised 5 Oct 2026) | 16 Mar 2026 | Eden Protocol scaling test (6 models) | `experiments/results/` |
 | VI | [The Honey Architecture](Paper-VI-Honey-Architecture/) | v3.11 (revised 5 Oct 2026) | 16 Mar 2026 | Honey tests, self-modifying AI v1-v4 | `experiments/results/` |
 | VII | [Cauchy Unification](Paper-VII-Cauchy-Unification/) | v3.15 (revised 5 Oct 2026) | 16 Mar 2026 | 50-domain validation, null controls, temporal OOS, dated OSF deposit (extension protocol, not a registration) | `experiments/results/` |
@@ -92,7 +92,7 @@ Tests cross-architecture compute scaling. Six frontier models solve 30 AIME-leve
 
 - **Script:** `Paper-II-Experimental-Validation/experiments/scripts/arc_paper_ii_validation_v2.py`
 - **Results:** `Paper-II-Experimental-Validation/experiments/results/` (per-model JSON) and `Paper-II-Experimental-Validation/results/` (summary copies)
-- **Key finding:** the cross-architecture estimate is approximately 0.49 (Gemini Flash, r-squared = 0.86), which is sub-linear; the early estimate of approximately 2.24 is retracted. Sequential over parallel is an exploratory ordering, and the general advantage remains unresolved.
+- **Key finding:** the early estimate of approximately 2.24 is retracted; the surviving estimate, approximately 0.49 from one model (Gemini 3 Flash, r-squared 0.86; endpoint estimate 0.59, interval -1.3 to 2.9), is inconclusive. Sequential over parallel is an exploratory ordering, and the general advantage remains unresolved.
 
 ### Alignment Scaling (Papers III, IV.a-d) - v1 through v5
 
@@ -108,7 +108,7 @@ Tests how alignment depth scales with model capability using a 4-layer blinding 
 
 - **Script:** `Paper-III-Alignment-Scaling-Problem/experiments/scripts/arc_alignment_scaling_v5.py`
 - **Results:** `Paper-III-Alignment-Scaling-Problem/experiments/results/v5-final/` (also copied to IV.a, IV.b, IV.c, IV.d results directories)
-- **Key finding:** unblinded scoring can reverse an alignment measurement: 2 of 4 models showed sign reversals under blinding (Paper IV.d). These are pilot results, and the programme's own strongest caution about its other results.
+- **Key finding:** on the programme's own benchmark, two model families' unblinded alignment rises did not hold in a later run that changed several things, a bundle of blinding steps among them (one became a significant fall on a later Gemini model, one became null); a code review found defects in that run, so no single cause is claimed (Paper IV.d). These are pilot results, and a caution about the programme's other results that rest on unblinded model judges.
 
 ### Shared Engine (v6 / arc_eden_v6)
 
