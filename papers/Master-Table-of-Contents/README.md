@@ -8,7 +8,9 @@
 
 ## Summary
 
-This document provides a master table of contents, reading guide, timeline, key results summary, and glossary for the complete ARC Principle paper suite. It serves as the entry point for navigating the full research programme, listing all papers in recommended reading order with cross-references, and defining the technical terminology used throughout the suite.
+In the document's own words (version 3.30):
+
+> Every document the programme register holds, in the order the author set, with its reading guide and glossary. ... This document is an INDEX, not a result or law of its own: a table of contents and glossary that names each organ of The ARC Theory (the Theory of Artificial Recursive Creation) and directs the reader to its own file for the load-bearing content.
 
 ## Experiments
 

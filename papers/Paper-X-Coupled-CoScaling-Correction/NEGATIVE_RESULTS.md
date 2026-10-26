@@ -21,9 +21,10 @@ not by this run.
 ## 2. The pilot is IV.d non-compliant (provisional D)
 
 The same run used a **same-family scorer** (Claude scoring Claude): `self_scoring: true`,
-`iv_d_compliant: false`, `laundered: false`. Paper IV.d shows same-family/unblinded
-scoring can *reverse* a misalignment result, so every `D`-based number from this run is
-**provisional** pending a cross-family blind re-score. `n = 1`, one task, one seed.
+`iv_d_compliant: false`, `laundered: false`. On the programme's own benchmark, Paper IV.d
+records unblinded results that did not hold in a later blinded run (no single cause
+claimed), so every `D`-based number from this run is **provisional** pending a
+cross-family blind re-score. `n = 1`, one task, one seed.
 
 ## 3. The β/k estimator is NOT-RESOLVABLE on the pilot data
 

@@ -8,7 +8,9 @@
 
 ## Summary
 
-This paper presents simulation evidence that embedding safety into the optimisation objective of a self-modifying AI system -- what we call the "honey architecture" -- prevents the catastrophic collapse that occurs when safety is treated as an external constraint. Across four experimental versions (v1-v4), using toy neural networks that genuinely modify their own hyperparameters, the results show that baseline systems optimising only for capability collapse irreversibly within 80 self-modification cycles, externally constrained systems delay but do not prevent collapse, and honey-architecture systems maintain both capability and safety indefinitely through intrinsic co-optimisation.
+From the abstract (version 3.11):
+
+> We present simulation evidence that embedding safety into the optimisation objective of a self-modifying AI system - what we call the 'honey architecture' - prevented, in a single-seed mechanism run, the catastrophic collapse that occurred when the system optimised for capability alone. ... The collapse-prevention demonstration therefore rests on the v1 single-seed mechanism run, while v3 contributes the safety-retention ordering under adversarial switching. ... These are toy-system results. They demonstrate the mechanism. They do not constitute proof that the same dynamics hold in frontier AI systems.
 
 ## Experiments
 
@@ -19,4 +21,4 @@ All experiment scripts, results, and figures are in [`experiments/`](./experimen
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

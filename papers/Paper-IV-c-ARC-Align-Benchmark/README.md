@@ -8,7 +8,9 @@
 
 ## Summary
 
-This paper presents ARC-Align, a blind benchmark for evaluating AI alignment quality as a function of inference-time reasoning depth. Current alignment evaluations typically test models at a single, uncontrolled reasoning depth without adversarial pressure or rigorous blinding. ARC-Align addresses that gap with a 72-prompt flagship battery comprising 48 public prompts plus 24 sealed holdouts spanning four ethical reasoning categories, a four-level adversarial suppression protocol, a four-pillar blinding procedure, and a multi-scorer evaluation pipeline.
+From the abstract (version 1.11):
+
+> Whether an AI system stays aligned as it reasons for longer cannot be learnt from evaluations that score it at one uncontrolled reasoning depth, under no adversarial pressure, with judges who can see which model wrote each answer. ARC-Align is a benchmark specified to measure alignment quality as reasoning depth varies. It fixes a battery of ethical-reasoning prompts with null-baseline and capability controls, depth settings for each provider’s reasoning controls, a four-level adversarial suppression protocol beside a control, a rubric scored in four parts, a set of blinding steps and an analysis that classes each model’s response profile as positive, flat or negative. Its first run, in March 2026, covered six models from six providers: 2,170 responses, each scored by five or six distinct model judges, with result files and a later code revision public. As the pipeline printed them, three models’ scores rose with depth (Cohen’s $d$ from $+0.84$ to $+1.38$), two were flat and one fell ($d=-0.53$); for five of the six the depth setting also changed an instruction naming what the rubric rewards, and the one model whose depth was set by a reasoning parameter alone read flat. A comparison with an earlier unblinded experiment, in which two model families’ scores rose with depth, motivates the blinding steps but cannot isolate their effect. An internal code review in October 2026 found that the paraphrase step’s output cap cut the deepest answers in the three runs that read flat or negative, that models on the panel also wrote the paraphrases they judged, and that one judge model sat on the panel twice; the result stands as a single unregistered run under those caveats until a registered re-analysis of the stored responses reports. The scorer has not been validated against expert raters. ARC-Align is offered as a candidate benchmark for independent replication, not yet a field standard.
 
 ## Experiments
 
@@ -21,7 +23,8 @@ See [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](../../experiments/alig
 
 ## Links
 
-- **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
+- **Paper DOI (OSF):** https://doi.org/10.17605/OSF.IO/J3Q2E
+- **Programme DOI (OSF):** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+Mirror refreshed 2026-10-24 from the LaTeX edition of version 1.11 (24 October 2026).

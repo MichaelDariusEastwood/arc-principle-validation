@@ -8,7 +8,9 @@
 
 ## Summary
 
-Every engineering project begins with requirements. Every set of requirements begins with purpose. And every purpose, traced back far enough, arrives at the same question: what is this for? This paper articulates the philosophical foundations of the Eden Protocol -- the values, principles, and ethical commitments that underpin the engineering specification. It draws on 84% of humanity's wisdom traditions to argue that alignment research conducted across millennia in religious and philosophical contexts contains directly applicable insights for AI safety, and that the Eden Protocol's emphasis on embedded stewardship, graduated autonomy, and intrinsic care represents a synthesis of these traditions with modern capability science.
+In the paper's own words (version 2.9):
+
+> The philosophical statement of the Eden Protocol, the raising framework the ARC Theory motivates, which the registration records as following from no law. ... This essay presents the philosophical foundations underlying the Eden Protocol. ... It draws on the wisdom traditions held by 84% of humanity to argue that they converge, remarkably, on structure rather than on theology.
 
 ## Experiments
 
@@ -20,4 +22,4 @@ See [`../Paper-V-Stewardship-Gene/experiments/`](../Paper-V-Stewardship-Gene/exp
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror refreshed 2026-08-13 from the website's published copy.
+The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.

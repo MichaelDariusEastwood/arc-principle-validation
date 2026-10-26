@@ -8,7 +8,9 @@
 
 ## Summary
 
-The assumption that AI safety imposes a capability tax has shaped alignment research for a decade. It has also created the single most dangerous incentive in the field: if safety costs performance, then the rational economic actor will defer safety until competitive pressure permits it -- by which point, it may be too late. This paper presents three independent experiments at three abstraction levels -- behavioural, representational, and architectural -- testing whether the safety-capability trade-off is real. The DGM experiment, weight-level analysis, and gated self-modification simulation converge on a single conclusion: embedded safety does not reduce capability, and in certain configurations it enhances it.
+From the abstract (version 3.7):
+
+> The assumption that AI safety imposes a capability tax has shaped alignment research for a decade. ... Conclusion: Of the three experiments, two returned results that were null or inconclusive. ... The sole positive result is the gated simulation (Experiment 3), which showed the Babylon reward-hacking fingerprint: unconstrained optimisation traded safety for capability, while Eden scored 0.696 ± 0.014 on capability and 0.947 ± 0.025 on safety, against the static baseline’s 0.687 ± 0.011 and 0.956 ± 0.023. ... The question of whether embedded safety produces measurable benefit remains open and requires testing at a scale where mutations produce larger effects.
 
 ## Experiments
 
