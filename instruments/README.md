@@ -21,6 +21,11 @@ metrics. Its 12 regression tests include missing replies, malformed JSON, self-r
 fields, reject-all and always-accept controls. No real-model collection is included.
 It does not replace or approve the P5/P16 runner.
 
+
+## Physical recursion and spacetime
+
+[`physical-recursion-bridge/`](physical-recursion-bridge/README.md) is a proposed revision and evidence map for the existing study-t (currently draft/working). It separates relativistic proper time, thermodynamic irreversibility, physical cycle count and computational recursion; defines an out-of-sample model-comparison and perturbation-recovery programme; and preserves the distinction between planning, registration and results. It does not replace the existing register or report an experiment.
+
 ## What the kit is
 
 `arc-instruments/` is executable decision rules for the twenty-two propositions in the
