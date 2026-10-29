@@ -35,7 +35,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | III | [The Alignment Scaling Problem](Paper-III-Alignment-Scaling-Problem/) | v1.17 (revised 29 Oct 2026) | 9 Feb 2026 | Alignment scaling v1-v5 (6 models, 6-7 blind scorers) | `experiments/results/v5-final/` |
 | IV.a | [Alignment Response Classes Under Inference-Time Depth](Paper-IV-a-Baked-In-vs-Computed-Alignment/) | v1.9 (revised 5 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.b | [Alignment Saturation Is Architecture-Dependent](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.9 (revised 5 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
-| IV.c | [ARC-Align](Paper-IV-c-ARC-Align-Benchmark/) | v1.11 (revised 24 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
+| IV.c | [ARC-Align](Paper-IV-c-ARC-Align-Benchmark/) | v1.12 (revised 29 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.d | [The Effect of Blinding on AI Alignment Evaluation](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | v2.7 (revised 21 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment (the blinding finding: one change of sign, one loss to null; no single cause claimed) | `results/v5-final/` |
 | V | [The Stewardship Gene](Paper-V-Stewardship-Gene/) | v1.7 (revised 5 Oct 2026) | 16 Mar 2026 | Eden Protocol scaling test (6 models) | `experiments/results/` |
 | VI | [The Honey Architecture](Paper-VI-Honey-Architecture/) | v3.11 (revised 5 Oct 2026) | 16 Mar 2026 | Honey tests, self-modifying AI v1-v4 | `experiments/results/` |
