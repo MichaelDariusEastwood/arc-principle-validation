@@ -1,16 +1,20 @@
 # Framework Paper · The ARC Theory · Law I, the ARC Principle · On the Origin of Scaling Laws: Functional Equations and the Scaling Forms Behind the Law
 
 **Full title:** Framework Paper · The ARC Theory · Law I, the ARC Principle · On the Origin of Scaling Laws: Functional Equations and the Scaling Forms Behind the Law
-**Version:** v3.12
-**Version date:** Working Paper, revised 10 October 2026
+**Version:** v3.13
+**Version date:** Working Paper, revised 31 October 2026
 **First published:** 22 February 2026
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 3.12):
+From the abstract (version 3.13):
 
-> Where a recursive amplification process has a well defined composition operator on its input and output, and satisfies the regularity conditions Cauchy's functional equations require, the admissible functional forms are constrained to a small named family. That is a conditional mathematical classification, not a survey of nature: it does not establish that every empirical scaling process is such a homomorphism, and the bounded family's exhaustiveness remains an open problem, as Paper VII states. The grid is four-celled rather than three, the fourth cell being the logarithmic family.
+> If the way a process combines its steps fixes the family of forms its growth can take, then the family a self-improving system's capability will follow as its recursion deepens can be read from how it composes, before it scales and while correction can still be built into it. This paper asks why scaling laws in recursive composition keep taking the same few mathematical forms. Where a process has a well defined composition operator on its input and output and meets the regularity conditions that Cauchy's functional equations require, the admissible forms fall into four families: linear, power law, exponential and logarithmic. This is a conditional classification, not a survey of nature, and saturation lies outside it. Within the power-law family, the exponent $\alpha = d/(d+1)$ for a $d$-dimensional hierarchical network is earlier work's; this paper gives an account of why those derivations, from different assumptions, converge, and a proof that its three conditions suffice does not yet exist. The relation is read as a network-partition identity with a stated domain: published exponents for filamentous fungi ($d = 1$) do not reject it (a mean of three factors on different axes; no equivalence shown), those for vertebrates and invertebrates with three-dimensional transport ($d = 3$) agree with it on the group means compiled here, though the mammalian exponent is debated, and no organism with a two-dimensional hierarchical network has been identified. Under $d = 2/(1+3w)$ the Friedmann solutions take the same form, an identity that carries no evidence. For finite $d$ the exponent stays below one, a bound on systems of that class only; how capability grows with recursive depth is a different pair of variables, which this geometry does not fix and which has to be measured. Five predictions are stated; one, on neural scaling exponents, is withdrawn because published measurements refute it.
+
+## LaTeX source
+
+[`On-the-Origin-of-Scaling-Laws-latex-source.tar.gz`](On-the-Origin-of-Scaling-Laws-latex-source.tar.gz): the LaTeX source package of version 3.13 (31 October 2026), the source files, bibliography and figures of the PDF of record; sha256 `ca8ef7eeeaff97a4c0486846de87e446cfdd082bd7e1db871bf3df517ad5f001`.
 
 ## Experiments
 
