@@ -21,6 +21,6 @@ From the abstract (version 4.1):
 - **Programme OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror of the published version, byte for byte from the website on 31 October 2026. The HTML is the website page, not a document export.
+Mirror of the published version, byte for byte from the website on 31 October 2026. No website page is published as HTML on a mirror; the HTML returns as the paper's own export with its LaTeX edition.
 
 The paper is licensed CC BY 4.0 ([LICENCE-PAPERS.md](../../LICENCE-PAPERS.md)).
