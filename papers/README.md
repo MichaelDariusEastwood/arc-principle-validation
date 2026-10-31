@@ -74,7 +74,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 
 | Document | Version | First Published | What it is |
 |----------|---------|-----------------|------------|
-| [Theory-level predictions registration](ARC-Theory-Predictions-Registration/) | v1.103 (revised 15 Oct 2026) | 8 Sep 2026 | The theory's twenty-two severable propositions, registered on OSF on 8 September 2026 (DOI 10.17605/OSF.IO/P8CKQ); the frozen v1.100 and v1.102 PDFs sit beside the current text |
+| [Theory-level predictions registration](ARC-Theory-Predictions-Registration/) | v1.104 (revised 29 Oct 2026) | 8 Sep 2026 | The theory's twenty-two severable propositions, registered on OSF on 8 September 2026 (DOI 10.17605/OSF.IO/P8CKQ); the frozen v1.100, v1.102 and v1.103 PDFs sit beside the current text |
 | [The Dated Prediction Register](Dated-Prediction-Register/) | v2.1 (revised 5 Oct 2026) | 25 Aug 2026 | Forward predictions as one verifiable chain |
 | [Operational Definitions](Operational-Definitions/) | v1.9.1 (revised 5 Oct 2026) | 22 Aug 2026 | The register of the programme's operational definitions of its terms (OSF DOI 10.17605/OSF.IO/GVQ82) |
 | [Laws IV and V: the mathematics](Laws-IV-V-Mathematics/) | v1.2 (revised 29 Oct 2026) | 1 Oct 2026 (v0.2.1) | The mathematics of the ARC Theory's Laws IV and V (added 24 September 2026), in development |
