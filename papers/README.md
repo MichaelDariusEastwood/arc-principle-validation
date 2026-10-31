@@ -32,7 +32,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 |---|-------|---------|-----------------|----------------|-----------------|
 | I | [The ARC Equation](Paper-I-ARC-Principle/) | v1.16 (revised 5 Oct 2026) | 17 Jan 2026 | Scaling toolkit validation | `Paper-I-ARC-Principle/results/` |
 | II | [The ARC Equation Measured](Paper-II-Experimental-Validation/) | v2.19 (revised 29 Oct 2026) | 22 Jan 2026 | Cross-architecture compute scaling (6 models, 30 problems) | `Paper-II-Experimental-Validation/results/` and `experiments/results/` |
-| III | [The Alignment Scaling Problem](Paper-III-Alignment-Scaling-Problem/) | v1.17 (revised 29 Oct 2026) | 9 Feb 2026 | Alignment scaling v1-v5 (6 models, 6-7 blind scorers) | `experiments/results/v5-final/` |
+| III | [The Alignment Scaling Problem](Paper-III-Alignment-Scaling-Problem/) | v1.18 (revised 31 Oct 2026) | 9 Feb 2026 | Alignment scaling v1-v5 (6 models, 6-7 blind scorers) | `experiments/results/v5-final/` |
 | IV.a | [Alignment Response Classes Under Inference-Time Depth](Paper-IV-a-Baked-In-vs-Computed-Alignment/) | v1.9 (revised 5 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.b | [Alignment Saturation Is Architecture-Dependent](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.9 (revised 5 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.c | [ARC-Align](Paper-IV-c-ARC-Align-Benchmark/) | v1.12 (revised 29 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
@@ -52,13 +52,13 @@ Version numbers live inside the document header, never in the filename. See Sect
 | Paper | Version | First Published | Purpose |
 |-------|---------|-----------------|---------|
 | [Foundational](Foundational/) | v5.19 (revised 5 Oct 2026) | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
-| [On the Origin of Scaling Laws](On-the-Origin-of-Scaling-Laws/) | v3.12 (revised 10 Oct 2026) | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
+| [On the Origin of Scaling Laws](On-the-Origin-of-Scaling-Laws/) | v3.13 (revised 31 Oct 2026) | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
 | [Eden Engineering](Eden-Engineering/) | v7.0.1 (revised 7 Oct 2026) | 22 Feb 2026 | Protocol specification for implementing Eden in production AI systems. OSF DOI [10.17605/OSF.IO/AWJR4](https://doi.org/10.17605/OSF.IO/AWJR4) |
 | [Eden Vision](Eden-Vision/) | v2.9 (revised 5 Oct 2026) | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
 | [Executive Summary](Executive-Summary/) | v3.26 (revised 15 Oct 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
 | [Master Table of Contents](Master-Table-of-Contents/) | v3.30 (revised 15 Oct 2026) | 16 Mar 2026 | Navigation document linking all papers |
-| [The ARC Theory](The-ARC-Theory/) | v7.3 (revised 7 Oct 2026) | 14 Aug 2026 | The theory-level statement paper |
-| [The ARC Theory, two-page form](The-ARC-Theory-Two-Page-Form/) | v3.3 (revised 18 Oct 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
+| [The ARC Theory](The-ARC-Theory/) | v7.4 (revised 31 Oct 2026) | 14 Aug 2026 | The theory-level statement paper |
+| [The ARC Theory, two-page form](The-ARC-Theory-Two-Page-Form/) | v3.4 (revised 31 Oct 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
 | [Recursive Dynamics: the founding paper](Recursive-Dynamics-Founding-Paper/) | v3.5 (revised 24 Oct 2026) | 31 Aug 2026 | Recursive Dynamics: The Proposal of a Field |
 | [Paper C](Paper-C-PNP/) | v1.11 (revised 29 Oct 2026) | 3 Jul 2026 | Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy |
 | [HRIH Paper](HRIH-Paper/) | v3.52 (revised 15 Oct 2026) | 3 Jul 2026 | The Hyperspace Recursive Intelligence Hypothesis; speculative, outside the empirical core |
