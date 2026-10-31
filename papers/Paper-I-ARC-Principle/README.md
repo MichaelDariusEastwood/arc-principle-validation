@@ -3,14 +3,20 @@
 **Earlier title:** The ARC Principle.
 
 **Full title:** Paper I · The ARC Theory · Law I, the ARC Principle · The ARC Equation, the Law of Conversion
-**Version:** v1.16
-**Version date:** revised 5 October 2026
+**Version:** v1.17
+**Version date:** revised 31 October 2026
 **First published:** 17 January 2026
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-This paper formalises and preliminarily tests the ARC Principle (Artificial Recursive Creation), first proposed in *Infinite Architects* (Eastwood, 2026): that capability in intelligent systems scales super-linearly with recursive depth. The principle is expressed mathematically as U = I x R^alpha, where effective capability (U) scales with base intelligence (I) multiplied by recursive depth (R) raised to an empirically determined power alpha. Preliminary evidence across multiple AI models confirms alpha > 1, supporting the core claim that recursion is a multiplicative amplifier of intelligence rather than a mere additive accumulator.
+From the abstract (version 1.17):
+
+> I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only proof will move the world. Does intelligence compound when each step builds on the last, or merely accumulate? This paper formalises and preliminarily tests Law I of the ARC Theory, the ARC Principle (Artificial Recursive Creation), which I first stated in an earlier form, as the ARC Hypothesis, in my manuscripts of 8 December 2024 and published, with the exponent two, in Infinite Architects (2026). As registered, it says that usable capability is a power of recursive depth, $U = I \times R^{\alpha}$, with the exponent $\alpha$ measured rather than assumed. The paper's hypothesis is that sequential recursion, in which each step builds on the last, scales super-linearly and faster than parallel recursion over independent samples. On published reasoning-model data, parallel sampling gives $\alpha \approx 0.1$ to $0.3$, and two points of sequential reasoning give $\alpha \approx 1.34$; the two series differ in system, benchmark and resource axis as well as in the form of recursion, and the sequential points are two versions of one model, so their contrast is held as a hypothesis. A later measurement on five frontier models (Paper II) finds one interpretable sequential fit, on Gemini 3 Flash: a regression exponent of 0.49 (standard error 0.20) and an endpoint exponent of 0.59 with a bootstrap 95 per cent interval of $-1.3$ to $2.9$. That is one model's fit and inconclusive, so super-linear scaling is unresolved rather than established. The paper also states the ARC Bound, the conjectured value two of Law III's ceiling: $\alpha = 2$ as a stability ceiling, not an impossibility limit, which a durably stable system above two would refute. Falsification criteria and their three-outcome decision form are given. Law I remains a law under test.
+
+## LaTeX source
+
+[`Paper-I-ARC-Principle-latex-source.tar.gz`](Paper-I-ARC-Principle-latex-source.tar.gz): the LaTeX source package of version 1.17 (31 October 2026), the source files, bibliography and figures of the PDF of record; sha256 `2f7bbc4bbb8c6422e27c6b211fcab1d386f595b5bf27b1f9c4012e6e7988f2bd`.
 
 ## Experiments
 
