@@ -30,7 +30,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 
 | # | Paper | Version | First Published | Key Experiment | Results Location |
 |---|-------|---------|-----------------|----------------|-----------------|
-| I | [The ARC Equation](Paper-I-ARC-Principle/) | v1.17 (revised 31 Oct 2026) | 17 Jan 2026 | Scaling toolkit validation | `Paper-I-ARC-Principle/results/` |
+| I | [Does intelligence compound when each step builds on the last, or merely accumulate?](Paper-I-ARC-Principle/) | v1.18 (revised 1 Nov 2026) | 17 Jan 2026 | Scaling toolkit validation | `Paper-I-ARC-Principle/results/` |
 | II | [The ARC Equation Measured](Paper-II-Experimental-Validation/) | v2.19 (revised 29 Oct 2026) | 22 Jan 2026 | Cross-architecture compute scaling (6 models, 30 problems) | `Paper-II-Experimental-Validation/results/` and `experiments/results/` |
 | III | [The Alignment Scaling Problem](Paper-III-Alignment-Scaling-Problem/) | v1.18 (revised 31 Oct 2026) | 9 Feb 2026 | Alignment scaling v1-v5 (6 models, 6-7 blind scorers) | `experiments/results/v5-final/` |
 | IV.a | [Alignment Response Classes Under Inference-Time Depth](Paper-IV-a-Baked-In-vs-Computed-Alignment/) | v1.10 (revised 31 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
