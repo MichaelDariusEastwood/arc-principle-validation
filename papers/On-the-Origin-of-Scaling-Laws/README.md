@@ -1,4 +1,4 @@
-# Framework Paper · The ARC Theory · Law I, the ARC Principle · On the Origin of Scaling Laws: Functional Equations and the Scaling Forms Behind the Law
+# Why do scaling laws in recursive composition keep taking the same few mathematical forms?
 
 **Full title:** Framework Paper · The ARC Theory · Law I, the ARC Principle · On the Origin of Scaling Laws: Functional Equations and the Scaling Forms Behind the Law
 **Version:** v3.13
@@ -35,3 +35,7 @@ See [`experiments/domain-validation__Foundational-and-Origin/`](../../experiment
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
 The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.
+
+## Citation metadata correction, 1 November 2026
+
+The text and citation files now use the title printed in the manuscript PDF. The manuscript, HTML, source package, version date and first-publication record are unchanged. Earlier metadata remains in file history.
