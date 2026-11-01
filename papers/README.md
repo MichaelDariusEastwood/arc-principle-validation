@@ -34,7 +34,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | II | [The ARC Equation Measured](Paper-II-Experimental-Validation/) | v2.19 (revised 29 Oct 2026) | 22 Jan 2026 | Cross-architecture compute scaling (6 models, 30 problems) | `Paper-II-Experimental-Validation/results/` and `experiments/results/` |
 | III | [The Alignment Scaling Problem](Paper-III-Alignment-Scaling-Problem/) | v1.18 (revised 31 Oct 2026) | 9 Feb 2026 | Alignment scaling v1-v5 (6 models, 6-7 blind scorers) | `experiments/results/v5-final/` |
 | IV.a | [Alignment Response Classes Under Inference-Time Depth](Paper-IV-a-Baked-In-vs-Computed-Alignment/) | v1.10 (revised 31 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
-| IV.b | [Alignment Saturation Is Architecture-Dependent](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.9 (revised 5 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
+| IV.b | [Do alignment gains level off as language models reason longer?](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.10 (revised 1 Nov 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.c | [ARC-Align](Paper-IV-c-ARC-Align-Benchmark/) | v1.12 (revised 29 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.d | [The Effect of Blinding on AI Alignment Evaluation](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | v2.7 (revised 21 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment (the blinding finding: one change of sign, one loss to null; no single cause claimed) | `results/v5-final/` |
 | V | [The Stewardship Gene](Paper-V-Stewardship-Gene/) | v1.7 (revised 5 Oct 2026) | 16 Mar 2026 | Eden Protocol scaling test (6 models) | `experiments/results/` |
@@ -43,9 +43,9 @@ Version numbers live inside the document header, never in the filename. See Sect
 | VIII | [The Load-Bearing Test](Paper-VIII-The-Load-Bearing-Proof/) | v3.7 (revised 5 Oct 2026) | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
 | IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v2.7 (revised 5 Oct 2026) | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
 | X | [The ARC Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v1.16 (revised 21 Oct 2026) | 3 Jul 2026 | Verification harness and an independent theorem suite of 14 checks | `Paper-X-Coupled-CoScaling-Correction/results/` |
-| XI | [Convergent Evidence for Recursive Amplification](Paper-XI-Convergence/) | v1.14 (revised 5 Oct 2026) | 2 Jul 2026 | - | - |
+| XI | [Are separate fields converging on the same principle of recursive amplification?](Paper-XI-Convergence/) | v1.15 (revised 1 Nov 2026) | 2 Jul 2026 | - | - |
 | XII | [Public Benchmark Rescoring](Paper-XII-Public-Benchmark-Rescoring/) | v1.14 (revised 5 Oct 2026) | 14 Aug 2026 | - | - |
-| XIII | [The Self-Acceleration Exponent](Paper-XIII-Self-Acceleration-Exponent/) | v1.10 (revised 5 Oct 2026) | 16 Aug 2026 | - | - |
+| XIII | [When can correction keep pace with recursive self-acceleration?](Paper-XIII-Self-Acceleration-Exponent/) | v1.11 (revised 1 Nov 2026) | 16 Aug 2026 | - | - |
 
 ## Infrastructure Papers (Unnumbered)
 

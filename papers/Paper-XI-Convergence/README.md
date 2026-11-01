@@ -1,27 +1,27 @@
-# Paper XI · The ARC Theory · Law I, the ARC Principle · Convergent Evidence for Recursive Amplification: a Graded Cross-Domain Register
-Earlier title: Convergent Evidence for Recursive Amplification as a Cross-Domain Structural Principle
-Author: Michael Darius Eastwood · Version 1.14 · Published 2 July 2026 · Updated 5 October 2026
+# Are separate fields converging on the same principle of recursive amplification?
+
+**Version:** 1.15
+**Revised:** 1 November 2026
+**First published:** 2 July 2026
+**Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 1.14):
+From the abstract (version 1.15):
 
-> This convergence register is exploratory (an observational count, not a test statistic); the underlying structural principle that above-threshold recursive self-correction produces stably super-linear gains is on trial in draft study-k (the boundary) and draft study-ad (the correction exponent), both drafted, preregistered by timestamp (first anchored on 12 August 2026 at block 962066) and awaiting human submission. ... No numerical convergence total is claimed from these rows: the canonical graded register (33 rows, as amended 7 September 2026, under the 2 August 2026 policy) publishes no total, because technical experiments, theorems, engineering proposals, policy developments, cultural echoes, prior work and author-run studies cannot legitimately be summed as one evidential quantity. This paper is the convergence report. It documents each convergence with exact sources, dates, and gap measurements. ... The PNAS paper is about machine agents, not about me; the human parallel is argued separately, in Paper C, on its own terms.
+> I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only proof will move the world. This paper asks how later work in separate fields bears on the ARC Theory’s conjectured links between recursive capability, the limits of external control and correction embedded in a system. It presents a selected retrospective register beside the author’s dated records over a 21-month window from 8 December 2024 to 1 September 2026. The contribution is a source trail, a record of revised comparisons and a separation of questions that require different measurements. The retained historical table and a frozen graded-register snapshot identify available sources and unresolved cells. They supply no aggregate evidential verdict: no fixed search population, disconfirming denominator or chance model is available. One dependent lineage connects a paper on diversity among machine agents (Hernández-Espinosa et al. 2026) with version 1 of a formal-verification preprint (J. P. Gumbau Mezquita 2026); the text distinguishes that historical version from its revised version 4. The human parallel is argued separately in Paper C. The oversight comparison is equally specific: Unit 01’s current draft measures a matched difference in residual-error decay at fixed capability; it measures neither correction-capacity scaling nor a ceiling. P6’s same-class bound remains a conjecture subject to its registered domain and conditions. Section 6 states the requirements for a later audit. The register bears on Law I of the ARC Theory and, as context only, on Law V; it tests neither. 
 
-## Key references
-- Hernández-Espinosa et al. (2026), PNAS Nexus 5(4):pgag076
-- Gumbau Mezquita (2026), arXiv:2606.28639
-- Anthropic (2024), arXiv:2412.14093
-- Paper X (Co-Scaling Law), Paper C (PNP)
-- All 20 other programme papers
+## Status and changes
 
-## PDF generation
-Chrome headless:
-```bash
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-  --headless --disable-gpu --no-pdf-header-footer \
-  --print-to-pdf=papers/Paper-XI-Convergence/Paper-XI-Convergent-Evidence.pdf \
-  papers/Paper-XI-Convergence/Paper-XI-Convergent-Evidence.html
-```
+A source-graded cross-domain comparison. Retrospective selection and dependence are explicit; no aggregate probability or empirical confirmation is claimed. The full version history and the exact displaced passages are preserved in the lettered appendices. This is an internal source and rendered review, not independent peer review.
 
-The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.
+## Files and sources
+
+- [PDF](Paper-XI-Convergent-Evidence.pdf)
+- [Document HTML](Paper-XI-Convergent-Evidence.html)
+- [Text](Paper-XI-Convergence.txt)
+- [Citation metadata](Paper-XI-Convergence.cff)
+- [LaTeX source](Paper-XI-Convergence-latex-source.tar.gz)
+- [OSF record](https://doi.org/10.17605/OSF.IO/DC9GW)
+
+These are the official document exports. The website and OSF receive the same PDF, checked by SHA-256. Stable filenames retain the earlier versions in their file history. Written research is licensed CC BY 4.0; any separately identified source records, code or data retain their stated licences.
