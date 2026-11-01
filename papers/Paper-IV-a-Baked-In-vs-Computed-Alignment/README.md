@@ -1,6 +1,6 @@
-# Paper IV.a · The ARC Theory · Alignment Response Classes Under Inference-Time Depth
+# When an AI reasons longer, does its alignment improve, stall or decline?
 
-**Full title:** Paper IV.a · The ARC Theory · Alignment Response Classes Under Inference-Time Depth
+**Full title:** When an AI reasons longer, does its alignment improve, stall or decline?
 **Version:** v1.10
 **Version date:** Empirical Working Paper, revised 31 October 2026
 **First published:** 16 March 2026
