@@ -1,4 +1,4 @@
-# Foundational Paper · The ARC Theory · Law I, the ARC Principle · Recursive Amplification as a Cross-Domain Structural Principle
+# Does recursion amplify capability in the same way across very different fields?
 
 **Full title:** Foundational Paper · The ARC Theory · Law I, the ARC Principle · Recursive Amplification as a Cross-Domain Structural Principle
 **Version:** v5.21
@@ -26,3 +26,7 @@ All experiment scripts and results are in [`experiments/domain-validation__Found
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
 The HTML is the official document export, not the website page. New versions retain these filenames, with their own commits.
+
+## Citation metadata correction, 1 November 2026
+
+The text and citation files now use the title printed in the manuscript PDF. The manuscript, HTML, source package, version date and first-publication record are unchanged. Earlier metadata remains in file history.
