@@ -1,4 +1,4 @@
-# Engineering Specification · The ARC Theory · The Eden Protocol · Eden Engineering: Architecture for Embedded AI Alignment That Scales With Capability
+# Can correction built into each round keep a self-improving AI good and useful if oversight fails? An engineering specification and the tests that could refute it
 
 **Full title:** Engineering Specification · The ARC Theory · The Eden Protocol · Eden Engineering: Architecture for Embedded AI Alignment That Scales With Capability
 **Version:** v8.0
@@ -26,3 +26,7 @@ See [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](../../experiments/alig
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/AWJR4
 - **OSF programme DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+
+## Citation metadata correction, 1 November 2026
+
+The text and citation files now use the title printed in the manuscript PDF. The manuscript, HTML, source package, version date and first-publication record are unchanged. Earlier metadata remains in file history.
