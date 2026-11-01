@@ -32,7 +32,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 |---|-------|---------|-----------------|----------------|-----------------|
 | I | [Does intelligence compound when each step builds on the last, or merely accumulate?](Paper-I-ARC-Principle/) | v1.18 (revised 1 Nov 2026) | 17 Jan 2026 | Scaling toolkit validation | `Paper-I-ARC-Principle/results/` |
 | II | [The ARC Equation Measured](Paper-II-Experimental-Validation/) | v2.19 (revised 29 Oct 2026) | 22 Jan 2026 | Cross-architecture compute scaling (6 models, 30 problems) | `Paper-II-Experimental-Validation/results/` and `experiments/results/` |
-| III | [The alignment scaling problem: do external AI safety approaches keep pace with recursive capability?](Paper-III-Alignment-Scaling-Problem/) | v1.19 (revised 1 Nov 2026) | 9 Feb 2026 | Alignment scaling v1-v5 (6 models, 6-7 blind scorers) | `experiments/results/v5-final/` |
+| III | [The alignment scaling problem: do external AI safety approaches keep pace with recursive capability?](Paper-III-Alignment-Scaling-Problem/) | v1.20 (revised 1 Nov 2026) | 9 Feb 2026 | Alignment scaling v1-v5 (6 models, 6-7 blind scorers) | `experiments/results/v5-final/` |
 | IV.a | [Alignment Response Classes Under Inference-Time Depth](Paper-IV-a-Baked-In-vs-Computed-Alignment/) | v1.10 (revised 31 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.b | [Do alignment gains level off as language models reason longer?](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.11 (revised 1 Nov 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.c | [ARC-Align](Paper-IV-c-ARC-Align-Benchmark/) | v1.12 (revised 29 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
@@ -51,7 +51,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 
 | Paper | Version | First Published | Purpose |
 |-------|---------|-----------------|---------|
-| [Foundational](Foundational/) | v5.21 (revised 31 Oct 2026) | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
+| [Can the way gains combine predict how recursive systems scale?](Foundational/) | v5.22 (revised 1 Nov 2026) | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
 | [On the Origin of Scaling Laws](On-the-Origin-of-Scaling-Laws/) | v3.13 (revised 31 Oct 2026) | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
 | [Eden Engineering](Eden-Engineering/) | v8.1 (revised 1 Nov 2026) | 22 Feb 2026 | Protocol specification for implementing Eden in production AI systems. OSF DOI [10.17605/OSF.IO/AWJR4](https://doi.org/10.17605/OSF.IO/AWJR4) |
 | [Eden Vision](Eden-Vision/) | v2.9 (revised 5 Oct 2026) | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |

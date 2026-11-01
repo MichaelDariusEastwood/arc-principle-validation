@@ -1,32 +1,29 @@
-# Does recursion amplify capability in the same way across very different fields?
+# Can the way gains combine predict how recursive systems scale?
 
-**Full title:** Does recursion amplify capability in the same way across very different fields?
-**Version:** v5.21
-**Version date:** Working Paper, revised 31 October 2026
-**First published:** 13 February 2026
+**Version:** 5.22
+**Revised:** 1 November 2026
+**First published:** 2026-02-13
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 5.21):
+From the abstract (version 5.22):
 
-> I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only proof will move the world. If control of a capable AI system were lost and could not be won back, what the system itself carries would decide what it does. This paper asks whether recursion amplifies capability in the same way across very different fields, so that a self-improving system's growth could be predicted before it scales. Between 2024 and 2026, programmes in AI reasoning, quantum error correction, acoustic physics and consciousness science reported results that bear on recursive or recurrent processing, in different forms. We formalise the question with three axioms (separability, cumulative advantage, continuity) and a recursive composition operator. Under each case's hypotheses, Cauchy's functional equations give multiplicative composition a power law and additive composition an exponential; capped composition stays bounded. Inside the model the asymptotic exponent is derived, not fitted: $\alpha = 1/(1-\beta_L)$ for coupling $\beta_L$; base potential and depth must interact multiplicatively; and a crossover depth $R^* = \alpha/a$, independent of base potential, separates approximately linear from compounding gains. Five structural properties follow, two on premises added to the axioms. The ARC Bound is stated as registered: the ceiling of Law III, the ARC Ceiling, a law under test, is at most two for same-class correctors, and the point value two is a conjecture. The evidence is graded: the AI exponent's one interpretable fit is inconclusive, the time crystal is an analogy with no exponent measured, and the neuroscience mapping is structural. Thirteen falsification criteria and a cross-domain forward prediction are stated; a computational suite checks the closed forms but tests no real system. Each result holds inside its stated model.
+> I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only proof will move the world. Predicting how a system improves requires separating a mathematical model from evidence that the system follows it. This cross-domain foundation of the ARC Theory asks whether the way gains combine can predict later scaling. Specified continuous functional equations restrict scaling families; associativity of an update rule alone does not. A cumulative-advantage model gives the shifted power law $g(r)=[1+(1-\beta_L)ar]^{1/(1-\beta_L)}$, with asymptotic exponent $\alpha=1/(1-\beta_L)$. Its characteristic scale requires a declared depth coordinate and an operational crossover criterion. Fixed model weights and fixed update rules imply no universal capability exponent. Biological and physical comparisons are separated into measurements, analytic references and analogies; the proposed general dimensional bridge remains unproved. The one interpretable AI error-suppression fit is inconclusive and does not identify a capability-growth exponent. A registered pilot supports its pooled performance contrast under the registered scoring rule, with engine dependence, a disclosed recovery amendment and a mechanism test that was not evaluable; it validates none of the exponent, crossover or ceiling claims. The ARC Ceiling remains a law under test with conditional premises, not a universal safety guarantee. The decisive next test is prospective: classify composition independently, lock the scaling prediction, and compare held-out trajectories with serious rival models. The contribution is a framework for predictions that can fail, with each mathematical and empirical claim kept at its demonstrated scope.
 
-## LaTeX source
+## Status and changes
 
-[`Foundational-latex-source.tar.gz`](Foundational-latex-source.tar.gz): the LaTeX source package of version 5.21 (31 October 2026), the source files, bibliography and figures of the PDF of record; sha256 `49c6d30b60433d00711eb25021877f3a39ad01d79b7ba6dcd2c6a5f76666338d`.
+Version 5.22, revised 1 November 2026, distinguishes error suppression from capability growth and a characteristic depth from elasticity crossing one, and retains superseded claims in Appendix B. Internally source-checked and read in rendered form; not independent peer review.
 
-## Experiments
+The complete historical material and correction record remain in the lettered appendices.
 
-All experiment scripts and results are in [`experiments/domain-validation__Foundational-and-Origin/`](../../experiments/domain-validation__Foundational-and-Origin/) and [`experiments/blind-prediction-test__Paper-III-and-Foundational/`](../../experiments/blind-prediction-test__Paper-III-and-Foundational/).
+## Files and sources
 
-## Links
+- [PDF](Foundational.pdf)
+- [Document HTML](Foundational.html)
+- [Text](Foundational.txt)
+- [Citation metadata](Foundational.cff)
+- [LaTeX source](Foundational-latex-source.tar.gz)
+- [OSF record](https://doi.org/10.17605/OSF.IO/Y7QGD)
 
-- **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
-- **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
-
-The HTML is the official document export, not the website page. New versions retain these filenames, with their own commits.
-
-## Citation metadata correction, 1 November 2026
-
-The text and citation files now use the title printed in the manuscript PDF. The manuscript, HTML, source package, version date and first-publication record are unchanged. Earlier metadata remains in file history.
+These are the official document exports. Stable filenames preserve earlier versions in file history. Written research is CC BY 4.0; separately identified code, data and source records retain their stated licences.
