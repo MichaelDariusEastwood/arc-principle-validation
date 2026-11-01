@@ -1,4 +1,4 @@
-# Paper I · The ARC Theory · Law I, the ARC Principle · The ARC Equation, the Law of Conversion
+# Does intelligence compound when each step builds on the last, or merely accumulate?
 
 **Earlier title:** The ARC Principle.
 
@@ -28,3 +28,7 @@ All experiment scripts, results, and data are in [`experiments/paper-i-foundatio
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
 The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.
+
+## Citation metadata correction, 1 November 2026
+
+The text and citation files now use the title printed in the manuscript PDF. The manuscript, HTML, source package, version date and first-publication record are unchanged. Earlier metadata remains in file history.
