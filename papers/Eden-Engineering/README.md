@@ -1,6 +1,6 @@
 # Can correction built into each round keep a self-improving AI good and useful if oversight fails? An engineering specification and the tests that could refute it
 
-**Full title:** Engineering Specification · The ARC Theory · The Eden Protocol · Eden Engineering: Architecture for Embedded AI Alignment That Scales With Capability
+**Full title:** Can correction built into each round keep a self-improving AI good and useful if oversight fails? An engineering specification and the tests that could refute it
 **Version:** v8.0
 **Version date:** revised 31 October 2026
 **First published:** 22 February 2026

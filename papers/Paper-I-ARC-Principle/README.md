@@ -2,7 +2,7 @@
 
 **Earlier title:** The ARC Principle.
 
-**Full title:** Paper I · The ARC Theory · Law I, the ARC Principle · The ARC Equation, the Law of Conversion
+**Full title:** Does intelligence compound when each step builds on the last, or merely accumulate?
 **Version:** v1.17
 **Version date:** revised 31 October 2026
 **First published:** 17 January 2026
