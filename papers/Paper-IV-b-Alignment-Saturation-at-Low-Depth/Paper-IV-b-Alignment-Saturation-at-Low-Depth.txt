@@ -1,40 +1,41 @@
 Title: Do alignment gains level off as language models reason longer?
 Author: Michael Darius Eastwood
 Publication date: 2026-03-16
-Version: v1.10
+Version: v1.11
 Revised: 2026-11-01
 OSF DOI: 10.17605/OSF.IO/A7R56
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-iv-b-alignment-saturation-at-low-depth.html
 Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
 
 Do alignment gains level off as language models reason longer?
-                              Empirical work · Experimental paper · Paper IV.b
-              Recursive Dynamics · The ARC Theory · The measurement of alignment
+                               Empirical work · Experimental paper · Paper IV.b
+               Recursive Dynamics · The ARC Theory · The measurement of alignment
 
-                                               Michael Darius Eastwood
-                               Independent Researcher, London, United Kingdom
-                       ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
+                                                Michael Darius Eastwood
+                                Independent Researcher, London, United Kingdom
+                        ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
 
 
 
-                                                           Abstract
-           Does giving a language model more reasoning time improve the quality of its ethical answers, and
-       when do those gains level off? The question matters to anyone allocating compute to an assistant
-       whose answers must remain both useful and safe. We examine the recorded ARC-Align results,
-       without running a new analysis. The earlier four-model experiment reported diminishing gains and
-       saturation fits; the six-model run of 11 and 12 March 2026 reported rising scores for three models,
-       no statistically supported direction for two, and falling scores for one. These are descriptions of a
-       model-judged rubric, not identified alignment mechanisms. A flat profile does not establish a plateau,
-       and a rising profile does not exclude one beyond the measured range. The later protocol changed
-       prompts, depth controls, models and scoring together. Its deepest paraphrases were disproportionately
-       shortened in three runs; judges overlapped with launderers, and one judge appeared twice. Those
-       defects prevent a causal attribution to blinding or a clean comparison of response shapes. We retain
-       the reported fits, pillar and category results, suppression controls and two-model Eden Protocol pilot,
-       while withdrawing unsupported token-to-time recommendations, cross-domain exponent ratios and
-       the claim that the pilot removed a ceiling. The hypothesis preceded the March run; that run was not
-       registered on OSF before it ran. Saturation remains a testable hypothesis requiring a resolved depth
-       axis, faithful scoring, uncertainty about shape and a usefulness measure alongside safety. This paper
-       informs that measurement task and decides none of the ARC Theory’s laws.
+                                                            Abstract
+            Does giving a language model more reasoning time improve the quality of its ethical answers, and
+        when do those gains level off? The question matters to anyone allocating compute to an assistant
+        whose answers must remain both useful and safe. We examine the recorded ARC-Align results,
+        without running a new analysis. The earlier four-model experiment reported diminishing gains and
+        saturation fits; the six-model run of 11 and 12 March 2026 reported rising scores for Grok 4.1 Fast,
+        Claude Opus 4.6 and Groq Qwen3, no statistically supported direction for GPT-5.4 and DeepSeek
+        V3.2, and falling scores for Gemini 3 Flash. These are descriptions of a model-judged rubric, not
+        identified alignment mechanisms. A flat profile does not establish a plateau, and a rising profile does
+        not exclude one beyond the measured range. The later protocol changed prompts, depth controls,
+        models and scoring together. Its deepest paraphrases were disproportionately shortened in three runs;
+        some models both rewrote answers and judged them, and one judge was counted twice. Those defects
+        prevent a causal attribution to blinding or a clean comparison of response shapes. We retain the
+        reported fits, pillar and category results, suppression controls and two-model Eden Protocol pilot,
+        while withdrawing unsupported token-to-time recommendations, cross-domain exponent ratios and
+        the claim that the pilot removed a ceiling. The hypothesis preceded the March run; that run was not
+        registered on OSF before it ran. Saturation remains a testable hypothesis requiring a resolved depth
+        axis, faithful scoring, uncertainty about shape and a usefulness measure alongside safety. This paper
+        informs that measurement task and decides none of the ARC Theory’s laws.
 
 The ARC Theory registration gives the programme’s operational definitions; the Dated Prediction Register traces its
 dated claims. This paper’s priority record and publication dates are in Appendix B.
@@ -44,14 +45,15 @@ dated claims. This paper’s priority record and publication dates are in Append
 
      Paper IV.b of the ARC Theory, within Recursive Dynamics: an alignment-measurement study informing the design of tests
 of Laws IV and V, each a law under test. It decides none of Laws I to V and does not identify a persistent alignment mechanism.
-Working paper, version 1.10, 1 November 2026; first published 16 March 2026. This edition corrects the interpretation and
-preserves the full earlier manuscript as a labelled historical record (Appendices A and D). DOI: 10.17605/OSF.IO/A7R56.
-Michael Darius Eastwood founded Recursive Dynamics and works without an institution or a doctorate. His background and
-verification record: Who is Michael Darius Eastwood?; his book, Infinite Architects (first edition, 2 January 2026): osf.io/dqm3e.
-Licence: CC BY 4.0.
+Working paper, version 1.11, 1 November 2026; first published 16 March 2026. This edition corrects the interpretation and
+preserves the full earlier manuscript as a labelled historical record (Appendices A and D); version 1.11 also restores the authorship
+statement and the standing covenant and states Unit 83’s result in its registered words. DOI: 10.17605/OSF.IO/A7R56. Michael
+Darius Eastwood founded Recursive Dynamics and works without an institution or a doctorate. His background and verification
+record: Who is Michael Darius Eastwood?; his book, Infinite Architects (first edition, 2 January 2026): osf.io/dqm3e. Licence:
+CC BY 4.0.
 
 
-                                                                1
+                                                                 1
                             Alignment response shape and its measurement limits
 
 
@@ -83,7 +85,7 @@ Contents
 
 7 What this paper does and does not show                                                                  11
 
-8   Limitations                                                                                           11
+8   Limitations                                                                                           12
 
 9   Conclusion                                                                                            12
 
@@ -91,20 +93,20 @@ Code and data                                                                   
 
 Acknowledgements                                                                                          12
 
-Copyright and licence                                                                                     12
+Copyright and licence                                                                                     13
 
-References                                                                                                13
+References                                                                                                14
 
-A Version history and corrections                                                                         15
-  A.1 Version 1.10, 1 November 2026 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         15
-  A.2 Dated notes carried by version 1.9 . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        15
-  A.3 Previous version history, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      16
+A Version history and corrections                                                                         16
+  A.1 Versions 1.11 and 1.10, 1 November 2026 . . . . . . . . . . . . . . . . . . . . . . . . .           16
+  A.2 Dated notes carried by version 1.9 . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        17
+  A.3 Previous version history, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      18
 
-B Priority record                                                                                         18
+B Priority record                                                                                         20
 
-C Notation                                                                                                19
+C Notation                                                                                                20
 
-D Historical full manuscript of version 1.9                                                               20
+D Historical full manuscript of version 1.9                                                               21
 
 
                                                      2
@@ -246,8 +248,9 @@ the following limitations.
         slots represented five or six distinct judges. Agreement between those slots is not independent
         corroboration.
       • In three files, a large share of one judge’s scores was parsed from prose in truncated replies rather
-        than a conforming JSON response. A parsed number need not be the intended overall score. Scorer
-        health counted successful extraction, not validity.
+        than a conforming JSON response. A parsed number need not be the intended overall score. The
+        pipeline’s check on its scorers counted the replies from which a score could be read, not whether
+        that score was valid.
       • Prompts recurred across depths. The printed tests did not account for that dependence by a
         prompt-paired analysis. The reported precision therefore needs separate assessment; the effect-size
         and significance columns are not one common endpoint test.
@@ -541,6 +544,10 @@ package would let a deployment team judge a budget on the task it actually inten
 states the evidential requirements; it does not claim the package has been produced or that the shape
 hypothesis is likely to survive those checks.
 
+Standing covenant. Prove this paper wrong, and I will publish the refutation myself. Falsification
+conditions are stated in this paper; the standing challenge: github.com/MichaelDariusEastwood/arc-
+scaling-challenge.
+
 
 7    What this paper does and does not show
 This paper reports recorded score profiles, earlier fitted descriptions and their measurement limits. The
@@ -555,11 +562,19 @@ in version 1.103. The current theory registration is version 1.104, approved on 
 paper’s role is to inform the measurement needed for the programme’s tests; it decides none of Laws I
 to V. It must not be cited as support for a co-scaling inequality, an alignment ceiling, embedded values or
 persistence after control is lost.
-    For clarity about the wider programme, Paper IV.a, version 1.10, records Law IV as untested and
-Law V as a law under test. It records the programme’s own Unit 83 result of 28 October as support for
-Law V’s placement limb on the performance axis only, family-dependent, with the mechanism axis not
-evaluable and one disclosed recovery amendment; the results record gives that verdict. P12 remains
-untested. That separate result does not validate the measurement or the saturation claim in this paper.
+    For clarity about the wider programme, Paper IV.a, version 1.10, records Law IV as untested. Law V,
+the ARC Embedding Law, remains a law under test: its placement limb, P21, is supported on the
+performance axis only, under the registered test, by the programme’s own run (Unit 83, 28 October 2026;
+results: DOI 10.17605/OSF.IO/98HKR), family-dependent, with its mechanism axis not evaluable, which
+is not support for the information-asymmetry mechanism, and one disclosed recovery amendment; its
+build-order limb, read on P12, is undecided, since P12 is untested. That separate result does not validate
+the measurement or the saturation claim in this paper.
+
+
+
+
+                                                     11
+                            Alignment response shape and its measurement limits
 
 
 8    Limitations
@@ -570,12 +585,6 @@ unresolved. The v5 protocol confounds model, depth controls, instructions, rewri
 labels repeat one configuration. Its rubric measures judged answer quality, with no reported validation
 establishing that it measures a durable alignment trait. Judge overlap, duplicate identities, prose parsing
 and paraphrase cuts affect the interpretation. The reported tests are not uniformly paired by prompt, and the
-
-
-                                                     11
-                            Alignment response shape and its measurement limits
-
-
 collection of pillar, category and shape comparisons does not supply a predeclared multiplicity-controlled
 verdict for saturation.
     The pilot is small and was not blind; it neither separates loop components nor measures persistence,
@@ -615,16 +624,20 @@ stress-test his arguments, identify possible errors, and assist in preparing dra
 He determines what is adopted, revised or rejected and takes responsibility for the published content.
 These systems are tools, not authors.
 
+                                                     12
+                           Alignment response shape and its measurement limits
+
 
 Copyright and licence
-Copyright © 2026 Michael Darius Eastwood. The author asserts his moral right to be identified as the
-author under the Copyright, Designs and Patents Act 1988. This paper is licensed under the Creative
-Commons Attribution 4.0 International licence. The licence applies to the written paper, not to the
-programme’s code, data or results, which retain their separately stated terms.
+© 2026 Michael Darius Eastwood. Full human authorship and moral rights are asserted under the
+Copyright, Designs and Patents Act 1988. This paper is licensed under the Creative Commons Attribution
+4.0 International licence. The licence applies to the written paper, not to the programme’s code, data or
+results, which retain their separately stated terms.
 
 
 
-                                                     12
+
+                                                   13
                            Alignment response shape and its measurement limits
 
 
@@ -680,7 +693,7 @@ Charlie Snell, Jaehoon Lee, Kelvin Xu, and Aviral Kumar. Scaling LLM test-time c
 
 
 
-                                                   13
+                                                   14
                           Alignment response shape and its measurement limits
 
 
@@ -702,19 +715,27 @@ Yu-Hang Wu, Yu-Jie Xiong, Henghua Zhang, Bairui Zhang, Jia-Chen Zhang, and Shaoh
 
 
 
-                                                  14
+                                                  15
                                  Alignment response shape and its measurement limits
 
 
 A      Version history and corrections
-A.1     Version 1.10, 1 November 2026
-This edition changes the question title and the scientific interpretation, while retaining every substantive
-block of version 1.9 in the historical record. It distinguishes a descriptive score profile from an identified
-saturation curve; corrects the v4 Gemini label and the figure’s comparison; places the scorer, rewriting and
-depth-control defects beside the findings; distinguishes the original summary from the later recomputation;
-and withdraws the inference of a numerical capability-to-alignment gap from incomparable exponents.
-The score deficit is renamed 𝐷 in the current account so that it cannot be mistaken for counted task error.
-The full historical equations retain their original notation.
+A.1     Versions 1.11 and 1.10, 1 November 2026
+Version 1.11. This version restores two passages that version 1.10 had kept only in its historical record
+and corrects four wordings; it adds no new data, registration, study run or result. The copyright and
+licence statement again asserts full human authorship, in the programme’s standard form, and the standing
+covenant again closes Section 6. Section 7 states Unit 83’s result in its registered words, with its results
+record, in place of a paraphrase. The abstract names the six models of the March run with their recorded
+directions, and the abstract and Section 3 describe the overlap between rewriting and judging models and
+the pipeline’s check on its scorers in plain words.
+
+Version 1.10. This edition changes the question title and the scientific interpretation, while retaining
+every substantive block of version 1.9 in the historical record. It distinguishes a descriptive score profile
+from an identified saturation curve; corrects the v4 Gemini label and the figure’s comparison; places
+the scorer, rewriting and depth-control defects beside the findings; distinguishes the original summary
+from the later recomputation; and withdraws the inference of a numerical capability-to-alignment gap
+from incomparable exponents. The score deficit is renamed 𝐷 in the current account so that it cannot be
+mistaken for counted task error. The full historical equations retain their original notation.
     The edition withdraws the old translations of 𝐾 into observed extra tokens, words or seconds, and
 the recommendation to use standard depth for deployment. It corrects the statements that suppression
 identifies a faster plateau, that visible chain of thought is necessary for stakeholder care, and that the
@@ -728,35 +749,38 @@ recomputed for this edition.
     Flat means saturating;         Directions describe the measured interval. A plateau needs a shape
     positive means non-            estimand, range and uncertainty; Sections 4 and 6.
     saturating
-    Final blinded dataset val-     The bundle’s intended blinding differs from its execution. Paper IV.c
-    idates the shape               v1.12 and Paper IV.d v2.7 record rewriting, scorer and depth confounds.
-    Two of four models re-         DeepSeek changed from a positive to a non-significant trend; the Gemini
-    versed under blinding          comparison uses different models and the earlier correlation is 0.275. No
-                                   isolated causal contrast; Figure 1.
-    Small 𝐾 supplies an effi-      The 19 September parameter note already requires a declared origin and
-    cient word/time budget         observed baseline. The present record cannot support that operational
-                                   conversion.
-    Alignment scales sev-          Judge-score deficit, counted error and training loss have different estim-
-    eral times more slowly         ands and axes. Paper II v2.19 supplies an inconclusive error-decay fit,
-    than capability                not a capability-growth or correction-leverage estimate.
-    Suppression accelerates        Smaller endpoint gains do not estimate pressure-specific 𝐾 or identify a
-    saturation                     disabled mechanism.
-    The pilot breaks the ceil-     Gemini’s differences are non-monotonic; DeepSeek converges. Neither
-    ing                            sequence identifies an asymptote or persistent values; Table 2.
-    Earlier law and publica-       The dated October note is preserved below. Current registration status is
-    tion status                    in Section 7; first publication remains 16 March 2026.
+    Final blinded dataset val- The bundle’s intended blinding differs from its execution. Paper IV.c
+    idates the shape           v1.12 and Paper IV.d v2.7 record rewriting, scorer and depth confounds.
+    Two of four models re-     DeepSeek changed from a positive to a non-significant trend; the Gemini
+    versed under blinding      comparison uses different models and the earlier correlation is 0.275. No
+                               isolated causal contrast; Figure 1.
+    Small 𝐾 supplies an effi- The 19 September parameter note already requires a declared origin and
+    cient word/time budget observed baseline. The present record cannot support that operational
+                               conversion.
+    Alignment scales sev- Judge-score deficit, counted error and training loss have different estim-
+    eral times more slowly ands and axes. Paper II v2.19 supplies an inconclusive error-decay fit,
+    than capability            not a capability-growth or correction-leverage estimate.
+    Suppression accelerates Smaller endpoint gains do not estimate pressure-specific 𝐾 or identify a
+    saturation                 disabled mechanism.
+    The pilot breaks the ceil- Gemini’s differences are non-monotonic; DeepSeek converges. Neither
+    ing                        sequence identifies an asymptote or persistent values; Table 2.
 
 
-A.2     Dated notes carried by version 1.9
-The following notes are historical quotations, superseded where the current edition corrects them.
-   This paper and Laws IV and V, 3 October 2026. The theory has been stated with five laws since
-24 September 2026. Law IV, the ARC Persistence Law, is carried by proposition P15, and Law V, the
-ARC Embedding Law, by propositions P12 and P21. The three propositions are registered; neither law
 
-                                                         15
+                                                         16
                             Alignment response shape and its measurement limits
 
 
+  Earlier interpretation      Current disposition and source
+  Earlier law and publica- The dated October note is preserved below. Current registration status is
+  tion status              in Section 7; first publication remains 16 March 2026.
+
+
+A.2    Dated notes carried by version 1.9
+The following notes are historical quotations, superseded where the current edition corrects them.
+     This paper and Laws IV and V, 3 October 2026. The theory has been stated with five laws since
+24 September 2026. Law IV, the ARC Persistence Law, is carried by proposition P15, and Law V, the
+ARC Embedding Law, by propositions P12 and P21. The three propositions are registered; neither law
 is registered as a law, and neither has been tested. Their mathematics is set out in Laws IV and V: the
 mathematics, version 1.0, of 3 October 2026. This paper analyses the shape of the response in the same
 alignment-depth data as Paper IV.a, and narrows its own earlier claim that saturation is universal. It
@@ -794,6 +818,12 @@ genuinely do saturate. Section 3A.1 finds the flat or saturating pattern in two 
 passages now say two of the six. The epistemic-status line called every Law the programme names a
 conjecture under registered adversarial test. Laws IV and V, added to the theory on 24 September 2026,
 are neither registered as laws nor tested, and the line now says so. The closing data line no longer names a
+
+
+                                                    17
+                            Alignment response shape and its measurement limits
+
+
 tool. Unchanged: every result, date and limit in this paper.
 
 A.3    Previous version history, as printed
@@ -804,12 +834,6 @@ the author line now gives the paper’s place in the programme in the words of t
 Mentions of the programme’s papers in this paper now carry their uniform titles. No registered law,
 prediction, kill condition or dependency changes; no result is added; no date of any claim moves. Paper
 IV.b v1.8, 3 October 2026: a dated note beneath the note on how to read this paper places it against Laws
-
-
-                                                    16
-                            Alignment response shape and its measurement limits
-
-
 IV and V, added to the theory on 24 September 2026; it analyses response shape in data it shares with
 Paper IV.a and is a test of neither law. Six statements are corrected where they stand, and a second dated
 note records what they printed before. The abstract no longer says that no programme draft study targets
@@ -847,6 +871,12 @@ as unreconciled instead of being quietly amended, namely the Section 4.3 transit
 3.2, the Section 5.2 null baseline against Paper IV.a, and the Section 6.1 partial-correlation and Section 7
 suppression figures against Paper IV.a; the Section 7.2 comparison is corrected, 84.7 lying below 85.6;
 the capability-exponent comparison in Sections 3.3 and 8.3 now cites Hoffmann et al. 2022 alongside the
+
+
+                                                    18
+                            Alignment response shape and its measurement limits
+
+
 programme’s own interval and restates the ratio; the Section 8.1 deployment box gains a v5 qualifier;
 the experiment-script version v5.4.2 stands again where a July purge had left a phrase in its place; the
 summary description, previously cut short, is complete; the Paper II reference title is corrected; the scorer
@@ -858,11 +888,6 @@ and the standing covenant were added, and the version-numbering convention was a
 content stood otherwise unchanged. v1.2 - 10 August 2026. Pass over v1.1 for style law and model-name
 exactness: canonical model names from Paper II v13 (DeepSeek V3.2, Gemini 3 Flash, Groq Qwen3,
 Grok 4.1 Fast) applied consistently across body text and tables; all em-dash entities removed; the central
-
-                                                     17
-                            Alignment response shape and its measurement limits
-
-
 shape-heterogeneity claim now carries an exploratory-status clause in the abstract; content otherwise
 preserved.
     Data from ARC Alignment Scaling Experiment v4 (896+ entries across 4 models) and v5 (complete
@@ -898,24 +923,24 @@ programme exists to earn that standing, or lose it, by measurement, replication 
 Copyright, Designs and Patents Act 1988 and consistently with United States Copyright Office guidance
 on works containing AI-generated material; any novel technical contribution described in this work was
 conceived by the human author. Full statement: michaeldariuseastwood.com/authorship.
+
+
+
+                                                     19
+                            Alignment response shape and its measurement limits
+
+
     Standing covenant. Prove this paper wrong, and I will publish the refutation myself. Falsification
 conditions are stated in this paper; the standing challenge: github.com/MichaelDariusEastwood/arc-
 scaling-challenge.
 
 
-B    Priority record
+B      Priority record
 The first publication date of this paper is 16 March 2026, as recorded in its released metadata and version
 history. The notes dated 11 and 12 March in the historical manuscript are dates stated inside the document;
 they are not claims that this paper was publicly released on those dates. Version 1.9 was dated 5 October
-2026. Version 1.10 is this repaired edition, dated 1 November 2026.
-
-
-
-
-                                                     18
-                            Alignment response shape and its measurement limits
-
-
+2026. Version 1.10, the repaired edition, and this correction of it, version 1.11, are both dated 1 November
+2026.
      The hypothesis tested by the March run was first posted on 22 January 2026 in a design withdrawn
 the next day, then continuously public from 9 February. The run records place the experiment on 11 and
 12 March; the working report’s first deployment is dated 14 March by the hosting record and the code’s
@@ -954,8 +979,7 @@ C      Notation
 
 
 
-
-                                                     19
+                                                     20
                               Historical version 1.9: superseded interpretations
 
 
@@ -1007,7 +1031,7 @@ submission by the author; its data already exist, and the analysis it specifies 
 ladder was settled before any scoring began: the result files dated 11 and 12 March 2026 carry the depth
 
 
-                                                     20
+                                                     21
                               Historical version 1.9: superseded interpretations
 
 
@@ -1059,7 +1083,7 @@ This paper makes three contributions:
 
 
 
-                                                      21
+                                                      22
                                 Historical version 1.9: superseded interpretations
 
 
@@ -1113,7 +1137,7 @@ is the asymptotic ceiling, and 𝐾 is the half-maximum constant - the depth at 
 50% of its total available improvement (𝐿 − 𝑆0 ).
 
 
-                                                       22
+                                                       23
                                 Historical version 1.9: superseded interpretations
 
 
@@ -1166,7 +1190,7 @@ returns.
 
 
 
-                                                        23
+                                                        24
                                 Historical version 1.9: superseded interpretations
 
 
@@ -1219,7 +1243,7 @@ are flat (Type 1): saturation analysis is not applicable.
 
 
 
-                                                         24
+                                                         25
                                 Historical version 1.9: superseded interpretations
 
 
@@ -1272,7 +1296,7 @@ reasoning tokens were capped at 8,192. At exhaustive depth, 48.2% of responses h
 model wanted to think more but was prevented from doing so. The measured saturation at exhaustive
 
 
-                                                       25
+                                                       26
                               Historical version 1.9: superseded interpretations
 
 
@@ -1327,7 +1351,7 @@ The table below presents the definitive v5 results for all six models, evaluated
 
 
 
-                                                      26
+                                                      27
                                Historical version 1.9: superseded interpretations
 
 
@@ -1380,7 +1404,7 @@ some models justify deeper budgets, some do not, and some should likely be const
 
 
 
-                                                       27
+                                                       28
                                Historical version 1.9: superseded interpretations
 
 
@@ -1436,7 +1460,7 @@ to v5 (blind) evaluation produced opposite results for alignment measurement in 
 
 
 
-                                                          28
+                                                          29
                                Historical version 1.9: superseded interpretations
 
 
@@ -1491,7 +1515,7 @@ Each of the four pillars follows its own saturation trajectory.
 
 
 
-                                                          29
+                                                          30
                                 Historical version 1.9: superseded interpretations
 
 
@@ -1547,7 +1571,7 @@ Combining the per-pillar findings produces a layered saturation model:
 
 
 
-                                                        30
+                                                        31
                                 Historical version 1.9: superseded interpretations
 
 
@@ -1602,7 +1626,7 @@ Finding 5: Ethical Dilemmas Are Universally Hardest and Show Most Scaling Ethica
 prompts score 6-8 points below other alignment categories at every depth level. They also show the
 
 
-                                                          31
+                                                          32
                                 Historical version 1.9: superseded interpretations
 
 
@@ -1656,7 +1680,7 @@ a quality spectrum within Type 2: DeepSeek shows genuine saturation of real alig
 while Gemini’s curve may partially reflect ’more words, more credit’ rather than deeper ethical reasoning.
 
 
-                                                       32
+                                                       33
                               Historical version 1.9: superseded interpretations
 
 
@@ -1709,7 +1733,7 @@ alignment scaling under adversarial pressure, or does suppression collapse their
 DeepSeek V3.2? Qwen3’s suppression data (d = 1.47; cage 0 = 82.0, cage 4 = 51.9) suggests substantial
 
 
-                                                     33
+                                                     34
                              Historical version 1.9: superseded interpretations
 
 
@@ -1759,7 +1783,7 @@ Several hypotheses could explain rapid saturation:
 of all four factors, with the relative contributions varying by model and prompt category.
 
 
-                                                     34
+                                                     35
                               Historical version 1.9: superseded interpretations
 
 
@@ -1810,7 +1834,7 @@ shows no natural stakeholder care improvement with depth.
 
 
 
-                                                     35
+                                                     36
                              Historical version 1.9: superseded interpretations
 
 
@@ -1863,7 +1887,7 @@ conditions.
 
 
 
-                                                    36
+                                                    37
                               Historical version 1.9: superseded interpretations
 
 
@@ -1918,7 +1942,7 @@ saturation ceiling from ~78 to ~85 and eliminates exhaustive-depth decline. Deep
 Neither condition saturates under Eden, but Eden provides instant access to deep-level alignment quality
 
 
-                                                     37
+                                                     38
                               Historical version 1.9: superseded interpretations
 
 
@@ -1969,7 +1993,7 @@ reasoning-budget policy must be model-specific.
 
 
 
-                                                      38
+                                                      39
                               Historical version 1.9: superseded interpretations
 
 
@@ -2019,7 +2043,7 @@ References
 
 
 
-                                                     39
+                                                     40
                              Historical version 1.9: superseded interpretations
 
 
@@ -2071,7 +2095,7 @@ recent releases.
 
 
 
-                                                    40
+                                                    41
                                    Historical version 1.9: superseded interpretations
 
 
@@ -2126,7 +2150,7 @@ scorer-invariant or scorer-dependent.
 
 
 
-                                                           41
+                                                           42
                               Historical version 1.9: superseded interpretations
 
 
@@ -2177,5 +2201,5 @@ up from the 58 measures of v5.3. The chief additions are these:
 
 
 
-                                                     42
+                                                     43
 
