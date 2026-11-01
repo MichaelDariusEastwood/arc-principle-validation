@@ -135,8 +135,28 @@ def alias_findings(root=ROOT):
     return out
 
 
+def readme_title_findings(root=ROOT):
+    """A current document-export README's Full title follows its manifest title.
+
+    A catalogue name can be retained explicitly as a former title. It must not
+    remain labelled Full title after the manuscript's next edition changes it.
+    """
+    out = []
+    for row in json.loads((root / MANIFEST).read_text(encoding='utf-8'))['documents']:
+        if row.get('representation') != 'document-export':
+            continue
+        rel = 'papers/' + row['folder'] + '/README.md'
+        path = root / rel
+        if not path.is_file():
+            continue
+        titles = re.findall(r'^\*\*Full title:\*\* (.+)$', path.read_text(encoding='utf-8'), re.M)
+        if len(titles) > 1 or (titles and titles[0] != row.get('title')):
+            out.append(f'{rel}: Full title must equal the current manuscript title in {MANIFEST}')
+    return out
+
+
 def main():
-    problems = checksum_findings() + index_findings() + alias_findings()
+    problems = checksum_findings() + index_findings() + alias_findings() + readme_title_findings()
     for problem in problems:
         print(problem)
     # The alias count shows that the alias check, which extends the record check, has run.

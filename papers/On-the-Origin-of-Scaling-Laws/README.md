@@ -1,6 +1,6 @@
 # Why do scaling laws in recursive composition keep taking the same few mathematical forms?
 
-**Full title:** Framework Paper · The ARC Theory · Law I, the ARC Principle · On the Origin of Scaling Laws: Functional Equations and the Scaling Forms Behind the Law
+**Full title:** Why do scaling laws in recursive composition keep taking the same few mathematical forms?
 **Version:** v3.13
 **Version date:** Working Paper, revised 31 October 2026
 **First published:** 22 February 2026
