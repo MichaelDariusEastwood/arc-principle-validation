@@ -51,7 +51,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 
 | Paper | Version | First Published | Purpose |
 |-------|---------|-----------------|---------|
-| [Foundational](Foundational/) | v5.21 (revised 31 Oct 2026) | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
+| [Can the way gains combine predict how recursive systems scale?](Foundational/) | v5.22 (revised 1 Nov 2026) | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
 | [On the Origin of Scaling Laws](On-the-Origin-of-Scaling-Laws/) | v3.13 (revised 31 Oct 2026) | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
 | [Eden Engineering](Eden-Engineering/) | v8.1 (revised 1 Nov 2026) | 22 Feb 2026 | Protocol specification for implementing Eden in production AI systems. OSF DOI [10.17605/OSF.IO/AWJR4](https://doi.org/10.17605/OSF.IO/AWJR4) |
 | [Eden Vision](Eden-Vision/) | v2.9 (revised 5 Oct 2026) | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
