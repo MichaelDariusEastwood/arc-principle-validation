@@ -34,7 +34,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | II | [The ARC Equation Measured](Paper-II-Experimental-Validation/) | v2.19 (revised 29 Oct 2026) | 22 Jan 2026 | Cross-architecture compute scaling (6 models, 30 problems) | `Paper-II-Experimental-Validation/results/` and `experiments/results/` |
 | III | [The alignment scaling problem: do external AI safety approaches keep pace with recursive capability?](Paper-III-Alignment-Scaling-Problem/) | v1.19 (revised 1 Nov 2026) | 9 Feb 2026 | Alignment scaling v1-v5 (6 models, 6-7 blind scorers) | `experiments/results/v5-final/` |
 | IV.a | [Alignment Response Classes Under Inference-Time Depth](Paper-IV-a-Baked-In-vs-Computed-Alignment/) | v1.10 (revised 31 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
-| IV.b | [Do alignment gains level off as language models reason longer?](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.10 (revised 1 Nov 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
+| IV.b | [Do alignment gains level off as language models reason longer?](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.11 (revised 1 Nov 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.c | [ARC-Align](Paper-IV-c-ARC-Align-Benchmark/) | v1.12 (revised 29 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.d | [The Effect of Blinding on AI Alignment Evaluation](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | v2.7 (revised 21 Oct 2026) | 16 Mar 2026 | Shared v5 alignment experiment (the blinding finding: one change of sign, one loss to null; no single cause claimed) | `results/v5-final/` |
 | V | [The Stewardship Gene](Paper-V-Stewardship-Gene/) | v1.7 (revised 5 Oct 2026) | 16 Mar 2026 | Eden Protocol scaling test (6 models) | `experiments/results/` |
@@ -43,9 +43,9 @@ Version numbers live inside the document header, never in the filename. See Sect
 | VIII | [The Load-Bearing Test](Paper-VIII-The-Load-Bearing-Proof/) | v3.7 (revised 5 Oct 2026) | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
 | IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v2.7 (revised 5 Oct 2026) | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
 | X | [The ARC Co-Scaling Law](Paper-X-Coupled-CoScaling-Correction/) | v1.16 (revised 21 Oct 2026) | 3 Jul 2026 | Verification harness and an independent theorem suite of 14 checks | `Paper-X-Coupled-CoScaling-Correction/results/` |
-| XI | [Are separate fields converging on the same principle of recursive amplification?](Paper-XI-Convergence/) | v1.15 (revised 1 Nov 2026) | 2 Jul 2026 | - | - |
+| XI | [Are separate fields converging on the same principle of recursive amplification?](Paper-XI-Convergence/) | v1.16 (revised 1 Nov 2026) | 2 Jul 2026 | - | - |
 | XII | [Public Benchmark Rescoring](Paper-XII-Public-Benchmark-Rescoring/) | v1.14 (revised 5 Oct 2026) | 14 Aug 2026 | - | - |
-| XIII | [When can correction keep pace with recursive self-acceleration?](Paper-XIII-Self-Acceleration-Exponent/) | v1.11 (revised 1 Nov 2026) | 16 Aug 2026 | - | - |
+| XIII | [When can correction keep pace with recursive self-acceleration?](Paper-XIII-Self-Acceleration-Exponent/) | v1.12 (revised 1 Nov 2026) | 16 Aug 2026 | - | - |
 
 ## Infrastructure Papers (Unnumbered)
 
@@ -53,11 +53,11 @@ Version numbers live inside the document header, never in the filename. See Sect
 |-------|---------|-----------------|---------|
 | [Foundational](Foundational/) | v5.21 (revised 31 Oct 2026) | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
 | [On the Origin of Scaling Laws](On-the-Origin-of-Scaling-Laws/) | v3.13 (revised 31 Oct 2026) | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
-| [Eden Engineering](Eden-Engineering/) | v8.0 (revised 31 Oct 2026) | 22 Feb 2026 | Protocol specification for implementing Eden in production AI systems. OSF DOI [10.17605/OSF.IO/AWJR4](https://doi.org/10.17605/OSF.IO/AWJR4) |
+| [Eden Engineering](Eden-Engineering/) | v8.1 (revised 1 Nov 2026) | 22 Feb 2026 | Protocol specification for implementing Eden in production AI systems. OSF DOI [10.17605/OSF.IO/AWJR4](https://doi.org/10.17605/OSF.IO/AWJR4) |
 | [Eden Vision](Eden-Vision/) | v2.9 (revised 5 Oct 2026) | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
-| [Executive Summary](Executive-Summary/) | v3.26 (revised 15 Oct 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
+| [How can self-improving AI remain useful and aligned?](Executive-Summary/) | v3.27 (revised 1 Nov 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
 | [Master Table of Contents](Master-Table-of-Contents/) | v3.30 (revised 15 Oct 2026) | 16 Mar 2026 | Navigation document linking all papers |
-| [The ARC Theory](The-ARC-Theory/) | v7.5 (revised 1 Nov 2026) | 14 Aug 2026 | Growth, correction and alignment in recursive systems |
+| [The ARC Theory](The-ARC-Theory/) | v7.6 (revised 1 Nov 2026) | 14 Aug 2026 | Growth, correction and alignment in recursive systems |
 | [The ARC Theory, two-page form](The-ARC-Theory-Two-Page-Form/) | v3.4 (revised 31 Oct 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
 | [Recursive Dynamics: the founding paper](Recursive-Dynamics-Founding-Paper/) | v3.5 (revised 24 Oct 2026) | 31 Aug 2026 | Recursive Dynamics: The Proposal of a Field |
 | [Paper C](Paper-C-PNP/) | v1.11 (revised 29 Oct 2026) | 3 Jul 2026 | Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy |
