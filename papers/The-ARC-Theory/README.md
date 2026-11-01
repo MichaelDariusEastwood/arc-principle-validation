@@ -1,4 +1,4 @@
-# Statement Paper · The ARC Theory · Five Laws of Recursive Growth, Correction and Persistence
+# The ARC Theory: five laws of recursive growth, correction and persistence
 
 **Version:** v7.4
 **Version date:** revised 31 October 2026
@@ -21,4 +21,8 @@ From the abstract (version 7.4):
 - **OSF DOI:** https://doi.org/10.17605/OSF.IO/GW5MX
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-Mirror of the published version, byte for byte from the website (this repository receives each version after it is published). The two-page form is in The-ARC-Theory-Two-Page-Form.
+This folder holds the official document exports. The website and OSF receive the same manuscript PDF, with each release checked by its SHA-256. The two-page form is in The-ARC-Theory-Two-Page-Form.
+
+## Export correction, 1 November 2026
+
+The HTML retains the source links inside both figures and opens textual citations directly to their cited sources. The citation and text files use the PDF title. The version 7.4 manuscript PDF and its LaTeX source package remain unchanged; earlier exports remain in file history.
