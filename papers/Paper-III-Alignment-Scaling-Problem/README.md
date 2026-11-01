@@ -1,4 +1,4 @@
-# Paper III · The ARC Theory · Law II, the ARC Co-Scaling Law · The Alignment Scaling Problem
+# The alignment scaling problem: do external AI safety approaches keep pace with recursive capability?
 
 **Headline:** The alignment scaling problem: do external AI safety approaches keep pace with recursive capability?
 **Version:** v1.18
@@ -30,3 +30,7 @@ The experiment scripts and results are in [`experiments/alignment-scaling__Paper
 The HTML is the official document export, not the website page. The PDF is byte-identical to the export release on the website. New versions retain these filenames, with their own commits.
 
 The paper is licensed CC BY 4.0 ([LICENCE-PAPERS.md](../../LICENCE-PAPERS.md)); the experiments' code and data are proprietary, all rights reserved ([LICENCE-CODE.md](../../LICENCE-CODE.md)).
+
+## Citation metadata correction, 1 November 2026
+
+The text and citation files now use the title printed in the manuscript PDF. The manuscript, HTML, source package, version date and first-publication record are unchanged. Earlier metadata remains in file history.
