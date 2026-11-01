@@ -52,7 +52,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | Paper | Version | First Published | Purpose |
 |-------|---------|-----------------|---------|
 | [Foundational](Foundational/) | v5.21 (revised 31 Oct 2026) | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
-| [On the Origin of Scaling Laws](On-the-Origin-of-Scaling-Laws/) | v3.13 (revised 31 Oct 2026) | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
+| [What can composition and transport explain about scaling laws?](On-the-Origin-of-Scaling-Laws/) | v3.14 (revised 1 Nov 2026) | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
 | [Eden Engineering](Eden-Engineering/) | v8.0 (revised 31 Oct 2026) | 22 Feb 2026 | Protocol specification for implementing Eden in production AI systems. OSF DOI [10.17605/OSF.IO/AWJR4](https://doi.org/10.17605/OSF.IO/AWJR4) |
 | [Eden Vision](Eden-Vision/) | v2.9 (revised 5 Oct 2026) | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
 | [Executive Summary](Executive-Summary/) | v3.26 (revised 15 Oct 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
@@ -77,7 +77,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 |----------|---------|-----------------|------------|
 | [Theory-level predictions registration](ARC-Theory-Predictions-Registration/) | v1.104 (revised 29 Oct 2026) | 8 Sep 2026 | The theory's twenty-two severable propositions, registered on OSF on 8 September 2026 (DOI 10.17605/OSF.IO/P8CKQ); the frozen v1.100, v1.102 and v1.103 PDFs sit beside the current text |
 | [The Dated Prediction Register](Dated-Prediction-Register/) | v2.1 (revised 5 Oct 2026) | 25 Aug 2026 | Forward predictions as one verifiable chain |
-| [Operational Definitions](Operational-Definitions/) | v1.9.1 (revised 5 Oct 2026) | 22 Aug 2026 | The register of the programme's operational definitions of its terms (OSF DOI 10.17605/OSF.IO/GVQ82) |
+| [What do the ARC Theory's quantities measure?](Operational-Definitions/) | v2.0.0 (revised 1 Nov 2026) | 22 Aug 2026 | The register of the programme's operational definitions of its terms (OSF DOI 10.17605/OSF.IO/GVQ82) |
 | [Laws IV and V: the mathematics](Laws-IV-V-Mathematics/) | v1.2 (revised 29 Oct 2026) | 1 Oct 2026 (v0.2.1) | The mathematics of the ARC Theory's Laws IV and V (added 24 September 2026), in development |
 | [The ARC Alignment-Scaling Working Report](ARC-Alignment-Scaling-Working-Report/) | v1.1 (revised 11 Oct 2026) | commenced 10 Mar 2026 | The live laboratory notebook of the alignment-scaling work (OSF record j6mkb) |
 
