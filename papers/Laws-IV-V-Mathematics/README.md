@@ -1,4 +1,4 @@
-# Report · The ARC Theory · Laws IV and V, the ARC Persistence Law and the ARC Embedding Law · The Mathematics
+# When do installed values fade with training, and does building them in first change that?
 
 **Headline:** When do installed values fade with training, and does building them in first change that?
 **Version:** v1.2
