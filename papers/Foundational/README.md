@@ -1,6 +1,6 @@
 # Does recursion amplify capability in the same way across very different fields?
 
-**Full title:** Foundational Paper · The ARC Theory · Law I, the ARC Principle · Recursive Amplification as a Cross-Domain Structural Principle
+**Full title:** Does recursion amplify capability in the same way across very different fields?
 **Version:** v5.21
 **Version date:** Working Paper, revised 31 October 2026
 **First published:** 13 February 2026
