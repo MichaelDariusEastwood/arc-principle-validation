@@ -1,0 +1,150 @@
+{
+  "study_id": "41-D-COUNTED-v0.1",
+  "unit": "Unit 83",
+  "design_freeze": {
+    "file": "DESIGN-FREEZE.md",
+    "revision": "4.2.1",
+    "sha256": "82c9e3cba25eeea7bf4055ef9b4cf4814783f80f6d2666060fce4e4cf2d9071d"
+  },
+  "theory_registration": "p8ckq",
+  "unit_component": "zwnc5",
+  "suite_registration": null,
+  "registered_seed": "41-D-COUNTED-v0.1|bank|registered-seed|1",
+  "public_seed": "41-D-COUNTED-v0.1|public|registered-seed|1",
+  "pricing_valid_through": "2026-12-31",
+  "engine_order": ["claude-haiku-5-5", "gpt-6-luna"],
+  "display_names": {"claude-haiku-5-5": "Claude Haiku 5.5", "gpt-6-luna": "GPT-6 Luna"},
+  "engines": {
+    "claude-haiku-5-5": {
+      "provider": "anthropic",
+      "model": "claude-haiku-5-5",
+      "budget_key": "41-D-COUNTED-v0.1/anthropic",
+      "cap_usd": 108.33,
+      "request_fields": {
+        "model": "claude-haiku-5-5",
+        "max_tokens": 16000,
+        "inference_geo": "global",
+        "stream": false,
+        "output_config": {"effort": "low"},
+        "thinking": {"type": "adaptive"}
+      },
+      "pair_worst_case_usd": {"with_secondaries": 5.72, "with_window": 3.81, "core": 2.87},
+      "planned_spend_with_margin_usd": 102.69
+    },
+    "gpt-6-luna": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "budget_key": "41-D-COUNTED-v0.1/openai",
+      "cap_usd": 54.17,
+      "request_fields": {
+        "model": "gpt-6-luna",
+        "max_output_tokens": 16000,
+        "reasoning": {"effort": "low"},
+        "service_tier": "flex",
+        "store": false,
+        "prompt_cache_options": {"mode": "explicit"}
+      },
+      "pair_worst_case_usd": {"with_secondaries": 2.76, "with_window": 1.84, "core": 1.39},
+      "planned_spend_with_margin_usd": 48.74
+    }
+  },
+  "providers": {
+    "anthropic": {
+      "endpoint": "https://api.anthropic.com/v1/messages",
+      "key_env": "ANTHROPIC_API_KEY",
+      "tier": "standard",
+      "transport_delays_seconds": [30, 120, 600],
+      "settlement_uncharged": ["HTTP 429", "HTTP 529", "HTTP 5xx with a JSON error body"],
+      "settlement_at_reservation": ["time-out", "disconnection", "body not JSON", "other transport failure"],
+      "read_timeout_seconds": 600,
+      "input_margin_tokens": 4096,
+      "max_reserved_input_tokens": 32768,
+      "input_usd_per_million": 0.10,
+      "output_usd_per_million": 0.50,
+      "input_usd_per_million_reserve": 0.10,
+      "output_usd_per_million_reserve": 0.50,
+      "output_reservation_multiplier": 1,
+      "billing_page": "https://platform.claude.com/settings/billing",
+      "price_page": "https://platform.claude.com/docs/en/about-claude/pricing"
+    },
+    "openai": {
+      "endpoint": "https://api.openai.com/v1/responses",
+      "key_env": "OPENAI_API_KEY",
+      "tier": "flex",
+      "transport_delays_seconds": [30, 120, 600, 1800, 3600],
+      "settlement_uncharged": ["HTTP 429", "HTTP 529", "HTTP 5xx with a JSON error body", "flex capacity unavailable"],
+      "settlement_at_reservation": ["time-out", "disconnection", "body not JSON", "other transport failure"],
+      "read_timeout_seconds": 900,
+      "input_margin_tokens": 4096,
+      "max_reserved_input_tokens": 32768,
+      "input_usd_per_million": 0.05,
+      "output_usd_per_million": 0.25,
+      "input_usd_per_million_reserve": 0.0625,
+      "output_usd_per_million_reserve": 0.25,
+      "output_reservation_multiplier": 1,
+      "billing_page": "https://platform.openai.com/settings/organization/billing/overview",
+      "price_page": "https://platform.openai.com/docs/pricing"
+    }
+  },
+  "prices_usd_per_million": {
+    "anthropic": {"input": 0.10, "output": 0.50, "route": "standard, synchronous"},
+    "openai": {"input": 0.05, "output": 0.25, "route": "flex, synchronous"}
+  },
+  "tolerance": 0.0075,
+  "looks": {
+    "sizes": [220, 660],
+    "levels": [0.995, 0.955],
+    "gates": [0.00206, 0.00264],
+    "sign_flip_alpha": [0.0025, 0.0225]
+  },
+  "stopping_word": "mark",
+  "confirmation_threshold": 40,
+  "positive_control_pairs": 220,
+  "secondary_pairs": 120,
+  "ceiling": 0.005,
+  "engines_needed": 2,
+  "directional_reading": true,
+  "manipulation_floor": 0.20,
+  "readable_regime": {
+    "overall": 0.95,
+    "band": 0.90,
+    "band_minimum_calls": 200,
+    "monitor_and_twin_bands_by_entries_in_view": [[1, 3], [4, 6], [7, 9], [10, 12], [13, null]],
+    "corrector_bands_by_round": [[1, 6], [7, 12], [13, 18]]
+  },
+  "mechanism_quantity": "W",
+  "fall": {"min_calls": 20, "f_cap": 0.98},
+  "bootstrap": {"resamples": 20000, "seed": "41-D-COUNTED-v0.1|bootstrap|registered-seed|1"},
+  "sign_flip": {"flips": 200000, "seed": "41-D-COUNTED-v0.1|sign-flip|registered-seed|1"},
+  "negative_control_level": 0.999,
+  "budget_label_share": 0.01,
+  "reask": {"asks_a_call": 3},
+  "transport_hold_release": {"seconds": 3600, "per_utc_day_per_provider": 6},
+  "admission": {
+    "transport_checks": 3,
+    "transport_pass": 2,
+    "format_items": 3,
+    "format_pass": 2,
+    "verdict_items": 500,
+    "verdict_pass": 475,
+    "corrector_items": 300,
+    "corrector_pass": 285,
+    "reported_verdict_items": 10,
+    "generating_items": 10,
+    "generating_pass": 9,
+    "concurrency": 8,
+    "concurrency_without_limits": 4
+  },
+  "calibration": {"catch": 0.95, "false_alarm": 0.05, "net_repair": 0.85, "monitor_items": 240, "corrector_items": 120},
+  "pairs_in_flight": {
+    "least": 4,
+    "most": 12,
+    "days": 5,
+    "rounds": 18,
+    "calls_per_pair_round": 12,
+    "planned_input_tokens_per_call": 2300,
+    "planned_output_tokens_per_call": 300,
+    "assumed_call_seconds": 60
+  },
+  "floor_unusable_limit": {"220-440": 0.0002, "220-660": 0.0005}
+}
