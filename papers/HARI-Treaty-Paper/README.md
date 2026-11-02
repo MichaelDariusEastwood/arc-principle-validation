@@ -1,15 +1,18 @@
-# Treaty Paper · The HARI Treaty · Hardware to Buy Time, Architecture to Last
+# The HARI Treaty: What evidence should justify international safeguards for advanced AI?
 
-**Version:** 2.4
-**Version date:** 8 October 2026
+Draft Treaty on Hardware-Aligned Recursive Intelligence
+
+**Version:** 2.6  
+**Version date:** 2 November 2026  
 **First published:** 29 September 2026
 
-Working draft; its existing review remains open.
+Working draft. Specialist and external review remain open.
 
 - [Document HTML](HARI-Treaty-Paper.html)
 - [PDF](HARI-Treaty-Paper.pdf)
 - [Full text](HARI-Treaty-Paper.txt)
 - [Citation](HARI-Treaty-Paper.cff)
+- [LaTeX source](HARI-Treaty-Paper-latex-source.tar.gz)
 - [OSF DOI](https://doi.org/10.17605/OSF.IO/WXPCE)
 
-The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.
+This version places the main argument before detailed appendices, preserving the full supporting material. The HTML is the document's own export. New versions retain these filenames, with their own commits. Written research is licensed CC BY 4.0.
