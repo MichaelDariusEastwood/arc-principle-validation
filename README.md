@@ -123,7 +123,7 @@ never an empirical validation.
 | Eden Vision | the philosophical foundations | position paper |
 | Executive Summary | the programme overview | overview |
 | Master Table of Contents | suite navigation | index |
-| The HARI Treaty paper | hardware to buy time, architecture to last | working draft; its existing review remains open |
+| [The HARI Treaty: What evidence should justify international safeguards for advanced AI?](papers/HARI-Treaty-Paper/) | Draft Treaty on Hardware-Aligned Recursive Intelligence; a conditional governance proposal | working draft; specialist and external review remain open |
 | The HARI Treaty draft instruments | the Draft Treaty on Hardware-Aligned Recursive Intelligence | working draft; its existing review remains open |
 
 Where a result is under correction or withdrawn, the
