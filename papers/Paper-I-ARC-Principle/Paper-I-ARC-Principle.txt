@@ -1,14 +1,14 @@
-Title: Does intelligence compound when each step builds on the last, or merely accumulate?
+Title: The ARC Equation: does intelligence compound when each step builds on the last, or merely accumulate?
 Author: Michael Darius Eastwood
 Publication date: 2026-01-17
-Version: v1.18
-Revised: 2026-11-01
+Version: v1.19
+Revised: 2026-11-07
 OSF DOI: 10.17605/OSF.IO/B6N27
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-i-arc-principle.html
 Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
 
-Does intelligence compound when each step builds on the last,
-                    or merely accumulate?
+  The ARC Equation: does intelligence compound when each
+       step builds on the last, or merely accumulate?
                                          Theory · Theory paper · Paper I
       Recursive Dynamics · The ARC Theory · Law I, the ARC Principle, a law under test
 
@@ -19,25 +19,27 @@ Does intelligence compound when each step builds on the last,
 
 
                                                          Abstract
-           I believe advanced AI is an existential risk unless values and correction are built into how it
-       reasons; only proof will move the world. Does intelligence compound when each step builds on the
-       last, or merely accumulate? This paper formalises Law I of the ARC Theory, the ARC Principle
-       (Artificial Recursive Creation): usable capability 𝑈 = 𝐼 𝑅 𝛼 , with its exponent measured rather than
-       assumed. Its stronger hypothesis is that sequential recursion scales super-linearly and faster than
-       parallel sampling. Published reasoning-model data give error-decay slopes of about 0.1 to 0.3 for
-       parallel sampling and 1.34 from two sequential points. These compare error against sample count
-       or average tokens, not directly capability against recursive depth; the series also differ in model
-       and benchmark, and the sequential points are two model versions. Under a positive-error power
-       model, the proxy 1/𝐸 has the same exponent on the same resource axis. Reading it as the capability
-       exponent requires an explicit metric and depth mapping. The later five-model study, Paper II, has
-       one interpretable sequential fit, on Gemini 3 Flash: error-decay regression 0.49 (standard error 0.20)
-       and endpoint estimate 0.59 (bootstrap 95 per cent interval −1.3 to 2.9). That one-model result is
-       inconclusive. Neither set independently measures self-referential coupling. The paper states the ARC
-       Bound, the conjectured value two of Law III’s stability ceiling, with its conditions and falsification
-       criteria. Super-linear capability growth remains unresolved; Law I remains a law under test.
+           I believe advanced AI is an existential risk unless values and correction are built into how it reasons;
+       only proof will move the world. Does intelligence compound when each step builds on the last, or
+       merely accumulate? This paper formalises Law I of the ARC Theory, the ARC Principle (Artificial
+       Recursive Creation): usable capability 𝑈 = 𝐼 𝑅 𝛼 , with its exponent measured rather than assumed. Its
+       stronger hypothesis is that sequential recursion scales super-linearly and faster than parallel sampling.
+       Published reasoning-model data give error-decay slopes of about 0.1 to 0.3 for parallel sampling and
+       1.34 from two sequential points (1.22 to 1.49 under the rounding of the published token averages
+       alone). These compare error against sample count or average tokens, not directly capability against
+       recursive depth; the series also differ in model and benchmark, and the sequential points are two
+       model versions. Under a positive-error power model, the proxy 1/𝐸 has the same exponent on the
+       same resource axis. Reading it as the capability exponent requires an explicit metric and depth
+       mapping. The later five-model study, Paper II, has one interpretable sequential fit, on Gemini 3 Flash:
+       error-decay regression 0.49 (standard error 0.20) and endpoint estimate 0.59 (bootstrap 95 per cent
+       interval −1.3 to 2.9). That one-model result is inconclusive. Neither set independently measures
+       self-referential coupling. The paper states the ARC Bound, the conjectured value two of Law III’s
+       stability ceiling, with its conditions and falsification criteria. Super-linear capability growth remains
+       unresolved; Law I remains a law under test.
 
-Version 1.18 distinguishes error decay, capability growth and coupling; Appendix F records the correction of 1
-November 2026 and preserves the earlier wording. Appendix B keeps the preceding version history.
+Version 1.19 adds the paper’s established name to its title and makes seven corrections, chiefly to the argument at
+fixed throughput, the caption of Figure 1 and the account of the sequential slope; Appendix G records each with the
+wording it replaces. Appendices F and B keep the earlier history.
 
 
 
@@ -46,11 +48,11 @@ November 2026 and preserves the earlier wording. Appendix B keeps the preceding 
 and examines error-decay evidence under an explicit metric bridge, and it states the ARC Bound, the conjectured value of
 Law III, the ARC Ceiling, each a law under test; it uses Law II’s criterion to say what stable means, and it decides none of
 P15, P12 and P21, the propositions of Laws IV and V (registered as laws on 15 October 2026 in version 1.103 of the theory
-registration; Section 6.3 gives their status). Working paper, version 1.18, 1 November 2026; first published 17 January 2026;
-Appendices B and F list every version and correction. Recorded on OSF as Paper I · The ARC Theory · Law I, the ARC Principle
-· The ARC Equation, the Law of Conversion, DOI 10.17605/OSF.IO/B6N27. About the author, founder of Recursive Dynamics,
-without an institution or a doctorate: michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his book, Infinite
-Architects (first edition, 2 January 2026): osf.io/dqm3e. Licence: CC BY 4.0.
+registration; Section 6.3 gives their status). Working paper, version 1.19, 7 November 2026; first published 17 January 2026;
+Appendices B, F and G list every version and correction. Recorded on OSF as Paper I · The ARC Theory · Law I, the ARC
+Principle · The ARC Equation, the Law of Conversion, DOI 10.17605/OSF.IO/B6N27. About the author, founder of Recursive
+Dynamics, without an institution or a doctorate: michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his
+book, Infinite Architects (first edition, 2 January 2026): osf.io/dqm3e. Licence: CC BY 4.0.
 
 
                                                              1
@@ -77,21 +79,21 @@ Contents
 5   Falsification                                                                                         13
     5.1 Criteria and their status . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   13
     5.2 What would refute the principle . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       14
-    5.3 The decision form . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     14
-    5.4 An objection pre-empted . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       14
+    5.3 The decision form . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     15
+    5.4 An objection pre-empted . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       15
     5.5 A programme hypothesis beyond this paper . . . . . . . . . . . . . . . . . . . . . . . .          15
 
-6 What this paper does and does not show                                                                  15
-  6.1 The claims and their status . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       15
+6 What this paper does and does not show                                                                  16
+  6.1 The claims and their status . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       16
   6.2 The exponent-composition identity . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         16
   6.3 Laws IV and V, and the programme’s status . . . . . . . . . . . . . . . . . . . . . . . .           17
 
-7   Limitations                                                                                           17
+7   Limitations                                                                                           18
 
 8   Implications                                                                                          18
     8.1 For AI development . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      18
     8.2 For AI safety . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     18
-    8.3 For scientific understanding . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    18
+    8.3 For scientific understanding . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    19
 
 9   Conclusion                                                                                            19
 
@@ -129,6 +131,10 @@ F Metric clarification of 1 November 2026 and preserved wording                 
   F.1 Version 1.18: what changed and why . . . . . . . . . . . . . . . . . . . . . . . . . . . .        35
   F.2 Earlier wording, grouped in the correction order . . . . . . . . . . . . . . . . . . . . . .      35
   F.3 Earlier figure, retained as historical evidence . . . . . . . . . . . . . . . . . . . . . . . .   41
+
+G Corrections of 7 November 2026 and preserved wording                                              41
+  G.1 Version 1.19: what changed and why . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+  G.2 Earlier wording, as printed in version 1.18 . . . . . . . . . . . . . . . . . . . . . . . . . 42
 
 
 
@@ -190,13 +196,14 @@ recursive depth may be a fundamental driver of capability amplification in artif
 
 
       hypothesis about human-in-the-loop oversight (Section 5).
-     Section 2 sets the work against prior work. Section 3 states the principle, its two forms of recursion
+    Section 2 sets the work against prior work. Section 3 states the principle, its two forms of recursion
 and the stability ceiling hypothesis. Section 4 gives the analysis of published data, and Section 5 the
-falsification criteria. Section 6 states what the paper does and does not show, with the programme’s status;
-Section 7 gives its limitations, Section 8 the implications and Section 9 concludes. Appendix A gives the
-proof of Proposition 1, Appendix B the version history and every correction, Appendix C the priority
-record, Appendix D the notation and a glossary, and Appendix E the paper’s place in the ARC Theory,
-and Appendix F the dated metric correction and preserved earlier wording.
+falsification criteria. Section 6 states what the paper does and does not show, with the programme’s
+status; Section 7 gives its limitations, Section 8 the implications and Section 9 concludes. Appendix A
+gives the proof of Proposition 1, Appendix B the version history and every correction, Appendix C the
+priority record, Appendix D the notation and a glossary, Appendix E the paper’s place in the ARC Theory,
+Appendix F the dated metric correction and preserved earlier wording, and Appendix G the corrections of
+7 November 2026 with the wording they replace.
 
 
 2    Related work, antecedents and the rival instrument
@@ -235,12 +242,12 @@ metabolic rate proportional to body mass to the two-thirds power rather than thr
 Seymour 2003; 725 citations, OpenAlex), and Kozłowski and Konarzewski have twice asked whether the
 model is “mathematically correct and biologically relevant” (Kozłowski and Konarzewski 2004, 2005).
 This programme’s premise needs only the mechanism, that the delivery network sets the ceiling, and not
-any particular exponent; the dispute over the exponent’s value leaves it untouched, but the critics question
 
-                                                     5
+                                                    5
                               The ARC Equation: capability and recursive depth
 
 
+any particular exponent; the dispute over the exponent’s value leaves it untouched, but the critics question
 the mechanism too, so the programme takes it as a premise, and its biological reading stands or falls with
 it.
 
@@ -265,22 +272,22 @@ findings of West’s group, information-mediated growth escapes the throughput l
 in their framework is external and must be applied again and again, faster and faster. No internal limit is
 derived. The replacement limit, a ceiling belonging to the growing system itself, is the gap.
 
-The pipes argument at fixed throughput. Everything that grows is fed through a channel, and for
-everything before software, fixing the channel fixes the growth: starve a tumour’s blood supply and
-its growth is held back; fix a chain reaction’s fuel and geometry and it stops; the Eddington limit is a
-luminosity ceiling where radiation pressure balances gravity, not a hard ceiling on the rate of accretion:
-ultraluminous X-ray sources sit well above it, one accreting neutron star at about a hundred times it
-(Bachetti et al. 2014). Cosmic inflation is excluded by scope (expansion of space, not growth of a structure
-on a substrate); evolution is the sharpest case and fits (complexity rising for billions of years at roughly
-fixed solar throughput, glacially, with no internal corrector, so on this framework evolution would carry a
-measurable exponent far below the ceiling, a hypothesis about biology stated without a criterion or a
-planned test, and outside the theory registration’s scope). Software is the first thing that keeps growing
-when the pipes are held fixed, within the finite number of states and the maximum rate a fixed machine
-allows (Margolus and Levitin 1998; Lloyd 2000), and the operational definition is load-bearing: an artefact
-loop on a fixed substrate, measured on a substrate-fixed clock; a model merely thinking longer does not
-qualify. The physicist’s objection is Landauer’s (1961), that computation is physically implemented; the
-fixed-substrate clock is the answer, because the regime under study holds the substrate fixed and asks
-what still grows.
+The pipes argument at fixed throughput. Much growth is capped by the channel that feeds it: fix a
+chain reaction’s fuel and geometry and it stops. A named limit is not always a ceiling: the Eddington
+limit is a luminosity balance, and ultraluminous X-ray sources sit well above it, one accreting neutron star
+at about a hundred times it (Bachetti et al. 2014). Cosmic inflation is excluded by scope, being expansion
+of space rather than growth of a structure on a substrate. The fixed-substrate premise separates an artefact
+loop’s use of its accumulated outputs from growth bought by enlarging its hardware; it does not establish
+that software is the first or only system able to improve at fixed throughput. Biological evolution raised
+complexity for billions of years at roughly fixed solar throughput, with no internal corrector, and the theory
+registration places biological systems among those “for which the framework offers an analogy and no
+measurement”; it is an analogy here, not evidence, and no biological exponent is inferred. The operational
+target is an artefact loop on a fixed substrate, each pass working on the accumulated output of earlier
+passes and measured on a substrate-fixed clock; a model merely thinking longer does not qualify. The
+power-law equations are idealised limits, since a fixed machine has finitely many states and a maximum
+processing rate (Margolus and Levitin 1998; Lloyd 2000). Landauer’s (1961) objection, that computation
+is physically implemented, is met by the same clock: the regime holds the substrate fixed and asks what
+still grows.
 
 The rival instrument. The nearest work to this programme’s question, and the right paper to weigh it
 against, is Engels et al. (2025), arXiv:2504.18530, first posted 25 April 2025 at 17:54:27 UTC (arXiv’s
@@ -288,13 +295,13 @@ record; a NeurIPS 2025 Spotlight Poster, checked on 15 August 2026 against the N
 poster 115536, as recorded in the statement paper’s reference dossier). It asks how oversight itself scales
 and answers quantitatively: oversight success is modelled as a game between capability-mismatched
 players whose oversight-specific Elo is a piecewise-linear function of general intelligence with two
-plateaus, and optimal numbers of oversight levels are derived numerically and in some cases analytically
 
 
                                                       6
                               The ARC Equation: capability and recursive depth
 
 
+plateaus, and optimal numbers of oversight levels are derived numerically and in some cases analytically
 for Nested Scalable Oversight, in which trusted models oversee stronger untrusted models that then
 become the trusted models at the next step.
     The instrument is the difference. Their variable is the capability gap between overseer and overseen,
@@ -341,7 +348,6 @@ recursive amplification, and closure of the first does not settle the second.
     On the mechanism. That anti-correlated estimates average better than independent ones is textbook
 variance reduction (antithetic variates). The mechanism is not the claim. The claim is that architecture
 determines whether anti-correlation is available at all, and that this caps a safety-relevant exponent.
-    The nearest structural analogue. The quantum error-correction threshold theorem (Aharonov and
 
 
 
@@ -349,6 +355,7 @@ determines whether anti-correlation is available at all, and that this caps a sa
                               The ARC Equation: capability and recursive depth
 
 
+    The nearest structural analogue. The quantum error-correction threshold theorem (Aharonov and
 Ben-Or 2008) also converts a qualitative worry into a critical value. It concerns physical error rates in a
 fixed architecture, not a corrector’s scaling exponent, so it is a near-miss rather than an occupant; the
 analogy is one of method. This analogue was identified by the programme’s own search rather than by a
@@ -384,7 +391,9 @@ blind spot across open models).
 The ARC Principle (Artificial Recursive Creation), stated in an earlier form, as the ARC Hypothesis,
 in the author’s manuscripts of 8 December 2024 (Eastwood 2024) and articulated in Infinite Architects
 (Eastwood 2026a), where its exponent is two, states, in the form this paper gives it:
-                                               𝑈 = 𝐼 × 𝑅𝛼                                               (1)
+
+                                               𝑈 = 𝐼 × 𝑅𝛼                                              (1)
+
 Capability scales with intelligence multiplied by recursive depth raised to a power, where:
       • 𝑈 = Effective capability on a specified metric (benchmark performance requires the metric bridge
         of Section 4.2; the letter’s earlier senses in this programme are in Appendix D.2)
@@ -392,8 +401,7 @@ Capability scales with intelligence multiplied by recursive depth raised to a po
       • 𝑅 = Recursive depth (number of self-referential processing iterations)
       • 𝛼 = Scaling exponent (empirically determined; hypothesised stability ceiling = 2, a scaling limit
         above which self-correction is not stably maintained)
-   The principle’s core claim: recursion does not merely add to capability; it multiplies it according to a
-power law. The letter 𝛼 has an earlier sense in this programme, recorded in Appendix D.2.
+
 
                                                      8
                                    The ARC Equation: capability and recursive depth
@@ -420,23 +428,25 @@ power law. The letter 𝛼 has an earlier sense in this programme, recorded in A
                                                                                      would refute it
 
 Figure 1. The architecture of the ARC Principle. 𝑈 = 𝐼 × 𝑔(𝑅) with 𝛼 = 1/(1 − 𝛽 𝐿 ), where 𝛽 𝐿 is the growth
-model’s self-referential coupling, not Law II’s correction exponent 𝛽𝐶 . In 𝑔(𝑅) = [1 + (𝑎/𝛼)𝑅] 𝛼 , 𝑎 > 0 is a rate
-constant and 𝑅 counts passes after the first: 𝑔 solves 𝑑𝑔/𝑑𝑅 = 𝑎𝑔 𝛽𝐿 with 𝑔 = 1 before an added pass, the equation
-of the Foundational paper, which writes that count 𝑟 = 𝑅 − 1. Equation (1) counts the first pass as 𝑅 = 1. For
-𝛽 𝐿 < 1, the displayed 𝛼 is the shifted solution’s asymptotic exponent; a finite-window fitted slope need not equal it.
-The recursion architectures and the conjectured ARC Bound are illustrated, not located by an empirical coupling
-measurement. For orientation, Paper II’s Gemini 3 Flash sequential regression gives an error-decay exponent of
-0.49 with standard error 0.20, one model’s inconclusive fit; this paper’s earlier sequential endpoint estimate is
-∼1.34, and its parallel error slopes are about 0.1 to 0.3 (Section 4). Section 4.2 states the additional metric and axis
-premises needed to read these as capability slopes. Cauchy Unification (Paper VII, under its stated axioms) uses
-𝛼 = 𝑑/(𝑑 + 1) for physical networks of dimension 𝑑, a formula earlier work derived (among them West et al. 1997),
-and the growth-model relation 𝛼 = 1/(1 − 𝛽 𝐿 ) for intelligence. Those model relations do not convert an error fit
-into an independently measured coupling. The ARC Bound is at most two for correctors of the system’s own class,
-as registered, with the point value two conjectured. The earlier 𝛼 ≈ 2.24 is retracted: it came from the DeepSeek
-R1 run of 21 January 2026, the first phase of Paper II (Paper IX, Section 7). Thirteen falsification criteria stand
-across the Foundational paper; this paper’s four original criteria are in Table 4. Sources: this paper and Papers II,
-III, VII and IX.
+model’s self-referential coupling, not Law II’s correction exponent 𝛽𝐶 . In 𝑔(𝑅) = [1 + (𝑎/𝛼)𝑅] 𝛼 , 𝑎 > 0 is a
+rate constant and 𝑅 counts passes after the first: 𝑔 solves 𝑑𝑔/𝑑𝑅 = 𝑎𝑔 𝛽𝐿 with 𝑔 = 1 before an added pass, the
+equation of the Foundational paper, which writes that count 𝑟 = 𝑅 − 1. Equation (1) counts the first pass as 𝑅 = 1.
+For 𝛽 𝐿 < 1, the displayed 𝛼 is the shifted solution’s asymptotic exponent; a finite-window fitted slope need not
+equal it. The recursion architectures and the conjectured ARC Bound are illustrated, not located by an empirical
+coupling measurement. No measured value is placed on this figure. The slopes reported in Section 4 are error-decay
+estimates on resource axes, a different observable from the capability exponent 𝛼 drawn here; until the metric and
+depth bridge of Section 4.2 is supplied, none can be set against the ARC Bound. Cauchy Unification (Paper VII,
+under its stated axioms) uses 𝛼 = 𝑑/(𝑑 + 1) for physical networks of dimension 𝑑, a formula earlier work derived
+(among them West et al. 1997), and the growth-model relation 𝛼 = 1/(1 − 𝛽 𝐿 ) for intelligence. Those model
+relations do not convert an error fit into an independently measured coupling. The ARC Bound is at most two for
+correctors of the system’s own class, as registered, with the point value two conjectured. The earlier 𝛼 ≈ 2.24 is
+retracted: it came from the DeepSeek R1 run of 21 January 2026, the first phase of Paper II (Paper IX, Section 7).
+Thirteen falsification criteria stand across the Foundational paper; this paper’s four original criteria are in Table 4.
+Sources: this paper and Papers II, III, VII and IX.
 
+
+   The principle’s core claim: recursion does not merely add to capability; it multiplies it according to a
+power law. The letter 𝛼 has an earlier sense in this programme, recorded in Appendix D.2.
 
 3.2    Recursion and its two forms
 Definition 1 (Recursion). Recursion is self-reference: a process whose output becomes its input. It is
@@ -454,7 +464,6 @@ self-correction.
 
     The ARC Principle predicts that sequential recursion should produce higher 𝛼 values than parallel
 recursion.
-
 
 
 
@@ -570,7 +579,9 @@ consensus among 64 samples, re-ranking of 1,000 samples), as OpenAI reports them
 
 Finding. The parallel series gives error-decay slopes 𝛼err ≈ 0.1 to 0.3, sub-linear for the reciprocal-error
 proxy on this sample axis under the power model. This does not identify a capability-growth exponent
-without the bridge above.
+without the bridge above. OpenAI also gives the three results as fractions of the 15 problems (11.1, 12.5
+and 13.9; 74.0, 83.3 and 92.7 per cent); from those the two endpoint slopes are 0.11 and 0.30, beside the
+0.10 and 0.32 that its whole-number percentages give (Table 3).
 
 4.4   Sequential recursion
 
@@ -578,54 +589,63 @@ Table 2. Sequential recursion: accuracy and error rate on AIME 2025 by average t
 versions of DeepSeek-R1, the second row being DeepSeek-R1-0528, as the developer reports them (DeepSeek-AI
 2025b).
 
-                           Thinking Tokens (𝑅res )    Accuracy (%)       Error Rate (%)
-                                          ∼12,000                  70                 30
-                                          ∼23,000                87.5               12.5
+                           Thinking Tokens (𝑅res )    Accuracy (%)     Error Rate (%)
+                                          ∼12,000                70                30
+                                          ∼23,000              87.5              12.5
 
 
 
 Finding. The sequential pair gives an endpoint error-decay slope 𝛼err ≈ 1.34. Under the stated
 reciprocal-error proxy and power model, that is a super-linear proxy exponent over the token axis; it is
-not a direct measurement of capability growth or coupling. The average token count differs by roughly
-a factor of 1.9, below the span of at least one and a half decades of recursive depth, a factor of about
-thirty, that version 1.104 of the theory registration requires of an admissible exponent measurement. That
-registered requirement concerns the declared depth instrument; a token span alone would not establish the
-necessary axis mapping. The two points are also two versions of the model (Section 4.1), so the reading
-that each layer of reasoning amplifies previous gains remains a hypothesis. The later cross-architecture
-measurement, on five frontier models, reports architecture-dependent behaviour (Paper II, version 2.19).
-On Gemini 3 Flash, its one interpretable fit, it reports an endpoint sequential error-decay exponent of 0.59
-with a bootstrap 95 per cent interval of −1.3 to 2.9, a regression sequential error-decay exponent of 0.49
-with a standard error of 0.20 and a coefficient of determination of 0.86, and a parallel error-decay exponent
-of 0.31 by endpoint estimate, the two arms not matched in total compute. The sequential regression
-uses three non-zero-error levels of one fixed-weight model; reasoning settings and prompt wording also
-vary. These are one model’s test-time resource fits and are inconclusive. They identify no independent
-capability-growth or coupling measurement. The earlier 1.34 is retained as the paper’s original fitted
-value, not a programme-wide capability exponent.
+not a direct measurement of capability growth or coupling. The developer’s model card gives the two
+averages as 12K and 23K tokens; read as rounded to the nearest thousand, that rounding alone moves the
+endpoint slope between 1.22 and 1.49. From the figures as Table 2 prints them, the slope is 1.35 to two
+places, printed in this paper as ∼1.34. The card gives no result for each question, so no sampling interval
+is given. The average token count differs by roughly a factor of 1.9, below the span of at least one and
+a half decades of recursive depth, a factor of about thirty, that version 1.104 of the theory registration
+requires of an admissible exponent measurement. That registered requirement concerns the declared
+depth instrument; a token span alone would not establish the necessary axis mapping. The two points are
+also two versions of the model (Section 4.1), so the reading that each layer of reasoning amplifies previous
+gains remains a hypothesis. The later cross-architecture measurement, on five frontier models, reports
+architecture-dependent behaviour (Paper II, version 2.19). On Gemini 3 Flash, its one interpretable fit, it
+reports an endpoint sequential error-decay exponent of 0.59 with a bootstrap 95 per cent interval of −1.3 to
+2.9, a regression sequential error-decay exponent of 0.49 with a standard error of 0.20 and a coefficient of
+determination of 0.86, and a parallel error-decay exponent of 0.31 by endpoint estimate, the two arms not
+matched in total compute. The sequential regression uses three non-zero-error levels of one fixed-weight
+model; reasoning settings and prompt wording also vary. These are one model’s test-time resource fits
+and are inconclusive. They identify no independent capability-growth or coupling measurement. The
+earlier 1.34 is retained as the paper’s original fitted value, not a programme-wide capability exponent.
 
 4.5   Summary of findings
-
-Table 3. Error-decay slopes by method and resource proxy, using equation (3). Sub-linear and super-linear classify
-the reciprocal-error proxy under the same power model, not an independently identified capability scale.
-
-Method            Recursion Type     Fitted 𝛼err   Classification
-o1 (1 to 64)      Parallel                0.10     Sub-linear
-o1 (64 to 1000)   Parallel/Hybrid         0.32     Sub-linear
-DeepSeek-R1       Sequential             ∼1.34     Super-linear reciprocal-error proxy (two points; later error fits in
-                                                   Paper II)
-
-
-
 Key finding, held as a hypothesis. The form of recursion may affect an error-decay slope on a fixed
 instrument. The present comparison does not isolate that effect or identify a common capability scale.
-
-                                                        12
-                               The ARC Equation: capability and recursive depth
-
 
 What the comparison holds fixed. The two rows this comparison rests on differ in more than the form
 of recursion. The parallel row comes from a system whose resource variable is the number of samples,
 under consensus voting and then re-ranking, reported in September 2024 (OpenAI 2024); the sequential
 row comes from a different system, built by a different developer, whose resource variable is an average
+
+
+                                                       12
+                                The ARC Equation: capability and recursive depth
+
+
+Table 3. Error-decay slopes by method and resource proxy, using equation (3): the response is the error rate, against
+sample count in the o1 rows and against average thinking tokens in the DeepSeek row. Each slope is an endpoint
+estimate between two of the developers’ published figures, which give no result for each question, so no sampling
+interval is given. Sub-linear and super-linear classify the reciprocal-error proxy under the same power model, not
+an independently identified capability scale.
+
+Method                       Recursion Type      Fitted 𝛼err   Classification
+o1 (1 to 64)                 Parallel                 0.10     Sub-linear; 0.11 from OpenAI’s fractions of 15
+o1 (64 to 1000)              Parallel/Hybrid          0.32     Sub-linear; 0.30 from OpenAI’s fractions of 15
+DeepSeek-R1 to R1-0528       Sequential              ∼1.34     Super-linear reciprocal-error proxy; two model
+                                                               versions, each at its own average token use, not two
+                                                               budgets on one fixed model; 1.22 to 1.49 under the
+                                                               rounding of the published averages alone; later error
+                                                               fits in Paper II
+
+
 thinking-token count, reported on 28 May 2025 for two versions of the model (DeepSeek-AI 2025b). The
 benchmarks differ too: the parallel series is on AIME 2024 and the sequential pair on AIME 2025. The
 system under test, the benchmark, the evaluation context and the quantity on the horizontal axis vary
@@ -646,9 +666,9 @@ The following criteria concern the original capability hypothesis. Applying an e
 them first requires the metric and depth bridge of Section 4.2; none is a criterion on an arbitrary error
 scale. Subject to that requirement and the registered decision form below, the ARC Principle (Law I, like
 every law of the theory a law under test) would be significantly weakened or refuted if:
-           Table 4. Falsification criteria of the ARC Principle in this paper, with their current status.
+            Table 4. Falsification criteria of the ARC Principle in this paper, with their current status.
 
-Code      Condition                             Current Status
+Code      Condition                              Current Status
 F1        Sequential recursive depth            Undecided: Paper II, version 2.19, reports an error-decay
           consistently yields 𝛼 ≤ 1             regression of 0.49 (standard error 0.20) and endpoint estimate 0.59
                                                 (bootstrap 95 per cent interval −1.3 to 2.9) on Gemini 3 Flash.
@@ -656,55 +676,67 @@ F1        Sequential recursive depth            Undecided: Paper II, version 2.1
                                                 is not independently established. Estimates above 1.0 from
                                                 ceiling-compressed data may be inflated. Neither direction of
                                                 “consistently” is decided
-F2        𝛼 decreases as recursive              Undecided: Paper II's cross-architecture study leaves only Gemini
-          architectures mature                  3 Flash in measurable error range; more capable models reached
-                                                the ceiling and a less capable one the floor. It supplies no identified
-                                                trend in the capability exponent across architectures
-F3        The relationship is additive rather   Not met; no result yet bears on it
-          than multiplicative
-F4        More extensive datasets show          Undecided: the two Gemini 3 Flash error-decay point estimates in
-          𝛼 < 1 for sequential reasoning        Paper II are below one, but the endpoint interval spans both
-                                                regimes and the capability/depth bridge is unestablished. This does
-                                                not partially decide a criterion on capability growth. The
-                                                artefact-mediated estimation written for this paper (unit 24) is a
-                                                draft preregistered by timestamp (first anchored on 12 August 2026
-                                                at block 962066), awaiting submission by the author
 
 
-                                                        13
-                              The ARC Equation: capability and recursive depth
+
+
+                                                         13
+                                The ARC Equation: capability and recursive depth
+
+
+Code       Condition                             Current Status
+
+F2         𝛼 decreases as recursive              Undecided: Paper II's cross-architecture study leaves only Gemini
+           architectures mature                  3 Flash in measurable error range; more capable models reached
+                                                 the ceiling and a less capable one the floor. It supplies no identified
+                                                 trend in the capability exponent across architectures
+F3         The relationship is additive rather   Not met; no result yet bears on it
+           than multiplicative
+F4         More extensive datasets show          Undecided: the two Gemini 3 Flash error-decay point estimates in
+           𝛼 < 1 for sequential reasoning        Paper II are below one, but the endpoint interval spans both
+                                                 regimes and the capability/depth bridge is unestablished. This does
+                                                 not partially decide a criterion on capability growth. The
+                                                 artefact-mediated estimation written for this paper (unit 24) is a
+                                                 draft preregistered by timestamp (first anchored on 12 August 2026
+                                                 at block 962066), awaiting submission by the author
 
 
 5.2     What would refute the principle
 The ARC Principle in this paper’s original, stronger form, that capability scales super-linearly with
 recursive depth, 𝑈 = 𝐼 × 𝑅 𝛼 , with the sequential/parallel distinction determining the regime, is refutable.
 It would be overturned by any of the following:
-   1. No super-linear depth scaling. If capability scaled only linearly or sub-linearly with recursive
-      depth 𝑅 across reasoning models (i.e. 𝛼 ≤ 1 where the principle predicts 𝛼 > 1 for sequential
-      recursion), the central super-linearity claim fails.
-   2. Exponent-composition mismatch. Given independently measured coupling 𝛽 𝐿 , a declared
-      capability metric and depth axis, and the growth-model premises and asymptotic regime of Figure 1,
-      systematic disagreement with 𝛼 = 1/(1− 𝛽 𝐿 ) would reject that model's applicability to the measured
-      system. It would not refute the algebraic solution under its premises. Inferring 𝛽 𝐿 from the same
-      fitted exponent and substituting it back supplies no such test. The coupling remains distinct from
-      Law II's correction exponent 𝛽𝐶 .
-   3. Regime non-distinction. If sequential and parallel recursion produced the same scaling regime
-      (no super-linear vs sub-linear split), the paper’s central distinction collapses.
-   4. Better-fitting alternative. If a functional form outside the ARC family fit the test-time compute
-      data materially better across models, ARC would not be the operative law.
-   5. Domain-independence failure. If 𝑈 = 𝐼 × 𝑅 𝛼 held for reasoning models but robustly failed in
-      other recursive domains meeting the premise, the domain-independent claim would have to narrow
-      to “a property of current reasoning models”.
-   6. The one-half reference. On Gemini 3 Flash, Paper II's error-decay regression is 0.49 (standard error
-      0.20), one model's inconclusive fit (Section 4.4). One half is a reference value, not an automatic
-      null exponent for the proportion of incorrect responses: the central limit theorem's square-root
-      standard-error scaling does not by itself supply a law for that proportion. A competing sampling,
-      aggregation and decision model must predict the same measured outcome before a comparison can
-      distinguish mechanisms. The earlier objection is retained with its correction in Appendix F; its
-      programme record is FALS-022 and Objection 5 of Paper II, Section 5.4.
+     1. No super-linear depth scaling. If capability scaled only linearly or sub-linearly with recursive
+        depth 𝑅 across reasoning models (i.e. 𝛼 ≤ 1 where the principle predicts 𝛼 > 1 for sequential
+        recursion), the central super-linearity claim fails.
+     2. Exponent-composition mismatch. Given independently measured coupling 𝛽 𝐿 , a declared
+        capability metric and depth axis, and the growth-model premises and asymptotic regime of Figure 1,
+        systematic disagreement with 𝛼 = 1/(1− 𝛽 𝐿 ) would reject that model's applicability to the measured
+        system. It would not refute the algebraic solution under its premises. Inferring 𝛽 𝐿 from the same
+        fitted exponent and substituting it back supplies no such test. The coupling remains distinct from
+        Law II's correction exponent 𝛽𝐶 .
+     3. Regime non-distinction. If sequential and parallel recursion produced the same scaling regime
+        (no super-linear vs sub-linear split), the paper’s central distinction collapses.
+     4. Better-fitting alternative. If a functional form outside the ARC family fit the test-time compute
+        data materially better across models, ARC would not be the operative law.
+     5. Domain-independence failure. If 𝑈 = 𝐼 × 𝑅 𝛼 held for reasoning models but robustly failed in
+        other recursive domains meeting the premise, the domain-independent claim would have to narrow
+        to “a property of current reasoning models”.
+     6. The one-half reference. On Gemini 3 Flash, Paper II's error-decay regression is 0.49 (standard error
+        0.20), one model's inconclusive fit (Section 4.4). One half is a reference value, not an automatic
+        null exponent for the proportion of incorrect responses: the central limit theorem's square-root
+        standard-error scaling does not by itself supply a law for that proportion. A competing sampling,
+        aggregation and decision model must predict the same measured outcome before a comparison can
+        distinguish mechanisms. The earlier objection is retained with its correction in Appendix F; its
+        programme record is FALS-022 and Objection 5 of Paper II, Section 5.4.
       This is the metric correction recorded by Paper II on 19 September 2026.
 
-5.3     The decision form
+
+
+                                                         14
+                             The ARC Equation: capability and recursive depth
+
+
+5.3   The decision form
 The decision form these criteria inherit. Section 5.1 records status against this paper’s original criteria;
 the deciding registrations use a three-outcome form, and every criterion above inherits it: SUPPORTED
 when the interval lies wholly beyond the minimum effect fixed in advance; REFUTED when the interval
@@ -714,23 +746,24 @@ support or refutation. The margin, the minimum effect and a measured power figur
 “Refuted if the confidence interval contains the null” lets an underpowered study refute by default and is
 not licensed anywhere in this programme.
 
-5.4     An objection pre-empted
+5.4   An objection pre-empted
 One objection pre-empted, because a physicist reaches it in one step. Fault-tolerant quantum error
 correction suppresses logical error exponentially in code distance below threshold, which looks like a
 counterexample to any square-root cap (the same-class limit 𝛾 ≤ 1/2 of Section 3.3). Two scope facts
 answer it: the exponential suppression runs on the redundancy axis at fixed capability, not on the coupling
-
-                                                     14
-                                The ARC Equation: capability and recursive depth
-
-
 of corrective strength to the capability of the corrected system, which is the exponent this programme
 measures; and the threshold theorem itself requires sufficiently uncorrelated physical noise, which is the
 independence premise again, wearing hardware. Concentration bounds likewise give exponentially falling
 error probability while estimator width falls as the square root: different quantities, and conflating them
-manufactures a refutation.
+manufactures a refutation. With independent readings whose number grows in proportion to capability,
+the same premise gives different laws on different responses: a power of one half for the inverse standard
+deviation, a power of one for the inverse variance, and an exponential fall in the error of a majority vote
+among readings each right more often than not. The cap’s value is the first case, and the theory registration
+lets an inverse-uncertainty exponent stand for the misalignment a corrector removes only where the two
+elasticities, measured on the same systems and fault set, agree within its registered equivalence margin;
+until then the cap remains P6’s conjecture.
 
-5.5     A programme hypothesis beyond this paper
+5.5   A programme hypothesis beyond this paper
 Oversight arrangements that place a human in the loop, as amplification (Christiano et al. 2018) and
 reinforcement learning from human feedback (Christiano et al. 2017) do, are cross-class by construction,
 because the human corrector does not share the model’s substrate. The programme therefore hypothesises,
@@ -746,6 +779,12 @@ submission by the author.
 Standing covenant. Prove this paper wrong, and I will publish the refutation myself. Falsification
 conditions are stated in this paper; the standing challenge: github.com/MichaelDariusEastwood/
 arc-scaling-challenge.
+
+
+
+
+                                                     15
+                                The ARC Equation: capability and recursive depth
 
 
 6     What this paper does and does not show
@@ -770,17 +809,9 @@ capability exponent 𝛼 > 1                                  from two versions 
 exceedable, but not while a
 system remains stably
 self-correcting
-
-
-                                                         15
-                                The ARC Equation: capability and recursive depth
-
-
-Claim                             Status                Evidence Level
-
-The form of recursion matters     HYPOTHESISED          Consistent with both datasets, which also differ in
-                                                        system, benchmark, evaluation context and resource axis
-                                                        (Section 4.5)
+The form of recursion matters     HYPOTHESISED             Consistent with both datasets, which also differ in
+                                                           system, benchmark, evaluation context and resource axis
+                                                           (Section 4.5)
 
 
       This paper does not claim:
@@ -789,8 +820,8 @@ The form of recursion matters     HYPOTHESISED          Consistent with both dat
       • That a capability exponent of 1.3 is established by the earlier error fit (the metric and depth bridge,
         as well as further data, is required)
       • That the principle has been independently replicated (it has not)
-     We present a principle with preliminary and mixed evidence (Sections 4 and 5), and invite rigorous
-testing.
+   We present Law I, a law under test, with published error-decay data that bear on it only through the
+metric and depth bridge of Section 4.2 (Sections 4 and 5), and invite rigorous testing.
 
 6.2     The exponent-composition identity
 The programme’s stability ceiling and its conversion exponent meet at the same number: the ceiling
@@ -801,6 +832,12 @@ BY TIMESTAMP FOR TESTING, in advance of the data, with outcomes that can kill it
 registrations were written to carry it. One of them, Study AE, was withdrawn on 12 August 2026, before
 filing, as vacuous: a shared accumulation law forces the agreement it would have tested, so its test
 could not fail, and the programme’s register names the cross-class to same-class correction-exponent
+
+
+                                                         16
+                              The ARC Equation: capability and recursive depth
+
+
 ratio as its replacement carrier. Study AE set out the reciprocity requirement between the separately
 measured leverage cap and stability boundary, on the log scale, with three outcomes per cell (supported,
 refuted, insufficient precision) and an aggregation rule under which one refuted cell refutes the identity; its
@@ -810,7 +847,7 @@ raised afterwards as the explanation for agreement. Study AG, a draft preregiste
 anchored on 12 August 2026 at block 962066), estimates the coupling and the correction exponent on one
 and the same system and tests whether the growth exponent the leverage fraction sustains respects the
 ceiling the correction exponent sets (𝛽 𝐿 ≤ 𝛾), and is designed to find a violation.
-     So the identity is stated here as a claim preregistered by timestamp for testing, its deciding measurements
+    So the identity is stated here as a claim preregistered by timestamp for testing, its deciding measurements
 drafted and dated; if the channels disagree, the unification is withdrawn from every surface it has reached,
 with the same prominence as the framing. The identity is never called established. Paper II’s Gemini 3
 Flash regression value 0.49 (standard error 0.20; Section 4.4) is an error-decay slope, not a measurement
@@ -821,18 +858,11 @@ Algebraically inverting an assumed identity reuses the fitted slope and supplies
 measurement or corroboration; a comparison with the correction-leverage exponent needs its own
 instrument on the same system.
 
-
-
-
-                                                      16
-                               The ARC Equation: capability and recursive depth
-
-
-6.3     Laws IV and V, and the programme’s status
+6.3   Laws IV and V, and the programme’s status
 This paper tests neither Law IV nor Law V. No result in this paper is a deciding test of P15, P12 or P21;
 the note of 3 October 2026 that set out why is kept in Appendix B.3.
 
-Status, as at 1 November 2026. What this programme names Laws are conjectures. Laws I to III were
+Status, as at 7 November 2026. What this programme names Laws are conjectures. Laws I to III were
 registered on 8 September 2026 and Laws IV and V on 15 October 2026 (version 1.103), the mathematics
 of Laws IV and V still in development (version 1.2, 29 October 2026). Each is a law under test: Law IV
 has not yet been tested, and the counted test of Law V’s placement limb is Unit 83, below. The theory
@@ -855,6 +885,12 @@ evaluable, which is not support for the information-asymmetry mechanism; its bui
 P12, is undecided, since P12 is untested. A third, Unit 82, the counted test of P17, the premise beneath
 Law III’s value two (Section 3.3), was registered on OSF on 27 October 2026 and has not yet run. The
 trials that would decide this paper’s own predictions, the artefact-mediated estimation written for it among
+
+
+                                                      17
+                               The ARC Equation: capability and recursive depth
+
+
 them (row F4 of Table 4), are drafts awaiting the author’s submission. Every quantity in this paper is
 operationally defined, and established-law standing is claimed nowhere. The registered programme exists
 to earn that standing, or lose it, by measurement, replication and survived refutation.
@@ -873,12 +909,6 @@ Scientific integrity requires explicit acknowledgement of limitations:
         evaluation context and resource axis as well as in the form of recursion (Section 4.5), and published
         comparisons within single models are mixed (Section 2); the contrast is a hypothesis.
       • Functional form: Two points fix the exponent of a power law through them and cannot tell a power
-
-
-                                                     17
-                              The ARC Equation: capability and recursive depth
-
-
         law from a logarithmic, exponential or saturating form; equation (3) assumes the power law, and
         the registered analysis of Law I compares it with rival forms fixed in advance.
       • Metric and axis: Equation (3) measures error decay against samples or average tokens. Reciprocal
@@ -904,20 +934,21 @@ whether a system whose values compound stays useful. Neither half is a reason to
 containment or shutdown, which stay in human hands for as long as they can be held; correction built in is
 the contingency for control lost against our will.
 
-8.3     For scientific understanding
+
+
+
+                                                     18
+                               The ARC Equation: capability and recursive depth
+
+
+8.3    For scientific understanding
 The ARC Principle connects to several frameworks, including the scaling laws of Kaplan et al. (2020),
 Integrated Information Theory (Tononi 2008) and the optimality proof for Grover’s quantum search
 (Bennett et al. 1997).
 
 
-
-
-                                                    18
-                               The ARC Equation: capability and recursive depth
-
-
-9    Conclusion
-We have formalised the ARC Principle and presented preliminary evidence:
+9     Conclusion
+We have formalised the ARC Principle and reported the published error-decay data that bear on it:
     1. Parallel sampling gives error-decay slopes 𝛼err ≈ 0.1 to 0.3 on the sample-count axis
     2. The sequential pair gives 𝛼err ≈ 1.34 on the average-token axis, from two versions of one model.
        Paper II's later one-model interpretable error fit is inconclusive. Neither independently identifies a
@@ -2083,6 +2114,125 @@ This is a historical reproduction, not a second current model.
 
 
 
+G      Corrections of 7 November 2026 and preserved wording
+G.1     Version 1.19: what changed and why
+Version 1.18 was revised on 1 November 2026; the paper was first published on 17 January 2026. Version
+1.19, revised on 7 November 2026, gives the paper its established name and makes seven corrections. No
+measured value, table figure or recorded result changes. No law, proposition or kill condition changes,
+and no new data are reported.
+    The title now gives the paper’s established name before its question: The ARC Equation: does
+intelligence compound when each step builds on the last, or merely accumulate? Versions 1.17 and 1.18
+printed the question alone, “Does intelligence compound when each step builds on the last, or merely
+accumulate?”. The running head keeps its short form.
+    Substantive changes. (i) The argument at fixed throughput (Section 2) no longer says that fixing
+the channel fixed all growth before software, or that software is the first thing to keep growing at fixed
+throughput. The biological evolution the same paragraph cited had raised complexity at roughly fixed
+solar throughput. The fixed-substrate premise now separates an artefact loop’s use of its accumulated
+outputs from growth bought by enlarging its hardware, and it names no first or only system. Biological
+evolution is an analogy, not evidence, because the theory registration places biological systems outside its
+scope. The hypothesis that evolution would carry an exponent far below the ceiling is no longer stated,
+and the tumour example is not kept.
+    (ii) The caption of Figure 1 no longer places this paper’s and Paper II’s error-decay slopes beside the
+ARC Bound for orientation. They are error-decay estimates on resource axes, a different observable from
+the capability exponent the figure draws, and no measured value is placed on it.
+    (iii) In Table 3, the DeepSeek row states that it compares two model versions, each at its own average
+token use, not two budgets on one fixed model. The caption names the response, the resource axes and
+the estimator.
+    (iv) The sequential slope carries its range. The developer gives the token averages as 12K and 23K;
+read as rounded to the nearest thousand, that rounding alone moves the endpoint slope between 1.22
 
                                                          41
+                             The ARC Equation: capability and recursive depth
+
+
+and 1.49. The figures as printed give 1.35 to two places, which this paper prints as ∼1.34. No sampling
+interval is given, because no result for each question is published (the abstract, Section 4.4 and Table 3).
+    (v) Section 6.1 and the conclusion call the published data error-decay data that bear on the principle,
+where version 1.18 called them preliminary evidence; Section 6.1 adds that they bear on it only through
+the metric and depth bridge of Section 4.2.
+    (vi) Section 5.4 states which response the same-class cap’s value of one half belongs to. It also states
+the registration’s condition before an inverse-uncertainty exponent may stand for the misalignment a
+corrector removes.
+    (vii) The o1 slopes carry the values from OpenAI’s own fractions. The account gives its three AIME
+2024 results as fractions of the 15 problems (11.1, 12.5 and 13.9); from those the two endpoint slopes are
+0.11 and 0.30, beside the 0.10 and 0.32 that its whole-number percentages give, which stay as recorded
+(Section 4.3 and Table 3). Both pairs are about 0.1 to 0.3.
+    Editorial: the version note beneath the abstract, the note on the first page and the paper’s map in
+Section 1 name this appendix.
+    Appendices B and F remain the earlier record, with their dates fixed. The excerpts below preserve each
+replaced phrase, sentence and table cell of version 1.18. Two clauses of the argument at fixed throughput
+are the exception: this version withdraws them, and they are marked [. . . ] where they stood. Version 1.18
+remains in the paper’s file history at its DOI. Version numbers, dates, cross-references to the appendices
+and additions that replace no wording are not excerpted. In table excerpts, vertical separators mark the
+original cell boundaries. These are historical statements, superseded where the correction applies, and
+must not be read as this edition’s current conclusions.
+
+G.2    Earlier wording, as printed in version 1.18
+The version note beneath the abstract.
+
+      Version 1.18 distinguishes error decay, capability growth and coupling; Appendix F records
+      the correction of 1 November 2026 and preserves the earlier wording. Appendix B keeps the
+      preceding version history.
+
+Section 2, the argument at fixed throughput.
+
+      The pipes argument at fixed throughput. Everything that grows is fed through a channel,
+      and [. . . ]: starve a tumour’s blood supply and its growth is held back; fix a chain reaction’s
+      fuel and geometry and it stops; the Eddington limit is a luminosity ceiling where radiation
+      pressure balances gravity, not a hard ceiling on the rate of accretion: ultraluminous X-ray
+      sources sit well above it, one accreting neutron star at about a hundred times it (Bachetti
+      et al. 2014). Cosmic inflation is excluded by scope (expansion of space, not growth of
+      a structure on a substrate); evolution is the sharpest case and fits (complexity rising for
+      billions of years at roughly fixed solar throughput, glacially, with no internal corrector, so
+      on this framework evolution would carry a measurable exponent far below the ceiling, a
+      hypothesis about biology stated without a criterion or a planned test, and outside the theory
+      registration’s scope). [. . . ], within the finite number of states and the maximum rate a fixed
+      machine allows (Margolus and Levitin 1998; Lloyd 2000), and the operational definition
+      is load-bearing: an artefact loop on a fixed substrate, measured on a substrate-fixed clock;
+      a model merely thinking longer does not qualify. The physicist’s objection is Landauer’s
+      (1961), that computation is physically implemented; the fixed-substrate clock is the answer,
+      because the regime under study holds the substrate fixed and asks what still grows.
+
+
+                                                    42
+                             The ARC Equation: capability and recursive depth
+
+
+Figure 1, two sentences of its caption.
+
+      For orientation, Paper II’s Gemini 3 Flash sequential regression gives an error-decay exponent
+      of 0.49 with standard error 0.20, one model’s inconclusive fit; this paper’s earlier sequential
+      endpoint estimate is ∼1.34, and its parallel error slopes are about 0.1 to 0.3 (Section 4).
+      Section 4.2 states the additional metric and axis premises needed to read these as capability
+      slopes.
+
+Table 3, its caption.
+
+      Error-decay slopes by method and resource proxy, using equation (3). Sub-linear and super-
+      linear classify the reciprocal-error proxy under the same power model, not an independently
+      identified capability scale.
+
+Table 3, the DeepSeek row.
+
+      DeepSeek-R1 | Sequential |              ∼1.34        |   Super-linear reciprocal-error proxy (two
+      points; later error fits in Paper II)
+
+Section 6.1, its closing sentence.
+
+      We present a principle with preliminary and mixed evidence (Sections 4 and 5), and invite
+      rigorous testing.
+
+Section 9, its opening sentence.
+
+      We have formalised the ARC Principle and presented preliminary evidence:
+
+Table 3, the o1 rows.
+
+      o1 (1 to 64) |     Parallel | 0.10 | Sub-linear
+      o1 (64 to 1000)    | Parallel/Hybrid | 0.32 | Sub-linear
+
+
+
+
+                                                      43
 
