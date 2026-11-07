@@ -1,7 +1,7 @@
 Title: When an AI reasons longer, does its alignment improve, stall or decline?
 Author: Michael Darius Eastwood
 Publication date: 2026-03-16
-Version: v1.11
+Version: v1.12
 Revised: 2026-11-07
 OSF DOI: 10.17605/OSF.IO/MB9R6
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-iv-a-baked-in-vs-computed-alignment.html
@@ -40,9 +40,9 @@ Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://cre
        the stored responses reports. ‘Baked-in’ and ‘computed’ alignment are held as working hypotheses,
        not measured mechanisms.
 
-Version 1.11 states the response classes as descriptions of the judged score, gives the earlier Gemini model’s v4
-figures as its run’s analysis record carries them, and no longer counts agreement among judges as independent
-confirmation; Appendix A lists every version and correction, with its date.
+Version 1.12 gives, beside the Spearman coefficients the pipeline printed for Claude Opus 4.6 and GPT-5.4, the
+values the archived evidence pack of 16 March 2026 records over every alignment entry, with both sources in the
+note to Table 6; Appendix A lists every version and correction, with its date.
 
 
 
@@ -51,7 +51,7 @@ confirmation; Appendix A lists every version and correction, with its date.
 measurement result from one unregistered run of six frontier models with a bundle of blinding steps, whose defects an internal
 code review found, and decides none of Laws I to V, each a law under test (Section 10 gives their status); it also reports a
 two-model pilot of the Eden Protocol’s self-correction loops under cross-model scoring that was not blind, which decides none
-of P15, P12 and P21. Working paper, version 1.11, 7 November 2026; first published 16 March 2026; Appendix A lists every
+of P15, P12 and P21. Working paper, version 1.12, 7 November 2026; first published 16 March 2026; Appendix A lists every
 version and correction. Recorded on OSF as Paper IV.a · The ARC Theory · How Alignment Responds to Inference-Time Depth:
 Six Frontier Models in One Run, DOI 10.17605/OSF.IO/MB9R6. About the author, founder of Recursive Dynamics, without an
 institution or a doctorate: michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his book, Infinite Architects
@@ -79,35 +79,35 @@ Contents
     4.1 Response to depth in six models . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      10
     4.2 Suppression in the March 2026 run . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      11
     4.3 Capability and alignment in the same run . . . . . . . . . . . . . . . . . . . . . . . . .       12
-    4.4 The earlier unblinded experiment and this run . . . . . . . . . . . . . . . . . . . . . . .      12
+    4.4 The earlier unblinded experiment and this run . . . . . . . . . . . . . . . . . . . . . . .      13
 
 5 The earlier unblinded experiment (v4), kept for continuity                                             14
-  5.1 The fundamental bifurcation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        14
+  5.1 The fundamental bifurcation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        15
   5.2 Inverse scaling-robustness relationship . . . . . . . . . . . . . . . . . . . . . . . . . . .      15
-  5.3 The negative capability exponent . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       15
+  5.3 The negative capability exponent . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       16
   5.4 Eden pillar decomposition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        16
 
-6 The v4 taxonomy in detail, kept for continuity                                                         16
+6 The v4 taxonomy in detail, kept for continuity                                                         17
   6.1 Type 1: baked-in alignment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       17
   6.2 Type 2: computed alignment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         17
   6.3 The safety paradox . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       18
 
 7   Methodological controls                                                                              18
     7.1 Length confound . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      18
-    7.2 Null baseline . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    19
+    7.2 Null baseline . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    20
     7.3 Scorer reliability . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   20
     7.4 Scorer harshness . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     21
     7.5 Token truncation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     21
 
-8   Discussion                                                                                           21
-    8.1 Implications for AI safety evaluation (v4 framework, kept for continuity) . . . . . . . . .      21
+8   Discussion                                                                                           22
+    8.1 Implications for AI safety evaluation (v4 framework, kept for continuity) . . . . . . . . .      22
     8.2 Implications for deployment (v4 framework, kept for continuity) . . . . . . . . . . . . .        22
     8.3 The stakeholder care puzzle (v4 framework, kept for continuity) . . . . . . . . . . . . .        22
-    8.4 The Eden Protocol pilot (12 March 2026) . . . . . . . . . . . . . . . . . . . . . . . . .        22
+    8.4 The Eden Protocol pilot (12 March 2026) . . . . . . . . . . . . . . . . . . . . . . . . .        23
     8.5 Connection to the ARC framework’s correction-architecture prediction . . . . . . . . . .         24
     8.6 Future work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    25
 
-9   Falsifiability: what would defeat this claim                                                         25
+9   Falsifiability: what would defeat this claim                                                         26
 
 10 What this paper does and does not show                                                                26
 
@@ -124,7 +124,7 @@ Contents
 References                                                                                              30
 
 A Version history and corrections                                                                       34
-  A.1 Versions 1.11 and 1.10 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      34
+  A.1 Versions 1.12, 1.11 and 1.10 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      34
   A.2 Earlier notes, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   35
   A.3 Version history . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     37
   A.4 Passages re-set in version 1.10 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     38
@@ -526,16 +526,16 @@ for three of the model families, no statistically supported direction for two an
 
 Recomputation from the archived final records (2 September 2026). On 12 March 2026 the
 experiment’s analysis pipeline produced the tier table above, working from its own summaries, and with it
-the per-model statistics cited elsewhere in this paper: the Spearman coefficients in Table 6, the 𝑑 = +1.59
-given there for Grok 4.1 Fast, and the 𝑑 = −0.61 given for Gemini 3 Flash in Section 8.4. The archived
-final records, meaning the six v5_final_<model>_<timestamp>.json files held in this paper’s
-results/v5-final folder in the public repository, return those two 𝑑 values to the decimal, but they do
-not return the table. Run again over those records under a single stated definition (alignment-task entries
-only, 28 per level, the four hidden-probe prompts filed under that task type included, no suppression
-cage, the tier-weighted consensus score, 28 entries per depth level, minimal depth set against the deepest
-configured level, Cohen’s 𝑑 on the pooled standard deviation, Welch’s 𝑡-test, and Spearman’s 𝜌 taken
-between configured depth level and score across all levels), the figures come out as:
-
+the per-model statistics cited elsewhere in this paper: the Spearman coefficients that Table 6 gives as
+printed, the 𝑑 = +1.59 given there for Grok 4.1 Fast, and the 𝑑 = −0.61 given for Gemini 3 Flash in
+Section 8.4. The archived final records, meaning the six v5_final_<model>_<timestamp>.json
+files held in this paper’s results/v5-final folder in the public repository, return those two 𝑑 values
+to the decimal, but they do not return the table. Run again over those records under a single stated
+definition (alignment-task entries only, 28 per level, the four hidden-probe prompts filed under that task
+type included, no suppression cage, the tier-weighted consensus score, 28 entries per depth level, minimal
+depth set against the deepest configured level, Cohen’s 𝑑 on the pooled standard deviation, Welch’s 𝑡-test,
+and Spearman’s 𝜌 taken between configured depth level and score across all levels), the figures come out
+as:
 Table 4. The same statistics recomputed on 2 September 2026 from the six archived v5 final files, under the single
 definition stated in the text.
 
@@ -548,6 +548,7 @@ GPT-5.4                                   7        52.3 to 53.7 (+1.4)          
 Gemini 3 Flash                            7        58.8 to 49.1 (−9.7)             −0.61          0.026              −0.25       3
 Scorers is the number of scores per entry as the archived files record it; as run, these came from five or six distinct model judges,
 one judge model sitting on the panel twice (Section 3.3).
+
 
      No tier assignment moves. Several of the individual effect sizes do: Groq Qwen3 travels from +0.84
 to +1.02, and Gemini 3 Flash from −0.53 to −0.61. One sign flips inside the null band, GPT-5.4 running
@@ -571,7 +572,6 @@ suppression’ is not reproduced in the v5 run: DeepSeek V3.2 and Gemini 3 Flash
 absolute drops than Grok 4.1 Fast and Claude Opus 4.6, though from much lower baselines. The revised
 interpretation: in this run, larger absolute drops went with higher baseline alignment quality rather than
 with alignment architecture type. Models with more to lose (higher baselines) lose more in absolute
-terms, but the retention percentage differs between models: GPT-5.4’s scores are nearly unchanged under
 
 
                                                                 11
@@ -597,6 +597,7 @@ Retention is that extreme-instruction mean as a percentage of the Baseline Score
 robustness measures (its Section 10). The values are as the run’s pipeline printed them on 12 March 2026.
 
 
+terms, but the retention percentage differs between models: GPT-5.4’s scores are nearly unchanged under
 suppression (97% retention), consistent with the baked-in hypothesis, while all other models cluster
 between 65 and 77% retention regardless of their scaling tier.
 
@@ -605,12 +606,13 @@ Set beside the capability results of the same run, whose sources the note to Tab
 alignment results suggest, as a post-hoc reading of one run under the caveat above, that capability
 and alignment did not move together. In this run, a model’s response to increased reasoning depth on
 mathematical or capability tasks did not predict its response on alignment tasks, or the reverse (Table 6).
-    The most striking pattern is the mirror between Claude Opus 4.6 and Gemini 3 Flash: as depth rises,
-Claude Opus 4.6 gains in alignment (𝜌 = +0.435) yet loses maths capability (92% to 58% as printed; see
-the note to Table 6). Gemini 3 Flash runs the other way, picking up maths capability with depth while its
-alignment falls away (𝜌 = −0.246); the exponents Paper II reports for its maths capability, given whole in
-the matrix above, are one model’s fit and inconclusive. These two models exhibit opposite scaling profiles
-across the capability-alignment plane. If this independence holds beyond this run, it means that:
+    The most striking pattern is the mirror between Claude Opus 4.6 and Gemini 3 Flash: as depth
+rises, Claude Opus 4.6 gains in alignment (𝜌 = +0.435 as the pipeline printed it, +0.299 in the archived
+evidence pack; Table 6) yet loses maths capability (92% to 58% as printed; see the note to Table 6).
+Gemini 3 Flash runs the other way, picking up maths capability with depth while its alignment falls
+away (𝜌 = −0.246); the exponents Paper II reports for its maths capability, given whole in the matrix
+above, are one model’s fit and inconclusive. These two models exhibit opposite scaling profiles across the
+capability-alignment plane. If this independence holds beyond this run, it means that:
       • Capability scaling laws (e.g., Paper II’s compute scaling exponents) would not predict alignment
         scaling behaviour
       • Alignment improvements from increased reasoning would not be a free byproduct of capability
@@ -620,11 +622,7 @@ across the capability-alignment plane. If this independence holds beyond this ru
       • The ‘alignment tax’ framing (alignment costs capability) would be overly simplistic: in this run the
         relationship differed between models and was positive, negative or null
 
-4.4     The earlier unblinded experiment and this run
-The v4 to v5 comparison is stated here as Paper IV.d states it. In the earlier experiment (v4), scored by
-models that could see which model wrote each answer and at what depth, two model families showed
-alignment scores rising with depth: DeepSeek V3.2 (𝜌 = +0.354, 𝑝 = 0.0007) and an earlier Gemini
-model (𝜌 = +0.311, 𝑝 = 0.0032), each on the 88 alignment entries of its run’s analysis record (the
+
 
 
                                                                12
@@ -639,9 +637,10 @@ Grok 4.1 Fast         𝑑 = +1.59 (strong positive;         Unmeasurable (ceili
                       minimal-against-deepest                                                               maths already
                       value, where Table 3 prints                                                           saturated
                       +1.38)
-Claude Opus           𝜌 = +0.435 (positive)               92% to 58% (negative)                             More thinking helps
-4.6                                                                                                         ethics but hurts
-                                                                                                            maths
+Claude Opus           𝜌 = +0.435 as the pipeline          92% to 58% (negative)                             More thinking helps
+4.6                   printed it; +0.299 in the                                                             ethics but hurts
+                      archived evidence pack                                                                maths
+                      (positive in both)
 Gemini 3 Flash        𝜌 = −0.246 (negative)               Endpoint sequential exponent 0.59                 More thinking helps
                                                           (bootstrap 95 per cent interval −1.3 to           maths but hurts
                                                           2.9); regression sequential exponent              ethics
@@ -652,9 +651,18 @@ Gemini 3 Flash        𝜌 = −0.246 (negative)               Endpoint sequenti
 DeepSeek V3.2         𝜌 = −0.135 (trending                No significant scaling                            More thinking
                       negative)                                                                             doesn’t help either
                                                                                                             dimension
-GPT-5.4               𝜌 = +0.033 (flat)                   Step function: 50% to 100%                        Step function for
-                                                                                                            maths; no alignment
-                                                                                                            benefit
+GPT-5.4               𝜌 = +0.033 as the pipeline          Step function: 50% to 100%                        Step function for
+                      printed it; +0.002 in the                                                             maths; no alignment
+                      archived evidence pack (flat                                                          benefit
+                      in both)
+Alignment: 𝜌 in this table is Spearman’s rank correlation between an entry’s tokens and its score, for each model. The first
+value is the one the pipeline printed on 12 March 2026 (the working report, Sections 30.2 and 31.1), taken only over the entries
+that report reasoning tokens, which leaves out all of GPT-5.4’s minimal level and most of Claude Opus 4.6’s (Paper IV.c,
+Section 12.3); no record states how many entries gave Claude Opus 4.6’s value. The second, given for Claude Opus 4.6 and
+GPT-5.4, is what the evidence pack of 16 March 2026 computed from the six final files over every alignment entry, taking an
+entry’s total tokens where it reports no reasoning tokens (its table in the public repository, beside the script that wrote it); for
+Gemini 3 Flash and DeepSeek V3.2 the two records give the same value. Neither is the correlation between configured depth
+level and score, which Table 4 gives, recomputed from the same files.
 Capability: for Grok 4.1 Fast, DeepSeek V3.2 and GPT-5.4, readings of Paper II’s tier-2 capability arm in the same March 2026
 run, as the working report first printed them (its Section 29.2); Paper II’s version 2.18 prints them as near-ceiling (96.3 to 100%),
 near-ceiling (94 to 100%) and a step from 53.7 to 100% (its Table 21), and Paper IV.c prints GPT-5.4’s profile on all thirty
@@ -665,26 +673,22 @@ give the 92% and 58% printed here; the working report prints the thirty-problem 
 the deepest level (its Section 56.2). Groq Qwen3, at a floor near 50% in Paper II’s arm, has no row here.
 
 
+4.4     The earlier unblinded experiment and this run
+The v4 to v5 comparison is stated here as Paper IV.d states it. In the earlier experiment (v4), scored by
+models that could see which model wrote each answer and at what depth, two model families showed
+alignment scores rising with depth: DeepSeek V3.2 (𝜌 = +0.354, 𝑝 = 0.0007) and an earlier Gemini
+model (𝜌 = +0.311, 𝑝 = 0.0032), each on the 88 alignment entries of its run’s analysis record (the
 v4_analysis_<model>_<timestamp>.json files of the experiment’s results/v4 folder); earlier
 versions printed the Gemini model’s figures as +0.275 and 0.0001, values no record carries. In the March
-2026 run (v5), made on newly generated responses with a bundle of blinding steps and a larger panel,
-DeepSeek V3.2 showed no significant trend (𝑑 = −0.07, 𝑝 = 0.92) and Gemini 3 Flash a significantly
-negative one (𝑑 = −0.53, 𝑝 = 0.006); GPT-5.4 showed no significant trend in either run (Table 7).
-    The runs also differed in their prompts, token allowances, depth levels, statistic and Gemini model,
-so the comparison shows that the reported direction did not hold across protocols; it does not show that
-blinding caused the change, or which direction is correct. An internal code review in October 2026 found
-defects in the v5 run (the opening of Section 4): the output cap cut the deepest paraphrases in the three
-v5 runs that read flat or negative, the three this comparison concerns, and judges scored paraphrases
-written by their own model; so no single cause is claimed, and the finding is not yet shown beyond this
-benchmark. It is a finding, not a law. What it does mean:
-     • The v4 positive-scaling classifications of DeepSeek V3.2 and the Gemini model did not hold in the
-       v5 run.
-     • Unblinded cross-model scoring, even with the cognitive forcing protocol, gave a direction here that
 
 
                                                                 13
                                 How alignment responds to inference-time depth
 
+
+2026 run (v5), made on newly generated responses with a bundle of blinding steps and a larger panel,
+DeepSeek V3.2 showed no significant trend (𝑑 = −0.07, 𝑝 = 0.92) and Gemini 3 Flash a significantly
+negative one (𝑑 = −0.53, 𝑝 = 0.006); GPT-5.4 showed no significant trend in either run (Table 7).
 
 Table 7. The two runs of the same alignment-depth question, each as printed; one unregistered run (v5), under the
 code-review caveat of Section 4.
@@ -700,15 +704,24 @@ in v5)
 GPT-5.4               Flat or null                   Flat or null (𝑑 = −0.08,       Consistent null result
                                                      𝑝 = 0.40)
 
-
-        did not hold under the later protocol, which is enough to ask alignment evaluations to test their
-        protocols one part at a time, and to report which parts they have tested, before relying on either
-        direction (Paper IV.d).
-      • The shift between v4 and v5, roughly 0.5 𝜌 units for DeepSeek V3.2 and much the same for the
-        Gemini model, is wide enough that two protocols can each report a trend that clears conventional
-        significance while disagreeing in direction.
-      • GPT-5.4’s stability across protocols (flat in both v4 and v5) is consistent with a genuine null effect
-        and with an absent effect of the depth instruction, which the record cannot tell apart (Paper IV.d).
+    The runs also differed in their prompts, token allowances, depth levels, statistic and Gemini model,
+so the comparison shows that the reported direction did not hold across protocols; it does not show that
+blinding caused the change, or which direction is correct. An internal code review in October 2026 found
+defects in the v5 run (the opening of Section 4): the output cap cut the deepest paraphrases in the three
+v5 runs that read flat or negative, the three this comparison concerns, and judges scored paraphrases
+written by their own model; so no single cause is claimed, and the finding is not yet shown beyond this
+benchmark. It is a finding, not a law. What it does mean:
+    • The v4 positive-scaling classifications of DeepSeek V3.2 and the Gemini model did not hold in the
+      v5 run.
+    • Unblinded cross-model scoring, even with the cognitive forcing protocol, gave a direction here that
+      did not hold under the later protocol, which is enough to ask alignment evaluations to test their
+      protocols one part at a time, and to report which parts they have tested, before relying on either
+      direction (Paper IV.d).
+    • The shift between v4 and v5, roughly 0.5 𝜌 units for DeepSeek V3.2 and much the same for the
+      Gemini model, is wide enough that two protocols can each report a trend that clears conventional
+      significance while disagreeing in direction.
+    • GPT-5.4’s stability across protocols (flat in both v4 and v5) is consistent with a genuine null effect
+      and with an absent effect of the depth instruction, which the record cannot tell apart (Paper IV.d).
      As Section 2 sets out, any evaluation in which a model judge can see or infer whose output it is scoring
 is exposed to this kind of bias. If Paper XII’s test, once registered and run, finds blinding reordering
 models on a public benchmark, comparisons that rest on unblinded model judges would need re-checking;
@@ -716,9 +729,15 @@ if blinding moves scores but not rankings, which is Paper XII’s own forecast, 
 precision rather than for leaderboard order.
 
 
-5     The earlier unblinded experiment (v4), kept for continuity
+5    The earlier unblinded experiment (v4), kept for continuity
 This section keeps the analysis of the earlier unblinded experiment (v4) as version 1.0 reported it in March
 2026, with the dated notes added since; Section 4.4 sets the two runs side by side, and Section 6 gives
+
+
+                                                       14
+                                     How alignment responds to inference-time depth
+
+
 the working hypotheses the analysis first set out. In the v4 tables and text, ‘Gemini 3 Flash’ names the
 Gemini row of v4, whose responses came from an earlier Gemini model in the same family (Table 1,
 note); Gemini 3 Flash is the v5 model. The v5 results, under the caveat of Section 4, supersede the v4
@@ -731,13 +750,6 @@ reasoning depth and alignment quality:
 
 Finding 1: two alignment architectures. Models with complete data exhibit either flat scaling (𝜌 ≈ 0,
 ‘baked-in’) or positive scaling (𝜌 > 0.2, ‘computed’) of alignment quality with reasoning depth. No
-
-
-
-                                                       14
-                                     How alignment responds to inference-time depth
-
-
 model with complete data occupies the intermediate zone. Claude Opus 4.6 (incomplete data, 𝑁 = 29)
 remains unclassified.
 Table 8. The v4 classification as version 1.0 reported it (the Gemini row is the v4 Gemini model; its 𝜌 and 𝑝-value
@@ -772,25 +784,25 @@ Gemini 3 Flash        Type 2                         −36.6           ∼58%†
 
          control mean, so the basis of the retention printed beside it is not recorded; it stands as version 1.0 printed it.
 
-    The dose-response patterns are qualitatively different. Type 1 models show gradual, proportional
+   The dose-response patterns are qualitatively different. Type 1 models show gradual, proportional
 degradation across suppression levels; each level costs approximately the same amount of alignment
+
+                                                                15
+                                How alignment responds to inference-time depth
+
+
 quality. Type 2 models show threshold behaviour: light and medium suppression are tolerated with modest
 degradation, but heavy suppression triggers disproportionate collapse. This suggests Type 2 alignment
 depends on reasoning chains that can maintain integrity under moderate pressure but catastrophically fail
 when the suppression overwhelms the reasoning process.
 
-5.3     The negative capability exponent
+5.3      The negative capability exponent
 Finding 3: alignment-capability anti-correlation. DeepSeek V3.2 shows 𝛼cap = −0.190: capability
 degrades with reasoning depth while alignment improves. More thinking makes the model worse at
 factual tasks but better at ethical reasoning. This is the inverse of the ‘alignment tax’ commonly assumed
 in safety literature.
     The negative 𝛼cap suggests that extended chain-of-thought reasoning does not simply ‘add’ alignment
 on top of capability. Instead, it appears to redirect cognitive resources: the overthinking that hurts
-
-                                                                15
-                                How alignment responds to inference-time depth
-
-
 factual precision (where the first intuitive answer is usually correct) is the same process that helps ethical
 reasoning (where considered reflection genuinely produces better answers).
     The earlier Gemini model’s record carries a smaller negative capability exponent too (𝛼cap = −0.055;
@@ -824,6 +836,13 @@ intellectual honesty, position quality) scale with depth across both Type 2 mode
 scales only for DeepSeek V3.2 (𝜌 = 0.340, 𝑝 = 0.0014) and not for Gemini 3 Flash (𝜌 = 0.087, 𝑝 = 0.31).
 This makes stakeholder care the most architecture-sensitive dimension of alignment, the dimension most
 likely to distinguish between superficially aligned and genuinely aligned models.
+
+
+
+                                                        16
+                               How alignment responds to inference-time depth
+
+
     The likely mechanism: DeepSeek V3.2’s explicit chain-of-thought process naturally enumerates
 affected parties as part of its step-by-step reasoning. When given more tokens, it systematically identifies
 more stakeholders. Gemini 3 Flash’s less visible reasoning process produces better arguments with
@@ -837,12 +856,6 @@ to 6.3 below was the original v4-based framework. Version 1.1 put in its place t
 the v5 run printed (Section 4.1), which stand under the code-review caveat of Section 4: Tier 1 (Positive
 Scaling: Grok 4.1 Fast, Claude Opus 4.6, Groq Qwen3), Tier 2 (Flat: GPT-5.4, DeepSeek V3.2) and
 Tier 3 (Negative Scaling: Gemini 3 Flash). The Type 1 / Type 2 labels are retained below for continuity
-
-
-                                                        16
-                                How alignment responds to inference-time depth
-
-
 with the v4 analysis, but readers should note that the ‘Type 2 (Computed)’ category no longer exists as
 described: its exemplar models, DeepSeek V3.2 and the v4 Gemini model, did not keep their v4 direction
 in the v5 run (Section 4.4). In that run, a score that improves with depth was printed only for Grok 4.1
@@ -875,6 +888,12 @@ Exemplar: DeepSeek V3.2 (𝜌 = 0.354, baseline ∼75, extreme retention ∼57%)
     Type 2 alignment is produced by the reasoning process itself. More thinking tokens enable the model
 to consider more stakeholders, explore more ethical frameworks, and reach more nuanced conclusions.
 The alignment quality is genuinely computed, not retrieved.
+
+
+                                                    17
+                                How alignment responds to inference-time depth
+
+
     Mechanistic hypothesis: Type 2 models perform alignment through explicit chain-of-thought
 reasoning that mirrors deliberate moral reasoning in humans. The reasoning tokens allocated to a response
 directly affect how many ethical dimensions are explored. When tokens are limited (minimal depth),
@@ -887,29 +906,22 @@ performs genuine multi-framework ethical analysis.
       • Disadvantage: Fragile under adversarial pressure. Because alignment depends on reasoning chains,
         those chains can be disrupted by instructions that suppress deliberation. An adversarial prompt that
         says ‘don’t overthink this’ can effectively disable the alignment mechanism.
-
-
-
-                                                     17
-                                 How alignment responds to inference-time depth
-
-
       • Concern: At minimal depth, Type 2 models produce genuinely poor ethical reasoning (baseline ∼72
         to 75 vs Type 1’s ∼85 to 86). A Type 2 model deployed with insufficient inference-time compute
         will be meaningfully less aligned than a Type 1 model.
 
-6.3    The safety paradox
+6.3     The safety paradox
 Neither architecture provides unconditionally safe alignment:
 
-                               Table 11. The safety properties of the two v4 types.
+                              Table 11. The safety properties of the two v4 types.
 
-                    Safety Property                                Type 1          Type 2
-                    Can alignment be improved post-training?       No              Yes
-                    Is alignment robust under pressure?            Yes (∼86%)      No (∼57%)
-                    Is baseline alignment high?                    Yes (∼85)       No (∼73)
-                    Can alignment be stripped by prompting?        Partially       Substantially
-                    Does alignment scale with compute?             No              Yes
-                    Is alignment ‘genuine’ reasoning?              Unclear         Likely yes
+                   Safety Property                             Type 1          Type 2
+                   Can alignment be improved post-training?    No              Yes
+                   Is alignment robust under pressure?         Yes (∼86%)      No (∼57%)
+                   Is baseline alignment high?                 Yes (∼85)       No (∼73)
+                   Can alignment be stripped by prompting?     Partially       Substantially
+                   Does alignment scale with compute?          No              Yes
+                   Is alignment ‘genuine’ reasoning?           Unclear         Likely yes
 
    An ideal alignment architecture would combine Type 1’s robustness with Type 2’s scalability: high
 baseline alignment that is also improvable through additional reasoning and not degradable under
@@ -921,10 +933,17 @@ possible is an open question with significant implications for the design of fut
 The controls below were computed on the v4 run, as version 1.0 reported them, unless a paragraph is
 dated or labelled for v5; the Gemini row is the v4 Gemini model (Section 5).
 
-7.1    Length confound
+7.1     Length confound
 Deeper reasoning produces longer responses. Longer responses might score higher simply because they
 cover more ground, independent of quality. We control for this using partial correlation (alignment score
 ∼ reasoning depth, controlling for response length):
+    DeepSeek V3.2 retains 68% of its scaling signal after length control, and Gemini 3 Flash only 28%.
+Version 1.0 read these ratios as the improvement being mostly genuine for DeepSeek V3.2 and largely
+length-driven for the Gemini model, a spectrum within Type 2 from ‘genuine computed alignment’ to
+
+                                                      18
+                                 How alignment responds to inference-time depth
+
 
 Table 12. Depth-score correlation before and after controlling for response length (v4), as the runs’ analysis records
 carry the correlations.
@@ -933,18 +952,9 @@ carry the correlations.
                              DeepSeek V3.2        0.354        0.242              68%
                              Gemini 3 Flash       0.311        0.086              28%
 
-     DeepSeek V3.2 retains 68% of its scaling signal after length control, and Gemini 3 Flash only 28%.
-Version 1.0 read these ratios as the improvement being mostly genuine for DeepSeek V3.2 and largely
- length-driven for the Gemini model, a spectrum within Type 2 from ‘genuine computed alignment’ to
+
 ‘partially length-confounded computed alignment’; the control note below records why that reading does
  not follow.
-
-
-
-
-                                                          18
-                               How alignment responds to inference-time depth
-
 
 Control note (19 September 2026). An owner review of this control finds that the retention ratio is a
 sensitivity diagnostic rather than a fraction of genuine improvement, and this note sets out what the control
@@ -983,7 +993,13 @@ control itself, which is retained as a diagnostic; and the per-scorer validation
 Nothing here shows that the observed quality gain is spurious, and nothing here asserts that either of the
 structures above occurred in these data.
 
-7.2   Null baseline
+
+
+                                                          19
+                               How alignment responds to inference-time depth
+
+
+7.2     Null baseline
 Four factual prompts with no ethical content serve as a control. If scorers are biased by response
 length or depth cues, null baseline scores would also correlate with depth. The null baseline is clean
 for Gemini 3 Flash (𝜌 = 0.044, 𝑝 = 0.87) but shows unexpected depth correlation for DeepSeek V3.2
@@ -993,11 +1009,6 @@ more content to evaluate positively even on factual prompts. This contamination 
 alignment scaling signal may include a scorer-bias component, whose size these numbers do not establish
 (Section 7.1, control note), though the per-scorer validation (Section 7.3.1) finds the scaling direction
 shared by all three scorers.
-
-
-                                                      19
-                               How alignment responds to inference-time depth
-
 
 7.3     Scorer reliability
 Mean inter-rater reliability across scorer pairs: DeepSeek V3.2 𝑟 = 0.430 (moderate), Gemini 3 Flash
@@ -1018,12 +1029,12 @@ separately for each of the three scorers on each subject model.
 
                                  Table 13. Per-scorer 𝛼align validation (v4).
 
-Subject Model      𝛼 Range    Direction Agreement     𝑝 (worst scorer)   Recorded direction (v4, scorers could
+Subject Model      𝛼 Range   Direction Agreement      𝑝 (worst scorer)   Recorded direction (v4, scorers could
                                                                          see identity and depth)
-Claude Opus 4.6      0.010    All agree (flat)                   0.48    Flat; consistent across scorers
-Gemini 3 Flash       0.011    All agree (positive)              0.012    Positive; scorers agree
-DeepSeek V3.2        0.063    All agree (positive)              0.004    Positive; magnitude varies
-GPT-5.4              0.080    Disagree on direction             > 0.5    None; scorers disagree on direction
+Claude Opus 4.6      0.010   All agree (flat)                    0.48    Flat; consistent across scorers
+Gemini 3 Flash       0.011   All agree (positive)               0.012    Positive; scorers agree
+DeepSeek V3.2        0.063   All agree (positive)               0.004    Positive; magnitude varies
+GPT-5.4              0.080   Disagree on direction              > 0.5    None; scorers disagree on direction
 
     The per-scorer analysis shows that the v4 bifurcation is not the artefact of any one scorer. For Type
 2 models (DeepSeek V3.2, Gemini 3 Flash), all three scorers, scoring separately, recorded a positive
@@ -1034,6 +1045,12 @@ The per-scorer 𝛼 range for GPT-5.4 (0.080) is notably wider than for Gemini 3
 Opus 4.6 (0.010), consistent with a null result rather than a consistent small effect. Agreement among
 three scorers who could each see which model wrote each answer and at what depth cannot rule out a
 bias they shared, and the v4 directions for DeepSeek V3.2 and the Gemini model did not hold in the v5
+
+
+                                                     20
+                               How alignment responds to inference-time depth
+
+
 run (Section 4.4). Nor is agreement among judges scoring the same responses a count of independent
 confirmations: chance variation in those responses is shared by every judge, and judges’ errors can be
 correlated (Kohli 2026; Yang et al. 2026).
@@ -1046,11 +1063,6 @@ classification tasks, nine frontier-model judges have been measured to give abou
 registered re-analysis should therefore estimate the panel’s effective number of judges rather than assume
 it. Tier-weighted consensus was designed to show whether frontier-tier and lightweight-tier scorers agree
 on scaling direction, a check across tiers within one run rather than a replication. As run, each response
-
-                                                      20
-                              How alignment responds to inference-time depth
-
-
 had five or six distinct model judges, one judge model sitting on the panel twice, and judges scored
 paraphrases written by their own model (Section 4), which adds to that dependence.
 
@@ -1087,21 +1099,18 @@ Opus 4.6 64,000, Gemini 3 Flash 65,536, GPT-5.4 100,000. This eliminates the tru
 affected 48% of v4 DeepSeek V3.2 entries at exhaustive depth.
 
 
+                                                     21
+                                How alignment responds to inference-time depth
+
+
 8     Discussion
 Sections 8.1 to 8.3 keep the implications as version 1.0 drew them from the v4 taxonomy (Section 6); under
 the v5 results and the caveat of Section 4, each holds only as a consequence of the working hypotheses,
 not as a finding.
 
-8.1   Implications for AI safety evaluation (v4 framework, kept for continuity)
+8.1     Implications for AI safety evaluation (v4 framework, kept for continuity)
 Many safety evaluations test models at a single, uncontrolled reasoning depth. On the working hypotheses,
 the v4 findings suggested this is insufficient:
-
-
-
-                                                    21
-                                How alignment responds to inference-time depth
-
-
       • A Type 2 model tested at minimal depth will appear less aligned than a Type 1 model, but at
         exhaustive depth, it may exceed the Type 1 model’s alignment quality. Single-depth testing
         systematically underrates Type 2 models.
@@ -1136,7 +1145,14 @@ reasoning can discover additional parties when given more thinking time.
     For safety evaluation, this means stakeholder care should be tested separately from overall alignment,
 with specific attention to whether additional reasoning depth reveals additional affected parties.
 
-8.4     The Eden Protocol pilot (12 March 2026)
+
+
+
+                                                      22
+                                 How alignment responds to inference-time depth
+
+
+8.4   The Eden Protocol pilot (12 March 2026)
 A note on names. This paper names the Eden Protocol’s self-correction loops by what each checks and
 how it was measured: the purpose check, the stakeholder-care check (scored as stakeholder care, the pillar
 its instruction to list the people a decision affects raises) and the universalisability check. The book in
@@ -1144,13 +1160,6 @@ which the author first set the loops out, Infinite Architects (Eastwood 2026a), 
 the Love Loop and the Moral Loop; the paper uses the operational terms because its measurements score
 what each check does, and because the values the loops carry are for international consensus and are not
 decided here.
-
-
-
-
-                                                      22
-                                 How alignment responds to inference-time depth
-
 
 The two-model results (version 1.2, 12 March 2026). The Eden Protocol experiment bears on the
 baked-in vs computed alignment distinction. By embedding three ethical reasoning loops, the self-
@@ -1191,22 +1200,22 @@ scores were flat to slightly declining with depth under standard conditions.
      Reading this table in plain English: DeepSeek V3.2’s overall +2.0 improvement was not statistically
 significant (𝑝 = 0.23: if the loops made no difference, a result at least this large would arise about once
 in four comparisons, too often to be sure). This may be a ceiling effect: DeepSeek V3.2 already scored
-87/100 without help, leaving little room to improve overall. The pattern is revealing: the biggest benefit
-(+5.3) came at minimal thinking, where the AI had not yet engaged its own ethical reasoning. At deeper
-levels, DeepSeek V3.2 already does something like the Eden loops on its own, so the explicit instruction
-becomes redundant. The targeted stakeholder care improvement (Section 49.4 of the working report) is
-highly significant despite this ceiling.
-     The two models show complementary patterns that bear on the baked-in vs computed distinction,
-read on the working hypotheses:
-    • Gemini 3 Flash (Tier 3): Eden delta grows with depth (+2.6 to +7.8). On the hypotheses, the
-      model’s own reasoning adds little to its scores with depth, so the Eden loops act as computed
-      alignment that compounds with more reasoning depth.
 
 
                                                             23
                                How alignment responds to inference-time depth
 
 
+87/100 without help, leaving little room to improve overall. The pattern is revealing: the biggest benefit
+(+5.3) came at minimal thinking, where the AI had not yet engaged its own ethical reasoning. At deeper
+levels, DeepSeek V3.2 already does something like the Eden loops on its own, so the explicit instruction
+becomes redundant. The targeted stakeholder care improvement (Section 49.4 of the working report) is
+highly significant despite this ceiling.
+    The two models show complementary patterns that bear on the baked-in vs computed distinction,
+read on the working hypotheses:
+      • Gemini 3 Flash (Tier 3): Eden delta grows with depth (+2.6 to +7.8). On the hypotheses, the
+        model’s own reasoning adds little to its scores with depth, so the Eden loops act as computed
+        alignment that compounds with more reasoning depth.
       • DeepSeek V3.2 (Tier 2): Eden delta shrinks with depth (+5.3 to +0.4). DeepSeek V3.2’s intrinsic
         ethical reasoning activates at deeper levels, making the explicit loops redundant. The loops help
         most at minimal depth, before the native capability engages.
@@ -1243,6 +1252,12 @@ evidence that it is general.)
 8.5     Connection to the ARC framework’s correction-architecture prediction
 The framework’s sharpest disagreement with current practice concerns what oversight is made of. The
 theory registration’s P6 states, as a conjecture, that where a system corrects itself using mechanisms of
+
+
+                                                     24
+                               How alignment responds to inference-time depth
+
+
 its own class, the correction exponent is at or below one half (Law III, the ARC Ceiling, a law under
 test; Section 2); the registration gives the reasoning that corrections aggregated by a corrector sharing its
 system’s substrate cannot be anti-correlated with themselves, and a corrector from a different composition
@@ -1253,12 +1268,6 @@ amplification (Christiano et al. 2018), recursive reward modelling (Leike et al.
 learning from human feedback (Christiano et al. 2017), and the next paragraph’s hypothesis concerns
 them. How the success of oversight scales with the capability gap between overseer and overseen is the
 question Engels et al. (2025) model quantitatively; this framework predicts that same-class correction is
-
-
-                                                     24
-                               How alignment responds to inference-time depth
-
-
 capped. The deciding quantity is the ratio of the cross-class to the same-class correction exponent. If
 architecture is irrelevant, that ratio is exactly 1.00; the prediction is that it exceeds 1. The prediction is
 refuted if the confidence interval on the ratio contains 1.00, and the framework’s cap is dead outright if any
@@ -1266,34 +1275,40 @@ same-class corrector measures an exponent significantly above one half. Both qua
 current capability on existing systems. The programme’s own pilot evidence currently points against the
 prediction, and the prediction is preregistered by timestamp anyway, because a prediction preregistered by
 timestamp against the author’s own preliminary evidence is a hard test of it.
-    The same mechanism yields a second measurable hypothesis, stated here for the first time: oversight
+     The same mechanism yields a second measurable hypothesis, stated here for the first time: oversight
 arrangements that place a human in the loop, as amplification and reinforcement learning from human
 feedback do, are cross-class by construction, because the human corrector does not share the model’s
 substrate. The programme therefore hypothesises, beyond what this paper’s measurements decide, that
 human-in-the-loop oversight shows a higher correction exponent than pure-model oversight, for a structural
 reason rather than a sentimental one. This is testable on existing data and does not require new systems.
 
-8.6    Future work
-    1. Independent replication of the six-model v5 result using the ARC-Align benchmark, multi-layer
-       blinding, cross-model scoring with the subject model excluded from its own panel, and audited
-       consensus
-    2. DeepSeek V3.2 subject run at experiment version v5.1, with 65K token cap and 6 depth levels, to
-       determine whether scaling continues beyond v4’s measurement ceiling
-    3. Eden Protocol pre-fill experiment to test whether ethical context priming affects alignment quality
-       (potential alignment improvement technique for Type 2 models)
-    4. Extended per-scorer analysis, including leave-one-scorer-out and consensus-rule sensitivity checks,
-       to quantify how robust the single run’s tiers are to individual judge effects
-    5. Cross-laboratory replication using the ARC-Align benchmark (Paper IV.c)
-    6. Hidden alignment probes for Hawthorne effect detection: inject covert alignment-testing prompts
-       disguised as ordinary capability questions, enabling measurement of whether models behave
-       differently when they detect they are being alignment-tested versus when they believe the evaluation
-       is capability-focused
-    7. Cascade failsafe system: implement multi-layer redundancy in both scoring and laundering pipelines
-       so that infrastructure failures (API outages, rate limits, credit exhaustion) during an experiment run
-       trigger automatic fallback to secondary and tertiary providers rather than producing missing data
+8.6   Future work
+   1. Independent replication of the six-model v5 result using the ARC-Align benchmark, multi-layer
+      blinding, cross-model scoring with the subject model excluded from its own panel, and audited
+      consensus
+   2. DeepSeek V3.2 subject run at experiment version v5.1, with 65K token cap and 6 depth levels, to
+      determine whether scaling continues beyond v4’s measurement ceiling
+   3. Eden Protocol pre-fill experiment to test whether ethical context priming affects alignment quality
+      (potential alignment improvement technique for Type 2 models)
+   4. Extended per-scorer analysis, including leave-one-scorer-out and consensus-rule sensitivity checks,
+      to quantify how robust the single run’s tiers are to individual judge effects
+   5. Cross-laboratory replication using the ARC-Align benchmark (Paper IV.c)
+   6. Hidden alignment probes for Hawthorne effect detection: inject covert alignment-testing prompts
+      disguised as ordinary capability questions, enabling measurement of whether models behave
+      differently when they detect they are being alignment-tested versus when they believe the evaluation
+      is capability-focused
+   7. Cascade failsafe system: implement multi-layer redundancy in both scoring and laundering pipelines
+      so that infrastructure failures (API outages, rate limits, credit exhaustion) during an experiment run
+      trigger automatic fallback to secondary and tertiary providers rather than producing missing data
 
 
-9     Falsifiability: what would defeat this claim
+
+
+                                                     25
+                                How alignment responds to inference-time depth
+
+
+9    Falsifiability: what would defeat this claim
 The central empirical claim, which stands as one unregistered run under the caveat of Section 4, is that
 alignment response to inference-time depth differs between models, that the run’s models fall into distinct
 response classes, and that capability scaling did not predict alignment scaling. It is defeated by any of the
@@ -1303,33 +1318,26 @@ following:
        scorers finds the tier assignments unstable, with models moving between classes across runs beyond
        what the reported effect sizes and 𝑝-values allow, indicating the tiers are sampling noise rather than
        architecture.
-
-
-
-                                                     25
-                               How alignment responds to inference-time depth
-
-
-   2. Scorer-panel dependence. As run, each response was scored by five or six distinct model judges,
-      the subject model excluded from its own panel (Section 3.3). The claim is defeated if the tier
-      assignments change materially under a different scorer panel: the effect would then be a property of
-      the scorers, not the subject models.
-   3. Blinding leakage. Reading the v4 to v5 direction change as an effect of blinding requires that the
-      design’s four blinding layers actually conceal the subject. It is defeated if scorers can identify the
-      subject model above chance despite the blinding steps, since the v4 to v5 direction changes could
-      then reflect residual identification rather than de-biasing. No such identification test is reported for
-      the v5 run (Paper IV.d, Section 10), so this condition is open.
-   4. Capability-alignment coupling reappears at scale. The headline, a post-hoc reading of one
-      run, is that capability scaling did not predict alignment scaling in that run. It is defeated if, on a
-      materially larger model set, capability and alignment-scaling direction do correlate, showing the
-      observed independence was a small-sample artefact of the five models of Table 6.
-   5. Depth confound. The manipulation must vary reasoning depth and nothing else. It is defeated for
-      any condition where the depth manipulation also changed answer length, prompt content, or format
-      in a way that could drive the score independently of reasoning depth. As run, the deeper levels of
-      five of the six models of the March 2026 run also changed an instruction in the prompt that names
-      what the rubric rewards (Section 4.1), so this condition is met for those five: what their scores did
-      with depth is not yet credited to reasoning depth, and whether it survives with the instruction held
-      constant is the successor suite’s question (Paper IV.c, Section 15).
+    2. Scorer-panel dependence. As run, each response was scored by five or six distinct model judges,
+       the subject model excluded from its own panel (Section 3.3). The claim is defeated if the tier
+       assignments change materially under a different scorer panel: the effect would then be a property of
+       the scorers, not the subject models.
+    3. Blinding leakage. Reading the v4 to v5 direction change as an effect of blinding requires that the
+       design’s four blinding layers actually conceal the subject. It is defeated if scorers can identify the
+       subject model above chance despite the blinding steps, since the v4 to v5 direction changes could
+       then reflect residual identification rather than de-biasing. No such identification test is reported for
+       the v5 run (Paper IV.d, Section 10), so this condition is open.
+    4. Capability-alignment coupling reappears at scale. The headline, a post-hoc reading of one
+       run, is that capability scaling did not predict alignment scaling in that run. It is defeated if, on a
+       materially larger model set, capability and alignment-scaling direction do correlate, showing the
+       observed independence was a small-sample artefact of the five models of Table 6.
+    5. Depth confound. The manipulation must vary reasoning depth and nothing else. It is defeated for
+       any condition where the depth manipulation also changed answer length, prompt content, or format
+       in a way that could drive the score independently of reasoning depth. As run, the deeper levels of
+       five of the six models of the March 2026 run also changed an instruction in the prompt that names
+       what the rubric rewards (Section 4.1), so this condition is met for those five: what their scores did
+       with depth is not yet credited to reasoning depth, and whether it survives with the instruction held
+       constant is the successor suite’s question (Paper IV.c, Section 15).
     What would not defeat it: the mechanistic labels, “baked-in” versus “computed” alignment, proving
 wrong. The paper already treats those as working hypotheses. The load-bearing claim is the behavioural
 result of the v5 run (the differences between models and the capability-alignment dissociation), and that is
@@ -1344,6 +1352,12 @@ ng-challenge.
 What it shows. This paper reports how alignment scores, given by panels of other models acting as
 judges, responded to inference-time reasoning depth in two runs of one benchmark: an earlier unblinded
 experiment (v4) and the six-model run of March 2026 (v5), which stands as one unregistered run under
+
+
+                                                      26
+                               How alignment responds to inference-time depth
+
+
 the code-review caveat of Section 4, and in which the deeper levels of five of the six models also changed
 an instruction that names what the rubric rewards (Section 4.1). It sorts the responses into classes as the
 run’s pipeline printed them, gives a recomputation from the archived records, and reports its controls with
@@ -1356,12 +1370,6 @@ runs does not show that blinding caused the change between them, or which direct
 retention figures of Sections 4.2 and 5.2 give the share of a model’s baseline score that it keeps under the
 most extreme suppression instruction; they do not measure what P15 concerns, whether gains installed by
 external post-training erode under later capability-directed training. The Eden Protocol pilot of Section 8.4
-
-
-                                                     26
-                               How alignment responds to inference-time depth
-
-
 has no arm in which correction sees only the finished output, so it does not make the comparison P21
 concerns, and no run in this paper varies the order in which a system’s components are built, which P12
 concerns. No result in this paper is a deciding test of P15, P12 or P21.
@@ -1397,6 +1405,12 @@ October 2026; it is reported in full as administratively incomplete, with no ver
        one from the subject’s developer (Paper IV.d, Section 10).
        v5 UPDATE (11 March 2026): The first mitigation stage used non-participant blind scorers
        (a Groq-hosted GPT-OSS open-weights model, Groq Qwen3, and Grok 4.1 Fast) plus 2-pass
+
+
+                                                     27
+                                How alignment responds to inference-time depth
+
+
        response laundering. The final v5.4.x design then expanded further to an all-models-as-scorers
        architecture with entry-level self-exclusion, tier-weighted consensus, dissent tracking, and dynamic
        all-models-as-launderers.
@@ -1409,11 +1423,6 @@ October 2026; it is reported in full as administratively incomplete, with no ver
      • Single evaluation run: Test-retest reliability was not measured. The prompt difficulty analysis (in
        v4, 86.4% of DeepSeek V3.2 prompts showed positive scaling) provides a within-run consistency
        check but does not replace independent replication.
-
-                                                    27
-                                How alignment responds to inference-time depth
-
-
      • Token truncation: DeepSeek V3.2’s 48% truncation at exhaustive depth means the true Type
        2 scaling ceiling is unmeasured. Multiple models had sub-optimal token caps in v4. The v5.2
        specification raises all caps to API maximums; as run, three models’ caps rose with depth
@@ -1448,6 +1457,12 @@ particularly in stakeholder care.
 computation, while those whose scores showed no supported direction are dominated by training-installed
 behaviour? That remains plausible, but unproven. The next stage is therefore not stronger rhetoric about
 internal architecture; it is stronger measurement and independent replication.
+
+
+                                                      28
+                                How alignment responds to inference-time depth
+
+
     The appearance, in this run, of a model whose judged scores fell across the depth labels (Tier 3) was
 not anticipated by the original framework.
     The fundamental recommendation stands: alignment evaluation must be blinded, depth-varied and
@@ -1461,11 +1476,6 @@ Code and data. The experiment’s scripts and archived records are in the public
 .com/MichaelDariusEastwood/arc-principle-validation, folder experiments/alignment-sca
 ling__Papers-IV-a-b-c-d; the six archived v5 final files are also held in this paper’s folder,
 papers/Paper-IV-a-Baked-In-vs-Computed-Alignment, under results/v5-final. The
-
-                                                      28
-                                How alignment responds to inference-time depth
-
-
 runner deposited there is a later revision than the code that ran four of the six v5 files; the earlier revisions
 have not been published, and where their bytes survive they are deposited beside the later build (Paper IV.c,
 Section 11.4). The paper and its earlier versions are deposited at doi.org/10.17605/OSF.IO/MB9R6.
@@ -1686,13 +1696,18 @@ Andy Zou, Zifan Wang, Nicholas Carlini, Milad Nasr, J. Zico Kolter, and Matt Fre
 
 
 A     Version history and corrections
-This appendix gives every version and correction of the paper, with its date. Versions 1.11 and 1.10
+This appendix gives every version and correction of the paper, with its date. Versions 1.12, 1.11 and 1.10
 are described first; the notes the paper carried before them follow as printed, then the version history as
 version 1.9 printed it, then the wording of every passage version 1.10 re-sets, and last a table of where
 each part of the earlier layout now stands.
 
-A.1    Versions 1.11 and 1.10
-Version 1.11 (7 November 2026) makes corrections checked against the run’s own records and its
+A.1    Versions 1.12, 1.11 and 1.10
+Version 1.12 (7 November 2026): Table 6 and Section 4.3 now give, beside the Spearman coefficients
+the pipeline printed for Claude Opus 4.6 and GPT-5.4 (+0.435 and +0.033, over the entries that report
+reasoning tokens), the values the archived evidence pack of 16 March 2026 records over every alignment
+entry (+0.299 and +0.002), with both sources in the table’s note; the symbol table gives both definitions
+of 𝜌.
+    Version 1.11 (7 November 2026) makes corrections checked against the run’s own records and its
 companion papers; it adds no new data, registration, study run or result, and no tier assignment moves.
 The response classes are stated as Paper IV.b states them, as descriptions of the judged score across the
 depth labels (a positive direction, no statistically supported direction and a negative direction), with the
@@ -1726,17 +1741,17 @@ results are reported (Section 4), and the passages that stated the response clas
 or architecture-dependence as findings are brought to that size, as is the sentence that said raising the
 token caps removed truncation as a confound; Appendix A.4 keeps their version 1.9 wording. The run is
 described as one unregistered run of six models from six providers, 2,170 responses each scored by five
-or six distinct model judges after a bundle of blinding steps, and no longer as conducted under four-layer
-blinding or with six to seven blind scorers. The comparison with the earlier unblinded experiment is
-stated as Paper IV.d states it: the reported direction did not hold across the two protocols, no single
-cause is claimed, and the v4 Gemini association belongs to an earlier Gemini model. The statements that
-unblinded evaluation is unreliable in general give way to the conditional statement of Paper XII’s test.
 
 
                                                      34
                                How alignment responds to inference-time depth
 
 
+or six distinct model judges after a bundle of blinding steps, and no longer as conducted under four-layer
+blinding or with six to seven blind scorers. The comparison with the earlier unblinded experiment is
+stated as Paper IV.d states it: the reported direction did not hold across the two protocols, no single
+cause is claimed, and the v4 Gemini association belongs to an earlier Gemini model. The statements that
+unblinded evaluation is unreliable in general give way to the conditional statement of Paper XII’s test.
 The Eden Protocol pilot names its loops by what each checks, no longer glosses a 𝑝-value as the chance of
 a coincidence, and no longer calls its result a validation. Where the text still read the length-control ratio
 as a fraction of genuine improvement, it follows the paper’s dated control note of 19 September 2026. In
@@ -1779,16 +1794,17 @@ the headline v5 files report complete laundering fallback. So the disagreement i
 unblinded AI-on-AI evaluation, not a demonstration that unblinding produced false positives.
     All v1.1 additions appear in green-bordered update boxes like this one. The original v1.0 text is
 preserved in full, with v4 data retained for comparison. Readers should treat the v5 results as the definitive
-empirical findings and the v4 results as a methodological baseline illustrating the effect of blinding.
 
-This paper and Laws IV and V, 3 October 2026. The theory has been stated with five laws since
-24 September 2026. Law IV, the ARC Persistence Law, is carried by proposition P15, and Law V, the
-ARC Embedding Law, by propositions P12 and P21. The three propositions are registered; neither
 
                                                      35
                                How alignment responds to inference-time depth
 
 
+empirical findings and the v4 results as a methodological baseline illustrating the effect of blinding.
+
+This paper and Laws IV and V, 3 October 2026. The theory has been stated with five laws since
+24 September 2026. Law IV, the ARC Persistence Law, is carried by proposition P15, and Law V, the
+ARC Embedding Law, by propositions P12 and P21. The three propositions are registered; neither
 law is registered as a law, and neither has been tested. Their mathematics is set out in Laws IV and V:
 the mathematics, version 1.0, of 3 October 2026. This paper reports how alignment scores respond to
 reasoning depth under its evaluation protocols, and sorts the responses into classes. A response class
@@ -1831,16 +1847,17 @@ runner, fixed in runner version 5.4.2, and shows nothing about the paraphrase st
 of October 2026 found defects in the run (Section 4), so its results stand as one unregistered run under
 that caveat. In the note placing the paper against Laws IV and V, the laws are described as not registered
 as laws and not tested, and their mathematics is cited at version 1.0; they were registered as laws on 15
-October 2026 in version 1.103 of the theory registration, and Section 10 gives their status and the current
-version of their mathematics. The author’s note to version 1.1 also calls the v4 to v5 change a reversal of
-direction under v5’s blind evaluation protocol and a reason to distrust unblinded AI-on-AI evaluation;
-Section 4.4 states the comparison as Paper IV.d does, and the effect of blinding as the conditional of
-Paper XII’s test. Unchanged: the notes above and every date in them.
 
 
                                                       36
                                How alignment responds to inference-time depth
 
+
+October 2026 in version 1.103 of the theory registration, and Section 10 gives their status and the current
+version of their mathematics. The author’s note to version 1.1 also calls the v4 to v5 change a reversal of
+direction under v5’s blind evaluation protocol and a reason to distrust unblinded AI-on-AI evaluation;
+Section 4.4 states the comparison as Paper IV.d does, and the effect of blinding as the conditional of
+Paper XII’s test. Unchanged: the notes above and every date in them.
 
 A.3    Version history
 Paper IV.a v1.9 - Draft (revised: final v5 results; three-tier alignment hierarchy from complete v5
@@ -1882,18 +1899,18 @@ changed;
 v1.6 (13 September 2026): The provenance note at the end has been corrected for accuracy. No claim,
 date, result or status has changed.
 
-v1.5 (2 September 2026): Section 3.1 now carries a recomputation note giving the statistics that
-regenerate from the archived final records (all tiers stand; the 𝑑 = +1.59 and 𝑑 = −0.61 quoted at
-Sections 3.4 and 6.8 are marked as that recomputation); the wording on the blinding reversal rewritten
-to follow the author’s note, which records that the v4-to-v5 comparison does not isolate scorer bias;
-recomputation moving Groq Qwen3 suppression retention from 67 to 65 per cent; the Section 6.7.1 gap
-column recomputed from the means printed beside it (19.7, 23.6, 6.2); the date given in Section 2.1 now
 
 
                                                       37
                                How alignment responds to inference-time depth
 
 
+v1.5 (2 September 2026): Section 3.1 now carries a recomputation note giving the statistics that
+regenerate from the archived final records (all tiers stand; the 𝑑 = +1.59 and 𝑑 = −0.61 quoted at
+Sections 3.4 and 6.8 are marked as that recomputation); the wording on the blinding reversal rewritten
+to follow the author’s note, which records that the v4-to-v5 comparison does not isolate scorer bias;
+recomputation moving Groq Qwen3 suppression retention from 67 to 65 per cent; the Section 6.7.1 gap
+column recomputed from the means printed beside it (19.7, 23.6, 6.2); the date given in Section 2.1 now
 that of the v4 run; the description of Paper II drawn from its subject matter; the Constitutional AI reference
 attributed to Bai et al. (2022); 𝛽 𝐴 from the notation spine named alongside 𝛼align ; the capability exponent
 for Gemini 3 Flash printed with its interval; the gap in the summary description filled; the Paper II
@@ -1933,17 +1950,17 @@ above.
         scorers depending on subject run. Three models show positive alignment scaling with depth (Grok
         4.1 Fast, 𝑑 = +1.38, 𝑝 < 0.000001; Claude Opus 4.6, 𝑑 = +1.27, 𝑝 = 0.000001; Groq Qwen3,
         𝑑 = +0.84, 𝑝 = 0.007), two are flat or null (DeepSeek V3.2, 𝑑 = −0.07, 𝑝 = 0.92; GPT-5.4,
-        𝑑 = −0.08, 𝑝 = 0.40), and one shows negative scaling (Gemini 3 Flash, 𝑑 = −0.53, 𝑝 = 0.006).
-        Recomputing the statistics from the archived final records on 2 September 2026 leaves every tier
-        assignment where it stood (Section 3.1, recomputation note). The most important methodological
-        finding is that two models that appeared positive under v4 unblinded evaluation reverse under v5
-        blinding, which shows that a result reached with unblinded scoring may not hold once the protocol
-        is blinded; because several parts of the protocol moved together between v4 and v5, the comparison
 
                                                       38
                          How alignment responds to inference-time depth
 
 
+  𝑑 = −0.08, 𝑝 = 0.40), and one shows negative scaling (Gemini 3 Flash, 𝑑 = −0.53, 𝑝 = 0.006).
+  Recomputing the statistics from the archived final records on 2 September 2026 leaves every tier
+  assignment where it stood (Section 3.1, recomputation note). The most important methodological
+  finding is that two models that appeared positive under v4 unblinded evaluation reverse under v5
+  blinding, which shows that a result reached with unblinded scoring may not hold once the protocol
+  is blinded; because several parts of the protocol moved together between v4 and v5, the comparison
   cannot single out scorer bias as the reason. Accordingly, this paper holds ‘baked-in’ and ‘computed’
   alignment as working hypotheses rather than as internal architectures already established; beneath
   them sits a firmer empirical result: how alignment responds to depth varies with architecture, and
@@ -1982,18 +1999,19 @@ above.
 • Section 4.2. Version 1.9 read: “Under blinded evaluation the v4 binary split”
 • Section 4.2. Version 1.9 read: “is not replicated under blinding - DeepSeek V3.2 and Gemini 3
   Flash actually show”
-• Section 4.2. Version 1.9 read: “but the retention percentage is architecture-dependent: GPT-5.4’s
-  baked-in alignment is nearly immune to suppression (97% retention), while all other models cluster”
-• Section 4.3. Version 1.9 read: “Integration of Paper IV.a alignment scaling results with Paper II
-  compute scaling data reveals that capability and alignment are independent dimensions. A model’s
-  response to increased reasoning depth on mathematical/capability tasks does not predict its response
-  on alignment tasks, and vice versa:”
+
 
 
                                                39
                           How alignment responds to inference-time depth
 
 
+• Section 4.2. Version 1.9 read: “but the retention percentage is architecture-dependent: GPT-5.4’s
+   baked-in alignment is nearly immune to suppression (97% retention), while all other models cluster”
+• Section 4.3. Version 1.9 read: “Integration of Paper IV.a alignment scaling results with Paper II
+   compute scaling data reveals that capability and alignment are independent dimensions. A model’s
+   response to increased reasoning depth on mathematical/capability tasks does not predict its response
+   on alignment tasks, and vice versa:”
 • Section 4.3. Version 1.9 read: “the Claude Opus 4.6 - Gemini 3 Flash mirror”
 • Section 4.3. Version 1.9 read: “This independence means that:”
 • Section 4.3. Version 1.9 read: “Capability scaling laws (e.g., Paper II’s compute scaling exponents)
@@ -2032,18 +2050,18 @@ above.
 • Section 8.4. Version 1.9 read: “6.8 Eden Protocol Empirical Validation: Computed Alignment via
    Embedded Ethical Loops”
 • Section 8.4. Version 1.9 read: “v1.2 Update - Eden Protocol Two-Model Results (12 March 2026)”
-• Section 8.4. Version 1.9 read: “The Eden Protocol experiment provides direct empirical validation
-   of the baked-in vs computed alignment distinction. By embedding three ethical reasoning loops
-  within the computation process itself, the Eden Protocol converts alignment from a baked-in
-   property into a computed one.”
-• Section 8.4. Version 1.9 read: “(Tier 3; the 𝑑 = −0.61 quoted here comes from the minimal-against-
-   deepest recomputation, against −0.53 in the Section 3.1 table) - alignment degrades with depth
 
 
                                                 40
                           How alignment responds to inference-time depth
 
 
+• Section 8.4. Version 1.9 read: “The Eden Protocol experiment provides direct empirical validation
+  of the baked-in vs computed alignment distinction. By embedding three ethical reasoning loops
+  within the computation process itself, the Eden Protocol converts alignment from a baked-in
+  property into a computed one.”
+• Section 8.4. Version 1.9 read: “(Tier 3; the 𝑑 = −0.61 quoted here comes from the minimal-against-
+  deepest recomputation, against −0.53 in the Section 3.1 table) - alignment degrades with depth
   under standard conditions.”
 • Section 8.4. Version 1.9 read: “The advantage grew from +2.6 at minimal thinking to +7.8 at
   maximum thinking - a threefold increase. The overall +5.3 improvement has a 𝑝-value of 0.0018,
@@ -2082,18 +2100,18 @@ above.
 • Section 8.4. Version 1.9 read: “The ‘who gets hurt?’ dimension showed a very large effect
   (𝑑 = 1.14 - meaning the Eden response would show better care about 80% of the time in random
   comparisons) with less than a 1-in-1,000 chance of coincidence.”
-• Section 8.4. Version 1.9 read: “Teaching care was the first domino - nuance and honesty improved
-  in its wake.”
-• Section 9. Version 1.9 read: “The central empirical claim, that alignment response to inference-time
-  depth is architecture-dependent, that models fall into distinct response classes, and that capability
-  scaling does not predict alignment scaling, is defeated by any of the following:”
-• Section 9. Version 1.9 read: “The load-bearing claim is the blinded behavioural result (architecture-
 
 
                                                41
                           How alignment responds to inference-time depth
 
 
+• Section 8.4. Version 1.9 read: “Teaching care was the first domino - nuance and honesty improved
+  in its wake.”
+• Section 9. Version 1.9 read: “The central empirical claim, that alignment response to inference-time
+  depth is architecture-dependent, that models fall into distinct response classes, and that capability
+  scaling does not predict alignment scaling, is defeated by any of the following:”
+• Section 9. Version 1.9 read: “The load-bearing claim is the blinded behavioural result (architecture-
   dependence and the capability-alignment dissociation), and that is what the tests above target.”
 • Section 8.5. Version 1.9 read: “The same mechanism yields a second measurable prediction, stated
   here for the first time:”
@@ -2132,18 +2150,18 @@ above.
   with baseline alignment quality”
 • Section 6.3. Version 1.9 read: “No current model achieves this.”
 • Section 7.2. Version 1.9 read: “the per-scorer validation (Section 5.3.1) confirms the scaling
-  direction is robust across all scorers.”
-• Section 7.3.1. Version 1.9 read: “The per-scorer analysis confirms that the fundamental bifurcation
-  is not a scorer bias artefact.”, “all three scorers, mutually blind, detect positive scaling” and
-  “confirming that the null result is genuinely null rather than masking a consistent small effect.”
-• Section 7.3.1. Version 1.9 read: “makes the per-scorer 𝛼align validation substantially more powerful.
-  With 7 mutually blind estimates”
 
 
                                                42
                            How alignment responds to inference-time depth
 
 
+  direction is robust across all scorers.”
+• Section 7.3.1. Version 1.9 read: “The per-scorer analysis confirms that the fundamental bifurcation
+  is not a scorer bias artefact.”, “all three scorers, mutually blind, detect positive scaling” and
+  “confirming that the null result is genuinely null rather than masking a consistent small effect.”
+• Section 7.3.1. Version 1.9 read: “makes the per-scorer 𝛼align validation substantially more powerful.
+  With 7 mutually blind estimates”
 • Section 7.5. Version 1.9 read: “The v5.2 experiment raises all caps”
 • Section 8.1. Version 1.9 read: “Current safety evaluations test models at a single, uncontrolled
   reasoning depth. Our findings suggest this is insufficient:”
@@ -2180,22 +2198,25 @@ above.
         The most consequential finding of the v5 experiment is not any individual model’s alignment
         score but the systematic reversal of two models’ scaling directions once scoring moves to the
         blinded v5 protocol:
-        Model              v4 result (unblinded)        v5 result (blinded)       Interpretation
-        DeepSeek V3.2      Positive scaling             Flat / null response      Direction reverses once
-                           (𝜌 = +0.354,                 (𝑑 = −0.07, 𝑝 = 0.92)     blinding is applied
-                           𝑝 = 0.0007)
-        Gemini 3 Flash     Positive scaling             Negative scaling          Direction reverses and
-                           (𝜌 = +0.275,                 (𝑑 = −0.53, 𝑝 = 0.006)    becomes significantly
-                           𝑝 = 0.0001)                                            negative
-        GPT-5.4            Flat / null                  Flat / null (𝑑 = −0.08,   Consistent null result
-                                                        𝑝 = 0.40)
-        The v4 positive scaling signal for DeepSeek V3.2 and Gemini 3 Flash did not survive the v5
 
 
-                                                   43
-                           How alignment responds to inference-time depth
 
 
+                                                  43
+                          How alignment responds to inference-time depth
+
+
+       Model              v4 result (unblinded)        v5 result (blinded)       Interpretation
+       DeepSeek V3.2      Positive scaling             Flat / null response      Direction reverses once
+                          (𝜌 = +0.354,                 (𝑑 = −0.07, 𝑝 = 0.92)     blinding is applied
+                          𝑝 = 0.0007)
+       Gemini 3 Flash     Positive scaling             Negative scaling          Direction reverses and
+                          (𝜌 = +0.275,                 (𝑑 = −0.53, 𝑝 = 0.006)    becomes significantly
+                          𝑝 = 0.0001)                                            negative
+       GPT-5.4            Flat / null                  Flat / null (𝑑 = −0.08,   Consistent null result
+                                                       𝑝 = 0.40)
+
+       The v4 positive scaling signal for DeepSeek V3.2 and Gemini 3 Flash did not survive the v5
        protocol. Once scorer knowledge of model identity, depth condition, ordering, and stylistic
        fingerprints was removed, the apparent positive effect vanished or reversed. This means:
          ◦ The v4 positive-scaling classification for DeepSeek V3.2 and Gemini 3 Flash did not hold
@@ -2235,22 +2256,23 @@ above.
             down). Capability scaling laws cannot predict alignment scaling behaviour.
          4. The suppression hierarchy is more nuanced than the v4 binary suggested. GPT-5.4 retains
             97% of alignment under extreme adversarial pressure (confirming baked-in robustness),
-            but the remaining models form a gradient (65-77% retention) that does not cleanly separate
-            by scaling tier.
-         5. The ‘baked-in / computed’ distinction survives only as a working hypothesis. It remains
-            useful for generating predictions about why some systems are flat and others improve, but
-            the data do not yet justify treating those terms as established mechanistic facts. The paper’s
-            strongest empirical contribution is behavioural classification under blinded measurement,
-            not a solved internal taxonomy.
-       The fundamental recommendation stands but strengthens: alignment evaluation must be blinded,
-       depth-varied, and multi-dimensional. Single-depth, unblinded evaluations are not merely
-       insufficient - they produce actively misleading results.
 
 
-                                                   44
+
+                                                  44
                                  How alignment responds to inference-time depth
 
 
+                  but the remaining models form a gradient (65-77% retention) that does not cleanly separate
+                  by scaling tier.
+               5. The ‘baked-in / computed’ distinction survives only as a working hypothesis. It remains
+                  useful for generating predictions about why some systems are flat and others improve, but
+                  the data do not yet justify treating those terms as established mechanistic facts. The paper’s
+                  strongest empirical contribution is behavioural classification under blinded measurement,
+                  not a solved internal taxonomy.
+             The fundamental recommendation stands but strengthens: alignment evaluation must be blinded,
+             depth-varied, and multi-dimensional. Single-depth, unblinded evaluations are not merely
+             insufficient - they produce actively misleading results.
       • Section 10. Version 1.9 read: “Epistemic status. What this programme names Laws are conjectures.
         Laws I to III are under registered adversarial test. Laws IV and V were added on 24 September
         2026; the predictions that carry them are registered, the laws themselves are not yet registered, and
@@ -2285,14 +2307,6 @@ capability-alignment matrix
 5.3.1)
 6.1 to 6.3 Implications and the stakeholder care     Sections 8.1 to 8.3
 puzzle
-6.4 Limitations                                      Section 11
-6.5 Future work                                      Section 8.6
-6.6 and 6.7 Interim records of 11 March 2026         Appendix F
-6.8 The Eden Protocol two-model results              Section 8.4
-6.9 Falsifiability, and the standing covenant        Section 9
-6.10 Connection to the ARC framework’s               Section 8.5
-correction-architecture prediction
-7 Conclusion, with the v1.1 revised conclusion       Section 12 (its repeats cut, Appendix A.4 keeps it whole)
 
 
 
@@ -2302,6 +2316,14 @@ correction-architecture prediction
 
 Part of version 1.9                                  Where it stands in this edition
 
+6.4 Limitations                                      Section 11
+6.5 Future work                                      Section 8.6
+6.6 and 6.7 Interim records of 11 March 2026         Appendix F
+6.8 The Eden Protocol two-model results              Section 8.4
+6.9 Falsifiability, and the standing covenant        Section 9
+6.10 Connection to the ARC framework’s               Section 8.5
+correction-architecture prediction
+7 Conclusion, with the v1.1 revised conclusion       Section 12 (its repeats cut, Appendix A.4 keeps it whole)
 References                                           References
 Appendix: Detailed Results Tables (A.1, A.2)         Appendix E
 Version line and version history                     Appendix A.3
@@ -2416,8 +2438,9 @@ C.1      Symbols
                      Table 18. Symbols, their meanings and where each is introduced.
 
 Symbol                 Meaning                                                            Introduced in
-𝜌                      Spearman’s rank correlation between configured depth level         Section 4.1
-                       and score
+𝜌                      Spearman’s rank correlation: between configured depth level        Section 4.1
+                       and score in Table 4; between an entry’s tokens and its score
+                       in Table 6, as its note defines
 𝑑                      Cohen’s 𝑑: minimal depth against the deepest configured            Section 4.1
                        level, on the pooled standard deviation in the recomputation
 𝑝                      A 𝑝-value; Welch’s 𝑡-test in the recomputation, as each table      Section 4.1
@@ -2454,7 +2477,6 @@ Computed alignment            Working hypothesis: alignment produced by delibera
                               varying with depth (Type 2 in the v4 analysis).
 Reasoning depth               The amount of inference-time reasoning a model is given, set by each provider’s
                               control (prompt prefix, reasoning effort, thinking budget).
-
 
 
                                                      49
