@@ -69,7 +69,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | Document | Version | First Published | What it is |
 |----------|---------|-----------------|------------|
 | [The HARI Treaty: What evidence should justify international safeguards for advanced AI?](HARI-Treaty-Paper/) | v2.6 (revised 2 Nov 2026) | 29 Sep 2026 | Draft Treaty on Hardware-Aligned Recursive Intelligence. Working draft; specialist and external review remain open (OSF DOI [10.17605/OSF.IO/WXPCE](https://doi.org/10.17605/OSF.IO/WXPCE)) |
-| [The HARI Treaty draft instruments](HARI-Treaty-Draft-Instruments/) | v2.3 (revised 5 Oct 2026) | 29 Sep 2026 | The Draft Treaty on Hardware-Aligned Recursive Intelligence. Working draft; its existing review remains open (OSF DOI [10.17605/OSF.IO/67MX8](https://doi.org/10.17605/OSF.IO/67MX8)) |
+| [The HARI Treaty draft instruments](HARI-Treaty-Draft-Instruments/) | v2.4 (revised 1 Nov 2026) | 29 Sep 2026 | The Draft Treaty on Hardware-Aligned Recursive Intelligence. Working draft; its existing review remains open (OSF DOI [10.17605/OSF.IO/67MX8](https://doi.org/10.17605/OSF.IO/67MX8)) |
 
 ## Registration, register and working report
 
@@ -190,4 +190,4 @@ All papers are deposited at OSF under project DOI: [10.17605/OSF.IO/6C5XB](https
 
 - [The HARI Treaty: What evidence should justify international safeguards for advanced AI?](HARI-Treaty-Paper/), version 2.6, 2 November 2026.
 
-- [Draft Instruments · The HARI Treaty · The Draft Treaty on Hardware-Aligned Recursive Intelligence](HARI-Treaty-Draft-Instruments/), version 2.3, 5 October 2026.
+- [Draft Instruments · The HARI Treaty · The Draft Treaty on Hardware-Aligned Recursive Intelligence](HARI-Treaty-Draft-Instruments/), version 2.4, 1 November 2026.
