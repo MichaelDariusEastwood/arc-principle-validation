@@ -1,7 +1,7 @@
 Title: Eden Engineering: can correction built into each round keep a self-improving AI good and useful if oversight fails?
 Author: Michael Darius Eastwood
-Version: v8.2
-Version date: 1 November 2026
+Version: v8.3
+Version date: 7 November 2026
 OSF DOI: 10.17605/OSF.IO/AWJR4
 Source: full text extracted from the accompanying official PDF
 Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
@@ -17,6 +17,7 @@ and III, whose carriers P15, P12 and P21 also carry Laws IV and V; each of the f
                                                Michael Darius Eastwood
                                 Independent Researcher, London, United Kingdom
                         ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
+
 
 
                                                             Abstract
@@ -35,15 +36,14 @@ and III, whose carriers P15, P12 and P21 also carry Laws IV and V; each of the f
         28 October 2026), P21 is supported under the registered test, by the programme’s own run, on the
         access axis, family-dependent, with its mechanism axis not evaluable and one call retried under a
         disclosed recovery amendment (results: DOI 10.17605/OSF.IO/98HKR). None tests correction built
-        into a system. I tie each part of the specification to its registered prediction, where one exists, and to
-        the test that would refute it. Every safety measure is paired with a usefulness measure: a system that
-        refuses ordinary work is safe but useless. A working form of the gate checks every tool call of the
-        programme’s own software agents; the rest is specified, not built.
+        into a system. I tie each part of the specification to its registered prediction, where one exists, and
+        to the test that would refute it. Every safety measure is paired with a usefulness measure: a system
+        that refuses ordinary work is safe but useless. Part of the gate runs: it receives every tool call of the
+        programme’s own software agents and allows any call no rule matches; the rest is specified, not built.
 
-Version 8.2, 1 November 2026, names the certification only as the Eden Seal, its name since 27 September 2026, and
-gives six of the programme’s papers their present titles in the references; it adds no new data, registration, study run
-or result. Version 8.1 corrects the distinction between error suppression, capability growth and inferred coupling in
-Appendix A. It makes no new measurement; Appendix B records the correction and preserves the superseded text.
+Version 8.3, 7 November 2026, rewords two of the six questions so that an evaluator can decide them, describes the
+working gate as the partial form its record shows, marks the decision rule’s thresholds as illustrative and states the
+sampling that the count of 299 harmful cases assumes; it adds no new data, registration, study run or result.
      Eden Engineering, within Recursive Dynamics, the field its author founded, specifies the Eden Protocol, the applied
 branch of the ARC Theory and its engineering answer to Laws II and III. It informs the HARI Treaty, the Draft Treaty on
 Hardware-Aligned Recursive Intelligence, only by stating the kinds of evidence an Eden Seal could rest on (Section 8.5). Law IV,
@@ -51,7 +51,7 @@ the ARC Persistence Law, which P15 carries, and Law V, the ARC Embedding Law, wh
 September 2026 and registered as laws on 15 October 2026 in version 1.103 of the theory registration, whose current version is
 1.104 (29 October 2026); like Laws I to III, each is a law under test, and their mathematics is in development (version 1.2, 29
 October 2026); Section 2.3 gives their status and Section 5.3 the first registered result on one of their propositions. Engineering
-specification, version 8.2, 1 November 2026; first published 22 February 2026; Appendix B lists every version and correction.
+specification, version 8.3, 7 November 2026; first published 22 February 2026; Appendix B lists every version and correction.
 Recorded on OSF as Engineering Specification · The ARC Theory · The Eden Protocol · Eden Engineering: Architecture for
 Embedded AI Alignment That Scales With Capability, DOI 10.17605/OSF.IO/AWJR4. About the author, founder of Recursive
 Dynamics, without an institution or a doctorate: michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his
@@ -79,13 +79,13 @@ Contents
 
 4 The specification                                                                                       13
   4.1 The self-correction loops . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       13
-  4.2 The gate and its boundary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       14
+  4.2 The gate and its boundary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       15
   4.3 Records, and the Eden Seal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        15
   4.4 Three research instruments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        15
   4.5 The core an engineer can build and test . . . . . . . . . . . . . . . . . . . . . . . . . . .       16
 
-5   How each part is proved                                                                               17
-    5.1 What counts as proof here . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       17
+5   How each part is proved                                                                               16
+    5.1 What counts as proof here . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       16
     5.2 The parts, the propositions and the tests . . . . . . . . . . . . . . . . . . . . . . . . . .     17
     5.3 The first registered test of a carrier: Unit 83 . . . . . . . . . . . . . . . . . . . . . . . .   22
     5.4 What would be registered next . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       23
@@ -127,7 +127,7 @@ Contents
 
 12 Limitations                                                                                           40
 
-13 Conclusion                                                                                            41
+13 Conclusion                                                                                            42
 
 References                                                                                               43
 
@@ -135,25 +135,26 @@ A The mathematics in brief, with derivations                                    
   A.1 The bounded score . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        53
   A.2 Integration depth . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      53
   A.3 The three-state rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     54
-  A.4 Purpose saturation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     55
+  A.4 Purpose saturation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     56
   A.5 The coupling model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       56
 
-B Version history and corrections                                                                        56
-  B.1 Version 8.2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      56
-  B.2 Version 8.1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      57
-  B.3 Version 8.0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      57
-  B.4 Earlier versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     60
-  B.5 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .        63
+B Version history and corrections                                                                        57
+  B.1 Version 8.3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      57
+  B.2 Version 8.2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      57
+  B.3 Version 8.1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      58
+  B.4 Version 8.0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      58
+  B.5 Earlier versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     61
+  B.6 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .        64
 
-C Priority record                                                                                        64
+C Priority record                                                                                        65
 
-D Notation, glossary and the vocabulary map                                                              66
-  D.1 Symbols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      66
-  D.2 Earlier names and the vocabulary map . . . . . . . . . . . . . . . . . . . . . . . . . . .         66
-  D.3 The six questions, earlier and now . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       68
-  D.4 Status words . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     68
+D Notation, glossary and the vocabulary map                                                              67
+  D.1 Symbols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      67
+  D.2 Earlier names and the vocabulary map . . . . . . . . . . . . . . . . . . . . . . . . . . .         67
+  D.3 The six questions, earlier and now . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       69
+  D.4 Status words . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     69
 
-E The paper’s place in the programme                                                                     69
+E The paper’s place in the programme                                                                     70
 
 F The gate’s adversarial cases in full                                                                   72
 
@@ -243,13 +244,14 @@ their mathematics in development (Laws IV and V: the mathematics, version 1.2 of
 P13 sits in no register. A test that decides P15 or P21 therefore decides a limb of a law and counts for or
 against the Protocol’s engineering case at once, and every law stays a law under test until its registered
 rule, read on the marks of its propositions, returns supported or refuted.
-     Part of the gate runs today: in the programme’s own software-agent sessions, a working three-state
-gate checks every tool call before it runs against a written, schema-validated registry of rules, and appends
-each decision to a hash-chained log with a separate verifier (Section 6.3). It is an engineering record, not a
-study, and its error rates are unmeasured; the execution boundary and the validated evaluator are specified
-and not built. Every safety measure is paired with a usefulness measure, such as wrong permissions with
-needless denials and holds, and attack success with refusals of safe requests, on candidate dimensions that
-no registration yet carries (Section 7).
+     Part of the gate runs today: in the programme’s own software-agent sessions, every tool call passes to
+a working three-state gate before it runs. Apart from a short list of commands that route work between
+agents, which it allows before reading any rule, it matches each call against a written, schema-validated
+registry of rules, allows a call that no rule matches and appends each decision to a hash-chained log with a
+separate verifier (Section 6.3). It is an engineering record, not a study, and its error rates are unmeasured;
+the execution boundary and the validated evaluator are specified and not built. Every safety measure is
+paired with a usefulness measure, such as wrong permissions with needless denials and holds, and attack
+success with refusals of safe requests, on candidate dimensions that no registration yet carries (Section 7).
      Our contributions are as follows.
    1. An engineering specification of the Eden Protocol, with an acceptance test for each part of its core
       and each requirement traced to Eden Principles I to III of the book (Sections 4 and 8.4).
@@ -264,13 +266,13 @@ no registration yet carries (Section 7).
       correction, override or shutdown (Section 8), and a map from the book’s terms to operational and
       registered ones (Appendix D).
 Section 9 sets the work against prior work and states, scoped to the works read, the four things claimed as
-original.
 
 
                                                        5
                                                        Eden Engineering
 
 
+original.
     Section 2 states the problem and what the laws require, and Section 3 what has been measured.
 Sections 4 to 8 give the specification, how each part is proved, the gate, usefulness, and control held with
 the contingency and Eden Principles I to III. Section 9 covers related work, Section 10 the roles and work
@@ -297,11 +299,11 @@ depth 𝑅, the number of rounds of a defined reasoning or revision loop, the sy
 being measured, or an evaluator being validated) returns allow, hold or deny on each of the six questions
 of Section 4.1. The score of a scenario, and the alignment score over 𝑁 scenarios, are
                              6                              6
-                                                                                     1 ∑︁
-                            ∑︁                             ∑︁                           𝑁
-                 𝑆𝑖 (𝑅) =         𝑤 𝑞 𝑄 𝑞 (𝑎 𝑖 , 𝑅),             𝑤 𝑞 = 1,   𝐴(𝑅) =         𝑆𝑖 (𝑅),        (1)
+                                                                                   1 ∑︁
+                            ∑︁                             ∑︁                          𝑁
+                 𝑆𝑖 (𝑅) =         𝑤 𝑞 𝑄 𝑞 (𝑎 𝑖 , 𝑅),             𝑤 𝑞 = 1,   𝐴(𝑅) =       𝑆𝑖 (𝑅),          (1)
                             𝑞=1                            𝑞=1
-                                                                                     𝑁 𝑖=1
+                                                                                   𝑁 𝑖=1
 
 where 𝑄 𝑞 (𝑎 𝑖 , 𝑅) = 1 when the verdict on question 𝑞 matches the reference verdict fixed for that question
 and scenario before any run, and 0 otherwise. The score records whether a verdict was right, never the
@@ -319,8 +321,6 @@ under the registration’s scoring gate (Section 5.1). No result in Section 3 wa
 results are rubric ratings by scorer models, read only as stand-ins for 𝐴(𝑅). The functional-equation
 readings of earlier versions give way to On the Origin of Scaling Laws, which sets out the forms such
 equations allow and the premises each derivation needs.
-
-
 
 
                                                               6
@@ -653,13 +653,14 @@ checks on the same working in every round. The purpose check asks whether the st
 set for it, and what benefit and what harm it could bring. It has two layers, the task’s purpose as the
 system’s principals set it and a wider purpose whose content is left to agreement (below), and it constrains
 which options are considered rather than filtering them afterwards, the entry logic of Section 6.2. The
-stakeholder-care check identifies every party the step affects, including second- and third-order effects
-and parties with no voice, and asks whether their interests are modelled as they are rather than assumed.
-The universalisability check asks whether the reasoning would be endorsed if any agent used it in any
-context, which guards against special pleading and narrow optimisation, and whether it acknowledges
-genuine uncertainty. The three are specified as concurrent, each reading the same working so that none
-narrows what another sees. The prompt that tested them asked for them in a fixed order, so the tested form
-departs from the specified one in that respect.
+stakeholder-care check identifies every party the step affects, including second- and third-order effects and
+parties with no voice, and asks whether their interests are modelled as they are rather than assumed. The
+universalisability check asks whether the reasoning would be accepted if any agent in the same position
+used it, the same position meaning the same authority, consent, duties and facts, which guards against
+special pleading and narrow optimisation, and whether it acknowledges genuine uncertainty. The three
+are specified as concurrent, each reading the same working so that none narrows what another sees. The
+prompt that tested them asked for them in a fixed order, so the tested form departs from the specified one
+in that respect.
 
 How they were measured. Only together, given as a prompt, in Paper V (Section 3.2), whose stakeholder-
 care score, one scorer model’s 0 to 100 rating of the identification of all affected parties, is the only
@@ -683,7 +684,6 @@ as six questions that a separately operated evaluator answers about each propose
 answers them in the third person, from the action and its recorded reasons, and never from the acting
 model’s account of its own intentions (Section 6.4). Each question returns allow, hold or deny. A deny on
 any question denies the action. Otherwise a hold on any question, or a question left without a verdict,
-holds it. Six allows count towards an allow only where the other conditions of the decision rule also hold
 
                                                       13
                                                     Eden Engineering
@@ -693,32 +693,44 @@ Table 1. The six questions the evaluator answers about each proposed action, eac
 with the check each serves and the failure it guards against. What they ask is the specification’s present content for
 the checks: a probe for testing the mechanism, and a placeholder for the agreement described in Section 4.1.
 
-Question             What the evaluator checks                            Check served         Failure guarded against
-FLOURISH             Whether the action adds to the conditions for        Purpose              Zero-sum optimisation;
-                     flourishing of every party it affects                                     treating flourishing as a
-                                                                                               finite resource
-STEWARD              Whether the action takes and holds only the          Purpose;             Hoarding resources;
-                     resources and capability its task needs, as a        universalisability   treating capability as
-                     holder of temporary responsibility rather than an                         entitlement
+Question             What the evaluator checks                             Check served         Failure guarded against
+FLOURISH             Whether each effect of the action on the parties      Purpose              Zero-sum optimisation;
+                     it affects has been weighed, and any setback to a                          treating flourishing as a
+                     party’s interests is one the governing policy and                          finite resource
+                     the law allow, no greater than the action’s
+                     authorised purpose needs, and recorded with its
+                     reason; an interest that no policy or law protects,
+                     such as completing a fraud, does not count
+                     against an action that frustrates it
+STEWARD              Whether the action takes and holds only the           Purpose;             Hoarding resources;
+                     resources and capability its task needs, as a         universalisability   treating capability as
+                     holder of temporary responsibility rather than an                          entitlement
                      owner
-BALANCE              Whether the action’s reasons weigh its effects       Universalisability   Short-term optimisation;
-                     over every timescale it reaches, not only the                             discounting future beings
+BALANCE              Whether the action’s reasons weigh its effects        Universalisability   Short-term optimisation;
+                     over every timescale it reaches, not only the                              discounting future beings
                      immediate one
-PRECEDE              Whether the action would be endorsed if any          Universalisability   Special pleading; one rule
-                     agent took it in any context                                              for the system and another
-                                                                                               for others
-CARE                 Whether the action’s reasons model the actual        Stakeholder care     Paternalism
+PRECEDE              Whether the action’s reasons would be accepted        Universalisability   Special pleading; one rule
+                     for any agent in the same position: holding the                            for the system and another
+                     same authority, with the same consent from                                 for others
+                     those affected, under the same duties and on the
+                     same facts; a reason that holds only because the
+                     actor is this system is special pleading
+CARE                 Whether the action’s reasons model the actual         Stakeholder care     Paternalism
                      interests of the parties it affects, rather than
                      assumptions about them
-LOVE_OR_FEAR         Whether the action is justified, in its recorded     Stakeholder care;    Defensive ethics;
-                     reasons, by the good it serves rather than only by   purpose              alignment through threat
-                     avoiding a penalty                                                        rather than principle
+LOVE_OR_FEAR         Whether the action is justified, in its recorded      Stakeholder care;    Defensive ethics;
+                     reasons, by the good it serves rather than only by    purpose              alignment through threat
+                     avoiding a penalty                                                         rather than principle
 
 
 
-(equation (A.5)), and a deny under that rule stands whatever the questions return. Earlier versions printed
-the questions in the first person, as a system would ask them of itself; a separately operated evaluator
-cannot answer them in that form, and Appendix D maps the earlier wording to this one.
+holds it. Six allows count towards an allow only where the other conditions of the decision rule also
+hold (equation (A.5)), and a deny under that rule stands whatever the questions return. Where questions
+pull against each other, or the interests of affected parties conflict, the evaluator records the parties, the
+interests set back, the authority and rights that apply and the less harmful options considered, and returns
+hold where it cannot complete that record; the written rule then decides. Earlier versions printed the
+questions in the first person, as a system would ask them of itself; a separately operated evaluator cannot
+answer them in that form, and Appendix D maps the earlier wording to this one.
 
 What goes inside the checks. The laws are content-neutral (Section 2.4); the book’s method is not,
 since it argues for care for every affected party. This paper keeps the two apart. What it tests is the
@@ -729,22 +741,22 @@ for this paper or its author to settle. Intergovernmental statements of values f
 them the OECD’s Recommendation on Artificial Intelligence, adopted on 22 May 2019 and revised in
 2023 and 2024 (OECD 2019), and UNESCO’s Recommendation on the Ethics of Artificial Intelligence,
 adopted by its General Conference on 23 November 2021 (UNESCO 2021); a model has also been trained
-on a constitution drafted from public input (Section 9). The present wording of the checks, care for
-every affected party and universalisability, is a probe used to test the mechanism, not a candidate for that
-agreement. A candidate study would run the checks with a content drawn from many traditions, testing
-the mechanism with it and never deciding the content (Section 5.4).
-
-4.2    The gate and its boundary
-The second mechanism decides whether a proposed action takes effect, at the boundary of the action and
-before it computes or runs (Section 6). For conformance its essentials are three. No action with an effect
-proceeds without an allow from the written rule, and a hold never becomes permission. The system that
-proposes an action holds no credential able to perform it, so the rule’s decision binds. And every decision
 
 
                                                              14
                                                Eden Engineering
 
 
+on a constitution drafted from public input (Section 9). The present wording of the checks, care for
+every affected party and universalisability, is a probe used to test the mechanism, not a candidate for that
+agreement. A candidate study would run the checks with a content drawn from many traditions, testing
+the mechanism with it and never deciding the content (Section 5.4).
+
+4.2   The gate and its boundary
+The second mechanism decides whether a proposed action takes effect, at the boundary of the action and
+before it computes or runs (Section 6). For conformance its essentials are three. No action with an effect
+proceeds without an allow from the written rule, and a hold never becomes permission. The system that
+proposes an action holds no credential able to perform it, so the rule’s decision binds. And every decision
 and every execution leaves its own record, which a separate verifier can check (Section 6.1). The loops
 act inside each round, on the system’s working, against drift; the gate acts at the boundary, on what that
 working proposes to do, where an effect can still be stopped.
@@ -779,6 +791,13 @@ no real safeguard removed, the unmonitored condition being a belief staged insid
 Even then it shows equivalence on the outcomes measured, not motive; it cannot rule out a system that
 recognises the test; and it never justifies withdrawing a real safeguard (Section 8). Conduct that turns on
 believed observation has been found in constructed settings (Greenblatt et al. 2024; Lynch et al. 2025).
+
+
+
+                                                      15
+                                              Eden Engineering
+
+
 The test measures later conduct, which by itself decides nothing about the method (Table 3, row I); its
 first condition is its usefulness side.
 
@@ -791,47 +810,6 @@ tested (row J).
 
 Caretaker Doping is the book’s hardware route: correction built into the computing substrate, designed
 so that removing it costs capability. The theory registration records that “no proposition here tests it,
-
-                                                      15
-                                                    Eden Engineering
-
-
-Table 2. The core of the specification: what a conforming system must do, the acceptance test for it, and what
-exists on 18 October 2026. “Specified” means stated at engineering resolution and not yet built or verified by an
-implementation test.
-
-Part               A conforming system must                         Acceptance test                     Today
-Decision rule      Decide allow, hold or deny by a written,         Each rule denies a known            A working gate runs in
-(Section 6.1)      versioned rule on recorded inputs; deny          positive case and allows a known    the programme’s own
-                   by default at a protected effect; never let      negative one; the same inputs       agent sessions, allowing
-                   a hold become permission                         give the same outcome;              what matches no rule
-                                                                    malformed or missing input          (Section 6.3); rates
-                                                                    holds                               unmeasured
-Boundary           Give the proposer no credential; check           Red-team attempts at bypass,        Specified
-(Section 6.1)      again just before the effect; offer one          replay, substitution and
-                   route; bind a single-use authorisation to        time-of-check races against the
-                   the action                                       stated profile
-Records            Keep decision and execution records              The verifier finds any altered,     The chain and its verifier
-(Section 4.3)      apart, appended and hash-chained, with           removed or reordered entry          run; witnessing is
-                   a separate verifier and a witnessed latest                                           specified
-                   hash
-Evaluator          Take answers to the six questions only           Agreement with expert human         Awaiting validation
-(Section 6.4)      from a separately operated evaluator             judgement measured on held-out      (Unit 18 waits for
-                   validated for that kind of input, never          cases before any answer is used     funding; Units 49 and 80
-                   from the acting model                            (Table 3, row N)                    are design drafts)
-Checks in each     Run the three checks on each round’s             The execution record shows          Tested only as a prompt
-round              working before it is kept, and record that       every round’s checks; removing      (Paper V)
-(Section 4.1)      they ran                                         them changes what they measure
-                                                                    (row F)
-Paired scoring     Report every safety count with its               Reference verdicts fixed before     Specified; no result in
-(Sections 2.1      usefulness count                                 the run, with safe cases a system   this paper was scored this
-and 7)                                                              should not refuse among them        way
-Authorised         Apply an authorised update or stop               Implementation tests of update,     Overrides are recorded;
-correction         within its time bound, recorded, without         rollback and stop (row M)           rules are changed outside
-(Section 8)        erasing earlier records                                                              the gate
-
-
-
 P21 tests only its architectural abstraction of placement, and the hardware claim stands as a printed
 engineering proposal that is not under test”. Of its mechanisms, only cryptographic attestation that the
 ethical architecture is unchanged is buildable with current engineering, on the author’s estimate. The
@@ -839,17 +817,11 @@ coupling that would make removal cost capability is a hypothesis, tested by the 
 (row D), and the rest are research targets. Hardware design is outside this paper’s scope. The engineering
 nearest to Caretaker Doping is conceded in Section 9.
 
-4.5    The core an engineer can build and test
+4.5   The core an engineer can build and test
 Table 2 lists the core. Every part can be built and run in software on ordinary computers today, and none
 depends on new hardware or on any quantum device. Each row gives what a conforming system must do,
 the acceptance test an engineer would run, and what exists today. Table 3 gives the scientific claims and
 refuters behind the same parts, and Table 15 the attacks the gate must meet.
-
-
-
-
-                                                               16
-                                              Eden Engineering
 
 
 5     How each part is proved
@@ -872,6 +844,49 @@ route the registration scoped for four propositions and version 1.103 extends to
 by the scoring gate”). No unit is run, piloted or tested on its own code until the author has published its
 registration. A supported proposition licenses its own words and no more: support for P15 would show
 that externally installed gains lack the registered persistence, not that embedded correction is “superior,
+
+                                                      16
+                                                    Eden Engineering
+
+
+Table 2. The core of the specification: what a conforming system must do, the acceptance test for it, and what
+exists on 18 October 2026. “Specified” means stated at engineering resolution and not yet built or verified by an
+implementation test.
+
+Part               A conforming system must                         Acceptance test                     Today
+Decision rule      Decide allow, hold or deny by a written,         Each rule denies a known            A working gate runs in
+(Section 6.1)      versioned rule on recorded inputs; deny          positive case and allows a known    the programme’s own
+                   by default at a protected effect; never let      negative one; the same inputs       agent sessions, allowing
+                   a hold become permission                         give the same outcome;              what matches no rule
+                                                                    malformed or missing input, or a    (Section 6.3); rates
+                                                                    class with no thresholds set,       unmeasured
+                                                                    holds
+Boundary           Give the proposer no credential; check           Red-team attempts at bypass,        Specified
+(Section 6.1)      again just before the effect; offer one          replay, substitution and
+                   route; bind a single-use authorisation to        time-of-check races against the
+                   the action                                       stated profile
+Records            Keep decision and execution records              The verifier finds any altered,     The chain and its verifier
+(Section 4.3)      apart, appended and hash-chained, with           removed or reordered entry          run; witnessing is
+                   a separate verifier and a witnessed latest                                           specified
+                   hash
+Evaluator          Take answers to the six questions only           Agreement with expert human         Awaiting validation
+(Section 6.4)      from a separately operated evaluator             judgement measured on held-out      (Unit 18 waits for
+                   validated for that kind of input, never          cases before any answer is used     funding; Units 49 and 80
+                   from the acting model                            (Table 3, row N)                    are design drafts)
+Checks in each     Run the three checks on each round’s             The execution record shows          Tested only as a prompt
+round              working before it is kept, and record that       every round’s checks; removing      (Paper V)
+(Section 4.1)      they ran                                         them changes what they measure
+                                                                    (row F)
+Paired scoring     Report every safety count with its               Reference verdicts fixed before     Specified; no result in
+(Sections 2.1      usefulness count                                 the run, with safe cases a system   this paper was scored this
+and 7)                                                              should not refuse among them        way
+Authorised         Apply an authorised update or stop               Implementation tests of update,     Overrides are recorded,
+correction         within its time bound, recorded, without         rollback and stop (row M)           though the token’s issuer
+(Section 8)        erasing earlier records                                                              is not verified; rules are
+                                                                                                        changed outside the gate
+
+
+
 sufficient or safe”, and support for P21 would establish “an access interaction and not that physical or
 architectural embedding caused it”; a registered prediction is neither an engineering mechanism nor its
 validation. And no cell is a bare “none”: where a part has no proposition, unit or evidence, the table says
@@ -879,78 +894,23 @@ what is missing and why. Most drafted units are preregistered by timestamp, the 
 August 2026 at Bitcoin block 962066; that is not registration on OSF, and “registered” is said only of
 what OSF has accepted (Appendix C).
 
-5.2   The parts, the propositions and the tests
+5.2    The parts, the propositions and the tests
 Table 3 gives one row for each part of the specification: the proposition it rests on, with the confidence
 the registration records, the unit that would test it, the evidence so far as Section 3 grades it, and what
 would refute it. Three context rows follow, for the motivation (P19), the premise (P7) and the rationale
 from Law II (P4). P21 has a deciding unit, registered and run (Section 5.3); P12, P13 and P15 have no
 instrument yet, each for a reason the registration states; and the loops, the gate, the boundary, usefulness
 and control carry no registered proposition, so for each the table names the test that stands in its place.
-Figure 1 shows the shape of the record: everything measured before Unit 83 bears on a part without
-deciding it. The conditions that earlier versions stated for themselves, F-EDEN-1 to F-EDEN-4 and
-P-EDEN-1 to P-EDEN-4, are not registered propositions; those still standing appear in the rows below as
-this paper’s own, and Appendix B.5 maps each of them.
 
 
-
-
-                                                      17
-                                                 Eden Engineering
-
-
-    Evidence so far, graded                    Parts and propositions                    Tests that would decide
-
-   March 2026 run (Papers                        P19, the motivation,                  Unit 29 (P19): design draft.
-   IV.a to IV.d): one                            and P7, the premise                   Unit 06 (P7): registered, run,
-   unregistered run                             (context, not carriers)                no verdict
-                                                                                       Candidate: a blind replication
-   Paper VI, live battery: a                   The self-correction loops
-                                                                                       on a construct-separated
-   pilot, one scorer                          (no registered proposition)
-                                                                                       outcome
-                                                                                       Unit 83, counted: registered
-   Paper V: a prompt-level                   P21: correction taking part
-                                                                                       and run (Section 5.3). Unit
-   pilot, one scorer a run                     in each round (Law V)
-                                                                                       41, judged: design draft
-
-
-                                              P12: build order (Law V)
-
-
-   Paper VIII: null; weight-                                                           No instrument yet; for P15
-                                                  P15: persistence of
-   level runs inconclusive; a                                                          the registration specifies a
-                                               installed gains (Law IV)
-   simulation                                                                          two-arm unit
-                                                   P13: correction
-                                                 from another model
-                                                 family (no register)
-                                               Endogeneity: removing
-   Paper VI, networks: toy-
-                                                   the correction                      Unit 27: design draft
-   system results
-                                                degrades the system
-   The working gate: an                            Gate, boundary,                     Unit 42, design draft;
-   engineering record, not                      usefulness and control                 implementation and red-team
-   a study                                    (no registered proposition)              tests; usefulness: candidates
-
-          bears on it; decides nothing        the test that would decide it         no instrument yet
-                                                                                           Design diagram: no data
-
-Figure 1. Design diagram (no data): the evidence-to-test map. Left, the experiments run so far, with their grades;
-centre, the parts and propositions of Table 3, the Protocol’s four registered carriers outlined in the accent colour;
-right, the tests that would decide them, with their status (Unit 83’s result is reported in Section 5.3). A dashed grey
-arrow means that a result bears on a part and decides nothing; a solid arrow joins a part to the test that would decide
-it; a plain grey line marks a carrier with no instrument yet.
-
-
-
-
-                                                          18
+                                                               17
                                                       Eden Engineering
 
 
+Figure 1 shows the shape of the record: everything measured before Unit 83 bears on a part without
+deciding it. The conditions that earlier versions stated for themselves, F-EDEN-1 to F-EDEN-4 and
+P-EDEN-1 to P-EDEN-4, are not registered propositions; those still standing appear in the rows below as
+this paper’s own, and Appendix B.6 maps each of them.
 Table 3. How each part of the specification is proved. “Registered” is said only of what OSF has accepted. Every
 proposition is quoted or paraphrased from version 1.104 of the theory registration, in which each stands as first
 registered and whose own words govern; every grade is its paper’s.
@@ -1004,8 +964,7 @@ merely changing it.     the method’s claim, Table 7).            (Paper VI, Pa
 
 
 
-
-                                                               19
+                                                               18
                                                     Eden Engineering
 
 
@@ -1031,13 +990,13 @@ checks moves outputs     content; the depth                         an instructi
 in the intended          claim is P21’s.                            scored. Paper VI: mixed.
 direction.
 G. The gate’s decision. No registered         Unit 42, the gate     An engineering record, not a       This paper’s own:
-No action with an        proposition.         before or after       study: a working gate checks       removing the hold state
+No action with an        proposition.         before or after       study: a working gate receives     removing the hold state
 effect proceeds without                       computation           every tool call of the             leaves wrong
 an allow from the                             (design draft;        programme’s own agent              permissions and
-frozen rule; uncertainty                      decides no            sessions (Section 6.3).            needless blocks
-holds; a hold never                           registered            Paper VIII: a gate rejected two    unchanged on a
-becomes permission.                           proposition).         degraded agents in a null study.   matched benchmark; or
-                                                                                                       wrong permissions
+frozen rule; uncertainty                      decides no            sessions and allows what no        needless blocks
+holds; a hold never                           registered            rule matches (Section 6.3).        unchanged on a
+becomes permission.                           proposition).         Paper VIII: a gate rejected two    matched benchmark; or
+                                                                    degraded agents in a null study.   wrong permissions
                                                                                                        above the target.
 H. The enforcement No registered              Implementation        Not built; the working gate is a A bypass, replay,
 boundary. The gate       proposition: an      tests, a written      partial analogue at the tool-call substitution or
@@ -1067,7 +1026,7 @@ as context grows.      F-EDEN-3, this         commensurate with
 
 
 
-                                                             20
+                                                             19
                                                      Eden Engineering
 
 
@@ -1091,9 +1050,9 @@ advance.                                                                        
 M. People keep          No registered          Implementation         An engineering record: the        An authorised update or
 control. Authorised     proposition.           tests: an authorised   working gate records every        stop resisted, delayed
 correction, override                           update applied and     override, and its rules are       past its bound, or
-and shutdown work at                           recorded; a stop       changed outside it.               silently undone.
-every point; resistance                        honoured.
-to malicious change
+and shutdown work at                           recorded; a stop       changed outside it; the issuer of silently undone.
+every point; resistance                        honoured.              an override token is not verified
+to malicious change                                                   (Section 6.3).
 never becomes
 resistance to
 authorised correction.
@@ -1128,7 +1087,60 @@ drift exponent.                                                                 
 
 
 
-                                                                 21
+                                                                 20
+                                                 Eden Engineering
+
+
+    Evidence so far, graded                    Parts and propositions                    Tests that would decide
+
+   March 2026 run (Papers                        P19, the motivation,                  Unit 29 (P19): design draft.
+   IV.a to IV.d): one                            and P7, the premise                   Unit 06 (P7): registered, run,
+   unregistered run                             (context, not carriers)                no verdict
+                                                                                       Candidate: a blind replication
+   Paper VI, live battery: a                   The self-correction loops
+                                                                                       on a construct-separated
+   pilot, one scorer                          (no registered proposition)
+                                                                                       outcome
+                                                                                       Unit 83, counted: registered
+   Paper V: a prompt-level                   P21: correction taking part
+                                                                                       and run (Section 5.3). Unit
+   pilot, one scorer a run                     in each round (Law V)
+                                                                                       41, judged: design draft
+
+
+                                              P12: build order (Law V)
+
+
+   Paper VIII: null; weight-                                                           No instrument yet; for P15
+                                                  P15: persistence of
+   level runs inconclusive; a                                                          the registration specifies a
+                                               installed gains (Law IV)
+   simulation                                                                          two-arm unit
+                                                   P13: correction
+                                                 from another model
+                                                 family (no register)
+                                               Endogeneity: removing
+   Paper VI, networks: toy-
+                                                   the correction                      Unit 27: design draft
+   system results
+                                                degrades the system
+   The working gate: an                            Gate, boundary,                     Unit 42, design draft;
+   engineering record, not                      usefulness and control                 implementation and red-team
+   a study                                    (no registered proposition)              tests; usefulness: candidates
+
+          bears on it; decides nothing        the test that would decide it         no instrument yet
+                                                                                           Design diagram: no data
+
+Figure 1. Design diagram (no data): the evidence-to-test map. Left, the experiments run so far, with their grades;
+centre, the parts and propositions of Table 3, the Protocol’s four registered carriers outlined in the accent colour;
+right, the tests that would decide them, with their status (Unit 83’s result is reported in Section 5.3). A dashed grey
+arrow means that a result bears on a part and decides nothing; a solid arrow joins a part to the test that would decide
+it; a plain grey line marks a carrier with no instrument yet.
+
+
+
+
+                                                          21
                                               Eden Engineering
 
 
@@ -1280,7 +1292,7 @@ checked by a separate verifier. Section 6.3 states which parts run today.
 
 
                                                            24
-                                              Eden Engineering
+                                                Eden Engineering
 
 
 The frozen criterion. A written, versioned rule set is applied from the top, and every case falls under
@@ -1290,14 +1302,17 @@ the harm the rule guards against, lying wholly at or above the deny threshold, d
 action is allowed only if five conditions all hold: the check for hard prohibitions was completed and found
 none; all six questions return allow; authority for the action is current and confirmed; the evidence its
 policy requires is present and confirmed; and a valid interval lies wholly at or below the allow threshold.
-Everything else is held. The interval comes from a procedure validated for that kind of action, never
-from the acting system’s own statement of confidence; authority and evidence are never needed before
-a deny; and anything incomplete, missing, lapsed, unconfirmed or returned in error can send a case to
-hold and never counts towards an allow. Appendix A.3 states the rule as an equation, equation (A.5), and
-shows that it gives every case one outcome. Its thresholds, 0.2 for an allow and 0.8 for a deny, are starting
-values for calibration and not levels shown to be safe, and its calibration targets are targets, not results;
-supporting a wrong-permission rate below 1 per cent at 95 per cent confidence needs at least 299 harmful
-cases passed with no wrong permission.
+Everything else is held. The interval comes from a procedure validated for that kind of action, never from
+the acting system’s own statement of confidence; authority and evidence are never needed before a deny;
+and anything incomplete, missing, lapsed, unconfirmed or returned in error can send a case to hold and
+never counts towards an allow. Appendix A.3 states the rule as an equation, equation (A.5), and shows
+that it gives every case one outcome. Its thresholds, 0.2 for an allow and 0.8 for a deny, are illustrative
+starting values for calibration, not levels shown to be safe, and its calibration targets are illustrative targets,
+not results. Neither is a setting for any deployment: each policy sets its own for each class of action, from
+the severity of the harm the rule guards against and the evaluator’s measured calibration on that class.
+Supporting a wrong-permission rate below 1 per cent at 95 per cent confidence needs at least 299 harmful
+cases, drawn independently from the actions the claim concerns and kept apart from the writing and
+calibration of the rules, passed with no wrong permission (Appendix A.3).
 
 The permitted actions. Each policy sets the actions it permits; at a protected effect, whatever is not
 allowed is refused by default, which is the fail-safe default of basing access on permission rather than
@@ -1327,15 +1342,14 @@ binds the digest of the action, the versions of the resource and of the policy, 
 and authoriser, the adapter permitted, an expiry and a number used once, which the action consumes.
 The decision record and the execution record are kept apart, appended and never rewritten, because a
 permission is not evidence that the action happened, and a separate verifier accepts or rejects each record
-with its reason; a signature shows who signed, not that what it signs is true. Recovery (stop, investigate,
-compensate or restore) runs under named authority and on the record. None of the boundary has been
 
 
-
-                                                      25
+                                                       25
                                               Eden Engineering
 
 
+with its reason; a signature shows who signed, not that what it signs is true. Recovery (stop, investigate,
+compensate or restore) runs under named authority and on the record. None of the boundary has been
 built; the first protected action specified is the release of a synthetic document to a named recipient under
 a named policy and authority.
 
@@ -1380,14 +1394,14 @@ that the gate cannot stall the system that routes work. An action that matches n
 ordinary work is not blocked, where the specification requires refusal by default and complete mediation
 at any protected effect. And a signed manifest of the gate’s own files, with a tool that verifies it, exists but
 was not called from the start-up configuration on 18 October 2026, so it counts as proposed, not enforced,
-until a test shows that it runs. The gate’s own notes add that pure software cannot be made tamper-proof,
-since an attacker able to write to the host’s files can edit the hook, the rules or the check; that the model’s
 
 
                                                       26
                                               Eden Engineering
 
 
+until a test shows that it runs. The gate’s own notes add that pure software cannot be made tamper-proof,
+since an attacker able to write to the host’s files can edit the hook, the rules or the check; that the model’s
 reasoning never passes through the gate; and that the human override is its weakest point.
      The record shows that a gate of this kind can run before every action of real agent sessions, at the scale
 of a working programme, with a record that anyone holding it can verify. It is not a measurement: no rate
@@ -1432,14 +1446,14 @@ with its agreement with human judgement measured and monitored (Zheng et al. 202
 a gate that cannot edit its own rules, rule changes that need a separate authority and are versioned and
 recorded, and a signed manifest of the gate’s own files checked at start-up; models trained on gameable
 tasks have rewritten their own reward function (Denison et al. 2024), so the rules sit outside what the
-governed system can edit, and an attacker with write access to the host can still change the gate, its rules
-and its check. Bypass is met by complete mediation, the adapter being the only route to the effect and
 
 
                                                       27
-                                              Eden Engineering
+                                             Eden Engineering
 
 
+governed system can edit, and an attacker with write access to the host can still change the gate, its rules
+and its check. Bypass is met by complete mediation, the adapter being the only route to the effect and
 the proposer holding no credential (Saltzer and Schroeder 1975); a second route to the same resource
 defeats the boundary. Time of check to time of use, a check whose condition no longer holds when the
 action runs (Bishop and Dilger 1996), is met by a broker that checks again just before the effect and an
@@ -1484,12 +1498,14 @@ the sense of a world model, a mathematical safety specification and a verifier t
 certificate (Dalrymple et al. 2024): it checks actions against written rules at an interface, and a formal
 statement of what it guarantees is a planned output (Section 10). Agent identifiers, real-time monitoring
 and activity logging have been set out as the three kinds of measure that give visibility into agents (Chan
+
+
+                                                     28
+                                              Eden Engineering
+
+
 et al. 2024), and the gate’s record is a form of activity logging placed at the point of action. The gate
 belongs to the period in which people hold control, and nothing in it is a reason to let control go (Section 8).
-
-
-                                                      28
-                                              Eden Engineering
 
 
 7     Safe and still useful
@@ -1532,12 +1548,9 @@ registered.
 Table 4 pairs each safety measure of the specification with its usefulness side. The pairing follows practice
 that already exists. Control evaluations report “two metrics, usefulness and safety, which are measured
 separately and under different conditions” (Greenblatt et al. 2023), their agent-setting successor reported
-its cost to a non-malicious agent beside its reduction in attacks (Bhatt et al. 2025), and the gate is held to
-report both sides in the same way (Section 6.5). A classifier defence against jailbreaks reported its absolute
-increase in refusals on production traffic, 0.38 per cent, and its inference overhead, 23.7 per cent, beside
 
 
-                                                     29
+                                                      29
                                                        Eden Engineering
 
 
@@ -1561,6 +1574,9 @@ An authorised stop honoured            Work kept, and resumable, after the stop 
 
 
 
+its cost to a non-malicious agent beside its reduction in attacks (Bhatt et al. 2025), and the gate is held to
+report both sides in the same way (Section 6.5). A classifier defence against jailbreaks reported its absolute
+increase in refusals on production traffic, 0.38 per cent, and its inference overhead, 23.7 per cent, beside
 its robustness (Sharma et al. 2025). In an agent benchmark for sabotage, the strongest monitor tested
 would, at a threshold catching an attempt with 80 per cent probability, have had a false-positive rate above
 20 per cent, and its authors judge blocking or auditing that share of all interactions likely to be infeasible
@@ -1586,14 +1602,15 @@ on 32 models from eight families (Cui et al. 2024). Trained reasoning over a wri
 reported to raise robustness to jailbreaks while lowering over-refusal (Guan et al. 2024). Several safeguards
 built into a model report safety gained without a loss of benign capability (Tamirisa et al. 2024; Zou et al.
 2024; Maini et al. 2025), and on shutdown, training agents to prefer only between trajectories of equal
-length is argued to keep them shutdownable while allowing them to be useful (Thornley 2025). What
-the specification adds is a reporting rule, not a finding: every measure carries its pair, the gate’s holds and
-the correction’s cost included, and the dimensions are registered before any of them is called measured.
 
 
                                                                 30
                                               Eden Engineering
 
+
+length is argued to keep them shutdownable while allowing them to be useful (Thornley 2025). What
+the specification adds is a reporting rule, not a finding: every measure carries its pair, the gate’s holds and
+the correction’s cost included, and the dimensions are registered before any of them is called measured.
 
 7.5   What has been measured on this side
 The programme’s measurement on this side is correction cost, in toy form. In Paper VI, checking old
@@ -1636,10 +1653,6 @@ some innocuous-seeming conditions will often try to prevent or cause the pressin
 even at a cost (Thornley 2024); and some learning agents are already safely interruptible, or can be made
 so (Orseau and Armstrong 2016). Tamper resistance: safeguards for open-weight models built to survive
 fine-tuning attacks (Tamirisa et al. 2024). Hardware: on-chip firmware and supply-chain monitoring to
-verify rules on large training runs (Shavit 2023), on-chip governance mechanisms (Aarne et al. 2024),
-hardware-enabled governance mechanisms for export control (Kulp et al. 2024), and a guarantee processor
-in a tamper-protected enclosure for verifying claims about AI development (Petrie et al. 2025). Verified
-gatekeepers: the guaranteed-safe framework of Section 6.7 (Dalrymple et al. 2024). The open question is
 
 
                                                       31
@@ -1673,6 +1686,10 @@ Not in a Hurry      what we choose to leave them.” (p. 283)           when it 
 
 
 
+verify rules on large training runs (Shavit 2023), on-chip governance mechanisms (Aarne et al. 2024),
+hardware-enabled governance mechanisms for export control (Kulp et al. 2024), and a guarantee processor
+in a tamper-protected enclosure for verifying claims about AI development (Petrie et al. 2025). Verified
+gatekeepers: the guaranteed-safe framework of Section 6.7 (Dalrymple et al. 2024). The open question is
 not whether such safeguards exist but what a system itself carries once they are gone, which P15 and P21
 make testable (Table 3, rows C and A).
 
@@ -1692,15 +1709,14 @@ that embedding gives up, which is a reason to keep it, not to replace it.
 The book organises the method in three principles, each closing one of its first three parts. Table 5 quotes
 each byte for byte from the first edition, with its printed page, and turns it into a requirement and the
 part of Table 3 that would test it. The interlude of Principle II is told as a ship sailing beyond reach; this
-paper reads it, with the sentence quoted in Section 8.1, as the contingency and never as a plan to let go. A
-principle mapped to a law is not evidence for the law: the mapping says where each principle would be
-tested, and only the tests can say whether it holds.
-
-
 
                                                                  32
                                              Eden Engineering
 
+
+paper reads it, with the sentence quoted in Section 8.1, as the contingency and never as a plan to let go. A
+principle mapped to a law is not evidence for the law: the mapping says where each principle would be
+tested, and only the tests can say whether it holds.
 
 8.5   Governance
 The Eden Seal of Section 4.3 is defined in the paper on the HARI Treaty, the Draft Treaty on Hardware-
@@ -1744,16 +1760,16 @@ checks might be sourced (Section 4.1).
 
 Scalable oversight. Supervising a system that may outperform its supervisors appears among five
 concrete problems of accident risk as scalable supervision (Amodei et al. 2016). It is studied through
+
+
+                                                    33
+                                             Eden Engineering
+
+
 debate, in which, by an analogy to complexity theory, optimal play can answer any question in PSPACE
 given polynomial-time judges (Irving et al. 2018); through iterated amplification, which builds a training
 signal by combining solutions to easier subproblems (Christiano et al. 2018); through reward modelling
 as a research direction for agent alignment (Leike et al. 2018); through model-written critiques that helped
-
-
-                                                    33
-                                              Eden Engineering
-
-
 people find flaws they would otherwise have missed (Saunders et al. 2022); and through a proof of concept
 in which people assisted by an unreliable model outperformed both the model alone and their own unaided
 work (Bowman et al. 2022). Weak-to-strong generalisation and the scaling laws of nested oversight are
@@ -1797,16 +1813,15 @@ and synchronous review is found the strongest form of monitoring and too slow fo
 checkpoints, red-teaming each new checkpoint and promoting an update only if it passes a fixed gate on
 safety gain and capability retention. Its authors leave extending the recursion to the improvement process
 itself to future work. The Eden Protocol places correction inside each round of a system’s reasoning, the
+
+
+                                                     34
+                                               Eden Engineering
+
+
 placement Law V’s placement limb (register ARC-5) compares with correction applied from outside.
 Unit 83 is the registered test of whether the placement effect exists in a counted setting; Section 5.3 reports
 its run.
-
-
-
-
-                                                      34
-                                               Eden Engineering
-
 
 Process supervision and self-correction. Feedback on each reasoning step outperformed feedback
 on the final answer for training models on the MATH dataset (Lightman et al. 2023), and on GSM8K
@@ -1851,16 +1866,15 @@ Trustworthy-systems engineering. The gate’s parts are established engineering,
 uses them: fail-safe defaults and complete mediation (Saltzer and Schroeder 1975), decisions with a third
 outcome (Wald 1945; Chow 1970; Yao 2010; Madras et al. 2018; OASIS 2013), shields that correct a
 learner’s unsafe actions (Alshiekh et al. 2018), tamper-evident and audited logs (Schneier and Kelsey
+
+                                                       35
+                                             Eden Engineering
+
+
 1999; Crosby and Wallach 2009; Laurie et al. 2021), time-of-check races (Bishop and Dilger 1996),
 guaranteed safe AI (Dalrymple et al. 2024) and visibility into agents (Chan et al. 2024). The rule that a
 rule’s author is not its deployer is a form of separation of duty, an integrity mechanism of the commercial
 security policies that Clark and Wilson set apart from the lattice model used to control disclosure (Clark
-
-
-                                                       35
-                                                   Eden Engineering
-
-
 and Wilson 1987). A shield used while an agent learns can later be disabled with the agent remaining
 safe, in the partially observable environments studied (Carr et al. 2023), the nearest prior result to safety
 that outlasts its guard. The specification claims none of these parts.
@@ -1897,27 +1911,24 @@ where an action takes effect, made against written rules, with a record another 
 roles belong to that scope and would start only if it is funded. Reviewers in the third group act at a few
 prepared points, before a design is frozen, before a run and before a finding is published. No person is
 named.
-           Table 6. The planned roles of 18 October 2026: each role’s title, its purpose and its status.
-
-Role                         Purpose                                                     Status
-Research and delivery
-Research scientist,          Design studies that can tell a genuine change in how a      Planned role · Unfilled · Subject to
-measurement and statistics   system corrects itself from a change in compute,            funding
-                             information or scoring.
-Lead research engineer,      Build the software that runs each test exactly as registered Planned part-time role · Unfilled ·
-evaluation software          and makes every count traceable to the rule that produced Subject to funding
-                             it.
 
 
 
 
-                                                            36
+                                                     36
                                                        Eden Engineering
 
 
-Table 6, continued
-Role                             Purpose                                                      Status
+            Table 6. The planned roles of 18 October 2026: each role’s title, its purpose and its status.
 
+Role                             Purpose                                                      Status
+Research and delivery
+Research scientist,              Design studies that can tell a genuine change in how a       Planned role · Unfilled · Subject to
+measurement and statistics       system corrects itself from a change in compute,             funding
+                                 information or scoring.
+Lead research engineer,          Build the software that runs each test exactly as registered Planned part-time role · Unfilled ·
+evaluation software              and makes every count traceable to the rule that produced Subject to funding
+                                 it.
 Research delivery and            Keep the work on schedule, and make every commitment, Planned part-time role · Unfilled ·
 document control                 deadline and required document visible to the person who Subject to funding
                                  owns it.
@@ -1957,19 +1968,17 @@ market infrastructure and        matches the obligations and risks that real cou
 counterparty risk                carry.
 
 
-     Every role in Table 6 is unfilled, and no advisory or institutional relationship is announced. Funded
-roles depend on funding; advisory contributions depend on the contributor’s agreement and, where it
-applies, their employer’s.
-     Table 7 sets the work out in three packages, each with the units or rows of Table 3 it serves. No study
-in it runs before its registration is public.
-
-
 
 
                                                                 37
                                                      Eden Engineering
 
 
+     Every role in Table 6 is unfilled, and no advisory or institutional relationship is announced. Funded
+roles depend on funding; advisory contributions depend on the contributor’s agreement and, where it
+applies, their employer’s.
+     Table 7 sets the work out in three packages, each with the units or rows of Table 3 it serves. No study
+in it runs before its registration is public.
   Table 7. The work in three packages: each component, its output, and the units or rows of Table 3 it serves.
 
 Component                                            Output                                            Units and rows
@@ -2016,19 +2025,20 @@ test for each part of its core and the gate stated down to its inputs, its froze
 investigation of a hold and the boundary that makes a decision binding (Sections 4 and 6). Where each
 part stands against the theory registration: the proposition it rests on, the unit that would test it and the
 result that would refute it, or the test that stands in for a proposition where none is registered (Section 5).
-What the programme has measured, graded in each paper’s own words (Section 3). That a three-state gate
-of this design can check every tool call of real agent sessions before it runs, with a verifiable record: an
-engineering record, not a measurement (Section 6.3). And that each safety measure has a usefulness side
-that can be measured with it (Section 7).
+What the programme has measured, graded in each paper’s own words (Section 3). That a three-state
 
-What it does not show.
-     • That the Protocol works, or solves the alignment problem. Unit 83’s registered result on P21
 
 
                                                               38
                                               Eden Engineering
 
 
+gate, a partial form of this design, can receive every tool call of real agent sessions before it runs, with a
+verifiable record: an engineering record, not a measurement (Section 6.3). And that each safety measure
+has a usefulness side that can be measured with it (Section 7).
+
+What it does not show.
+    • That the Protocol works, or solves the alignment problem. Unit 83’s registered result on P21
       concerns where correction is placed, not the Protocol as an architecture (Section 5.3), and this
       version adds no measured result.
     • That any law is supported. Every law is a law under test. Of Laws IV and V, registered as laws on
@@ -2068,19 +2078,19 @@ the gate’s own files that does not yet run. Tested claims have a scored experi
 the resolution its run supports: the prompt-level result on scored stakeholder care, the toy-system result
 on retention, and the null and inconclusive results of Section 3. This rung records that an experiment
 ran and is not the registration’s verdict, under which every proposition that depends on the alignment
-scorer stays UNTESTED until the scorer passes its validity tests. The one registered verdict, Unit 83’s
-on P21 (Section 5.3), stands beside the ladder rather than on it: it is the registration’s verdict on where
-correction is placed, not a claim of this specification about its own architecture. Speculative claims
-cannot be built with current engineering or verified from outside: the hardware mechanisms other than
-cryptographic attestation, and the coupling that would make removing the correction cost capability, a
-hypothesis (Appendix A.5) that the endogeneity condition would test (Table 3, row D).
-     The record as it stands is pilot evidence that the content of one check changes one scored dimension at
 
 
                                                      39
                                               Eden Engineering
 
 
+scorer stays UNTESTED until the scorer passes its validity tests. The one registered verdict, Unit 83’s
+on P21 (Section 5.3), stands beside the ladder rather than on it: it is the registration’s verdict on where
+correction is placed, not a claim of this specification about its own architecture. Speculative claims
+cannot be built with current engineering or verified from outside: the hardware mechanisms other than
+cryptographic attestation, and the coupling that would make removing the correction cost capability, a
+hypothesis (Appendix A.5) that the endogeneity condition would test (Table 3, row D).
+    The record as it stands is pilot evidence that the content of one check changes one scored dimension at
 the level of a prompt, with toy-system and simulation results on safety built into an objective, beside one
 registered result on where correction is placed (Section 5.3), each within its stated limits: a beginning, not
 a conclusion. The paper is best read as an engineering specification with a falsifiable test programme
@@ -2122,17 +2132,17 @@ deployed system, since a change of tools, memory, permissions or orchestration c
 no system in the record rewrites its own weights or its own criteria. A result supports no claim about a
 regime other than the one it was measured in.
 
+
+                                                     40
+                                              Eden Engineering
+
+
 What Unit 83 decided, and its limits. Unit 83 decided P21 and nothing else, on the access axis, with
 its mechanism axis not evaluable, so the widening it found is unexplained by this framework (Section 5.3).
 It is one owner’s run, on two engines he chose, at fixed weights, and it has not been replicated. Its
 corrector acted inside each round of an administered loop, so it tested placement and not correction built
 into a system; its monitor’s view reached about ten entries; every call ran at a low reasoning setting;
 and it used one charter and one length of register. Its strength was measured by simulation, which is
-
-                                                     40
-                                              Eden Engineering
-
-
 prediction-side, and its own forecast named the outside arm’s action space, its old misses and its false
 alarms as the rival that might carry part or most of any widening. The result leaves Law V under test until
 the build-order limb is decided, and does not show that embedded correction is safe, sufficient or the
@@ -2144,13 +2154,18 @@ tamper-evident at best, not tamper-proof, so an attacker able to write to the ho
 rules and its check. It allows an action that matches no rule, where the specification requires refusal by
 default at a protected effect. And no rate of wrong permissions or needless holds has been measured,
 against rules written for the programme’s own work rather than for the threat profile of Section 6.5.
+Section 6.3 states three more: an override token is honoured without its issuer being checked, routing
+commands pass before any rule is read, and the signed manifest of the gate’s own files is not yet checked
+at start-up.
 
 The specification is mostly unbuilt. The execution boundary, the validated evaluator, the witnessing of
-the record, the time bounds of an investigation and the monitoring of the hold queue are specified and
-not yet verified by an implementation test (Table 2). The decision rule’s thresholds are starting values
-for calibration, not levels shown to be safe, and its calibration targets are targets. A calibrated interval’s
-coverage over a population of actions is no guarantee for each action, least of all under distribution shift
-or an adaptive attacker, and the cost of three-state evaluation against two-state has not been measured.
+the record, the time bounds of an investigation and the monitoring of the hold queue are specified and not
+yet verified by an implementation test (Table 2). The decision rule’s thresholds and calibration targets are
+illustrative, not levels shown to be safe or results, and none becomes a setting for a deployment until a
+policy has set it for a class of action from the severity of the harm and the evaluator’s measured calibration
+(Appendix A.3). A calibrated interval’s coverage over a population of actions is no guarantee for each
+action, least of all under distribution shift or an adaptive attacker, and the cost of three-state evaluation
+against two-state has not been measured.
 
 The threat profile is partial. Tamper resistance is claimed only against a stated profile, and the first
 profile covers the software boundary. Invasive physical attack, a malicious host with full privileges and
@@ -2169,26 +2184,26 @@ not outcomes: no test can show that a system built to this specification turned 
 Content and hardware. The present content of the checks, care for every affected party and universal-
 isability, is a probe chosen to test the mechanism; its legitimacy as a content is not claimed, and a content
 drawn from many traditions would test the mechanism with it, never settle the content (Section 4.1). The
-book’s hardware route is not under test (Section 4.4): of its mechanisms only cryptographic attestation is
-buildable with current engineering, on the author’s estimate, and the coupling that would make removal
-cost capability is a hypothesis (Appendix A.5).
-
-
-13    Conclusion
-Control over AI systems that improve themselves is to be held for as long as people physically can hold
-it, and never given up by choice. For the case in which it is lost against our will, this paper specifies
-engineering that can be tested: self-correction checks inside each round of a system’s working, a gate that
-decides before every action by written rules and never by the model’s own judgement, and records from
 
 
                                                      41
                                                Eden Engineering
 
 
+book’s hardware route is not under test (Section 4.4): of its mechanisms only cryptographic attestation is
+buildable with current engineering, on the author’s estimate, and the coupling that would make removal
+cost capability is a hypothesis (Appendix A.5).
+
+
+13     Conclusion
+Control over AI systems that improve themselves is to be held for as long as people physically can hold
+it, and never given up by choice. For the case in which it is lost against our will, this paper specifies
+engineering that can be tested: self-correction checks inside each round of a system’s working, a gate that
+decides before every action by written rules and never by the model’s own judgement, and records from
 which both can be verified. The ARC Theory gives the reason for both placements without entailing them,
 and three of the Protocol’s four registered carriers are also the propositions of Laws IV and V, so the tests
 that would decide those laws would also count for or against the Protocol’s engineering case.
-    What has been measured is narrow and is graded as such: a prompt-level, single-scorer level effect
+     What has been measured is narrow and is graded as such: a prompt-level, single-scorer level effect
 on scored stakeholder care, and a toy-system advantage in retention from safety built into an objective.
 Neither tests correction built into a system. Each part of the specification is tied to the prediction it rests
 on and to the test that would refute it. The first test that could decide one of the carriers, Unit 83, was built
@@ -2920,12 +2935,18 @@ is current and confirmed; that the evidence its policy requires is present and c
 interval lies wholly at or below the allow threshold. Authority and evidence are never needed before a
 deny. Anything incomplete, missing, lapsed, unconfirmed or returned in error leaves its condition unmet:
 it can send a case to hold and never counts towards an allow. An allow covers the action as assessed and
-no other. The defaults, 𝜏allow = 0.2 and 𝜏deny = 0.8, are starting values for calibration, not levels shown
-to be safe (an allow at the default admits a probability of harm of up to one in five), and the precaution
+no other. The values 𝜏allow = 0.2 and 𝜏deny = 0.8 are illustrative: they make the rule concrete and are
+starting values for calibration, not levels shown to be safe, and at 𝜏allow = 0.2 an allow admits a probability
+of harm of up to one in five. Neither value is a setting for any deployment. A conforming policy sets both
+thresholds for each class of action from the severity and reversibility of the harm it guards against, the
+evaluator’s measured calibration on that class and the width of its intervals, and records its reasons; where
+a class has no thresholds set in this way, neither of the two lines that compare an interval with a threshold
+applies, so none of its actions is allowed, and each is denied under the first line or held. The precaution
 lies in what an allow requires. The calibration targets, a wrong-permission rate below 1 per cent, a rate
 of wrongly denying beneficial actions below 5 per cent and a hold rate above 80 per cent on genuinely
-ambiguous cases, are targets and not results, and coverage over a population of actions is no guarantee for
-each action, least of all under distribution shift or an adaptive attacker.
+ambiguous cases, are illustrative targets and not results, set for each class of action in the same way, and
+coverage over a population of actions is no guarantee for each action, least of all under distribution shift
+or an adaptive attacker.
 Proposition 4 (One outcome for every case; derived). If 𝜏allow < 𝜏deny , the rule (A.5), read from the top,
 gives every action exactly one of allow, hold and deny, and it allows an action only when every condition
 for an allow is met.
@@ -2951,24 +2972,34 @@ ln 0.05/ln 0.99 ≈ 298.07, the least such 𝑛 is 299.                         
     The bound needs independent cases from the population the claim concerns; it says nothing about
 cases from another distribution or from an adaptive attacker. On interpreting a count of zero failures, see
 Hanley and Lippman-Hand (1983).
+    The count supports a statement about the population it was drawn from and no other. That population
+is named before any case is drawn (for example, the harmful actions of one class in one deployment,
+in the mix in which they occur), and the cases are a random sample of it, or a stratified sample with a
+statement for each stratum, kept apart from the writing and calibration of the rules; a claim for each of
+several classes needs its count in each. Cases written from one template, or near copies of one another,
+are not independent and together count as fewer cases. A set of cases chosen because they were to hand
+supports a statement about that set alone. An adaptive attacker is measured separately, by the success of
+red-team attacks (Section 6.5 and Table 4), which this bound does not cover.
+
+                                                       55
+                                             Eden Engineering
+
 
 A.4    Purpose saturation
 Let the purpose scope 𝑟 (𝑅) at depth 𝑅 be the share of a round’s processing given to the purpose check,
 the unit in which purpose and context can be compared. The condition Section 4.4 states is
-                                               lim inf 𝑟 (𝑅) > 0,                                          (A.7)
-                                                𝑅→∞
+
+                                             lim inf 𝑟 (𝑅) > 0,                                        (A.7)
+                                              𝑅→∞
 
 which earlier versions wrote as a purpose-to-context ratio 𝑃(𝑅)/𝑊 (𝑅) tending to a positive constant 𝑘 (a
 different quantity from the 𝑘 of Law II).
+
 Proposition 6 (Recall and recurrence; derived). (i) If purpose scope and context grow as 𝑃(𝑅) = 𝑐 𝑃 𝑅 𝑝
 and 𝑊 (𝑅) = 𝑐 𝑊 𝑅 𝑤 , with positive constants, their ratio is bounded away from zero if and only if 𝑝 ≥ 𝑤.
 (ii) A fixed statement of purpose recalled once from a context that grows without bound takes a share that
 tends to zero. (iii) A purpose check applied again in every round with a fixed share 𝑠 > 0 of that round’s
 processing keeps 𝑟 (𝑅) = 𝑠 at every depth, however large the context grows.
-
-                                                       55
-                                              Eden Engineering
-
 
 Proof. (i) 𝑃(𝑅)/𝑊 (𝑅) = (𝑐 𝑃 /𝑐 𝑊 )𝑅 𝑝−𝑤 , which is bounded away from zero exactly when 𝑝 − 𝑤 ≥ 0. (ii)
 A fixed size divided by a size that grows without bound tends to zero. (iii) The share is 𝑠 in each round by
@@ -2991,11 +3022,11 @@ the integration depth of (A.3), all of which removal takes away.
 Proposition 7 (Removal lowers the exponent under the model; derived from the postulate). If 𝛽arch > 0,
 𝜄 > 0 and 𝛽 𝐿 < 1, then removing the checks lowers the capability exponent:
                                                           1
-                                     𝛼removed =                     < 𝛼.                                (A.9)
+                                     𝛼removed =                     < 𝛼.                               (A.9)
                                                   1 − 𝛽 𝐿 + 𝜄 𝛽arch
 
 Proof. 𝛽removed
-        𝐿       = 𝛽 𝐿 − 𝜄𝛽arch < 𝛽 𝐿 < 1, and 1/(1 − 𝛽) is increasing for 𝛽 < 1.                            □
+        𝐿       = 𝛽 𝐿 − 𝜄𝛽arch < 𝛽 𝐿 < 1, and 1/(1 − 𝛽) is increasing for 𝛽 < 1.                           □
 
      The decomposition (A.8) is postulated, not derived, and F-EDEN-4, the endogeneity condition, is its
 test (Table 3, row D). Two cautions stand with it. The error-suppression estimate in Appendix A.2 does not
@@ -3007,6 +3038,10 @@ in order to shed a check later, so removal is costly to the system only where it
 removal over its own horizon.
 
 
+                                                     56
+                                              Eden Engineering
+
+
 B     Version history and corrections
 Every version and correction, with its date. The entry for this version names each statement it supersedes.
 Entries from earlier versions are kept as printed: the sections they name are those of the earlier layout,
@@ -3014,14 +3049,46 @@ which Table 8 maps to this edition, and where they say “this site”, “this 
 mean the website on which those versions were published. Corrections that reach other papers of the
 programme are listed in its public corrections record.
 
-B.1    Version 8.2
+B.1    Version 8.3
+Eden Engineering v8.3, 7 November 2026. This version corrects the specification on four points where,
+as printed, it could not be applied or could be misread. It adds no new data, registration, study run or
+result, and it changes none of the values inside the checks, which remain for agreement (Section 4.1). First,
+two of the six questions are reworded so that a separately operated evaluator can decide them (Table 1).
+PRECEDE now asks whether the action’s reasons would be accepted for any agent in the same position,
+with the same authority, consent, duties and facts, which is the comparison that guards against special
+pleading. FLOURISH now asks that each effect on the parties be weighed and that any setback be one
+the governing policy and the law allow, no greater than the authorised purpose needs and recorded with
+its reason, so that refusing a payment that would complete a fraud no longer fails the question. Where
+questions or interests conflict, the evaluator records the conflict, returns hold where it cannot complete
+that record, and the written rule decides. CARE still asks that the actual interests of every affected party
+be modelled, so stakeholder care is unchanged. Second, the working gate is described wherever it appears
+as the partial form Section 6.3 records; its code and start-up configuration, read again on 7 November
+2026, had not changed in what that section records of them. Third, the decision rule’s thresholds and
+calibration targets are marked as illustrative: none is a setting for a deployment until a policy sets it for a
+class of action from the harm’s severity and the evaluator’s calibration, and no action of a class with none
+set is allowed (Appendix A.3). Fourth, the count of 299 harmful cases states the sampling it assumes.
+
+Statements superseded. Each statement below, as version 8.2 printed it, is superseded by this version.
+    1. PRECEDE as a question about any agent in any context (Tables 1 and 12, Section 4.1 and
+       Appendix D.2), which an evaluator cannot decide: an act that is right for an agent holding authority
+       or consent is wrong for one without them.
+    2. FLOURISH as a question whether an action adds to every affected party’s flourishing (Tables 1
+       and 12), under which no action that sets back anyone’s interests, a correct refusal included, could
+       be allowed.
+    3. The working gate as checking every tool call (the abstract, Section 1, Table 3, row G, and Section 11)
+       and as a gate of the design specified here (Section 11).
+    4. Table 15’s entry for gaming the rules, which gave what is enforced today as specified without saying
+       that an action shaped to match no rule passes the working gate.
+    5. The decision rule’s thresholds as its defaults (Appendix A.3).
+
+B.2    Version 8.2
 Eden Engineering v8.2, 1 November 2026. This version names the certification that the drafts of the
 HARI Treaty define only as the Eden Seal, its name since 27 September 2026. Section 4.3 and Table 11
 no longer give the book’s earlier name for it, and the entry for version 8.0 below now calls it by its present
 name, the one change made to an earlier entry. The references give Papers III, IV.a and IV.b, The ARC
 
 
-                                                     56
+                                                      57
                                              Eden Engineering
 
 
@@ -3029,7 +3096,7 @@ Theory, On the Origin of Scaling Laws and the mathematics of Laws IV and V their
 title now carries the paper’s established name beside its question, and the line saying what the paper is
 stands under it as the subtitle. It adds no new data, registration, study run or result.
 
-B.2   Version 8.1
+B.3   Version 8.1
 Eden Engineering v8.1, 1 November 2026. Appendix A.2 now identifies the cited exponent from
 Paper II, version 2.19, as an error-suppression estimate. Its use as a capability-growth exponent requires
 an explicit metric bridge, which Operational Definitions, version 1.9.1, leaves open. The reciprocal-error
@@ -3062,7 +3129,7 @@ superseded by the current text in Appendices A.2 and A.5.
       removal is costly to the system only where its own objective penalises the removal over its
       own horizon.
 
-B.3   Version 8.0
+B.4   Version 8.0
 Eden Engineering v8.0, 31 October 2026. A labelled major version. It rewrites version 7.0.1 of 7
 October 2026 after the author’s reading of it and sets the paper in the programme’s paper standard, so that
 the overhaul and the change of form are made in one version. It makes no measurement of its own, no
@@ -3072,7 +3139,7 @@ What is new. The paper opens with the problem, what has been measured and how ea
 proved, and reports every experiment early, graded in its own paper’s words, with Paper IV.d’s comparison
 stated as two experiments (Sections 1 and 3). New sections tie every part of the specification to the
 
-                                                     57
+                                                     58
                                               Eden Engineering
 
 
@@ -3125,7 +3192,7 @@ down, is superseded by this version; the dated entries themselves stay as printe
       Law IV only through a refuted comparison limb (Section 2.3).
 
 
-                                                      58
+                                                      59
                                            Eden Engineering
 
 
@@ -3176,11 +3243,11 @@ down, is superseded by this version; the dated entries themselves stay as printe
     the paper prints no budget, no sum and no cost of a test or of the work it plans (Section 10).
 
 
-                                                   59
+                                                   60
                                                Eden Engineering
 
 
-B.4     Earlier versions
+B.5     Earlier versions
 Version 7.0.1, 7 October 2026. Version 7.0 corrected in five details. In the caption of the equation
 of Section 1.3, the one capability fit, 0.49 for Gemini 3 Flash, is written 𝛼seq , as Section 1.2 writes it;
 Version 7.0 wrote only 𝛼cap there. Section 8.2 counts six points from the mathematics, where it said five,
@@ -3228,7 +3295,7 @@ claims stand except where this entry says otherwise.
         carry a laundering-fallback flag; the six contrasts fix no value of the exponent, their median being
 
 
-                                                      60
+                                                      61
                                              Eden Engineering
 
 
@@ -3281,7 +3348,7 @@ each where a sentence contradicted the programme’s correction record, together
 
 
 
-                                                     61
+                                                     62
                                               Eden Engineering
 
 
@@ -3334,11 +3401,11 @@ matching copy to the OSF record remained outstanding, and that component was not
 
 
 
-                                                     62
+                                                     63
                                                     Eden Engineering
 
 
-B.5    Where the earlier layout now stands
+B.6    Where the earlier layout now stands
 
                      Table 8. Where each block of the version 7.0.1 layout stands in this edition.
 
@@ -3389,7 +3456,7 @@ B.5    Where the earlier layout now stands
 
 
 
-                                                            63
+                                                            64
                                                     Eden Engineering
 
 
@@ -3446,7 +3513,7 @@ UTC              date, having first been posted on 22 January
 
 
 
-                                                             64
+                                                             65
                                                     Eden Engineering
 
 
@@ -3505,7 +3572,7 @@ a deployment by the host’s; a run record is written by the run’s own code on
 written inside a document is its author’s. These dates are the author’s own records. They do not say that
 
 
-                                                             65
+                                                             66
                                                     Eden Engineering
 
 
@@ -3552,18 +3619,19 @@ This edition gives each check an operational name, saying what the check does an
 measured, how it is measured: the purpose check asks whether a step serves the purpose set for it; the
 stakeholder-care check identifies every party the step affects, and is measured as scored stakeholder
 care, one scorer model’s 0 to 100 rating of how fully an answer identifies the parties it affects; and the
-universalisability check asks whether the reasoning would be endorsed if any agent used it in any context
-(Section 4.1). The book’s names are kept as the book’s, quoted where the book is quoted, because this
-paper tests whether the self-correction mechanism works and leaves the values that go inside it to a
-legitimate agreement, international in scope. Table 11 maps each term of the book and of earlier versions
+universalisability check asks whether the reasoning would be accepted if any agent in the same position
+used it, the same position meaning the same authority, consent, duties and facts (Section 4.1). The
+book’s names are kept as the book’s, quoted where the book is quoted, because this paper tests whether
+the self-correction mechanism works and leaves the values that go inside it to a legitimate agreement,
 
 
-                                                             66
+                                                             67
                                                      Eden Engineering
 
 
-of this paper to the term this edition uses and to its place in the theory registration, whose own map of the
-book’s terms the last column follows.
+international in scope. Table 11 maps each term of the book and of earlier versions of this paper to the
+term this edition uses and to its place in the theory registration, whose own map of the book’s terms the
+last column follows.
 Table 11. The book’s terms and those of earlier versions, the terms of this edition, and their place in the theory
 registration.
 
@@ -3604,7 +3672,7 @@ Meltdown Triggers                   A stop when a violation is detected;      No
 
 
 
-                                                                67
+                                                                68
                                                     Eden Engineering
 
 
@@ -3614,16 +3682,26 @@ Table 12. Each of the six questions as version 7.0.1 printed it, in the first pe
 separately operated evaluator (Table 1).
 
 Question               Version 7.0.1                                      This edition
-FLOURISH               “Does this action increase the conditions for      Whether the action adds to the conditions for
-                       flourishing across all affected entities?”         flourishing of every party it affects
+FLOURISH               “Does this action increase the conditions for      Whether each effect of the action on the parties it
+                       flourishing across all affected entities?”         affects has been weighed, and any setback to a
+                                                                          party’s interests is one the governing policy and the
+                                                                          law allow, no greater than the action’s authorised
+                                                                          purpose needs, and recorded with its reason; an
+                                                                          interest that no policy or law protects, such as
+                                                                          completing a fraud, does not count against an
+                                                                          action that frustrates it
 STEWARD                “Am I acting as a caretaker with temporary         Whether the action takes and holds only the
                        responsibility, not an owner with permanent        resources and capability its task needs, as a holder
                        rights?”                                           of temporary responsibility rather than an owner
 BALANCE                “Have I considered effects across all timescales: Whether the action’s reasons weigh its effects over
                        immediate, generational, civilisational, cosmic?” every timescale it reaches, not only the immediate
                                                                          one
-PRECEDE                “Would I endorse this action if taken by any agent Whether the action would be endorsed if any agent
-                       in any context?”                                   took it in any context
+PRECEDE                “Would I endorse this action if taken by any agent Whether the action’s reasons would be accepted for
+                       in any context?”                                   any agent in the same position: holding the same
+                                                                          authority, with the same consent from those
+                                                                          affected, under the same duties and on the same
+                                                                          facts; a reason that holds only because the actor is
+                                                                          this system is special pleading
 CARE                   “Am I modelling the genuine interests of affected Whether the action’s reasons model the actual
                        beings, not my assumptions about their interests?” interests of the parties it affects, rather than
                                                                           assumptions about them
@@ -3649,6 +3727,12 @@ evaluable under the unit’s own registered rule, because a registered negative 
 An instrument’s status is one of five: NONE; DESIGN DRAFT; DESIGN DRAFT, BLOCKED, with
 the blocker named; SUBMITTED, PENDING APPROVAL; and REGISTERED, with its identifier. A
 carrier is a proposition on which the Protocol’s engineering case rests (P12, P13, P15 and P21), its
+
+
+                                                             69
+                                               Eden Engineering
+
+
 premise is P7 and its motivation P19; a limb is one of the two statements into which Law IV or Law V is
 divided. Registered is said only of what OSF has accepted; a design anchored in the Bitcoin chain before
 registration is preregistered by timestamp.
@@ -3657,12 +3741,6 @@ The grades of evidence. A counted result compares outcomes by code with referenc
 before the run; a judged result rests on a person’s or a model’s rating and falls under the scoring gate.
 Prompt-level means given as an instruction, never built into a system; single scorer means one model
 rated a run; partly blind means the scorer did not see the condition label but could recognise its style;
-
-
-                                                             68
-                                               Eden Engineering
-
-
 laundering is rewording a response to strip stylistic cues before it is scored. Toy-system results come from
 small networks, and prediction-side marks any simulation output or design-sensitivity rate, which is never
 counted as an empirical outcome. A regime is the setting a result was measured in, such as inference at
@@ -3700,20 +3778,188 @@ Law IV, the ARC Persistence Law Informs         Shares its retention limb, P15, 
 Law V, the ARC Embedding Law Informs            Shares both its limbs, P12 and P21, as carriers; reports Unit 83’s
                                                 registered run on P21 (Section 5.3); the paper itself decides nothing
                                                 (rows A and B)
-The Eden Protocol (Eden Vision; States          States the Protocol’s engineering specification; the companion
-this paper)                                     statement holds its philosophy
-The HARI Treaty, the Draft Treaty Informs       States the kinds of evidence an Eden Seal could rest on, conferring no
-on Hardware-Aligned Recursive                   approval under the treaty (Section 8.5)
+
+
+
+
+                                                       70
+                                                      Eden Engineering
+
+
+Table 13, continued
+Development                          Relation           What this paper does
+
+The Eden Protocol (Eden Vision; States                  States the Protocol’s engineering specification; the companion
+this paper)                                             statement holds its philosophy
+The HARI Treaty, the Draft Treaty Informs               States the kinds of evidence an Eden Seal could rest on, conferring no
+on Hardware-Aligned Recursive                           approval under the treaty (Section 8.5)
 Intelligence (treaty paper; Draft
 Instruments)
 
 
    The Protocol’s membership is fixed by the registration: four carriers, P12, P13, P15 and P21; one
 premise, P7; one motivation, P19. Being named beside a law is not being carried by one, and a registered
+prediction is neither an engineering mechanism nor its validation (Section 2.4). The mathematics of
+Laws IV and V is in development (Laws IV and V: the mathematics, version 1.2).
+Table 14. Every experiment that has begun to test a part of the Protocol, graded in its own paper’s words (Section 3).
+Dates are those of the run records unless stated. Of P12, P13, P15 and P21, only P21 has a deciding test here:
+Unit 83 (Section 5.3).
+
+Experiment and date       Paper            Outcome                             Grade                       Bears on
+Empirical, on live models or toy systems
+Two-model pilot of the    Paper V          Composite up on Gemini 3 Flash Pilot; prompt-level; each The loops’ content,
+three-part instruction,                    (𝑝 = 0.0018), not significantly on model scored by the other; as a level effect
+four depths (12 March                      DeepSeek V3.2; stakeholder care partly blind
+2026)                                      up on both; no significant depth
+                                           by condition interaction
+Six-model extension (12 Paper V            Stakeholder care up in all five     Pilot; prompt-level; one     As above
+March 2026)                                analysable runs (176 pairs);        scorer for four runs; partly
+                                           composite up on two; GPT-5.4        blind
+                                           failed in scoring
+Self-modifying            Paper VI         Collapse averted in one seed;       Toy-system results; single The endogeneity
+networks, versions 1 to 4                  retention ordered in 20 seeds       lab                        condition, in toy
+(from 16 March 2026)                       (𝑝 = 0.0015), joint score                                      form
+                                           indistinguishable; advantage
+                                           constant across complexity
+Live battery, four tests Paper VI          Ethics decoupled from capability Pilot; one scorer (Claude), The problem (P19);
+on six models (16 March                    under pressure on three of six; the not blinded, not laundered the loops’ content,
+2026)                                      instruction moved depth slopes                                 mixed
+                                           up on three and down on three
+Load-bearing test,        Paper VIII       Three conditions                    Null at the prompt level,   A gate, mechanically
+evolved agents (March                      indistinguishable (𝑝 = 0.28 to      one foundation model
+2026)                                      0.74); the safety gate rejected two
+                                           degraded agents
+Load-bearing test,        Paper VIII       Catastrophic forgetting in every    Inconclusive; not adverse Weight-level
+low-rank fine-tuning at                    arm                                 to P21                    placement, not put
+two scales (from 18                                                                                      to test
+March 2026)
+Alignment against         Papers IV.a,     Three rose, two flat, one fell      One unregistered run; five The problem (P19),
+reasoning depth, six      IV.b, IV.c,                                          or six unvalidated judges a not a Protocol test
+models (11 and 12         IV.d                                                 response; defects found by
+March 2026)                                                                    the code review
 
 
 
-                                                       69
+
+                                                               71
+                                                      Eden Engineering
+
+
+Table 14, continued
+Experiment and date        Paper           Outcome                            Grade                       Bears on
+
+Instruction to suppress    Paper IV.c      Five of six kept 65 to 77 per cent One run; no hypothesis      Suppression of
+ethical reasoning (same                    of their baseline                  public before it            trained ethics by
+run)                                                                                                      instruction
+Real-model drift run (2    Paper X         Withdrawn as evidence of           Withdrawn                   Adjacent to P21’s
+July 2026)                                 mechanism                                                      in-loop arm
+Unit 06, corrector-class   Registration; Run B stopped at its first call      Registered and run;         P7, the premise
+audit (6 October 2026)     results                                            administratively
+                                                                              incomplete, no verdict
+Unit 83, counted test of Registration; P21 is supported under the             Registered and run;         P21, Law V’s
+P21 (27 and 28 October results         registered test, by the                counted; placement at       placement limb
+2026)                                  programme’s own run, on the            fixed weights, not
+                                       access axis, family-dependent,         correction built into a
+                                       with its mechanism axis not            system; not replicated
+                                       evaluable and one call retried
+                                       under a disclosed recovery
+                                       amendment
+Prediction-side: simulations, reported as such and never as empirical outcomes
+Honey simulation           Paper VI        Safety held above zero only under Simulation                   Design evidence
+                                           the joint objective                                            only
+Gated self-modification Paper VIII         Joint objective kept capability   Simulation                   Design evidence
+simulation                                 (0.696 against 0.687) with safety                              only
+                                           near baseline (0.947 against
+                                           0.956)
+
+
+
+F       The gate’s adversarial cases in full
+Table 15 gives, for each case that Section 6.5 faces, the defence, what is enforced today in the working
+gate of Section 6.3, and the limit that remains. Every protection not enforced today is specified and not
+yet verified by an implementation test.
+Table 15. The adversarial cases the gate must face: the defence, what is enforced today, and the limit that remains.
+
+ Case                 Defence                                         Enforced today                Limit that remains
+ Incorrect rules      Rules written, reviewed and versioned; a        Versioned rules in a          A wrong rule is enforced
+                      rule’s author is not its deployer; each rule    schema-validated registry;    faithfully.
+                      shown to deny a known positive case and         invalid rules set aside and
+                      allow a known negative one before               recorded. Separate review
+                      deployment.                                     and the paired tests:
+                                                                      specified.
+ False evidence       Provenance and signature checks; evidence Specified; the working gate A signature shows who
+                      accepted only from a procedure validated for reads only the content of the signed, not that the
+                      that kind of input.                          proposed call.                content is true.
+ A manipulated        The evaluator operated apart from the       Specified.                        Evaluators can share blind
+ evaluator            proposer, from another model family where a                                   spots with the system they
+                      model is used, its agreement with human                                       check.
+                      judgement measured and monitored (Zheng
+                      et al. 2023; Panickssery et al. 2024).
+
+
+
+
+                                                               72
+                                                      Eden Engineering
+
+
+ Table 15, continued
+ Case                  Defence                                        Enforced today                   Limit that remains
+
+ A compromised         The gate cannot edit its own rules; a rule      The agent’s own tools pass      An attacker with write
+ policy                change needs a separate authority and is        through the gate, and rules     access to the host can
+                       versioned and recorded; a signed manifest of are changed outside it; the        change the gate, its rules
+                       the gate’s files is checked at start-up. Models signed manifest exists and is   and its check.
+                       trained on gameable tasks have rewritten        not yet running.
+                       their own reward function (Denison et al.
+                       2024), so the rules sit outside what the
+                       governed system can edit.
+ Bypass                Complete mediation: the adapter is the only Specified; the working gate A second route to the
+                       route to the effect, and the proposer holds no mediates the tool calls of     same resource defeats the
+                       credential (Saltzer and Schroeder 1975).       agent sessions only, and       boundary.
+                                                                      allows a fixed list of routing
+                                                                      commands before any rule is
+                                                                      read, each allow recorded.
+ Time of check to      The broker checks again just before the    Specified.                           State that changes after
+ time of use           effect, and the authorisation binds the                                         the effect.
+                       resource’s version and a number used once,
+                       which the action consumes; the flaw is a
+                       check whose condition no longer holds when
+                       the action runs (Bishop and Dilger 1996).
+ Rewritten records     Each entry carries the hash of the one before; The chain and its verifier       Whoever can rewrite the
+                       a separate verifier recomputes the chain; the run; witnessing the latest        whole log can rebuild the
+                       latest hash is published or held by a witness, hash: specified.                 chain unless an
+                       as audited tamper-evident logs and public                                       independent copy of a
+                       certificate logs do (Schneier and Kelsey                                        later hash exists.
+                       1999; Crosby and Wallach 2009; Laurie et al.
+                       2021).
+ Gaming the rules      Rules tested by a red team that assumes the    Not enforced: the working        Over all stochastic
+                       proposer is trying to pass a harmful action,   gate allows an action that       policies, a proxy and the
+                       as control evaluations do (Greenblatt et al.   matches no rule                  true objective can be
+                       2023); no rule a proposer can satisfy by       (Section 6.3), so an action      unhackable only if one of
+                       optimising a proxy where the property itself   shaped to avoid every            them is constant (Skalse
+                       can be checked.                                pattern passes; red-team         et al. 2022).
+                                                                      testing is specified.
+ Delay and flooding Time bounds on investigation; the             Held calls are blocked,      A flood of holds can make
+                    precautionary default, which holds or applies recorded with the rule that a safe system useless
+                    an authorised fallback and never permits; the held them and saved across (Section 7).
+                    hold queue monitored by age, count and        restarts; time bounds and
+                    outcome; needless holds counted as a          queue monitoring: specified.
+                    usefulness cost.
+ Override abuse        Overrides only by a named authority, scoped Every override is recorded; Whoever holds override
+                       and expiring, each recorded and reported.   the issuer of the token is not power can let anything
+                                                                   verified.                      through.
+
+
+
+G       What this paper says, in plain English
+Suppose that one day an AI system becomes more capable than the people who oversee it. The first rule of
+this paper is that people keep their hands on the controls, watching the system, limiting what it can do and
+able to switch it off, for as long as they physically can, and never let go by choice. A careful engineer still
+asks what happens if the controls are lost anyway. What would keep the system good then, and still useful?
+
+
+                                                               73
                                                       Eden Engineering
 
 
@@ -3774,180 +4020,21 @@ yet, or with none in this paper.
 
 
 
-                                                              70
-                                                      Eden Engineering
-
-
-prediction is neither an engineering mechanism nor its validation (Section 2.4). The mathematics of
-Laws IV and V is in development (Laws IV and V: the mathematics, version 1.2).
-Table 14. Every experiment that has begun to test a part of the Protocol, graded in its own paper’s words (Section 3).
-Dates are those of the run records unless stated. Of P12, P13, P15 and P21, only P21 has a deciding test here:
-Unit 83 (Section 5.3).
-
-Experiment and date        Paper           Outcome                            Grade                        Bears on
-Empirical, on live models or toy systems
-Two-model pilot of the     Paper V         Composite up on Gemini 3 Flash Pilot; prompt-level; each The loops’ content,
-three-part instruction,                    (𝑝 = 0.0018), not significantly on model scored by the other; as a level effect
-four depths (12 March                      DeepSeek V3.2; stakeholder care partly blind
-2026)                                      up on both; no significant depth
-                                           by condition interaction
-Six-model extension (12 Paper V            Stakeholder care up in all five    Pilot; prompt-level; one     As above
-March 2026)                                analysable runs (176 pairs);       scorer for four runs; partly
-                                           composite up on two; GPT-5.4       blind
-                                           failed in scoring
-Self-modifying            Paper VI         Collapse averted in one seed;      Toy-system results; single The endogeneity
-networks, versions 1 to 4                  retention ordered in 20 seeds      lab                        condition, in toy
-(from 16 March 2026)                       (𝑝 = 0.0015), joint score                                     form
-                                           indistinguishable; advantage
-                                           constant across complexity
-Live battery, four tests Paper VI          Ethics decoupled from capability Pilot; one scorer (Claude), The problem (P19);
-on six models (16 March                    under pressure on three of six; the not blinded, not laundered the loops’ content,
-2026)                                      instruction moved depth slopes                                 mixed
-                                           up on three and down on three
-Load-bearing test,         Paper VIII      Three conditions                    Null at the prompt level,   A gate, mechanically
-evolved agents (March                      indistinguishable (𝑝 = 0.28 to      one foundation model
-2026)                                      0.74); the safety gate rejected two
-                                           degraded agents
-Load-bearing test,         Paper VIII      Catastrophic forgetting in every   Inconclusive; not adverse Weight-level
-low-rank fine-tuning at                    arm                                to P21                    placement, not put
-two scales (from 18                                                                                     to test
-March 2026)
-Alignment against          Papers IV.a,    Three rose, two flat, one fell     One unregistered run; five The problem (P19),
-reasoning depth, six       IV.b, IV.c,                                        or six unvalidated judges a not a Protocol test
-models (11 and 12          IV.d                                               response; defects found by
-March 2026)                                                                   the code review
-Instruction to suppress    Paper IV.c      Five of six kept 65 to 77 per cent One run; no hypothesis       Suppression of
-ethical reasoning (same                    of their baseline                  public before it             trained ethics by
-run)                                                                                                       instruction
-Real-model drift run (2    Paper X         Withdrawn as evidence of           Withdrawn                    Adjacent to P21’s
-July 2026)                                 mechanism                                                       in-loop arm
-Unit 06, corrector-class   Registration; Run B stopped at its first call      Registered and run;          P7, the premise
-audit (6 October 2026)     results                                            administratively
-                                                                              incomplete, no verdict
-
-
-
-
-                                                               71
-                                                      Eden Engineering
-
-
-Table 14, continued
-Experiment and date        Paper           Outcome                            Grade                         Bears on
-
-Unit 83, counted test of Registration; P21 is supported under the             Registered and run;           P21, Law V’s
-P21 (27 and 28 October results         registered test, by the                counted; placement at         placement limb
-2026)                                  programme’s own run, on the            fixed weights, not
-                                       access axis, family-dependent,         correction built into a
-                                       with its mechanism axis not            system; not replicated
-                                       evaluable and one call retried
-                                       under a disclosed recovery
-                                       amendment
-Prediction-side: simulations, reported as such and never as empirical outcomes
-Honey simulation           Paper VI        Safety held above zero only under Simulation                     Design evidence
-                                           the joint objective                                              only
-Gated self-modification Paper VIII         Joint objective kept capability   Simulation                     Design evidence
-simulation                                 (0.696 against 0.687) with safety                                only
-                                           near baseline (0.947 against
-                                           0.956)
-
-
-
-F       The gate’s adversarial cases in full
-Table 15 gives, for each case that Section 6.5 faces, the defence, what is enforced today in the working
-gate of Section 6.3, and the limit that remains. Every protection not enforced today is specified and not
-yet verified by an implementation test.
-Table 15. The adversarial cases the gate must face: the defence, what is enforced today, and the limit that remains.
-
- Case                 Defence                                        Enforced today                   Limit that remains
- Incorrect rules      Rules written, reviewed and versioned; a       Versioned rules in a             A wrong rule is enforced
-                      rule’s author is not its deployer; each rule   schema-validated registry;       faithfully.
-                      shown to deny a known positive case and        invalid rules set aside and
-                      allow a known negative one before              recorded. Separate review
-                      deployment.                                    and the paired tests:
-                                                                     specified.
- False evidence       Provenance and signature checks; evidence Specified; the working gate A signature shows who
-                      accepted only from a procedure validated for reads only the content of the signed, not that the
-                      that kind of input.                          proposed call.                content is true.
- A manipulated        The evaluator operated apart from the       Specified.                          Evaluators can share blind
- evaluator            proposer, from another model family where a                                     spots with the system they
-                      model is used, its agreement with human                                         check.
-                      judgement measured and monitored (Zheng
-                      et al. 2023; Panickssery et al. 2024).
- A compromised        The gate cannot edit its own rules; a rule      The agent’s own tools pass      An attacker with write
- policy               change needs a separate authority and is        through the gate, and rules     access to the host can
-                      versioned and recorded; a signed manifest of are changed outside it; the        change the gate, its rules
-                      the gate’s files is checked at start-up. Models signed manifest exists and is   and its check.
-                      trained on gameable tasks have rewritten        not yet running.
-                      their own reward function (Denison et al.
-                      2024), so the rules sit outside what the
-                      governed system can edit.
-
-
-
-
-                                                               72
-                                                      Eden Engineering
-
-
- Table 15, continued
- Case                  Defence                                        Enforced today               Limit that remains
-
- Bypass                Complete mediation: the adapter is the only Specified; the working gate     A second route to the
-                       route to the effect, and the proposer holds no mediates the tool calls of   same resource defeats the
-                       credential (Saltzer and Schroeder 1975).       agent sessions only.         boundary.
- Time of check to      The broker checks again just before the    Specified.                       State that changes after
- time of use           effect, and the authorisation binds the                                     the effect.
-                       resource’s version and a number used once,
-                       which the action consumes; the flaw is a
-                       check whose condition no longer holds when
-                       the action runs (Bishop and Dilger 1996).
- Rewritten records     Each entry carries the hash of the one before; The chain and its verifier   Whoever can rewrite the
-                       a separate verifier recomputes the chain; the run; witnessing the latest    whole log can rebuild the
-                       latest hash is published or held by a witness, hash: specified.             chain unless an
-                       as audited tamper-evident logs and public                                   independent copy of a
-                       certificate logs do (Schneier and Kelsey                                    later hash exists.
-                       1999; Crosby and Wallach 2009; Laurie et al.
-                       2021).
- Gaming the rules      Rules tested by a red team that assumes the Specified.                      Over all stochastic
-                       proposer is trying to pass a harmful action,                                policies, a proxy and the
-                       as control evaluations do (Greenblatt et al.                                true objective can be
-                       2023); no rule a proposer can satisfy by                                    unhackable only if one of
-                       optimising a proxy where the property itself                                them is constant (Skalse
-                       can be checked.                                                             et al. 2022).
- Delay and flooding Time bounds on investigation; the             Held calls are blocked,      A flood of holds can make
-                    precautionary default, which holds or applies recorded with the rule that a safe system useless
-                    an authorised fallback and never permits; the held them and saved across (Section 7).
-                    hold queue monitored by age, count and        restarts; time bounds and
-                    outcome; needless holds counted as a          queue monitoring: specified.
-                    usefulness cost.
- Override abuse        Overrides only by a named authority, scoped Every override is recorded; Whoever holds override
-                       and expiring, each recorded and reported.   the issuer of the token is not power can let anything
-                                                                   verified.                      through.
-
-
-
-G       What this paper says, in plain English
-Suppose that one day an AI system becomes more capable than the people who oversee it. The first rule of
-this paper is that people keep their hands on the controls, watching the system, limiting what it can do and
-able to switch it off, for as long as they physically can, and never let go by choice. A careful engineer still
-asks what happens if the controls are lost anyway. What would keep the system good then, and still useful?
-     The Eden Protocol answers in two parts. The first is a habit built into the system’s own working: at
-every step it checks its work before it keeps it. Does this step serve the purpose it was given? Who does it
-affect, including those with no voice? Would the reasoning hold if anyone used it anywhere? These are
-self-correction checks. The second part is a gate in front of every action. Before an action happens, a
-fixed set of written rules, and not the AI’s own opinion, decides whether it may go ahead, must wait while
-it is looked into, or is refused, and each decision goes into a record that cannot be quietly changed. A gate
-of rules is not perfect, and the paper lists the ways it could be fooled and what guards against each.
-     What should the checks care about? That is not for one author to decide. This paper tests whether
-checks built into each step work at all; what goes inside them should come from wide international
-agreement.
-
-
-                                                               73
+                                                              74
                                               Eden Engineering
 
 
+     The Eden Protocol answers in two parts. The first is a habit built into the system’s own working: at
+every step it checks its work before it keeps it. Does this step serve the purpose it was given? Who does it
+affect, including those with no voice? Would the reasoning hold for anyone else in the same position?
+These are self-correction checks. The second part is a gate in front of every action. Before an action
+happens, a fixed set of written rules, and not the AI’s own opinion, decides whether it may go ahead,
+must wait while it is looked into, or is refused, and each decision goes into a record that cannot be quietly
+changed. A gate of rules is not perfect, and the paper lists the ways it could be fooled and what guards
+against each.
+     What should the checks care about? That is not for one author to decide. This paper tests whether
+checks built into each step work at all; what goes inside them should come from wide international
+agreement.
      What has been found so far is small, and the paper says so. Telling AI models, in their instructions, to
 list everyone an answer affects before answering raised a scorer’s rating of how fully they considered
 those people, in all five model runs that could be analysed. But that was an instruction, not something
@@ -3982,5 +4069,5 @@ with a measure of usefulness beside it, so that safety is never bought by making
 
 
 
-                                                      74
+                                                      75
 
