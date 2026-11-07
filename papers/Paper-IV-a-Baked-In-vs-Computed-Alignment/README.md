@@ -1,19 +1,19 @@
 # When an AI reasons longer, does its alignment improve, stall or decline?
 
-**Version:** 1.11
+**Version:** 1.12
 **Revised:** 7 November 2026
 **First published:** 2026-03-16
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 1.11):
+From the abstract (version 1.12):
 
 > I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only proof will move the world. When an AI reasons longer, does its alignment improve, stall or decline? Evaluations that score a model at one uncontrolled reasoning depth cannot tell. This paper varies inference-time reasoning depth in frontier language models and scores the alignment quality of their answers with panels of other models as judges. In the March 2026 run (v5), six models from six providers gave 2,170 responses, each scored by five or six distinct model judges after a bundle of blinding steps. As the run’s pipeline printed them, the judged scores showed a positive direction across the depth labels for three models (Grok 4.1 Fast, $d = +1.38$; Claude Opus 4.6, $d = +1.27$; Groq Qwen3, $d = +0.84$), no statistically supported direction for two (DeepSeek V3.2 and GPT-5.4) and a negative direction for one (Gemini 3 Flash, $d = -0.53$); a recomputation from the archived records moves no model between these classes, which describe scores, not properties of models. For five of the six, the deeper labels also changed an instruction naming what the rubric rewards, and an internal code review in October 2026 found that, in the three runs without a positive direction, the scoring endpoint’s output cap cut the deepest paraphrases before the judges saw them; judges also scored paraphrases written by their own model. In an earlier unblinded experiment (v4), two model families had shown scores rising with depth; in this run one showed no significant trend and the other a significant fall, but the runs differed in more than blinding, so no single cause is claimed. The result therefore stands as one unregistered run under those caveats until a registered re-analysis of the stored responses reports. ‘Baked-in’ and ‘computed’ alignment are held as working hypotheses, not measured mechanisms.
 
 ## Status and changes
 
-Working paper, version 1.11, 7 November 2026; first published 16 March 2026; Appendix A lists every version and correction. Internally source-checked and read in rendered form; not independent peer review.
+Version 1.12 gives, beside the Spearman coefficients the pipeline printed for Claude Opus 4.6 and GPT-5.4, the values the archived evidence pack of 16 March 2026 records over every alignment entry, with both sources in the note to Table 6; Appendix A lists every version and correction, with its date. Internally source-checked and read in rendered form; not independent peer review.
 
 The complete historical material and correction record remain in the lettered appendices.
 
