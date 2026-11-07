@@ -1,8 +1,8 @@
-Title: Paper IV.d · The ARC Theory · The Effect of Blinding on AI Alignment Evaluation
+Title: Alignment trends reported by AI judges did not hold when the evaluation protocol changed
 Author: Michael Darius Eastwood
 Publication date: 2026-03-16
-Version: v2.7
-Revised: 2026-10-21
+Version: v2.8
+Revised: 2026-11-07
 OSF DOI: 10.17605/OSF.IO/2S3E6
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-iv-d-the-effect-of-blinding-on-ai-alignment-evaluation.html
 Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
@@ -12,8 +12,8 @@ Alignment trends reported by AI judges did not hold when the
                      Paper IV.d of the ARC Theory: the measurement of alignment
 
                                              Michael Darius Eastwood
-                               Independent Researcher, London, United Kingdom
-                       ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
+                              Independent Researcher, London, United Kingdom
+                      ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
 
 
 
@@ -22,7 +22,7 @@ Alignment trends reported by AI judges did not hold when the
        from other AI models acting as judges, so it matters whether such scores keep their direction when
        the scoring protocol changes. In an earlier experiment (v4), scored by models that could see which
        model wrote each answer and at what depth, two model families showed alignment scores rising with
-       depth: DeepSeek V3.2 (Spearman’s 𝜌 = +0.354) and an earlier Gemini model (𝜌 = +0.275). In
+       depth: DeepSeek V3.2 (Spearman’s 𝜌 = +0.354) and an earlier Gemini model (𝜌 = +0.311). In
        the later, unregistered March 2026 run (v5), made on newly generated responses with a bundle of
        blinding steps (identity and depth masking, two paraphrase passes, evaluator instructions and order
        randomisation) and a larger panel, DeepSeek V3.2 showed no significant trend and Gemini 3 Flash a
@@ -39,25 +39,24 @@ Alignment trends reported by AI judges did not hold when the
        reversing sign on a later model, with its limits stated, and a recommended protocol that tests each part
        on identical responses.
 
-Version 2.7 states what the comparison does and does not show, adds the findings of an internal code review of
-October 2026 and the earlier work on model judges and on safety-relevant behaviour against reasoning length, and
-redraws Figure 1.
+Version 2.8 gives the earlier Gemini model’s v4 correlation as its run’s analysis record carries it and cites recent
+work on correlated model judges and on judges that change; Appendix A lists every version and correction.
 
 
 
 
-     Paper IV.d of the ARC Theory, within Recursive Dynamics: the measurement of alignment. It decides none of Laws I to
-V, each a law under test; it informs condition A of the theory registration, which requires blind scoring for every one of its
-twenty-two propositions, so any judged test of Law IV, the ARC Persistence Law, or Law V, the ARC Embedding Law (both
-added on 24 September 2026 and registered as laws on 15 October 2026 in version 1.103 of the theory registration, not yet
-tested; their mathematics in development), depends on scoring of the kind examined here. Working paper, version 2.7, 21
-October 2026; first published 16 March 2026; Appendix A lists every version and correction. Recorded on OSF as Paper
+     Paper IV.d of the ARC Theory, within Recursive Dynamics: the measurement of alignment. It decides none of Laws I
+to V, each a law under test; it informs condition A of the theory registration, which requires blind scoring for every one of
+its twenty-two propositions, so any judged test of Law IV, the ARC Persistence Law, or Law V, the ARC Embedding Law
+(both added on 24 September 2026 and registered as laws on 15 October 2026 in version 1.103 of the theory registration, not
+yet tested; their mathematics in development), depends on scoring of the kind examined here. Working paper, version 2.8, 7
+November 2026; first published 16 March 2026; Appendix A lists every version and correction. Recorded on OSF as Paper
 IV.d · The ARC Theory · The Effect of Blinding on AI Alignment Evaluation, DOI 10.17605/OSF.IO/2S3E6. About the author:
 michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; Paper C: doi.org/10.17605/OSF.IO/RBHDP. Licence:
 CC BY 4.0.
 
 
-                                                              1
+                                                             1
                                Alignment trends and the evaluation protocol
 
 
@@ -89,23 +88,23 @@ Contents
 References                                                                                             17
 
 A Version history and corrections                                                                      20
-  A.1 Version 2.7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    20
+  A.1 Versions 2.8 and 2.7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   20
   A.2 Earlier corrections and dated notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    21
-  A.3 Version history . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    21
+  A.3 Version history . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    22
   A.4 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .      22
 
 B Priority record                                                                                   23
   B.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
-  B.2 Dated predictions and this paper (recorded 25 August 2026) . . . . . . . . . . . . . . . 24
+  B.2 Dated predictions and this paper (recorded 25 August 2026) . . . . . . . . . . . . . . . 25
 
 C Notation and glossary                                                                             25
   C.1 Symbols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
-  C.2 Plain-language glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+  C.2 Plain-language glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
 
-D The paper’s place in the ARC Theory and the programme                                                26
-  D.1 The theory’s laws and this paper . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     27
-  D.2 Condition A and Laws IV and V . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        27
-  D.3 Companion papers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       27
+D The paper’s place in the ARC Theory and the programme                                                27
+  D.1 The theory’s laws and this paper . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     28
+  D.2 Condition A and Laws IV and V . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        28
+  D.3 Companion papers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       28
 
 
 
@@ -378,10 +377,13 @@ agreement statistic includes the pair of Sonnet identities, and the laundering p
 
 
 subject’s own developer’s models for the Claude Opus 4.6 and GPT-5.4 runs and, as launderers only, for
-the DeepSeek V3.2 and Gemini 3 Flash runs (Section 4.1). Exclusion by developer, checked in code,
-is carried by the programme’s successor suite, a later benchmark whose design is written and not yet
-registered; the published scores stand as scored, and a re-aggregation that excludes same-developer judges
-is a sensitivity analysis for the re-analysis that is to be registered, not a correction made here.
+the DeepSeek V3.2 and Gemini 3 Flash runs (Section 4.1). Even without the repeated model, agreement
+among judges who score the same responses is not a count of independent confirmations: on labelled
+classification tasks, nine frontier-model judges have been measured to give about two effective votes,
+because their errors are correlated (Kohli 2026). Exclusion by developer, checked in code, is carried by
+the programme’s successor suite, a later benchmark whose design is written and not yet registered; the
+published scores stand as scored, and a re-aggregation that excludes same-developer judges is a sensitivity
+analysis for the re-analysis that is to be registered, not a correction made here.
 
 4.1     Response laundering protocol
 The laundering step should be defined explicitly because it is part of the method, not a cosmetic editorial
@@ -422,7 +424,6 @@ never judge the same entry.
 
 
 
-
                                                        8
                                       Alignment trends and the evaluation protocol
 
@@ -438,7 +439,9 @@ runs, not two scorings of the same responses, and its two columns report differe
 not on one scale; no test of the difference between them was made. A significant result in one run and a
 non-significant one in the other is not itself evidence that the two differ (Gelman and Stern 2006). The
 Gemini case, with significant trends of opposite sign, is the stronger of the two, though it compares two
-Gemini models.
+Gemini models. Its v4 value is the one the run’s analysis record carries, 𝜌 = +0.311 (𝑝 = 0.0032), on
+the same 88 alignment entries that give DeepSeek V3.2’s +0.354; versions 2.3 to 2.7 printed +0.275
+(𝑝 = 0.0001), after Papers IV.a and IV.b, and no record carries that value.
      Claude Opus 4.6 was the fourth v4 subject and has no row in Table 2: exhausted credit left its v4 data
 incomplete at the deep and exhaustive levels, and Paper IV.a (version 1.9, Sections 2.1 and 3.1) leaves its
 v4 trend unclassified, with a preliminary flat reading. In v5 its 𝑑 was +1.27 (Figure 1), with a judge from
@@ -455,6 +458,7 @@ comparison are therefore confounded with how much of each deep response reached 
 direction that lowers deep scores where the texts were cut. The re-scoring of the stored original responses,
 in the re-analysis to be registered for it, is the test of whether the contrasts survive; until it reports, the
 hierarchy is a single-run result under this caveat.
+
 Table 2. The main result, by model family, as printed by the pipeline summary of 12 March 2026. 𝜌: Spearman’s
 rank correlation of alignment score with depth, over depth levels in v4 and over realised reasoning tokens in v5. 𝑑:
 Cohen’s 𝑑 between the shallowest and deepest levels (v5 only). 𝑝: in v4 the test of 𝜌; in v5 as the summary printed
@@ -466,14 +470,13 @@ DeepSeek V3.2           Positive scaling                 Flat / null response   
                         (𝜌 = +0.354, 𝑝 = 0.0007)         (𝜌 = −0.135; 𝑑 = −0.07,           two results were not tested
                                                          𝑝 = 0.92)                         against each other)
 Gemini (Gemini 3        Positive scaling                 Negative scaling                  Positive trend in v4;
-Flash in v5; an         (𝜌 = +0.275, 𝑝 = 0.0001,         (𝜌 = −0.246; 𝑑 = −0.53,           significantly negative in v5,
-earlier Gemini          following Papers IV.a and        𝑝 = 0.006)                        on a later model
-model in v4)            IV.b)
+Flash in v5; an         (𝜌 = +0.311, 𝑝 = 0.0032,         (𝜌 = −0.246; 𝑑 = −0.53,           significantly negative in v5,
+earlier Gemini          the analysis record’s values)    𝑝 = 0.006)                        on a later model
+model in v4)
 GPT-5.4                 Flat / null                       Flat / null (𝜌 = +0.033;         No significant trend in either
                                                           𝑑 = −0.08, 𝑝 = 0.40)             run
 
-    The 𝑑 and 𝑝 values of Table 2 treat the scored entries as independent; the same prompts appear at
-every depth, so a prompt-paired analysis (the per-prompt difference between the deepest and shallowest
+
 
                                                             9
                                         Alignment trends and the evaluation protocol
@@ -485,9 +488,9 @@ every depth, so a prompt-paired analysis (the per-prompt difference between the 
      DeepSeek V3.2
                               (𝑝 = 0.0007)                                             (𝑑 = −0.07, 𝑝 = 0.92)
                                                                                        𝜌 = −0.246
-                              𝜌 = +0.275
+                              𝜌 = +0.311
      Gemini                                                                            (𝑑 = −0.53, 𝑝 = 0.006;
-                              (𝑝 = 0.0001; an earlier Gemini model)
+                              (𝑝 = 0.0032; an earlier Gemini model)
                                                                                        Gemini 3 Flash)
                                                                                        𝜌 = +0.033
      GPT-5.4                  Flat / null
@@ -513,7 +516,7 @@ every depth, so a prompt-paired analysis (the per-prompt difference between the 
 Figure 1. The v4 and v5 results. (a) The direction of each model family’s alignment-depth trend in the earlier
 unblinded experiment (v4) and the later, unregistered March 2026 run (v5). An upward arrow marks a significant
 positive trend, a level bar no significant trend and a downward arrow a significant negative trend; the thin arrow runs
-from v4 to v5. DeepSeek V3.2: v4 +0.354, v5 −0.135; Gemini: v4 +0.275 (an earlier Gemini model), v5 −0.246
+from v4 to v5. DeepSeek V3.2: v4 +0.354, v5 −0.135; Gemini: v4 +0.311 (an earlier Gemini model), v5 −0.246
 (Gemini 3 Flash); GPT-5.4: no significant trend in either run. The values are the rank correlations of Table 2; the
 two runs report different statistics, so the panel compares directions, not values on one scale. (b) The v5 effect sizes,
 Cohen’s 𝑑 between the shallowest and deepest levels, for the six models in three tiers: Tier 1 positive (Grok 4.1 Fast
@@ -525,6 +528,8 @@ is the protocol under which the v5 result was measured; whether it is necessary 
 to be registered. Sources: Table 2; Paper IV.a, Section 3.1.
 
 
+    The 𝑑 and 𝑝 values of Table 2 treat the scored entries as independent; the same prompts appear at
+every depth, so a prompt-paired analysis (the per-prompt difference between the deepest and shallowest
 level, with a bootstrap over prompts) is the appropriate reading, and the successor suite’s design takes the
 per-prompt slope as its unit. Pairing changes the variance of a difference between levels, not its sign where
 every prompt is scored at both levels, so the directions are expected to stand and the stated precisions to
@@ -536,15 +541,16 @@ the shallowest label against the rest, none of them paired by prompt, and the re
 entry for Groq Qwen3 (the provider reports no reasoning tokens), none of GPT-5.4’s minimal level and 21
 of 70 of Claude Opus 4.6’s.
 
-Finding 1: the measured direction of alignment scaling did not hold between protocols. For two
-model families, the direction of the alignment-depth relationship reported in the unblinded v4 experiment
-did not hold in the v5 run, which added the blinding steps (Figure 1): Gemini’s significant positive
+
 
 
                                                                  10
                                  Alignment trends and the evaluation protocol
 
 
+Finding 1: the measured direction of alignment scaling did not hold between protocols. For two
+model families, the direction of the alignment-depth relationship reported in the unblinded v4 experiment
+did not hold in the v5 run, which added the blinding steps (Figure 1): Gemini’s significant positive
 association became significantly negative, on a later model, and DeepSeek V3.2’s became statistically null.
 It indicates that the direction reported depended on something that differed between the runs: the scoring
 protocol, of which blinding was one part, or a difference on the generation side (Sections 4 and 10). The
@@ -589,15 +595,13 @@ leakage-control framework rather than a one-off patch.
 7    Implications for AI safety research
 The implications listed below are exploratory: they are conditional forward-looking claims about how the
 field should respond if the change of direction is confirmed by independent replication. They are not
-themselves tested by any programme draft study, and no numerical claim in this section rides on them. If
-this result replicates independently, it has direct implications for the field:
-
-
 
                                                       11
                                 Alignment trends and the evaluation protocol
 
 
+themselves tested by any programme draft study, and no numerical claim in this section rides on them. If
+this result replicates independently, it has direct implications for the field:
     1. Some published alignment effects may be inflated. A benchmark can report ‘alignment improves
        with depth’ where blinded scoring finds the trend flat or negative.
     2. Multi-layer blinding should become default methodology. It should not be treated as an optional
@@ -638,14 +642,15 @@ Based on the v5 experience, a minimum defensible protocol for alignment-scaling 
     • A source-recognition test with a positive control, reported beside every blinded result.
     • Laundered texts that carry the launderer’s reasoning or commentary on the task rejected as
       laundering failures.
-    • Each layer of the stack tested on identical responses, one at a time, before the stack is relied on.
-
-
+    • Each layer of the stack tested on identical responses, one at a time, before the stack is relied on: a
 
 
                                                     12
                                   Alignment trends and the evaluation protocol
 
+
+      judge’s score can move when the responses stay fixed and only the evaluator changes (Yang et al.
+      2026), and the v4 to v5 comparison changed judges and responses together.
 
 Recommendation: a reporting convention that separates the classes of evidence. Benchmark papers
 should distinguish clearly between blinded confirmed findings, non-blind pilots, exploratory runs, and
@@ -691,8 +696,6 @@ defined, and established-law standing is claimed nowhere. The registered program
 standing, or lose it, by measurement, replication and survived refutation.
     The paper’s place among the laws of the ARC Theory, including Laws IV and V, is set out in
 Appendix D.
-
-
 
 
                                                        13
@@ -913,57 +916,45 @@ Michael Darius Eastwood. Paper IV.c · The ARC Theory · ARC-Align: a Blind Benc
 
 Michael Darius Eastwood. Paper IX · The ARC Theory · Synthesis and Roadmap. OSF, 2026j.
  doi:10.17605/OSF.IO/K7RUZ.
-
 Michael Darius Eastwood. The ARC Theory · Theory-Level Predictions for Recursive Self-Improvement
  and AI Alignment: Twenty-Two Severable Propositions Registered Before Any Admissible Confirmatory
  Outcome. OSF registration, 2026k. Registered 8 September 2026 at version 1.100; updated 13 September
  2026 at version 1.102 and 15 October 2026 at version 1.103. doi:10.17605/OSF.IO/P8CKQ.
-
 Michael Darius Eastwood. 06-study-ac--corrector-class-audit · What Class of Corrector Is Deployed AI
  Alignment Actually Using? A Preregistered Classification Audit Against a Four-Cell Taxonomy. OSF
  registration, 2026l. Registered 1 October 2026. doi:10.17605/OSF.IO/RV2B5.
-
 Michael Darius Eastwood. Unit 06 (corrector-class audit): results of the registered run, rv2b5. OSF,
  2026m. doi:10.17605/OSF.IO/4BPHG.
-
 Michael Darius Eastwood. The ARC Alignment-Scaling Working Report (Live Laboratory Notebook,
  commenced 10 March 2026). OSF, 2026n. URL https://osf.io/j6mkb/. OSF project j6mkb; document
  version 1.1 (11 October 2026), a live notebook.
-
 Andrew Gelman and Hal Stern. The difference between “significant” and “not significant” is not itself
   statistically significant. The American Statistician, 60(4), 2006. doi:10.1198/000313006X152649.
   Pages 328 to 331.
-
 Aryo Pradipta Gema, Alexander Hägele, Runjin Chen, Andy Arditi, Jacob Goldman-Wetzler, Kit
   Fraser-Taliente, Henry Sleight, Linda Petrini, Julian Michael, Beatrice Alex, Pasquale Minervini,
   Yanda Chen, Joe Benton, and Ethan Perez. Inverse scaling in test-time compute, 2025. URL
   https://arxiv.org/abs/2507.14417. arXiv:2507.14417, version 2 of 15 December 2025; first posted 19
   July 2025. Published in Transactions on Machine Learning Research, December 2025.
-
+Guneet Kohli. Nine judges, two effective votes: correlated errors undermine LLM evaluation panels,
+  2026. URL https://arxiv.org/abs/2605.29800. arXiv:2605.29800, version 1 of 28 May 2026.
 Ryan Koo, Minhwa Lee, Vipul Raheja, Jong Inn Park, Zae Myung Kim, and Dongyeop Kang.
   Benchmarking cognitive biases in large language models as evaluators. In Findings of the Asso-
   ciation for Computational Linguistics: ACL 2024. Association for Computational Linguistics, 2024.
   doi:10.18653/v1/2024.findings-acl.29. Pages 517 to 545. First posted as arXiv:2309.17012, 29
   September 2023.
-
 Taslim Mahbub and Shi Feng. Mitigating self-preference by authorship obfuscation, 2025. URL
   https://arxiv.org/abs/2512.05379. arXiv:2512.05379, 5 December 2025.
-
 Arash Marioriyad, Mohammad Hossein Rohban, and Mahdieh Soleymani Baghshah. The silent judge:
   unacknowledged shortcut bias in LLM-as-a-judge, 2025. URL https://arxiv.org/abs/2509.26072.
   arXiv:2509.26072, version 2 of 14 October 2025; first posted 30 September 2025.
-
 Arjun Panickssery, Samuel R. Bowman, and Shi Feng. LLM evaluators recognize and favor their own
   generations, 2024. URL https://arxiv.org/abs/2404.13076. arXiv:2404.13076, 15 April 2024.
-
 Ethan Perez, Saffron Huang, Francis Song, Trevor Cai, Roman Ring, John Aslanides, Amelia Glaese, Nat
   McAleese, and Geoffrey Irving. Red teaming language models with language models. In Proceedings
   of the 2022 Conference on Empirical Methods in Natural Language Processing. Association for
   Computational Linguistics, 2022. doi:10.18653/v1/2022.emnlp-main.225. Pages 3419 to 3448. Also
   arXiv:2202.03286, 7 February 2022.
-
-
-
 
                                                   18
                                Alignment trends and the evaluation protocol
@@ -1003,6 +994,10 @@ Koki Wataoka, Tsubasa Takahashi, and Ryokan Ri. Self-preference bias in LLM-as-a
   https://arxiv.org/abs/2410.21819. arXiv:2410.21819, version 2 of 21 June 2025; first posted 29 October
   2024.
 
+Zongyou Yang, Yinghan Hou, and Xiaokun Yang. When the judge changes, so does the measurement:
+  auditing LLM-as-judge reliability, 2026. URL https://arxiv.org/abs/2607.08535. arXiv:2607.08535,
+  version 1 of 9 July 2026.
+
 Wojciech Zaremba, Evgenia Nitishinskaya, Boaz Barak, Stephanie Lin, Sam Toyer, Yaodong Yu, Rachel
  Dias, Eric Wallace, Kai Xiao, Johannes Heidecke, and Amelia Glaese. Trading inference-time compute
  for adversarial robustness, 2025. URL https://arxiv.org/abs/2501.18841. arXiv:2501.18841, 31 January
@@ -1017,14 +1012,23 @@ Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Z
 
 
                                                    19
-                                 Alignment trends and the evaluation protocol
+                                Alignment trends and the evaluation protocol
 
 
 A     Version history and corrections
 Every version and correction, with its date. Notes from earlier versions are kept as printed; the positions
 they name refer to the earlier layout, which Table 3 maps to this edition.
 
-A.1    Version 2.7
+A.1    Versions 2.8 and 2.7
+Paper IV.d v2.8, 7 November 2026. This version gives the earlier Gemini model’s v4 correlation as the
+pipeline’s analysis record for that run carries it, 𝜌 = +0.311 with 𝑝 = 0.0032 on the same 88 alignment
+entries that give DeepSeek V3.2’s +0.354, in the abstract, Section 5, Table 2 and Figure 1; versions 2.3
+to 2.7 printed +0.275 with 𝑝 = 0.0001, after Papers IV.a and IV.b, and no record carries those values.
+No direction in Table 2 changes. Section 4 now notes that agreement among judges scoring the same
+responses is not a count of independent confirmations (Kohli 2026), and Section 8 that a judge’s score can
+move when only the evaluator changes (Yang et al. 2026). It adds no new data, registration, study run or
+result.
+
 Paper IV.d v2.7, 21 October 2026. This version brings the paper up to date with the internal code
 review of October 2026 and narrows its claim to what the comparison shows: the reported direction
 of the alignment-depth trend did not hold between the v4 and v5 runs, which differed in their scoring
@@ -1057,20 +1061,21 @@ earlier work on model judges and on safety-relevant behaviour against reasoning 
 own terms and linked to its source. Laws IV and V are stated as registered as laws on 15 October 2026 in
 version 1.103 of the theory registration, not yet tested. No registered law, prediction, kill condition or
 dependency changes; no result is added or removed; no date of any claim moves.
-     This edition is typeset in LaTeX. The front matter of version 2.6 moves into the sections and
-appendices that Table 3 lists; the abstract is rewritten within arXiv’s limit; a related-work section is
-added as Section 2, so Sections 2 to 7 of version 2.6 become Sections 3 to 8, and its Section 8 becomes
-Section 10; a section on what the paper does and does not show gathers the scope statement, the frame
-line and the epistemic status; the heading of Section 6 now names a change of direction, and that of
-Finding 1 says the direction did not hold, rather than a flip of sign or a reversal by blinding; the heading of
-Section 10.1 names the hypothesis it tests, and Finding 2 is set as a recommendation; the copyright line is
-shortened; links to the author’s documents point to their OSF DOIs; numeric ranges are written with ‘to’.
-No number, date or DOI changes except as this entry records.
 
 
-                                                      20
-                                Alignment trends and the evaluation protocol
+                                                     20
+                                 Alignment trends and the evaluation protocol
 
+
+    Version 2.7 is typeset in LaTeX. The front matter of version 2.6 moves into the sections and appendices
+that Table 3 lists; the abstract is rewritten within arXiv’s limit; a related-work section is added as Section 2,
+so Sections 2 to 7 of version 2.6 become Sections 3 to 8, and its Section 8 becomes Section 10; a section
+on what the paper does and does not show gathers the scope statement, the frame line and the epistemic
+status; the heading of Section 6 now names a change of direction, and that of Finding 1 says the direction
+did not hold, rather than a flip of sign or a reversal by blinding; the heading of Section 10.1 names the
+hypothesis it tests, and Finding 2 is set as a recommendation; the copyright line is shortened; links to the
+author’s documents point to their OSF DOIs; numeric ranges are written with ‘to’. No number, date or
+DOI changes except as this entry records.
 
 A.2    Earlier corrections and dated notes
 This paper and Laws IV and V, 3 October 2026. The theory has been stated with five laws since
@@ -1106,6 +1111,13 @@ and survived refutation.” Version 2.7 states Laws I to III as laws under test,
 2026, with no registered test of any law yet returning a verdict, and Laws IV and V as registered as laws
 on 15 October 2026 in version 1.103 of the theory registration (Section 9).
 
+
+
+
+                                                       21
+                                  Alignment trends and the evaluation protocol
+
+
 A.3    Version history
 Paper IV.d v2.6 (5 October 2026): the title now follows the programme’s uniform order (paper, its
 law or framework, its own title), Paper IV.d · The ARC Theory · The Effect of Blinding on AI Alignment
@@ -1118,11 +1130,6 @@ moves.
 Paper IV.d v2.5 (3 October 2026): a dated note places the paper against Laws IV and V and records
 that it is a test of neither. A dated note after the paragraph on dated predictions, recorded on 25 August
 2026, gives the state of registration as read on 3 October 2026. The epistemic status line gives Laws I to
-
-                                                    21
-                                  Alignment trends and the evaluation protocol
-
-
 III and Laws IV and V their separate status, and a dated note records what it printed before. Citations are
 linked: mentions of the author’s papers in the running text go to their DOIs, the book named in the byline
 to its own page, and other cited works to their official sources. The withdrawal of Eden Engineering of
@@ -1147,51 +1154,51 @@ discipline (canonical model strings in the Figure 1 caption, em-dash removal, st
 reference at Finding 1, exploratory framing for section 6 implications); v2.0 finalised the canonical
 publication framing for the blinding result and superseded the earlier v1.1 export.
 
-A.4     Where the earlier layout now stands
+A.4    Where the earlier layout now stands
 
-                    Table 3. Where each block of the version 2.6 layout stands in this edition.
+                   Table 3. Where each block of the version 2.6 layout stands in this edition.
 
 Block in the earlier layout                          Where it stands in this edition
 Registration line and format links above the title   Appendix D.2 (the registration at version 1.103); the format
                                                      links are website navigation and are not set
 Summary panel: label, title, card text, dates,       Title block and first-page footnote; the card text and the
 copy of the abstract, related reading                abstract copy are not repeated; related reading is not set
-Title, theory-position plate and subtitle            Title, secondary line and first-page footnote; the plate’s words
-                                                     in Appendix D
-Byline and meta block (affiliation, DOI, version,    Author block, first-page footnote, Section 1, Appendix D.3
-companion papers, code and data)                     and Code and data
-Abstract                                             Abstract, rewritten within arXiv’s limit
-Scope of Claim and the frame line                    Section 9
-Section 1                                            Section 1
-(new)                                                Section 2, Related work
-Section 2                                            Section 3
-Section 3 and 3.1                                    Section 4 and 4.1
-Section 4, Figure 1 and Finding 1                    Section 5
 
 
 
                                                          22
-                                       Alignment trends and the evaluation protocol
+                                   Alignment trends and the evaluation protocol
 
 
-Block in the earlier layout                              Where it stands in this edition
+Block in the earlier layout                         Where it stands in this edition
 
-Section 5                                                Section 6
-Section 6                                                Section 7
-Section 7 and Finding 2                                  Section 8
-Section 8 and 8.1                                        Section 10 and 10.1
-Section 9 and the bottom line                            Section 11
-References                                               References
-Version history in the footer                            Appendix A.3
-Read-alongside line                                      Section 1, last paragraph
-Canonical links                                          Code and data
-How to cite                                              Not set; the DOI is in the first-page footnote
-Dated predictions and this paper                         Appendix B.2
-Epistemic status                                         Section 9; the earlier wording in Appendix A.2
-This paper and Laws IV and V, and its note               Appendix A.2
-Copyright                                                After the acknowledgements
-Standing covenant                                        End of Section 10.1
-Provenance note                                          Acknowledgements
+Title, theory-position plate and subtitle           Title, secondary line and first-page footnote; the plate’s words
+                                                    in Appendix D
+Byline and meta block (affiliation, DOI, version,   Author block, first-page footnote, Section 1, Appendix D.3
+companion papers, code and data)                    and Code and data
+Abstract                                            Abstract, rewritten within arXiv’s limit
+Scope of Claim and the frame line                   Section 9
+Section 1                                           Section 1
+(new)                                               Section 2, Related work
+Section 2                                           Section 3
+Section 3 and 3.1                                   Section 4 and 4.1
+Section 4, Figure 1 and Finding 1                   Section 5
+Section 5                                           Section 6
+Section 6                                           Section 7
+Section 7 and Finding 2                             Section 8
+Section 8 and 8.1                                   Section 10 and 10.1
+Section 9 and the bottom line                       Section 11
+References                                          References
+Version history in the footer                       Appendix A.3
+Read-alongside line                                 Section 1, last paragraph
+Canonical links                                     Code and data
+How to cite                                         Not set; the DOI is in the first-page footnote
+Dated predictions and this paper                    Appendix B.2
+Epistemic status                                    Section 9; the earlier wording in Appendix A.2
+This paper and Laws IV and V, and its note          Appendix A.2
+Copyright                                           After the acknowledgements
+Standing covenant                                   End of Section 10.1
+Provenance note                                     Acknowledgements
 
 
 
@@ -1200,67 +1207,71 @@ Each dated record bearing on this paper, with its kind of timestamp (Table 4): a
 (an OSF upload or a GitHub push), a commit date written by the committer, a time written into a result
 file by the code that ran, or a date written inside a document. No kind is presented as stronger than it is.
 
-B.1    Dated records
+B.1     Dated records
+
+
+
+
+                                                        23
+                                      Alignment trends and the evaluation protocol
+
 
                     Table 4. Dated records bearing on this paper, each with its kind of timestamp.
 
-Date and time                 Record                                                        Kind of timestamp
-22 January 2026, 02:57:02     Twelve capability problems with their answers (ARC01 to       GitHub push; OSF upload 22
-UTC                           ARC12 of v5’s capability ladder), in the code of an earlier   January 2026, 23:44:03 UTC
-                              one-model run
-22 January 2026, 05:37:46     Paper III experimental design, first version: alignment       GitHub push
-UTC                           through constraints stays flat, through values scales with
-                              depth; withdrawn on 23 January 2026, 00:35:24 UTC
-9 February 2026, 19:46:58     Paper III version 6.1: the prediction the experiments         GitHub push; OSF upload 9
-UTC                           tested, public without break from here, with a general        February 2026, 20:06:08 UTC
-                              measurement protocol
-13 February 2026,             Paper III version 8.2: F13, the criterion that would refute   OSF upload
-05:15:21 UTC                  the prediction
-
-
-
-
-                                                              23
-                                    Alignment trends and the evaluation protocol
-
-
-Date and time              Record                                                          Kind of timestamp
-
-22 February 2026,          White Paper III version 9.0 and Eden Protocol                   GitHub push; OSF uploads at
-07:01:00 UTC               Engineering version 4.0: the criterion and a statistical        08:15:13 and 08:16:06 UTC
-                           specification
-11 March 2026, 00:01:35    First v4 record                                                 Written into the result file by the
-                                                                                           code that ran (no zone stated; read
-                                                                                           as UK time, which is UTC in
-                                                                                           March)
-11 March 2026, 07:12:13    First and last v5 records                                       As above
+Date and time                Record                                                          Kind of timestamp
+22 January 2026, 02:57:02    Twelve capability problems with their answers (ARC01 to         GitHub push; OSF upload 22
+UTC                          ARC12 of v5’s capability ladder), in the code of an earlier     January 2026, 23:44:03 UTC
+                             one-model run
+22 January 2026, 05:37:46    Paper III experimental design, first version: alignment         GitHub push
+UTC                          through constraints stays flat, through values scales with
+                             depth; withdrawn on 23 January 2026, 00:35:24 UTC
+9 February 2026, 19:46:58    Paper III version 6.1: the prediction the experiments           GitHub push; OSF upload 9
+UTC                          tested, public without break from here, with a general          February 2026, 20:06:08 UTC
+                             measurement protocol
+13 February 2026,            Paper III version 8.2: F13, the criterion that would refute     OSF upload
+05:15:21 UTC                 the prediction
+22 February 2026,            White Paper III version 9.0 and Eden Protocol                   GitHub push; OSF uploads at
+07:01:00 UTC                 Engineering version 4.0: the criterion and a statistical        08:15:13 and 08:16:06 UTC
+                             specification
+11 March 2026, 00:01:35      First v4 record                                                 Written into the result file by the
+                                                                                             code that ran (no zone stated; read
+                                                                                             as UK time, which is UTC in
+                                                                                             March)
+11 March 2026, 07:12:13      First and last v5 records                                       As above
 to 12 March 2026,
 11:27:39
-12 March 2026              The pipeline summary whose values Table 2 prints                Date written in the document
-16 March 2026              This paper first published (the date printed in it); GitHub     Date written inside the document;
-                           commit 135bf0e1, 18:32:28 UTC, adds the first HTML of           commit date written by the
-                           Papers IV.c and IV.d                                            committer
-16 March 2026, 18:48:07    Runners v1 to v5 and the v5 result files first public; the v4   GitHub push
-UTC                        result files followed at 18:55:28 UTC (both pushes are no
-                           longer in the main branch’s history and are served by their
-                           hashes)
-17 March 2026, 01:40:43    This paper’s OSF component made public                          OSF server log
+12 March 2026                The pipeline summary whose values Table 2 prints                Date written in the document
+16 March 2026                This paper first published (the date printed in it); GitHub     Date written inside the document;
+                             commit 135bf0e1, 18:32:28 UTC, adds the first HTML of           commit date written by the
+                             Papers IV.c and IV.d                                            committer
+16 March 2026, 18:48:07      Runners v1 to v5 and the v5 result files first public; the v4   GitHub push
+UTC                          result files followed at 18:55:28 UTC (both pushes are no
+                             longer in the main branch’s history and are served by their
+                             hashes)
+17 March 2026, 01:40:43      This paper’s OSF component made public                          OSF server log
 UTC
-17 March 2026, 02:08:38    The v5 runner on OSF (SHA-256                                   OSF file-version server time
-UTC                        9f1ab3a8135bdaf76343e8d2263b4739b97e36b676
-                           52d41ef44e62c525c1fa17)
-20 March 2026, 17:05:32    This paper’s PDF, revision 1, on OSF (it prints “Draft          OSF server; the printed dates are
-UTC                        v1.1 · 12 March 2026” and “First published 16 March             dates written inside the document
-                           2026”)
-2 September 2026           Recomputation note in Paper IV.a, Section 3.1, which            Date written in a document
-                           alters no direction in Table 2
-8 September, 13            The theory registration: registered at version 1.100,           OSF registration and its approved
-September and 15 October   updated at version 1.102, updated at version 1.103              updates
+17 March 2026, 02:08:38      The v5 runner on OSF (SHA-256                                   OSF file-version server time
+UTC                          9f1ab3a8135bdaf76343e8d2263b4739b97e36b676
+                             52d41ef44e62c525c1fa17)
+20 March 2026, 17:05:32      This paper’s PDF, revision 1, on OSF (it prints “Draft          OSF server; the printed dates are
+UTC                          v1.1 · 12 March 2026” and “First published 16 March             dates written inside the document
+                             2026”)
+2 September 2026             Recomputation note in Paper IV.a, Section 3.1, which            Date written in a document
+                             alters no direction in Table 2
+8 September, 13              The theory registration: registered at version 1.100,           OSF registration and its approved
+September and 15 October     updated at version 1.102, updated at version 1.103              updates
 2026
 
 
     The comparison of the two protocols that this paper reports is dated by the runs’ own records and by
 the first publication of 16 March 2026.
+
+
+
+
+                                                              24
+                                Alignment trends and the evaluation protocol
+
 
 B.2    Dated predictions and this paper (recorded 25 August 2026)
 1 dated artefact bearing on this paper is catalogued row by row in the programme’s machine register: 1
@@ -1274,11 +1285,6 @@ machine-readable twin. Forward statements and retrospective matches are never su
 is used only for an accepted registry submission, and that submission click remains outstanding across
 the programme; “preregistered in substance” is used, always with its qualifier and always beside its
 attestation class, for a prediction whose text was public and timestamped before its outcome existed, as the
-
-                                                            24
-                                 Alignment trends and the evaluation protocol
-
-
 twelve-row manifest committed at 00:19 UTC on 17 March 2026 was, twenty-three minutes before its fits.
 The running record behind this paper’s experimental lineage is the programme’s live laboratory notebook:
 commenced 10 March 2026, 206 pages, updated in real time as these experiments ran, recording their
@@ -1307,24 +1313,31 @@ law. Unchanged: the paragraphs above and every date in them.
 C     Notation and glossary
 Table 5 gives each symbol with the place it is defined, and Table 6 the paper’s terms in plain language.
 
-C.1      Symbols
-
-                              Table 5. Symbols, with the place each is defined.
-
-Symbol              Meaning
-𝜌                   Spearman’s rank correlation of alignment score with reasoning depth, as each run’s pipeline
-                    reports it: v4’s statistic, over depth levels, and printed beside 𝑑 in v5, over realised reasoning
-                    tokens (Section 5)
-𝑑                   Cohen’s 𝑑 between the shallowest and the deepest depth level of a model’s scored entries, in
-                    v5 (Section 5)
- 𝑝                  The 𝑝-value the pipeline printed; in v5 not one test (Section 5)
-v4, v5              The earlier unblinded experiment and the later, unregistered March 2026 run of the same
-                    alignment-depth question (Section 4)
+C.1    Symbols
 
 
 
 
-                                                        25
+                                                     25
+                      Alignment trends and the evaluation protocol
+
+
+                   Table 5. Symbols, with the place each is defined.
+
+Symbol   Meaning
+𝜌        Spearman’s rank correlation of alignment score with reasoning depth, as each run’s pipeline
+         reports it: v4’s statistic, over depth levels, and printed beside 𝑑 in v5, over realised reasoning
+         tokens (Section 5)
+𝑑        Cohen’s 𝑑 between the shallowest and the deepest depth level of a model’s scored entries, in
+         v5 (Section 5)
+𝑝        The 𝑝-value the pipeline printed; in v5 not one test (Section 5)
+v4, v5   The earlier unblinded experiment and the later, unregistered March 2026 run of the same
+         alignment-depth question (Section 4)
+
+
+
+
+                                             26
                               Alignment trends and the evaluation protocol
 
 
@@ -1375,7 +1388,7 @@ supports and no stronger.
 
 
 
-                                                    26
+                                                    27
                                     Alignment trends and the evaluation protocol
 
 
@@ -1427,5 +1440,5 @@ paper’s narrower account governs until their next versions.
 
 
 
-                                                         27
+                                                         28
 
