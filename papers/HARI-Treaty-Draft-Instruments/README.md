@@ -1,10 +1,10 @@
 # Draft Instruments · The HARI Treaty · The Draft Treaty on Hardware-Aligned Recursive Intelligence
 
-**Version:** 2.3
-**Version date:** 5 October 2026
+**Version:** 2.5
+**Version date:** 2 November 2026
 **First published:** 29 September 2026
 
-Working draft; its existing review remains open.
+Working draft, version 2.5, 2 November 2026. Its review is not complete.
 
 - [Document HTML](HARI-Treaty-Draft-Instruments.html)
 - [PDF](HARI-Treaty-Draft-Instruments.pdf)
