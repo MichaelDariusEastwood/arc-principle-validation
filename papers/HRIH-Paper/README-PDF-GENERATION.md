@@ -1,21 +1,9 @@
-# HRIH Paper — PDF Generation
+# HRIH paper: how its PDF is made
 
-The HTML paper is complete at `Hyperspace-Recursive-Intelligence-Hypothesis.html`.
+From version 3.53 (2 November 2026) the PDF in this folder is the monograph's LaTeX edition, built from HRIH-Paper-latex-source.tar.gz. Its HTML is the export of the same edition, so the two carry the same text.
 
-PDF generation requires Chrome headless (same as all other papers — see 
-export-pdfs.sh in the repo root). MathJax equations require a browser
-engine to render properly.
+Never print the HTML onto the PDF's file name. That would replace the edition's PDF with a browser print, which differs from the deposited bytes on OSF and on the websites.
 
-To generate the PDF:
-```bash
-cd <repository root>
-# Same method used for all 20 other papers:
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-  --headless --disable-gpu --no-pdf-header-footer \
-  --print-to-pdf=papers/HRIH-Paper/Hyperspace-Recursive-Intelligence-Hypothesis.pdf \
-  papers/HRIH-Paper/Hyperspace-Recursive-Intelligence-Hypothesis.html
-```
+To rebuild the PDF, unpack the LaTeX source package and build it as its own README says. The file names in this folder stay as they are, so every link already given out keeps working.
 
-Or run: `bash scripts/export-pdfs.sh` (if it exists in the repo).
-
-After generation, the paper will be the 21st paper with HTML+PDF.
+The instructions that stood here before 3.53, which printed the HTML in a headless browser, are kept in this file's history.
