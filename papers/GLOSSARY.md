@@ -66,7 +66,7 @@ This glossary defines all key terminology used across the ARC/Eden paper suite a
 
 - **Moral Genome Token** -- A proposed cryptographic standard for hardware-level alignment verification. Would embed verifiable ethical constraints in silicon via trusted execution environments. TRL 0-1 (proposed, not yet validated). Part of the hardware-governance translation workstream.
 
-- **Eden Mark** -- A proposed certification framework for AI systems that meet Eden Protocol standards. Analogous to safety certifications in other industries. Submitted to standards working groups as a future workstream.
+- **Eden Seal**: the conformity status defined by the working drafts of the HARI Treaty, the Draft Treaty on Hardware-Aligned Recursive Intelligence (Draft Instruments, Article 21). It is a record of how a chip or an AI system was made and formed, and of the conditions its certificate states; it attests conditions, never outcomes, and it never states that anything is safe. Under the drafts it belongs to the treaty's Authority, no company or industry body may issue it, and no body yet exists to issue it. It is not the Eden Protocol: a Seal can attest a chip, a system or both, while the Eden Protocol is one method by which a system might be built. The certification was set out in the author's manuscript of 30 April 2025 and in *Infinite Architects* (2 January 2026), and has been called the Eden Seal since 27 September 2026.
 
 - **Purpose Kernel** -- The normative core that drives the Purpose Loop. Tested in three configurations: task (narrow), grand (broad), and hybrid. The factorial purpose-kernel study tests which configuration produces the most robust alignment improvement under blinding.
 
