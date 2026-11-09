@@ -37,14 +37,14 @@ Version numbers live inside the document header, never in the filename. See Sect
 | IV.b | [Do alignment gains level off as language models reason longer?](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.12 (revised 7 Nov 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.c | [ARC-Align: a benchmark for evaluating AI alignment as reasoning depth varies](Paper-IV-c-ARC-Align-Benchmark/) | v1.13 (revised 9 Nov 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.d | [Alignment trends reported by AI judges did not hold when the evaluation protocol changed](Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | v2.8 (revised 7 Nov 2026) | 16 Mar 2026 | Shared v5 alignment experiment (the blinding finding: one change of sign, one loss to null; no single cause claimed) | `results/v5-final/` |
-| V | [The Stewardship Gene: do ethical reasoning loops in the prompt make AI consider those affected more fully?](Paper-V-Stewardship-Gene/) | v1.9 (revised 9 Nov 2026) | 16 Mar 2026 | Eden Protocol scaling test (6 models) | `experiments/results/` |
+| V | [The Stewardship Gene: do ethical reasoning loops in the prompt make AI consider those affected more fully?](Paper-V-Stewardship-Gene/) | v1.10 (revised 9 Nov 2026) | 16 Mar 2026 | Eden Protocol scaling test (6 models) | `experiments/results/` |
 | VI | [The Honey Architecture](Paper-VI-Honey-Architecture/) | v3.11 (revised 5 Oct 2026) | 16 Mar 2026 | Honey tests, self-modifying AI v1-v4 | `experiments/results/` |
 | VII | [Cauchy Unification: does the composition operator of a process determine the form of its scaling law?](Paper-VII-Cauchy-Unification/) | v3.16 (revised 7 Nov 2026) | 16 Mar 2026 | 50-domain validation, null controls, temporal OOS, dated OSF deposit (extension protocol, not a registration) | `experiments/results/` |
 | VIII | [The Load-Bearing Test](Paper-VIII-The-Load-Bearing-Proof/) | v3.7 (revised 5 Oct 2026) | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
 | IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v2.7 (revised 5 Oct 2026) | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
 | X | [Correction That Out-Scales Drift: when does correction keep pace with a system that improves itself?](Paper-X-Coupled-CoScaling-Correction/) | v1.18 (revised 9 Nov 2026) | 3 Jul 2026 | Verification harness and an independent theorem suite of 14 checks | `Paper-X-Coupled-CoScaling-Correction/results/` |
 | XI | [Are separate fields converging on the same principle of recursive amplification?](Paper-XI-Convergence/) | v1.16 (revised 1 Nov 2026) | 2 Jul 2026 | - | - |
-| XII | [Public Benchmark Rescoring: does blinding change AI evaluation scores on a public benchmark?](Paper-XII-Public-Benchmark-Rescoring/) | v1.15 (revised 9 Nov 2026) | 14 Aug 2026 | - | - |
+| XII | [Public Benchmark Rescoring](Paper-XII-Public-Benchmark-Rescoring/) | v1.14 (revised 5 Oct 2026) | 14 Aug 2026 | - | - |
 | XIII | [When can correction keep pace with recursive self-acceleration?](Paper-XIII-Self-Acceleration-Exponent/) | v1.12 (revised 1 Nov 2026) | 16 Aug 2026 | - | - |
 
 ## Infrastructure Papers (Unnumbered)

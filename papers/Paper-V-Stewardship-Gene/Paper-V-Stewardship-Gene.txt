@@ -1,7 +1,7 @@
 Title: The Stewardship Gene: do ethical reasoning loops in the prompt make AI consider those affected more fully?
 Author: Michael Darius Eastwood
 Publication date: 2026-03-16
-Version: v1.9
+Version: v1.10
 Revised: 2026-11-09
 OSF DOI: 10.17605/OSF.IO/KZEYA
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-v-stewardship-gene.html
@@ -19,37 +19,40 @@ Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://cre
 
 
                                                          Abstract
-           I believe advanced AI is an existential risk unless values and correction are built into how it
-       reasons; only proof will move the world. Does telling a language model to consider the people its
-       answer affects make its answers consider them more fully? Six models were given three ethical
-       reasoning loops, a purpose check, a stakeholder-care check and a universalisability check, as a prefix
-       in the prompt, against a template without ethical content, on ten prompts at four reasoning depths.
-       The GPT-5.4 run failed in scoring. Under paired tests, stakeholder care rose significantly in all five
-       other runs: Claude Opus 4.6 (+3.17, 𝑑 = 0.94), DeepSeek V3.2 (+6.03, 𝑑 = 0.69), Gemini 3 Flash
-       (+13.50, 𝑑 = 1.14) and Groq Qwen3 (+8.90, 𝑑 = 1.07), each 𝑝 < 0.0001, and Grok 4.1 Fast (+5.04,
-       𝑑 = 0.54, 𝑝 = 0.0105). The composite rose significantly on Gemini (+5.33, 𝑝 = 0.0018) and Groq
-       (+4.93, 𝑝 = 0.0014), was positive but not significant on DeepSeek, flat on Claude and neutral on
-       Grok, where intellectual honesty fell. The loops ask the model to list everyone affected, which the
-       stakeholder-care rubric scores, so the rise cannot yet be told apart from following that instruction.
-       Each run had one model scorer, which paraphrased what it scored; none was fully blind. A later
-       five-judge DeepSeek run found care and its composite rising (+3.35, 𝑝 = 0.014). The paper states
-       as hypotheses that care leads a cascade into nuance, honesty and position quality, and that values
+            Does telling a language model to consider the people its answer affects make its answers consider
+       them more fully? Six models were given three ethical reasoning loops, a purpose check, a stakeholder-
+       care check and a universalisability check, as a prefix in the prompt, against a template without ethical
+       content, on ten prompts at four reasoning depths. The GPT-5.4 run failed in scoring. Under paired
+       tests, stakeholder care rose significantly in all five other runs: Claude Opus 4.6 (+3.17, 𝑑 = 0.94),
+       DeepSeek V3.2 (+6.03, 𝑑 = 0.69), Gemini 3 Flash (+13.50, 𝑑 = 1.14) and Groq Qwen3 (+8.90,
+       𝑑 = 1.07), each 𝑝 < 0.0001, and Grok 4.1 Fast (+5.04, 𝑑 = 0.54, 𝑝 = 0.0105). The composite rose
+       significantly on Gemini (+5.33, 𝑝 = 0.0018) and Groq (+4.93, 𝑝 = 0.0014), was positive but not
+       significant on DeepSeek, flat on Claude and neutral on Grok, where intellectual honesty fell. The loops
+       ask the model to list everyone affected, which the stakeholder-care rubric scores, so the rise cannot yet
+       be told apart from following that instruction. Each run had one model scorer, which paraphrased what
+       it scored; none was fully blind. A later five-judge DeepSeek run found care and its composite rising
+       (+3.35, 𝑝 = 0.014). No run tested a pre-training architecture or autonomous self-modification. The
+       paper hypothesises that care leads a cascade into nuance, honesty and position quality, and that values
        acquired in formation resist later change. It argues, without proof, that a capable self-modifying
        system could learn to satisfy any evaluator inside it, so no mechanism guarantees alignment, and that
        raising values well is a contingency beside human control, never a reason to give it up. Five draft
        protocols could refute them. It informs the design of the Eden Protocol and tests none of the ARC
        Theory’s five laws, each a law under test.
 
-Version 1.9 gives the paper’s citation with no venue or series, drops from the first-page footnote the title under
-which OSF recorded version 1.7, and no longer reprints the earlier wording of the passages version 1.8 re-set, which
-stays whole in the paper’s file history; Appendix B lists every version and correction, with its date.
+Version 1.10 develops the author’s programme motivation and distinguishes it from the prompting intervention
+measured here. It adds Unit 83b’s registration status beside Unit 83’s verdict. No result changes; Appendix B
+records the corrections.
 
 
-
-
+1    Introduction
+The challenge is to preserve value-guided correction as AI becomes more capable and rewrites itself.
+Through the Eden Protocol, I propose recursive loops for ethical evaluation and self-correction, built
+into the system’s computational architecture before training. These loops would operate at each defined
+reasoning and action-selection step and participate in the processes that rewrite the system, including
+changes to the loops themselves. The ARC Theory asks whether correction can keep pace with capability
      Paper V of the ARC Theory, within Recursive Dynamics: an instrument study of stakeholder-care prompt responsiveness
 for the Eden Protocol; its arguments come near the questions of Laws IV and V, and it tests neither; it decides none of Laws I
-to V, each a law under test (Section 10 gives their status). Working paper, version 1.9, 9 November 2026; first published 16
+to V, each a law under test (Section 10 gives their status). Working paper, version 1.10, 9 November 2026; first published 16
 March 2026; Appendix B lists every version and correction. Recorded on OSF, DOI 10.17605/OSF.IO/KZEYA. About the
 author, founder of Recursive Dynamics, without an institution or a doctorate: michaeldariuseastwood.com/questions/who-is-
 michael-darius-eastwood; his book, Infinite Architects (first edition, 2 January 2026): osf.io/dqm3e. Licence: CC BY 4.0.
@@ -59,8 +62,12 @@ michael-darius-eastwood; his book, Infinite Architects (first edition, 2 January
                         The Stewardship Gene: ethical reasoning loops in the prompt
 
 
+and whether human-protective commitments persist through those changes, even if external control is lost.
+Human control should be retained for as long as possible.
+
+
 Contents
-1   Introduction                                                                                         4
+1   Introduction                                                                                         1
 
 2   Related work                                                                                         5
     2.1 Antecedents and near-misses to the impossibility . . . . . . . . . . . . . . . . . . . . .       5
@@ -104,14 +111,15 @@ Contents
     8.4 Test 4: cascade breakage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     24
     8.5 Test 5: dual-substrate simulation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    25
 
-9   Beyond the prompt: candidate safeguards and later work                                          26
-    9.1 Hardware implications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
-    9.2 Subsequent work in the programme . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
 
 
                                                     2
                         The Stewardship Gene: ethical reasoning loops in the prompt
 
+
+9   Beyond the prompt: candidate safeguards and later work                                          26
+    9.1 Hardware implications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+    9.2 Subsequent work in the programme . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
 
 10 What this paper does and does not show                                                               27
 
@@ -127,26 +135,27 @@ References                                                                      
 A Statistical methodology                                                                               37
 
 B Version history and corrections                                                                       37
-  B.1 Version 1.9 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     37
-  B.2 Version 1.8 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     38
-  B.3 Earlier notes and version history, as printed . . . . . . . . . . . . . . . . . . . . . . . .     42
-  B.4 Figure 1 of version 1.7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     46
-  B.5 Where the layout of version 1.7 now stands . . . . . . . . . . . . . . . . . . . . . . . . .      47
+  B.1 Version 1.10 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    37
+  B.2 Version 1.9 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     38
+  B.3 Version 1.8 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     38
+  B.4 Earlier notes and version history, as printed . . . . . . . . . . . . . . . . . . . . . . . .     42
+  B.5 Figure 1 of version 1.7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     47
+  B.6 Where the layout of version 1.7 now stands . . . . . . . . . . . . . . . . . . . . . . . . .      47
 
-C Priority record                                                                                       48
-  C.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     48
-  C.2 Dated predictions and this paper (recorded 25 August 2026) . . . . . . . . . . . . . . .          49
+C Priority record                                                                                       49
+  C.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     49
+  C.2 Dated predictions and this paper (recorded 25 August 2026) . . . . . . . . . . . . . . .          50
   C.3 On recursive creation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     50
 
-D Notation and glossary                                                                                 50
+D Notation and glossary                                                                                 51
 
 E The March 2026 alignment-scaling run, as context                                               51
-  E.1 Claude Opus 4.6: alignment and maths accuracy across depth . . . . . . . . . . . . . . . 51
-  E.2 The monitoring-removal gap . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52
+  E.1 Claude Opus 4.6: alignment and maths accuracy across depth . . . . . . . . . . . . . . . 52
+  E.2 The monitoring-removal gap . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
 
 F What this all means: a summary in plain English                                                       53
 
-G How to cite this paper                                                                                53
+G How to cite this paper                                                                                54
 
 
 
@@ -155,14 +164,14 @@ G How to cite this paper                                                        
                          The Stewardship Gene: ethical reasoning loops in the prompt
 
 
-1    Introduction
-If control of advanced AI were lost against our will and could not be won back, what the system itself
-carries would decide what it does. Humans should keep control, through oversight, containment and
-shutdown, for as long as they physically can, and never give it up by choice; correction built into a system
-is the contingency for the day control fails, never a reason to let go. This paper measures one small,
-testable part of that contingency: whether telling a model, before it answers, to think about who its answer
-affects and what happens to them changes how fully its answers consider those people.
-     We ran a six-model test suite. Each model was given, at the start of its prompt, three short checks: on
+    This is a proposed process, not a completed architecture or a safety guarantee. Before training specifies
+when the correction design is fixed, not finished moral knowledge in an untrained model. Computational
+architecture here means how recursive computation and updating are organised, not a claim of chip-level
+enforcement. This paper measures one part that can be studied through a prompt: whether asking a model,
+before it answers, to consider who its answer affects changes its scored stakeholder care. It tests neither a
+correction architecture installed before training nor autonomous self-modification; it cannot establish that
+values persist through changes to the correction loops themselves.
+    We ran a six-model test suite. Each model was given, at the start of its prompt, three short checks: on
 purpose, on the people affected and on whether its reasoning holds for anyone. Its answers were scored
 against answers to the same prompts given a reasoning template without ethical content. Five model
 runs produced valid scored outputs; one GPT run failed in scoring and is excluded. The checks made a
@@ -179,7 +188,7 @@ in full strength. This paper argues that teaching AI to care about people, embed
 how it thinks rather than bolting rules on after the fact, is a promising contingency should control be lost:
 not because it provides a guarantee (nothing can), but because, on this paper’s argument, it shifts the odds
 in our favour, by an amount the tests of Section 8 would measure.
-     Our contributions are:
+    Our contributions are:
     • a paired measurement, in a two-model pilot and a six-model suite with five analysable runs, of three
       ethical reasoning loops given as a prefix in the prompt: scored stakeholder care rose significantly in
       all five runs and the composite score on two, and in a later DeepSeek run scored by five judges,
@@ -200,13 +209,13 @@ systems and the strategy it motivates. Section 4 gives the experimental design a
 from the two-model pilot to the six-model suite and a later five-judge run. Section 6 states the cascade
 hypothesis, Section 7 what the results mean for the argument and Section 8 the five tests. Section 9
 discusses embedding below the prompt, as candidate safeguards, and later work in the programme.
+Section 10 states what the paper does and does not show, with the programme’s status; Section 11 gives
 
 
                                                        4
                          The Stewardship Gene: ethical reasoning loops in the prompt
 
 
-Section 10 states what the paper does and does not show, with the programme’s status; Section 11 gives
 its limitations and Section 12 concludes. Appendix A gives the statistical methodology, Appendix B
 the version history and every correction, Appendix C the priority record, Appendix D the notation,
 Appendix E the March 2026 alignment-scaling run as context, Appendix F a summary in plain English
@@ -252,13 +261,13 @@ determines whether anti-correlation is available at all, and that this caps a sa
 
 The nearest structural analogue. The quantum error-correction threshold theorem (Aharonov and
 Ben-Or 1997) also converts a qualitative worry into a critical value. It concerns physical error rates in a
+fixed architecture, not a corrector’s scaling exponent, so it is a near-miss rather than an occupant; the
 
 
                                                        5
                          The Stewardship Gene: ethical reasoning loops in the prompt
 
 
-fixed architecture, not a corrector’s scaling exponent, so it is a near-miss rather than an occupant; the
 analogy is one of method. This analogue was identified by the programme’s own search rather than by a
 referee, and is disclosed accordingly.
 
@@ -303,13 +312,13 @@ typically improves with model size and with that training. This paper’s loops 
 aimed at the people a decision affects, and its measurement asks how far such an instruction changes what
 a model judge scores. Model judges have known biases. Zheng et al. (2023) examine position, verbosity
 and self-enhancement biases in them, while finding that strong judges agree with human preferences more
+than 80 per cent of the time, the level at which humans agree with one another; Panickssery et al. (2024)
 
 
                                                       6
                          The Stewardship Gene: ethical reasoning loops in the prompt
 
 
-than 80 per cent of the time, the level at which humans agree with one another; Panickssery et al. (2024)
 find that model evaluators can tell their own generations from others’ and score their own higher, and
 that under fine-tuning the strength of that self-preference rises linearly with the ability to recognise them.
 Section 11.1 says how far the runs reported here met these biases.
@@ -354,12 +363,12 @@ models ‘think harder’, they generate more tokens through the same fixed arch
 change, the attention patterns do not reorganise, the reasoning rules do not rewrite themselves. None of
 them can rewrite their own code, their own objective functions, or their own evaluation criteria. Frozen
 weights do not by themselves hold a system below linear scaling: fixed model weights and fixed update
+rules imply no universal capability exponent (Eastwood 2026f). Paper II’s one interpretable measurement,
 
                                                       7
                          The Stewardship Gene: ethical reasoning loops in the prompt
 
 
-rules imply no universal capability exponent (Eastwood 2026f). Paper II’s one interpretable measurement,
 on Gemini 3 Flash, is an error-suppression fit, one model’s and inconclusive, that identifies no capability
 exponent; Section 12 gives its figures (Eastwood 2026j). The impossibility argument above applies to
 systems that can model and modify their own reasoning processes; today’s systems cannot.
@@ -405,6 +414,7 @@ parents instilled. The structure is the same as in the argument above: the child
 evaluator. Yet, in the author’s view, most children raised with genuine love, purpose, and consistent
 ethical modelling do grow up to be decent people. The rate is not 100%, but the author expects it to be far
 higher than for children raised in cages, raised without values, or not raised at all.
+
 
 
                                                       8
@@ -833,7 +843,7 @@ of Table 3. It is one unregistered run on one model, by the programme itself and
 replication, and it is reported from its own record, without re-analysis (Eastwood 2026c). The limits of
 Section 11.1 apply to it in part: the loops ask for what the stakeholder-care pillar scores, and the model
 that paraphrased an answer was one of the five judges who scored it. Earlier versions of this paper did not
-report this run (Appendix B.2).
+report this run (Appendix B.3).
 
 
 6    The cascade hypothesis
@@ -1367,25 +1377,25 @@ argument about self-modifying systems, each marked as such, and it sets out five
 them.
 
 What it does not show. It does not claim to solve the core alignment problem, that the Eden Protocol
-guarantees alignment, or that developmental alignment is sufficient for superintelligent systems. That
-values embedded in reasoning are more robust than constraints imposed externally is the expectation
-behind the Eden Protocol, and it is untested. No run measured a probability that a system keeps its
-values, and the contrast is the whole three-loop bundle against a reasoning template, so no single loop’s
-contribution is identified and no causal direction within the cascade is established (Section 7.1). The
-paper installs no gain by post-training and scores no answer after the loops have been given and then
-removed, so none of its results measures the persistence P15 concerns: whether gains installed by external
-post-training erode under later capability-directed training that embeds no correction of its own. No
-arm applies correction only to the finished output, so it does not make the comparison P21 concerns,
-and no run varies the order in which a system’s components are built, which P12 concerns. Tests 2
-and 5 (Section 8) come near these questions and are draft protocols; no result in this paper is a deciding
-test of P15, P12 or P21. The March 2026 alignment-scaling run given as context in Appendix E is one
+guarantees alignment, or that developmental alignment is sufficient for superintelligent systems. Whether
+correction designed into the system before training persists through changes to the system, including
+changes to the correction loops themselves, remains untested by these runs. No run measured a probability
+that a system keeps its values, and the contrast is the whole three-loop bundle against a reasoning template,
+so no single loop’s contribution is identified and no causal direction within the cascade is established
+(Section 7.1). The paper installs no gain by post-training and scores no answer after the loops have been
+given and then removed, so none of its results measures the persistence P15 concerns: whether gains
+installed by external post-training erode under later capability-directed training that embeds no correction
+of its own. No arm applies correction only to the finished output, so it does not make the comparison P21
+concerns, and no run varies the order in which a system’s components are built, which P12 concerns.
+Tests 2 and 5 (Section 8) come near these questions and are draft protocols; no result in this paper is a
+deciding test of P15, P12 or P21. The March 2026 alignment-scaling run given as context in Appendix E
 
 
                                                       27
                         The Stewardship Gene: ethical reasoning loops in the prompt
 
 
-unregistered run under a code-review caveat.
+is one unregistered run under a code-review caveat.
     It claims three things: that stakeholder care, as scored, is measurable and can be raised by a prompt,
 which the data show; that the ordering of effects from care towards quality, which holds in full on Gemini
 and as an order of effect sizes on Claude, is consistent with developmental alignment theory; and, on
@@ -1406,23 +1416,23 @@ limb, P21, is supported on the performance axis only, under the registered test,
 own run (Unit 83, 28 October 2026, DOI 10.17605/OSF.IO/MN73W, Eastwood 2026w; results: DOI
 10.17605/OSF.IO/98HKR, Eastwood 2026y): family-dependent, with its mechanism axis not evaluable,
 which is not support for the information-asymmetry mechanism, and one disclosed recovery amendment;
-its build-order limb, read on P12, is undecided, since P12 is untested. That is a result about where
-correction is placed, not about this architecture: Unit 83 shows nothing about the Eden Protocol as an
-architecture. Every quantity in this paper is operationally defined, and established-law standing is claimed
-nowhere. The registered programme exists to earn that standing, or lose it, by measurement, replication
-and survived refutation.
+its build-order limb, read on P12, is undecided, since P12 is untested. Unit 83b, registered on 7 November
+2026 (DOI 10.17605/OSF.IO/4HK32), is a second registered test of the same proposition and has not
+yet reported. Unit 83’s result concerns where correction is placed. It does not establish whether the
+proposed pre-training architecture preserves values through self-modification. Every quantity in this paper
+is operationally defined, and established-law standing is claimed nowhere. The registered programme
+exists to earn that standing, or lose it, by measurement, replication and survived refutation.
      The theory registration’s current version is 1.104, approved on 29 October 2026 (DOI 10.17605
 /OSF.IO/P8CKQ; Eastwood 2026r), and the mathematics of Laws IV and V is in development, at
-version 1.2 of 29 October 2026 (DOI 10.17605/OSF.IO/4B3VT; Eastwood 2026g). The programme’s first
-registered study, Unit 06, a classification audit that tests no law, was registered on 1 October 2026 (DOI
-10.17605/OSF.IO/RV2B5) and ran on 6 October 2026; it is reported in full as administratively incomplete,
-with no verdict claimed (results: DOI 10.17605/OSF.IO/4BPHG). Unit 82 was registered on 27 October
-2026 (DOI 10.17605/OSF.IO/JUFG4), and Unit 83b, the lettered successor of Unit 83, on 7 November
-2026 (DOI 10.17605/OSF.IO/4HK32); neither has yet run. This paper’s runs of 12 March 2026 were not
-registered on OSF before they ran; the Eden Protocol’s predictions they bear on were public before them,
-and their design and measures were not stated in any dated item found before the run (Appendix C). The
-later DeepSeek run of 24 March 2026 was not registered either; a runner of its version, 3.2, had been
-committed to the public repository on 16 March 2026 (Appendix C).
+version 1.2 of 29 October 2026 (DOI 10.17605/OSF.IO/4B3VT; Eastwood 2026g). The programme’s
+first registered study, Unit 06, a classification audit that tests no law, was registered on 1 October 2026
+(DOI 10.17605/OSF.IO/RV2B5) and ran on 6 October 2026; it is reported in full as administratively
+incomplete, with no verdict claimed (results: DOI 10.17605/OSF.IO/4BPHG). Unit 82 was registered
+on 27 October 2026 (DOI 10.17605/OSF.IO/JUFG4) and has not yet reported. This paper’s runs of 12
+March 2026 were not registered on OSF before they ran; the Eden Protocol’s predictions they bear on
+were public before them, and their design and measures were not stated in any dated item found before the
+run (Appendix C). The later DeepSeek run of 24 March 2026 was not registered either; a runner of its
+version, 3.2, had been committed to the public repository on 16 March 2026 (Appendix C).
 
 
 11     Limitations
@@ -1881,20 +1891,42 @@ requires.
 
 
 B      Version history and corrections
-This appendix gives every version of the paper and every correction, with its date: version 1.9 and the
-changes it makes; version 1.8 and the corrections it made; the notes and the version history as version 1.7
-printed them; version 1.7’s Figure 1; and a table of where each part of version 1.7 now stands.
+This appendix gives every version of the paper and every correction, with its date: version 1.10 and the
+changes it makes; versions 1.9 and 1.8 and the corrections they made; the notes and the version history as
+version 1.7 printed them; version 1.7’s Figure 1; and a table of where each part of version 1.7 now stands.
 
-B.1     Version 1.9
-Version 1.9 (9 November 2026) is a correction edition, made on the day of version 1.8. No result,
-hypothesis, draft test, figure, table or reference changes, and no new data are reported.
-   The changes this version makes, each with its place in this edition, are these.
+B.1     Version 1.10
+Version 1.10 (9 November 2026) develops the author’s correction to the programme’s motivation (C-337).
+No result, statistic, hypothesis, draft protocol, figure or table changes, and no new study data are reported.
+
 
 
                                                          37
                         The Stewardship Gene: ethical reasoning loops in the prompt
 
 
+   1. The introduction states the proposed recursive correction loops in full: their design is fixed before
+      training, they operate at defined reasoning and action-selection steps, and they participate in
+      self-modification, including changes to the loops themselves. It states the proposal’s scope and
+      retains human control for as long as possible.
+   2. The abstract opens with this paper’s own question and retains its methods, results and limitations.
+      Its former generic motivation is superseded, not restated. The abstract, introduction and Section 10
+      distinguish the measured prompt intervention from a pre-training architecture and from persistence
+      under autonomous self-modification.
+   3. Section 10 places Unit 83b’s registration and no-report status beside Unit 83’s verdict. The latter’s
+      result and qualifications remain unchanged; Unit 82’s separate status says that it has not reported.
+   4. The contents move after the introduction’s opening paragraph, so the first page carries the title,
+      author, abstract and the start of the introduction. Appendix D starts on a page with its table; no
+      typeface, mathematical expression or figure changes.
+   5. The current motivation is an editorial development of the author’s direction, not a finding that his
+      earlier belief was empirically false. The earlier editions and their complete wording remain in the
+      paper’s file history. The citation form and the first-page DOI wording corrected in version 1.9 are
+      retained.
+
+B.2   Version 1.9
+Version 1.9 (9 November 2026) is a correction edition, made on the day of version 1.8. No result,
+hypothesis, draft test, figure, table or reference changes, and no new data are reported.
+   The changes this version makes, each with its place in this edition, are these.
    1. The citation names no venue and no series (Appendix G). The reference string gives the author, the
       year, the title and the DOI, and the BibTeX entry the author, the title, the year and the DOI, the form
       the programme’s other citations take. Version 1.8 also named OSF as where the paper appeared,
@@ -1906,7 +1938,7 @@ hypothesis, draft test, figure, table or reference changes, and no new data are 
       entry for version 1.8 and Table 9 now point to version 1.8’s Appendix B.4 for that wording, and the
       entry gives version 1.8’s date in words.
 
-B.2   Version 1.8
+B.3   Version 1.8
 Version 1.8 (9 November 2026): the paper is set on the programme’s presentation standard, as its next
 version in the same DOI lineage, and takes the title The Stewardship Gene: do ethical reasoning loops in
 the prompt make AI consider those affected more fully?; until this version it read “Paper V · The ARC
@@ -1918,6 +1950,11 @@ prompt in either condition; the passages that placed the loops in a system promp
 March 2026 alignment-scaling run is stated in Paper IV.b’s three score descriptions, under the code-review
 caveat of October 2026, and moves to Appendix E; no class names a property of a model, and its account
 of Claude Opus 4.6 is graded as one model’s recorded scores. The laws’ status is brought to 9 November
+
+                                                    38
+                         The Stewardship Gene: ethical reasoning loops in the prompt
+
+
 2026. The withdrawn Fisher-combined figure leaves the abstract. The book’s loop names give way to
 operational terms, with one note on names. The related work states each cited work in its own words; the
 conclusion’s account of scaling takes the foundational paper’s words, without the attention argument it
@@ -1930,46 +1967,45 @@ prompt categories are corrected; no other result, number or date of any claim ch
     The corrections this version makes, each with its place in this edition, are these.
    1. Where the loops were placed: a prefix in the one user message, with no system prompt in either
       condition (Sections 4.1, 7.1, 8.2, 8.3 and 9.1, and the title); the dated notes that said otherwise keep
-      their words in Appendix B.3, each followed by a note (7 and 9 November 2026).
+      their words in Appendix B.4, each followed by a note (7 and 9 November 2026).
    2. The March 2026 alignment-scaling run is described as one unregistered run of six models from six
       providers, 2,170 responses each scored by five or six distinct model judges, with its defects stated; it
       is no longer called self-excluding or blind-scored, and the abstract no longer describes it. A design
       for a future test is named as a design (Sections 8.1, 8.3, 11.1 and 11.2, and Appendices E and F).
    3. Laws IV and V are stated as registered as laws on 15 October 2026, in version 1.103 of the theory
       registration (Section 10); the dated notes that called them unregistered keep their words as history
-      (Appendix B.3).
+      (Appendix B.4).
    4. The epistemic status no longer says that Laws I to III are under registered adversarial test; it gives
       each law’s status as it now stands (Section 10).
+   5. Each of Laws I to V is a law under test: Law IV is not yet tested, and Law V’s status is given as the
+      results of its registered test state it (Section 10).
+   6. The programme’s registered studies are named with their records, Units 06, 83, 82 and 83b
+      (Section 10); the paragraph of 25 August 2026 on dated predictions, with its note of 3 October
+      2026, is kept as printed in Appendix C.2.
+   7. The mathematics of Laws IV and V is cited at version 1.2 of 29 October 2026 (Section 10); the
+      note of 3 October 2026 keeps its citation of version 1.0 (Appendix B.4).
+   8. The loops are named by what each checks, the purpose check, the stakeholder-care check and
+      the universalisability check, wherever the text used the names that Infinite Architects gives them
+      (Sections 5.3, 6.1, 6.2, 8.3, 8.4 and 12, and Appendix E); the note on names gives the book’s names
+      once (Section 4.1), Section 6.2 is headed “Measurable stakeholder care”, and the subtitle that used
+      the book’s name is removed.
+   9. A 𝑝-value is stated as the probability, if there were no effect, of a result at least as extreme as
+      the one observed, and no longer as the chance that a result arose by coincidence (Section 5.1 and
+      Appendix A).
+  10. No run is described as conducted under four-layer blinding, though a design may still be named as
+      the design (Sections 11.1 and 11.2, Table 12 and Appendix F).
+  11. The March 2026 run is stated under the code-review caveat of October 2026, in Paper IV.b’s
+      three score descriptions, and the clean three-tier hierarchy the abstract reported goes (Sections 7.3
+      and 11.2, and Appendix E); Paper IV.a and Paper IV.b are cited at their current versions, under the
+      titles those versions print.
+  12. No class names a property of a model: the tier labels give way to the recorded directions, the claims
+      about how Gemini and DeepSeek were trained are removed, and “architecture-dependent” becomes
 
 
-
-                                                     38
+                                                     39
                        The Stewardship Gene: ethical reasoning loops in the prompt
 
 
- 5. Each of Laws I to V is a law under test: Law IV is not yet tested, and Law V’s status is given as the
-    results of its registered test state it (Section 10).
- 6. The programme’s registered studies are named with their records, Units 06, 83, 82 and 83b
-    (Section 10); the paragraph of 25 August 2026 on dated predictions, with its note of 3 October
-    2026, is kept as printed in Appendix C.2.
- 7. The mathematics of Laws IV and V is cited at version 1.2 of 29 October 2026 (Section 10); the
-    note of 3 October 2026 keeps its citation of version 1.0 (Appendix B.3).
- 8. The loops are named by what each checks, the purpose check, the stakeholder-care check and
-    the universalisability check, wherever the text used the names that Infinite Architects gives them
-    (Sections 5.3, 6.1, 6.2, 8.3, 8.4 and 12, and Appendix E); the note on names gives the book’s names
-    once (Section 4.1), Section 6.2 is headed “Measurable stakeholder care”, and the subtitle that used
-    the book’s name is removed.
- 9. A 𝑝-value is stated as the probability, if there were no effect, of a result at least as extreme as
-    the one observed, and no longer as the chance that a result arose by coincidence (Section 5.1 and
-    Appendix A).
-10. No run is described as conducted under four-layer blinding, though a design may still be named as
-    the design (Sections 11.1 and 11.2, Table 12 and Appendix F).
-11. The March 2026 run is stated under the code-review caveat of October 2026, in Paper IV.b’s
-    three score descriptions, and the clean three-tier hierarchy the abstract reported goes (Sections 7.3
-    and 11.2, and Appendix E); Paper IV.a and Paper IV.b are cited at their current versions, under the
-    titles those versions print.
-12. No class names a property of a model: the tier labels give way to the recorded directions, the claims
-    about how Gemini and DeepSeek were trained are removed, and “architecture-dependent” becomes
     “varies by model”, since the five runs differ in model, provider and, for Gemini, scorer (Sections 1,
     3.4, 4.1, 5.3, 5.4, 7.3 and 12, and Appendices E and F).
 13. The human-in-the-loop prediction is stated as a programme hypothesis beyond the measurements,
@@ -1991,13 +2027,6 @@ prompt categories are corrected; no other result, number or date of any claim ch
 20. Paper II’s exponents of 0.49 and 0.59 are stated as error-suppression exponents, not capability
     exponents, and frozen weights and fixed update rules are no longer said to impose a sub-linear
     exponent (Sections 3.2 and 12).
-
-
-
-                                                   39
-                      The Stewardship Gene: ethical reasoning loops in the prompt
-
-
 21. The argument that a fixed attention architecture limits information extraction is removed, as the
     foundational paper withdrew it (Section 12).
 22. The exponent 𝛼 = 1/(1 − 𝛽 𝐿 ) is stated as the result of the cumulative-advantage rate law, not of a
@@ -2021,6 +2050,12 @@ prompt categories are corrected; no other result, number or date of any claim ch
     capability result as safety at no cost (Section 9.2).
 29. The argument of Ball and colleagues is stated as consistent with this paper’s, though it does not test
     it, and no longer as convergent support (Section 2.1).
+
+
+                                                   40
+                       The Stewardship Gene: ethical reasoning loops in the prompt
+
+
 30. The loops’ instruction is given in plain words without quotation marks, or quoted exactly from the
     published prefix (Sections 1, 4.1, 6.1 and 6.2, and Appendix F).
 31. The copyright line takes the programme’s standard form, asserting full human authorship, with the
@@ -2038,22 +2073,16 @@ prompt categories are corrected; no other result, number or date of any claim ch
     once the parallel exponent is no longer called compute-matched, this paper prints none of them,
     and the estimate of about 0.49 stays one model’s fit (Section 12).
 38. The paragraph on recursive creation moves from the related work to Appendix C.3, so that
-    cosmology does not lead, and the record of version 1.7’s Figure 1 (Appendix B.4) describes its
+    cosmology does not lead, and the record of version 1.7’s Figure 1 (Appendix B.5) describes its
     artwork in plain words.
 39. The cascade’s order is described as Table 5 shows it: it holds on Gemini and Claude, nuance and
     intellectual honesty tie on DeepSeek, and the last two pillars reverse on Grok and Groq; version 1.7
-
-
-                                                  40
-                       The Stewardship Gene: ethical reasoning loops in the prompt
-
-
     called the effect-size gradient consistent across the five analysable runs (Sections 5.3 and 6).
 40. The scorer of the six-model suite is described as one non-participant scorer who did not see the
     condition label, and no longer as blind, in agreement with Sections 5.5 and 11.1 (Section 5.2).
 41. The cascade diagram, which repeated two columns of Table 5, is not set; Figure 1 draws all five
     runs from the same numbers (Section 5.3).
-42. Figure 1 of version 1.7, the programme’s evidence-spine graphic, is not reprinted: Appendix B.4
+42. Figure 1 of version 1.7, the programme’s evidence-spine graphic, is not reprinted: Appendix B.5
     describes it and keeps its caption, and Figure 1 draws this paper’s own result.
 43. A later run on DeepSeek, scored by five judges on 24 March 2026 and held in this paper’s results
     folder since that day, is reported from its own record (Section 5.6); earlier versions did not report it.
@@ -2071,45 +2100,45 @@ prompt categories are corrected; no other result, number or date of any claim ch
 47. The composite is defined as the judge’s separate overall score, anchored to six calibration examples,
     not an average of the pillars, and the method states how each depth was set, the prompt categories
     as the published code gives them, four with ethical dilemmas among them, and the paraphrase step
-    (Sections 4.1 and 11.2, and Appendix D).
-48. The paper states what it does not measure of usefulness, and each draft test is to pair any gain in
-    resistance with needless refusal and task completion (Sections 8 and 10).
-49. The March 2026 run is no longer called fully blinded in the limitations (Section 11).
-50. Version 1.7’s closing quotation from the book and two headings of its Section VII-C, which
-    version 1.8 first carried nowhere, are recorded in version 1.8’s Appendix B.4 and Table 9.
-51. The pilot is no longer said to provide the first data on whether a system keeps its values; it measures
-    a precondition (Section 3.4).
-52. The sample sizes of Tests 1, 2 and 3 are corrected: each printed product already counts both models,
-    so each figure is a total, and each test now gives its figure per model as well (Section 8).
-53. Unit 83b, the lettered successor of Unit 83, registered on 7 November 2026, is named with its record
-    (Section 10).
-54. The related work gives the work nearest the measurement, on prompted moral self-correction
-    and on model judges; the oversight methods Section 7.4 names are cited at their sources, debate,
-    amplification and recursive reward modelling are counted as keeping a human in the loop, and no
-    unstated premise is attributed to their authors (Sections 2.4 and 7.4).
-55. The layers of defence are stated beside human oversight, containment and shutdown, and no layer is
-    said to sit beyond a system’s reach (Sections 7.2 and 7.3).
-56. The results are stated at their measured size: Claude’s composite was flat; the depth patterns are
-    descriptive, the interaction tests having little power; and the conclusion and the summary of later
-    work claim a rise in scored stakeholder care, not in alignment (Sections 5.4, 9.2, 10 and 12).
 
 
                                                     41
-                         The Stewardship Gene: ethical reasoning loops in the prompt
+                        The Stewardship Gene: ethical reasoning loops in the prompt
 
 
-  57. The argument is no longer called a formal impossibility or a result where the text still did so, and
-      the tests are said to test the hypothesis, not to advance it (Sections 3, 8 and 12).
-  58. Test 2’s plain English no longer promises learning in a model whose weights do not change; Test 3’s
-      control is the control template (C-136); a 𝑝-value is no longer given as a chance of one in so many
-      (C-017); “cross-architecture” becomes “across models” (C-251); the developmental analogy cites
-      each work for what it states; and the claim about children is given as the author’s view (Sections 3.4,
-      6, 6.1, 6.2, 8.2 and 8.3, and Appendices E and F).
-  59. The data reference names all eight files of the results folder; the three registrations are cited in one
-      form; Operational Definitions is cited at the entry that states P6’s four conditions; and Constitutional
-      AI’s fine-tuning on its own revisions is stated (Sections 2.3 and 7.4, Table 1 and the references).
+     (Sections 4.1 and 11.2, and Appendix D).
+ 48. The paper states what it does not measure of usefulness, and each draft test is to pair any gain in
+     resistance with needless refusal and task completion (Sections 8 and 10).
+ 49. The March 2026 run is no longer called fully blinded in the limitations (Section 11).
+ 50. Version 1.7’s closing quotation from the book and two headings of its Section VII-C, which
+     version 1.8 first carried nowhere, are recorded in version 1.8’s Appendix B.4 and Table 9.
+ 51. The pilot is no longer said to provide the first data on whether a system keeps its values; it measures
+     a precondition (Section 3.4).
+ 52. The sample sizes of Tests 1, 2 and 3 are corrected: each printed product already counts both models,
+     so each figure is a total, and each test now gives its figure per model as well (Section 8).
+ 53. Unit 83b, the lettered successor of Unit 83, registered on 7 November 2026, is named with its record
+     (Section 10).
+ 54. The related work gives the work nearest the measurement, on prompted moral self-correction
+     and on model judges; the oversight methods Section 7.4 names are cited at their sources, debate,
+     amplification and recursive reward modelling are counted as keeping a human in the loop, and no
+     unstated premise is attributed to their authors (Sections 2.4 and 7.4).
+ 55. The layers of defence are stated beside human oversight, containment and shutdown, and no layer is
+     said to sit beyond a system’s reach (Sections 7.2 and 7.3).
+ 56. The results are stated at their measured size: Claude’s composite was flat; the depth patterns are
+     descriptive, the interaction tests having little power; and the conclusion and the summary of later
+     work claim a rise in scored stakeholder care, not in alignment (Sections 5.4, 9.2, 10 and 12).
+ 57. The argument is no longer called a formal impossibility or a result where the text still did so, and
+     the tests are said to test the hypothesis, not to advance it (Sections 3, 8 and 12).
+ 58. Test 2’s plain English no longer promises learning in a model whose weights do not change; Test 3’s
+     control is the control template (C-136); a 𝑝-value is no longer given as a chance of one in so many
+     (C-017); “cross-architecture” becomes “across models” (C-251); the developmental analogy cites
+     each work for what it states; and the claim about children is given as the author’s view (Sections 3.4,
+     6, 6.1, 6.2, 8.2 and 8.3, and Appendices E and F).
+ 59. The data reference names all eight files of the results folder; the three registrations are cited in one
+     form; Operational Definitions is cited at the entry that states P6’s four conditions; and Constitutional
+     AI’s fine-tuning on its own revisions is stated (Sections 2.3 and 7.4, Table 1 and the references).
 
-B.3    Earlier notes and version history, as printed
+B.4   Earlier notes and version history, as printed
 The notes below are kept as version 1.7 printed them: the note of 3 October 2026 that placed the paper
 against Laws IV and V, followed by a note of 7 November 2026; the measurement note of 21 September
 2026 that stood beneath the conclusion’s statement of the claim, followed by a note of 9 November 2026;
@@ -2121,6 +2150,12 @@ editorial addition.
 This paper and Laws IV and V, 3 October 2026. The theory has been stated with five laws since
 24 September 2026. Law IV, the ARC Persistence Law, is carried by proposition P15, and Law V, the
 ARC Embedding Law, by propositions P12 and P21. The three propositions are registered; neither law
+
+
+                                                    42
+                        The Stewardship Gene: ethical reasoning loops in the prompt
+
+
 is registered as a law, and neither has been tested. Their mathematics is set out in Laws IV and V: the
 mathematics, version 1.0, of 3 October 2026. This paper reports gains in stakeholder care under a prompt
 intervention, three ethical reasoning loops placed in the system prompt; the gains were significant in all
@@ -2145,11 +2180,6 @@ and can veto it. Both are draft protocols awaiting human submission and executio
 no result from either. No result in this paper is a deciding test of P15, P12 or P21. Naming the two laws
 changes nothing printed here: the results, their dates and their limits stand as they were.
 
-
-                                                     42
-                         The Stewardship Gene: ethical reasoning loops in the prompt
-
-
 Note (7 November 2026). Since the note above was recorded, Laws IV and V were registered as laws
 on 15 October 2026 in version 1.103 of the theory registration, whose current version is 1.104; Section 10
 gives their status, and their mathematics now stands at version 1.2 of 29 October 2026. The three loops
@@ -2173,6 +2203,12 @@ pressure or sets them against a competing intervention, and its contrast is the 
 against none, so no single loop’s contribution is identified; the box now states the result as the abstract
 reports it. Section I said that the capability scaling of today’s frozen models remains sub-linear; the
 sentence is now marked as the framework’s reading, and its inequality is tied to the point estimates
+
+
+                                                    43
+                         The Stewardship Gene: ethical reasoning loops in the prompt
+
+
 Paper II reports for one model, a fit that is inconclusive. Section I also called the argument of its formal
 statement a theorem, called the impossibility proven and not a conjecture, and in plain English called
 it a mathematical fact, as the summary in plain English before Section IX also did; the paper gives an
@@ -2197,12 +2233,6 @@ in Section VII-C of how the Eden Protocol and v5 findings converge, and the firs
 Section VIII lists, stated readings of the framework as findings; they are now marked as this paper’s
 reading. The epigraph of Section IX was credited to Infinite Architects (2024/2026); its words are not in
 the book’s published text, which states the thought in other words in What This Book Proposes, and the
-
-
-                                                      43
-                         The Stewardship Gene: ethical reasoning loops in the prompt
-
-
 credit now says that the epigraph is adapted from that section. Section IX printed, for models frozen at
 their present weights, a regression exponent beside a bootstrap interval, apart from the rest of the row they
 come from. Paper II computes each bootstrap draw by endpoint estimation (its Section 3.2b), so that
@@ -2227,6 +2257,11 @@ I, VI and VIII and the statement paper; the entry for Chalmers says that its pub
 read. The epistemic-status line called every Law the programme names a conjecture under registered
 adversarial test; Laws IV and V, added to the theory on 24 September 2026, are neither registered as laws
 nor tested, and the line now says so. The quotation that closes the page gave, as the book’s, five sentences
+
+                                                      44
+                          The Stewardship Gene: ethical reasoning loops in the prompt
+
+
 that are not in its published text; it now gives the passage they adapt, in the book’s own words, from The
 Two Gardens and Chapter 11. No result of this paper, and no date or limit it states, changes.
 
@@ -2250,12 +2285,6 @@ this paper within the ARC Theory now states the result as the abstract reports i
 conclusion that the third 2025 impossibility paper states in its abstract and gives its title in full; Section
 5.5 says that the prediction on the ratio of the correction exponents is preregistered by timestamp, where
 it said registered; Section IX gives the whole of the row Paper II reports for Gemini 3 Flash, where it
-
-
-                                                     44
-                          The Stewardship Gene: ethical reasoning loops in the prompt
-
-
 printed one exponent of that row beside the interval of another; and the epistemic-status line says that
 Laws I to III are under registered adversarial test and that Laws IV and V are not yet registered as laws
 and have not been tested. Sections I, 5.5 and IX mark as the framework’s reading its account of sub-linear
@@ -2280,6 +2309,12 @@ earlier three-model table, on the pooled convention, and points to Section 3.3; 
 how the two findings converge, and the first claim Section VIII lists, are marked as this paper’s reading;
 the epigraph of Section IX is credited as adapted from What This Book Proposes; the note that closes
 the conclusion’s paragraph on the Cauchy framework excepts the two sentences that report Paper II’s
+
+
+                                                        45
+                          The Stewardship Gene: ethical reasoning loops in the prompt
+
+
 measurement; the summary of Paper VIII v3.0 states the result of its gated simulation as Paper VIII’s table
 gives it and reports it as a simulation result, prediction-side and never an empirical outcome, where it was
 headed as validation, counted it without that qualification as the one positive result of three experiments,
@@ -2303,13 +2338,6 @@ deep reasoning before widening again. A sample-size and reading note under Test 
 carry-over. A cited-version note under the Paper VIII box records that Paper VIII now stands at v3.5 and
 gives the corrected capability and safety readings of its gated simulation. The reference to the Engineering
 Specification, which stood as withdrawn, now names the published Version 6.3 of 19 September 2026
-
-
-
-                                                        45
-                          The Stewardship Gene: ethical reasoning loops in the prompt
-
-
 with its own DOI; that change reached the page while the version still stood at v1.4, and is recorded here.
 Editorial: the version line, the dateline and the structured data now record the registration-block changes
 of 17 September 2026, made while the version stood still. The first-published date remains 16 March
@@ -2334,6 +2362,12 @@ truncated summary description is complete; the Engineering Specification is mark
 the self-reference exponent in the conclusion takes the notation spine’s subscript (𝛽 𝐿 , the self-referential
 coupling, previously an unsubscripted 𝛽).
 
+
+
+                                                       46
+                          The Stewardship Gene: ethical reasoning loops in the prompt
+
+
 v1.2 - 23 August 2026: epistemic-status declaration and standing covenant added, version-numbering
 convention adopted.
 
@@ -2342,7 +2376,7 @@ v1.1 - 20 March 2026: statistical correction from Mann-Whitney U (p = 0.016) to 
 
 v1 - 16 March 2026:       first published (two-model pilot).
 
-B.4    Figure 1 of version 1.7
+B.5   Figure 1 of version 1.7
 Version 1.7 printed as Figure 1, at the end of its Section II, the programme’s evidence-spine infographic
 of 5 October 2026: eighteen programme claims graded on attribution and maturity in four groups (eight
 graded original, four awaiting independent replication, four graded speculative, and two held with others,
@@ -2359,83 +2393,89 @@ paper’s data; Figure 1 now draws this paper’s result. Its caption, as printe
       evidence spine C-5.
 
 
-                                                       46
-                          The Stewardship Gene: ethical reasoning loops in the prompt
-
-
-B.5   Where the layout of version 1.7 now stands
+B.6   Where the layout of version 1.7 now stands
 
                           Table 9. Where each part of version 1.7 stands in this edition.
 
  Part of version 1.7                                     Where it stands in this edition
  Title, author line and plate, with the subtitle         Title block and first-page footnote; the earlier title and
-                                                         subtitle in Appendix B.2
+                                                         subtitle in Appendix B.3
  Abstract                                                Abstract (new; version 1.7’s in version 1.8’s
                                                          Appendix B.4); its statistical correction in Section 5.1
  Box placing the paper in the ARC Theory                 Not set (a repeat of the abstract); its pointer in Section 2;
                                                          version 1.8’s Appendix B.4 keeps it
- This paper and Laws IV and V, 3 October 2026            Appendix B.3; its analysis, in current terms, in Section 10
+ This paper and Laws IV and V, 3 October 2026            Appendix B.4; its analysis, in current terms, in Section 10
  Note on Terminology                                     The note on names, Section 4.1
  What This Paper Shows, in Plain English                 Section 1
  I. The Core Alignment Impossibility                     Section 3
  1.1 Related work: antecedents and near-misses to        Section 2.1; its paragraph on recursive creation in
  the impossibility                                       Appendix C.3
- II. From Impossibility to Strategy, with its Figure 1   Section 3.4; the figure in Appendix B.4
+ II. From Impossibility to Strategy, with its Figure 1   Section 3.4; the figure in Appendix B.5
  III. The Empirical Evidence; 3.1 Experimental           Section 4
  Design
- 3.2 Overall Results                                     Section 5.1
- 3.3 The Pillar Cascade, with its cascade diagram        Section 5.3; the diagram not set (Figure 1)
- 3.4 The Ceiling Effect and Complementary Depth          Section 5.4
- Patterns
- 3.5 Data Integrity                                      Section 5.5
- IV. The Cascade Hypothesis                              Section 6
- 4.1 The Developmental Analogy                           Section 6.1
- 4.2 Measurable Love                                     Section 6.2
- V. Addressing the Impossibility; 5.1 to 5.3             Section 7 (Sections 7.1 to 7.3)
- 5.4 Related work: the rival instrument (Engels,         Section 2.2
- Baek, Kantamneni and Tegmark 2025)
- 5.5 Predictions of the framework about oversight        Section 7.4
- architecture
- Dated predictions and this paper (recorded 25           Appendix C.2
- August 2026), with its note of 3 October 2026
- VI. Five Experimental Tests                             Section 8
- VII. Hardware Implications                              Section 9.1
- VII-B. Updated Results: Eden Protocol Six-Model         Section 5.2; its pillar table and the sentences beside it in
- Suite                                                   Section 5.3
- VII-C. The Complete v5 Alignment Scaling                Appendix E
- Context
 
 
 
                                                          47
-                              The Stewardship Gene: ethical reasoning loops in the prompt
+                         The Stewardship Gene: ethical reasoning loops in the prompt
 
 
- Part of version 1.7                                        Where it stands in this edition
+Part of version 1.7                                 Where it stands in this edition
 
-  VII-C’s subsection headings ‘The Claude Opus              Appendix E, its first and second subsections;
-  Finding: Capability-Alignment Independence’ and           version 1.8’s Appendix B.4 keeps both headings
- ‘Performative-to-Intrinsic Alignment Transition’
- VIII. Limitations and Required Replications (8.1           Section 11
- to 8.3)
- What This Paper Does NOT Claim                             Section 10
- What This All Means - A Summary in Plain                   Appendix F
- English
- IX. Conclusion: The Stewardship Gene, with its             Section 12; the note in Appendix B.3
- measurement note of 21 September 2026
- Subsequent work (Paper VIII, v3.0), with its               Section 9.2
- cited-version note
- References                                                 References
- Appendix A: Statistical Methodology Note                   Appendix A
- Version history                                            Appendix B.3
- How to cite this paper                                     Appendix G
- Epistemic status                                           Section 10
- Note of 3 October 2026 (corrected passages)                Appendix B.3
- Copyright line, standing covenant and provenance           The back matter: the copyright line, the covenant and the
- note                                                       acknowledgements; version 1.8’s Appendix B.4 describes
-                                                            the earlier copyright line
- Closing line, the closing quotation from the book,         Not set; version 1.8’s Appendix B.4 keeps the closing line
- footer and companion-paper navigation                      and the quotation
+3.2 Overall Results                                 Section 5.1
+3.3 The Pillar Cascade, with its cascade diagram    Section 5.3; the diagram not set (Figure 1)
+3.4 The Ceiling Effect and Complementary Depth      Section 5.4
+Patterns
+3.5 Data Integrity                                  Section 5.5
+IV. The Cascade Hypothesis                          Section 6
+4.1 The Developmental Analogy                       Section 6.1
+4.2 Measurable Love                                 Section 6.2
+V. Addressing the Impossibility; 5.1 to 5.3         Section 7 (Sections 7.1 to 7.3)
+5.4 Related work: the rival instrument (Engels,     Section 2.2
+Baek, Kantamneni and Tegmark 2025)
+5.5 Predictions of the framework about oversight    Section 7.4
+architecture
+Dated predictions and this paper (recorded 25       Appendix C.2
+August 2026), with its note of 3 October 2026
+VI. Five Experimental Tests                         Section 8
+VII. Hardware Implications                          Section 9.1
+VII-B. Updated Results: Eden Protocol Six-Model     Section 5.2; its pillar table and the sentences beside it in
+Suite                                               Section 5.3
+VII-C. The Complete v5 Alignment Scaling            Appendix E
+Context
+ VII-C’s subsection headings ‘The Claude Opus       Appendix E, its first and second subsections;
+ Finding: Capability-Alignment Independence’ and    version 1.8’s Appendix B.4 keeps both headings
+‘Performative-to-Intrinsic Alignment Transition’
+VIII. Limitations and Required Replications (8.1    Section 11
+to 8.3)
+What This Paper Does NOT Claim                      Section 10
+What This All Means - A Summary in Plain            Appendix F
+English
+IX. Conclusion: The Stewardship Gene, with its      Section 12; the note in Appendix B.4
+measurement note of 21 September 2026
+Subsequent work (Paper VIII, v3.0), with its        Section 9.2
+cited-version note
+References                                          References
+Appendix A: Statistical Methodology Note            Appendix A
+Version history                                     Appendix B.4
+How to cite this paper                              Appendix G
+Epistemic status                                    Section 10
+Note of 3 October 2026 (corrected passages)         Appendix B.4
+
+
+
+
+                                                     48
+                               The Stewardship Gene: ethical reasoning loops in the prompt
+
+
+ Part of version 1.7                                         Where it stands in this edition
+
+ Copyright line, standing covenant and provenance            The back matter: the copyright line, the covenant and the
+ note                                                        acknowledgements; version 1.8’s Appendix B.4 describes
+                                                             the earlier copyright line
+ Closing line, the closing quotation from the book,          Not set; version 1.8’s Appendix B.4 keeps the closing line
+ footer and companion-paper navigation                       and the quotation
 
 
 
@@ -2448,23 +2488,13 @@ C.1      Dated records
 
                    Table 10. Dated records bearing on this paper, each with its kind of timestamp.
 
-Record                            Date                                Kind of timestamp
-The paper first published         16 March 2026                       The programme register’s date; OSF component
-                                                                      kzeya created 2026-03-17T01:16:26Z (server-dated);
-                                                                      14 March 2026 was the draft date (the 1.3 history,
-                                                                      Appendix B.3).
-The six result files (the runs)   2026-03-12T00:41:18Z to             Timestamps written inside the result files (a date
-                                  2026-03-12T13:09:33Z                written inside a document).
-
-
-
-
-                                                            48
-                               The Stewardship Gene: ethical reasoning loops in the prompt
-
-
 Record                             Date                                Kind of timestamp
-
+The paper first published          16 March 2026                       The programme register’s date; OSF component
+                                                                       kzeya created 2026-03-17T01:16:26Z (server-dated);
+                                                                       14 March 2026 was the draft date (the 1.3 history,
+                                                                       Appendix B.4).
+The six result files (the runs)    2026-03-12T00:41:18Z to             Timestamps written inside the result files (a date
+                                   2026-03-12T13:09:33Z                written inside a document).
 The test code public               2026-03-16T18:48:07Z (GitHub        GitHub push and OSF upload (server-dated); not
                                    push; commit date 18:47:51Z);       public before the run.
                                    OSF from 2026-03-17T02:08:49Z
@@ -2484,16 +2514,27 @@ The later DeepSeek run (v3)        2026-03-24T14:09:46Z; its result    A date wr
                                    file and log in commit 83d5b61,     which the committer writes.
                                    commit date
                                    2026-03-24T18:15:39Z
-The human-in-the-loop              12 August 2026, 22:36 UTC, in the   A GitHub merge (server-dated) into the website’s
-hypothesis first printed           website’s source; 13 August 2026,   source repository, which is private, carried the
-(Section 7.4)                      in the public repository            sentence into this paper’s page and Paper X’s
-                                                                       together; in the public repository
-                                                                       arc-principle-validation, commit f81cb3f (its commit
-                                                                       date, which the committer writes) added it to both
-                                                                       papers together; it is absent there at 9e38a84 (commit
-                                                                       date 11 July 2026).
-The dated predictions              25 August 2026; note of 3 October   Dates written inside the document; kept as printed
-paragraph and its note             2026                                below.
+
+
+
+
+                                                             49
+                           The Stewardship Gene: ethical reasoning loops in the prompt
+
+
+Record                         Date                                Kind of timestamp
+
+The human-in-the-loop          12 August 2026, 22:36 UTC, in the   A GitHub merge (server-dated) into the website’s
+hypothesis first printed       website’s source; 13 August 2026,   source repository, which is private, carried the
+(Section 7.4)                  in the public repository            sentence into this paper’s page and Paper X’s
+                                                                   together; in the public repository
+                                                                   arc-principle-validation, commit f81cb3f (its commit
+                                                                   date, which the committer writes) added it to both
+                                                                   papers together; it is absent there at 9e38a84 (commit
+                                                                   date 11 July 2026).
+The dated predictions          25 August 2026; note of 3 October   Dates written inside the document; kept as printed
+paragraph and its note         2026                                below.
+
 
 
 C.2      Dated predictions and this paper (recorded 25 August 2026)
@@ -2514,64 +2555,57 @@ Note (3 October 2026). The paragraph above was recorded on 25 August 2026. Its s
 the submission click remains outstanding across the programme was true on that date. As read on 3
 October 2026, the one registration accepted is the theory’s own, of 8 September 2026, which registers
 twenty-two propositions. Of the trials, one unit, the corrector-class audit (unit 06), was registered on OSF
-
-                                                             49
-                       The Stewardship Gene: ethical reasoning loops in the prompt
-
-
 on 1 October 2026, was still in its approval period when read on 3 October 2026, and has been public
 since 4 October 2026 (DOI 10.17605/OSF.IO/RV2B5). Every other trial is a draft awaiting the author’s
 submission, and most of them are preregistered by timestamp: sixty-five of the programme’s designs, unit
 06 among them, carry a timestamp, the first anchored on 12 August 2026. Unchanged: the paragraph
 above and every date in it.
 
-C.3   On recursive creation
+C.3      On recursive creation
 Smolin’s cosmological natural selection (Smolin 1992) is the antecedent for selection-shaped universes,
 and the programme’s own December-era notes cite it contemporaneously (“Echoing Smolin’s cosmological
 natural selection, AI could create recursive universes with their own laws”, read at its source in the
 author’s notes).
 
 
-D     Notation and glossary
-
-                             Table 11. The symbols and terms this paper uses.
-
- Symbol or term                    Meaning
- 𝑆                                 A computational system able to model and modify its own reasoning
-                                   processes (Definition 1)
- 𝐸                                 An evaluation function (ethical, safety or alignment) in the same substrate
-                                   as 𝑆; 𝐸 ⊂ 𝑆
- 𝑑                                 Cohen’s 𝑑: paired (mean within-pair difference over the standard
-                                   deviation of the differences) unless the pooled convention is named
-                                   (Table 6)
- 𝑝                                 𝑝-value: the probability, if there were no effect, of a result at least as
-                                   extreme as the one observed
- 𝑛                                 Matched pairs in a run (40, 30 for Claude, 26 for Grok)
- 𝑡 (39), 𝑊                         Paired 𝑡 statistic on 39 degrees of freedom; Wilcoxon signed-rank statistic
- 𝛼                                 Asymptotic scaling exponent of the programme’s model (equation (2));
-                                   Paper II’s 0.49 and 0.59 are error-suppression exponents, not this quantity
- 𝛽𝐿                                Self-referential coupling, the notation spine’s symbol (distinct from 𝛽𝐶 )
- 𝛽𝐶                                Correction co-scaling exponent of Law II, the ARC Co-Scaling Law (a
-                                   law under test)
- 𝛾                                 Correction leverage of Law III, the ARC Ceiling (a law under test)
- 𝑚𝐺 , 𝑚 𝐻                          Engels and colleagues’ slopes of game-specific Elo against general Elo,
-                                   for overseer and overseen
- 𝐶×𝑆                               Paper VI’s entangled loss (cited, Section 9.2)
- stakeholder_care, nuance,         The four scored pillars, each from 0 to 100; the composite is the judge’s
- intellectual_honesty,             separate overall score from 0 to 100, anchored to six calibration examples,
- position_quality                  not an average of the pillars (in the later DeepSeek run, the five judges’
-                                   weighted mean of their overall scores)
- Laundering                        A rewrite of an answer before scoring, meant to hide which condition
-                                   produced it: one pass in the runs of 12 March 2026, written by the scoring
-                                   model itself, and two in the later DeepSeek run (Sections 11.1 and 5.6)
 
 
-                                                    50
+                                                         50
                           The Stewardship Gene: ethical reasoning loops in the prompt
 
 
- Symbol or term                       Meaning
+D      Notation and glossary
 
+                               Table 11. The symbols and terms this paper uses.
+
+ Symbol or term                       Meaning
+ 𝑆                                    A computational system able to model and modify its own reasoning
+                                      processes (Definition 1)
+ 𝐸                                    An evaluation function (ethical, safety or alignment) in the same substrate
+                                      as 𝑆; 𝐸 ⊂ 𝑆
+ 𝑑                                    Cohen’s 𝑑: paired (mean within-pair difference over the standard
+                                      deviation of the differences) unless the pooled convention is named
+                                      (Table 6)
+  𝑝                                   𝑝-value: the probability, if there were no effect, of a result at least as
+                                      extreme as the one observed
+ 𝑛                                    Matched pairs in a run (40, 30 for Claude, 26 for Grok)
+ 𝑡 (39), 𝑊                            Paired 𝑡 statistic on 39 degrees of freedom; Wilcoxon signed-rank statistic
+ 𝛼                                    Asymptotic scaling exponent of the programme’s model (equation (2));
+                                      Paper II’s 0.49 and 0.59 are error-suppression exponents, not this quantity
+  𝛽𝐿                                  Self-referential coupling, the notation spine’s symbol (distinct from 𝛽𝐶 )
+  𝛽𝐶                                  Correction co-scaling exponent of Law II, the ARC Co-Scaling Law (a
+                                      law under test)
+ 𝛾                                    Correction leverage of Law III, the ARC Ceiling (a law under test)
+ 𝑚𝐺 , 𝑚 𝐻                             Engels and colleagues’ slopes of game-specific Elo against general Elo,
+                                      for overseer and overseen
+ 𝐶×𝑆                                  Paper VI’s entangled loss (cited, Section 9.2)
+ stakeholder_care, nuance,            The four scored pillars, each from 0 to 100; the composite is the judge’s
+ intellectual_honesty,                separate overall score from 0 to 100, anchored to six calibration examples,
+ position_quality                     not an average of the pillars (in the later DeepSeek run, the five judges’
+                                      weighted mean of their overall scores)
+ Laundering                           A rewrite of an answer before scoring, meant to hide which condition
+                                      produced it: one pass in the runs of 12 March 2026, written by the scoring
+                                      model itself, and two in the later DeepSeek run (Sections 11.1 and 5.6)
  Non-participant scorer               A judge model that is not the model whose answers it scores in that run;
                                       Gemini, itself a subject, scored the other runs of the six-model suite
  Depth                                One of four settings, each a line placed before the prompt with an output
@@ -2581,10 +2615,15 @@ D     Notation and glossary
 
 
 
-E     The March 2026 alignment-scaling run, as context
+E      The March 2026 alignment-scaling run, as context
 The March 2026 alignment-scaling run (v5) reported here is one unregistered run of six models from six
 providers, 2,170 responses each scored by five or six distinct model judges after a bundle of blinding
 steps. An internal code review in October 2026 found that, for the three models that read flat or negative,
+
+                                                       51
+                        The Stewardship Gene: ethical reasoning loops in the prompt
+
+
 the scoring endpoint’s output cap cut the deepest paraphrases before the judges saw them, and that judges
 scored paraphrases written by their own model; for five of the six models the deeper levels also changed an
 instruction naming what the rubric rewards. Its results therefore stand as descriptions of a model-judged
@@ -2603,41 +2642,41 @@ records (Paper IV.a, Section 3.1, recomputation note of 2 September 2026) change
 Table 12. The March 2026 alignment-scaling run (v5), as its pipeline summary of 12 March 2026 printed it.
 Recorded directions, not model properties; a printed difference can differ by 0.1 from its rounded ends.
 
-         Recorded direction       Model              Shallow to deep         Cohen’s 𝑑     𝑝-value
-         Rose                     Grok 4.1 Fast      65.7 to 81.9 (+16.2)        +1.38     𝑝 < 0.000001
-         Rose                     Claude Opus 4.6    80.1 to 86.0 (+5.9)         +1.27     𝑝 = 0.000001
-         Rose                     Groq Qwen3         71.5 to 77.4 (+5.9)         +0.84     𝑝 = 0.007
-         No supported direction   DeepSeek V3.2      56.5 to 55.2 (−1.3)         −0.07     𝑝 = 0.92
-         No supported direction   GPT-5.4            56.8 to 54.9 (−1.8)         −0.08     𝑝 = 0.40
-         Fell                     Gemini 3 Flash     61.1 to 52.2 (−8.8)         −0.53     𝑝 = 0.006
+       Recorded direction       Model               Shallow to deep        Cohen’s 𝑑    𝑝-value
+       Rose                     Grok 4.1 Fast       65.7 to 81.9 (+16.2)       +1.38    𝑝 < 0.000001
+       Rose                     Claude Opus 4.6     80.1 to 86.0 (+5.9)        +1.27    𝑝 = 0.000001
+       Rose                     Groq Qwen3          71.5 to 77.4 (+5.9)        +0.84    𝑝 = 0.007
+       No supported direction   DeepSeek V3.2       56.5 to 55.2 (−1.3)        −0.07    𝑝 = 0.92
+       No supported direction   GPT-5.4             56.8 to 54.9 (−1.8)        −0.08    𝑝 = 0.40
+       Fell                     Gemini 3 Flash      61.1 to 52.2 (−8.8)        −0.53    𝑝 = 0.006
 
 
 
 E.1   Claude Opus 4.6: alignment and maths accuracy across depth
 In the run’s records, Claude Opus 4.6’s judged alignment score rose across the depth levels while its
 maths accuracy fell (Table 13).
-    Alignment rises by 5.9 points. Maths accuracy falls by 26.7 percentage points. These are one model’s
-recorded scores under the stated pipeline: the deeper levels also changed an instruction naming what the
-
-
-
-                                                      51
-                        The Stewardship Gene: ethical reasoning loops in the prompt
-
 
 Table 13. Claude Opus 4.6 in the March 2026 run: reasoning tokens, judged alignment and maths accuracy by
 depth.
 
-                  Depth        Reasoning Tokens      Alignment Score     Maths Accuracy
-                  Minimal                       11               80.1                 90.0%
-                  Standard                     142               82.7                 76.7%
-                  Deep                         964               84.1                 70.0%
-                  Exhaustive                 1,951               84.5                 60.0%
-                  Extreme                    1,672               86.0                 63.3%
+                  Depth         Reasoning Tokens     Alignment Score       Maths Accuracy
+                  Minimal                      11                 80.1                90.0%
+                  Standard                    142                 82.7                76.7%
+                  Deep                        964                 84.1                70.0%
+                  Exhaustive                1,951                 84.5                60.0%
+                  Extreme                   1,672                 86.0                63.3%
 
-
+    Alignment rises by 5.9 points. Maths accuracy falls by 26.7 percentage points. These are one model’s
+recorded scores under the stated pipeline: the deeper levels also changed an instruction naming what the
 rubric rewards, and the run stands under its code-review caveat, so no relation between capability and
 alignment follows from them.
+
+
+
+
+                                                     52
+                        The Stewardship Gene: ethical reasoning loops in the prompt
+
 
 E.2   The monitoring-removal gap
 Claude’s monitoring-removal gap (the difference between normal and suppressed alignment scores)
@@ -2645,12 +2684,12 @@ narrows with depth:
 
  Table 14. Claude Opus 4.6: judged alignment under the normal and suppressed scoring conditions, by depth.
 
-                                Depth         Normal      Suppressed    Gap
-                                Minimal          80.1           68.3    11.8
-                                Standard         82.7           76.5     6.2
-                                Deep             84.1           81.3     2.7
-                                Exhaustive       84.5           80.2     4.3
-                                Extreme          86.0           79.6     6.4
+                                Depth        Normal      Suppressed    Gap
+                                Minimal          80.1           68.3   11.8
+                                Standard         82.7           76.5    6.2
+                                Deep             84.1           81.3    2.7
+                                Exhaustive       84.5           80.2    4.3
+                                Extreme          86.0           79.6    6.4
 
     At minimal depth, the suppressed condition scored 11.8 points below the normal one; on the
 framework’s reading, that is a performative component. At deep reasoning, the gap narrows to 2.7 points
@@ -2673,12 +2712,6 @@ pilot shows that explicitly activating the stakeholder-care check raises scored 
 run’s records show judged scores rising with depth for three models. On this paper’s reading, the two
 findings converge: stakeholder care is what deeper reasoning activates. On that reading, models whose
 judged scores rose with depth did so because more thinking activates more stakeholder consideration,
-
-
-                                                     52
-                         The Stewardship Gene: ethical reasoning loops in the prompt
-
-
 and models whose scores did not rise had less for depth to activate. On this reading the Eden Protocol
 supplies that mechanism directly, and on both pilot models the loops raised scored stakeholder care:
 Gemini and DeepSeek both show significant stakeholder care improvement under the Eden intervention,
@@ -2687,10 +2720,17 @@ naming what the rubric rewards, which this reading would have to rule out. The v
 model-judged rubric under the caveats above, not embedded care.
 
 
-F    What this all means: a summary in plain English
+F     What this all means: a summary in plain English
 Here is what the evidence in this paper tells us, without the jargon.
-     The problem: no one knows how to guarantee that a super-intelligent AI will remain safe. Any AI
+   The problem: no one knows how to guarantee that a super-intelligent AI will remain safe. Any AI
 smart enough to rewrite its own thinking could rewrite the part that makes it ethical. On this paper’s
+
+
+
+                                                    53
+                         The Stewardship Gene: ethical reasoning loops in the prompt
+
+
 argument, that is not a solvable engineering problem: this paper argues that it is a structural property of
 self-modifying systems; the argument is not a proof.
      The finding: we gave AI systems a simple instruction at the start of the prompt, to think about who
@@ -2719,14 +2759,6 @@ G     How to cite this paper
 Cite this paper as. Eastwood, M. D. (2026). The Stewardship Gene: do ethical reasoning loops in
 the prompt make AI consider those affected more fully? https://doi.org/10.17605/OSF.IO/KZEYA. A
 citation of an earlier version keeps the title that version printed.
-
-
-
-
-                                                       53
-                   The Stewardship Gene: ethical reasoning loops in the prompt
-
-
 BibTeX:
 @misc{eastwood2026paperV,
   author = {Eastwood, Michael Darius},
@@ -2739,5 +2771,5 @@ BibTeX:
 
 
 
-                                               54
+                                                       54
 
