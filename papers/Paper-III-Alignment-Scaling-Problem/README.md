@@ -1,19 +1,19 @@
 # The alignment scaling problem: do external AI safety approaches keep pace with recursive capability?
 
-**Version:** 1.22
+**Version:** 1.23
 **Revised:** 9 November 2026
 **First published:** 2026-02-09
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 1.22):
+From the abstract (version 1.23):
 
-> Does alignment applied from outside an AI system’s reasoning keep pace with the capability that reasoning produces? If capability compounds with recursive depth while safeguards outside the loop (human-feedback training, constitutional rules, output filters, monitoring) do not, the safety ratio falls with depth whatever the starting margin. We define the alignment scaling exponent $\alpha_{\text{align}}=\partial\log A/\partial\log R$, show that the safety ratio $S\propto R^{\alpha_{\text{align}}-\alpha_{\text{cap}}}$ tends to zero whenever $\alpha_{\text{align}}<\alpha_{\text{cap}}$, and predict $\alpha_{\text{align}}\approx0$ for external approaches and $\alpha_{\text{align}}\approx\alpha_{\text{cap}}$ for values embedded in the loop; the first, P19 of the theory registration, carries the author’s expectation of a value above zero but short of keeping pace. A framework derives $U=I\times g(R)$ with $\alpha=1/(1-\beta)$ from a Bernoulli equation, ties power-law, exponential and saturating forms to how recursive gains compose, and states the ARC Bound, $\alpha\le2$, as a conjectured safety boundary: the value Law III returns at the same-class cap P6 conjectures; Paper X later supersedes that framing, without retracting the bound, with the criterion of Law II, a law under test. The biological, quantum error-correction and time-crystal forms do not alone test the framework, and no time-crystal growth exponent has been measured. A first test, one unregistered run of six frontier models, gives depth contrasts in three tiers, positive, flat and negative; an internal code review in October 2026 found defects in exactly the flat and negative runs, so the tiers stand as a single-run result. An early error-decay estimate is retracted; the surviving fit, about 0.49 from one model, is inconclusive and does not identify capability growth. Thirteen criteria state what would refute the framework.
+> Can corrective capacity keep pace with AI capability as reasoning deepens? We define an alignment scaling exponent and derive the safety ratio $S\propto R^{\alpha_{\text{align}}-\alpha_{\text{cap}}}$. For positive power-law capacities, it tends to zero if correction’s exponent is smaller. The exponents must be measured; a method’s name or training stage does not determine them. A Bernoulli model gives $U=I g(R)$ and $\alpha=1/(1-\beta)$ under stated premises. Power-law, exponential and bounded forms are compared across domains; these comparisons do not establish a common mechanism. The ARC Bound, $\alpha\le2$, remains conditional on its registered premises, not a general safety guarantee. One unregistered six-model run records positive, flat and negative alignment-score contrasts; a later code review found defects in the flat and negative runs. These contrasts are not scaling exponents. A retracted early error-decay estimate is replaced by an inconclusive fit of about 0.49 from one model, which does not identify capability growth. Thirteen criteria specify how the framework could fail. The contribution is a conditional model and measurement programme, not proof that a named alignment method must fail or that embedded correction survives unrestricted self-modification.
 
 ## Status and changes
 
-Version 1.22, 9 November 2026, gives five references to the programme’s own papers the titles their cited editions print, credits two coefficients in Table 20 to the report that prints them, and changes no claim, value or date of this paper (Appendix B.1). Internally source-checked and read in rendered form; not independent peer review.
+Version 1.23 clarifies the proposed correction architecture, the scope of prior methods and evaluator mutability; it adds no data or study result. Internally source-checked and read in rendered form; not independent peer review.
 
 The complete historical material and correction record remain in the lettered appendices.
 
