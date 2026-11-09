@@ -61,7 +61,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | [The ARC Theory: does control survive recursive self-improvement?](The-ARC-Theory-Two-Page-Form/) | v3.5 (revised 7 Nov 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
 | [Recursive Dynamics: the founding paper](Recursive-Dynamics-Founding-Paper/) | v3.5 (revised 24 Oct 2026) | 31 Aug 2026 | Recursive Dynamics: The Proposal of a Field |
 | [Paper C](Paper-C-PNP/) | v1.11 (revised 29 Oct 2026) | 3 Jul 2026 | Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy |
-| [Recursive Creation: can recursive self-improvement end in physical creation?](HRIH-Paper/) | v3.54 (revised 7 Nov 2026) | 3 Jul 2026 | The Hyperspace Recursive Intelligence Hypothesis; speculative, outside the empirical core |
+| [Recursive Creation: can recursive self-improvement end in physical creation?](HRIH-Paper/) | v3.55 (revised 9 Nov 2026) | 3 Jul 2026 | The Hyperspace Recursive Intelligence Hypothesis; speculative, outside the empirical core |
 | [HRIH research programme: can Bayesian model comparison distinguish real cosmogenesis?](HRIH-Bayesian-and-Physical-Research-Programme/) | v4.2 (revised 2 Nov 2026) | 22 Oct 2026 | A conditional Bayesian and physical research programme; no cosmological posterior or empirical validation is reported. Working draft under open review (OSF DOI [10.17605/OSF.IO/4PGVC](https://doi.org/10.17605/OSF.IO/4PGVC)) |
 
 ## The HARI Treaty
