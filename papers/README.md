@@ -44,7 +44,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v2.7 (revised 5 Oct 2026) | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
 | X | [Correction That Out-Scales Drift: when does correction keep pace with a system that improves itself?](Paper-X-Coupled-CoScaling-Correction/) | v1.17 (revised 7 Nov 2026) | 3 Jul 2026 | Verification harness and an independent theorem suite of 14 checks | `Paper-X-Coupled-CoScaling-Correction/results/` |
 | XI | [Are separate fields converging on the same principle of recursive amplification?](Paper-XI-Convergence/) | v1.16 (revised 1 Nov 2026) | 2 Jul 2026 | - | - |
-| XII | [Public Benchmark Rescoring](Paper-XII-Public-Benchmark-Rescoring/) | v1.14 (revised 5 Oct 2026) | 14 Aug 2026 | - | - |
+| XII | [Public Benchmark Rescoring: does blinding change AI evaluation scores on a public benchmark?](Paper-XII-Public-Benchmark-Rescoring/) | v1.15 (revised 9 Nov 2026) | 14 Aug 2026 | - | - |
 | XIII | [When can correction keep pace with recursive self-acceleration?](Paper-XIII-Self-Acceleration-Exponent/) | v1.12 (revised 1 Nov 2026) | 16 Aug 2026 | - | - |
 
 ## Infrastructure Papers (Unnumbered)
