@@ -246,7 +246,7 @@ This repository is **dual-licensed**, and which licence applies depends on the m
 | Material | Licence |
 |----------|---------|
 | Papers, text, figures and PDFs | Creative Commons Attribution 4.0 International (CC BY 4.0), see [LICENCE-PAPERS.md](LICENCE-PAPERS.md) |
-| Code, experiments, scripts, data and results | proprietary, all rights reserved, see [LICENCE-CODE.md](LICENCE-CODE.md) |
+| Code, experiments, scripts, data and results | all rights reserved, with a replication licence: anyone may run, adapt and re-analyse them to reproduce, check or test the generalisation of the reported results, and publish what they find; see [LICENCE-REPLICATION.md](LICENCE-REPLICATION.md) and [LICENCE-CODE.md](LICENCE-CODE.md) |
 
 [LICENCE](LICENCE) states the split. Reading, checking and re-analysing the committed
 results is expressly what this repository exists for; redistribution of the code is not
