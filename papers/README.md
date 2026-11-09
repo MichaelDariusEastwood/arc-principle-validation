@@ -54,7 +54,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | [The ARC Principle: can the way gains combine predict how recursive systems scale?](Foundational/) | v5.24 (revised 9 Nov 2026) | 13 Feb 2026 | Mathematical axiom set for the ARC framework |
 | [On the Origin of Scaling Laws: what can composition and transport explain?](On-the-Origin-of-Scaling-Laws/) | v3.14 (revised 1 Nov 2026) | 22 Feb 2026 | Evidence catalogue linking Cauchy analysis to empirical scaling laws |
 | [Eden Engineering: can correction built into each round keep a self-improving AI good and useful if oversight fails?](Eden-Engineering/) | v8.3 (revised 7 Nov 2026) | 22 Feb 2026 | Protocol specification for implementing Eden in production AI systems. OSF DOI [10.17605/OSF.IO/AWJR4](https://doi.org/10.17605/OSF.IO/AWJR4) |
-| [The Eden Vision: what should the intelligence we build be for?](Eden-Vision/) | v2.12 (revised 9 Nov 2026) | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
+| [The Eden Vision: what should the intelligence we build be for?](Eden-Vision/) | v2.13 (revised 9 Nov 2026) | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
 | [Executive Summary: how can self-improving AI remain useful and aligned?](Executive-Summary/) | v3.28 (revised 7 Nov 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
 | [Master Table of Contents](Master-Table-of-Contents/) | v3.30 (revised 15 Oct 2026) | 16 Mar 2026 | Navigation document linking all papers |
 | [The ARC Theory: once the self-improving minds we build exceed us, what determines what they do?](The-ARC-Theory/) | v7.9 (revised 9 Nov 2026) | 14 Aug 2026 | Growth, correction and alignment in recursive systems |
