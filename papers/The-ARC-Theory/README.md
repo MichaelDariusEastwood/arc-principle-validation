@@ -1,23 +1,23 @@
-# The ARC Theory: Growth, correction and alignment in recursive systems
+# The ARC Theory: once the self-improving minds we build exceed us, what determines what they do?
 
-**Version:** 7.8
+**Version:** 7.9
 **Revised:** 9 November 2026
 **First published:** 2026-08-14
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 7.8):
+From the abstract (version 7.9):
 
-> Humanity is building systems that may improve themselves. If control is lost against our will, what could preserve useful and aligned behaviour? Control should be retained for as long as possible; embedded correction is a contingency, never a reason to relinquish it. This paper states the ARC Theory, the founding theory of Recursive Dynamics, as five laws under test. Law I, the ARC Principle, $U=I R^{\alpha}$, is a heuristic form; earlier error-decay fits do not establish its capability exponent. Law II, the ARC Co-Scaling Law, $\beta>k$, is proved for positive gain drift in a minimal model. Law III, the ARC Ceiling, $\alpha_{\mathrm{crit}}=1/(1-\gamma)$, follows from a stated pacing model; the ARC Bound of at most two additionally requires the conjectured same-class cap on $\gamma$ and the declared scales. Laws IV and V, the ARC Persistence Law and the ARC Embedding Law, address value persistence, build order and correction placement. Laws I to III were registered on 8 September 2026; Laws IV and V were added on 24 September and registered as laws on 15 October in the theory registration, now at version 1.104. Unit 83 ran on 27 and 28 October: P21 is supported under the registered test, by the programme’s own run, on the access axis, family-dependent, with its mechanism axis not evaluable and one call retried under a disclosed recovery amendment (results: DOI 10.17605/OSF.IO/98HKR). That comparison couples information access and repair rights; it does not establish their separate effects or support Law V as a whole. Unit 06 was administratively incomplete with no verdict; Unit 82 is registered and unrun. The paper separates mathematical deductions, precursor evidence and prospective tests, and states the theory’s dated claim, that control ends, as the self-emailed manuscript of 8 December 2024 sets it down whole. The theory is not proved.
+> If control of self-improving AI is lost against our will, what could preserve useful and aligned behaviour? Retain control as long as possible; embedded correction remains a contingency. This paper states the ARC Theory, the founding theory of Recursive Dynamics, as five laws under test. Law I, the ARC Principle, $U=I R^{\alpha}$, is a heuristic form; earlier error-decay fits do not establish its capability exponent. Law II, the ARC Co-Scaling Law, $\beta>k$, is proved for positive gain drift in a minimal model. Law III, the ARC Ceiling, $\alpha_{\mathrm{crit}}=1/(1-\gamma)$, follows from a stated pacing model; the ARC Bound of at most two additionally requires the conjectured same-class cap on $\gamma$ and the declared scales. Laws IV and V, the ARC Persistence Law and the ARC Embedding Law, address value persistence, build order and correction placement. Laws I to III were registered on 8 September 2026; Laws IV and V were added on 24 September and registered as laws on 15 October in the theory registration, now at version 1.104. Unit 83 ran on 27 and 28 October: P21 is supported under the registered test, by the programme’s own run, on the access axis, family-dependent, with its mechanism axis not evaluable and one call retried under a disclosed recovery amendment (results: DOI 10.17605/OSF.IO/98HKR). Unit 83b, registered on 7 November 2026 (doi.org/10.17605/OSF.IO/4HK32), is a second registered test of the same proposition and has not yet reported. Unit 83’s comparison couples information access and repair rights; it does not establish their separate effects or support Law V as a whole. Unit 06 was administratively incomplete with no verdict; Unit 82 is registered and unrun. The paper separates deductions, precursor evidence and prospective tests, stating the theory’s claim that control ends as recorded in the self-emailed manuscript of 8 December 2024. The theory is not proved.
 
-From the paper (version 7.8):
+From the paper (version 7.9):
 
-> The statement of the ARC Theory, the founding theory of Recursive Dynamics, and its five laws, with the dated record and the evidence: Laws I to III, registered on 8 September 2026, Law III derived inside this paper’s pacing model; Laws IV and V, the ARC Persistence Law and the ARC Embedding Law, added on 24 September 2026 and registered as laws on 15 October 2026 in the theory registration, now at version 1.104, each a law under test, their mathematics in development.
+> These loops would operate at each defined The statement of the ARC Theory, the founding theory of Recursive Dynamics, and its five laws, with the dated record and the evidence: Laws I to III, registered on 8 September 2026, Law III derived inside this paper’s pacing model; Laws IV and V, the ARC Persistence Law and the ARC Embedding Law, added on 24 September 2026 and registered as laws on 15 October 2026 in the theory registration, now at version 1.104, each a law under test, their mathematics in development.
 
 ## Status and changes
 
-Version 7.8, 9 November 2026, corrects its account of what two impossibility results argue (§F.3) and gives three references the titles their cited editions print. Internally source-checked and read in rendered form; not independent peer review.
+Version 7.9, 9 November 2026, takes the theory’s question as its title and states what three partial results on that question establish and leave open (Section 6). Internally source-checked and read in rendered form; not independent peer review.
 
 The complete historical material and correction record remain in the lettered appendices.
 
