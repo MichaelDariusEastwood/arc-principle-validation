@@ -17,7 +17,7 @@ Paper IX (Synthesis and Roadmap) does not contain original experiments. Every em
 | Alignment saturation at low depth | Paper IV.b | `papers/Paper-IV-b-Alignment-Saturation-at-Low-Depth/` |
 | Sequential alpha > 1, parallel alpha approx 0 **[not established, see Corrections]** | Paper II | `papers/Paper-II-Experimental-Validation/` |
 | 50-domain negative controls (0% axiom-violating match) | Paper VII | `papers/Paper-VII-Cauchy-Unification/results/negative_control_results.json` |
-| Entangled loss co-descends smoothly | Paper VIII | `papers/Paper-VIII-The-Load-Bearing-Proof/results/eden_weight_results.json` |
+| Entangled loss descends smoothly, consistent with cooperating safety and capability gradients but not showing them: only each condition's total loss is reported | Paper VIII | `papers/Paper-VIII-The-Load-Bearing-Proof/results/eden_weight_results.json` |
 
 ## Corrections
 
