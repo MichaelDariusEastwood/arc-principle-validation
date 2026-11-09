@@ -1,19 +1,19 @@
 # On the Origin of Scaling Laws: what can composition and transport explain?
 
-**Version:** 3.14
-**Revised:** 1 November 2026
+**Version:** 3.15
+**Revised:** 9 November 2026
 **First published:** 2026-02-22
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 3.14):
+From the abstract (version 3.15):
 
 > Predicting how a system scales can help us decide whether resources and correction can keep pace with its growth. This framework paper asks which composition and transport assumptions justify a scaling prediction before the response is observed. Four classical continuous homomorphism problems constrain functional families; they do not classify every physical law. A global logarithmic-defect stability result and a regular-variation limit connect exact equations to specified approximate and asymptotic cases. For a declared steady-flow network, transport accounting gives $C=B\bar\ell_q$. Demand scaling $B\sim L^\mu$ and mean-path scaling $\bar\ell_q\sim L^\zeta$ then give an asymptotic throughput-cost exponent $\mu/(\mu+\zeta)$. The familiar $d/(d+1)$ requires further assumptions, and inventory and body mass require separate bridges. Biological measurements are compared on their own variables; fungal factors measured on different variables are no longer pooled. The Friedmann reparametrisation remains an identity, with acceleration distinguished from exponential expansion. Fixed rules can generate superlinear trajectories, so neither physical dimension nor an architectural label fixes an AI capability exponent. The contribution is a conditional synthesis and a prospective transport test with independently measured premises, held-out predictions and serious rivals. Existing prediction histories, corrections and qualified companion results are retained. No universal physical ceiling, alignment guarantee or new empirical validation is established.
 
 ## Status and changes
 
-Version 3.14, revised 1 November 2026, corrects the scope of the composition, transport, biological and cosmological claims. Internally source-checked and read in rendered form; not independent peer review.
+Version 3.15, revised 9 November 2026, gives five references the titles their cited editions print and omits from the retained passages of earlier versions four wordings that later corrections withdrew, giving each correction beside its passage. Internally source-checked and read in rendered form; not independent peer review.
 
 The complete historical material and correction record remain in the lettered appendices.
 
