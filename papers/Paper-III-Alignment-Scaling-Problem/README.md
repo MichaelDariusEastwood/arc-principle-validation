@@ -1,19 +1,19 @@
 # The alignment scaling problem: do external AI safety approaches keep pace with recursive capability?
 
-**Version:** 1.21
-**Revised:** 7 November 2026
+**Version:** 1.22
+**Revised:** 9 November 2026
 **First published:** 2026-02-09
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 1.21):
+From the abstract (version 1.22):
 
 > Does alignment applied from outside an AI system’s reasoning keep pace with the capability that reasoning produces? If capability compounds with recursive depth while safeguards outside the loop (human-feedback training, constitutional rules, output filters, monitoring) do not, the safety ratio falls with depth whatever the starting margin. We define the alignment scaling exponent $\alpha_{\text{align}}=\partial\log A/\partial\log R$, show that the safety ratio $S\propto R^{\alpha_{\text{align}}-\alpha_{\text{cap}}}$ tends to zero whenever $\alpha_{\text{align}}<\alpha_{\text{cap}}$, and predict $\alpha_{\text{align}}\approx0$ for external approaches and $\alpha_{\text{align}}\approx\alpha_{\text{cap}}$ for values embedded in the loop; the first, P19 of the theory registration, carries the author’s expectation of a value above zero but short of keeping pace. A framework derives $U=I\times g(R)$ with $\alpha=1/(1-\beta)$ from a Bernoulli equation, ties power-law, exponential and saturating forms to how recursive gains compose, and states the ARC Bound, $\alpha\le2$, as a conjectured safety boundary: the value Law III returns at the same-class cap P6 conjectures; Paper X later supersedes that framing, without retracting the bound, with the criterion of Law II, a law under test. The biological, quantum error-correction and time-crystal forms do not alone test the framework, and no time-crystal growth exponent has been measured. A first test, one unregistered run of six frontier models, gives depth contrasts in three tiers, positive, flat and negative; an internal code review in October 2026 found defects in exactly the flat and negative runs, so the tiers stand as a single-run result. An early error-decay estimate is retracted; the surviving fit, about 0.49 from one model, is inconclusive and does not identify capability growth. Thirteen criteria state what would refute the framework.
 
 ## Status and changes
 
-The ARC Bound now rests on its registered premises, without the argument from the cost of attention. Internally source-checked and read in rendered form; not independent peer review.
+Version 1.22, 9 November 2026, gives five references to the programme’s own papers the titles their cited editions print, credits two coefficients in Table 20 to the report that prints them, and changes no claim, value or date of this paper (Appendix B.1). Internally source-checked and read in rendered form; not independent peer review.
 
 The complete historical material and correction record remain in the lettered appendices.
 
