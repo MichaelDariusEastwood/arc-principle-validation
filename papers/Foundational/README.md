@@ -1,19 +1,19 @@
 # The ARC Principle: can the way gains combine predict how recursive systems scale?
 
-**Version:** 5.23
-**Revised:** 7 November 2026
+**Version:** 5.24
+**Revised:** 9 November 2026
 **First published:** 2026-02-13
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 5.23):
+From the abstract (version 5.24):
 
 > I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only proof will move the world. Predicting how a system improves requires separating a mathematical model from evidence that the system follows it. This cross-domain foundation of the ARC Theory asks whether the way gains combine can predict later scaling. Specified continuous functional equations restrict scaling families; associativity of an update rule alone does not. A cumulative-advantage model gives the shifted power law $g(r)=[1+(1-\beta_L)ar]^{1/(1-\beta_L)}$, with asymptotic exponent $\alpha=1/(1-\beta_L)$. Its characteristic scale requires a declared depth coordinate and an operational crossover criterion. Fixed model weights and fixed update rules imply no universal capability exponent. Biological and physical comparisons are separated into measurements, analytic references and analogies; the proposed general dimensional bridge remains unproved. The one interpretable AI error-suppression fit is inconclusive and does not identify a capability-growth exponent. A registered pilot supports its pooled performance contrast under the registered scoring rule, with engine dependence, a disclosed recovery amendment and a mechanism test that was not evaluable; it validates none of the exponent, crossover or ceiling claims. The ARC Ceiling remains a law under test with conditional premises, not a universal safety guarantee. The decisive next test is prospective: classify composition independently, lock the scaling prediction, and compare held-out trajectories with serious rival models. The contribution is a framework for predictions that can fail, with each mathematical and empirical claim kept at its demonstrated scope.
 
 ## Status and changes
 
-Version 5.23, revised 7 November 2026, gives the paper its established name, adds two results published in 2026, graded as convergent timing, and corrects the argument at fixed throughput; Appendix B.13 records each change, and Appendix B retains superseded claims. Internally source-checked and read in rendered form; not independent peer review.
+Version 5.24, revised 9 November 2026, states the record of 8 December 2024 at its strength, its time signed by the sending server and sealed by Google’s servers, and describes the twelve-domain extension of March 2026 as timestamped in advance of its fits, never as registered or preregistered; Appendix B.14 records each change, and Appendix B retains superseded claims. Internally source-checked and read in rendered form; not independent peer review.
 
 The complete historical material and correction record remain in the lettered appendices.
 
