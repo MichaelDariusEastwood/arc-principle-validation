@@ -13,7 +13,7 @@ From the abstract (version 7.9):
 
 From the paper (version 7.9):
 
-> These loops would operate at each defined The statement of the ARC Theory, the founding theory of Recursive Dynamics, and its five laws, with the dated record and the evidence: Laws I to III, registered on 8 September 2026, Law III derived inside this paper’s pacing model; Laws IV and V, the ARC Persistence Law and the ARC Embedding Law, added on 24 September 2026 and registered as laws on 15 October 2026 in the theory registration, now at version 1.104, each a law under test, their mathematics in development.
+> The statement of the ARC Theory, the founding theory of Recursive Dynamics, and its five laws, with the dated record and the evidence: Laws I to III, registered on 8 September 2026, Law III derived inside this paper’s pacing model; Laws IV and V, the ARC Persistence Law and the ARC Embedding Law, added on 24 September 2026 and registered as laws on 15 October 2026 in the theory registration, now at version 1.104, each a law under test, their mathematics in development.
 
 ## Status and changes
 
