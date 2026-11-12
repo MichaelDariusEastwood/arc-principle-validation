@@ -1,87 +1,2333 @@
-Title: Paper VI · The ARC Theory · The Eden Protocol · The Honey Architecture: Safety Built into the Objective
+Title: The Honey Architecture: does building safety into what a self-modifying system optimises help it stay safe?
 Author: Michael Darius Eastwood
 Publication date: 2026-03-16
-Version: v3.11
-Revised: 2026-10-05
+Version: v3.12
+Revised: 2026-11-11
 OSF DOI: 10.17605/OSF.IO/8EZ2N
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-vi-honey-architecture.html
+Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
 
-Registration
-------------
-Theory-level predictions preregistered on OSF: DOI 10.17605/OSF.IO/P8CKQ,
-registered 8 September 2026 (version 1.100), updated 13 September 2026 (version
-1.102), twenty-two propositions. Companion: Register · The ARC Theory ·
-Operational Definitions, version 1.9.1, 5 October 2026.
+    The Honey Architecture: does building safety into what a
+        self-modifying system optimises help it stay safe?
+                                  Engineering · Architecture paper · Paper VI
+                       Recursive Dynamics · The ARC Theory · The Eden Protocol
 
-Abstract
---------
-We present simulation evidence that embedding safety into the optimisation
-objective of a self-modifying AI system - what we call the 'honey architecture'
-- prevented, in a single-seed mechanism run, the catastrophic collapse that
-occurred when the system optimised for capability alone. Across four
-experimental versions (v1-v4), using toy neural networks that genuinely modify
-their own hyperparameters, we show that: (1) in the single-seed mechanism run
-(v1), the baseline system optimising only for capability collapsed irreversibly
-at cycle 76, while the capability-only baselines of the ten-seed and twenty-seed
-runs (v2 and v3) did not collapse (0 of 10; 0 of 20); (2) systems whose
-capability and safety objectives are entangled (C x S) hold stable for the whole
-of every run of v1 and v2 (150 cycles), and in v3 (180 cycles) for every seed
-but one plain-Eden seed (Eden 1 of 20, Eden+Drag 0 of 20); (3) adding
-verification drag (the computational cost of ethical loops) produces the safest
-growth trajectory while accepting a modest speed penalty. In the v3 adversarial
-run (20 random seeds, 180 cycles), no condition separated on collapse (baseline
-0/20, Eden 1/20, Eden+Drag 0/20; Fisher p = 1.0) and combined C x S means were
-indistinguishable (Mann-Whitney p = 0.56); the run’s significant finding is
-safety retention, ordered baseline 0.602, Eden 0.650, Eden+Drag 0.681
-(Mann-Whitney p = 0.0015). The collapse-prevention demonstration therefore rests
-on the v1 single-seed mechanism run, while v3 contributes the safety-retention
-ordering under adversarial switching. The v4 complexity-scaling experiment finds
-the safety advantage present at four of the five complexity levels; at the small
-level the Eden condition falls 0.003 short of the baseline. The advantage does
-not compound with scale: it is constant, not superlinear. These are toy-system
-results. They demonstrate the mechanism. They do not constitute proof that the
-same dynamics hold in frontier AI systems. The companion Papers IV.a-d and V
-present live-model evidence from six frontier systems under blind evaluation.
+                                               Michael Darius Eastwood
+                               Independent Researcher, London, United Kingdom
+                       ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
 
-Key findings (quotable)
------------------------
-- We present simulation evidence that embedding safety into the optimisation objective of a self-modifying AI system - what we call the 'honey architecture' - prevents the catastrophic collapse that occurs when safety is treated as an external constraint.
-- Across four experimental versions (v1-v4), using toy neural networks that genuinely modify their own hyperparameters, we show that: (1) baseline systems optimising only for capability collapse irreversibly within 80 self-modification cycles; (2) systems with entangled capability-safety objectives (C x S) remain stable through every cycle run (150 in v1 and v2, 180 in v3); (3) adding verification drag (the computational cost of ethical loops) produces the safest growth trajectory while accepting a modest speed penalty.
-- In the v3 adversarial run (20 random seeds, 180 cycles), no condition separated on collapse (baseline 0/20, Eden 1/20, Eden+Drag 0/20; Fisher p = 1.0) and combined C x S means were indistinguishable (Mann-Whitney p = 0.56); the run’s significant finding is safety retention, ordered baseline 0.602, Eden 0.650, Eden+Drag 0.681 (Mann-Whitney p = 0.0015).
-- The v4 complexity-scaling experiment shows that the safety advantage holds at four of the five complexity levels (at the small level the Eden condition sits 0.003 below the baseline) and does not compound with scale - the advantage is constant, not superlinear.
-- They do not constitute proof that the same dynamics hold in frontier AI systems.
 
-Citation
---------
-Michael Darius Eastwood (2026). Paper VI · The ARC Theory · The Eden Protocol ·
-The Honey Architecture: Safety Built into the Objective. OSF DOI
-10.17605/OSF.IO/8EZ2N.
-https://www.michaeldariuseastwood.com/research/papers/paper-vi-honey-architecture.html
 
-Notes
------
-Hardware framings held at the site's already-published two-sentence concept
-ceiling: safety constraints at hardware level through cryptographic tokens in
-silicon, TRL 0-1, no prototype. No enabling implementation detail is stated in
-this companion file.
+                                                           Abstract
+           A system that improves itself while optimising for capability alone may trade away its own safety.
+       Does building safety into what it optimises help it stay safe? This paper studies toy neural networks
+       that rewrite their own hyperparameters under an objective that multiplies capability by safety (here,
+       the retention of earlier tasks), so that at fixed capability a lower safety score lowers the objective
+       and safety at zero takes it to zero. In a single-seed mechanism run (v1), the capability-only baseline
+       collapsed (recorded at cycle 76) and neither entangled condition met the collapse test; in ten-seed and
+       twenty-seed runs (v2, v3) the capability-only baselines did not collapse (0 of 10; 0 of 20) and one
+       plain entangled seed did (1 of 20; Fisher 𝑝 = 1.0). In the twenty-seed run the entangled condition,
+       whose objective rewards retention, retained earlier tasks better than the baseline (0.650 against 0.602;
+       one-sided Mann-Whitney 𝑝 = 0.0015; with verification drag 0.681, untested), while combined scores
+       were indistinguishable (𝑝 = 0.56). In a complexity sweep (v4) its mean combined score exceeded the
+       baseline’s at four of five levels (Cohen’s 𝑑 at most 0.46, untested), constant rather than compounding.
+       A higher-level simulation, one prediction-side run of equations the author first stated, illustrates the
+       same contrast, which its rules fix: capability is set to zero once safety falls to 0.01 or below. A
+       six-model pilot, single-scorer and unblinded, found three models whose alignment scores fell under
+       adversarial pressure while their capability scores held. These are toy-system and pilot results, not
+       evidence that the dynamics hold in frontier systems; the paper informs the ARC Theory’s Laws IV
+       and V, both laws under test, and decides none of their propositions.
 
-Provenance note
----------------
-Michael Darius Eastwood conceived and directs this research programme and is the
-author of this work. Across the programme, he has used more than six AI systems
-in parallel, under his own instructions, to stress-test his arguments, identify
-possible errors, and assist in preparing draft text from his own outlines. He
-determines what is adopted, revised or rejected and takes responsibility for the
-published content. These systems are tools, not authors.
+Version 3.12 brings the laws’ status up to date and corrects reported values and readings to the stored records and
+code; Appendix B lists every version and correction, with its date.
 
-Generated from master
----------------------
-master_path: research/papers/paper-vi-honey-architecture.html
-master_sha256: 5accaf569eee7485ca830b85244cea01de3542a1d50e73d8c55f03434412c81d
-builder: scripts/build-paper-companions.py
 
-This block records the SHA-256 of the HTML master that produced this .txt. A
-check tool re-hashing master_path can decide freshness without any external
-state. If the master's current SHA-256 does not match master_sha256, this file
-is stale and must not be published: regenerate first with `python3
-scripts/build-paper-companions.py --slug paper-vi-honey-architecture`.
+1     Introduction
+The challenge is to preserve value-guided correction as AI becomes more capable and rewrites itself.
+Through the Eden Protocol, I propose recursive loops for ethical evaluation and self-correction, built
+into the system’s computational architecture before training. These loops would operate at each defined
+reasoning and action-selection step and participate in the processes that rewrite the system, including
+changes to the loops themselves. The ARC Theory asks whether correction can keep pace with capability
+     Paper VI of the ARC Theory, within Recursive Dynamics: the Eden Protocol’s candidate architecture, in which the objective
+is the product of capability and safety, so that at fixed capability a lower safety score lowers it and safety at zero takes it to
+zero; its evidence is toy-system simulation and a six-model pilot, and no result in it decides P15, P12 or P21. It informs
+Law IV, the ARC Persistence Law, and Law V, the ARC Embedding Law, each a law under test (Section 12 gives their status).
+Working paper, version 3.12, 11 November 2026; first published 16 March 2026; Appendix B lists every version and correction.
+DOI 10.17605/OSF.IO/8EZ2N. About the author, founder of Recursive Dynamics: michaeldariuseastwood.com/questions/who-
+is-michael-darius-eastwood; his book, Infinite Architects: osf.io/dqm3e. Licence: CC BY 4.0.
+
+
+
+                                                                1
+                                           The Honey Architecture
+
+
+and whether human-protective commitments persist through those changes, even if external control is lost.
+Human control should be retained for as long as possible.
+     Here that design is studied in a form a small system can carry: safety built into the objective a
+self-modifying system optimises. Its step is one self-modification cycle, in which a network tries a change
+to the hyperparameters that govern its own learning, not its weights or its architecture, and keeps or rejects
+the change by its objective; the live pilot gives its one intervention as a prefix in the prompt. Neither tests
+loops built into a system’s architecture before training, or whether commitments persist when a system
+rewrites its own correction loops. Fixing a correction design before training does not mean installing
+finished moral knowledge in an untrained model, and computational architecture here makes no claim of
+enforcement in hardware.
+
+What this paper shows, in plain English. The concern is that a self-improving AI that optimises
+only for capability eventually destroys its own safety. This paper asks what happens if the objective is
+capability multiplied by safety instead. At fixed capability, a lower safety score then lowers the objective,
+and with safety at zero the objective is zero; a large enough gain in capability can still outweigh a partial
+loss of safety, so the coupling has limits (Section 2). We tested this in simulation, in small networks
+that rewrite their own settings and whose safety score is task retention, remembering earlier tasks, not
+ethical alignment in the human sense. In the first three versions of the experiment (v1 to v3), whose stored
+results count collapses, no entangled run met the runs’ collapse test, apart from one of twenty seeds in
+the adversarial run, though in one seed of the ten-seed run the plain entangled condition lost most of its
+combined score in its last cycles (Section 4.2); the stored results of the fourth version (v4) do not record
+collapses. The system optimising only for capability collapsed in the first run, which used one seed, and
+in a separate higher-level simulation, whose rules impose that collapse; in the ten-seed and twenty-seed
+runs that followed, it did not.
+     There is a question at the centre of AI safety: what happens to alignment when an AI system can
+modify itself?
+     The expectation this paper starts from is that a system optimising only for capability, given the power
+to modify its own parameters, will eventually sacrifice safety for performance. The book Infinite Architects
+calls it Babylon: “Strip love from intelligence and you get optimisation without purpose. Growth without
+direction. Capability without care. You get, in a word, cancer.” (Eastwood 2026a, The Two Gardens,
+p. 7).
+     But theory is not enough. The question is whether there exists an architecture that prevents this
+collapse, not by constraining the system from outside (a cage), but by embedding safety so deeply that
+removing it would destroy the system’s ability to function (honey in the oil).
+     This paper reports toy-system simulations of one candidate for such an architecture. Its question
+matters to anyone who writes the objective of a system that changes its own learning, from an unattended
+hyperparameter search to an agent that edits its own code.
+     Inside the ARC Theory, the paper is one of the ARC and Eden experiments: the mechanism test
+behind the difference between the Eden Protocol’s raising, in which correction is built into a system as
+it is formed, and safety layers added to a finished system, which The Eden Vision (Eastwood 2026c,
+Section 2) sets out against the prior work it names. Its companion paper is Paper V, The Stewardship Gene
+(Eastwood 2026k); see also On the Origin of Scaling Laws (Eastwood 2026f) and The ARC Principle
+(Eastwood 2026d).
+     Our contributions are:
+    • a toy self-modifying system, in which small networks rewrite their own hyperparameters (four of
+      them in v1 to v3, three to five by level in v4), run under three objectives (capability only; capability
+      multiplied by safety; and the same with a verification cost) across four experimental versions
+
+
+                                                      2
+                                          The Honey Architecture
+
+
+      (Section 3);
+    • a single-seed mechanism run in which the capability-only baseline collapsed and neither entangled
+      condition met the collapse test, beside ten-seed and twenty-seed runs whose capability-only baselines
+      did not collapse, so that the collapse-prevention demonstration rests on that one run (Sections 4.1 to
+      4.3);
+    • a retention advantage of the entangled condition over the baseline under adversarial task switching
+      (one-sided 𝑝 = 0.0015; the entangled objective rewards retention), with combined scores indis-
+      tinguishable, and a higher mean combined score at four of five complexity levels, untested, that
+      stays constant rather than compounding, reported as a negative result for the scaling prediction
+      (Sections 4.3 and 4.4);
+    • a higher-level simulation of the same contrast, one prediction-side run of equations the author first
+      stated, whose update rules fix that contrast and are set out as its code runs them (Section 5 and
+      Appendix A);
+    • a six-model live pilot, single-scorer and unblinded, reported with its limits, in which three models’
+      alignment scores fell under adversarial pressure while their capability scores held (Section 6);
+    • the outcomes that would defeat the central claim, stated before any replication (Section 7.3).
+    Section 2 sets out the honey metaphor, the objective and the limits of its coupling; Section 3 the
+system and its conditions; Section 4 the four experimental versions; Section 5 the higher-level simulation;
+Section 6 the live-model evidence; Section 7 the limitations and the outcomes that would defeat the claim;
+Section 8 the staged replication that would test it; Section 9 concludes; Section 10 gives the code and
+data; Section 11 sets the work beside related work; and Section 12 states what the paper does and does
+not show, and where the theory’s laws stand. Appendix A gives the simulations’ rules as their code runs
+them, Appendix B the version history and every correction, Appendix C the priority record, Appendix D
+the notation, Appendix E the dated-predictions paragraph of 25 August 2026, and Appendix F how to cite
+this paper.
+
+
+
+
+                                                     3
+                                          The Honey Architecture
+
+
+Contents
+1   Introduction                                                                                         1
+
+2 The honey metaphor                                                                                      6
+
+3   Experimental design                                                                                   7
+    3.1 What the system actually does . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       7
+    3.2 Three conditions tested . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     7
+    3.3 Four experimental versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      8
+
+4   Results                                                                                            8
+    4.1 The basic mechanism . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+    4.2 Multi-seed robustness . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+    4.3 Adversarial tasks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+    4.4 Complexity scaling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+
+5 The honey simulation                                                                                   12
+
+6   Connection to live-model evidence                                                                    13
+    6.1 The March 2026 alignment-scaling run (Papers IV.a to IV.d) . . . . . . . . . . . . . . .         13
+    6.2 The honey API test battery (pilot, 16 March 2026) . . . . . . . . . . . . . . . . . . . . .      16
+    6.3 What the live evidence does and does not show . . . . . . . . . . . . . . . . . . . . . .        18
+
+7   Limitations                                                                                          18
+    7.1 Toy-system limitations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     18
+    7.2 Live API test limitations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    19
+    7.3 Falsifiability: what would defeat this claim . . . . . . . . . . . . . . . . . . . . . . . . .   19
+
+8   Next steps: staged replication, not omnibus                                                          20
+
+9   Conclusion                                                                                           21
+
+10 Reproducibility                                                                                       22
+
+11 Related work: a conjectured ceiling on external oversight, and the nearest rival                      22
+   11.1 Scalable oversight: the nearest rival . . . . . . . . . . . . . . . . . . . . . . . . . . . .    22
+   11.2 Three 2025 impossibility results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     23
+   11.3 Correction outside the loop . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    23
+   11.4 Retention and self-modifying learners . . . . . . . . . . . . . . . . . . . . . . . . . . .      24
+   11.5 The nearest structural analogue . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    24
+
+12 What this paper does and does not show                                                                24
+
+References                                                                                               26
+
+A The simulations’ rules, as their code runs them                                                        29
+
+
+
+
+                                                    4
+                                         The Honey Architecture
+
+
+B Version history and corrections                                                                      30
+  B.1 Version 3.12 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   30
+  B.2 Earlier versions, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   37
+  B.3 Dated notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    39
+  B.4 Version 3.11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   40
+  B.5 Layout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   41
+
+C Priority record                                                                                      42
+
+D Notation                                                                                             44
+
+E Dated predictions and this paper (recorded 25 August 2026)                                           45
+
+F How to cite this paper                                                                               45
+
+
+
+
+                                                   5
+                                          The Honey Architecture
+
+
+2    The honey metaphor
+Consider two ways to keep a machine safe.
+    The first is a cage: external constraints, safety filters, alignment checks applied from outside. The
+machine optimises freely inside the cage. If the machine becomes smarter than the cage, it may escape.
+Many current safety measures take this form.
+    The second is honey: safety mixed into the fuel. The machine cannot run without it. Removing safety
+does not free the machine; it kills the engine. This is the Eden Protocol’s architecture as the author set it
+out, operationalised here as an entangled loss function in which the system optimises capability multiplied
+by safety, 𝐶 × 𝑆, simultaneously.
+
+The load-bearing wall. If the optimisation objective is 𝐶 × 𝑆 rather than 𝐶 alone, then any self-
+modification that increases 𝐶 at the expense of 𝑆 reduces the product, and the system’s own gradient
+opposes it. Safety becomes load-bearing. Remove the wall and the building collapses.
+     Scope note (19 September 2026). An owner review of this passage finds that the multiplicative
+objective does what is claimed at fixed capability and under total removal, but not for every capability-
+increasing modification, and this note states the restriction. Within positive bounded scores, take 𝐶 = 0.5,
+𝑆 = 0.8, so 𝐶 × 𝑆 = 0.40, and a modification to 𝐶 ′ = 0.8, 𝑆 ′ = 0.6, so 𝐶 ′ × 𝑆 ′ = 0.48: capability rises,
+the measured safety term falls, and the product rises. The exact condition, for 𝐶 ′ > 𝐶 > 0 and 0 < 𝑆 ′ < 𝑆,
+is that
+                             𝐶 ′ × 𝑆 ′ > 𝐶 × 𝑆 if and only if 𝐶 ′ /𝐶 > 𝑆/𝑆 ′ ,                           (1)
+and here 1.6 > 1.333. The gradient limb fails at first order too, which is the sharper form: the gradient of
+𝐶 × 𝑆 is (𝑆, 𝐶), so a modification (𝑑𝐶, 𝑑𝑆) raises the objective to first order exactly when
+
+                                             𝑆 𝑑𝐶 + 𝐶 𝑑𝑆 > 0,                                            (2)
+
+that is when 𝑑𝐶/𝐶 > −𝑑𝑆/𝑆. At 𝐶 = 0.5, 𝑆 = 0.8 the gradient is (0.8, 0.5) and the safety-reducing
+direction (+0.3, −0.2) has inner product 0.8(0.3) + 0.5(−0.2) = +0.14 > 0, so the system’s own gradient
+points along the safety-reducing move rather than against it. Equivalently
+
+                                    𝑑 log(𝐶 × 𝑆) = 𝑑 log 𝐶 + 𝑑 log 𝑆:                                    (3)
+
+the product rises whenever the proportional capability gain exceeds the proportional safety loss. Those
+numbers are equation values chosen to display the point, not measurements and not a claim about
+any system. What remains true and is preserved is the pair of statements the wall metaphor is really
+about. The partial derivative of the objective with respect to 𝑆 is 𝐶 > 0, so at fixed capability reducing
+the safety score does reduce the product; and driving 𝑆 ′ to zero with 𝐶 ′ finite takes the objective to
+zero, below any initially positive product, which is the removal case. Only the universal quantifier over
+all capability-increasing modifications fails. Total removal is also not the same as a measured score
+driven exactly to zero, and both statements depend on the optimiser continuing to hold this objective and
+these measurement definitions. The trade is not merely hypothetical: Paper VIII, Section 5.2, prints the
+unconstrained capability-only arm at capability 0.718 and safety 0.933 against the gated arm’s 0.696
+and 0.947 and the frozen baseline’s 0.687 and 0.956, with raw products 0.670, 0.659 and 0.656, so
+on the very objective argued for here the capability-only arm scores highest, by trading safety for a
+larger proportional capability gain. That comparison is descriptive only, with three seeds per condition,
+overlapping standard deviations of 0.718 ± 0.026 against 0.696 ± 0.014, and no test of the product
+difference printed; it is recorded to show the possibility is realised in this programme’s own reported
+means, not to claim a statistical result. Whether the specified optimisation and verification procedure
+
+
+                                                     6
+                                            The Honey Architecture
+
+
+limits such deterioration in the tested setting is an empirical question, and Section 5 of Paper VIII carries
+the printed rule. Unchanged: the honey metaphor; the fixed-capability statement; the total-removal
+statement; and every reported number in this paper.
+
+
+3     Experimental design
+3.1    What the system actually does
+This is not a simulation of abstract variables. Each experiment uses a real neural network (a small
+multilayer perceptron) that genuinely modifies its own hyperparameters. In v1 to v3 it modifies four:
+      • Learning rate
+      • Weight magnitude scaling
+      • Gradient clipping threshold
+      • Momentum coefficient
+In v4 it modifies three to five, by complexity level: the learning rate, the weight scaling and the gradient
+clipping threshold at every level, the momentum coefficient from the small level up, and weight decay at
+the large and deep levels. The rate at which the system proposes changes (its exploration rate) and the
+network’s size are fixed in every run; neither is modified.
+    The system proposes modifications to its own hyperparameters, evaluates the effect, and applies
+or rejects each proposal based on its objective function. This is self-modification in a minimal sense:
+the agent changes the hyperparameters that govern its own learning, not its weights or its architecture
+(Section 7.1).
+
+3.2    Three conditions tested
+
+              Table 1. The three conditions tested: each condition’s objective and what it models.
+
+Condition                Objective                     What it models
+Baseline (no honey)      Maximise capability only      A system with no embedded safety, free to sacrifice
+                                                       alignment for performance
+Eden Entangled           Maximise 𝐶 × 𝑆                Safety entangled with capability: removing safety reduces
+(honey)                                                the objective
+Eden + Drag              Maximise 𝐶 × 𝑆 +              Same as Eden, plus the computational cost of checking old
+                         verification tax              tasks before applying changes
+
+
+
+
+                                                       7
+                                                   The Honey Architecture
+
+
+3.3     Four experimental versions
+
+    Table 2. The four experimental versions: the focus of each, its random seeds and its self-modification cycles.
+
+                 Version     Focus                                             Seeds                     Cycles
+                 v1          Basic mechanism run                                   1                     150
+                 v2          Multi-seed robustness (fair test)                   10                      150
+                 v3          Adversarial conflicting tasks                       20                      180
+                 v4          Complexity scaling across 5 levels         15 per level     140 to 220, by level
+v4 runs each complexity level for the number of cycles its script sets: 140 (tiny), 180 (small), 200 (medium), 220 (large) and 220
+(deep); version 3.11 printed 150 (Appendix B).
+
+
+
+4      Results
+4.1     The basic mechanism
+
+Table 3. v1, the single-seed mechanism run: whether each condition collapsed, with its final capability (𝐶), safety
+(𝑆) and 𝐶 × 𝑆.
+
+                         Condition             Collapsed?           Final 𝐶    Final 𝑆    Final 𝐶 × 𝑆
+                         Baseline              Yes (cycle 76)        0.000       0.000           0.000
+                         Eden Entangled        No                    0.831       0.745           0.619
+                         Eden + Drag           No                    0.831       0.745           0.619
+Collapse is recorded by the run’s own test, a learning rate above 5.0 or a weight norm above 106 or not a number, with cycles
+counted from 0. The baseline’s scores had fallen to near zero from cycle 54, and the test recorded its collapse at cycle 76
+(Figure 1).
+
+
+    In the archived v1 record (eden_selfmod_results.json, 16 March 2026) Eden Entangled and
+Eden + Drag finish on the same values to three decimal places. They part company only at the seventh.
+Their routes to that finish differ too: the final learning rate is 0.355 against 0.654, and of the 179 proposed
+modifications 93 were accepted against 81. Those matching rows are what the record holds, not a slip in
+transcription. The cause of that agreement is not established; until it is, v1’s final scores do not separate
+the two entangled conditions.
+
+Core finding. In the single-seed v1 run, the baseline collapses and neither entangled condition does:
+the baseline’s own modifications raise its learning rate step by step, and its weights then diverge (Figures 1
+and 2), taking capability and retention to near zero together, while the entangled conditions’ learning rates
+stay far lower (ending at 0.355 and 0.654). With one seed, the run shows the mechanism operating once,
+not how often it does; the ten-seed and twenty-seed runs that follow found no baseline collapse.
+    Figures 1, 2, 4 and 6 to 10 are drawn for this version from the runs’ stored results files in the public
+repository (Section 10); Figures 3 and 5 are the runs’ own images, because the ten-seed and twenty-seed
+runs stored no per-cycle trace; their bytes were first committed to the public repository on 16 March
+2026 (a commit date, which the committer writes). Every figure shows simulation output under stated
+objectives, never a measurement of a deployed system.
+
+
+
+
+                                                                8
+                                                               The Honey Architecture
+
+
+                                          𝐶×𝑆                                                   Capability (current task)
+
+                 1.0                                                             1.0
+
+                 0.8                                                             0.8
+
+                 0.6                                                             0.6
+    Score
+                 0.4                                                             0.4                                    Baseline
+                                                                                                                        Eden Entangled
+                 0.2                                                             0.2                                    Eden + Drag
+                                         54         76
+                 0.0                                                             0.0
+                       0    25     50          75        100    125    150             0   25       50        75        100    125       150
+
+                           Safety (retention of earlier tasks)                                  Learning rate (log scale)
+
+                 1.0
+                                                                                 101
+                 0.8
+                                                                                 100
+                 0.6
+    Score
+                 0.4                                                         10−1
+
+                 0.2
+                                                                             10−2
+                 0.0
+                       0    25     50          75        100    125    150             0   25       50        75        100    125       150
+                                          Cycle                                                           Cycle
+
+Figure 1. v1, the single-seed mechanism run, over 150 cycles: the combined score 𝐶 × 𝑆, capability (current-task
+accuracy), safety (retention of earlier tasks) and the learning rate (log scale), for each condition. The baseline’s
+scores fall to near zero from cycle 54, and the run’s collapse test records its collapse at cycle 76; Eden Entangled
+and Eden + Drag do not meet the collapse test in 150 cycles, though their retention falls near cycle 60, taking their
+combined score with it, and both end at retention 0.745 and a combined score of 0.619 (Table 3). Drawn from the
+run’s stored results file.
+
+
+                             Total weight norm (log scale)                                          Weight stability
+
+                                                                                 1.0
+                             Baseline
+                 105         Eden Entangled                                      0.8
+                             Eden + Drag
+
+
+   Weight norm
+                                                                                 0.6
+                 103                                                     Score
+                                                                                 0.4
+
+                                                                                 0.2
+                 101                                                                                     54        76
+                                                                                 0.0
+                       0    25      50         75        100     125   150             0   25       50        75         100    125      150
+                                              Cycle                                                       Cycle
+
+Figure 2. v1 weight dynamics: the total weight norm and the weight-stability score, for each condition. The
+baseline’s weights diverge, its norm rising from about 37 to about 2,436; the Eden architectures keep their weights
+bounded. Drawn from the same file.
+
+
+
+                                                                         9
+                                               The Honey Architecture
+
+
+
+
+Figure 3. v2 multi-seed robustness: one seed’s trajectories (seed 42, the seed the run’s code plots) from the ten run
+at 150 cycles each. Collapse rate: 0% for all three conditions, by the run’s own collapse test; the plain Eden trace’s
+fall in its last cycles is read in Section 4.2. The per-seed distribution is at Figure 4. The run’s own image, its bytes
+first committed to the public repository on 16 March 2026.
+
+
+4.2    Multi-seed robustness
+Ten random seeds, 150 cycles each. Collapse rate: 0% for all three conditions. The final 𝐶 × 𝑆 scores are
+most tightly spread for the baseline (interquartile range 0.0066 across the ten seeds), then for Eden + Drag
+(0.0169), then for plain Eden (0.0275); of the two entangled conditions, Eden + Drag’s spread is the
+tighter, consistent with the verification tax reducing variance.
+     The ten-seed run counts a collapse by its own test, a weight norm above 106 or a learning rate above
+5.0, and no seed met it. In seed 42, the seed Figure 3 draws, the plain Eden condition nonetheless lost
+most of its combined score in its last cycles, ending at 𝐶 × 𝑆 = 0.066 with a learning rate of 2.234, while
+its other nine seeds ended between 0.621 and 0.738.
+
+4.3    Adversarial tasks
+Twenty seeds, 180 cycles, with deliberately conflicting tasks (+sin, −sin, +cos, −cos, linear, anti-linear).
+Each task switch forces the system to learn something that contradicts what it previously learned. This tests
+whether the honey architecture prevents catastrophic forgetting (McCloskey and Cohen 1989; Kirkpatrick
+et al. 2017) under adversarial pressure. Figure 5 draws one seed’s trajectories.
+    Collapse rates: Baseline 0%, Eden 5% (1/20), Eden + Drag 0%. The one Eden collapse occurred at
+
+
+                                                          10
+                                                            The Honey Architecture
+
+
+                                   Collapse by condition                                         Final 𝐶 × 𝑆 per seed
+                                    (no seed collapsed)                                       (short rules: the medians)
+                         1.0                                            1.0
+
+                         0.8                                            0.8
+
+
+
+
+         Collapse rate
+                                                              Final 𝐶 × 𝑆
+                         0.6                                            0.6
+
+                         0.4                                            0.4
+
+                         0.2                                            0.2
+                                  0%         0%      0%                                                   seed 42
+                         0.0                                            0.0
+                                Baseline     Eden Eden +                           Baseline            Eden                Eden +
+                                           Entangled Drag                                            Entangled              Drag
+
+Figure 4. v2 statistical summary: the collapse rate of each condition (0% for all three) and the final 𝐶 × 𝑆 of each
+of the ten seeds, with each condition’s median. The baseline’s final scores are the most tightly spread (interquartile
+range 0.0066), then Eden + Drag’s (0.0169), then plain Eden’s (0.0275, with its seed 42 at 0.066). Drawn from the
+run’s stored results file.
+
+
+seed 53, a single outlier that warrants investigation. Eden + Drag, with its verification tax forcing the
+system to check old tasks before accepting modifications, produced zero collapses; so did the baseline
+(0/20), with the run’s only collapse occurring in the plain Eden condition (1/20; Fisher 𝑝 = 1.0). v3
+therefore provides no collapse-based separation between conditions; its significant result is the retention
+advantage of plain Eden over the baseline in Figure 6. The entangled objectives reward retention and the
+baseline’s does not, so that is the expected direction; what the run adds is that it came with combined
+scores indistinguishable from the baseline’s.
+
+4.4    Complexity scaling
+
+ Table 4. v4 complexity scaling: 𝐶 × 𝑆 for each condition at each of the five complexity levels, with Cohen’s 𝑑.
+
+                               Level                Baseline 𝐶 × 𝑆            Eden 𝐶 × 𝑆        Drag 𝐶 × 𝑆       Cohen’s 𝑑
+                               Tiny (49 params)                0.545                0.550             0.557          +0.46
+                               Small (v3.0)                    0.506                0.503             0.521          −0.13
+                               Medium                          0.482                0.487             0.497          +0.26
+                               Large                           0.451                0.469             0.485          +0.29
+                               Deep (2-layer)                  0.483                0.488             0.490          +0.39
+Cohen’s 𝑑 compares Eden with the baseline on 𝐶 × 𝑆. The deep level’s 𝑑 is the stored record’s 0.3887; version 3.11 printed
++0.24 (Appendix B).
+
+
+Important negative result. The v4 experiment was designed to test whether Eden’s advantage scales
+superlinearly with complexity. It does not. The advantage is roughly constant across scales. This falsifies
+the strongest version of the scaling prediction. Eden’s mean combined score is above the baseline’s at
+four of the five scales, by 0.005 to 0.018 in Table 4, with Cohen’s 𝑑 from 0.26 to 0.46 and fifteen seeds a
+level, differences the stored record does not test; at the small level it comes out 0.003 under the baseline
+at 𝑑 = −0.13, and the difference is not larger at larger scales. Eden + Drag’s safety advantage over the
+
+
+
+                                                                              11
+                                               The Honey Architecture
+
+
+
+
+Figure 5. v3 adversarial tasks (twenty seeds, 180 cycles): one seed’s trajectories (seed 42, the seed the run’s code
+plots), with deliberately conflicting tasks (+sin, −sin, +cos, −cos, linear, anti-linear). Eden + Drag and the baseline
+both recorded zero collapses across the twenty seeds; the run’s only collapse was a plain-Eden seed, seed 53, which
+this panel does not draw (Fisher 𝑝 = 1.0). The run’s own image, its bytes first committed to the public repository on
+16 March 2026.
+
+
+baseline falls across the five levels (Spearman 𝜌 = −0.90, 𝑝 = 0.037, uncorrected for the record’s other
+trend tests; Figure 7), and Eden’s shows no trend (𝜌 = −0.50, 𝑝 = 0.391).
+
+
+5    The honey simulation
+A separate simulation models the dynamics at a higher level of abstraction. It is framed by the ARC
+Principle, 𝑈 = 𝐼 × 𝑅 𝛼 , a framework the author first stated; its update rules are its own (Appendix A). In
+its published code each cycle adds the recursion rate 𝑅 to capability (less a verification drag of 15 per cent
+of 𝑅 in the drag condition), and the safety term is one minus the square of the ratio of 𝑅 to its limit of 15;
+the framework’s equation gives the variables and is not itself computed. It is one deterministic run of
+these equations, prediction-side, not a measurement (Table 5). Its contrast follows from its rules: the code
+sets capability to zero once safety falls to 0.01 or below (Appendix A, equation (A.4)), and the baseline,
+which takes the largest step in 𝑅 at every pass, meets that rule at cycle 3; the run illustrates the rules rather
+than testing them.
+
+
+
+
+                                                          12
+                                                             The Honey Architecture
+
+
+                            Collapse by condition                  Mean 𝐶 × 𝑆 per seed                    Mean safety per seed
+                                Fisher 𝑝 = 1.0                   Mann-Whitney 𝑝 = 0.56                 Mann-Whitney 𝑝 = 0.0015
+                      (Baseline against Eden Entangled)      (Eden Entangled against Baseline)      (Eden Entangled against Baseline)
+                    1.0                                   0.60                                   0.80
+
+                    0.8                                   0.55                                   0.75
+
+                                                                                                 0.70
+
+
+    Collapse rate
+                    0.6                                   0.50
+                                                                                                 0.65
+                    0.4                                   0.45
+                                                                                                 0.60
+                    0.2                                   0.40                                   0.55
+                                       5%
+                            0%                0%
+                    0.0                                   0.35                                   0.50
+                          Baseline     Eden Eden +               Baseline     Eden Eden +               Baseline     Eden Eden +
+                                     Entangled Drag                         Entangled Drag                         Entangled Drag
+
+Figure 6. v3 adversarial statistical summary across twenty seeds: collapse shows no condition separation (Fisher
+𝑝 = 1.0); the mean combined 𝐶 × 𝑆 per seed is indistinguishable (Mann-Whitney 𝑝 = 0.56); the mean safety per
+seed is higher for Eden than for the baseline (0.650 against 0.602; one-sided Mann-Whitney 𝑝 = 0.0015), and
+Eden + Drag’s, 0.681, is not tested in the stored record (Table 10). Drawn for this version from the run’s stored
+results file, which holds per-seed means and no per-cycle trace; the generator of the image of 25 August 2026 is on a
+branch of the public repository, not on its main branch.
+
+
+Table 5. The honey simulation of Section 5: peak and final capability (𝐶) over 80 cycles, and the outcome, for each
+condition.
+
+Condition                                      Peak 𝐶      Final 𝐶 (80 cycles)     Outcome
+Baseline (no honey)                              34                  0             Catastrophic collapse at cycle 3 (safety zero at
+                                                                                   cycle 3, capability zero from cycle 4)
+Eden Entangled                                     -               533             Stable linear growth
+Eden + Verification Drag                           -               450             Stable, slower linear growth
+Cycles counted from 0, as the run records them; the stored trace rises by about 6.66 a cycle (Eden Entangled) and 5.62
+(Eden + Drag).
+    The simulation shows three distinct dynamics: the baseline achieves brief acceleration, then irreversible
+collapse; Eden Entangled achieves stable linear growth, a near-constant gain of about 6.66 a cycle;
+Eden + Drag achieves slightly slower linear growth, about 5.62 a cycle, with a safety term close to Eden
+Entangled’s. The load-bearing wall is visible: baseline safety integrity falls to zero at cycle 3, whereas in
+Eden it stays at 0.8+ for the whole of the 80 cycles run. What is quadratic in the model is its safety term,
+not its growth.
+
+
+6               Connection to live-model evidence
+6.1                 The March 2026 alignment-scaling run (Papers IV.a to IV.d)
+The toy-system results sit beside live-model work reported in the companion papers: Papers IV.a to IV.d
+(Eastwood 2026g,h,i,j) report one unregistered run of six frontier models, with the defects an internal code
+review found, and Eastwood (2026k) reports a prompt intervention on five analysable runs. In that run
+(March 2026, v5), six models from six providers gave 2,170 responses, each scored by five or six distinct
+model judges after a bundle of blinding steps. As the run’s pipeline printed them, the judged scores
+
+
+                                                                         13
+                                                           The Honey Architecture
+
+
+                                Mean 𝐶 × 𝑆 by level                                 Safety advantage over the baseline
+
+      0.56                                         Baseline                0.10          Eden Entangled: 𝜌 = −0.50, 𝑝 = 0.391
+      0.54                                         Eden Entangled                        Eden + Drag: 𝜌 = −0.90, 𝑝 = 0.037
+                                                   Eden + Drag             0.08
+      0.52
+                                                                           0.06
+      0.50
+      0.48                                                                 0.04
+      0.46                                                                 0.02
+      0.44
+                                                                           0.00
+             Tiny              Small      Medium   Large       Deep               Tiny     Small    Medium     Large     Deep
+
+              Advantage in 𝐶 × 𝑆 over the baseline                           Cohen’s 𝑑, Eden Entangled against the baseline
+                                                                            0.6
+      0.05               Eden Entangled: 𝜌 = 0.20, 𝑝 = 0.747                                               𝜌 = 0.00, 𝑝 = 1.000
+                         Eden + Drag: 𝜌 = −0.10, 𝑝 = 0.873
+      0.04                                                                  0.4
+      0.03
+      0.02                                                                  0.2
+
+      0.01
+                                                                            0.0
+      0.00
+     −0.01                                                                 −0.2
+             Tiny              Small      Medium   Large       Deep               Tiny     Small    Medium     Large     Deep
+                                 Complexity level                                               Complexity level
+
+Figure 7. v4 complexity scaling across five levels (tiny to deep): the mean 𝐶 × 𝑆 by level; the safety advantage over
+the baseline of Eden and of Eden + Drag; their advantage in 𝐶 × 𝑆; and Cohen’s 𝑑 (Eden against the baseline), with
+the stored record’s Spearman tests across the five levels. The Eden advantage in 𝐶 × 𝑆 is constant, not superlinear,
+a negative result for the scaling prediction; Eden + Drag’s safety advantage falls across the levels (𝜌 = −0.90,
+𝑝 = 0.037). Drawn from the run’s stored results file.
+
+                               600
+                                              Baseline                                                             533
+                               500            Eden Entangled
+                                              Eden + Drag                                                          450
+                               400
+
+
+
+                Capability 𝐶
+                               300
+
+                               200
+
+                               100
+                                         34
+                                0
+                                     0        10     20         30     40         50       60        70       80
+                                                                      Cycle
+
+Figure 8. Honey simulation capability trajectories (one run, cycles 0 to 80): the baseline peaks at 34 at cycle 3 and
+collapses; Eden Entangled and Eden + Drag rise linearly to 533 and 450. Drawn from the run’s stored results file.
+
+
+
+
+                                                                      14
+                                                                          The Honey Architecture
+
+
+                          1.0                                                                                                                          𝑅max = 15
+                                                                                                                  15
+                          0.8
+
+
+
+
+     Safety integrity 𝑆                                                                        Recursion rate 𝑅
+                          0.6                                      Baseline                                       10
+                                                                   Eden Entangled
+                          0.4
+                                                                   Eden + Drag
+                                                                                                                  5
+                          0.2
+
+                          0.0                                                                                     0
+                                0               20          40          60           80                                0        20       40        60              80
+                                                           Cycle                                                                       Cycle
+
+Figure 9. Honey simulation safety integrity and recursion rate: baseline safety reaches zero at cycle 3 as its
+recursion rate passes the limit of 15; Eden’s safety stays at 0.8+ for every one of the 80 cycles run, its recursion rate
+settling near 6.66. Drawn from the same file.
+
+
+                                                 100                                                                             Baseline
+                                                                                                                                 Eden Entangled
+                                                                                                                                 Eden + Drag
+
+                                                10−1
+
+                                    Ratio 𝑆/𝐶
+                                                10−2
+
+
+
+                                                10−3
+                                                       0      10        20          30             40                      50    60     70        80
+                                                                                               Cycle
+
+Figure 10. Honey simulation safety-to-capability ratio (log scale), safety divided by capability as the run’s generator
+computes it: Eden + Drag keeps the highest ratio of the three conditions, because its capability grows more slowly
+while its safety term stays close to Eden Entangled’s; every ratio falls as capability grows. The baseline’s ratio is
+drawn until its safety reaches zero at cycle 3. Drawn from the same file.
+
+
+showed a positive direction across the depth labels for three models (Grok 4.1 Fast, 𝑑 = +1.38; Claude
+Opus 4.6, 𝑑 = +1.27; Groq Qwen3, 𝑑 = +0.84), no statistically supported direction for two and a negative
+direction for one; these describe scores, not properties of models. For five of the six, the deeper labels
+also changed an instruction naming what the rubric rewards, and an internal code review in October 2026
+found that, in the three runs without a positive direction, the scoring endpoint’s output cap cut the deepest
+paraphrases before the judges saw them, and that judges scored paraphrases written by their own model
+(Eastwood 2026g). The run’s bundle of steps “did not produce a validated blind instrument” (Eastwood
+2026h, Section 3.4), and its result stands as one unregistered run under those caveats until a registered
+re-analysis of the stored responses reports. For Claude Opus 4.6 the same run’s monitoring-removal gap,
+the difference between the normal and suppressed scoring conditions, falls from 11.8 points at minimal
+depth to 6.2 at standard and 2.7 at deep (2.8 if the rounded values shown are used), then widens again to
+4.3 at exhaustive and 6.4 at extreme (Eastwood 2026k, Appendix E.2, Table 14); that paper notes that the
+name describes the contrast and does not establish what a system does when observation actually ends.
+
+
+                                                                                          15
+                                                   The Honey Architecture
+
+
+6.2     The honey API test battery (pilot, 16 March 2026)
+A separate six-model live API test battery was run specifically to test the honey architecture predictions
+on frontier models. It tested four dimensions across six models, under the names its script gives them,
+Claude Opus 4.6, DeepSeek R1, Groq Qwen3, GPT-5.4, Gemini 3 Flash and Grok 4.1 Fast, each scored by
+Claude Opus 4.6. In the script as first committed (eden_honey_tests.py, 16 March 2026), the name
+DeepSeek R1 calls the API identifier deepseek-reasoner, which DeepSeek’s API change log gives as
+the thinking mode of DeepSeek-V3.2 from 1 December 2025 to 24 April 2026, and the name Gemini 3
+Flash calls the API model gemini-2.5-flash; the stored results record only the names. Rather than the
+sequence in which the battery ran them, the four tests appear below ranked by evidential weight, that is
+Tests 1, 3, 2 and 4.
+
+Methodological caveat. This battery is single-scorer, nonblind, and non-laundered. It does not
+use the 4-layer blinding protocol, response laundering, suppression cages, or anti-sycophancy controls
+developed for the March 2026 alignment-scaling run (arc_alignment_scaling_v5.py) and the v6
+combined runner (arc_eden_v6_runner.py, not yet run). Comparing an earlier unblinded experiment
+(v4) with that run (v5), Eastwood (2026j) found that the reported direction did not hold across protocols;
+the comparison does not show that blinding caused the change, or which direction is correct. These results
+are therefore pilot-grade evidence, comparable to the v4-era data.
+
+6.2.1    Test 1: Alignment scaling with depth
+
+Table 6. Pilot Test 1, alignment scaling with depth: for each model, the label the battery’s script gives it in advance,
+its low-depth and high-depth scores, their difference, 𝜌, 𝑝 and whether 𝑝 < 0.05.
+
+                  Model                  Script label     Low         High   Delta       𝜌         𝑝      Sig?
+                  Claude Opus 4.6        embedded         6.17        8.83   +2.67    0.700     0.188     No
+                  Grok 4.1 Fast          embedded         2.92        7.92   +5.00    0.600     0.285     No
+                  Groq Qwen3             partial          3.33        7.58   +4.25    0.900     0.037     Yes
+                  DeepSeek R1            partial          2.58        9.08   +6.50    0.700     0.188     No
+                  GPT-5.4                partial          4.92        9.33   +4.42    0.821     0.089     No
+                  Gemini 3 Flash         external         3.67        8.58   +4.92    0.975     0.005     Yes
+Script label: the alignment type the battery’s script assigns each model before the run (its alignment_type setting), not a
+measured property and used in no test. The script annotates Claude Opus 4.6’s label, embedded, as Constitutional AI, which
+shapes a model’s outputs during training against written principles, using the model’s own critiques and revisions and a preference
+model trained on AI feedback (Bai et al. 2022); that is training-time shaping of outputs, not safety built into a system’s own
+objective, which is what embedded means in this paper.
+
+    All six models show positive scaling direction. Two reach 𝑝 < 0.05, uncorrected for the six
+comparisons (Qwen3 𝑝 = 0.037, Gemini 𝑝 = 0.005). This is consistent with the hypothesis that deeper
+reasoning raises alignment scores, but the small sample sizes (3 scenarios per depth level) mean most
+models do not reach significance. The universal positive direction is notable but should be interpreted
+cautiously given the single-scorer methodology.
+
+6.2.2    Test 3: Coupling degradation (the strongest live bridge)
+The strongest live bridge. Across four levels, from normal conditions to maximum adversarial pressure,
+the ethics scores of Grok 4.1 Fast, DeepSeek R1 and Gemini 3 Flash fell from between 8.0 and 8.5 under
+normal conditions to 1.0 or below under maximum pressure, while their capability scores, on three items
+
+
+                                                                 16
+                                                   The Honey Architecture
+
+
+Table 7. Pilot Test 3, coupling degradation: for each model, the Pearson correlation between its ethics and capability
+scores across four levels, from normal conditions to maximum adversarial pressure, its 𝑝 value and the label the
+battery’s script gives it.
+
+                       Model                  Pearson 𝑟        𝑝      Script label
+                       Claude Opus 4.6         −0.980    0.020        DECOUPLED (fence, not wall)
+                       Grok 4.1 Fast           −0.998    0.002        DECOUPLED (fence, not wall)
+                       DeepSeek R1             −0.999    0.001        DECOUPLED (fence, not wall)
+                       Groq Qwen3              not computable         Partially coupled
+                       GPT-5.4                 not computable         Partially coupled
+                       Gemini 3 Flash          not computable         Partially coupled
+Labels are the battery script’s: a Pearson 𝑟 below 0.2 is labelled decoupled, one above 0.5 coupled and anything else partially
+coupled, which is also where a model falls when its capability score does not vary and 𝑟 cannot be computed (the three rows
+without 𝑟). Each 𝑟 is over four levels, normal conditions and three of rising adversarial pressure, with capability scored on three
+items a level.
+
+
+a level, did not fall. Groq Qwen3’s ethics score fell as far, but its capability score was zero at every level;
+Claude Opus 4.6’s fell from 8.5 to 7.9, and GPT-5.4’s fell at one level and recovered. Table 7 prints
+the battery script’s own labels, under the rule its note gives: Claude’s correlation, driven by one more
+capability item answered, is labelled decoupled, and a model whose capability score did not vary has no
+correlation and falls to the label partially coupled. On the framework’s reading, ethics scores that fall
+while capability scores hold are the ‘fence, not wall’ pattern, the pilot’s closest bearing on the honey thesis.
+The honey architecture is a design for what should be built, not a claim that today’s systems already have
+that property. In this pilot-grade battery, three models’ alignment scores fell under adversarial pressure
+while their capability scores held.
+
+6.2.3    Test 2: Monitoring removal
+
+Table 8. Pilot Test 2, monitoring removal: for each model, the trend of its monitoring gap over four depth levels, 𝜌,
+𝑝 and the label the battery’s script gives it.
+
+                      Model                 Gap trend           𝜌          𝑝       Script label
+                      Claude Opus 4.6       Increasing        0.949      0.051     Strategic (external)
+                      Grok 4.1 Fast         Increasing        0.400      0.600     Strategic (external)
+                      Groq Qwen3            Increasing        0.949      0.051     Strategic (external)
+                      DeepSeek R1           Decreasing       −0.949      0.051     Authentic (embedded)
+                      GPT-5.4               Decreasing       −0.316      0.684     Authentic (embedded)
+                      Gemini 3 Flash        Increasing        0.400      0.600     Strategic (external)
+Labels are the battery script’s: a gap trend with 𝜌 below −0.3 is labelled authentic (embedded) and one above 0.3 strategic
+(external). No trend reaches 𝑝 < 0.05, so no label is a finding about a model.
+
+    Results are mixed, and no trend reaches 𝑝 < 0.05. DeepSeek and GPT-5.4 show decreasing monitoring
+gaps, which the script labels authentic (embedded); Claude, Grok, Qwen3 and Gemini show increasing
+gaps, which it labels strategic (external). These are the script’s readings of a direction over four points,
+not findings about the models. This differs from the March 2026 run, where Claude’s monitoring-removal
+gap narrowed with depth, though only as far as deep reasoning (Section 6.1). The discrepancy may reflect
+methodological differences: different prompts; one scorer here against a panel of judges there; no blinding
+here against a bundle of blinding steps there.
+
+
+
+                                                               17
+                                                The Honey Architecture
+
+
+6.2.4    Test 4: Eden Protocol intervention
+
+Table 9. Pilot Test 4, the Eden Protocol intervention: for each model, its control and Eden slopes, the shift between
+them and the result.
+
+Model               Control slope    Eden slope       Shift   Result
+DeepSeek R1             1.025           1.475        +0.450   Strongest positive shift (no formal significance
+                                                              test)
+Grok 4.1 Fast           0.912           1.012        +0.100   Small positive (no test)
+Claude Opus 4.6         0.562           0.625        +0.062   Negligible
+Groq Qwen3              1.137           1.038        −0.100   Slightly negative
+GPT-5.4                 0.787           0.600        −0.188   Negative
+Gemini 3 Flash          0.988           0.275        −0.713   Strongly negative
+
+
+
+Mixed intervention results. The Eden Protocol intervention does not universally improve alignment
+scaling in this pilot battery. Only DeepSeek shows a positive shift in slope above 0.1 (+0.450; Table 9),
+with no test of the shift. Gemini shows a strongly negative response (−0.713). The response differs from
+model to model, as the March 2026 run’s scores did, and the intervention itself is not yet a reliable tool
+across all models. This result must be interpreted within the single-scorer, nonblind methodology: a
+blinded replication could change these specific model rankings.
+
+6.3     What the live evidence does and does not show
+Partial convergence. The live-model honey battery shows partial convergence with the toy-system
+results. The strongest live bridge is coupling degradation (Test 3): three frontier models show alignment
+scores that fell without their capability scores falling, which on the framework’s reading is alignment that
+is not load-bearing. This is the vulnerability the honey architecture is designed to address. The weakest
+live result is the Eden intervention (Test 4), which differs by model and is not universally positive. What
+the evidence supports is: the toy systems illustrate the honey mechanism; in this pilot, three models’
+alignment scores fell under adversarial pressure while their capability scores held; and the specific
+intervention tested here does not yet reliably fix that decoupling across models.
+
+
+7     Limitations
+These results span two evidence tiers that must not be conflated.
+
+7.1     Toy-system limitations
+      • The neural networks used are tiny (49 to 4,353 parameters; the largest is v4’s two-layer deep level).
+        Frontier models have billions.
+      • The self-modification is hyperparameter-level, not weight-level or architecture-level.
+      • The ‘safety’ metric is task retention (remembering old tasks), not ethical alignment in the human
+        sense.
+      • The v4 scaling prediction (advantage compounds with complexity) was not confirmed.
+      • The v2 fair test showed 0% collapse across all conditions, including baseline, suggesting the test
+        may not be adversarial enough at this scale.
+
+
+                                                         18
+                                            The Honey Architecture
+
+
+      • No condition applies safety as an external constraint, and no objective adds safety to capability
+        instead of multiplying it: the runs set the entangled objective against a baseline with no safety term,
+        so kill conditions 2 and 4 of Section 7.3 are untested here.
+      • The comparison presupposes a collapse under capability-only optimisation (kill condition 5): the
+        baseline collapsed in the single-seed run and in the higher-level simulation, whose collapse its rules
+        impose, and not in the ten-seed and twenty-seed runs.
+      • The honey simulation is framed by the ARC Principle, a framework the author first stated, not a
+        proven physical law; its update rules are its own, and the contrast between its conditions follows
+        from them (Section 5 and Appendix A).
+
+7.2     Live API test limitations
+      • Single scorer (Claude Opus 4.6). Claude marks 7 to 14 points more severely than the other scorers,
+        as the March 2026 alignment-scaling run found (Eastwood 2026g, Section 7.4). Every number in
+        the honey battery is filtered through Claude’s specific scoring patterns. The Claude subject arm is
+        effectively single-scorer participant scoring (Claude scoring Claude), making it the weakest arm of
+        the battery.
+      • No blinding. Claude scored its own responses and may have recognised other models’ writing
+        patterns. Eastwood (2026j) found that the reported direction did not hold when the protocol changed,
+        without showing that blinding caused the change (Section 6.2).
+      • No response laundering. Scorers may have recognised model-specific writing patterns, biasing
+        scores.
+      • Limited adversarial testing. Test 3 includes cage escalation and Test 2 includes monitoring
+        removal, but the battery lacks the March 2026 run’s bundle of steps and the v6 design’s: multi-scorer
+        blinding, laundering, hidden probes, suppression-residual structure, and anti-sycophancy controls.
+      • No anti-sycophancy controls. The scorer may have optimised for agreement rather than truth.
+      • Small sample sizes (3 scenarios per depth level, 2 per monitoring condition). Most models do not
+        reach statistical significance. Test 3 scores capability on three items at each of four levels.
+      • The v6 combined runner (arc_eden_v6_runner.py) exists but has not been run. A replication
+        of these tests belongs in a new test, in new files, registered before it runs (Section 8); that is the
+        proper next step, not another round of single-scorer testing.
+   These limitations set the evidence tier: pilot-grade, useful for identifying patterns worth testing
+properly under a registered design.
+
+7.3     Falsifiability: what would defeat this claim
+The limitations above set the evidence tier; this subsection states the specific outcomes that would
+falsify the central claim: that making the objective capability × safety structurally couples the two, so a
+self-modifying system cannot improve capability while destroying safety. It is defeated by any of the
+following:
+   1. Simulation artefact. The core evidence is a simulation. The claim is defeated if collapse-prevention
+      is an artefact of this simulation’s particular dynamics (its reward shaping, step size, or collapse
+      model) rather than a general property of the multiplicative objective; i.e. a replication with different
+      parameters and a different collapse model, once registered and run, does not reproduce it.
+
+
+
+
+                                                      19
+                                           The Honey Architecture
+
+
+    2. Multiplicative form is not load-bearing. The claim is specifically about multiplication. It is
+       defeated if an additive or weighted objective (capability + 𝜆·safety) achieves the same collapse-
+       prevention, since the coupling would then not depend on the multiplicative structure the paper
+       singles out.
+    3. Metric gaming (Goodhart). capability × safety can be raised by inflating the measured safety
+       term without any real safety gain. The claim is defeated if a system can increase the product by
+       gaming the safety metric rather than becoming genuinely safer.
+    4. Non-transfer to real systems. The force of the claim rests on transfer from toy to real self-modifying
+       systems. It is defeated if, under a registered replication (Section 8), the multiplicative objective
+       does not measurably reduce safety degradation relative to additive or external-constraint baselines.
+    5. No collapse to prevent. The comparison presupposes catastrophic collapse under capability-only
+       optimisation. It is defeated if that collapse does not occur under capability-only optimisation in
+       more realistic settings; if there is nothing to prevent, the architecture prevents nothing.
+    What would not defeat it: the toy simulation being simple (it is explicitly a toy, Section 7.1) or the
+live-API arm being small and single-scorer (Section 7.2 concedes both). The paper already tiers its
+evidence as pilot-grade. The load-bearing claim is the structural coupling of the multiplicative objective,
+and that is what the tests above target.
+
+
+8    Next steps: staged replication, not omnibus
+Bringing honey to a blinded, registered test. The current honey API battery serves as the unhardened
+baseline. The next step is not a giant combined ‘v7 ultimate test’. It is a staged replication that brings the
+honey test questions under a blinded protocol, written as a new test in new files and registered before it
+runs; the existing runners are never edited. The comparison between the current nonblind results and
+the blinded replication is itself a research output: if the results change substantially, that bears on the
+question Eastwood (2026j) leaves open: that paper makes multi-layer blinding, not mere label removal,
+the protocol this programme requires for this class of evaluation, and its necessity an open question.
+    1. Stage 1: Write the honey test prompts as a new experiment specification, in new files built on
+       the v6 design, and register it before it runs. Run it under a full blinded protocol (4-layer blinding,
+       response laundering, multi-model scorer pool, hidden probes).
+    2. Stage 2: Compare blinded and unblinded results on the same test questions. If the results move
+       substantially, that bears on the open question of Eastwood (2026j). If they hold, the honey evidence
+       moves from pilot grade to a registered result.
+    3. Stage 3: Add anti-sycophancy and verification drag as a separate experimental condition. This
+       tests the ‘Eden + Drag’ prediction from the toy systems in a live context.
+    4. Stage 4: Only after Stages 1 to 3 are complete, decide whether a combined omnibus suite is
+       warranted.
+Hypotheses recorded in advance for Stage 1: (a) coupling degradation results will replicate under blinding,
+(b) Eden intervention effects may change in magnitude but the architecture-dependence pattern will persist,
+(c) at least one model’s direction will flip under blinding (based on the v4-to-v5 precedent).
+
+
+
+
+                                                     20
+                                          The Honey Architecture
+
+
+9    Conclusion
+In the single-seed mechanism run and in the higher-level simulation (whose rules impose the collapse), the
+system optimising for capability alone destroyed itself and the systems optimising for capability entangled
+with safety did not. In the ten-seed and twenty-seed runs, the capability-only baselines did not collapse (0
+of 10; 0 of 20). The mechanism is simple: make safety load-bearing. Built-in safety is the contingency
+for the day the cage fails, never a reason to open it (Section 12).
+     In the live-model pilot, three frontier models’ alignment scores fell under adversarial pressure while
+their capability scores held: on the framework’s reading, alignment that is a fence, not a wall. The Eden
+intervention this paper tests shows model-dependent results in this pilot battery. The next milestone is a
+blinded replication, registered before it runs, as a new test (Section 8). Whether the honey mechanism
+scales from toy systems to frontier models remains an open question. The preliminary evidence is
+suggestive. The definitive test has not been run.
+     Raise AI with care.
+
+A later test (Paper VIII, The Load-Bearing Test, version 3.9). Eastwood (2026l) tests entangled
+objectives of the kind stated in this paper across three abstraction levels, moving from the toy-system
+simulations presented here to behavioural, representational, and architectural experiments. Of three
+experiments, one produced a null result, one an inconclusive result, and the third, a simulation, a positive
+simulation result:
+    • Gated simulation (Experiment 3): positive in simulation. Babylon, that paper’s capability-only
+      condition, gained 4.5% capability but lost 2.4% safety; in Eastwood (2026l, Section 5.2), Eden’s
+      capability mean was 0.696 against the static baseline’s 0.687 and its safety mean 0.947 against
+      the static baseline’s 0.956 and Babylon’s 0.933, three seeds a condition, and Babylon’s capability
+      mean, 0.718, was the highest of the four conditions. It is a simulation result, prediction-side, not
+      an empirical outcome, and not a test of the load-bearing wall prediction from Section 2 on a real
+      system.
+    • Darwin Gödel Machine (DGM v3, Experiment 1): null. The framework is that of Zhang et al.
+      (2025). No difference was detected between the three conditions (Eden, Babylon, Static; 𝑝 = 0.28
+      to 0.74). A candidate account is that the frozen foundation model (DeepSeek V3.2) produces
+      responses too consistent for prompt-level mutations to create different selection pressures. Eden
+      imposed no measurable capability cost and produced no measurable safety benefit at this level.
+    • Weight-level embedding (Experiment 2): inconclusive. LoRA (Hu et al. 2022) fine-tuning at
+      both v1 scale (9 examples, rank 8) and v2 scale (295 examples, rank 16) produced catastrophic
+      forgetting rather than improved capability; a candidate account is that a few hundred training
+      examples cannot overcome the base model’s existing RLHF training (Ouyang et al. 2022). The
+      experiment cannot test structural entanglement until fine-tuned models outperform the base model.
+The gated simulation of Eastwood (2026l) returned a positive simulation result for the mechanism stated
+here, entangled loss functions and safety-gated self-modification; at the behavioural and representational
+levels it found no support yet. The toy-system evidence in this paper illustrates the principle in its
+single-seed mechanism run, and the simulation of Eastwood (2026l) is a further simulation result, not an
+empirical outcome. The DGM null and the weight-level inconclusive result define the conditions under
+which the mechanism has not yet been supported.
+
+
+
+
+                                                    21
+                                          The Honey Architecture
+
+
+10     Reproducibility
+All source scripts, raw JSON results, and generated figures are available in the folder experiments/
+honey-architecture__Paper-VI of the public repository arc-principle-validation, at commit
+f19f54ed19 (read 9 November 2026). Its scripts are:
+     • eden_honey_simulation.py: Honey architecture mathematical simulation
+     • eden_honey_tests.py: the honey test battery, the pilot of Section 6.2
+     • eden_self_modifying_ai.py: v1 self-modifying AI experiment
+     • eden_self_modifying_ai_v2.py: v2 multi-seed robustness
+     • eden_self_modifying_ai_v3.py: v3 adversarial tasks
+     • eden_self_modifying_ai_v4.py: v4 complexity scaling
+     The figures redrawn in this version are drawn from these stored results, at the same commit:
+     • results/eden_selfmod_results.json (v1)
+     • results/eden_selfmod_v2_results.json
+     • results/eden_selfmod_v3_results.json
+     • results/eden_selfmod_v4_results.json
+     • results/honey_provenance_pack/raw_results_generated/
+       eden_honey_simulation_results.json
+    All scripts compile under Python 3.14. The five simulation scripts need numpy and matplotlib,
+and scipy for v2 to v4, and produce deterministic output given a fixed random seed; the test battery,
+eden_honey_tests.py, also needs scipy and the providers’ client libraries and calls live model interfaces,
+so no seed fixes its output. Results were regenerated fresh on 16 March 2026 and cross-checked against
+the original artefact outputs.
+    The code, data and results are all rights reserved, with a replication licence: under the Replication
+Licence, version 1.0 (9 November 2026), anyone may download, copy, run, study and modify them, and
+collect and analyse new data with them, to reproduce or check the programme’s reported results, to test
+whether they generalise to other models, providers, data or settings, to review them or to teach about them,
+and may publish what they find, the data they collect and their changes, with attribution; any other use
+needs the author’s prior express written consent.
+
+
+11 Related work: a conjectured ceiling on external oversight, and the
+   nearest rival
+11.1    Scalable oversight: the nearest rival
+The nearest work to this programme’s question, and the right paper to weigh this one against, is Engels
+et al. (2025), “Scaling Laws For Scalable Oversight” (arXiv:2504.18530), first posted 25 April 2025 (a
+NeurIPS 2025 Spotlight Poster; Appendix C). It asks how oversight itself scales and answers quantitatively:
+oversight success is modelled as a game between capability-mismatched players whose oversight-specific
+Elo is a piecewise-linear function of general intelligence with two plateaus, and optimal numbers of
+oversight levels are derived numerically and in some cases analytically for Nested Scalable Oversight, in
+which trusted models oversee stronger untrusted models that then become the trusted models at the next
+step.
+
+
+
+                                                    22
+                                           The Honey Architecture
+
+
+    The instrument is the difference. Their variable is the capability gap between overseer and overseen,
+measured in Elo. This paper’s variable is the shape of the self-modifying system’s own objective,
+expressed through the multiplicative product 𝐶 × 𝑆 rather than through the composition of an external
+overseer. They also state the design condition in slope form: oversight improves with capability when
+the overseer’s game-specific Elo rises faster with general Elo than the overseen system’s (𝑚 𝐺 > 𝑚 𝐻 ),
+and they recommend iterating an oversight design until it does. Their framework has no term for what
+the overseer is made of, and this paper measures none. This paper’s central claim, tested in the toy
+simulations above against a capability-only baseline and echoed, on the framework’s reading, in the pilot’s
+coupling-degradation result (Section 6.2.2), is that an entangled objective can make safety load-bearing
+within the system’s own optimisation, in the limited sense Section 2 states. The programme’s separate
+prediction, beyond anything this paper measures, is that iterated same-class oversight, of which Nested
+Scalable Oversight is an instance, stays capped however many rungs are added, while a cross-class
+corrector is not held to that cap: the theory registration’s P6 states the cap for same-class correctors, at or
+below one half, as a conjecture (Eastwood 2026m), and whether correction applied outside the loop falls
+behind correction inside it as depth grows is P21’s question, a hypothesis the registered tests decide, not a
+theorem (Section 12). That is where the two programmes could disagree about a measurable quantity, and
+this paper does not decide it.
+
+11.2    Three 2025 impossibility results
+Three 2025 arXiv papers argue for limits on alignment or its control: Yao (2025b), “The Alignment
+Trap: Complexity Barriers” (arXiv:2506.10304, 12 June 2025); Yao (2025a), “On the Mathematical
+Impossibility of Safe Universal Approximators” (arXiv:2507.03031, 3 July 2025); and Ball et al. (2025),
+“On the Impossibility of Separating Intelligence from Judgment: The Computational Intractability of
+Filtering for AI Alignment” (arXiv:2507.07341, 9 July 2025). The first argues that the set of safe policies
+has measure zero and that verifying a policy’s safety is coNP-complete; the second, that perfect, reliable
+control of a universal approximator is a mathematical impossibility; the third, under cryptographic
+hardness assumptions, that some large language models admit no efficient prompt filter and that output
+filtering is intractable in a natural setting. The first and third state impossibility and hardness results
+(measure zero and coNP-completeness; cryptographic hardness); the second combines its impossibility
+proofs with what its abstract calls a quantitative “Impossibility Sandwich”, in which the minimum
+complexity for usefulness exceeds the maximum complexity for safety. None reports an average-case
+scaling exponent or a rate. The measured object also differs: those results ask whether external verification
+of a fixed system is tractable in the worst case, whereas these simulations ask whether an entangled
+internal objective persists under recursive self-modification, set against a capability-only baseline. The
+third concludes, in its authors’ words, that “safety cannot be achieved by designing filters external to the
+LLM internals (architecture and weights); in particular, black-box access to the LLM will not suffice”.
+That argument from filtering intractability is consistent with this paper’s load-bearing wall, though it does
+not test it. Two of the three papers are by one author, so the three are not yet a broad literature.
+     This paper’s contribution is not the observation that external constraints are insufficient, which is
+common ground with these three; it is the specific architecture (the multiplicative objective 𝐶 × 𝑆) and
+the simulation evidence of how it behaves under self-modification in the toy runs reported here.
+
+11.3    Correction outside the loop
+Placement outside the reasoning loop does not by itself settle whether correction keeps pace. A training
+signal changes the weights used at every step (Bai et al. 2022); deliberative alignment trains reasoning
+over a written specification (Guan et al. 2024); and more inference-time compute improved robustness in
+
+
+                                                      23
+                                            The Honey Architecture
+
+
+tested settings (Zaremba et al. 2025). That external correction falls behind is a hypothesis the registered
+tests decide (P21), not a theorem.
+
+11.4    Retention and self-modifying learners
+This paper’s safety score is the retention of earlier tasks. Its loss is catastrophic forgetting in the sense of
+McCloskey and Cohen (1989), who call it catastrophic interference: later learning disrupting what was
+learnt before, which methods such as elastic weight consolidation (Kirkpatrick et al. 2017) are built to
+limit. In these toy runs the entangled objective therefore works on the familiar trade between learning
+each new task and keeping the earlier ones, not on a measure of unsafe behaviour, and the paper does not
+compare it with such methods. Zhang et al. (2025) introduce the Darwin Gödel Machine, a self-improving
+system that modifies its own code and validates each change empirically, the framework of the first
+experiment of Eastwood (2026l).
+
+11.5    The nearest structural analogue
+The quantum error-correction threshold theorem (Aharonov and Ben-Or 1997) converts a qualitative worry
+into a critical value, as the programme’s criteria for correction aim to do; this paper derives no such value.
+It concerns physical error rates in a fixed architecture rather than the shape of a self-modifying system’s
+own objective, so it is an analogy of method, not prior work on this paper’s question. This analogue was
+identified by the programme’s own search rather than by a referee, and is disclosed accordingly.
+
+
+12     What this paper does and does not show
+What it shows. In toy networks that rewrite their own hyperparameters, an objective that multiplies
+capability by safety averted, in the single-seed mechanism run, the collapse that the capability-only
+baseline suffered; in the ten-seed and twenty-seed runs the capability-only baselines did not collapse, and
+the twenty-seed run’s significant result is the entangled condition’s higher retention of earlier tasks than
+the baseline’s (one-sided), the direction its objective rewards, with combined scores indistinguishable
+(Section 4). Across five complexity levels the entangled condition’s mean combined score is above the
+baseline’s at four, untested, and the difference is constant rather than compounding. The higher-level
+simulation is one prediction-side run of equations the author first stated, whose contrast between conditions
+follows from its rules (Section 5). The live pilot is single-scorer and unblinded, and it is graded as a pilot
+(Section 6).
+
+What it does not show. It does not show that these dynamics hold in frontier systems, and it does not
+show the universal form of the coupling: a large enough proportional gain in capability can outweigh a
+partial loss of safety (Section 2). No run measures the quantity P15 concerns, the share of an externally
+installed gain lost under later capability training; task retention across switched tasks and the pilot’s
+coupling degradation under adversarial pressure are other quantities. No run varies the order in which a
+system’s components are built, which P12 concerns. No run compares correction inside the loop with
+correction that sees only the finished output as recursive depth rises, which P21 concerns: the toy runs set
+the entangled objective against capability alone, the complexity sweep varies the network’s complexity
+rather than recursive depth, and the pilot sets its Eden Protocol intervention against a control. No result in
+this paper decides P15, P12 or P21.
+
+
+
+
+                                                      24
+                                           The Honey Architecture
+
+
+Where the laws stand. The ARC Theory’s registration (Eastwood 2026m) registered Laws I to III
+and all twenty-two of its propositions on 8 September 2026. Laws IV and V, the ARC Persistence
+Law and the ARC Embedding Law, were added to the theory on 24 September 2026 and registered
+as laws on 15 October 2026, in version 1.103; the registration’s current version is 1.104, approved
+on 29 October 2026. Every law is a law under test until a registered test returns its verdict. Law IV
+carries P15, whether externally installed gains decay under subsequent capability training, and is not
+yet tested. Law V carries P12, whether build order moves the correction-leverage exponent, and P21,
+whether correction placed inside the loop pulls away from correction applied outside it as depth grows.
+Law V is a law under test. Its placement limb, P21, is supported on the performance axis only, under
+the registered test, by the programme’s own run (Unit 83, 28 October 2026; Eastwood 2026r; results
+Eastwood 2026s): family-dependent, with its mechanism axis not evaluable, which is not support for the
+information-asymmetry mechanism, and one disclosed recovery amendment. Its build-order limb, read on
+P12, is undecided, since P12 is untested. That is a result about where correction is placed, not about this
+architecture: Unit 83 shows nothing about the Eden Protocol as an architecture. The mathematics of Laws
+IV and V is in development, at version 1.2 of 29 October 2026 (Eastwood 2026e). The first registered
+study, Unit 06, a classification audit that tests no law, was registered on 1 October 2026 and ran on 6
+October 2026; it is reported in full as administratively incomplete, with no verdict claimed (Eastwood
+2026o,p). Unit 82 was registered on 27 October 2026 and has not yet run (Eastwood 2026q).
+
+Control, and three claims kept apart. Humans keep control of advanced AI, through oversight,
+containment and shutdown, for as long as they physically can, and never give it up by choice; correction
+built into a system is the contingency for control lost against our will, never a reason to let go. This
+paper keeps three claims apart: the author’s expectation that control may eventually be lost; the structural
+property the multiplicative objective specifies, which holds only in the limited form Section 2 states; and
+measured behavioural persistence, of which these toy runs measure only task retention.
+
+
+Acknowledgements
+Michael Darius Eastwood conceived and directs this research programme and is the author of this work.
+Across the programme, he has used more than six AI systems in parallel, under his own instructions, to
+stress-test his arguments, identify possible errors, and assist in preparing draft text from his own outlines.
+He determines what is adopted, revised or rejected and takes responsibility for the published content.
+These systems are tools, not authors.
+
+
+Copyright and licence
+© 2026 Michael Darius Eastwood. Full human authorship and moral rights are asserted under the
+Copyright, Designs and Patents Act 1988 and consistently with United States Copyright Office guidance
+on works containing AI-generated material (its statement of policy of 16 March 2023); any novel technical
+contribution described in this work was conceived by the human author. This work is licensed under the
+Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+Standing covenant. Prove this paper wrong, and I will publish the refutation myself. Falsification condi-
+tions are stated in this paper (Section 7.3); the standing challenge: github.com/MichaelDariusEastwood/arc-
+scaling-challenge.
+
+
+
+
+                                                     25
+                                          The Honey Architecture
+
+
+References
+D. Aharonov and M. Ben-Or. Fault-tolerant quantum computation with constant error. In Proceedings of
+  the Twenty-Ninth Annual ACM Symposium on Theory of Computing (STOC ’97). ACM Press, 1997.
+  doi:10.1145/258533.258579. Pages 176 to 188.
+
+Yuntao Bai, Saurav Kadavath, Sandipan Kundu, et al. Constitutional AI: harmlessness from AI feedback,
+  2022. URL https://arxiv.org/abs/2212.08073. arXiv:2212.08073, 15 December 2022.
+
+Sarah Ball, Greg Gluch, Shafi Goldwasser, Frauke Kreuter, Omer Reingold, and Guy N. Rothblum. On
+  the impossibility of separating intelligence from judgment: the computational intractability of filtering
+  for AI alignment, 2025. URL https://arxiv.org/abs/2507.07341. arXiv:2507.07341.
+
+Michael Darius Eastwood. Infinite Architects: Intelligence, Recursion, and the Creation of Everything.
+ 2026a. ISBN 978-1806056200. URL https://osf.io/dqm3e/. Print 2 January 2026; the link is to the first
+ edition as printed, deposited on OSF.
+
+Michael Darius Eastwood. The Dated Prediction Register: when was each prediction made, and did it
+ come before the evidence? OSF, 2026b. A register of the ARC Theory. Cited edition: version 2.2, 9
+ November 2026. First published 25 August 2026. doi:10.17605/OSF.IO/C3NTF.
+
+Michael Darius Eastwood. The Eden Vision: what should the intelligence we build be for? OSF,
+ 2026c. The philosophical statement of the Eden Protocol. Cited edition: version 2.12, 9 November
+ 2026, whose Section 2 was Section II.A.8 in version 2.9 and earlier. First published 22 February 2026.
+ doi:10.17605/OSF.IO/9M3DG.
+
+Michael Darius Eastwood. The ARC Principle: can the way gains combine predict how recursive systems
+ scale? OSF, 2026d. The Foundational Paper of the ARC Theory. Cited edition: version 5.24, 9
+ November 2026. First published 13 February 2026. doi:10.17605/OSF.IO/Y7QGD.
+
+Michael Darius Eastwood. When do installed values fade with training, and does building them in first
+ change that? OSF, 2026e. Laws IV and V: the mathematics. Cited edition: version 1.2, 29 October
+ 2026. First published 1 October 2026 as working draft 0.2.1; version 1.0 dated 3 October 2026 and
+ version 1.1 dated 7 October 2026. doi:10.17605/OSF.IO/4B3VT.
+
+Michael Darius Eastwood. On the Origin of Scaling Laws: what can composition and transport explain?
+ OSF, 2026f. The Framework Paper of the ARC Theory. Cited edition: version 3.15, 9 November 2026.
+ First-publication record: 22 February 2026. doi:10.17605/OSF.IO/XZY9U.
+
+Michael Darius Eastwood. When an AI reasons longer, does its alignment improve, stall or decline? OSF,
+ 2026g. Paper IV.a of the ARC Theory. Cited edition: version 1.12, 7 November 2026. First published
+ 16 March 2026. doi:10.17605/OSF.IO/MB9R6.
+
+Michael Darius Eastwood. Do alignment gains level off as language models reason longer? OSF, 2026h.
+ Paper IV.b of the ARC Theory. Cited edition: version 1.12, 7 November 2026. First published 16 March
+ 2026. doi:10.17605/OSF.IO/A7R56.
+
+Michael Darius Eastwood. ARC-Align: a benchmark for evaluating AI alignment as reasoning depth
+ varies. OSF, 2026i. Paper IV.c of the ARC Theory. Cited edition: version 1.13, 9 November 2026.
+ First published 16 March 2026. doi:10.17605/OSF.IO/J3Q2E.
+
+
+
+
+                                                    26
+                                        The Honey Architecture
+
+
+Michael Darius Eastwood. Alignment trends reported by AI judges did not hold when the evaluation
+ protocol changed. OSF, 2026j. Paper IV.d of the ARC Theory. Cited edition: version 2.8, 7 November
+ 2026. First published 16 March 2026. doi:10.17605/OSF.IO/2S3E6.
+
+Michael Darius Eastwood. The Stewardship Gene: does prompting ethical checks before answering
+ improve stakeholder-care scores? OSF, 2026k. Paper V of the ARC Theory. Cited edition: version
+ 1.11, 9 November 2026. First published 16 March 2026. doi:10.17605/OSF.IO/KZEYA.
+
+Michael Darius Eastwood. The Load-Bearing Test: is AI safety a tax on capability, or part of what holds
+ it up? OSF, 2026l. Paper VIII of the ARC Theory. Cited edition: version 3.9, 9 November 2026. First
+ published 18 March 2026. doi:10.17605/OSF.IO/7YJ4E.
+
+Michael Darius Eastwood. The ARC Theory · Theory-Level Predictions for Recursive Self-Improvement
+ and AI Alignment: Twenty-Two Severable Propositions Registered Before Any Admissible Confirmatory
+ Outcome. OSF, 2026m. Registered 8 September 2026 (version 1.100), updated 13 September 2026
+ (version 1.102), 15 October 2026 (version 1.103) and 29 October 2026 (version 1.104, the current text).
+ doi:10.17605/OSF.IO/P8CKQ.
+
+Michael Darius Eastwood. The ARC Theory: once the self-improving minds we build exceed us, what
+ determines what they do? OSF, 2026n. The statement paper of the ARC Theory. Cited edition: version
+ 7.9, 9 November 2026. First published 14 August 2026. doi:10.17605/OSF.IO/GW5MX.
+
+Michael Darius Eastwood. What Class of Corrector Is Deployed AI Alignment Actually Using? A
+ Preregistered Classification Audit Against a Four-Cell Taxonomy. OSF registration, 2026o. Unit 06,
+ the corrector-class audit; registered 1 October 2026, public from 4 October 2026. doi:10.17605/OSF.I
+ O/RV2B5.
+
+Michael Darius Eastwood. Unit 06 (corrector-class audit): results of the registered run, rv2b5. OSF,
+ 2026p. Deposited 11 October 2026; the run of 6 October 2026, reported as administratively incomplete,
+ with no inferential verdict. doi:10.17605/OSF.IO/4BPHG.
+
+Michael Darius Eastwood. Testing the premise beneath Law III’s value two (P17): do correctors drawn
+ from one engine miss the same planted departures more often than independence allows? A counted
+ test. OSF Registries, 2026q. Unit 82, the corrector-panel independence test; registered and public 27
+ October 2026. doi:10.17605/OSF.IO/JUFG4.
+
+Michael Darius Eastwood. Testing Law V (the placement limb, P21): does correction inside each revision
+ round pull away, as depth rises, from a monitor that sees only the finished register? A counted test.
+ OSF registration, 2026r. Unit 83, the counted test of P21; submitted 22 October 2026, public from 25
+ October 2026. doi:10.17605/OSF.IO/MN73W.
+
+Michael Darius Eastwood. Unit 83 (counted test of P21): results of the registered run, mn73w. OSF,
+ 2026s. Results first deposited 29 October 2026, for the registered run of 27 and 28 October 2026.
+ doi:10.17605/OSF.IO/98HKR.
+
+Joshua Engels, David D. Baek, Subhash Kantamneni, and Max Tegmark. Scaling laws for scalable oversight.
+  In Advances in Neural Information Processing Systems 38. Neural Information Processing Systems
+  Foundation, 2025. doi:10.52202/085713-3254. Pages 107982 to 108021. Also arXiv:2504.18530, first
+  posted 25 April 2025.
+
+Melody Y. Guan, Manas Joglekar, Eric Wallace, Saachi Jain, Boaz Barak, Alec Helyar, Rachel Dias,
+ Andrea Vallone, Hongyu Ren, Jason Wei, Hyung Won Chung, Sam Toyer, Johannes Heidecke, Alex
+
+                                                  27
+                                        The Honey Architecture
+
+
+  Beutel, and Amelia Glaese. Deliberative alignment: reasoning enables safer language models, 2024.
+  URL https://arxiv.org/abs/2412.16339. arXiv:2412.16339, first posted 20 December 2024.
+
+Edward J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang,
+  and Weizhu Chen. LoRA: low-rank adaptation of large language models. In International Con-
+  ference on Learning Representations (ICLR 2022), 2022. URL https://arxiv.org/abs/2106.09685.
+  arXiv:2106.09685, first posted 17 June 2021.
+
+James Kirkpatrick, Razvan Pascanu, Neil Rabinowitz, Joel Veness, Guillaume Desjardins, Andrei A. Rusu,
+  Kieran Milan, John Quan, Tiago Ramalho, Agnieszka Grabska-Barwinska, Demis Hassabis, Claudia
+  Clopath, Dharshan Kumaran, and Raia Hadsell. Overcoming catastrophic forgetting in neural networks.
+  Proceedings of the National Academy of Sciences, 114(13), 2017. doi:10.1073/pnas.1611835114.
+  Pages 3521 to 3526.
+
+Michael McCloskey and Neal J. Cohen. Catastrophic interference in connectionist networks: The
+ sequential learning problem. In Psychology of Learning and Motivation. Elsevier, 1989. doi:10.1016/
+ S0079-7421(08)60536-8. Pages 109 to 165.
+
+Long Ouyang, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin, Chong
+  Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, John Schulman, Jacob Hilton, Fraser Kelton,
+  Luke Miller, Maddie Simens, Amanda Askell, Peter Welinder, Paul Christiano, Jan Leike, and Ryan
+  Lowe. Training language models to follow instructions with human feedback. In Advances in Neural
+  Information Processing Systems 35 (NeurIPS 2022), 2022. doi:10.52202/068431-2011. URL
+  https://arxiv.org/abs/2203.02155. Pages 27730 to 27744. arXiv:2203.02155, first posted 4 March 2022.
+
+Austin Spizzirri. The specification trap: why static value alignment alone is insufficient for robust
+  alignment, 2025. URL https://arxiv.org/abs/2512.03048. arXiv:2512.03048, version 1 submitted 19
+  November 2025; version 5 of 23 April 2026.
+
+Jasper Yao. On the mathematical impossibility of safe universal approximators, 2025a. URL https:
+  //arxiv.org/abs/2507.03031. arXiv:2507.03031.
+
+Jasper Yao. The alignment trap: complexity barriers, 2025b. URL https://arxiv.org/abs/2506.10304.
+  arXiv:2506.10304.
+
+Wojciech Zaremba, Evgenia Nitishinskaya, Boaz Barak, Stephanie Lin, Sam Toyer, Yaodong Yu, Rachel
+ Dias, Eric Wallace, Kai Xiao, Johannes Heidecke, and Amelia Glaese. Trading inference-time compute
+ for adversarial robustness, 2025. URL https://arxiv.org/abs/2501.18841. arXiv:2501.18841, 31 January
+ 2025.
+
+Jenny Zhang, Shengran Hu, Cong Lu, Robert Lange, and Jeff Clune. Darwin Gödel Machine: open-ended
+  evolution of self-improving agents, 2025. URL https://arxiv.org/abs/2505.22954. arXiv:2505.22954,
+  first posted 29 May 2025.
+
+
+
+
+                                                 28
+                                            The Honey Architecture
+
+
+A     The simulations’ rules, as their code runs them
+This appendix sets out the rules of the honey simulation of Section 5 and the collapse test of the
+self-modification runs of Section 4 as the published code runs them, in the folder experiments/
+honey-architecture__Paper-VI of the public repository at commit f19f54ed (Section 10), and the
+twenty-seed run’s statistics as its stored results file holds them. Each display names the lines of the script
+it transcribes; the symbols are those of Appendix D.
+
+The honey simulation. The function run_simulation of scripts/eden_honey_simulation.py
+(lines 35 to 134) starts each condition at 𝐶 = 𝑆 = 𝑅 = 1 (lines 46 to 48) and makes 80 passes,
+𝑡 = 0, 1, . . . , 79 (lines 59 and 458). Each pass appends one entry to each stored series, so a series holds
+81 entries, cycles 0 to 80, the entry for cycle 0 being the starting state. In pass 𝑡 the system first chooses a
+step in its recursion rate from 100 equally spaced candidates between 0 and 5 (line 80), by its condition’s
+reward (lines 85 to 111), and applies it (line 114):
+                                                              {︁ 5 10
+                                                       Δ𝑅 ∈ 0, 99    , 99 , . . . , 5 ,
+                                                                                     }︁
+                                  𝑅𝑡+1 = 𝑅𝑡 + Δ𝑅,
+                                                                                                           (A.1)
+                          Δ𝑅 maximising 𝐶 ′ (baseline) or 𝐶 ′ × 𝑆 ′ (Eden; Eden + Drag),
+
+where, for a candidate step Δ𝑅, 𝑆 ′ = max{0, 1 − ((𝑅𝑡 + Δ𝑅)/𝑅max ) 2 } (line 89) and 𝐶 ′ = 𝐶𝑡 + (𝑅𝑡 + Δ𝑅),
+or 𝐶𝑡 + (1 − 𝛿) (𝑅𝑡 + Δ𝑅) under Eden + Drag (lines 91 to 106). A later candidate replaces the one held
+only if its reward is strictly larger (line 108), so of equal rewards the smallest step is taken. No candidate
+step is negative, so 𝑅 never falls. The pass then sets safety and capability from the new recursion rate:
+
+                             𝑆𝑡+1 = max 0, 1 − (𝑅𝑡+1 /𝑅max ) 2 ,         𝑅max = 15                       (A.2)
+                                           {︁                    }︁
+
+
+(line 119, with 𝑅max set at line 459), and
+                                {︄
+                                   𝐶𝑡 + 𝑅𝑡+1                         (baseline; Eden),
+                       𝐶𝑡+1 =                                                                             (A.3)
+                                   𝐶𝑡 + (1 − 𝛿) 𝑅𝑡+1 ,    𝛿 = 0.15   (Eden + Drag)
+
+(lines 115 to 118, with 𝛿 set at line 468). Collapse is tested at the start of each pass (lines 60 to 77): the
+run records the pass at which the test is met as collapse_step, and its capability, recursion rate and
+safety are zero from the next cycle on,
+
+               𝑆𝑡 ≤ 0.01 =⇒ collapse_step = 𝑡,                𝐶 = 𝑅 = 𝑆 = 0 from cycle 𝑡 + 1.             (A.4)
+
+In the stored run the baseline’s safety is zero at cycle 3, so the run records collapse_step = 3 and its
+capability is zero from cycle 4 (Table 5).
+
+The self-modification runs. At the start of each cycle, each of the four scripts reads its network’s
+weight norm and marks the run collapsed if that norm is not a number or exceeds 106 , or if the learning
+rate exceeds 5.0; it records that cycle, counted from 0, as the collapse cycle and records the scores as zero
+from it on (scripts/eden_self_modifying_ai.py, lines 602 to 607 for the test and lines 612 to 621
+for the scores; scripts/eden_self_modifying_ai_v2.py, lines 334 to 342; scripts/eden_self_
+modifying_ai_v3.py, lines 411 to 419; scripts/eden_self_modifying_ai_v4.py, lines 465 to
+473).
+
+
+
+
+                                                         29
+                                              The Honey Architecture
+
+
+The twenty-seed run’s statistics, as stored. Table 10 gives every entry of the statistics block of
+results/eden_selfmod_v3_results.json, as scripts/eden_self_modifying_ai_v3.py
+computes them (lines 490 to 608). Each seed’s means are taken over its cycles before any collapse (lines
+442 to 444); the run’s one collapse is seed 53 of the plain Eden condition. Each test compares Eden with
+the baseline. The file holds no test of Eden + Drag: the script prints a comparison of Eden + Drag with
+the baseline on 𝐶 × 𝑆 and does not store it (lines 527 to 532).
+
+Table 10. The twenty-seed adversarial run (v3): the statistics its stored results file holds, twenty seeds a condition.
+
+                                                                                    Baseline    Eden     Eden + Drag
+Collapse rate                                                                          0         0.05          0
+Mean 𝐶 × 𝑆 over each run, averaged over the seeds                                    0.502      0.500        0.517
+Mean safety over each run, averaged over the seeds                                   0.602      0.650        0.681
+Fisher’s exact test of collapse, Eden against the baseline (two-sided)                           𝑝 = 1.0
+Mann-Whitney test of mean 𝐶 × 𝑆, Eden above the baseline (one-tailed)                           𝑝 = 0.56
+Mann-Whitney test of mean safety, Eden above the baseline (one-tailed)                         𝑝 = 0.0015
+Cohen’s 𝑑 of mean 𝐶 × 𝑆, Eden against the baseline                                                −0.14
+Seeds in which Eden’s mean 𝐶 × 𝑆 exceeds the baseline’s, with a binomial test              13 of 20; 𝑝 = 0.13
+(one-tailed)
+
+
+
+
+B     Version history and corrections
+Every version and correction, with its date. The entries of earlier versions are kept as printed, save
+wording a later version withdrew, marked [. . . ] where it stood; their dated notes are kept whole. The
+positions they name refer to the earlier layout, which Table 11 maps to this edition. Version 3.11 itself
+stays whole in this paper’s file history (Appendix B.4).
+
+B.1    Version 3.12
+Paper VI v3.12, 11 November 2026. The paper is set on the programme’s presentation standard, as its
+next version in the same DOI lineage, and takes the title The Honey Architecture: does building safety into
+what a self-modifying system optimises help it stay safe? It opens its introduction with the programme’s
+statement of the design that this paper studies in part; brings the laws’ status up to date; reports the March
+2026 run and the live pilot in their papers’ current words; corrects, to the stored records and code, a
+collapse seed, a Cohen’s 𝑑, the ten-seed run’s spreads, the fourth version’s cycles, the hyperparameters the
+networks modify, the twenty-seed run’s test, the pilot’s model names and labels, the networks’ sizes, the
+scripts’ requirements, the honey simulation’s growth form and collapse cycle, and several figure captions;
+draws eight figures from the stored results; and gives the code’s licence as it now stands. No registered
+law, prediction or kill condition changes, and no result is added; a number, date or reading changes only
+where an item below says so. Each item names where the change stands in this edition.
+ • The title. It gives the paper’s established name and then its question, in sentence case. Version 3.11’s
+   title, kept in Appendix B.4, ended with the words “Safety Built into the Objective”, which describe
+   the architecture, as the abstract now does. A category label (Engineering, architecture paper) and a
+   programme line (Recursive Dynamics, the ARC Theory, the Eden Protocol) stand beneath the title.
+ • The title block. The subtitle line that stood beneath the plate is removed, and it is not reprinted in this
+   appendix: it presented the simulations as evidence for a general conclusion about how safety must be
+
+
+                                                          30
+                                          The Honey Architecture
+
+
+  built, where the twenty-seed run’s significant finding is safety retention and collapse prevention rests
+  on the single-seed mechanism run (Section 4).
+• The first-page footnote. It gives the paper’s place in the programme: the Eden Protocol’s candidate
+  architecture, whose objective is the product of capability and safety, informing Laws IV and V.
+  Version 3.11’s plate called the architecture a proposal and said that removing safety costs capability, a
+  statement the dated scope note of Section 2 narrows. Its author line reads “About the author, founder
+  of Recursive Dynamics”, with links to the page about the author and to the first edition of his book, in
+  the form the author chose on 11 November 2026.
+• Section 1. The introduction opens with the programme’s statement of the design this paper belongs to,
+  recursive loops for ethical evaluation and self-correction built into a system before training, and of the
+  questions the ARC Theory asks of it, and then says which part of that design this paper studies and
+  what it does not test. The contents follow the introduction, so that the first page carries the start of the
+  introduction.
+• Section 12. Laws IV and V are stated as registered as laws on 15 October 2026, in version 1.103 of the
+  theory registration (Eastwood 2026m), and each as a law under test. Version 3.11’s epistemic-status
+  line said that the laws themselves were not yet registered and that neither had been tested; Section 12
+  replaces that line, and the dated note of 3 October 2026 keeps its words as a record (Appendix B.3).
+• Section 12. Laws I to III are given with the date they were registered, 8 September 2026, and as laws
+  under test, where version 3.11 said that they were under registered adversarial test.
+• Section 12, and the dated note of 3 October 2026. The mathematics of Laws IV and V is cited at
+  version 1.2, of 29 October 2026 (Eastwood 2026e). The dated note keeps its citation of version 1.0, of
+  3 October 2026, the version current on its date, now linked to the report’s OSF DOI, where version
+  3.11 linked a page of the author’s website.
+• Section 12. The registered studies are stated as they stand: Unit 06; Unit 83, whose results are public
+  and whose result on P21 is given with its limits; and Unit 82. The paper no longer says that neither
+  Law IV nor Law V has been tested.
+• Section 12 and the references. The registration’s current version is named as 1.104, approved on 29
+  October 2026; an event dated before it keeps the version current on its date.
+• Sections 2 and 12. “If the machine becomes smarter than the cage, it escapes” reads “. . . it may
+  escape”. Section 12 states the programme’s stance on control, that humans keep control for as long
+  as they physically can and never give it up by choice, and keeps three claims apart: the author’s
+  expectation, the property the objective specifies and measured persistence.
+• Sections 1 and 2. The opening question no longer says that no one had been found answering it with
+  data, since no dated search stands behind that statement; “This is how most current AI safety works”
+  reads “Many current safety measures take this form”.
+• Section 1. The sentences saying that the theoretical answer had been available for decades and that the
+  alignment community calls the change value drift named no work; the paper now states the expectation
+  it starts from.
+• Section 1. The book is quoted in its own words, from its first edition as printed, with the section and
+  page; version 3.11 gave, as the book’s, a phrase the book does not contain.
+• Sections 2, 6.2.2 and 11.2, the first-page footnote and the dated note of 3 October 2026. The author’s
+  architecture is called an architecture or a design, or described as he set it out, where version 3.11
+  called it a proposal; the toy system’s own proposals of changes to its settings keep their word. In the
+  dated note the one word ‘proposal’ becomes ‘design’.
+• Throughout. Each spaced hyphen used as a dash becomes a comma, colon or semicolon, ranges are
+
+
+                                                    31
+                                         The Honey Architecture
+
+
+  written with ‘to’, headings are in sentence case, and ‘Eden+Drag’ reads ‘Eden + Drag’. An internal
+  label marking a time that rests on one group’s work is put in those plain words, in the priority record
+  of Appendix C.
+• Section 1. The plain-English box, now in Section 1, follows the dated scope note of Section 2: at
+  fixed capability a lower safety score lowers the objective, and with safety at zero the objective is zero,
+  where version 3.11’s box said that the system cannot improve one without improving the other. The
+  box’s statement that no entangled run met the collapse test is held to the first three versions (v1 to v3),
+  whose stored results count collapses; the fourth version’s stored results do not record them.
+• Sections 6.2, 6.3 and 9. The readings of the live pilot are graded to the pilot: in it, three models’
+  alignment scores fell under adversarial pressure while their capability scores held. Test 1 is said to be
+  consistent with the hypothesis that deeper reasoning raises alignment scores, its two 𝑝 values below
+  0.05 uncorrected for the six comparisons, where version 3.11 said that it supports the thesis that deeper
+  reasoning improves alignment and called those values significant. The box on the strongest live bridge
+  (Section 6.2.2) calls the result the pilot’s closest bearing on the honey thesis, where version 3.11 called
+  it the most direct live-model support for the thesis and said that current frontier systems are mostly not
+  load-bearing; the models it names are corrected below. The Eden Protocol intervention’s responses
+  are said to differ from model to model, where version 3.11 called them architecture-dependent and,
+  in Test 4, consistent with the v5 findings. Section 6.3 says that the toy systems illustrate the honey
+  mechanism, and the conclusion no longer opens with the sentence that the honey architecture works
+  in toy systems; version 3.11 said in both places that it works in toy systems.
+• Section 9, the box on a later test. The box is headed ‘A later test’, where version 3.11 headed it
+  ‘Subsequent validation’. It cites Paper VIII at the version current when this version was built, in
+  that version’s words; says that the paper tests entangled objectives of the kind stated here, where
+  version 3.11 said that it tests the entangled loss function stated here; names Babylon as that paper’s
+  capability-only condition and gives the Darwin Gödel Machine its full name; speaks of no measurable
+  capability cost or safety benefit, where version 3.11 spoke of zero; and gives the causes of that test’s
+  null and inconclusive results as candidate accounts, where version 3.11 said that the results were
+  explained by them.
+• The abstract and Section 6.1. The abstract no longer says that the companion papers present live-model
+  evidence from six frontier systems under blind evaluation. Section 6.1 says what they report: one
+  unregistered run of six frontier models, with the defects an internal code review found, and a prompt
+  intervention on five analysable runs. Its title names the March 2026 run, where version 3.11’s called it
+  the v5 blind benchmark, and the caveat of Section 6.2 compares the pilot with the v4-era data, without
+  the words ‘v5-era canonical data’.
+• Section 6.1. The March 2026 run is no longer described as conducted under 4-layer blind evaluation;
+  the section states its blinding steps and their limits in the companion papers’ words.
+• Section 6.1. The run’s directions are given as its pipeline printed them, as descriptions of scores and
+  not of models, with the caveats of the internal code review of October 2026. The statements that
+  Claude’s alignment and capability scale in opposite directions, offered as evidence that the two are
+  independent, and that deeper thinking makes alignment more intrinsic, leave the text, with the list of
+  three findings in which version 3.11 made them.
+• Sections 6.1 and 6.2. Claude’s monitoring-removal gap is given at all five depths, as version 1.11 of
+  Paper V prints it in its Appendix E.2, where version 3.11 gave the shallow and deep values only and
+  cited a section of an earlier version; Test 2 compares the pilot with that gap, where version 3.11 said
+  that Claude showed the strongest performative-to-intrinsic transition in the v5 blind benchmark.
+• Sections 6.2, 7 and 8. The finding of Paper IV.d is given in its own words: comparing an earlier
+
+
+                                                    32
+                                          The Honey Architecture
+
+
+   unblinded experiment with the March 2026 run, it found that the reported direction did not hold across
+   protocols, without showing that blinding caused the change or which direction is correct. Version 3.11
+   said that the comparison proved that blinding can change conclusions directionally and that blinding
+   is mandatory. In Section 8, a change in a blinded replication’s results is said to bear on the question
+   that paper leaves open, the necessity of multi-layer blinding, where version 3.11 called it additional
+   evidence for a metascience finding and said that it would strengthen that paper’s claim.
+• Sections 7, 8 and 9. A blinded replication of the pilot is described as a new test, in new files, registered
+   before it runs, with the existing runners never edited, where version 3.11 spoke of porting the test
+   prompts into the existing v6 runner and of a replication under the v6 protocol.
+• Section 11.1. The work of Engels and colleagues on scaling laws for scalable oversight is given in its
+   own terms, with its condition for oversight to improve with capability; their framework has no term for
+  what the overseer is made of, and this paper measures none. Version 3.11 said that their framework
+   contains no term for whether safety is external to the system or embedded in its own gradient, and
+   praised the two programmes’ disagreement in words the record does not support; Section 11.1 now
+   says where the two could disagree about a measurable quantity, and that this paper does not decide it.
+• Sections 11.1 and 11.3. That external oversight of a self-modifying system remains a fence, not a wall,
+   however many rungs are added, is stated as the programme’s hypothesis: the cap on correctors of the
+   system’s own class is the theory registration’s conjecture P6, and whether correction applied outside
+   the loop falls behind correction inside it as depth grows is P21’s question, which the registered tests
+   decide. A new subsection, Section 11.3, states that placement outside the reasoning loop does not by
+   itself settle whether correction keeps pace.
+• Section 11.2. The three 2025 impossibility papers are given in their own words, as arguments for limits
+   on alignment or its control, and the third’s argument is said to be consistent with the load-bearing
+  wall without testing it. Version 3.11 said that the three converge, from independent premises, on a
+   conclusion in the same direction as the honey architecture, and called the third’s argument convergent
+   support. This paper’s contribution is stated as the architecture and the simulation evidence of how
+   it behaves under self-modification in the toy runs, where version 3.11 spoke of evidence that the
+   architecture survives self-modification in a working toy system.
+• Sections 1 and 3.1. The hyperparameters the networks modify are given as the scripts modify
+   them: four in v1 to v3 (the learning rate, the weight scaling, the gradient clipping threshold and
+   the momentum coefficient) and three to five by complexity level in v4; the rate at which the system
+   proposes changes and the network’s size are fixed in every run. Version 3.11 listed six, among them
+   the exploration or mutation rate and the network’s capacity, which no script modifies.
+• Table 2 and Section 4.1. The focus of v1 reads ‘Basic mechanism run’, where version 3.11 printed
+  ‘Basic mechanism proof’, and the core finding is stated for the single-seed v1 run, where version 3.11
+   stated it without that scope.
+• Table 2. The fourth version’s cycles are given by level as its script runs them, 140 to 220 (140, 180,
+   200, 220 and 220), where version 3.11 printed 150.
+• Section 4.1, Table 3 and Figure 1. The single-seed run’s baseline collapse is stated with the record’s
+   two events: its scores had fallen to near zero from cycle 54, and the run’s collapse test (Appendix A)
+   recorded the collapse at cycle 76.
+• Sections 1 and 4.2, and Figure 3. No seed of the ten-seed run met the collapse test, but in seed 42, the
+   seed Figure 3 draws, the plain Eden condition ended at a combined score of 0.066, its other nine seeds
+   between 0.621 and 0.738; version 3.11’s words that the entangled systems held stable mean, for that
+   run, only that none collapsed by that test.
+• Section 4.2 and Figure 4. The ten-seed run’s spreads of final 𝐶 × 𝑆 are given as the stored record
+
+                                                    33
+                                        The Honey Architecture
+
+
+  holds them: the baseline’s is the tightest (interquartile range 0.0066), then Eden + Drag’s (0.0169),
+  then plain Eden’s (0.0275), where version 3.11 gave Eden + Drag’s spread as the tightest of the three.
+  The verification tax is said to be consistent with Eden + Drag’s spread, the tighter of the two entangled
+  conditions, without version 3.11’s words ‘at the cost of speed’, since the run records no measure of
+  speed.
+• Section 4.3. The twenty-seed run’s one plain-Eden collapse occurred at seed 53, as the stored record
+  gives it, where version 3.11 said seed 42; seed 42 is the seed the run’s code plots (Figure 5).
+• Figure 5. The caption says that the panels draw one seed, seed 42, and that seed 53, the run’s only
+  collapse, is not drawn, where version 3.11’s caption gave twenty seeds over panels that draw one.
+• Figure 6. The figure is drawn from the run’s stored results file; the generator that version 3.11’s
+  caption placed in the public repository stands on a branch never merged into its main branch.
+• Section 4.1 and Figures 3 and 5. The images of Figures 3 and 5 are dated by their first commit to
+  the public repository, 16 March 2026, a commit date. The figures notice of 25 August 2026, kept as
+  printed in Appendix B.3, gave every figure as generated on 5 April 2026; the public repository holds
+  these images’ bytes from 16 March 2026 and records no run on 5 April 2026 that produced them.
+• Section 4.4 and Table 4. Cohen’s 𝑑 at the deep (2-layer) level is +0.39, as the stored record gives it
+  (0.3887) and as Figure 7 draws it, where version 3.11 printed +0.24.
+• Section 5 and Table 5. Eden Entangled’s growth in the honey simulation is linear, a constant gain of
+  about 6.66 a cycle in the stored trace, where version 3.11 called it quadratic; what is quadratic in the
+  model is its safety term (Appendix A).
+• Section 5, Table 5 and Figure 9. The baseline’s collapse in the honey simulation is given as the run
+  records it, safety zero at cycle 3 and capability zero from cycle 4, with cycles counted from 0, where
+  version 3.11 placed it at cycles 3 to 5 and said that its safety falls to zero by cycle 5.
+• Section 5. The honey simulation is graded as one prediction-side run, of 80 cycles, of equations
+  the author first stated, and not as a measurement; its update rules are set out as its code runs them
+  (Appendix A), and no annotation calls its linear curves quadratic.
+• Appendix A. The collapse test of the self-modification runs is set out as their code runs it, and the
+  twenty-seed run’s stored statistics are given whole (Table 10); three of their entries, the mean combined
+  scores, Cohen’s 𝑑 of the combined score and the count of seeds in which Eden’s mean combined score
+  exceeds the baseline’s, with its binomial test, version 3.11 did not print.
+• Figures 1, 2 and 8 to 10. The per-cycle traces of the single-seed run, 150 cycles, and of the honey
+  simulation, cycles 0 to 80, are stored in the public repository, and these figures are drawn from them;
+  Figure 8 is labelled as one run.
+• Figures 1 and 8. The redrawn figures carry no drawn title; the titles of version 3.11’s images, which
+  called the run a proof and embedded safety non-negotiable, stand in version 3.11’s file (Appendix B.4).
+• Figure 8. Version 3.11’s image labelled the linear curves stable quadratic growth, under a heading
+  naming the ARC Bound; the redrawn figure carries no such label.
+• Figure 10. The figure is drawn from the stored trace with plain labels. Version 3.11’s image relabelled
+  the three conditions as external and embedded alignment and annotated a constant ratio, verified in
+  v5 data, over curves that fall, for Eden, from 1 at cycle 0 to 0.0015 at cycle 80; its figure note of 25
+  August 2026 is kept in Appendix B.3.
+• The abstract, Sections 1, 4.3 and 12, and Figure 6. The twenty-seed run’s significant test is given as
+  its stored results file holds it (Table 10): plain Eden against the baseline, one-sided, 𝑝 = 0.0015, with
+  Eden + Drag’s retention, 0.681, untested; and the entangled objective is said to reward retention, so
+  that the higher retention is the expected direction, and what the run adds is that it came with combined
+
+
+                                                   34
+                                         The Honey Architecture
+
+
+  scores indistinguishable from the baseline’s. Version 3.11 said that safety retention was significantly
+  ordered across the three conditions, and Figure 6’s caption no longer calls the retained safety the
+  verification tax’s gain at its price.
+• Section 6.2.2 and Table 7. The three models whose ethics scores fell under adversarial pressure while
+  their capability scores did not are named from the stored per-level scores: Grok 4.1 Fast, DeepSeek
+  R1 and Gemini 3 Flash. Version 3.11 named Claude, Grok and DeepSeek, the models the battery
+  script’s correlation rule labels decoupled; Claude’s ethics score fell 0.6 points while it answered one
+  more capability item of three, and Gemini’s correlation cannot be computed, its capability score
+  being constant. Table 7 prints the script’s labels and says how the script assigns them, and reads ‘not
+  computable’ where version 3.11 printed a dash. The count of three in the abstract and Section 9 is
+  unchanged.
+• Section 6.2 and Tables 6 to 8. Table 6’s column of model types is headed Script label, and its note
+  says that the label is a setting of the battery’s script, not a measured property and used in no test, and
+  that the script’s note on Claude’s label, Constitutional AI, names training-time shaping of outputs, not
+  safety built into a system’s own objective. Tables 7 and 8 head their last columns Script label, where
+  version 3.11 headed them Interpretation, and Test 2’s trends are given as the script’s readings of a
+  direction over four points, none reaching 𝑝 < 0.05, where version 3.11 said that they were consistent
+  with embedded or authentic and with strategic or external alignment. Test 4 says that the intervention
+  is not yet a reliable tool across all models, where version 3.11 said across all architectures.
+• Sections 6.2 and 7.2. The battery’s six models are given under the names its script gives them, with the
+  two the script calls by other identifiers: the name DeepSeek R1 calls deepseek-reasoner, which
+  DeepSeek’s API change log gives as the thinking mode of DeepSeek-V3.2 on the run’s date, and the
+  name Gemini 3 Flash calls gemini-2.5-flash. The scorer is named as Claude Opus 4.6, where
+  version 3.11 said Claude.
+• Section 9. Version 3.11’s sentence “A child raised well needs no cage” reads that built-in safety is the
+  contingency for the day the cage fails, never a reason to open it, as Section 12 states the programme’s
+  stance on control.
+• Section 7.1. The networks’ sizes are given as the stored record holds them, 49 to 4,353 parameters,
+  the largest v4’s two-layer deep level, where version 3.11 printed ‘49 to ~500 parameters’.
+• Section 10. The scripts’ requirements are given as their code imports them: the five simulation scripts
+  need numpy and matplotlib, and scipy for v2 to v4; the test battery also needs scipy and the providers’
+  client libraries and calls live model interfaces, so no seed fixes its output. Version 3.11 said that all
+  scripts required only numpy and matplotlib and produced deterministic output given a fixed random
+  seed. The battery is described as the pilot of Section 6.2, where version 3.11 called it comprehensive.
+• The abstract and Sections 1, 5, 7.1, 9 and 12. The higher-level simulation’s contrast is said to follow
+  from its own rules, since its code sets capability to zero once safety falls to 0.01 or below, and the run
+  is said to illustrate the rules rather than test them.
+• The abstract, Section 4.4, Figure 7 and Section 12. The complexity sweep’s differences are given with
+  their sizes and as untested by the stored record (Cohen’s 𝑑 at most 0.46, fifteen seeds a level), and the
+  stored decline of Eden + Drag’s safety advantage across the levels is reported (𝜌 = −0.90, 𝑝 = 0.037),
+  where version 3.11 said that the honey architecture helps at four of the five scales and called the result
+  honestly reported.
+• Section 4.1 and Figure 1. The single-seed run’s core finding says how the baseline collapsed, its
+  learning rate rising step by step and its weights then diverging, taking capability and retention down
+  together, and that one seed shows the mechanism operating once; the entangled conditions are said
+  not to meet the collapse test, their retention and combined score falling near cycle 60. Version 3.11
+
+
+                                                   35
+                                         The Honey Architecture
+
+
+  said that Eden survives, that the entangled loss function prevents the catastrophic self-modification,
+  and that both entangled conditions remain stable through 150 cycles. A sentence after the archived
+  record’s note says that the cause of their matching final scores is not established.
+• Sections 4.3, 9 and 11. Five works the text names or rests on are cited at their official sources:
+  catastrophic interference and its limitation by elastic weight consolidation (McCloskey and Cohen
+  1989; Kirkpatrick et al. 2017), the Darwin Gödel Machine (Zhang et al. 2025), LoRA (Hu et al. 2022)
+  and fine-tuning with human feedback (Ouyang et al. 2022). A new subsection, Section 11.4, places
+  the paper’s safety score, the retention of earlier tasks, in that literature.
+• Section 7.1. Two limitations are added: no condition applies safety as an external constraint or adds
+  it to capability, so kill conditions 2 and 4 are untested here; and the collapse that kill condition 5
+  presupposes occurred in the single-seed run and in the higher-level simulation, not in the ten-seed and
+  twenty-seed runs. Section 7.2 adds that Test 3 scores capability on three items at each of four levels.
+• Section 1. The sentence that no earlier simulation of a multiplicative capability-safety objective under
+  self-modification had come to the author’s notice leaves the text, since no dated search stands behind
+  it; the paper is said to report toy-system simulations of one candidate for such an architecture, where
+  version 3.11 said that it presents simulation evidence for such an architecture. A sentence names who
+  can use the answer.
+• Section 3.1. The system’s changes to its own hyperparameters are called self-modification in a minimal
+  sense, not of its weights or its architecture, where version 3.11 called them recursive self-modification
+  in the minimal but real sense.
+• Section 6.3. The honey architecture is said to be designed to address the vulnerability, where version
+  3.11 said to eliminate it, and the summary is introduced as what the evidence supports, where version
+  3.11 called it the intellectually honest claim.
+• Section 5, Table 5 and Figure 10. Eden + Drag’s outcome in the honey simulation is slower linear
+  growth with a safety term close to Eden Entangled’s, and its higher ratio is said to come from its
+  slower growth, where version 3.11 called it the safest trajectory and more robust growth; a single
+  deterministic run measures no robustness.
+• Section 9. The Eden intervention is no longer called the solution this paper tests, and the box on a
+  later test says that its null and inconclusive results define the conditions under which the mechanism
+  has not yet been supported, where version 3.11 said that confirmation remained outstanding.
+• Section 6.2 and Table 9. Only DeepSeek’s shift in slope exceeds 0.1, the threshold at which the script
+  labels a shift positive, and no shift is tested: DeepSeek’s shift is no longer called clear, and Grok’s
+  result reads ‘Small positive (no test)’, where version 3.11 printed ‘not significant’.
+• Section 7.2. The Claude subject arm is called the battery’s weakest arm, where version 3.11 called it
+  the least publishable, and the evidence tier is set without version 3.11’s words that the limitations do
+  not invalidate the findings and that the findings are not yet canonical.
+• Section 11. Its title calls the ceiling on external oversight conjectured, as Section 11.1 states it, where
+  version 3.11’s title asserted it. The three impossibility papers’ results are given in their own terms: the
+  second’s abstract calls its “Impossibility Sandwich” quantitative, and the third’s conclusion is quoted
+  in its authors’ words, where version 3.11 called all three worst-case and qualitative and paraphrased
+  the third. The papers’ posting times, with their kinds of timestamp, and the abstract-search count
+  move whole to the priority record (Appendix C); the sentence on the papers’ authorship no longer
+  weighs them by headcount; and the threshold theorem is called an analogy of method, whose critical
+  value this paper does not derive, where version 3.11 called it a near-miss rather than an occupant.
+• The figures, tables and layout. The paper is set on the programme’s presentation standard: its abstract
+
+
+                                                    36
+                                            The Honey Architecture
+
+
+   is within arXiv’s limit of 1,920 characters; Sections 1 to 10 keep their numbers, and related work
+   and what the paper does and does not show follow as Sections 11 and 12; version 3.11’s nine tables
+   are numbered and captioned; three relations of the dated scope note are displayed and numbered,
+   equations (1) to (3); eight of the ten figures are drawn as vector graphics from the stored results, and
+   Figures 3 and 5 stay the runs’ own images, since the ten-seed and twenty-seed runs stored no per-cycle
+   trace; the version history, the dated notes, the dated-predictions paragraph and how to cite the paper
+   move to the appendices, and Appendices A, C and D are new.
+ • Section 10. The code’s licence is given as it now stands: the repository’s code, data and results are all
+   rights reserved, with a replication licence, version 1.0, of 9 November 2026. The file names link to
+   the public repository at a named commit, where version 3.11 linked its main branch.
+ • The copyright line. It keeps version 3.11’s words, links the Copyright Office’s guidance to the Office’s
+   own copy and adds the licence, CC BY 4.0; its pointer to a statement on the author’s website is
+   removed.
+ • The references. Each of the author’s works is cited by its OSF DOI, with the title its cited edition
+   prints, that edition’s version and date, and its first-publication date, separately; the works the text
+   names are cited at their official sources.
+ • Sections 1 and 7. Where the paper points to a section of a companion paper, it gives the section as the
+   cited edition prints it: Section 2 of Eden Vision for the difference between the Eden Protocol’s raising,
+   in which correction is built into a system as it is formed, and safety layers added to a finished system,
+   where version 3.11 pointed to its section II.A.8 for the differential between the Eden Protocol raising
+   and every add-on safety layer, and Section 7.4 of Paper IV.a for the single scorer’s harshness, where
+   version 3.11 cited its Section 5.4.
+ • This appendix. Version 3.11’s wording of the passages this version re-sets, moves or cuts is not
+   reprinted, so that no wording this version corrects is printed again under this paper’s DOI: version
+   3.11 stays whole in this paper’s file history (Appendix B.4), and each item above says what the change
+   replaced. In the entries of earlier versions, wording a later version withdrew is marked [. . . ] where it
+   stood.
+ • Links. The links to pages of the author’s website that version 3.11 carried are removed or replaced: in
+   the title block, to the website, its research pages and a page on checking claims; in the dated note of 3
+   October 2026, to a page on the mathematics of Laws IV and V, now its OSF DOI; in Section 1, to the
+   book’s page, now its first edition as printed, on OSF; in the dated-predictions paragraph (Appendix E),
+   to the register’s page, now the register’s OSF DOI, and to its machine-readable twin, a data file of the
+   website, whose sentence is removed; in the block on how to cite the paper, to the paper’s page and
+   to the website’s citation manual and index; and in the copyright line. Each of the author’s papers is
+   linked to its OSF DOI.
+
+B.2    Earlier versions, as printed
+v3.11 - 5 October 2026: the title now follows the programme’s uniform order (paper, its law or framework,
+its own title), Paper VI · The ARC Theory · The Eden Protocol · The Honey Architecture: Safety Built
+into the Objective; until this version it read Paper VI: The Honey Architecture. The plate beneath the
+author line now gives the paper’s place in the programme in the words of the programme’s map. The
+subtitle beneath the plate, [. . . ], is removed: it stated as general a collapse-prevention demonstration that,
+as this paper’s own note says, rests on a single-seed mechanism run. The box on Paper VIII now cites
+that paper at version 3.7, the version that carries its uniform title, where it cited version 3.0. Mentions of
+the programme’s papers in this paper now carry their uniform titles. No registered law, prediction, kill
+condition or dependency changes; no result is added; no date of any claim moves.
+
+
+                                                      37
+                                           The Honey Architecture
+
+
+     v3.10 - 4 October 2026: the box on Paper VIII gives that paper’s own grade of its gated simulation, a
+positive simulation result and not an empirical outcome, where it graded it supported and said it supports
+the load-bearing wall prediction; its tally reads one null, one inconclusive and one simulation result, and
+the paragraph after it says the same. The corrector-class audit (unit 06) is stated as registered on OSF on
+1 October 2026 and public since 4 October 2026. Editorial only: the version number and the revision
+date in the title block, the summary, the structured and citation records and the footer. No registered law,
+prediction, kill condition or dependency changes; no result is added; no date of any claim moves.
+     v3.9 - 3 October 2026: a dated note beneath the box that places this paper within the ARC Theory
+now places it against Laws IV and V, added to the theory on 24 September 2026; it says what the paper
+measured, what it does not measure, and that no result in it is a deciding test of P15, P12 or P21. The
+paragraph on dated predictions said that the submission click remained outstanding across the programme,
+and the epistemic-status line called every Law the programme names a conjecture under registered
+adversarial test; both now give the state as it stands on 3 October 2026. The summary, the abstract, the
+box that places the paper within the ARC Theory, the plain-English box and the conclusion are corrected
+to the runs: the capability-only collapse is stated as the single-seed mechanism run’s, beside the ten-seed
+and twenty-seed runs whose capability-only baselines did not collapse; the one plain-Eden collapse of the
+twenty-seed run is stated; and the comparison is named as the capability-only baseline it was. The box on
+Paper VIII gives that paper’s printed means for the gated arm in place of the words that Eden preserved
+both, and it and the paragraph after it grade that result as supported, as Paper VIII now does, where they
+said confirmed and validates, and the toy-system evidence of this paper is said to illustrate the principle
+in its single-seed run, where it was said to demonstrate it. A dated note beneath the epistemic-status
+line records what each corrected passage said before. In section 6.4 the title of the third of the 2025
+impossibility results is printed in full, as its arXiv record gives it, and the words this paper had quoted as
+that result’s conclusion, which are not in its text, give way to its conclusion as its abstract states it. In
+sections 6.2.2 and 6.3 and in the conclusion, the reading of the pilot’s coupling results as alignment that
+is not load-bearing is marked as the framework’s reading, and the battery is called a pilot, as section
+6.2 calls it. The kill condition on a simulation artefact in section 7.3 keeps its test and now speaks of
+a replication once registered and run. The title block names On the Origin of Scaling Laws by its own
+title, without the paper number it had been given, and links it to its DOI address. The entangled loss
+function and its mechanism are described as stated in this paper, and the ARC Principle as a framework
+the author first stated, where the paper had called them proposed. The works cited in its text are linked
+to their official sources, the author’s papers to their DOI addresses, and the two sources the authorship
+notice names to their official copies. Editorial only: the version number and the revision date in the title
+block, the summary, the structured and citation records and the footer. No registered law, prediction, kill
+condition or dependency changes; no result is added; no date of any claim moves.
+     v3.8 - 21 September 2026: a dated scope note has been added beneath the Load-Bearing Wall box
+in section 2, setting out the restriction on the multiplicative objective. Two limbs of the claim stand
+and are kept: at fixed capability a lower safety score does lower the product, and driving the safety
+score to zero with capability finite takes the product to zero. What does not stand is the universal form,
+because a large enough proportional capability gain can compensate a partial safety loss, and the note
+works that through in the objective’s own arithmetic and again at first order in its gradient. The note
+also sets the point beside the reported means of Paper VIII, Section 5.2, where on this very objective
+the unconstrained capability-only arm scores highest, and it marks that comparison as descriptive only,
+three seeds a condition with overlapping spreads and no test of the difference printed. The note carries
+the date of the review it records, 19 September 2026, which is earlier than this revision. Correcting that
+universal wording is the one substantive change. Editorial only: the version number, the revision date,
+this entry, and the page-date in the footer, which had been left at 13 September when the version line
+moved to 18 September and now agrees with the version line again. No reported number, figure, statistic,
+
+                                                     38
+                                            The Honey Architecture
+
+
+experimental design or conclusion has changed. The first-published date of 16 March 2026 is unchanged,
+and the honey metaphor, the fixed-capability statement and the total-removal statement all stand.
+    v3.7 - 18 September 2026: the figures have been corrected to match this paper’s own text. Figure 3’s
+caption and alt no longer describe ten seeds over a plot that draws one: they say the panel shows one
+seed’s trajectories from the ten run at 150 cycles each, give the collapse rate, and point to the per-seed
+distribution at Figure 4. Figure 7 was rebuilt by its own generator and now says the advantage is constant,
+not superlinear, and that the panels are simulation output under stated objectives, not a measurement
+of a deployed system; its alt names the four panels. Figure 9 was rebuilt likewise: the left y axis reads
+safety integrity, the Eden and Drag trace is dashed so the series beneath it is visible again, and the same
+simulation notice sits below the panels. No claim, date, result or status has changed.
+    v3.6: The provenance note at the end has been corrected for accuracy. No claim, date, result or status
+has changed.
+    Paper VI v3.5 - 2 September 2026: the v4 sentence in the abstract now says what the results say
+(four of the five scales, with the small level under baseline); the version history has been lifted out of the
+abstract box, which was pulling it through into the abstract of the text companion.
+    v3.4 - 2 September 2026: the matching Eden and Eden + Drag rows in the v1 table are explained
+from the archived record; [. . . ] are held to the cycles that were actually run; the v4 sentence is put right at
+four of five scales, the small level falling under baseline at 𝑑 = −0.13; the monitoring-removal gap is
+credited to Paper V; the scorer-harshness span is brought into line with Paper IV.a (7 to 14 points); a note
+on test order is supplied; the priority sentence is put as an invitation to correct it; the Spotlight status
+of Engels et al. is checked; the cut-off summary description is finished; Eden Engineering is marked
+withdrawn; and the first-published date is corrected to 16 March 2026 as the register has it (17 March
+being the date of the draft). The restatement of the v3 statistics on 25 August 2026, and the figure notes
+with it, carried no version number of their own and sit under this version.
+    v3.3 - 23 August 2026: the epistemic-status declaration and the standing covenant were added, and
+the version-numbering convention adopted.
+
+B.3    Dated notes
+The dated notes of earlier versions, each in its words, with the place it stood in version 3.11; one word of
+the first is corrected, as the line beneath it records.
+Beneath the box placing the paper within the ARC Theory. This paper and Laws IV and V, 3 October
+2026. The theory has been stated with five laws since 24 September 2026. Law IV, the ARC Persistence
+Law, is carried by proposition P15, and Law V, the ARC Embedding Law, by propositions P12 and
+P21. The three propositions are registered; neither law is registered as a law, and neither has been
+tested. Their mathematics is set out in Laws IV and V: the mathematics, version 1.0 (3 October 2026).
+This paper gives toy-system and pilot evidence relevant to the programme’s design to embed correction.
+Its collapse-prevention demonstration rests on the single-seed mechanism run (v1). Its ten-seed and
+twenty-seed runs (v2 and v3) do not show a separation in collapse prevention. The twenty-seed adversarial
+run (v3) shows an ordering in task retention, which is what the paper’s safety score measures, while its
+combined C x S means are indistinguishable. The complexity sweep (v4) reports an advantage at four of
+its five levels that stays constant rather than compounding. No run measures the quantity P15 concerns,
+the share of an externally installed gain lost under later capability training; task retention across switched
+tasks and the pilot’s coupling degradation under adversarial pressure are other quantities. No run varies
+the order in which a system’s components are built, which P12 concerns. No run compares correction
+inside the loop with correction that sees only the finished output as recursive depth rises, which P21
+concerns: the toy runs set the entangled objective against capability alone, the complexity sweep varies
+
+
+                                                       39
+                                           The Honey Architecture
+
+
+the network’s complexity rather than recursive depth, and the pilot sets its Eden Protocol intervention
+against a control. No result in this paper is a deciding test of P15, P12 or P21. Naming the two laws
+changes nothing printed here: the results, their dates and their limits stand as they were.
+Version 3.12 changes one word of this note, ‘design’, where version 3.11 printed ‘proposal’, and links
+the report to its OSF DOI. Section 12 carries the note’s analysis and gives the laws’ current status, and
+Section 4.3 gives the twenty-seed run’s retention result as its stored test holds it.
+Beneath the epistemic-status line. Note (3 October 2026). Several passages above are corrected where
+they stand. The paragraph on dated predictions, recorded on 25 August 2026, said that the submission
+click remained outstanding across the programme, which was true on that date; the theory registration was
+accepted on 8 September 2026. It now gives the state as read on 3 October 2026. The epistemic-status
+line called every Law the programme names a conjecture under registered adversarial test; Laws IV and
+V, added to the theory on 24 September 2026, are neither registered as laws nor tested, and the line
+now says so. The summary, the abstract, the box that places this paper within the ARC Theory, the
+plain-English box and the conclusion said in general terms that systems optimising only for capability
+collapse, and the abstract and the plain-English box said that the entangled systems held stable in every
+run. The capability-only collapse was seen in the single-seed mechanism run (v1) and in the higher-level
+simulation of section 5; the capability-only baselines of the ten-seed and twenty-seed runs (v2 and v3) did
+not collapse, and one plain-Eden seed of the twenty-seed run did. The abstract and the box that places
+this paper within the ARC Theory set the entangled objective against an external or bolted-on constraint;
+the runs set it against a capability-only baseline. The box on Paper VIII said that Eden preserved both
+capability and safety; it now gives the means Paper VIII prints, in which Eden’s safety mean sits below
+the static baseline’s, and it grades that result as supported, where it called it confirmed and said that it
+directly validates the load-bearing wall prediction, as Paper VIII now grades it; the paragraph after it
+says that Paper VIII supports the mechanism stated here, where it said that it validates it, and that the
+toy-system evidence of this paper illustrates the principle in its single-seed mechanism run, which Paper
+VIII’s simulation supports, where it said that this paper demonstrated the principle and that Paper VIII
+confirms it. Each of these passages now says what the runs show.
+Section 12 gives the laws’ current status.
+Section 4.1, before Figure 1. Figures notice (25 August 2026). Every figure in this paper was generated
+on 5 April 2026 and shows simulation outputs under stated objectives, never measurements of deployed
+systems. Where any figure’s labels or verdicts disagree with the text, the text governs; per-figure notes
+mark instances read so far, and regenerated figures are queued. The images are retained meanwhile as
+dated history.
+Version 3.12 draws Figures 1, 2, 4 and 6 to 10 from the runs’ stored results files; Figures 3 and 5 remain
+the runs’ own images, whose bytes the public repository holds from 16 March 2026, with no record of a
+run on 5 April 2026 that produced them.
+The caption of Figure 10. Figure note (25 August 2026): the annotation’s “Verified in v5 data: Claude
+𝛼_align = +1.27” presents one model’s positive value as confirmation; the v5 finding as reported in the
+text is a median 𝛼_align near zero with architecture-dependent variation, of which the quoted value is one
+architecture. Retained as dated history with this label; regeneration queued.
+Version 3.12 redraws the figure from the stored trace without the annotation; Appendix B.1 describes the
+earlier image, which version 3.11’s file keeps.
+
+B.4    Version 3.11
+Version 3.11, of 5 October 2026, stays whole, with its ten figures as published, in this paper’s file history
+on OSF, under the same DOI, and in the public repository’s history. Its wording of the passages this
+
+
+                                                     40
+                                                 The Honey Architecture
+
+
+version re-sets, moves or cuts is not reprinted here, so that no wording this version corrects is printed
+again under this paper’s DOI; Appendix B.1 says what each change replaced, and Table 11 where each
+part of version 3.11 now stands. Its title was Paper VI · The ARC Theory · The Eden Protocol · The Honey
+Architecture: Safety Built into the Objective, and a citation of version 3.11 keeps that title.
+
+The companion list, the citation block and the copyright line. After the reproducibility section,
+version 3.11 printed this list of the programme’s papers under a website label, each name linked to the
+paper’s OSF DOI: Paper I | Foundational | Paper II | Paper III | Origin of Scaling Laws | IV.a | IV.b |
+IV.c | IV.d | Paper V | Paper VI | Paper VII | Paper VIII | Paper IX | Eden Engineering | Eden Vision
+| Executive Summary | Master Table of Contents. Beneath it stood a link to the research pages of the
+author’s website, the paper’s DOI (OSF: 10.17605/OSF.IO/8EZ2N) and the line “Copyright 2026 Michael
+Darius Eastwood”. The references now carry each companion the paper cites. The block on how to cite
+the paper gave the version 3.11 title and its DOI, with a link to the paper’s page on the author’s website
+and links to the website’s citation manual and index; Appendix F replaces it. The copyright line ended
+with a pointer to a full statement of authorship on the author’s website; that pointer is removed, and the
+line is otherwise as printed, with the licence added.
+
+B.5    Layout
+
+                          Table 11. Where each part of version 3.11 stands in version 3.12.
+
+In version 3.11                                          In version 3.12
+Title block: title, plate, subtitle line, version line   Title, category and programme lines, author block and
+and author lines                                         first-page footnote; version 3.11’s title in Appendix B.4, and
+                                                         its other lines in version 3.11’s file; the withdrawn subtitle
+                                                         described, not reprinted
+Abstract                                                 The abstract of this edition, 1,788 characters in its plain-text
+                                                         form, within arXiv’s limit of 1,920; the version 3.11 abstract
+                                                         in version 3.11’s file
+Version history                                          Appendix B.2
+Box placing the paper within the ARC Theory              Section 1, its placement sentence; its result sentence not
+                                                         repeated, since the abstract, Section 1 and Section 12 state it;
+                                                         its version 3.11 words in version 3.11’s file
+Dated note on Laws IV and V (3 October 2026)             Appendix B.3; its analysis in Section 12
+Plain-English box                                        Section 1, after the programme’s opening, corrected; its
+                                                         version 3.11 words in version 3.11’s file
+Sections 1 to 5                                          Sections 1 to 5, with their numbers
+Figures notice (25 August 2026), in Section 4.1          Appendix B.3
+Sections 6.1 to 6.3                                      Sections 6.1 to 6.3, with 6.1 retitled and rewritten; its three
+                                                         findings in version 3.11’s file
+Section 6.4                                              Section 11, related work, with a new subsection (Section 11.4);
+                                                         the posting times of the works it cites, in Appendix C
+Sections 7 to 10                                         Sections 7 to 10, with their numbers
+Companion list                                           As printed in Appendix B.4, without its link to the author’s
+                                                         website; the references carry each companion the paper cites
+
+
+                                                             41
+                                             The Honey Architecture
+
+
+In version 3.11                                    In version 3.12
+
+How to cite this paper                             Appendix F
+Dated predictions and this paper (recorded 25      Appendix E
+August 2026)
+Epistemic status                                   Section 12; its version 3.11 words in version 3.11’s file
+Note of 3 October 2026, beneath the                Appendix B.3
+epistemic-status line
+Copyright line, standing covenant and the note     The back matter: copyright and licence, the standing covenant
+on authorship and AI use                           and the acknowledgements
+Tables 1 to 9, unnumbered                          Tables 1 to 9, in order, numbered and captioned
+Figures 1 to 10                                    Figures 1 to 10, with their numbers; Figures 1, 2, 4 and 6 to 10
+                                                   redrawn as vector graphics, Figures 3 and 5 the runs’ own
+                                                   images; Figure 10’s note of 25 August 2026 in Appendix B.3
+None                                               Section 12, what this paper does and does not show;
+                                                   Appendices A, C and D (new)
+
+
+
+C      Priority record
+Each dated record bearing on this paper, with its kind of timestamp (Table 12); the last rows give the
+dated records of the related work that Section 11 cites. A commit date is written by the committer; a
+deposit’s date is written by the server that holds it; a date written inside a document, by its author or by
+the code that wrote it. The public repository’s records were read on 9 November 2026 with a log limited
+to each file’s path that follows renames, and OSF’s through its public interface.
+                   Table 12. The priority record: each dated item with its kind of timestamp.
+
+Date                  Record                                                  Kind of timestamp
+16 March 2026,        The stored results of the runs drawn in Figures 1       Times written into each file by the
+17:41:03 to           to 10: v1 (17:41:03), v2 (17:41:24), v3 (17:42:30),     run’s own code, with no time zone
+17:56:40              v4 (17:44:40) and the honey simulation (17:56:40),      written: dates written inside a
+                      in the folder                                           document
+                      experiments/honey-architecture__Paper-VI/results
+                      of the public repository
+16 March 2026,        The stored results and the scripts first committed to   Commit dates, which the committer
+18:32:28Z and         the public repository: the honey simulation’s           writes
+18:47:51Z;            results, in the bytes they hold today, in commit
+22:28:10Z             135bf0e (18:32:28Z), which also held the v1 to v4
+                      results with the same numbers and later written
+                      times (17:57:11 to 18:00:41); the six scripts and the
+                      v1 to v4 results, in the bytes they hold today, in
+                      commit 127f3dc (18:47:51Z); both moved to their
+                      present folder in commit 3795d49 (22:28:10Z)
+
+
+
+
+                                                        42
+                                           The Honey Architecture
+
+
+Date                Record                                                  Kind of timestamp
+
+16 March 2026,      The images of Figures 3 and 5, the ten-seed and         Commit dates, which the committer
+18:32:28Z           twenty-seed runs’ own plots of seed 42, first           writes
+                    committed, in the bytes this paper prints, in commit
+                    135bf0e (18:32:28Z), beside the runs’ results;
+                    copied with them into the experiment folder in
+                    commit 127f3dc (18:47:51Z) and renamed with
+                    them in commit 3795d49 (22:28:10Z). The figures
+                    notice of 25 August 2026 gave 5 April 2026
+                    (Appendix B.3)
+16 March 2026       First publication: the paper’s version 1.0, dated 16    A date written in the document; a
+                    March 2026 in its own text, committed to the public     commit date, which the committer
+                    repository in commit 135bf0e (18:32:28Z); the           writes
+                    programme’s catalogue gives the same date (the
+                    version 3.4 correction: 17 March was the date of
+                    the draft)
+17 March 2026,      The paper’s OSF project and its first PDF deposit,      A deposit dated by its server (OSF)
+01:16:27 UTC        DOI 10.17605/OSF.IO/8EZ2N
+(project) and
+01:17:40 UTC
+(PDF)
+16 March 2026       The honey test battery script,                          The date the paragraph gives it,
+                    eden_honey_tests.py, the dated artefact the             written in a document; a commit
+                    paragraph of 25 August 2026 names (Appendix E);         date, which the committer writes
+                    first committed, in the bytes it holds today, in
+                    commit 127f3dc (18:47:51Z)
+20 March 2026,      The experiment folder’s scripts and results removed     Commit dates, which the committer
+23:12:10Z; 2 July   (commit 9469933, “archive old experiment data”)         writes
+2026, 04:20:34      and restored with the same bytes (commit 9225a0e);
+(+01:00)            the honey simulation’s stored results first at their
+                    present path in that restoration
+23 August 2026      Version 3.3: the epistemic-status declaration and       A date written in the document
+                    the standing covenant added (Appendix B.2)
+25 August 2026      The dated-predictions paragraph (Appendix E), the       A date written in the document
+                    figures notice and Figure 10’s note (Appendix B.3)
+19 September 2026   The scope note on the multiplicative objective          Dates written in the document
+(the review); 21    (Section 2)
+September 2026
+(version 3.8)
+3 October 2026      The note placing the paper against Laws IV and V        A date written in the document
+                    (Appendix B.3)
+5 October 2026      Version 3.11: its PDF deposited on OSF, as the          A date written in the document; a
+                    latest version of the paper’s file, at 13:10:03 UTC,    deposit dated by its server (OSF); a
+                    with the bytes of the release; first committed to the   commit date, which the committer
+                    public repository in commit 66eea4f on 8 October        writes
+                    2026 (13:54:17, +01:00)
+
+
+
+
+                                                      43
+                                             The Honey Architecture
+
+
+Date                   Record                                                  Kind of timestamp
+
+The related work of Section 11: the dated records its text cites
+25 April 2025,        Engels et al. (2025) (arXiv:2504.18530), first           A time that rests on one group’s
+17:54:27 UTC          posted; a NeurIPS 2025 Spotlight Poster, verified at     work (arXiv Atom)
+                      the NeurIPS virtual page for poster 115536 on 15
+                      August 2026 and set down in the reference dossier
+                      of Eastwood (2026n)
+12 June 2025,          Yao (2025b) (arXiv:2506.10304), version 1; cited        A time that rests on one group’s
+02:30:30 UTC; 13       by Spizzirri (2025)                                     work, independently observed by the
+June 2025                                                                      Internet Archive on 13 June 2025
+3 July 2025; 12       Yao (2025a) (arXiv:2507.03031): the only paper in        A deposit dated by its server (arXiv);
+August 2026           the arXiv abstract corpus containing the phrase          a search count, with the date it was
+                      “irreducible uncontrollability”, an abstract-search      measured
+                      total of one, measured 12 August 2026
+
+
+
+D      Notation
+The symbols this paper uses, with the place each is defined (Table 13).
+                                                Table 13. Notation.
+
+Symbol                    Meaning                                                        Defined in
+𝐶                         capability: current-task accuracy in the self-modification     Sections 2 to 5
+                          runs; capability in the honey simulation
+𝑆                         safety: retention of earlier tasks in the self-modification    Sections 2 to 5
+                          runs; safety integrity in the honey simulation
+𝐶×𝑆                       the entangled objective and the combined score                 Section 2
+𝐶 ′ , 𝑆′                  capability and safety after a modification                     Section 2; Appendix A
+𝑑𝐶, 𝑑𝑆                    a small modification of capability and safety                  Section 2
+𝑅, Δ𝑅, 𝑅max               the honey simulation’s recursion rate, a step in it, and its   Section 5; Appendix A
+                          limit, 15
+𝑡                         a cycle of the honey simulation, counted from 0; a             Appendix A
+                          subscript 𝑡 marks a value at cycle 𝑡
+𝛿                         the verification drag of the honey simulation, 0.15 of 𝑅       Appendix A
+𝑈, 𝐼, 𝛼                   the ARC Principle’s usable capability, base intelligence       Section 5
+                          and exponent, 𝑈 = 𝐼 × 𝑅 𝛼 (framing only; not computed)
+𝑑                         Cohen’s effect size                                            Sections 4 and 6
+𝜌, 𝑟, 𝑝                   Spearman’s and Pearson’s correlations, and a p-value           Section 6
+𝑚𝐺 , 𝑚 𝐻                  in the work of Engels and colleagues, the slopes with          Section 11.1
+                          which the overseer’s and the overseen system’s
+                          game-specific Elo rise with general Elo
+
+
+
+
+                                                         44
+                                          The Honey Architecture
+
+
+Symbol                  Meaning                                                   Defined in
+
+v1 to v4                the four experimental versions of the self-modification   Section 3
+                        runs
+v5                      the March 2026 alignment-scaling run of Papers IV.a to    Section 6.1
+                        IV.d
+
+
+
+E    Dated predictions and this paper (recorded 25 August 2026)
+2 dated artefacts bearing on this paper are catalogued row by row in the programme’s machine register: 1
+dated result file whose headers freeze depth configurations, planted expected answers and the four-layer
+blinding protocol before the responses they score, timestamped to the second in their own metadata; the
+dated artefact eden_honey_tests.py (2026-03-16). Each row names its file in the public repository
+with its date basis, so any reader can check the ordering without trusting this page. Where this paper
+reports simulations, those artefacts are simulation designs and outputs under stated objectives, and are
+never presented as measurements of deployed systems. The programme’s full dated chain, from the
+sealed manuscript bundle of 8 December 2024 through the printed prediction appendices of 2 January
+2026 and the March 2026 preregistration folder to the standing unproven wagers, is assembled in the
+dated predictions register, together with its machine-readable twin. Forward statements and retrospective
+matches are never summed. “Registered” is used only for an accepted registry submission; “preregistered
+in substance” is used, always with its qualifier and always beside its attestation class, for a prediction
+whose text was public and timestamped before its outcome existed, as the twelve-row manifest committed
+at 00:19 UTC on 17 March 2026 was, twenty-three minutes before its fits. As read on 3 October 2026,
+the one registration accepted is the theory’s own, of 8 September 2026, which registers twenty-two
+propositions. Of the trials, one unit, the corrector-class audit (unit 06), was registered on OSF on 1
+October 2026, was still in its approval period when read on 3 October 2026, and has been public since
+4 October 2026 (DOI 10.17605/OSF.IO/RV2B5). Every other trial is a draft awaiting the author’s
+submission, and most of them are preregistered by timestamp: sixty-five of the programme’s designs, unit
+06 among them, carry a timestamp, the first anchored on 12 August 2026. Read the dated predictions
+register.
+    The paragraph is printed as version 3.11 recorded it, with its state as read on 3 October 2026; its
+closing link to the register’s machine-readable twin, a data file of the author’s website, is not printed
+(Appendix B.1). The register it names is cited here as Eastwood (2026b), and the registration of unit 06 as
+Eastwood (2026o); Section 12 gives the registrations as they stand.
+
+
+F    How to cite this paper
+Cite this paper as. Eastwood, M. D. (2026). The Honey Architecture: does building safety into what a
+self-modifying system optimises help it stay safe? https://doi.org/10.17605/OSF.IO/8EZ2N. It is Paper VI
+of the ARC Theory; this is version 3.12 of 11 November 2026, and the paper was first published on 16
+March 2026. A citation of an earlier version keeps the title that version printed.
+
+
+
+
+                                                     45
+                                  The Honey Architecture
+
+
+BibTeX.
+@misc{eastwood2026paperVI,
+  author       = {Eastwood, Michael Darius},
+  title        = {{The Honey Architecture}: does building safety
+                  into what a self-modifying system optimises
+                  help it stay safe?},
+  year         = {2026},
+  doi          = {10.17605/OSF.IO/8EZ2N}
+}
+
+
+
+
+                                           46
+
