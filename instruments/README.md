@@ -24,7 +24,7 @@ It does not replace or approve the P5/P16 runner.
 ## What the kit is
 
 `arc-instruments/` is executable decision rules for the twenty-two propositions in the
-theory-level preregistration draft, design-sensitivity simulators for the deciding experiments (form
+theory-level registration, design-sensitivity simulators for the deciding experiments (form
 discrimination, ceiling-chain precision, coupling identification, burden identification, corrector
 dependence, blinding integrity, and the P5 and P16 designs), sealed-prediction and held-out
 partition tooling, and a runner that carries the P5 and P16 charters as code.

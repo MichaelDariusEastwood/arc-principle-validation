@@ -1,7 +1,7 @@
 # The ARC Principle and the Eden Protocol
 
 **The code, data and recorded outputs behind a research programme on recursive intelligence
-scaling and embedded AI alignment.** 34 document folders, nine experiments, every result
+scaling and embedded AI alignment.** 35 document folders, ten experiments, every result
 file the papers cite.
 
 [![OSF DOI](https://img.shields.io/badge/OSF-10.17605%2FOSF.IO%2F6C5XB-blue)](https://doi.org/10.17605/OSF.IO/6C5XB)
@@ -14,7 +14,7 @@ run, the outputs that code recorded, and the canonical released documents under 
 **Nothing here has been independently replicated, and nothing here has been through peer
 review.** Two results have been withdrawn by the author and are marked as withdrawn where
 they appear. One paper is under correction. Those are stated in the results table below
-rather than left for a reader to discover.
+rather than left for a reader to discover. A claim of priority for the theory's five components together was withdrawn on 12 November 2026; [`priority-claims/README.md`](priority-claims/README.md) states it.
 
 ## Repository structure
 
@@ -26,8 +26,8 @@ arc-principle-validation/
 ├── LICENCE-PAPERS.md          papers, text, figures and PDFs
 ├── CITATION.cff               machine-readable citation
 ├── EXPERIMENTS-INDEX.md       every experiment, indexed by claim
-├── papers/                    34 document folders, each with its own README
-├── experiments/               9 experiments plus shared code, mapped in experiments/README.md
+├── papers/                    35 document folders, each with its own README
+├── experiments/               10 experiments plus shared code, mapped in experiments/README.md
 ├── instruments/               reference code for runs not yet made, mapped in instruments/README.md
 ├── priority-claims/           the dated provenance record
 └── docs/                      reproducibility notes, release notes, PDF checksums
@@ -93,38 +93,38 @@ never an empirical validation.
 
 | Document | What it reports | Status |
 |----------|-----------------|--------|
-| Paper I | the original statement, `U = I x R^alpha` | published |
-| Paper II | sequential recursion outperforms parallel at lower compute | exploratory ordering; the general advantage remains unresolved |
-| Paper III | external constraints cannot compound where embedded values can; 13 falsification criteria | published |
-| Paper IV.a | architecture-dependent alignment response classes | pilot |
-| Paper IV.b | alignment saturates at low recursion depth | pilot |
-| Paper IV.c | a reproducible blind benchmark specification | specification, not a result |
-| Paper IV.d | on the programme's own benchmark, unblinded rises did not hold in a later run that changed several things, a bundle of blinding steps among them (one reversal, one loss to null) | pilot; several components changed together and a code review found defects, so no single cause is claimed |
-| Paper V | the Eden intervention on stakeholder care | five per-model results stand; the Fisher-combined figure of 6.3 x 10^-21 is **withdrawn** under AQ-017, because independence among the five tests was never established |
-| Paper VI | entangled loss functions for self-modifying AI safety | mechanistic in simulation, exploratory against live models |
-| Paper VII | the cross-domain functional-equation classification | **published, version 3.15, revised 5 October 2026, as the site's paper register records it.** The grid has four cells, not three, as Section 2.1 states, and the three-family framing is withdrawn. Since version 3.12 (3 October 2026) the abstract says what Section 2.2 states: a power law for multiplicative composition and an exponential for additive composition, with saturation curves compatible with bounded composition and the proof that they exhaust that case still open; the conclusion says that this case is not strictly Cauchy-derived. The primary statistic is a permutation test conditioned on both marginals, not the binomial reported previously |
-| Paper VIII | whether entangled safety is load-bearing | the removal test collapses capability (p = 0.04) and the gated simulation reproduces the reward-hacking fingerprint; **weight-level structural entanglement is inconclusive at the training scale tested** |
-| Paper IX | synthesis of the programme and a four-tier replication roadmap | synthesis |
-| Paper X | coupled co-scaling of capability and correction | published |
-| Paper XI | convergence across independent traditions | published |
-| Paper XII | public benchmark rescoring | published |
-| Paper XIII | the self-acceleration exponent | published |
-| Paper C | polymathy and neurodivergent cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy | published |
-| HRIH Paper | a cosmological hypothesis | **speculative, outside the empirical core.** No result in this repository bears on it and it is not part of the evidence base |
-| The ARC Theory | the theory-level statement | published |
-| The ARC Theory, two-page form | the theory in two pages | published |
-| Recursive Dynamics, the founding paper | the proposal of a field | published |
-| The theory-level predictions registration | twenty-two severable propositions, registered before any admissible confirmatory outcome | registered on OSF, 8 September 2026 |
-| The Dated Prediction Register | forward predictions as one verifiable chain | published |
-| The ARC Alignment-Scaling Working Report | the live laboratory notebook of the alignment-scaling work | working report |
-| Foundational | the axiomatic derivation and the `d/(d+1)` prediction | published |
-| On the Origin of Scaling Laws | the cross-domain evidence catalogue | published |
-| Eden Engineering | the protocol architecture specification | specification |
-| Eden Vision | the philosophical foundations | position paper |
-| Executive Summary | the programme overview | overview |
-| Master Table of Contents | suite navigation | index |
+| [Paper I](papers/Paper-I-ARC-Principle/) | the original statement, `U = I x R^alpha` | published |
+| [Paper II](papers/Paper-II-Experimental-Validation/) | sequential exceeded parallel wherever both exponents could be estimated | exploratory ordering; the general advantage remains unresolved |
+| [Paper III](papers/Paper-III-Alignment-Scaling-Problem/) | a conditional model and measurement programme, not proof that a named alignment method must fail or that embedded correction survives unrestricted self-modification; 13 falsification criteria | published |
+| [Paper IV.a](papers/Paper-IV-a-Baked-In-vs-Computed-Alignment/) | When an AI reasons longer, does its alignment improve, stall or decline? | pilot |
+| [Paper IV.b](papers/Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | Do alignment gains level off as language models reason longer? | pilot |
+| [Paper IV.c](papers/Paper-IV-c-ARC-Align-Benchmark/) | a benchmark for evaluating AI alignment as reasoning depth varies | specification, not a result |
+| [Paper IV.d](papers/Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/) | on the programme's own benchmark, unblinded rises did not hold in a later run that changed several things, a bundle of blinding steps among them (one reversal, one loss to null) | pilot; several components changed together and a code review found defects, so no single cause is claimed |
+| [Paper V](papers/Paper-V-Stewardship-Gene/) | the Eden intervention on stakeholder care | five per-model results stand; the Fisher-combined figure of 6.3 x 10^-21 is **withdrawn** under AQ-017, because independence among the five tests was never established |
+| [Paper VI](papers/Paper-VI-Honey-Architecture/) | entangled loss functions for self-modifying AI safety | mechanistic in simulation, exploratory against live models |
+| [Paper VII](papers/Paper-VII-Cauchy-Unification/) | the cross-domain functional-equation classification | **published.** The grid has four cells, not three, as Section 3.1 states, and the three-family framing is withdrawn. The abstract says what Section 3.2 states: a power law for multiplicative composition and an exponential for additive composition. A saturating form follows from none of them: it needs added assumptions, a ceiling on output and dynamics of its own, since a ceiling alone selects no form. The primary statistic is a permutation test conditioned on both marginals, not the binomial reported previously |
+| [Paper VIII](papers/Paper-VIII-The-Load-Bearing-Proof/) | whether entangled safety is load-bearing | one null, one inconclusive and one simulation result leave the safety-capability trade-off unproven at the scale tested, and whether embedded safety brings a measurable benefit open |
+| [Paper IX](papers/Paper-IX-Synthesis-and-Roadmap/) | synthesis of the programme and a four-tier replication roadmap | synthesis |
+| [Paper X](papers/Paper-X-Coupled-CoScaling-Correction/) | coupled co-scaling of capability and correction | published |
+| [Paper XI](papers/Paper-XI-Convergence/) | convergence across independent traditions | published |
+| [Paper XII](papers/Paper-XII-Public-Benchmark-Rescoring/) | public benchmark rescoring | published |
+| [Paper XIII](papers/Paper-XIII-Self-Acceleration-Exponent/) | the self-acceleration exponent | published |
+| [Paper C](papers/Paper-C-PNP/) | polymathy and neurodivergent cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy | published |
+| [HRIH Paper](papers/HRIH-Paper/) | a cosmological hypothesis | **speculative, outside the empirical core.** No result in this repository bears on it and it is not part of the evidence base |
+| [The ARC Theory](papers/The-ARC-Theory/) | the theory-level statement | published |
+| [The ARC Theory, two-page form](papers/The-ARC-Theory-Two-Page-Form/) | the theory in two pages | published |
+| [Recursive Dynamics, the founding paper](papers/Recursive-Dynamics-Founding-Paper/) | the science of systems that improve themselves | published |
+| [The theory-level predictions registration](papers/ARC-Theory-Predictions-Registration/) | twenty-two severable propositions, registered before any admissible confirmatory outcome | registered on OSF, 8 September 2026 |
+| [The Dated Prediction Register](papers/Dated-Prediction-Register/) | forward predictions as one verifiable chain | published |
+| [The ARC Alignment-Scaling Working Report](papers/ARC-Alignment-Scaling-Working-Report/) | the live laboratory notebook of the alignment-scaling work | working report |
+| [Foundational](papers/Foundational/) | the axiomatic derivation and the `d/(d+1)` prediction | published |
+| [On the Origin of Scaling Laws](papers/On-the-Origin-of-Scaling-Laws/) | the cross-domain evidence catalogue | published |
+| [Eden Engineering](papers/Eden-Engineering/) | the protocol architecture specification | specification |
+| [Eden Vision](papers/Eden-Vision/) | the philosophical foundations | position paper |
+| [Executive Summary](papers/Executive-Summary/) | the programme overview | overview |
+| [Master Table of Contents](papers/Master-Table-of-Contents/) | suite navigation | index |
 | [The HARI Treaty: What evidence should justify international safeguards for advanced AI?](papers/HARI-Treaty-Paper/) | Draft Treaty on Hardware-Aligned Recursive Intelligence; a conditional governance proposal | working draft; specialist and external review remain open |
-| The HARI Treaty draft instruments | the Draft Treaty on Hardware-Aligned Recursive Intelligence | working draft; its existing review remains open |
+| [The HARI Treaty draft instruments](papers/HARI-Treaty-Draft-Instruments/) | the Draft Treaty on Hardware-Aligned Recursive Intelligence | working draft; its existing review remains open |
 
 Where a result is under correction or withdrawn, the
 [corrections notice](https://www.michaeldariuseastwood.com/research/corrections/) is
@@ -188,7 +188,7 @@ python src/run_train.py --config configs/default.yaml
 
 Thirteen falsification criteria are specified across the ARC framework and the Eden
 Protocol, each independently sufficient to refute the claim it attaches to. See Paper III
-section 4 and Eden Engineering section 11.
+section 7 and Eden Engineering section 5.2.
 
 ## Prior and parallel work this programme does not claim
 
@@ -264,9 +264,10 @@ A failure to reproduce is the most useful thing anyone can send.
 **Author.** Michael Darius Eastwood, London, United Kingdom.
 [michaeldariuseastwood.com](https://www.michaeldariuseastwood.com)
 
-**Earliest dated statement.** 8 December 2024, a manuscript self-emailed on that date; the
-sender copy carries the date in its header and a SHA-256 authenticates the bytes. The
-priority record is in [`priority-claims/`](priority-claims/).
+**Earliest dated statement.** 8 December 2024, a manuscript self-emailed on that date, its
+time signed by the sending server and sealed by Google's servers. A SHA-256 hash fixes the
+bytes: any change to them changes the hash. It does not authenticate who made them or when.
+The priority record is in [`priority-claims/`](priority-claims/).
 
 **Copyright 2026 Michael Darius Eastwood.**
 

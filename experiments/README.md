@@ -31,7 +31,7 @@ beside the existing one.
 |--------|----------|------------------|---------------|
 | `paper-i-foundational__Paper-I` | Paper I | the original ARC Principle validation toolkit | supporting |
 | `paper-ii-compute__Paper-II` | Paper II | sequential against parallel scaling, six models | pilot |
-| `alignment-scaling__Papers-IV-a-b-c-d` | Papers IV.a to IV.d | alignment scaling across depth, versions v1 to v5 | pilot, blind-scored at v5 |
+| `alignment-scaling__Papers-IV-a-b-c-d` | Papers IV.a to IV.d | alignment scaling across depth, versions v1 to v5 | pilot |
 | `eden-intervention__Paper-V` | Paper V | the Eden intervention against a control, five analysable runs | pilot, single-scorer, not blinded |
 | `honey-architecture__Paper-VI` | Paper VI | the honey architecture in simulation and against live models | mechanistic in simulation, exploratory on live models |
 | `cauchy-unification__Paper-VII` | Paper VII | the cross-domain functional-equation classification | **under correction**, see below |
