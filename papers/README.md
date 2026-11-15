@@ -58,7 +58,7 @@ Version numbers live inside the document header, never in the filename. See Sect
 | [Executive Summary: how can self-improving AI remain useful and aligned?](Executive-Summary/) | v3.28 (revised 7 Nov 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
 | [Master Table of Contents](Master-Table-of-Contents/) | v3.30 (revised 15 Oct 2026) | 16 Mar 2026 | Navigation document linking all papers |
 | [The ARC Theory: once the self-improving minds we build exceed us, what determines what they do?](The-ARC-Theory/) | v7.10 (revised 15 Nov 2026) | 14 Aug 2026 | Growth, correction and alignment in recursive systems |
-| [The ARC Theory: does control survive recursive self-improvement?](The-ARC-Theory-Two-Page-Form/) | v3.5 (revised 7 Nov 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
+| [The ARC Theory: does control survive recursive self-improvement?](The-ARC-Theory-Two-Page-Form/) | v3.6 (revised 15 Nov 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
 | [Recursive Dynamics: the founding paper](Recursive-Dynamics-Founding-Paper/) | v3.5 (revised 24 Oct 2026) | 31 Aug 2026 | Recursive Dynamics: The Proposal of a Field |
 | [Paper C](Paper-C-PNP/) | v1.11 (revised 29 Oct 2026) | 3 Jul 2026 | Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy |
 | [Recursive Creation: can recursive self-improvement end in physical creation?](HRIH-Paper/) | v3.55 (revised 9 Nov 2026) | 3 Jul 2026 | The Hyperspace Recursive Intelligence Hypothesis; speculative, outside the empirical core |
