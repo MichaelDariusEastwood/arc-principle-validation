@@ -24,7 +24,8 @@ This is a synthesis document. Experiments are distributed across the individual 
 
 ## Links
 
-- **OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
+- **OSF DOI:** https://doi.org/10.17605/OSF.IO/K7RUZ
+- **Programme OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 - **Research hub:** https://www.michaeldariuseastwood.com/research/
 

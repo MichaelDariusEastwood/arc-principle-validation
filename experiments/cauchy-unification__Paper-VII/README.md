@@ -1,6 +1,6 @@
 # Cauchy Unification -- Paper VII
 
-Experimental scripts and results supporting **Paper VII: The Cauchy Unification (v2)**.
+Experimental scripts and results supporting **Paper VII: Cauchy Unification**.
 
 ## Core claim
 
@@ -27,8 +27,9 @@ Current stricter results:
 
 - legacy baseline-20 under the new runner: `15/20` empirical family matches
   (`p = 1.67e-4`)
-- expanded empirical cohort: `19/25` empirical family matches
-  (`p = 1.56e-5`)
+- expanded empirical cohort: `19/25` empirical family matches, on the six-model candidate
+  set (the marginal-conditioned permutation test, p = 7 x 10^-5; the binomial p = 1.56 x 10^-5
+  is the weaker null, a sensitivity check, and not the headline)
 - full 50-domain suite: tiered only, not one single blended p-value
 
 Secondary tiers in the 50-domain suite:
@@ -165,5 +166,5 @@ the Cauchy theorem verification as its mathematical foundation.
 
 ## Paper
 
-Paper VII: The Cauchy Unification (v2), located at:
+Paper VII: Cauchy Unification, located at:
 `papers/Paper-VII-Cauchy-Unification/`

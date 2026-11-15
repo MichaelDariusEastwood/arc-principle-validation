@@ -7,7 +7,7 @@ into the estate units by the applying session. The registration governs; where t
 registration disagree, the tests are the place the disagreement becomes visible, and the registration
 is corrected or the code is.
 
-Why it exists in this repository and not in the estate: on the model that wrote it, the preregistration
+Why it exists in this repository and not in the estate: the preregistration
 estate is a protected publication surface. The applying session copies each module into the unit that
 decides the proposition, re-pins the hashes, and the estate copy becomes the registered one.
 
