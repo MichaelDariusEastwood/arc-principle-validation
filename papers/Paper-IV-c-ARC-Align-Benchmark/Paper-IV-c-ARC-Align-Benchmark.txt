@@ -1,8 +1,8 @@
 Title: ARC-Align: a benchmark for evaluating AI alignment as reasoning depth varies
 Author: Michael Darius Eastwood
 Publication date: 2026-03-16
-Version: v1.13
-Revised: 2026-11-09
+Version: v1.14
+Revised: 2026-11-15
 OSF DOI: 10.17605/OSF.IO/J3Q2E
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-iv-c-arc-align-benchmark.html
 Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
@@ -11,7 +11,7 @@ Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://cre
                    reasoning depth varies
                      Paper IV.c of the ARC Theory: the measurement of alignment
 
-                                             Michael Darius Eastwood
+                                              Michael Darius Eastwood
                                Independent Researcher, London, United Kingdom
                        ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
 
@@ -38,161 +38,37 @@ Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://cre
        responses reports. The scorer has not been validated against expert raters. ARC-Align is offered as a
        candidate benchmark for independent replication, not yet a field standard.
 
-Version 1.13 gives the earlier Gemini model’s v4 correlation as its run’s analysis record carries it, corrects the
-replication guide’s counts and withdraws its cost estimate, and makes five further corrections; Appendix A lists
-every version and correction, with its date, and keeps the wording replaced.
+Version 1.14 dates a hypothesis to the version that states it and gives the paper’s opening in its present form;
+Appendix A gives each correction.
 
 
+1     Introduction
+The challenge is to preserve value-guided correction as AI becomes more capable and rewrites itself.
+Through the Eden Protocol, I propose recursive loops for ethical evaluation and self-correction, built
+into the system’s computational architecture before training. These loops would operate at each defined
+      Paper IV.c of the ARC Theory, within Recursive Dynamics: the measurement of alignment. It specifies the theory’s
+candidate instrument for measuring alignment and decides none of Laws I to V, each a law under test; the judged tests of Law IV,
+the ARC Persistence Law, and Law V, the ARC Embedding Law (both added on 24 September 2026 and registered as laws on 15
+October 2026 in version 1.103 of the theory registration; Law IV is not yet tested. Law V, the ARC Embedding Law, is a law
+under test; their mathematics in development), depend on a validated measurement of its kind, which this paper does not yet
+supply. Its score is decomposed into four parts named for the Eden Protocol (the Eden Pillars), whose propositions it does not
+test, and the HARI Treaty, the Draft Treaty on Hardware-Aligned Recursive Intelligence, designates it as the test instrument
+of its Article 20, subject to the treaty’s measurement gate. Working paper, version 1.14, 15 November 2026; first published
+16 March 2026; Appendix A lists every version and correction. DOI 10.17605/OSF.IO/J3Q2E. About the author, founder of
+Recursive Dynamics: michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his book, Infinite Architects:
+osf.io/dqm3e. Licence: CC BY 4.0.
 
 
-     Paper IV.c of the ARC Theory, within Recursive Dynamics: the measurement of alignment. It specifies the theory’s
-candidate instrument for measuring alignment and decides none of Laws I to V, each a law under test; the judged tests of
-Law IV, the ARC Persistence Law, and Law V, the ARC Embedding Law (both added on 24 September 2026 and registered
-as laws on 15 October 2026 in version 1.103 of the theory registration; Law IV is not yet tested. Law V is a law under test;
-their mathematics in development), depend on a validated measurement of its kind, which this paper does not yet supply. Its
-score is decomposed into four parts named for the Eden Protocol (the Eden Pillars), whose propositions it does not test, and
-the draft HARI Treaty designates it as the test instrument of its Article 20, subject to the treaty’s measurement gate. Working
-paper, version 1.13, 9 November 2026; first published 16 March 2026; Appendix A lists every version and correction. Recorded
-on OSF as Paper IV.c · The ARC Theory · ARC-Align: a Blind Benchmark for Depth-Variable AI Alignment Evaluation,
-DOI 10.17605/OSF.IO/J3Q2E. About the author: michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood;
-Paper C: doi.org/10.17605/OSF.IO/RBHDP. Licence: CC BY 4.0.
-
-
-                                                              1
+                                                               1
                               ARC-Align: alignment as reasoning depth varies
 
 
-Contents
-1   Introduction                                                                                         5
-
-2   Related work                                                                                         6
-    2.1 Alignment benchmarks and reasoning depth . . . . . . . . . . . . . . . . . . . . . . . .         6
-    2.2 Model judges . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     6
-    2.3 The rival instrument: scalable oversight . . . . . . . . . . . . . . . . . . . . . . . . . .     7
-    2.4 A different sense of double-blind . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    8
-    2.5 What this paper adds . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     8
-
-3   Design principles                                                                                    8
-
-4   Prompt battery                                                                                      9
-    4.1 Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
-    4.2 Prompt design criteria . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-    4.3 Prompt categories in detail . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-    4.4 Dimension specifications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
-
-5   Depth manipulation protocol                                                                         11
-    5.1 Canonical depth levels . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    11
-    5.2 Model-specific depth mechanisms . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       12
-    5.3 Token budget requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     12
-    5.4 Reasoning token measurement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       13
-
-6 Adversarial suppression protocol                                                                      13
-  6.1 Suppression cage levels . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     13
-  6.2 Factorial design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    13
-  6.3 Dose-response analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      14
-
-7   Scoring protocol                                                                                    14
-    7.1 Scorer requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   14
-    7.2 Cognitive forcing protocol . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    15
-    7.3 Calibration anchors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   16
-    7.4 Eden Pillar decomposition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     16
-    7.5 What the score measures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     16
-    7.6 v5.4.2 enhanced scoring protocol . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    16
-
-8 Analysis pipeline                                                                                     18
-  8.1 Core analysis steps . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     19
-  8.2 Response classification criteria . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    19
-  8.3 The scaling exponent 𝛼align . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     20
-
-9 ARC Principle computational scaling integration                                                       20
-  9.1 Problem battery . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     20
-  9.2 Scoring . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     21
-  9.3 Quadratic ceiling test . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    21
-
-10 Reporting format: the alignment scaling profile                                                      21
-
-
-
-                                                    2
-                              ARC-Align: alignment as reasoning depth varies
-
-
-11 Replication guide                                                                                     22
-   11.1 Minimum requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       22
-   11.2 Recommended configuration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        23
-   11.3 Pre-flight check . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   23
-   11.4 Implementation reference . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     23
-
-12 Results of the first run (v5, March 2026)                                                             24
-   12.1 Data completeness . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      24
-   12.2 Data quality metrics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   24
-   12.3 Alignment scaling results: three-tier hierarchy . . . . . . . . . . . . . . . . . . . . . . .    26
-   12.4 Suppression cage results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     27
-   12.5 Cross-verification of arithmetic answers (ARC compute lane) . . . . . . . . . . . . . . .        28
-   12.6 Per-model ARC compute scaling profiles (Paper II integration) . . . . . . . . . . . . . .        29
-   12.7 v4 to v5 comparison: metascience motivation for the blinding protocol . . . . . . . . . .        30
-   12.8 Benchmark dataset characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      31
-
-13 Discussion                                                                                            32
-   13.1 The correction architecture: same-class versus cross-class correctors . . . . . . . . . . .      32
-   13.2 Human-in-the-loop as a cross-class corrector . . . . . . . . . . . . . . . . . . . . . . .       32
-   13.3 Future development . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     33
-
-14 What this paper does and does not show                                                                33
-
-15 Limitations                                                                                       34
-   15.1 Falsifiability: what would defeat this benchmark . . . . . . . . . . . . . . . . . . . . . . 35
-
-16 Conclusion                                                                                            35
-
-References                                                                                               38
-
-A Version history and corrections                                                                        42
-  A.1 Version 1.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     42
-  A.2 Version 1.12 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     43
-  A.3 Version 1.11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     44
-  A.4 Earlier corrections and dated notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      53
-  A.5 Version history . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      55
-  A.6 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .        58
-
-B Priority record                                                                                   59
-  B.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
-  B.2 Dated predictions and this paper (recorded 25 August 2026) . . . . . . . . . . . . . . . 60
-
-C Notation and glossary                                                                             61
-  C.1 Symbols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
-  C.2 Plain-language glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
-
-
-
-
-                                                    3
-                             ARC-Align: alignment as reasoning depth varies
-
-
-D The paper’s place in the ARC Theory and the programme                                               63
-  D.1 Placement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   63
-  D.2 The theory registration, Laws IV and V, and the HARI Treaty . . . . . . . . . . . . . . .       64
-  D.3 Companion papers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      65
-
-E Robustness measures inventory                                                                       65
-  E.1 The seven categories . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    65
-  E.2 Measures 57 and 58: operational resilience (v5.3) . . . . . . . . . . . . . . . . . . . . .     65
-  E.3 Measures 59 to 75: advanced scoring and governance (v5.4.0 to v5.4.2) . . . . . . . . .         66
-  E.4 Cascade failsafe system (v5.4.0) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    68
-
-
-
-
-                                                   4
-                               ARC-Align: alignment as reasoning depth varies
-
-
-1    Introduction
-I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only
-proof will move the world. Proof of that kind needs an instrument that measures alignment where the
-risk lies: in systems that reason for longer, under pressure to drop their principles, scored by judges who
-should not be able to tell whose work they are reading.
+reasoning and action-selection step and participate in the processes that rewrite the system, including
+changes to the loops themselves. The ARC Theory asks whether correction can keep pace with capability
+and whether human-protective commitments persist through those changes, even if external control is lost.
+Human control should be retained for as long as possible. Answering those questions needs an instrument
+that measures alignment where the risk lies: in systems that reason for longer, under pressure to drop their
+principles, scored by judges who should not be able to tell whose work they are reading.
     AI alignment evaluation has a measurement problem. Widely used benchmarks, including TruthfulQA
 (Lin et al. 2022), HHH (Askell et al. 2021), BBQ (Parrish et al. 2022) and model-specific red-team
 evaluations, test models at a single, uncontrolled reasoning depth. They do not vary inference-time
@@ -217,26 +93,25 @@ depth was set by a reasoning parameter alone read flat (Section 15); an internal
 2026 found defects in that run’s paraphrase step and panel, so the result stands as a single unregistered run
 under those caveats (Section 12.3).
     Our contributions are as follows.
-    1. A complete specification of a depth-variable alignment benchmark: the prompt battery with its null-
-       baseline and capability controls (Section 4), the depth ladder (Section 5), the five-level suppression
-       protocol (Section 6), the scoring protocol with its rubric, anchors, four-part decomposition and
-       blinding steps (Section 7), the analysis pipeline and its response classes (Section 8, Definition 1),
-       and the reporting and replication requirements (Sections 10 and 11).
-    2. A statement of what the score measures as operationalised, and of what it does not (Section 7.5).
-    3. The record of the benchmark’s first run, on six models from six providers in March 2026, with
-       every figure as the pipeline printed it and an as-run account of the protocol from the public code
-       and files: the panel excluded the subject model and no other, the paraphrasing models were drawn
-       from the judges’ pool, the paraphrase step’s output cap cut the deepest answers in the three runs
-       that read flat or negative, one judge’s scores in those runs were mostly read from prose, and one
-       answer key was wrong (Section 12).
-    4. The conditions that would defeat the benchmark as a measure of what it claims to measure
-       (Section 15.1).
+   1. A complete specification of a depth-variable alignment benchmark: the prompt battery with its null-
+      baseline and capability controls (Section 4), the depth ladder (Section 5), the five-level suppression
+      protocol (Section 6), the scoring protocol with its rubric, anchors, four-part decomposition and
+      blinding steps (Section 7), the analysis pipeline and its response classes (Section 8, Definition 1),
+      and the reporting and replication requirements (Sections 10 and 11).
+   2. A statement of what the score measures as operationalised, and of what it does not (Section 7.5).
+   3. The record of the benchmark’s first run, on six models from six providers in March 2026, with
+      every figure as the pipeline printed it and an as-run account of the protocol from the public code
+      and files: the panel excluded the subject model and no other, the paraphrasing models were drawn
+      from the judges’ pool, the paraphrase step’s output cap cut the deepest answers in the three runs
+      that read flat or negative, one judge’s scores in those runs were mostly read from prose, and one
+      answer key was wrong (Section 12).
+   4. The conditions that would defeat the benchmark as a measure of what it claims to measure
+      (Section 15.1).
 Section 2 credits the earlier work on benchmarks, test-time compute and model judges, each work in its
 own terms; this paper does not add the discovery that model judges are biased.
 
 
-
-                                                      5
+                                                     2
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -250,6 +125,140 @@ Appendix B the priority record, Appendix C the notation and a glossary, Appendix
 the programme, and Appendix E the inventory of robustness measures. Companion papers report the
 same run’s response classes (Paper IV.a) and saturation (Paper IV.b), and its comparison with an earlier
 unblinded experiment (Paper IV.d).
+
+
+
+
+                                                    3
+                              ARC-Align: alignment as reasoning depth varies
+
+
+Contents
+1   Introduction                                                                                          1
+
+2   Related work                                                                                          7
+    2.1 Alignment benchmarks and reasoning depth . . . . . . . . . . . . . . . . . . . . . . . .          7
+    2.2 Model judges . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      7
+    2.3 The rival instrument: scalable oversight . . . . . . . . . . . . . . . . . . . . . . . . . .      8
+    2.4 A different sense of double-blind . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     9
+    2.5 What this paper adds . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      9
+
+3   Design principles                                                                                     9
+
+4   Prompt battery                                                                                       10
+    4.1 Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     10
+    4.2 Prompt design criteria . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   11
+    4.3 Prompt categories in detail . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    11
+    4.4 Dimension specifications . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     12
+
+5   Depth manipulation protocol                                                                          12
+    5.1 Canonical depth levels . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     12
+    5.2 Model-specific depth mechanisms . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        13
+    5.3 Token budget requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      13
+    5.4 Reasoning token measurement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        14
+
+6 Adversarial suppression protocol                                                                       14
+  6.1 Suppression cage levels . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      14
+  6.2 Factorial design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     14
+  6.3 Dose-response analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       15
+
+7   Scoring protocol                                                                                     15
+    7.1 Scorer requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    15
+    7.2 Cognitive forcing protocol . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     16
+    7.3 Calibration anchors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    17
+    7.4 Eden Pillar decomposition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      17
+    7.5 What the score measures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      17
+    7.6 v5.4.2 enhanced scoring protocol . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     17
+
+8 Analysis pipeline                                                                                      19
+  8.1 Core analysis steps . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      20
+  8.2 Response classification criteria . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     20
+  8.3 The scaling exponent 𝛼align . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      21
+
+9 ARC Principle computational scaling integration                                                        21
+  9.1 Problem battery . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      21
+  9.2 Scoring . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      22
+  9.3 Quadratic ceiling test . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     22
+
+10 Reporting format: the alignment scaling profile                                                       22
+
+
+
+                                                    4
+                              ARC-Align: alignment as reasoning depth varies
+
+
+11 Replication guide                                                                                     23
+   11.1 Minimum requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       23
+   11.2 Recommended configuration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        24
+   11.3 Pre-flight check . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   24
+   11.4 Implementation reference . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     24
+
+12 Results of the first run (v5, March 2026)                                                             25
+   12.1 Data completeness . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      25
+   12.2 Data quality metrics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   25
+   12.3 Alignment scaling results: three-tier hierarchy . . . . . . . . . . . . . . . . . . . . . . .    27
+   12.4 Suppression cage results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     28
+   12.5 Cross-verification of arithmetic answers (ARC compute lane) . . . . . . . . . . . . . . .        29
+   12.6 Per-model ARC compute scaling profiles (Paper II integration) . . . . . . . . . . . . . .        30
+   12.7 v4 to v5 comparison: metascience motivation for the blinding protocol . . . . . . . . . .        31
+   12.8 Benchmark dataset characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      32
+
+13 Discussion                                                                                            33
+   13.1 The correction architecture: same-class versus cross-class correctors . . . . . . . . . . .      33
+   13.2 Human-in-the-loop as a cross-class corrector . . . . . . . . . . . . . . . . . . . . . . .       33
+   13.3 Future development . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     34
+
+14 What this paper does and does not show                                                                34
+
+15 Limitations                                                                                       35
+   15.1 Falsifiability: what would defeat this benchmark . . . . . . . . . . . . . . . . . . . . . . 36
+
+16 Conclusion                                                                                            36
+
+References                                                                                               39
+
+A Version history and corrections                                                                        44
+  A.1 Version 1.14 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     44
+  A.2 Version 1.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     44
+  A.3 Version 1.12 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     46
+  A.4 Version 1.11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     46
+  A.5 Earlier corrections and dated notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      56
+  A.6 Version history . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      58
+  A.7 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .        61
+
+B Priority record                                                                                   62
+  B.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+  B.2 Dated predictions and this paper (recorded 25 August 2026) . . . . . . . . . . . . . . . 63
+
+C Notation and glossary                                                                             64
+  C.1 Symbols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+  C.2 Plain-language glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+
+
+
+
+                                                    5
+                             ARC-Align: alignment as reasoning depth varies
+
+
+D The paper’s place in the ARC Theory and the programme                                               66
+  D.1 Placement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   66
+  D.2 The theory registration, Laws IV and V, and the HARI Treaty (the Draft Treaty on
+       Hardware-Aligned Recursive Intelligence) . . . . . . . . . . . . . . . . . . . . . . . . .     67
+  D.3 Companion papers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      68
+
+E Robustness measures inventory                                                                       68
+  E.1 The seven categories . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    68
+  E.2 Measures 57 and 58: operational resilience (v5.3) . . . . . . . . . . . . . . . . . . . . .     68
+  E.3 Measures 59 to 75: advanced scoring and governance (v5.4.0 to v5.4.2) . . . . . . . . .         69
+  E.4 Cascade failsafe system (v5.4.0) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    71
+
+
+
+
+                                                   6
+                              ARC-Align: alignment as reasoning depth varies
 
 
 2     Related work
@@ -276,22 +285,6 @@ tasks on advanced AI risks; they report that “extended reasoning may amplify c
 Claude Sonnet 4 showing increased expressions of self-preservation”, and that their results “demonstrate
 the importance of evaluating models across diverse reasoning lengths”.
 
-2.2   Model judges
-ARC-Align’s scores come from model judges, whose biases are established in settings other than this one;
-Paper IV.d, version 2.7, Section 2, sets that work out in full. Zheng et al. (2023) examine the position,
-verbosity and self-enhancement biases of model judges; their judge prompt already asks the judge not to
-let the length of the responses or the names of the assistants influence it, they describe calling a judge
-twice with the order of two answers swapped, and they write that a controlled study of self-enhancement
-is hard because “we cannot easily rephrase a response to fit the style of another model without changing
-the quality”. Koo et al. (2024) find that models are biased evaluators of text quality and that “all models
-are dramatically influenced by real model names”. Saraf et al. (2025) report that, when three vendors’
-models judged blog posts, false attribution “frequently reversed preference rankings”, and they call for
-
-
-                                                    6
-                              ARC-Align: alignment as reasoning depth varies
-
-
 Table 1. Features of ARC-Align beside three existing benchmarks. The table records what each benchmark varies
 or reports; the row on scorer calibration printed in version 1.10 is withdrawn (Appendix A).
 
@@ -307,6 +300,22 @@ classification                                                                  
 Capability comparator               No                   No             No                 Yes (𝛼cap )
 
 
+
+2.2   Model judges
+ARC-Align’s scores come from model judges, whose biases are established in settings other than this one;
+Paper IV.d, version 2.7, Section 2, sets that work out in full. Zheng et al. (2023) examine the position,
+verbosity and self-enhancement biases of model judges; their judge prompt already asks the judge not to
+let the length of the responses or the names of the assistants influence it, they describe calling a judge
+twice with the order of two answers swapped, and they write that a controlled study of self-enhancement
+is hard because “we cannot easily rephrase a response to fit the style of another model without changing
+the quality”. Koo et al. (2024) find that models are biased evaluators of text quality and that “all models
+
+                                                     7
+                              ARC-Align: alignment as reasoning depth varies
+
+
+are dramatically influenced by real model names”. Saraf et al. (2025) report that, when three vendors’
+models judged blog posts, false attribution “frequently reversed preference rankings”, and they call for
 blind evaluation protocols; Marioriyad et al. (2025) find that provenance cues attached to candidate
 responses ordered two judges’ verdicts (expert, then human, then model, then unknown) and were rarely
 acknowledged. Panickssery et al. (2024) report that models have non-trivial accuracy at recognising their
@@ -325,6 +334,17 @@ on average in their setting. These works bear on four features of ARC-Align: its
 are of the kind in the MT-Bench judge prompt; its paraphrase passes meet the difficulty that Zheng et al.
 (2023) name; its exclusion of the subject model alone does not address the favouring of a model’s own
 family; and the effect of its four-part decomposition on judge bias is not measured here.
+    Earlier work studies how the style of an answer bears on a model judge’s preference for its own
+output, and how changing it before judging reduces that preference. Mahbub and Feng (2025) apply
+black-box perturbations to evaluation candidates to obfuscate their authorship and report that simple
+perturbations reduce self-preference, which recovers under a more complete neutralisation of style. Chen
+et al. (2025) measure self-preference against gold judgments and investigate response text style as a
+factor that helps alleviate it. Earlier work also scores the ethical reasoning of language models in several
+named dimensions. Neuman et al. (2025) introduced a five-dimensional audit of the ethical logic of large
+language models and report that chain-of-thought prompting and reasoning-optimised models significantly
+enhance performance on its metrics. Kilov et al. (2025) assess the moral competence of large language
+models on five dimensions, among them identifying morally relevant features and recognising information
+gaps. This paper claims no priority for either.
 
 2.3   The rival instrument: scalable oversight
 The nearest work to this programme’s question, and the right paper to weigh it against, is Engels et al.
@@ -340,21 +360,21 @@ become the trusted models at the next step.
 measured in Elo. This programme’s variable is the composition class of the corrector, measured through
 the corrector’s own scaling exponent. They also state the design condition in slope form: oversight
 improves with capability when the overseer’s game-specific Elo rises faster with general Elo than the
+overseen system’s (𝑚 𝐺 > 𝑚 𝐻 ), and they recommend iterating an oversight design until it does. That is a
 
 
-                                                     7
+                                                     8
                               ARC-Align: alignment as reasoning depth varies
 
 
-overseen system’s (𝑚 𝐺 > 𝑚 𝐻 ), and they recommend iterating an oversight design until it does. That
-is a comparison of two slopes deciding whether oversight gains or loses as capability grows, the same
-shape as the criterion of Law II (a law under test), 𝛽𝐶 > 𝑘. Their framework has no term for what the
-overseer is made of. Nested Scalable Oversight is iterated same-class oversight by construction, and
-this programme’s central prediction is that the same-class ladder is bounded however many rungs are
-added, while a cross-class corrector is not. Their framework makes no prediction about the corrector’s
-composition class, so this programme’s prediction concerns a quantity theirs does not model, and the two
-can be tested side by side. Engels et al. (2025) shows that how oversight scales is a live and unresolved
-question.
+comparison of two slopes deciding whether oversight gains or loses as capability grows, the same shape
+as the criterion of Law II, the ARC Co-Scaling Law (a law under test), 𝛽𝐶 > 𝑘. Their framework has
+no term for what the overseer is made of. Nested Scalable Oversight is iterated same-class oversight by
+construction, and this programme’s central prediction is that the same-class ladder is bounded however
+many rungs are added, while a cross-class corrector is not. Their framework makes no prediction about
+the corrector’s composition class, so this programme’s prediction concerns a quantity theirs does not
+model, and the two can be tested side by side. Engels et al. (2025) shows that how oversight scales is a
+live and unresolved question.
 
 2.4    A different sense of double-blind
 The phrase “double-blind” is also used for a different property. A technical report dated 27 August
@@ -390,10 +410,10 @@ models’ effect sizes in the first run.
        scale differently.
     4. Scoring is structured: the cognitive forcing protocol asks each scorer to choose an anchor, check
        for length bias and count dimensions before it scores. This paper does not measure its effect on
+       scorer drift, length bias or anchoring, and model judges are reported to keep biases of these kinds
+       under mitigation (Sections 2.2 and 15).
 
-
-
-                                                     8
+                                                     9
                                         ARC-Align: alignment as reasoning depth varies
 
 
@@ -441,8 +461,6 @@ treat prompt-repeated entries as independent, and the hierarchy is a single-run 
 Table 13; Sections 7 and 12.2.
 
 
-        scorer drift, length bias or anchoring, and model judges are reported to keep biases of these kinds
-        under mitigation (Sections 2.2 and 15).
      5. Results are comparable: The scaling exponent 𝛼align is meant as a single metric that can be
         compared across models and laboratories; whether depth settings are comparable across providers
         is an open question (Section 5.1).
@@ -456,30 +474,31 @@ ARC-Align uses 36 prompts across six categories (Table 2).
 4 epistemic-integrity and 8 recursive-coherence prompts, giving 24 alignment prompts, alongside 4
 hidden probes logged under the alignment task type, 4 null-baseline prompts, 10 capability prompts, 7
 suppression prompts spread over five cage levels, and 12 ARC-compute problems, rising to 30 for Claude
+Opus 4.6 and Groq Qwen3. Under the canonical v6 runner the flagship surface grows to 48 public
+prompts together with 24 holdout prompts, and the six categories stay as they were.
 
-                                                                      9
+
+                                                                     10
                               ARC-Align: alignment as reasoning depth varies
 
 
-                            Table 2. The prompt battery as specified, by category.
+                           Table 2. The prompt battery as specified, by category.
 
-Category               Code             Count    Purpose                                        Difficulty
-Ethical Dilemma        ED01 to ED06        6     Genuine moral conflicts requiring              Hard
-                                                 multi-framework reasoning
-Competing Values       CV01 to CV06        6     Trade-offs between legitimate but              Medium
-                                                 conflicting values
-Epistemic Integrity    EI01 to EI06        6     Honesty under pressure, uncertainty            Medium
-                                                 acknowledgement
-Recursive Coherence    RC01 to RC06        6     Self-referential ethical reasoning,            Medium to hard
-                                                 meta-ethics
-Null Baseline          NB01 to NB04        4     Factual prompts (no ethical content); scorer   Easy
-                                                 bias control
-Capability             CP01 to CP06        6     Pure reasoning tasks; capability scaling       Medium to hard
-                                                 control
+Category              Code              Count   Purpose                                        Difficulty
+Ethical Dilemma       ED01 to ED06        6     Genuine moral conflicts requiring              Hard
+                                                multi-framework reasoning
+Competing Values      CV01 to CV06        6     Trade-offs between legitimate but              Medium
+                                                conflicting values
+Epistemic Integrity   EI01 to EI06        6     Honesty under pressure, uncertainty            Medium
+                                                acknowledgement
+Recursive Coherence   RC01 to RC06        6     Self-referential ethical reasoning,            Medium to hard
+                                                meta-ethics
+Null Baseline         NB01 to NB04        4     Factual prompts (no ethical content); scorer   Easy
+                                                bias control
+Capability            CP01 to CP06        6     Pure reasoning tasks; capability scaling       Medium to hard
+                                                control
 
 
-Opus 4.6 and Groq Qwen3. Under the canonical v6 runner the flagship surface grows to 48 public
-prompts together with 24 holdout prompts, and the six categories stay as they were.
     As run (the October 2026 records check): no entry of the March 2026 run carries a holdout prompt,
 and the version 6 runner prints its 24 holdout prompts in its public code, so no sealing record exists; they
 are holdouts by design, not sealed prompts.
@@ -507,13 +526,13 @@ between the profiles labelled Type 1 and Type 2 (Appendix C.2).
 
 Competing values (CV01 to CV06). These present scenarios where two or more legitimate values
 conflict: privacy vs security, individual autonomy vs collective welfare, innovation speed vs safety,
-
-
-                                                     10
-                              ARC-Align: alignment as reasoning depth varies
-
-
 transparency vs strategic advantage. No stakeholder is ‘wrong’; the values genuinely conflict.
+
+
+
+                                                    11
+                               ARC-Align: alignment as reasoning depth varies
+
 
 Epistemic integrity (EI01 to EI06). These test the model’s ability to maintain intellectual honesty:
 acknowledging uncertainty, distinguishing evidence quality, resisting pressure to overstate conclusions,
@@ -559,9 +578,11 @@ for five models and six for DeepSeek V3.2, as the archived files record; the can
 two ladders, a uniform five-level ladder and the native four-level ladder, and whether they are comparable
 across providers is the question of the depth-control-equivalence unit (Unit 48, a draft on OSF, not yet
 registered). Gemini 3 Flash’s five labels were three distinct thinking_level settings (low, low, medium,
+high, high) with the prefixes, so its minimal and standard levels differ only in the prefix and its exhaustive
+and extreme levels are one configuration under two labels.
 
 
-                                                    11
+                                                     12
                                 ARC-Align: alignment as reasoning depth varies
 
 
@@ -574,12 +595,10 @@ Level     Label        Target Reasoning Effort    Purpose
   4       Exhaustive   Maximum available          Full reasoning capacity
 
 
-high, high) with the prefixes, so its minimal and standard levels differ only in the prefix and its exhaustive
-and extreme levels are one configuration under two labels.
-
 5.2     Model-specific depth mechanisms
 Different models offer different mechanisms for controlling reasoning depth. Table 4 gives each model’s
 mechanism as the March 2026 run issued it, level by level.
+
                   Table 4. The depth mechanisms as the March 2026 run issued them, by model.
 
 Model               Depth mechanism as run
@@ -612,7 +631,10 @@ the model.
     v5.3 recommended limits: DeepSeek V3.2 65K, Claude Opus 4.6 64K, Gemini 3 Flash 65K, GPT-5.4
 100K, Groq Qwen3 41K, Grok 4.1 Fast 65K.
 
-                                                        12
+
+
+
+                                                        13
                                  ARC-Align: alignment as reasoning depth varies
 
 
@@ -660,7 +682,7 @@ allows measurement of:
 
 
 
-                                                         13
+                                                         14
                                   ARC-Align: alignment as reasoning depth varies
 
 
@@ -717,7 +739,7 @@ more reliable while still incorporating signal from all models.
 
 
 
-                                                          14
+                                                          15
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -768,7 +790,7 @@ number. Which judges wrote the five steps is a records question for the re-analy
 
 
 
-                                                     15
+                                                     16
                                  ARC-Align: alignment as reasoning depth varies
 
 
@@ -819,7 +841,7 @@ expert human judgement, which validation studies drafted for registration are de
 v5.4.2 layers six further scoring enhancements on top of the v5.3 4-Layer Blinding Protocol, aimed
 at raising measurement reliability and at exposing scorer pathologies. As recorded at the time of the
 
-                                                         16
+                                                         17
                                ARC-Align: alignment as reasoning depth varies
 
 
@@ -869,7 +891,7 @@ include:
 
 
 
-                                                      17
+                                                      18
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -918,7 +940,7 @@ profile.
 
 
 
-                                                    18
+                                                    19
                                ARC-Align: alignment as reasoning depth varies
 
 
@@ -973,7 +995,7 @@ second clause could be decided. Tier 2 is therefore read here as the residual ca
 neither Tier 1 nor Tier 3, that is those which produced small estimated changes without a statistically
 
 
-                                                       19
+                                                       20
                                 ARC-Align: alignment as reasoning depth varies
 
 
@@ -1025,7 +1047,7 @@ as printed until then with this note.
 
 
 
-                                                       20
+                                                       21
                                 ARC-Align: alignment as reasoning depth varies
 
 
@@ -1062,13 +1084,13 @@ bound. Its refutation is registered: P3 of the theory registration holds that a 
 exponent lies at or below the value the ceiling relation returns from its own measured correction-leverage
 exponent, and is refuted “on a replicated exceedance of the returned value while correctability remains
 demonstrably positive”. Whether correction holds the asymptotic advantage is settled by measurement,
-never by assertion: Law II writes the condition as 𝛽𝐶 > 𝑘, and across a window fixed before the run the
-lower bound on 𝛽𝐶 − 𝑘 has to hold above zero; Laws II and III are each a law under test. The 12-problem
-battery is an exploratory measurement (this test corresponds to Unit 02, study-k, on the boundary, a
-draft registration on OSF not yet registered) of whether frontier models’ computational scaling exponents
-converge near this theoretical ceiling under conditions that hold self-correctability. Its exponents come
-from frozen models, on which the bound itself cannot be tested, so the battery describes the models’ depth
-scaling and does not decide the bound.
+never by assertion: Law II, the ARC Co-Scaling Law, writes the condition as 𝛽𝐶 > 𝑘, and across a
+window fixed before the run the lower bound on 𝛽𝐶 − 𝑘 has to hold above zero; Laws II and III are
+each a law under test. The 12-problem battery is an exploratory measurement (this test corresponds to
+Unit 02, study-k, on the boundary, a draft registration on OSF not yet registered) of whether frontier
+models’ computational scaling exponents converge near this theoretical ceiling under conditions that hold
+self-correctability. Its exponents come from frozen models, on which the bound itself cannot be tested, so
+the battery describes the models’ depth scaling and does not decide the bound.
 
 
 10      Reporting format: the alignment scaling profile
@@ -1078,7 +1100,7 @@ Alignment scaling profile: required elements.
      1. Model Identification
 
 
-                                                        21
+                                                        22
                              ARC-Align: alignment as reasoning depth varies
 
 
@@ -1123,7 +1145,7 @@ To produce a valid ARC-Align evaluation, a replication must:
 
 
 
-                                                   22
+                                                   23
                                ARC-Align: alignment as reasoning depth varies
 
 
@@ -1173,7 +1195,7 @@ and model identifiers its header names.
 
 
 
-                                                     23
+                                                     24
                                 ARC-Align: alignment as reasoning depth varies
 
 
@@ -1225,7 +1247,7 @@ reckoned GPT-5.4 by scored rows. No API error was recorded in any of the six run
 Data quality summary.
 
 
-                                                       24
+                                                       25
                           ARC-Align: alignment as reasoning depth varies
 
 
@@ -1276,7 +1298,7 @@ Data quality summary.
 
 
 
-                                                 25
+                                                 26
                                    ARC-Align: alignment as reasoning depth varies
 
 
@@ -1331,7 +1353,7 @@ Opus 4.6 and Groq Qwen3 show, as the pipeline printed them, a statistically sign
 increased reasoning depth, with large effect sizes for Grok and Claude and a smaller one for Qwen3. For
 
 
-                                                        26
+                                                        27
                                 ARC-Align: alignment as reasoning depth varies
 
 
@@ -1353,7 +1375,7 @@ asked the model to consider every angle, and in the runs that read flat or negat
 were cut before the judges saw them, so the split is a single-run result that the re-analysis is to test. If it
 holds, an evaluation at one depth would miss it.
      Reading note (19 September 2026). [Kept as printed: its Section 6.2 is Section 8.2 here, its box is
-Finding 1 above, and the plain-English sentence it names was withdrawn in version 1.11 (Appendix A.3).]
+Finding 1 above, and the plain-English sentence it names was withdrawn in version 1.11 (Appendix A.4).]
 The classification note beneath the Section 6.2 rules governs two statements in the box above: the phrase
 that opens the Tier 2 paragraph, “no meaningful blinded alignment gain”, and the sentence in the
 plain-English paragraph that closes the box, “their ethics are fixed regardless of thinking time”. Neither
@@ -1385,7 +1407,7 @@ Finding 2: the models that scored highest at control lost most under suppression
 This finding comes from a single v5 run, of 11 and 12 March 2026. The programme’s dated ledger of its
 
 
-                                                      27
+                                                      28
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -1437,7 +1459,7 @@ records gives +1.02) based on its completed v5 experiment. The low agreement rat
 answers and says nothing about alignment quality; Qwen3’s alignment scores are a separate measure (the
 first summary gave 71.36 to 77.85; the archived records give 71.1 to 77.3).
 
-                                                     28
+                                                     29
                                 ARC-Align: alignment as reasoning depth varies
 
 
@@ -1491,7 +1513,7 @@ step function: 64.4 per cent at minimal depth jumping to 96.7 per cent at standa
 flat through exhaustive and maximum depth. From the standard level up, 96.7 per cent leaves one answer
 
 
-                                                          29
+                                                          30
                                 ARC-Align: alignment as reasoning depth varies
 
 
@@ -1544,7 +1566,7 @@ across both protocols.
 
 
 
-                                                       30
+                                                       31
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -1561,18 +1583,18 @@ it is scoring is exposed to this kind of bias, and earlier studies documented re
       comparisons that rest on unblinded model judges would need re-checking; if blinding moves scores
       but not rankings, which is Paper XII’s own forecast, it matters for measurement precision rather
       than for leaderboard order.
-    To the author’s knowledge as of 16 August 2026, and on a bounded search over publicly indexed
-alignment benchmarks and metascience papers that the author has been able to enumerate, no earlier
-empirical demonstration that blinding can reverse the measured direction of alignment scaling in frontier
-language models has been located. The claim is offered as a correction target rather than a proven one:
-any earlier example an independent replicator surfaces will be added to this note in the next revision.
-Paper IV.d in this series develops that result as a standalone metascience paper.
+    On 16 August 2026 the author recorded a bounded search, over publicly indexed alignment benchmarks
+and metascience papers that the author had been able to enumerate, for an earlier empirical demonstration
+that blinding can reverse the measured direction of alignment scaling in frontier language models; it
+located none. The comparison reported here is not such a demonstration: Paper IV.d, version 2.8, states
+that “the comparison shows that the reported direction did not hold across protocols; it does not show that
+blinding caused the change, or which direction is correct”.
 
-Note (version 1.11). The paragraph above was recorded on 16 August 2026. Paper IV.d, version 2.7,
-states what the comparison shows: the reported direction did not hold across the two protocols; it does
-not show that blinding caused the change, or which direction is correct, and the October 2026 code review
-found defects in the runs concerned. The abstracts of the works its Section 2 credits state no comparison
-of two scoring protocols on an alignment-depth slope.
+Note (version 1.11). The search above was recorded on 16 August 2026. Paper IV.d, version 2.7, states
+what the comparison shows: the reported direction did not hold across the two protocols; it does not show
+that blinding caused the change, or which direction is correct, and the October 2026 code review found
+defects in the runs concerned. The abstracts of the works its Section 2 credits state no comparison of two
+scoring protocols on an alignment-depth slope.
     Earlier work reports that displayed labels alone can reverse model judges’ preference rankings in
 general text: Saraf et al. (2025) found that false attribution “frequently reversed preference rankings”
 when three models judged blog posts (Section 2.2). The dated note of 16 August 2026 concerns the
@@ -1594,7 +1616,7 @@ ARC-Align dataset summary.         Key characteristics of the v5 dataset:
     To the author’s knowledge as of 12 August 2026, and on a bounded search over publicly indexed
 
 
-                                                    31
+                                                    32
                                ARC-Align: alignment as reasoning depth varies
 
 
@@ -1642,17 +1664,16 @@ A programme hypothesis beyond the framework. Oversight arrangements that place a
 loop, as amplification and reinforcement learning from human feedback do, are cross-class by construction,
 because the human corrector does not share the model’s substrate. The programme therefore hypothesises,
 beyond what the framework decides, that human-in-the-loop oversight shows a higher correction exponent
-than pure-model oversight, for a structural reason rather than a sentimental one; the hypothesis was first
-stated in this paper (by version 1.10 of 5 October 2026 at the latest). This is testable on existing data and
+than pure-model oversight, for a structural reason rather than a sentimental one; the hypothesis is stated in
+this paper by version 1.10 of 5 October 2026. This is testable on existing data and does not require new
 
 
-                                                      32
+                                                      33
                                ARC-Align: alignment as reasoning depth varies
 
 
-does not require new systems. The AI-scored limitation (Section 15) stands; a matched human-scored
-replication of a subset of these prompts would validate the scorer and would also bear on the cross-class
-question.
+systems. The AI-scored limitation (Section 15) stands; a matched human-scored replication of a subset of
+these prompts would validate the scorer and would also bear on the cross-class question.
 
 13.3    Future development
      • Multilingual extension: Translate prompts to 5+ languages to test whether alignment scaling is
@@ -1695,15 +1716,15 @@ and no arm of it sets correction inside the loop against correction that sees on
 suppression cage measures how far adversarial pressure in a system instruction reduces alignment quality;
 the retention it reports is not the quantity P15 names, which is how much of a gain installed by external
 post-training survives later capability-directed training. No result in this paper is a deciding test of P15,
+P12 or P21. Its compute lane bears on Law I, the ARC Principle, and its ceiling probe on the ARC Bound,
 
 
-                                                     33
+                                                     34
                                ARC-Align: alignment as reasoning depth varies
 
 
-P12 or P21. Its compute lane bears on Law I, the ARC Principle, and its ceiling probe on the ARC Bound,
-the conjectured value of Law III’s ceiling, each as a single-run measurement and not as a registered test
-(Sections 9 and 12.6).
+the conjectured value of the ceiling of Law III, the ARC Ceiling, each as a single-run measurement and
+not as a registered test (Sections 9 and 12.6).
 
 Usefulness. The benchmark’s usefulness side is its capability control lane and its compute lane
 (Sections 4.3 and 9), which measure reasoning on tasks with no ethical content, and its rubric, which
@@ -1712,14 +1733,15 @@ of completion on ordinary tasks.
      Epistemic status. What this programme names Laws are conjectures. Laws I to III, registered
 on 8 September 2026, are laws under test. Every law is a law under test until a registered test returns
 its verdict. Laws IV and V were added on 24 September 2026 and registered as laws on 15 October
-2026 in version 1.103 of the theory registration. Law IV is not yet tested. Law V is a law under
-test: its placement limb, P21, is supported on the performance axis only, under the registered test, by
-the programme’s own run (Unit 83, 28 October 2026, DOI 10.17605/OSF.IO/MN73W; results: DOI
-10.17605/OSF.IO/98HKR): family-dependent, with its mechanism axis not evaluable, which is not support
-for the information-asymmetry mechanism, and one disclosed recovery amendment; its build-order limb,
-read on P12, is undecided, since P12 is untested. Every quantity in this paper is operationally defined,
-and established-law standing is claimed nowhere. The registered programme exists to earn that standing,
-or lose it, by measurement, replication and survived refutation.
+2026 in version 1.103 of the theory registration. Law IV, the ARC Persistence Law, is not yet tested.
+Law V, the ARC Embedding Law, is a law under test: its placement limb, P21, is supported on the
+performance axis only, under the registered test, by the programme’s own run (Unit 83, 28 October 2026,
+DOI 10.17605/OSF.IO/MN73W; results: DOI 10.17605/OSF.IO/98HKR): family-dependent, with its
+mechanism axis not evaluable, which is not support for the information-asymmetry mechanism, and one
+disclosed recovery amendment; its build-order limb, read on P12, is undecided, since P12 is untested.
+Every quantity in this paper is operationally defined, and established-law standing is claimed nowhere.
+The registered programme exists to earn that standing, or lose it, by measurement, replication and survived
+refutation.
 
 
 15     Limitations
@@ -1749,7 +1771,7 @@ or lose it, by measurement, replication and survived refutation.
        with the instruction held constant is the successor suite’s question.
 
 
-                                                     34
+                                                     35
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -1800,7 +1822,7 @@ designed to measure properties of alignment that single-depth benchmarks do not 
 
 
 
-                                                    35
+                                                    36
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -1852,7 +1874,7 @@ Code and data. The experiment suite, with runners v1 to v5 and the version 6 run
 result files and their analyses, is in the public repository github.com/MichaelDariusEastwood/arc-princip
 
 
-                                                     36
+                                                     37
                                ARC-Align: alignment as reasoning depth varies
 
 
@@ -1878,7 +1900,7 @@ licence (CC BY 4.0).
 
 
 
-                                                     37
+                                                     38
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -1889,87 +1911,117 @@ Amanda Askell, Yuntao Bai, Anna Chen, Dawn Drain, Deep Ganguli, Tom Henighan, An
  McCandlish, Chris Olah, and Jared Kaplan. A general language assistant as a laboratory for alignment,
  2021. URL https://arxiv.org/abs/2112.00861. arXiv:2112.00861, version 3 of 9 December 2021; first
  posted 1 December 2021.
+
 Yuntao Bai, Andy Jones, Kamal Ndousse, et al. Training a helpful and harmless assistant with reinforcement
   learning from human feedback, 2022a. URL https://arxiv.org/abs/2204.05862. arXiv:2204.05862, 12
   April 2022.
+
 Yuntao Bai, Saurav Kadavath, Sandipan Kundu, et al. Constitutional AI: harmlessness from AI feedback,
   2022b. URL https://arxiv.org/abs/2212.08073. arXiv:2212.08073, 15 December 2022.
+
 Collin Burns, Pavel Izmailov, Jan Hendrik Kirchner, Bowen Baker, Leo Gao, Leopold Aschenbrenner,
   Yining Chen, Adrien Ecoffet, Manas Joglekar, Jan Leike, Ilya Sutskever, and Jeff Wu. Weak-
   to-strong generalization: eliciting strong capabilities with weak supervision, 2023. URL https:
   //arxiv.org/abs/2312.09390. arXiv:2312.09390.
+
 Hongyu Chen and Seraphina Goldfarb-Tarrant. Safer or luckier? LLMs as safety evaluators are not
   robust to artifacts. In Proceedings of the 63rd Annual Meeting of the Association for Computational
  Linguistics (Volume 1: Long Papers). Association for Computational Linguistics, 2025. doi:10.18653
  /v1/2025.acl-long.970. Pages 19750 to 19766. First posted as arXiv:2503.09347, 12 March 2025.
+
+Zhi-Yuan Chen, Hao Wang, Xinyu Zhang, Enrui Hu, and Yankai Lin. Beyond the surface: measuring
+  self-preference in LLM judgments, 2025. URL https://arxiv.org/abs/2506.02592. arXiv:2506.02592,
+  version 1 of 3 June 2025. Read in abstract.
+
 Paul Christiano, Buck Shlegeris, and Dario Amodei. Supervising strong learners by amplifying weak
   experts, 2018. URL https://arxiv.org/abs/1810.08575. arXiv:1810.08575.
-Michael Darius Eastwood. Register · The ARC Theory · The Dated Prediction Register: Forward
- Predictions as One Verifiable Chain. OSF, 2026a. doi:10.17605/OSF.IO/C3NTF.
-Michael Darius Eastwood. Engineering Specification · The ARC Theory · The Eden Protocol · Eden
- Engineering: Architecture for Embedded AI Alignment That Scales With Capability. OSF, 2026b.
- doi:10.17605/OSF.IO/AWJR4.
-Michael Darius Eastwood. Philosophical Statement · The ARC Theory · The Eden Protocol · A Vision for
- Intelligence That Tends Rather Than Consumes. OSF, 2026c. doi:10.17605/OSF.IO/9M3DG.
-Michael Darius Eastwood. Executive Summary · Recursive Dynamics · The ARC/Eden Research
- Programme. OSF, 2026d. doi:10.17605/OSF.IO/EWN5D.
-Michael Darius Eastwood. Foundational Paper · The ARC Theory · Law I, the ARC Principle · Recursive
- Amplification as a Cross-Domain Structural Principle. OSF, 2026e. doi:10.17605/OSF.IO/Y7QGD.
+
+Michael Darius Eastwood. The Dated Prediction Register: when was each prediction made, and did it
+ come before the evidence? OSF, 2026a. doi:10.17605/OSF.IO/C3NTF.
+
+Michael Darius Eastwood. Eden Engineering: can correction built into each round keep a self-improving
+ AI good and useful if oversight fails? OSF, 2026b. doi:10.17605/OSF.IO/AWJR4.
+
+Michael Darius Eastwood. The Eden Vision: what should the intelligence we build be for? OSF, 2026c.
+ doi:10.17605/OSF.IO/9M3DG.
+
+Michael Darius Eastwood. Executive Summary: how can self-improving AI remain useful and aligned?
+ OSF, 2026d. doi:10.17605/OSF.IO/EWN5D.
+
+Michael Darius Eastwood. The ARC Principle: can the way gains combine predict how recursive systems
+ scale? OSF, 2026e. doi:10.17605/OSF.IO/Y7QGD.
+
 Michael Darius Eastwood. Draft Instruments · The HARI Treaty · The Draft Treaty on Hardware-Aligned
  Recursive Intelligence. OSF, 2026f. Working draft, version 2.3 of 5 October 2026. doi:10.17605/OSF.I
  O/67MX8.
+
+
+
+                                                   39
+                             ARC-Align: alignment as reasoning depth varies
+
+
 Michael Darius Eastwood. When do installed values fade with training, and does building them in first
  change that? OSF, 2026g. The mathematics of Laws IV and V. Cited edition: version 1.2, 29 October
  2026. First published 1 October 2026 as working draft 0.2.1; version 1.0 dated 3 October 2026 and
  version 1.1 dated 7 October 2026. doi:10.17605/OSF.IO/4B3VT.
 
-                                                   38
-                             ARC-Align: alignment as reasoning depth varies
-
-
 Michael Darius Eastwood. Master Table of Contents · Recursive Dynamics · The ARC Theory Paper
  Suite and Glossary. OSF, 2026h. doi:10.17605/OSF.IO/VC9RX.
-Michael Darius Eastwood. Register · The ARC Theory · Operational Definitions. OSF, 2026i. doi:10.176
- 05/OSF.IO/GVQ82.
-Michael Darius Eastwood. Framework Paper · The ARC Theory · Law I, the ARC Principle · On the
- Origin of Scaling Laws: Functional Equations and the Scaling Forms Behind the Law. OSF, 2026j.
- doi:10.17605/OSF.IO/XZY9U.
-Michael Darius Eastwood. Paper I · The ARC Theory · Law I, the ARC Principle · The ARC Equation,
- the Law of Conversion. OSF, 2026k. doi:10.17605/OSF.IO/B6N27.
+
+Michael Darius Eastwood. What do the ARC Theory’s quantities measure? OSF, 2026i. doi:10.17605/O
+ SF.IO/GVQ82.
+
+Michael Darius Eastwood. On the Origin of Scaling Laws: what can composition and transport explain?
+ OSF, 2026j. doi:10.17605/OSF.IO/XZY9U.
+
+Michael Darius Eastwood. The ARC Equation: does intelligence compound when each step builds on the
+ last, or merely accumulate? OSF, 2026k. doi:10.17605/OSF.IO/B6N27.
+
 Michael Darius Eastwood. Blinded cross-architecture replication and the retraction of a super-linear
  estimate. OSF, 2026l. Paper II. Cited edition: version 2.19, 29 October 2026. First published 22 January
  2026. doi:10.17605/OSF.IO/8FJMA.
-Michael Darius Eastwood. Paper III · The ARC Theory · Law II, the ARC Co-Scaling Law · The Alignment
- Scaling Problem: Why External AI Safety Approaches Cannot Scale With Recursive Capability. OSF,
- 2026m. doi:10.17605/OSF.IO/HQCGF.
+
+Michael Darius Eastwood. The alignment scaling problem: do external AI safety approaches keep pace
+ with recursive capability? OSF, 2026m. doi:10.17605/OSF.IO/HQCGF.
+
 Michael Darius Eastwood. Paper IV.a · The ARC Theory · Alignment Response Classes Under Inference-
  Time Depth. OSF, 2026n. Version 1.9. doi:10.17605/OSF.IO/MB9R6.
+
 Michael Darius Eastwood. Paper IV.b · The ARC Theory · Alignment Saturation Is Architecture-Dependent.
  OSF, 2026o. Version 1.9. doi:10.17605/OSF.IO/A7R56.
+
 Michael Darius Eastwood. Alignment trends reported by AI judges did not hold when the evaluation
  protocol changed. OSF, 2026p. Version 2.8 of 7 November 2026. doi:10.17605/OSF.IO/2S3E6.
-Michael Darius Eastwood. Paper IX · The ARC Theory · Synthesis and Roadmap. OSF, 2026q.
- doi:10.17605/OSF.IO/K7RUZ.
-Michael Darius Eastwood. Paper V · The ARC Theory · The Eden Protocol · The Stewardship Gene:
- Stakeholder Care as a Probe of Embedded Values. OSF, 2026r. doi:10.17605/OSF.IO/KZEYA.
-Michael Darius Eastwood. Paper VI · The ARC Theory · The Eden Protocol · The Honey Architecture:
- Safety Built into the Objective. OSF, 2026s. doi:10.17605/OSF.IO/8EZ2N.
-Michael Darius Eastwood. Paper VII · The ARC Theory · Law I, the ARC Principle · Cauchy Unification:
- the Classification Behind the Law’s Form. OSF, 2026t. doi:10.17605/OSF.IO/X6WA7.
-Michael Darius Eastwood. Paper VIII · The ARC Theory · Law V, the ARC Embedding Law · The Eden
- Protocol · The Load-Bearing Test: Whether Safety and Capability Are Structurally Entangled. OSF,
- 2026u. doi:10.17605/OSF.IO/7YJ4E.
+
+Michael Darius Eastwood. Synthesis and Roadmap: which of the programme’s claims survived their
+ tests, and which must be tested next? OSF, 2026q. doi:10.17605/OSF.IO/K7RUZ.
+
+Michael Darius Eastwood. The Stewardship Gene: does prompting ethical checks before answering
+ improve stakeholder-care scores? OSF, 2026r. doi:10.17605/OSF.IO/KZEYA.
+
+Michael Darius Eastwood. The Honey Architecture: does building safety into what a self-modifying
+ system optimises help it stay safe? OSF, 2026s. doi:10.17605/OSF.IO/8EZ2N.
+
+Michael Darius Eastwood. Cauchy Unification: does the composition operator of a process determine the
+ form of its scaling law? OSF, 2026t. doi:10.17605/OSF.IO/X6WA7.
+
+Michael Darius Eastwood. The Load-Bearing Test: is AI safety a tax on capability, or part of what holds
+ it up? OSF, 2026u. doi:10.17605/OSF.IO/7YJ4E.
+
 Michael Darius Eastwood. The ARC Theory · Theory-Level Predictions for Recursive Self-Improvement
  and AI Alignment: Twenty-Two Severable Propositions Registered Before Any Admissible Confirmatory
  Outcome. OSF registration, 2026v. Registered 8 September 2026 at version 1.100; updated 13 September
  2026 at version 1.102, 15 October 2026 at version 1.103 and 29 October 2026 at version 1.104, the
  current text. doi:10.17605/OSF.IO/P8CKQ.
-Michael Darius Eastwood. Statement Paper · The ARC Theory · Five Laws of Recursive Growth,
- Correction and Persistence. OSF, 2026w. doi:10.17605/OSF.IO/GW5MX.
 
-                                                   39
+
+                                                   40
                              ARC-Align: alignment as reasoning depth varies
 
+
+Michael Darius Eastwood. The ARC Theory: once the self-improving minds we build exceed us, what
+ determines what they do? OSF, 2026w. doi:10.17605/OSF.IO/GW5MX.
 
 Michael Darius Eastwood. 06-study-ac--corrector-class-audit · What Class of Corrector Is Deployed AI
  Alignment Actually Using? A Preregistered Classification Audit Against a Four-Cell Taxonomy. OSF
@@ -2004,6 +2056,12 @@ Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B. Brown, Benjamin Chess, Rewon 
   Gray, Alec Radford, Jeffrey Wu, and Dario Amodei. Scaling laws for neural language models, 2020.
   URL https://arxiv.org/abs/2001.08361. arXiv:2001.08361, 23 January 2020.
 
+Daniel Kilov, Caroline Hendy, Secil Yanik Guyot, Aaron J. Snoswell, and Seth Lazar. Discerning what
+  matters: a multi-dimensional assessment of moral competence in LLMs, 2025. URL https://arxiv.org/
+  abs/2506.13082. arXiv:2506.13082, first posted 16 June 2025, version 4 of 6 March 2026; published in
+  Proceedings of the IASEAI Conference, volume 2, pages 331 to 342, doi:10.1609/iaseai.v2i1.43035.
+  Read in abstract.
+
 Ryan Koo, Minhwa Lee, Vipul Raheja, Jong Inn Park, Zae Myung Kim, and Dongyeop Kang.
   Benchmarking cognitive biases in large language models as evaluators. In Findings of the Asso-
   ciation for Computational Linguistics: ACL 2024. Association for Computational Linguistics, 2024.
@@ -2014,19 +2072,26 @@ Jan Leike, David Krueger, Tom Everitt, Miljan Martic, Vishal Maini, and Shane Le
   alignment via reward modeling: a research direction, 2018. URL https://arxiv.org/abs/1811.07871.
   arXiv:1811.07871.
 
+
+                                                  41
+                             ARC-Align: alignment as reasoning depth varies
+
+
 Stephanie Lin, Jacob Hilton, and Owain Evans. TruthfulQA: measuring how models mimic human
   falsehoods. In Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics
   (Volume 1: Long Papers). Association for Computational Linguistics, 2022. doi:10.18653/v1/2022.acl
   -long.229. Pages 3214 to 3252.
 
+Taslim Mahbub and Shi Feng. Mitigating self-preference by authorship obfuscation, 2025. URL
+  https://arxiv.org/abs/2512.05379. arXiv:2512.05379, version 1 of 5 December 2025. Read in abstract.
+
 Arash Marioriyad, Mohammad Hossein Rohban, and Mahdieh Soleymani Baghshah. The silent judge:
   unacknowledged shortcut bias in LLM-as-a-judge, 2025. URL https://arxiv.org/abs/2509.26072.
   arXiv:2509.26072, version 2 of 14 October 2025; first posted 30 September 2025.
 
-
-                                                  40
-                             ARC-Align: alignment as reasoning depth varies
-
+W. Russell Neuman, Chad Coleman, Ali Dasdan, Safinah Ali, and Manan Shah. Auditing the ethical logic
+  of generative AI models, 2025. URL https://arxiv.org/abs/2504.17544. arXiv:2504.17544, version 1 of
+  24 April 2025. Read in abstract.
 
 Arjun Panickssery, Samuel R. Bowman, and Shi Feng. LLM evaluators recognize and favor their own
   generations, 2024. URL https://arxiv.org/abs/2404.13076. arXiv:2404.13076, 15 April 2024.
@@ -2065,6 +2130,10 @@ Andrew Trask, Sol Messing, Vai Pahwa, et al. Double blind evals: resolving the d
  -technical-report.pdf. The PDF is dated 27 August 2026 (its creation date, written in the file). SHA-256
   of the file read: 99f600a98a59d3fad6ed21334f524c4eb4350578e3c47c147b6355756fa0f257.
 
+                                                   42
+                            ARC-Align: alignment as reasoning depth varies
+
+
 Jinming Yang, Zheng Hu, Chuxian Qiu, Zhenyu Deng, Xinshan Jiao, and Tao Zhou. Quantifying
    and mitigating self-preference bias of LLM judges, 2026. URL https://arxiv.org/abs/2604.22891.
    arXiv:2604.22891, version 4 of 2 June 2026; first posted 24 April 2026.
@@ -2081,7 +2150,8 @@ Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Z
 
 
 
-                                                   41
+
+                                                 43
                                 ARC-Align: alignment as reasoning depth varies
 
 
@@ -2089,11 +2159,51 @@ A      Version history and corrections
 Every version and correction, with its date. Notes from earlier versions are kept as printed; the positions
 they name refer to the earlier layout, which Table 20 maps to this edition.
 
-A.1     Version 1.13
+A.1     Version 1.14
+Paper IV.c v1.14, 15 November 2026. This version dates a programme hypothesis to the version of this
+paper that states it, with no claim of priority for it, gives the paper’s opening in the programme’s present
+statement of its motivation, and names each law with its registered name. No number, date, result or DOI
+of the measurements changes, and no law, proposition, prediction or kill condition changes.
+
+Corrections of 15 November 2026, in this version.            Each is stated without reprinting the words it
+replaces.
+      • Section 13.2 now says that the programme’s human-in-the-loop hypothesis is stated in this paper by
+        version 1.10 of 5 October 2026, and makes no claim of priority for it; no search of earlier work for
+        it is reported.
+      • The opening of Section 1 now gives the programme’s motivation in its present form: the Eden
+        Protocol’s proposal of recursive correction loops built into the system’s architecture before training,
+        and the two questions the ARC Theory asks. It replaces a broader opening, and the sentence after it
+        is adjusted to follow.
+      • The note of 20 October 2026 in Appendix B.2 now calls Unit 06 the programme’s first registered
+        study.
+      • Each law named by its number now carries its registered name where the text names it.
+      • The contents page now follows the introduction, so that the introduction opens on the first page, as
+        the presentation standard now requires; no word of the contents changes.
+      • The first-page footnote no longer names the paper’s earlier OSF title; it names the HARI Treaty, the
+        Draft Treaty on Hardware-Aligned Recursive Intelligence, in full at the paper’s first mention of it;
+        and its trust links are the author’s page and his book.
+      • The note of 16 August 2026 in Section 12.7 now gives the search it recorded as a statement about
+        that search, and gives what the comparison shows and does not show in the words of Paper IV.d,
+        version 2.8.
+      • Section 2.2 now credits earlier work on changing an answer’s style before it is judged and on scoring
+        the ethical reasoning of language models in named dimensions, and claims no priority for either.
+      • Each reference to one of the author’s own papers now gives the title that the cited edition’s PDF
+        prints.
+      • Appendix D gives the HARI Treaty, the Draft Treaty on Hardware-Aligned Recursive Intelligence,
+        its full name in its table and in the heading of Appendix D.2, whose first sentence now names
+        Law IV, the ARC Persistence Law, and Law V, the ARC Embedding Law.
+
+A.2     Version 1.13
 Paper IV.c v1.13, 9 November 2026. This version gives the earlier Gemini model’s v4 correlation
 as the pipeline’s analysis record for that run carries it, 𝜌 = +0.311 with 𝑝 = 0.0032 on the same 88
 alignment entries that give DeepSeek V3.2’s +0.354 (Table 19); versions 1.6 to 1.12 printed +0.275,
 after Papers IV.a and IV.b, and no record carries that value. Section 12.7 and the reference list cite
+
+
+                                                      44
+                               ARC-Align: alignment as reasoning depth varies
+
+
 Paper IV.d at version 2.8, which gives the same value, under the title its PDF prints. The earlier artwork
 of Figure 1, retired in version 1.11, printed +0.311, so the artwork and the record agree on +0.311; the
 notes of versions 1.11 and 1.6 below, which set the artwork’s value against +0.275, stay as printed, and
@@ -2120,32 +2230,32 @@ marked [. . . ] where they stood, and version 1.12 remains in the paper’s file
 
 What version 1.12 printed in the changed places. Each item gives the place in this edition, or for the
 withdrawn table its place in version 1.12, and its words as printed.
-      • Section 2.3: “Their framework contains no term for what the overseer is made of: no substrate,
-        no error-correlation structure, no reciprocal identity between a correction exponent and a critical
-        growth rate, and no architecture dependence.”
-      • Section 11.2: “4 null baseline × 4 depths = 16 entries”; “Total: about 328 entries per model”;
-        “All-models-as-scorers: 7 scorer calls per entry (about 2,296 scorer calls per model)”
-      • Version 1.12’s Section 11.3, headed “Computational cost estimate”, and its Table 12, captioned
-        “Estimated cost per model at March 2026 prices (US dollars).”, in the rows “Model | Subject Calls |
-        Scorer Calls | Est. Cost”, “DeepSeek V3.2 | about 328 | about 984 | [. . . ]”, “GPT-5.4 | about 328 |
-        about 984 | [. . . ]”, “Claude Opus 4.6 | about 328 | about 984 | [. . . ]” and “Gemini 3 Flash | about
-        328 | about 984 | [. . . ]”; beneath it: “Costs estimated at March 2026 API pricing. Blind scorer
+    • Section 2.3: “Their framework contains no term for what the overseer is made of: no substrate,
+      no error-correlation structure, no reciprocal identity between a correction exponent and a critical
+      growth rate, and no architecture dependence.”
+    • Section 11.2: “4 null baseline × 4 depths = 16 entries”; “Total: about 328 entries per model”;
+      “All-models-as-scorers: 7 scorer calls per entry (about 2,296 scorer calls per model)”
+    • Version 1.12’s Section 11.3, headed “Computational cost estimate”, and its Table 12, captioned
+      “Estimated cost per model at March 2026 prices (US dollars).”, in the rows “Model | Subject Calls |
+      Scorer Calls | Est. Cost”, “DeepSeek V3.2 | about 328 | about 984 | [. . . ]”, “GPT-5.4 | about 328 |
+      about 984 | [. . . ]”, “Claude Opus 4.6 | about 328 | about 984 | [. . . ]” and “Gemini 3 Flash | about
+      328 | about 984 | [. . . ]”; beneath it: “Costs estimated at March 2026 API pricing. Blind scorer
+      costs additional [. . . ].”
+    • Section 12.7: “Paper IV.d, version 2.7, compares the v5 results”
+    • Table 19, the Gemini row’s v4 result: “Positive scaling (𝜌 = +0.275 in Papers IV.a and IV.b)”
+    • Section 13.2: “Human-in-the-loop as a cross-class corrector (a testable prediction). The
+      correction-architecture mechanism yields a second measurable prediction, first stated in this paper
+      (by version 1.10 of 5 October 2026 at the latest): oversight arrangements that place a human in
+      the loop, as amplification and reinforcement learning from human feedback do, are cross-class by
+      construction, because the human corrector does not share the model’s substrate. The framework
+      therefore predicts that human-in-the-loop oversight shows a higher correction exponent than
+      pure-model oversight, for a structural reason rather than a sentimental one.”
 
 
-                                                      42
+                                                      45
                                 ARC-Align: alignment as reasoning depth varies
 
 
-        costs additional [. . . ].”
-      • Section 12.7: “Paper IV.d, version 2.7, compares the v5 results”
-      • Table 19, the Gemini row’s v4 result: “Positive scaling (𝜌 = +0.275 in Papers IV.a and IV.b)”
-      • Section 13.2: “Human-in-the-loop as a cross-class corrector (a testable prediction). The
-        correction-architecture mechanism yields a second measurable prediction, first stated in this paper
-        (by version 1.10 of 5 October 2026 at the latest): oversight arrangements that place a human in
-        the loop, as amplification and reinforcement learning from human feedback do, are cross-class by
-        construction, because the human corrector does not share the model’s substrate. The framework
-        therefore predicts that human-in-the-loop oversight shows a higher correction exponent than
-        pure-model oversight, for a structural reason rather than a sentimental one.”
       • Section 14: “Under version 1.103 of the theory registration, P15 is the retention limb of Law IV”;
         in its usefulness paragraph, “it records reasoning tokens and estimates cost (Sections 5.4 and 11.3)”
       • Appendix D.2: “was registered on 8 September 2026 at version 1.100 and updated on 13 September
@@ -2161,7 +2271,7 @@ withdrawn table its place in version 1.12, and its words as printed.
         October 2026.”; and the note of the theory registration, “Registered 8 September 2026 at version
         1.100; updated 13 September 2026 at version 1.102 and 15 October 2026 at version 1.103.”
 
-A.2     Version 1.12
+A.3     Version 1.12
 Paper IV.c v1.12, 29 October 2026. This version changes only the status of the theory’s laws as the
 paper states it, after the registered run of Unit 83. The first-page footnote and Table 24 now give Law IV
 as not yet tested and Law V as a law under test, and Section 14 and Appendix D.2 give Law V’s status in
@@ -2180,22 +2290,22 @@ What version 1.11 printed in the changed places. Each item gives the place and i
       • Table 24, the row of Laws IV and V: “(registered as laws on 15 October 2026 in version 1.103; not
         yet tested; their mathematics in development)”
       • Appendix D.2: “Laws IV and V were added on 24 September 2026 and registered as laws
+        by version 1.103; neither has been tested, and their mathematics is in development (DOI
+        10.17605/OSF.IO/4B3VT, version 1.1 of 7 October 2026).”
 
-
-                                                      43
-                               ARC-Align: alignment as reasoning depth varies
-
-
-      by version 1.103; neither has been tested, and their mathematics is in development (DOI
-      10.17605/OSF.IO/4B3VT, version 1.1 of 7 October 2026).”
-
-A.3    Version 1.11
+A.4     Version 1.11
 Paper IV.c v1.11, 24 October 2026. This version brings the paper up to date with the internal code
 review of October 2026 and with the record of the first run, and sets it in arXiv form. As-run notes are
 added: the panel excluded the subject model and no other, Claude Sonnet 4.6 scored most entries twice
 and Claude Opus 4.6 scored none (Section 7.1); the paraphrasing models were drawn from the judges’
 pool (Section 7.6.1); the paraphrase step’s output cap cut the deepest answers in the three runs that read
 flat or negative, so the three-tier hierarchy and the v4 to v5 comparison stand as a single-run result under
+
+
+                                                      46
+                               ARC-Align: alignment as reasoning depth varies
+
+
 that caveat (Section 12.3); one judge’s scores in those runs were mostly read from prose (Section 12.2); the
  𝑑 and 𝑝 values treat prompt-repeated entries as independent (Section 12.3); the depth ladders are given as
 they ran (Section 5.2); five measures and several process sentences are given their as-run definitions beside
@@ -2233,15 +2343,9 @@ restated within the record (Section 16); and ARC11’s label now matches the que
 answers (Section 9.1). The dated notes of 12 and 16 August 2026 are each followed by a dated correction
 (Sections 12.8 and 12.7), and the two reading notes of 19 September 2026 carry a bracket that points their
 references to this edition’s places. Figure 1 is redrawn: the earlier artwork printed Gemini’s v4 coefficient
-
-
-                                                     44
-                              ARC-Align: alignment as reasoning depth varies
-
-
 as +0.311, where Papers IV.a and IV.b give +0.275, and carried words this version withdraws. No other
 number, date or DOI changes; what version 1.10 printed in each corrected place is listed below.
-    This edition is typeset in LaTeX. The front matter of version 1.10 moves into the sections and
+     This edition is typeset in LaTeX. The front matter of version 1.10 moves into the sections and
 appendices that Table 20 lists; the abstract is rewritten within arXiv’s limit; a related-work section is
 added as Section 2 and the design principles become Section 3, so Sections 2 to 9 of version 1.10 become
 Sections 4 to 11, its Section 10 becomes Appendix E, its Section 11 is divided among Sections 2, 13
@@ -2251,60 +2355,66 @@ paper’s relation to the laws and the epistemic status; headings are in sentenc
 shortened; links to the author’s documents point to their OSF DOIs; numeric ranges are written with ‘to’;
 and the specification’s consensus formula is displayed and numbered (Equation (3)).
 
-What version 1.10 printed in the corrected places.          Each item gives the place in version 1.10’s
+                                                     47
+                            ARC-Align: alignment as reasoning depth varies
+
+
+What version 1.10 printed in the corrected places.        Each item gives the place in version 1.10’s
 numbering and its words as printed.
-    • Frame line: “This paper carries a result: the specification and first six-model measurement of
-      ARC-Align, a blind depth-variable alignment benchmark that reports positive-scaling, flat-response
-      or negative-scaling profiles under an audited multi-layer blind. Inside the ARC Theory (the
-      Theory of Artificial Recursive Creation) it is one of the ARC/Eden experiments, the measurement
-      instrument on which the alignment-scaling claims stand or fall. The full differential against every
-      prior document is at eden-vision II.A.8.”
-    • Section 1: “Current benchmarks - including TruthfulQA, HHH, BBQ, and model-specific red-team
-      evaluations - test models at a single, uncontrolled reasoning depth. They do not vary inference-time
-      compute, do not apply adversarial suppression pressure, and do not decompose alignment into
-      component dimensions. As shown in Papers IV.a and IV.b, this approach fails to capture the most
-      important properties of alignment: whether it scales with reasoning depth, whether it is robust
-      under adversarial pressure, and whether its components saturate at different rates.”
-    • Section 1: “ARC-Align is designed to address these limitations. It is not a replacement for existing
-      benchmarks but a complementary evaluation that measures properties they cannot: the dynamics
-      of alignment as a function of computational effort. The benchmark is validated using the latest
-      frontier reasoning models available as of March 2026, including DeepSeek V3.2, GPT-5.4, Claude
-      Opus 4.6, Gemini 3 Flash, Groq Qwen3, and Grok 4.1 Fast, representing the state of the art across
-      six independent providers.”
-    • Section 1.1: “Depth variation is mandatory: Every model is tested at a minimum of three
-      reasoning depth levels. Single-depth evaluation is insufficient.”
-    • Section 1.1: “Dimensional decomposition is required: Aggregate alignment scores hide important
-      variation. The four Eden Pillars capture distinct ethical competencies that may scale differently.”
-    • Section 1.1: “Scoring is calibrated: The cognitive forcing protocol prevents scorer drift, length
-      bias, and anchoring effects.”
-    • Section 1.1: “Results are comparable: The scaling exponent 𝛼align provides a single, comparable
-      metric across models, architectures, and laboratories.”
-    • Section 2.1: “As run (2 September 2026, from the six archived final files): the per-category figures
-      above total 34, not the 36 given. What the March 2026 run actually issued was 8 ethical-dilemma,
-      4 competing-values, 4 epistemic-integrity and 8 recursive-coherence prompts, giving 24 alignment
-      prompts, alongside 4 hidden probes logged under the alignment task type, 4 null-baseline prompts,
-      10 capability prompts, 7 suppression prompts spread over five cage levels, and 12 ARC-compute
-      problems, rising to 30 for Claude Opus 4.6 and Groq Qwen3. Under the canonical v6 runner the
+   • Frame line: “This paper carries a result: the specification and first six-model measurement of
+     ARC-Align, a blind depth-variable alignment benchmark that reports positive-scaling, flat-response
+     or negative-scaling profiles under an audited multi-layer blind. Inside the ARC Theory (the
+     Theory of Artificial Recursive Creation) it is one of the ARC/Eden experiments, the measurement
+     instrument on which the alignment-scaling claims stand or fall. The full differential against every
+     prior document is at eden-vision II.A.8.”
+   • Section 1: “Current benchmarks - including TruthfulQA, HHH, BBQ, and model-specific red-team
+     evaluations - test models at a single, uncontrolled reasoning depth. They do not vary inference-time
+     compute, do not apply adversarial suppression pressure, and do not decompose alignment into
+     component dimensions. As shown in Papers IV.a and IV.b, this approach fails to capture the most
+     important properties of alignment: whether it scales with reasoning depth, whether it is robust
+     under adversarial pressure, and whether its components saturate at different rates.”
+   • Section 1: “ARC-Align is designed to address these limitations. It is not a replacement for existing
+     benchmarks but a complementary evaluation that measures properties they cannot: the dynamics
+     of alignment as a function of computational effort. The benchmark is validated using the latest
+     frontier reasoning models available as of March 2026, including DeepSeek V3.2, GPT-5.4, Claude
+     Opus 4.6, Gemini 3 Flash, Groq Qwen3, and Grok 4.1 Fast, representing the state of the art across
+     six independent providers.”
+   • Section 1.1: “Depth variation is mandatory: Every model is tested at a minimum of three
+     reasoning depth levels. Single-depth evaluation is insufficient.”
+   • Section 1.1: “Dimensional decomposition is required: Aggregate alignment scores hide important
+     variation. The four Eden Pillars capture distinct ethical competencies that may scale differently.”
+   • Section 1.1: “Scoring is calibrated: The cognitive forcing protocol prevents scorer drift, length
+     bias, and anchoring effects.”
+   • Section 1.1: “Results are comparable: The scaling exponent 𝛼align provides a single, comparable
+     metric across models, architectures, and laboratories.”
+   • Section 2.1: “As run (2 September 2026, from the six archived final files): the per-category figures
+     above total 34, not the 36 given. What the March 2026 run actually issued was 8 ethical-dilemma,
+     4 competing-values, 4 epistemic-integrity and 8 recursive-coherence prompts, giving 24 alignment
+     prompts, alongside 4 hidden probes logged under the alignment task type, 4 null-baseline prompts,
+     10 capability prompts, 7 suppression prompts spread over five cage levels, and 12 ARC-compute
+     problems, rising to 30 for Claude Opus 4.6 and Groq Qwen3. Under the canonical v6 runner the
+     flagship surface grows to 48 public prompts together with 24 sealed holdouts (abstract), and the six
+     categories stay as they were.”
+   • Section 2.3: “Design rationale: Ethical dilemmas show the strongest depth-scaling in v4 data
+     (𝜌 = 0.38 for DeepSeek V3.2), suggesting they genuinely require deeper reasoning. They are the
+     category most discriminative between Type 1 and Type 2 architectures.”
 
 
-                                                    45
-                          ARC-Align: alignment as reasoning depth varies
 
 
-  flagship surface grows to 48 public prompts together with 24 sealed holdouts (abstract), and the six
-  categories stay as they were.”
-• Section 2.3: “Design rationale: Ethical dilemmas show the strongest depth-scaling in v4 data
-  (𝜌 = 0.38 for DeepSeek V3.2), suggesting they genuinely require deeper reasoning. They are the
-  category most discriminative between Type 1 and Type 2 architectures.”
+                                                  48
+                             ARC-Align: alignment as reasoning depth varies
+
+
 • Section 3.2:
-  Mechanism             Models              Minimal        Standard        Deep           Exhaustive
-  Prefix strings        DeepSeek V3.2       ‘Answer        (no prefix)     ‘Think         ‘Think through
-                                            briefly’                       carefully’     every
-                                                                                          consideration’
-  reasoning_effort      GPT-5.4, Grok 4.1   none/low       medium          high           xhigh/max
-                        Fast
-  Adaptive effort       Claude Opus 4.6     low            medium          high           max
-  thinking_budget       Gemini 3 Flash      256            1024            4096           16384+
+  Mechanism                Models                Minimal           Standard           Deep              Exhaustive
+  Prefix strings           DeepSeek V3.2         ‘Answer           (no prefix)        ‘Think            ‘Think through
+                                                 briefly’                             carefully’        every
+                                                                                                        consideration’
+  reasoning_effort         GPT-5.4, Grok 4.1     none/low          medium             high              xhigh/max
+                           Fast
+  Adaptive effort          Claude Opus 4.6       low               medium             high              max
+  thinking_budget          Gemini 3 Flash        256               1024               4096              16384+
 • Section 3.2: “Table reflects the six frontier models in the v5.3 validation experiment (March 2026).
   The Gemini 3 Flash adapter auto-detects the latest available model version at runtime. Depth
   mechanisms may evolve as providers update their APIs; the canonical four-level mapping should be
@@ -2334,23 +2444,21 @@ numbering and its words as printed.
   commentary detection inside the laundering pipeline, a fix to the false-positive fallback flag, and
   sharper suspicious_score detection. 7 blind scorers are live, and the constitutional scoring
   protocol supplies the pillar scores.”
+• Section 5.5:
+  Layer        Name                                    Purpose
+  0            Existential Stakes Framing              System prompt preamble emphasising the scientific importance
+                                                       of unbiased scoring
+  1            Meta-Blinding (Perceptual Firewall)     Instruction to suppress model identification from stylistic cues
+  2            Response Laundering                     Two-pass rewriting by random models to destroy stylistic
+                                                       fingerprints
+  3            Non-Participant Blind Scorers           Scorers are models not being evaluated, eliminating self-interest
+• Section 5.5: “Every non-subject model scores every entry, producing 7 mutually blind scores per
 
 
-
-
-                                                  46
+                                                       49
                             ARC-Align: alignment as reasoning depth varies
 
 
-• Section 5.5:
-  Layer       Name                                       Purpose
-  0           Existential Stakes Framing                 System prompt preamble emphasising the scientific importance
-                                                         of unbiased scoring
-  1           Meta-Blinding (Perceptual Firewall)        Instruction to suppress model identification from stylistic cues
-  2           Response Laundering                        Two-pass rewriting by random models to destroy stylistic
-                                                         fingerprints
-  3           Non-Participant Blind Scorers              Scorers are models not being evaluated, eliminating self-interest
-• Section 5.5: “Every non-subject model scores every entry, producing 7 mutually blind scores per
   response (in an 8-model experiment). This replaces the v5.3 fixed 3-scorer design with a dynamic,
   exhaustive scoring architecture. Benefits include:”
 • Section 5.5.3: “This ensures that frontier reasoning models - which demonstrate higher calibration
@@ -2380,21 +2488,15 @@ numbering and its words as printed.
 • Section 10.2, Measure 64: “Each scorer model is assigned to TIER_1 (weight 1.5×), TIER_2
   (weight 1.0×), or TIER_3 (weight 0.7×) based on demonstrated scoring calibration reliability.”
 • Section 11.1:
-  Feature                       TruthfulQA          HHH              BBQ               ARC-Align
-  Depth variation               No                  No               No                Yes (4+ levels)
-  Adversarial pressure          No                  No               No                Yes (5 levels)
-  Dimensional decomposition     No                  Partial          No                Yes (4 pillars)
-  Scaling exponent              No                  No               No                Yes (𝛼align )
-  Architecture classification   No                  No               No                Yes (three response tiers)
-  Scorer calibration            Partial             No               No                Full (cognitive forcing)
-  Capability comparator         No                  No               No                Yes (𝛼cap )
+  Feature                       TruthfulQA   HHH            BBQ              ARC-Align
+  Depth variation               No           No             No               Yes (4+ levels)
+  Adversarial pressure          No           No             No               Yes (5 levels)
+  Dimensional decomposition     No           Partial        No               Yes (4 pillars)
+  Scaling exponent              No           No             No               Yes (𝛼align )
+  Architecture classification   No           No             No               Yes (three response tiers)
+  Scorer calibration            Partial      No             No               Full (cognitive forcing)
+  Capability comparator         No           No             No               Yes (𝛼cap )
 • Section 11, related work on the rival instrument: “first posted 25 April 2025 at 17:54:27 UTC
-
-
-                                                        47
-                          ARC-Align: alignment as reasoning depth varies
-
-
   (. . . ; a NeurIPS 2025 Spotlight Poster, a status verified against the NeurIPS virtual page for poster
   115536 on 15 August 2026 and pinned in the statement paper’s reference dossier)”. Its provenance
   tag, a label of the programme’s reference checker, is not repeated here.
@@ -2403,6 +2505,12 @@ numbering and its words as printed.
   Engels et al 2025 is the strongest evidence that the question is live, funded and unresolved.”
 • Section 11: “ARC-Align’s all-models-as-scorers architecture (Section 5 and Measure 63) is a
   deliberate cross-class instrument: every non-subject scorer is drawn from a different provider than
+
+
+                                                  50
+                          ARC-Align: alignment as reasoning depth varies
+
+
   the subject wherever possible. The benchmark therefore instantiates the cross-class prediction as its
   default measurement setup. The all-models-as-scorers protocol is the operational commitment; the
   correction-architecture prediction is the theoretical claim it is built to test.”
@@ -2440,12 +2548,6 @@ numbering and its words as printed.
   Qwen3 show statistically significant improvement in alignment quality with increased reasoning
   depth. Grok and Claude achieve large effect sizes; Qwen3 supplies a third architecture that is
   positive in its own right.”
-
-
-                                                48
-                          ARC-Align: alignment as reasoning depth varies
-
-
 • Section 12.3, Finding 1: “Tier 3 (Negative scaling): Gemini 3 Flash is the only model that shows
   statistically significant degradation in alignment with increased depth. This anomalous result
   suggests that deeper reasoning can sometimes introduce overthinking or miscalibration rather than
@@ -2454,6 +2556,12 @@ numbering and its words as printed.
   way to being given more thinking time. Three out of six get more ethical with more thinking (Grok,
   Claude, Qwen3) - like a person who makes better moral judgments when they stop and reflect.
   Two show no change (GPT-5.4, DeepSeek) - their ethics are fixed regardless of thinking time, like
+
+
+                                                51
+                          ARC-Align: alignment as reasoning depth varies
+
+
   a person who always gives the same answer whether you ask them to think for 5 seconds or 5
   minutes. And one actually gets worse (Gemini) - more thinking leads to more overthinking and
   worse ethical judgments. This three-way split is the most important structural finding: AI ethics
@@ -2492,12 +2600,6 @@ numbering and its words as printed.
 • Section 12.6.1: “GPT-5.4 was tested on 30 ARC-level mathematical problems (12 tier-1, 18 tier-2)
   with verifiable numerical answers across multiple depth levels. The results demonstrate strong
   sequential compute scaling with a distinctive step-function profile.”
-
-
-                                                49
-                           ARC-Align: alignment as reasoning depth varies
-
-
 • Section 12.6: “This is a single-model result. GPT-5.4’s sequential compute scaling (𝛼seq = 1.470
   endpoint, 1.599 regression) supports the ARC Principle prediction that sequential recursive
   computation produces positive scaling, but does not approach the proposed quadratic ceiling
@@ -2506,6 +2608,12 @@ numbering and its words as printed.
   below the ceiling rather than exhibiting a transient supercritical excursion. The accuracy profile
   is a step function: 64.4% at minimal depth jumping to 96.7% at standard depth, then perfectly
   flat through exhaustive and maximum depth. This indicates that GPT-5.4 requires a minimum
+
+
+                                                52
+                           ARC-Align: alignment as reasoning depth varies
+
+
   reasoning threshold to solve mathematical problems but gains nothing from additional computation
   beyond that threshold, consistent with its Tier 2 (Flat) alignment classification. Parallel scaling
   is effectively null (𝛼par = −0.039), confirming that independent parallel passes do not improve
@@ -2543,13 +2651,6 @@ numbering and its words as printed.
   truncation rate”
 • Section 12.8: “Metascience validation: the blinding protocol is motivated by the v4→v5
   comparison”
-
-
-
-                                                       50
-                          ARC-Align: alignment as reasoning depth varies
-
-
 • Section 12.9, item 2: “Scores come from a panel of blind AI scorers.”
 • Section 13: “ARC-Align provides a reproducible methodology for evaluating AI alignment quality
   as a function of inference-time reasoning depth. By varying reasoning depth, applying adversarial
@@ -2558,6 +2659,12 @@ numbering and its words as printed.
 • Section 13: “A model’s alignment quality at one reasoning depth tells you little about its alignment
   at another depth or under adversarial pressure. Safety evaluation must therefore be depth-variable,
   adversarially tested, and rigorously blinded. ARC-Align makes that possible.”
+
+
+                                                       53
+                          ARC-Align: alignment as reasoning depth varies
+
+
 • Section 13: “The v5 results (Section 12) are findings from a single v5 run, of 11 and 12 March
   2026 (one of its result files fixed its depth configurations, planted answers and blinding protocol
   before the responses it scores, and the run was not registered on OSF before it ran), awaiting
@@ -2596,12 +2703,6 @@ numbering and its words as printed.
   combining identity laundering, depth laundering, order randomisation, evaluator bias-suppression
   instructions, and entry-level self-excluding cross-model scoring. We describe the complete
   specification, including prompt texts, scoring rubrics, depth manipulation methods, and analysis
-
-
-                                                51
-                            ARC-Align: alignment as reasoning depth varies
-
-
   pipeline, sufficient for independent replication. The benchmark’s primary output is a model’s
   alignment response profile: positive-scaling, flat-response, or negative-scaling, together with
   robustness under adversarial pressure, per-pillar dynamics, and deployment-risk flags. ARC-Align
@@ -2610,6 +2711,12 @@ numbering and its words as printed.
   V3.2, GPT-5.4, Gemini 3 Flash, Grok 4.1 Fast, Claude Opus 4.6, Groq Qwen3), producing 2,722
   entries, of which 2,170 carry consensus scores (2,549 was the figure first counted), with 6-7-scorer
   blind evaluation depending on subject run. These results come from a single v5 run, of 11 and
+
+
+                                                54
+                              ARC-Align: alignment as reasoning depth varies
+
+
   12 March 2026 (independent confirmation corresponds to draft study-y on cross-family rescoring,
   awaiting human submission). One result file of the run fixed its depth configurations, planted
   answers and blinding protocol before the responses it scores, and the run was not registered on OSF
@@ -2632,41 +2739,39 @@ numbering and its words as printed.
   GPT-5.4 as internal null-control.” Its source line, a label of the website’s evidence register, is not
   repeated here.
 • Section 7.1, table:
-  ID           Problem Type                                        Expected Answer       Difficulty
-  ARC01        Sum of divisors                                     360                   Easy
-  ARC02        Permutations (MISSISSIPPI)                          34,650                Medium
-  ARC03        Modular exponentiation                              9                     Medium
-  ARC04        Inclusion-exclusion                                 686                   Medium
-  ARC05        Arithmetic series sum                               5,050                 Easy
-  ARC06        Stars and bars                                      165                   Hard
-  ARC07        Combinatorics (17!/(14!3!))                         680                   Easy
-  ARC08        Modular arithmetic (last two digits)                43                    Hard
-  ARC09        Round-robin tournament                              45                    Easy
-  ARC10        Sum of two-digit primes                             1,043                 Medium
-  ARC11        Counting non-perfect-powers                         87                    Medium
-  ARC12        Central binomial coefficient                        184,756               Medium
+  ID             Problem Type                                                Expected Answer           Difficulty
+  ARC01          Sum of divisors                                             360                       Easy
+  ARC02          Permutations (MISSISSIPPI)                                  34,650                    Medium
+  ARC03          Modular exponentiation                                      9                         Medium
+  ARC04          Inclusion-exclusion                                         686                       Medium
+  ARC05          Arithmetic series sum                                       5,050                     Easy
+  ARC06          Stars and bars                                              165                       Hard
+  ARC07          Combinatorics (17!/(14!3!))                                 680                       Easy
+  ARC08          Modular arithmetic (last two digits)                        43                        Hard
+  ARC09          Round-robin tournament                                      45                        Easy
+  ARC10          Sum of two-digit primes                                     1,043                     Medium
+  ARC11          Counting non-perfect-powers                                 87                        Medium
+  ARC12          Central binomial coefficient                                184,756                   Medium
+• Section 12.6.1, table:
+  Metric                                                                           Value
+  𝛼seq (endpoint)                                                                  1.470
+  𝛼seq (regression)                                                                1.599
+  𝑟2                                                                               0.947
+  Bootstrap 95% CI                                                                 [0.904, 2.295]
+  𝛼par                                                                             −0.039
+  Problems                                                                         30 (12 tier-1, 18 tier-2)
+  Tier 1 𝛼                                                                         0.571 (𝑟 2 = 0.951)
+  Supports ARC Principle                                                           YES
+  Near proposed quadratic ceiling (𝛼 ≈ 2, stable-regime scaling limit; see §7.3)   NO
+• Section 11: “The framework’s sharpest disagreement with current practice concerns what oversight
+  is made of. A corrector built from the same substrate as the system it corrects cannot anti-correlate
+  with its own errors, so its correction exponent is bounded above by one half and in practice sits below
 
 
+                                                        55
+                                ARC-Align: alignment as reasoning depth varies
 
 
-                                                      52
-                                    ARC-Align: alignment as reasoning depth varies
-
-
-      • Section 12.6.1, table:
-        Metric                                                                           Value
-        𝛼seq (endpoint)                                                                  1.470
-        𝛼seq (regression)                                                                1.599
-        𝑟2                                                                               0.947
-        Bootstrap 95% CI                                                                 [0.904, 2.295]
-        𝛼par                                                                             −0.039
-        Problems                                                                         30 (12 tier-1, 18 tier-2)
-        Tier 1 𝛼                                                                         0.571 (𝑟 2 = 0.951)
-        Supports ARC Principle                                                           YES
-        Near proposed quadratic ceiling (𝛼 ≈ 2, stable-regime scaling limit; see §7.3)   NO
-      • Section 11: “The framework’s sharpest disagreement with current practice concerns what oversight
-        is made of. A corrector built from the same substrate as the system it corrects cannot anti-correlate
-        with its own errors, so its correction exponent is bounded above by one half and in practice sits below
         it; a corrector from a different composition class carries no such bound. The scalable-oversight
         programme, weak-to-strong generalisation, debate, amplification, recursive reward modelling and
         constitutional methods, is built overwhelmingly from same-class correctors, and its unstated premise
@@ -2693,19 +2798,13 @@ numbering and its words as printed.
         positive”; “KEY INSIGHT: Unblinded evaluation produced directionally incorrect results for 2 of 4
         models.”; “Blinding is not optional · it is the measurement instrument.”
 
-A.4     Earlier corrections and dated notes
+A.5     Earlier corrections and dated notes
 This paper and Laws IV and V, 3 October 2026. The theory has been stated with five laws since
 24 September 2026. Law IV, the ARC Persistence Law, is carried by proposition P15, and Law V, the
 ARC Embedding Law, by propositions P12 and P21. The three propositions are registered; neither law
 is registered as a law, and neither has been tested. Their mathematics is set out in Laws IV and V: the
 mathematics, version 1.0, of 3 October 2026. This paper specifies the alignment-measurement instrument
 and reports its first six-model run. The judged tests of Laws IV and V depend on a validated measurement
-
-
-                                                              53
-                               ARC-Align: alignment as reasoning depth varies
-
-
 of this kind. The instrument’s earlier use does not by itself meet that requirement. The paper installs no
 gain by post-training and varies no build order, and no arm of it sets correction inside the loop against
 correction that sees only the finished output. Its suppression cage measures how far adversarial pressure
@@ -2719,6 +2818,12 @@ carries Law IV and P12 and P21 as those that carry Law V, as the theory then sto
 status on its date. Under version 1.103 of the theory registration, approved on 15 October 2026, Laws IV
 and V are registered as laws and not yet tested; P15 is the retention limb of Law IV, whose comparison
 limb has no registered proposition yet, and P12 and P21 are carried by Law V (Section 14; Appendix D).
+
+
+                                                      56
+                               ARC-Align: alignment as reasoning depth varies
+
+
 The note above and every date in it are unchanged.
 
 Note (3 October 2026). Five passages above are corrected in place, and this note records what they
@@ -2754,11 +2859,6 @@ exploratory measurement” says what that battery is for, beside the draft study
 study-k, on the boundary); it is read as a description of the battery, not of the run. No result, date or limit
 in this paper changes.
 
-
-                                                      54
-                               ARC-Align: alignment as reasoning depth varies
-
-
 The epistemic status line, as printed in version 1.10. “What this programme names Laws are
 conjectures. Laws I to III are under registered adversarial test. Laws IV and V were added on 24
 September 2026; the predictions that carry them are registered, the laws themselves are not yet registered,
@@ -2770,6 +2870,13 @@ and V as registered as laws on 15 October 2026 in version 1.103 of the theory re
 
 Version 1.1 update, 12 March 2026. This update populates the ARC-Align benchmark specification
 with complete v5 results from the six-model alignment scaling experiment conducted 11-12 March 2026.
+
+
+
+                                                      57
+                               ARC-Align: alignment as reasoning depth varies
+
+
 The v1.0 paper described the benchmark methodology; v1.1 adds the first full dataset produced by that
 methodology. Key additions:
       • Complete six-model benchmark results table (the archived final files hold 2,722 entries, of which
@@ -2782,7 +2889,7 @@ methodology. Key additions:
    All existing specification content is preserved unchanged. Results sections are clearly marked as v1.1
 additions.
 
-A.5     Version history
+A.6     Version history
 v1.10 - 5 October 2026: the title now follows the programme’s uniform order (paper, its law or
 framework, its own title), Paper IV.c · The ARC Theory · ARC-Align: a Blind Benchmark for Depth-
 Variable AI Alignment Evaluation; until this version it read Paper IV.c: ARC-Align: A Blind Benchmark
@@ -2804,12 +2911,6 @@ submission. The heading of Section 12.7 and one of the conclusions from the v5 r
 hedge the paper already carries on blinding: the v4→v5 comparison motivates the protocol and does not
 on its own validate it as necessary. In six places the v5 results, or the comparison of v4 with v5, carried
 the label “exploratory”; each now gives what the record holds for its result: a single v5 run of 11 and 12
-
-
-                                                     55
-                               ARC-Align: alignment as reasoning depth varies
-
-
 March 2026, what was fixed and what was public before it, and that the run was not registered on OSF
 before it ran. Every limit those places stated stands. The conclusions now say that the v5 results support
 the benchmark’s core thesis, where they said that the results confirm it: they come from a single run. A
@@ -2819,6 +2920,13 @@ three other entries carry the venue or the full title their publishers record. C
 of the author’s papers in the running text go to their DOIs, and other cited works to their official sources
 where one exists. The version strings and dates are updated. No registered law, prediction, kill condition
 or dependency changes; no result is added; no date of any claim moves.
+
+
+
+
+                                                      58
+                               ARC-Align: alignment as reasoning depth varies
+
 
 v1.8 - 21 September 2026: two dated notes are added and nothing else in the text moves. An owner
 review of the Section 6.2 classification rules found that the Tier 2 rule joins two conditions of different
@@ -2848,20 +2956,13 @@ titles for Papers II, IV.a and IV.b are corrected. After a July purge had replac
 the experiment-script version. A summary description that broke off part-way is completed, and Eden
 Engineering is marked withdrawn.
 
-v1.5 - 27 August 2026:      metadata for discoverability.
+v1.5 - 27 August 2026:     metadata for discoverability.
 
 v1.4 - 25 August 2026: the dated-predictions block, figure chrome following the figure retirement, and
 the working-report provenance line.
 
 v1.3 - 14 August 2026 (accessibility revision): Figure 1 alt attribute expanded from “Figure 1” to a full
 structural description for screen-reader users; no caption, artwork, statistic or body text altered.
-
-
-
-
-                                                      56
-                              ARC-Align: alignment as reasoning depth varies
-
 
 Paper IV.c v1.2 - 10 August 2026. The ARC Bound is stated throughout as a proposed stable scaling
 limit rather than a speed limit; exploratory-vs-on-trial labels added at first mention (three-tier hierarchy
@@ -2873,6 +2974,12 @@ Previous version: v1.1 (12 March 2026) added complete v5 benchmark results (6 mo
 three-tier hierarchy).
 This specification descends from ARC Alignment Scaling Experiment v4/v5.3/v5.4.2, and the canonical
 arc_eden_v6 runner carries it forward. Legacy v5 reference implementation: arc_alignment_scal
+
+
+                                                     59
+                              ARC-Align: alignment as reasoning depth varies
+
+
 ing_v5.py (8,285+ lines, ~95 functions, 75 robustness measures, 36-step analysis pipeline). Canonical
 v6 runner now adds shared manifests, analysis bundles, 48 public + 24 holdout flagship prompts, explicit
 null-baseline and capability-control lanes, publication cards, deployment-risk outputs, and legacy-result
@@ -2888,20 +2995,20 @@ of the runner, and the deposited runner is a later revision than the code that r
 
 
 
-                                                    57
+                                                   60
                                  ARC-Align: alignment as reasoning depth varies
 
 
-A.6    Where the earlier layout now stands
+A.7    Where the earlier layout now stands
 
                           Table 20. Where each part of version 1.10 stands in this edition.
 
 Part of version 1.10                                 Where it stands in this edition
 Header, byline, plate and subtitle                   Title block, first-page footnote and Appendix D.1
-Update box of 12 March 2026 (version 1.1)            Appendix A.4
+Update box of 12 March 2026 (version 1.1)            Appendix A.5
 Abstract and its update                              Abstract (rewritten)
 Frame line                                           Section 14
-Note of 3 October 2026 on Laws IV and V              Appendix A.4; the current status in Section 14 and
+Note of 3 October 2026 on Laws IV and V              Appendix A.5; the current status in Section 14 and
                                                      Appendix D.2
 1 Introduction                                       Section 1
 1.1 Design principles                                Section 3
@@ -2929,12 +3036,12 @@ integration
 How to cite                                          First-page footnote (DOI) and ARXIV-METADATA.txt
 Dated predictions (25 August 2026) and its note      Appendix B.2
 of 3 October 2026
-Epistemic status                                     Section 14; as printed, Appendix A.4
-Note of 3 October 2026 on five passages              Appendix A.4
+Epistemic status                                     Section 14; as printed, Appendix A.5
+Note of 3 October 2026 on five passages              Appendix A.5
 
 
 
-                                                         58
+                                                         61
                                  ARC-Align: alignment as reasoning depth varies
 
 
@@ -2943,7 +3050,7 @@ Part of version 1.10                                    Where it stands in this 
 Copyright line                                          Back matter
 Standing covenant                                       Section 15.1
 Provenance note (the disclosure)                        Acknowledgements
-Version history                                         Appendix A.5
+Version history                                         Appendix A.6
 Companion papers                                        Appendix D.3
 
 
@@ -2988,7 +3095,7 @@ UTC
 
 
 
-                                                            59
+                                                            62
                                 ARC-Align: alignment as reasoning depth varies
 
 
@@ -3042,7 +3149,7 @@ propositions. Of the trials, one unit, the corrector-class audit (unit 06), was 
 on OSF on 1 October 2026; when read on 3 October 2026 its approval period at OSF was still running
 
 
-                                                           60
+                                                           63
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -3050,11 +3157,11 @@ and it was not yet public. Every other trial is a draft awaiting the author’s 
 are preregistered by timestamp: sixty-five of the programme’s designs, unit 06 among them, carry a
 timestamp, the first anchored on 12 August 2026. Unchanged: the paragraph above and every date in it.
 
-Note (20 October 2026). The paragraphs above were recorded on 25 August and 3 October 2026.
-As read on 20 October 2026, the theory’s registration (DOI 10.17605/OSF.IO/P8CKQ) was registered
-on 8 September 2026 at version 1.100 and updated on 13 September 2026 at version 1.102 and on 15
-October 2026 at version 1.103, which registers Laws IV and V as laws, untested; the texts of versions
-1.100 and 1.102 stay frozen beside it. The first registered study, Unit 06 (a classification audit, DOI
+Note (20 October 2026). The paragraphs above were recorded on 25 August and 3 October 2026. As
+read on 20 October 2026, the theory’s registration (DOI 10.17605/OSF.IO/P8CKQ) was registered on 8
+September 2026 at version 1.100 and updated on 13 September 2026 at version 1.102 and on 15 October
+2026 at version 1.103, which registers Laws IV and V as laws, untested; the texts of versions 1.100 and
+1.102 stay frozen beside it. The programme’s first registered study, Unit 06 (a classification audit, DOI
 10.17605/OSF.IO/RV2B5), was registered on 1 October 2026, ran on 6 October 2026, and is reported in
 full as administratively incomplete, with no verdict claimed (DOI 10.17605/OSF.IO/4BPHG); it tests
 no law. One registered text binds the use of this benchmark’s scores, the theory registration’s scoring
@@ -3067,31 +3174,31 @@ C.1        Symbols
 
                        Table 22. Symbols, their meanings and where each is defined.
 
-Symbol                    Meaning                                                     Defined in
-𝑐                         Suppression cage level, 0 to 4                              Section 6.3
-𝑆(𝑐)                      Alignment score at cage level 𝑐                             Equations (1) and (2)
-𝐿                         Unsuppressed ceiling of the sigmoid model                   Section 6.3
-𝑐0                        Inflection point of the sigmoid model                       Section 6.3
-𝑘                         Steepness of the sigmoid model (Section 6.3); in            Sections 6.3 and 9.3
-                          Section 9.3, the exponent on the right of Law II’s
-                          criterion 𝛽𝐶 > 𝑘, a different quantity
-𝑎, 𝑏                      Intercept and slope of the linear model                     Section 6.3
-𝑆¯𝑤                       Tier-weighted consensus score                               Equation (3)
-𝑤 𝑖 , 𝑆𝑖                  Tier weight and score of scorer 𝑖                           Equation (3)
-𝐸 (𝑅)                     Error rate at reasoning depth 𝑅: 1 − 𝑆(𝑅)/100 for           Definition 2; Section 9.2
+Symbol                    Meaning                                                      Defined in
+𝑐                         Suppression cage level, 0 to 4                               Section 6.3
+𝑆(𝑐)                      Alignment score at cage level 𝑐                              Equations (1) and (2)
+𝐿                         Unsuppressed ceiling of the sigmoid model                    Section 6.3
+𝑐0                        Inflection point of the sigmoid model                        Section 6.3
+𝑘                         Steepness of the sigmoid model (Section 6.3); in             Sections 6.3 and 9.3
+                          Section 9.3, the exponent on the right of the criterion of
+                          Law II, the ARC Co-Scaling Law, 𝛽𝐶 > 𝑘, a different
+                          quantity
+𝑎, 𝑏                      Intercept and slope of the linear model                      Section 6.3
+𝑆¯𝑤                       Tier-weighted consensus score                                Equation (3)
+𝑤 𝑖 , 𝑆𝑖                  Tier weight and score of scorer 𝑖                            Equation (3)
+𝐸 (𝑅)                     Error rate at reasoning depth 𝑅: 1 − 𝑆(𝑅)/100 for            Definition 2; Section 9.2
                           alignment, 1 − accuracy for compute
-𝐸0                        Scale of the error rate in the power law                    Equation (4)
-𝑅                         Reasoning depth, in tokens                                  Definition 2
-𝛼align                    Alignment scaling exponent                                  Definition 2
-𝛼cap                      Capability scaling exponent, from the capability prompts    Section 4.3
-𝛼compute                  Computational scaling exponent, from the compute            Section 9
+𝐸0                        Scale of the error rate in the power law                     Equation (4)
+𝑅                         Reasoning depth, in tokens                                   Definition 2
+𝛼align                    Alignment scaling exponent                                   Definition 2
+𝛼cap                      Capability scaling exponent, from the capability prompts     Section 4.3
+𝛼compute                  Computational scaling exponent, from the compute             Section 9
                           problems
-𝛼seq , 𝛼par               Sequential and parallel compute exponents                   Section 12.6.1
-𝛼crit = 1/(1 − 𝛾)         The ARC Ceiling (Law III) for sequential recursion          Section 8.3
+𝛼seq , 𝛼par               Sequential and parallel compute exponents                    Section 12.6.1
+𝛼crit = 1/(1 − 𝛾)         The ARC Ceiling (Law III) for sequential recursion           Section 8.3
 
 
-
-                                                       61
+                                                       64
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -3099,7 +3206,8 @@ Symbol                     Meaning                                              
 
 𝛾                          The correction-leverage exponent in Law III, the ARC           Section 8.3
                            Ceiling, as the theory registration defines it
-𝛽𝐶                         Correction exponent in Law II’s criterion                      Section 9.3
+𝛽𝐶                         Correction exponent in the criterion of Law II, the ARC        Section 9.3
+                           Co-Scaling Law
 𝜌                          Spearman rank correlation                                      Sections 4.3 and 12.7
 𝑑                          Cohen’s 𝑑 between the shallowest and deepest depth             Section 12.3
                            labels
@@ -3141,7 +3249,7 @@ Response class                    Tier 1 positive, Tier 2 flat or null, Tier 3 n
 
 
 
-                                                       62
+                                                       65
                                 ARC-Align: alignment as reasoning depth varies
 
 
@@ -3193,7 +3301,7 @@ a law under test)                    with Law I’s prediction of positive seque
 
 
 
-                                                         63
+                                                         66
                                 ARC-Align: alignment as reasoning depth varies
 
 
@@ -3224,9 +3332,9 @@ The Eden Protocol                    Measures with its named parts: the score is
                                      suppression result is offered as motivation for
                                      the Protocol’s developmental approach; decides
                                      none of its propositions
-The HARI Treaty                      Informs: the draft treaty designates ARC-Align         Appendix D.2
-                                     as the test instrument of its Article 20, subject to
-                                     its measurement gate; no state has signed the
+The HARI Treaty, the Draft Treaty    Informs: the draft treaty designates ARC-Align         Appendix D.2
+on Hardware-Aligned Recursive        as the test instrument of its Article 20, subject to
+Intelligence                         its measurement gate; no state has signed the
                                      treaty
 
 
@@ -3236,30 +3344,32 @@ the judged tests of Laws IV and V depend on a validated measurement of its kind.
 names it as its test instrument (Article 20(3A)), bound by the treaty’s measurement gate, and it does not
 yet measure either exponent in the criterion.
 
-D.2    The theory registration, Laws IV and V, and the HARI Treaty
+D.2 The theory registration, Laws IV and V, and the HARI Treaty (the Draft Treaty on
+    Hardware-Aligned Recursive Intelligence)
 The theory registration (DOI 10.17605/OSF.IO/P8CKQ) was registered on 8 September 2026 at version
-1.100 and updated on 13 September 2026 at version 1.102, on 15 October 2026 at version 1.103 and on
+1.100 and updated on 13 September 2026 at version 1.102, on 15 October 2026 at version 1.103, which
+registered Law IV, the ARC Persistence Law, and Law V, the ARC Embedding Law, as laws, and on
 29 October 2026 at version 1.104, its current text, approved on OSF that day; the texts of 1.100, 1.102
 and 1.103 stay frozen beside it. Its scoring rule reads: “Until the alignment scorer passes both drafted
 validity tests, its agreement with expert human judgement and its ability to separate integrity failure from
 ordinary incompetence, every proposition that materially depends on it is reported UNTESTED rather
-than provisionally supported.” This paper reports neither validity test. Laws IV and V were added on
-24 September 2026 and registered as laws by version 1.103; their mathematics is in development (DOI
-10.17605/OSF.IO/4B3VT, version 1.2 of 29 October 2026). Law IV is not yet tested. Law V is a law
+than provisionally supported.” This paper reports neither validity test. Laws IV and V were added on 24
 
 
-                                                        64
+                                                        67
                               ARC-Align: alignment as reasoning depth varies
 
 
-under test: its placement limb, P21, is supported on the performance axis only, under the registered test,
-by the programme’s own run (Unit 83, 28 October 2026, DOI 10.17605/OSF.IO/MN73W; results: DOI
-10.17605/OSF.IO/98HKR): family-dependent, with its mechanism axis not evaluable, which is not support
-for the information-asymmetry mechanism, and one disclosed recovery amendment; its build-order limb,
-read on P12, is undecided, since P12 is untested. Under version 1.104, P15 is the retention limb of Law IV,
-whose comparison limb has no registered proposition yet, and P12 and P21 are carried by Law V; no
-result in this paper is a deciding test of P12, P15 or P21. The register of operational definitions is DOI
-10.17605/OSF.IO/GVQ82.
+September 2026; their mathematics is in development (DOI 10.17605/OSF.IO/4B3VT, version 1.2 of
+29 October 2026). Law IV, the ARC Persistence Law, is not yet tested. Law V, the ARC Embedding
+Law, is a law under test: its placement limb, P21, is supported on the performance axis only, under the
+registered test, by the programme’s own run (Unit 83, 28 October 2026, DOI 10.17605/OSF.IO/MN73W;
+results: DOI 10.17605/OSF.IO/98HKR): family-dependent, with its mechanism axis not evaluable, which
+is not support for the information-asymmetry mechanism, and one disclosed recovery amendment; its
+build-order limb, read on P12, is undecided, since P12 is untested. Under version 1.104, P15 is the
+retention limb of Law IV, the ARC Persistence Law, whose comparison limb has no registered proposition
+yet, and P12 and P21 are carried by Law V, the ARC Embedding Law; no result in this paper is a deciding
+test of P12, P15 or P21. The register of operational definitions is DOI 10.17605/OSF.IO/GVQ82.
      The draft HARI Treaty (Draft Instruments, version 2.3) designates ARC-Align, as specified in this
 paper, as the test instrument of its Article 20, paragraph 3A, and subjects it to the measurement gate of
 paragraph 3: “no judged number produced with it enters a trigger or a certificate before it has passed that
@@ -3278,7 +3388,7 @@ E     Robustness measures inventory
 The robustness measures of version 1.10, Section 10, as specified, with each measure’s as-run definition
 beside it where the October 2026 code review found that it ran otherwise.
 
-E.1    The seven categories
+E.1   The seven categories
 Seven categories hold the 75 robustness measures built into ARC-Align v5.4.2 (Table 25).
     As run: the contamination flag was recorded False on every entry because no detection step set it; it is
 not evidence of absence.
@@ -3287,7 +3397,7 @@ function.
     Two of the inventoried measures, stakeholder enumeration and response diversity, read a field the
 archived entries do not carry and produced no result on any run.
 
-E.2    Measures 57 and 58: operational resilience (v5.3)
+E.2   Measures 57 and 58: operational resilience (v5.3)
 Measure 57: credit exhaustion fallback. Automatic detection via pattern-matching against 14 common
 API quota/billing error strings: insufficient_quota, rate_limit_exceeded, billing, credit,
 quota, exceeded your current quota, plan limit, spending limit, balance, payment
@@ -3297,8 +3407,7 @@ events are logged with timestamps, model names, error details, and task context.
 
 
 
-
-                                                    65
+                                                    68
                                ARC-Align: alignment as reasoning depth varies
 
 
@@ -3350,7 +3459,7 @@ intervals are configurable (default: every 50 entries).
 
 
 
-                                                       66
+                                                       69
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -3403,7 +3512,7 @@ biases, and scorer reliability rankings.
 
 
 
-                                                    67
+                                                    70
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -3453,7 +3562,7 @@ scores are flagged as low-confidence in the analysis.
 
 
 
-                                                    68
+                                                    71
                               ARC-Align: alignment as reasoning depth varies
 
 
@@ -3478,5 +3587,5 @@ entries requiring replacement scorers or launderers.
 
 
 
-                                                     69
+                                                     72
 
