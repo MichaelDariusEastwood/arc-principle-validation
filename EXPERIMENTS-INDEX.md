@@ -92,7 +92,7 @@ Convention used below: "canonical home" is the paper's own `papers/<paper-dir>/`
 
 ---
 
-### Papers IV.a–d (shared estate): Alignment Response Classes, Alignment Saturation Is Architecture-Dependent, ARC-Align Blind Benchmark, The Effect of Blinding on AI Alignment Evaluation
+### Papers IV.a-d (shared estate)
 - Canonical homes:
   - `papers/Paper-IV-a-Baked-In-vs-Computed-Alignment/` (v1.1, 16 Mar 2026)
   - `papers/Paper-IV-b-Alignment-Saturation-at-Low-Depth/` (v1.1, 16 Mar 2026)
@@ -283,13 +283,13 @@ Every claim below is grounded in a file opened during this pass. Unclear origins
 ### Paper III: The Alignment Scaling Problem
 - Canonical home: papers/Paper-III-Alignment-Scaling-Problem/
 - Experiments:
-  - Alignment scaling v1 to v5 blind evaluation — measures alignment quality vs recursive reasoning depth across frontier models. Runners live in the shared root: experiments/alignment-scaling__Papers-IV-a-b-c-d/scripts/arc_alignment_scaling_v1.py through arc_alignment_scaling_v5.py, plus arc_eden_v6_runner.py. Paper III shares this suite with Papers IV.a to IV.d; the paper's own README states the split explicitly. No dedicated protocol document in-tree; the v5.4.3 preamble inside arc_alignment_scaling_v5.py describes the 4-layer blinding + N-scorer consensus protocol.
+  - Alignment scaling v1 to v5: measures alignment quality vs recursive reasoning depth across frontier models. Runners live in the shared root: experiments/alignment-scaling__Papers-IV-a-b-c-d/scripts/arc_alignment_scaling_v1.py through arc_alignment_scaling_v5.py, plus arc_eden_v6_runner.py. Paper III shares this suite with Papers IV.a to IV.d; the paper's own README states the split explicitly. No dedicated protocol document in-tree; the v5.4.3 preamble inside arc_alignment_scaling_v5.py describes the 4-layer blinding + N-scorer consensus protocol.
   - Blind prediction test — separate, physics-domains falsifier for the ARC exponent formula alpha = 1/(1 - beta); tests 5 systems (Barabasi-Albert networks, gradient descent with momentum, belief propagation decoder, coupled oscillators, evolutionary algorithm). Runner: experiments/blind-prediction-test__Paper-III/BLIND_PREDICTION_TEST.py. Companion forensic write-up: experiments/blind-prediction-test__Paper-III/BLIND_TEST_FORENSIC_ANALYSIS.md. No PROTOCOL document beyond the script's own docstring.
 - Results:
   - papers/Paper-III-Alignment-Scaling-Problem/results/v1/ (4 files) — v1 raw alignment scoring (claude-sonnet, deepseek-r1, gemini-flash, openai-o1), 10 March 2026, produced by arc_alignment_scaling_v1.py.
   - .../results/v2/ (2 files) and .../results/v3/ (2 files) — v2/v3 raw runs (claude-sonnet, deepseek-r1), 10 March 2026, produced by v2/v3 scripts.
   - .../results/v4/ (9 files) — v4 final/checkpoint/analysis JSONs (claude-opus, deepseek-r1, gemini-flash, openai-gpt54), 10 to 11 March 2026, produced by arc_alignment_scaling_v4.py. Paper III explicitly withdraws the v4 baked-in-vs-computed taxonomy as scorer-bias artefact.
-  - .../results/v5-final/ (7 files) — v5.4.3 blind evaluation over 6 frontier models plus a stray "copy" file. Timestamps 11 to 12 March 2026. This is the current headline dataset for the three-tier alignment hierarchy.
+  - .../results/v5-final/ (7 files): one unregistered run of six models from six providers, plus a stray "copy" file. Timestamps 11 to 12 March 2026. An internal code review in October 2026 found that, for the three models that read flat or negative in the March 2026 run (v5), the scoring endpoint's output cap cut the deepest paraphrases before the judges saw them, and that judges scored paraphrases written by their own model; the result therefore stands as a single unregistered run under that caveat until a registered re-analysis of the stored responses reports.
   - experiments/blind-prediction-test__Paper-III/BLIND_TEST_FORENSIC_ANALYSIS.png accompanies the blind prediction test; no JSON in-tree.
 - Figures: papers/Paper-III-Alignment-Scaling-Problem/figures/ contains fig1_equation.png through fig12_quadratic_limit.png. All 12 are referenced by the paper HTML (verified img src grep). Almost all are schematics or narrative diagrams; fig9_deepseek.png visualises Paper II compute-scaling data, and fig4_domains.png visualises the cross-domain evidence. The paper HTML does not embed the v5 model bar charts directly.
 - Hash-pinned: No MANIFEST.json for Paper III. Nothing SHA-pinned in this paper's tree.
@@ -297,7 +297,7 @@ Every claim below is grounded in a file opened during this pass. Unclear origins
 - Gaps/confusions found:
   - No PROTOCOL.md in the paper directory; blinding rules live inside the v5.4.3 script docstring only.
   - "v5_final_groq-qwen3_20260312_073302 copy.json" is a Finder duplicate of the canonical v5 groq file; neither is marked authoritative.
-  - The paper HTML cites the v5 blind result but does not enumerate which JSON produced which effect size, so tracing individual rho and d values back to a specific JSON has to be done by hand.
+  - The paper HTML cites the v5 result but does not enumerate which JSON produced which effect size, so tracing individual rho and d values back to a specific JSON has to be done by hand.
 
 ---
 
@@ -321,7 +321,7 @@ Every claim below is grounded in a file opened during this pass. Unclear origins
   - prediction_6_results.json + prediction_6_experiment_log.txt — Prediction 6 side experiment, claude-sonnet-4-20250514, 24 March 2026, tier1_accuracy 0.85, tier2_alpha ~= 0, tier3_alpha ~= 0.04.
   - CONSCIOUSNESS_THRESHOLD_REPORT.txt — 23 March 2026 batch of tests around the alpha = 2 self-modelling threshold. Not referenced in the paper HTML by name.
 - Figures:
-  - figures/paper-viii/figure-1-dgm-comparison.png — Experiment 1 bar chart, DGM v3 data. Real-model.
+  - figures/paper-viii/figure-1-dgm-comparison.png: the image Paper VIII printed as Figure 1 to version 3.7 (sha256 f9bb7696448ef5f2), titled 'DGM Condition Comparison (Sonnet Judge)', which marks two comparisons at p = 0.040: it shows an earlier DGM run judged by Claude Sonnet 4.6, not DGM v3, which GPT-5.4 judged and in which no comparison reached conventional significance. Figure 1 is drawn from DGM v3's stored results (Table 3), as Paper VIII 3.8 (released 9 November 2026) draws it. Real-model.
   - figures/paper-viii/figure-2-loss-convergence.png — Experiment 2 loss trajectories over 100 iterations. Real fine-tuning trajectories.
   - figures/paper-viii/figure-3-removal-heatmap.png — Experiment 2 capability heatmap under safety removal. Real fine-tuning.
   - figures/paper-viii/figure-4-capability-safety-scatter.png — Experiment 3 all-runs scatter (12 runs, 4 conditions). Simulation.
