@@ -1,11 +1,11 @@
-<!-- This HTML file is a rendering of version 1.15 (9 November 2026) of this paper, made from its LaTeX source; the PDF is the version of record. DOI: 10.17605/OSF.IO/3TZP7. -->
+<!-- This HTML file is a rendering of version 1.16 (16 November 2026) of this paper, made from its LaTeX source; the PDF is the version of record. DOI: 10.17605/OSF.IO/3TZP7. -->
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Public Benchmark Rescoring: does blinding change AI evaluation scores on a public benchmark? (version 1.15)</title>
+<title>Public Benchmark Rescoring: does blinding change AI evaluation scores on a public benchmark? (version 1.16)</title>
 <style>
 body{margin:0 auto;max-width:46em;padding:1.5em 1.25em 4em;font-family:"Times New Roman",Times,"Nimbus Roman",Georgia,serif;font-size:1.0625rem;line-height:1.55;color:#111;background:#fff;overflow-wrap:anywhere}
 a{color:#00338c}
@@ -68,53 +68,23 @@ ol.paren-roman>li::before{content:"(" counter(pc,lower-roman) ")";position:absol
 </style>
 </head>
 <body>
-<p class="rendering-notice">This HTML file is a rendering of version 1.15 (9 November 2026) of this paper, made from its LaTeX source; the PDF is the version of record. DOI: <a href="https://doi.org/10.17605/OSF.IO/3TZP7">10.17605/OSF.IO/3TZP7</a>.</p>
+<p class="rendering-notice">This HTML file is a rendering of version 1.16 (16 November 2026) of this paper, made from its LaTeX source; the PDF is the version of record. DOI: <a href="https://doi.org/10.17605/OSF.IO/3TZP7">10.17605/OSF.IO/3TZP7</a>.</p>
 <header id="title-block-header">
 <h1 class="title">Public Benchmark Rescoring: does blinding change AI evaluation scores on a public benchmark?</h1>
 <p class="subtitle">Empirical work · Methods paper · Paper XII<br />
 Recursive Dynamics · The ARC Theory · The measurement of alignment</p>
 <p class="author">Michael Darius Eastwood</p>
 <p class="affiliation">Independent Researcher, London, United Kingdom<br>ORCID <a href="https://orcid.org/0009-0004-3222-7442">0009-0004-3222-7442</a>&ensp;<a href="mailto:michael@michaeldariuseastwood.com">michael@michaeldariuseastwood.com</a></p>
-<p class="paper-note">Paper XII of the ARC Theory (the Theory of Artificial Recursive Creation), within Recursive Dynamics, in its measurement of alignment: the protocol, drafted and preregistered by timestamp, for whether <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a>’s blinding finding holds on a public benchmark the programme did not build. A protocol of measurement, it tests none of Laws I to V, each a law under test (Section <a href="#sec:status">5</a> gives their status). Working paper, version 1.15, 9 November 2026; first published 14 August 2026; Appendix <a href="#app:history">A</a> lists every version and correction. DOI <a href="https://doi.org/10.17605/OSF.IO/3TZP7">10.17605/OSF.IO/3TZP7</a>. About the author, founder of Recursive Dynamics, without an institution or a doctorate: <a href="https://www.michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood/">michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood</a>; his book, <em>Infinite Architects</em> (first edition, 2 January 2026): <a href="https://osf.io/dqm3e/">osf.io/dqm3e</a>. Licence: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+<p class="paper-note">Paper XII of the ARC Theory (the Theory of Artificial Recursive Creation), within Recursive Dynamics, in its measurement of alignment: the protocol, drafted and preregistered by timestamp, for whether <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a>’s blinding finding holds on a public benchmark the programme did not build. A protocol of measurement, it tests none of Laws I to V, each a law under test (Section <a href="#sec:status">5</a> gives their status). Working paper, version 1.16, 16 November 2026; first published 14 August 2026; Appendix <a href="#app:history">A</a> lists every version and correction. DOI <a href="https://doi.org/10.17605/OSF.IO/3TZP7">10.17605/OSF.IO/3TZP7</a>. About the author, founder of Recursive Dynamics: <a href="https://www.michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood/">michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood</a>; his book, <em>Infinite Architects</em>: <a href="https://osf.io/dqm3e/">osf.io/dqm3e</a>. Licence: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
 </header>
 <main>
 <section class="abstract" aria-labelledby="abstract-title">
 <p class="abstract-title" id="abstract-title">Abstract</p>
-<p>I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only proof will move the world. Does blinding change AI evaluation scores on a public benchmark? <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a> reported that, on the programme’s own instrument, alignment scores that rose with reasoning depth for two model families under an unblinded protocol did not keep that direction under a later, blinded one; since the protocols differed in several components at once, it does not show that blinding caused the change, and a code review later found defects in the blinded run. The standing objection is external validity: the change might be a property of <a href="https://doi.org/10.17605/OSF.IO/J3Q2E">ARC-Align</a> rather than of AI evaluation generally. This protocol fixes, in advance, the one test whose items the programme cannot be accused of choosing to its own advantage: the same blinding manipulation run on an established public benchmark the programme did not build, curate or control, by default MT-Bench. Blinded scoring removes the producing model’s identity, provider and family markers, self-referential meta-commentary and length cues. The questions preregistered by timestamp are whether blinding changes the score (H1, the per-response difference <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Δ</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\Delta_S</annotation></semantics></math>, direction deliberately left unregistered), whether rankings displace (H2, Kendall <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>), which cue carries the effect (H3, a fractional factorial), and cross-family evaluator agreement (H4, a minimum three-model panel where fewer than three valid scores is missing, never zero). The prediction preregistered by timestamp is a non-zero <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Δ</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\Delta_S</annotation></semantics></math> of smaller magnitude than the change <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a> observed (a comparison with no common scale), with modest rank displacement, and the stated most likely outcome is a positive H1 beside a null H2. This is a protocol at the draft-registration stage, not yet registered on OSF: no data has been collected, and nothing here reports a finding.</p>
+<p>Does blinding change AI evaluation scores on a public benchmark? <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a> reported that, on the programme’s own instrument, alignment scores that rose with reasoning depth for two model families under an unblinded protocol did not keep that direction under a later, blinded one; since the protocols differed in several components at once, it does not show that blinding caused the change, and a code review later found defects in the blinded run. The standing objection is external validity: the change might be a property of <a href="https://doi.org/10.17605/OSF.IO/J3Q2E">ARC-Align</a> rather than of AI evaluation generally. This protocol fixes, in advance, the one test whose items the programme cannot be accused of choosing to its own advantage: the same blinding manipulation run on an established public benchmark the programme did not build, curate or control, by default MT-Bench. Blinded scoring removes the producing model’s identity, provider and family markers, self-referential meta-commentary and length cues. The questions preregistered by timestamp are whether blinding changes the score (H1, the per-response difference <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Δ</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\Delta_S</annotation></semantics></math>, direction deliberately left unregistered), whether rankings displace (H2, Kendall <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>), which cue carries the effect (H3, a fractional factorial), and cross-family evaluator agreement (H4, a minimum three-model panel where fewer than three valid scores is missing, never zero). The prediction preregistered by timestamp is a non-zero <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Δ</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\Delta_S</annotation></semantics></math> of smaller magnitude than the change <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a> observed (a comparison with no common scale), with modest rank displacement, and the stated most likely outcome is a positive H1 beside a null H2. This is a protocol at the draft-registration stage, not yet registered on OSF: no data has been collected, and nothing here reports a finding.</p>
 </section>
 <div class="abstract-note">
-<p>Version 1.15 sets the paper on the presentation standard, states <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a>’s comparison as that paper does and updates the status of the laws and studies; Appendix <a href="#app:history">A</a> lists every version and correction.</p>
+<p>Version 1.16 gives the abstract this paper’s own opening; the opening sentences that earlier versions shared with other papers are removed or replaced. No law, value, table, result or status changes. Appendix <a href="#app:history">A</a> lists every version and correction.</p>
 </div>
-<nav id="TOC" aria-labelledby="toc-title">
-<p class="toc-title" id="toc-title">Contents</p>
-<ul>
-<li><a href="#sec:intro"><span class="header-section-number">1</span> Introduction</a>
-<ul>
-<li><a href="#sub:keystone"><span class="header-section-number">1.1</span> Why this is the keystone</a></li>
-<li><a href="#sub:contributions"><span class="header-section-number">1.2</span> Our contributions and the plan of the paper</a></li>
-</ul></li>
-<li><a href="#sec:questions"><span class="header-section-number">2</span> The questions, fixed in advance</a></li>
-<li><a href="#sec:design"><span class="header-section-number">3</span> The design</a></li>
-<li><a href="#sec:benchmark"><span class="header-section-number">4</span> The benchmark</a></li>
-<li><a href="#sec:status"><span class="header-section-number">5</span> What this paper does and does not show</a></li>
-<li><a href="#sec:meaning"><span class="header-section-number">6</span> What a result would and would not mean</a></li>
-<li><a href="#sec:related"><span class="header-section-number">7</span> Related work</a></li>
-<li><a href="#sec:limitations"><span class="header-section-number">8</span> Limitations</a></li>
-<li><a href="#sec:conclusion"><span class="header-section-number">9</span> Conclusion</a></li>
-<li><a href="#edition-bibliography">References</a></li>
-<li><a href="#app:history"><span class="header-section-number">A</span> Version history and corrections</a>
-<ul>
-<li><a href="#app:v115"><span class="header-section-number">A.1</span> Version 1.15</a></li>
-<li><a href="#app:earlier"><span class="header-section-number">A.2</span> Earlier versions, as printed</a></li>
-<li><a href="#app:notes"><span class="header-section-number">A.3</span> Dated notes, as printed</a></li>
-<li><a href="#app:wording"><span class="header-section-number">A.4</span> Version 1.14 wording of passages re-set, moved or cut</a></li>
-<li><a href="#app:layout"><span class="header-section-number">A.5</span> Layout</a></li>
-</ul></li>
-<li><a href="#app:priority"><span class="header-section-number">B</span> Priority record</a></li>
-<li><a href="#app:notation"><span class="header-section-number">C</span> Notation and glossary</a></li>
-<li><a href="#app:cite"><span class="header-section-number">D</span> How to cite this paper</a></li>
-</ul>
-</nav>
 <h2 id="sec:intro"><span class="header-section-number">1</span> Introduction</h2>
 <p>Whether an AI system is aligned can be known only by measuring it. The author’s research programme, to which this paper belongs, measures alignment with scores that other AI models give as judges, on its own benchmark, <a href="https://doi.org/10.17605/OSF.IO/J3Q2E">ARC-Align</a> <span class="citation" data-cites="eastwood2026paperIVc">(<a href="https://doi.org/10.17605/OSF.IO/J3Q2E" role="doc-biblioref">Eastwood 2026b</a>)</span>. The public benchmark MT-Bench is scored by a model judge too <span class="citation" data-cites="zheng2023">(<a href="https://doi.org/10.52202/075280-2020" role="doc-biblioref">Zheng et al. 2023</a>)</span>. If a judge’s score moves with what it can tell about who wrote an answer, such scores say less than they seem to. This paper asks one question of that kind: does blinding change AI evaluation scores on a public benchmark? It fixes, before any data, the test that will answer the question on a benchmark the programme did not build, and what a result would and would not mean.</p>
 <h5 id="reading-key.">Reading key.</h5>
@@ -135,6 +105,37 @@ Recursive Dynamics · The ARC Theory · The measurement of alignment</p>
 <li><p>dated notes that narrow how the keystone claim, the endpoints, the design, the benchmark and <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a>’s comparison are read, and record what remains open before submission (Sections <a href="#sec:intro">1</a> to <a href="#sec:status">5</a>).</p></li>
 </ul>
 <p>Section <a href="#sec:questions">2</a> states the questions and the prediction, Section <a href="#sec:design">3</a> the design and Section <a href="#sec:benchmark">4</a> the benchmark. Section <a href="#sec:status">5</a> states what this paper does and does not show, with the study’s record and the status of the theory’s laws and of the programme’s registered studies, and Section <a href="#sec:meaning">6</a> what a result would and would not mean. Section <a href="#sec:related">7</a> sets the protocol against prior work, Section <a href="#sec:limitations">8</a> gives its limitations and Section <a href="#sec:conclusion">9</a> concludes. Appendix <a href="#app:history">A</a> gives the version history and every correction, Appendix <a href="#app:priority">B</a> the priority record, Appendix <a href="#app:notation">C</a> the notation and glossary and Appendix <a href="#app:cite">D</a> how to cite the paper. Sections 2 to 6 keep their numbers from version 1.14, and its Section 1 is Section <a href="#sub:keystone">1.1</a> here, so the section numbers inside the dated notes read as printed.</p>
+<nav id="TOC" aria-labelledby="toc-title">
+<p class="toc-title" id="toc-title">Contents</p>
+<ul>
+<li><a href="#sec:intro"><span class="header-section-number">1</span> Introduction</a>
+<ul>
+<li><a href="#sub:keystone"><span class="header-section-number">1.1</span> Why this is the keystone</a></li>
+<li><a href="#sub:contributions"><span class="header-section-number">1.2</span> Our contributions and the plan of the paper</a></li>
+</ul></li>
+<li><a href="#sec:questions"><span class="header-section-number">2</span> The questions, fixed in advance</a></li>
+<li><a href="#sec:design"><span class="header-section-number">3</span> The design</a></li>
+<li><a href="#sec:benchmark"><span class="header-section-number">4</span> The benchmark</a></li>
+<li><a href="#sec:status"><span class="header-section-number">5</span> What this paper does and does not show</a></li>
+<li><a href="#sec:meaning"><span class="header-section-number">6</span> What a result would and would not mean</a></li>
+<li><a href="#sec:related"><span class="header-section-number">7</span> Related work</a></li>
+<li><a href="#sec:limitations"><span class="header-section-number">8</span> Limitations</a></li>
+<li><a href="#sec:conclusion"><span class="header-section-number">9</span> Conclusion</a></li>
+<li><a href="#edition-bibliography">References</a></li>
+<li><a href="#app:history"><span class="header-section-number">A</span> Version history and corrections</a>
+<ul>
+<li><a href="#app:v116"><span class="header-section-number">A.1</span> Version 1.16</a></li>
+<li><a href="#app:v115"><span class="header-section-number">A.2</span> Version 1.15</a></li>
+<li><a href="#app:earlier"><span class="header-section-number">A.3</span> Earlier versions, as printed</a></li>
+<li><a href="#app:notes"><span class="header-section-number">A.4</span> Dated notes, as printed</a></li>
+<li><a href="#app:wording"><span class="header-section-number">A.5</span> Version 1.14 wording of passages re-set, moved or cut</a></li>
+<li><a href="#app:layout"><span class="header-section-number">A.6</span> Layout</a></li>
+</ul></li>
+<li><a href="#app:priority"><span class="header-section-number">B</span> Priority record</a></li>
+<li><a href="#app:notation"><span class="header-section-number">C</span> Notation and glossary</a></li>
+<li><a href="#app:cite"><span class="header-section-number">D</span> How to cite this paper</a></li>
+</ul>
+</nav>
 <h2 id="sec:questions"><span class="header-section-number">2</span> The questions, fixed in advance</h2>
 <p><strong>Primary, H1, blinding changes the score.</strong> For each response, define <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Δ</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\Delta_S</annotation></semantics></math> as blinded score minus unblinded score. H1 predicts a non-zero mean <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Δ</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\Delta_S</annotation></semantics></math>, tested two-sided at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.05</annotation></semantics></math> with a 95 per cent interval. <strong>The direction is not predicted</strong>, because <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a>’s own sign-reversal finding makes a directional prediction unjustified, and registering a direction the programme has already seen reverse would be exactly the flexibility this document exists to remove.</p>
 <p><strong>Co-primary, H2, rank displacement.</strong> Scores aggregate to a ranking. H2 measures displacement between blinded and unblinded rankings by Kendall <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>. <strong>This is the contrast that matters practically</strong>, because a change in scores that leaves rankings intact has no consequence for how benchmarks are used, and the registration refuses to report a score effect as though it were a ranking effect.</p>
@@ -163,7 +164,7 @@ Recursive Dynamics · The ARC Theory · The measurement of alignment</p>
 <h5 id="the-programmes-registered-studies.">The programme’s registered studies.</h5>
 <p>The theory registration’s current version is 1.104, approved on 29 October 2026 (<a href="https://doi.org/10.17605/OSF.IO/P8CKQ">DOI 10.17605/OSF.IO/P8CKQ</a>; <span class="citation" data-cites="eastwood2026registration"><a href="https://doi.org/10.17605/OSF.IO/P8CKQ" role="doc-biblioref">Eastwood 2026e</a></span>). The programme’s first registered study, Unit 06, a classification audit that tests no law, was registered on 1 October 2026 (<a href="https://doi.org/10.17605/OSF.IO/RV2B5">DOI 10.17605/OSF.IO/RV2B5</a>; <span class="citation" data-cites="eastwood2026unit06"><a href="https://doi.org/10.17605/OSF.IO/RV2B5" role="doc-biblioref">Eastwood 2026i</a></span>) and ran on 6 October 2026. It is reported in full with its five deviations as administratively incomplete, with no inferential verdict (results: <a href="https://doi.org/10.17605/OSF.IO/4BPHG">DOI 10.17605/OSF.IO/4BPHG</a>; <span class="citation" data-cites="eastwood2026unit06results"><a href="https://doi.org/10.17605/OSF.IO/4BPHG" role="doc-biblioref">Eastwood 2026g</a></span>). Unit 83, the counted test of P21 under Law V, was registered on 22 October 2026 (<a href="https://doi.org/10.17605/OSF.IO/MN73W">DOI 10.17605/OSF.IO/MN73W</a>; <span class="citation" data-cites="eastwood2026unit83"><a href="https://doi.org/10.17605/OSF.IO/MN73W" role="doc-biblioref">Eastwood 2026c</a></span>) and ran on 27 and 28 October 2026: P21 is supported under the registered test, by the programme’s own run, on the access axis, family-dependent, with its mechanism axis not evaluable and one call retried under a disclosed recovery amendment (results: <a href="https://doi.org/10.17605/OSF.IO/98HKR">DOI 10.17605/OSF.IO/98HKR</a>; <span class="citation" data-cites="eastwood2026unit83results"><a href="https://doi.org/10.17605/OSF.IO/98HKR" role="doc-biblioref">Eastwood 2026h</a></span>). Unit 82 was registered on 27 October 2026 (<a href="https://doi.org/10.17605/OSF.IO/JUFG4">DOI 10.17605/OSF.IO/JUFG4</a>; <span class="citation" data-cites="eastwood2026unit82"><a href="https://doi.org/10.17605/OSF.IO/JUFG4" role="doc-biblioref">Eastwood 2026d</a></span>) and has not yet run. The programme’s other study designs, this one among them, are drafts awaiting the author’s submission, most of them preregistered by timestamp; the programme lists them at <a href="https://www.michaeldariuseastwood.com/research/registered-programme/" class="uri">https://www.michaeldariuseastwood.com/research/registered-programme/</a>.</p>
 <h5 id="the-theorys-laws.">The theory’s laws.</h5>
-<p>P15, which carries Law IV, and P12 and P21, which carry Law V, are none of the study’s questions, as the dated note of 5 October 2026 (Appendix <a href="#app:notes">A.3</a>) first recorded.</p>
+<p>P15, which carries Law IV, and P12 and P21, which carry Law V, are none of the study’s questions, as the dated note of 5 October 2026 (Appendix <a href="#app:notes">A.4</a>) first recorded.</p>
 <p><strong>Epistemic status.</strong> What this programme names Laws are conjectures. Laws I to III, registered on 8 September 2026, are laws under test. Every law is a law under test until a registered test returns its verdict. Laws IV and V were added on 24 September 2026 and registered as laws on 15 October 2026 in version 1.103 of the <a href="https://doi.org/10.17605/OSF.IO/P8CKQ">theory registration</a>, and their mathematics is in development, at version 1.2 of 29 October 2026 (<a href="https://doi.org/10.17605/OSF.IO/4B3VT">DOI 10.17605/OSF.IO/4B3VT</a>; <span class="citation" data-cites="eastwood2026lawsivv"><a href="https://doi.org/10.17605/OSF.IO/4B3VT" role="doc-biblioref">Eastwood 2026j</a></span>). Law IV is not yet tested. Law V is a law under test: on Unit 83’s result, its placement limb is printed, as the registration’s verdict rule requires, as “supported on the performance axis only, which is not support for the information-asymmetry mechanism” <span class="citation" data-cites="eastwood2026registration">(<a href="https://doi.org/10.17605/OSF.IO/P8CKQ" role="doc-biblioref">Eastwood 2026e</a>)</span>, and its build-order limb, read on P12, is undecided, since P12 is untested. Every quantity in this paper is operationally defined, and established-law standing is claimed nowhere. The registered programme exists to earn that standing, or lose it, by measurement, replication and survived refutation.</p>
 <h2 id="sec:meaning"><span class="header-section-number">6</span> What a result would and would not mean</h2>
 <p>A positive result would establish that the blinding manipulation changes measured scores on an external benchmark under the registered conditions. It would not establish the size of the effect elsewhere, would not establish that any specific published leaderboard is wrong, and would not license restating other researchers’ results. <strong>That last restraint is registered because the temptation to over-read this finding is the main risk to the programme’s credibility.</strong></p>
@@ -254,7 +255,12 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 </div>
 </div>
 <h2 id="app:history"><span class="header-section-number">A</span> Version history and corrections</h2>
-<h3 id="app:v115"><span class="header-section-number">A.1</span> Version 1.15</h3>
+<h3 id="app:v116"><span class="header-section-number">A.1</span> Version 1.16</h3>
+<h5 id="version-1.16-16-november-2026.">Version 1.16, 16 November 2026.</h5>
+<p>Version 1.16 gives the abstract this paper’s own opening; the opening sentences that earlier versions shared with other papers are removed or replaced. No law, value, table, result or status changes. The first-page footnote’s author line takes the programme’s present form.</p>
+<h5 id="version-1.15-wording-cut-the-abstracts-first-sentence.">Version 1.15 wording cut: the abstract’s first sentence.</h5>
+<p>I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only proof will move the world.</p>
+<h3 id="app:v115"><span class="header-section-number">A.2</span> Version 1.15</h3>
 <h5 id="version-1.15-9-november-2026.">Version 1.15, 9 November 2026.</h5>
 <p>The paper is set on the programme’s presentation standard, as its next version in the same DOI lineage. No registered question, hypothesis, prediction, benchmark, restraint or date of this study changes, no data has been collected, and the first-published date of 14 August 2026 is unchanged. The changes, one by one:</p>
 <ul>
@@ -263,11 +269,11 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 <li><p>The questions, the prediction, the design, the benchmark clause and the restraint are kept word for word, as preregistered by timestamp; a dated reading note in Section <a href="#sec:questions">2</a> says how H1’s reason, the prediction’s comparison, which shares no scale with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Δ</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\Delta_S</annotation></semantics></math>, and the conditionals of Section <a href="#sub:keystone">1.1</a> are read against <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a>’s own words. Section <a href="#sec:design">3</a> quotes the draft registration’s statement of how the cues are removed and what removal cannot reach, and a correction note there states that, with four cues in eight runs, Resolution IV fixes which two-factor interactions are aliased with which, up to the sign of the defining relation; the design note of 20 September 2026 is kept as printed.</p></li>
 <li><p>Section <a href="#sec:status">5</a>, renamed, states what the paper does and does not show, the study’s record, the programme’s registered studies (the <a href="https://doi.org/10.17605/OSF.IO/P8CKQ">theory registration</a> at version 1.104; Units 06, 83 and 82, with Unit 83’s result on P21) and the theory’s laws: Laws IV and V were registered as laws on 15 October 2026 in version 1.103, each law is a law under test, and their <a href="https://doi.org/10.17605/OSF.IO/4B3VT">mathematics</a> is cited at version 1.2. The other dated records of the design move to Appendix <a href="#app:priority">B</a>.</p></li>
 <li><p>Related work (Section <a href="#sec:related">7</a>), limitations (Section <a href="#sec:limitations">8</a>) and a conclusion (Section <a href="#sec:conclusion">9</a>) are added; the paragraph on related papers, now the first of Section <a href="#sec:related">7</a>, no longer says that the direction changed once scoring was blinded in <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a>.</p></li>
-<li><p>Two repeats leave the main text, each kept in Appendix <a href="#app:wording">A.4</a>: the benchmark’s citation sentence, which the references carry, and the last paragraph of Section <a href="#sec:meaning">6</a>, which repeated the one before it.</p></li>
+<li><p>Two repeats leave the main text, each kept in Appendix <a href="#app:wording">A.5</a>: the benchmark’s citation sentence, which the references carry, and the last paragraph of Section <a href="#sec:meaning">6</a>, which repeated the one before it.</p></li>
 <li><p>The paper is licensed under CC BY 4.0; the author block and the copyright line take the programme’s standard forms; the site’s how-to-cite block gives way to Appendix <a href="#app:cite">D</a>, whose citation names no venue and no series, the form the programme’s other citations take.</p></li>
 <li><p>Every mention of one of the author’s papers links its OSF DOI, and every reference links its official source.</p></li>
 </ul>
-<h3 id="app:earlier"><span class="header-section-number">A.2</span> Earlier versions, as printed</h3>
+<h3 id="app:earlier"><span class="header-section-number">A.3</span> Earlier versions, as printed</h3>
 <p>Each entry is printed as it was written, with its version and date set as its heading; the section numbers in it are those of its version, which Sections 1 to 6 here keep.</p>
 <h5 id="version-1.14-5-october-2026">Version 1.14, 5 October 2026:</h5>
 <p>the title now follows the programme’s uniform order (paper, its law or framework, its own title), <em>Paper XII · The ARC Theory · Public Benchmark Rescoring: an External-Validity Protocol for the Blinding Finding</em>; until this version it read <em>Paper XII: Public Benchmark Rescoring</em>. The plate beneath the author line now gives the paper’s place in the programme in the words of the programme’s map. A dated note places the paper against Laws IV and V. No registered law, prediction, kill condition or dependency changes; no result is added; no date of any claim moves.</p>
@@ -281,11 +287,11 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 <p>the machine citation block now carries this paper’s own DOI (<a href="https://doi.org/10.17605/OSF.IO/3TZP7">10.17605/OSF.IO/3TZP7</a>) in place of the programme umbrella, and its journal field was brought into line with the Scholar metadata. In the dateline the version now precedes the DOI.</p>
 <h5 id="version-1.9-27-august-2026">Version 1.9, 27 August 2026:</h5>
 <p>metadata added to aid discovery.</p>
-<h3 id="app:notes"><span class="header-section-number">A.3</span> Dated notes, as printed</h3>
+<h3 id="app:notes"><span class="header-section-number">A.4</span> Dated notes, as printed</h3>
 <p>These two dated notes are printed as they were written; the current statements they concern are in the abstract and Sections <a href="#sec:intro">1</a>, <a href="#sec:status">5</a> and <a href="#sec:related">7</a>.</p>
 <p><strong>Correction note, 3 October 2026: the passages named here are corrected in place, and this note records what each printed before.</strong> The abstract and section 1 each said that <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a> “established that blinding changes measured alignment outcomes on the programme’s own instrument”. <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a>’s own abstract has said since 2 September 2026 that its unblinded and blinded protocols differ in more than one component, and that its comparison does not pin the change on blinding alone. Both passages now report the change as that paper does. The abstract also called this study’s questions, its factorial and its prediction registered, and said “This is a protocol at registration stage”. The study is a draft, so the abstract now says preregistered by timestamp in each of those places, and gives the stage as the draft-registration stage, not yet registered on OSF. Section 5 said that “nothing has been submitted”. One unit of the programme has since been submitted for registration, and the section now gives this study’s timestamp record and the state of the programme’s trials as read on 3 October 2026. It also gives the other dated records of the design that the programme’s record of this paper holds, each with its kind of date. The reading key and the footer line gave this study only as awaiting submission; each now also says that it is preregistered by timestamp, and the reading key says how the word registered is read in this paper. The paragraph on related papers opened “The blinding law this study externalises” and said that <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a>’s blinding reversal produced the programme’s one public retraction. What <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a> reports is not one of the theory’s five laws, and the paragraph now calls it a finding. The retraction is <a href="https://doi.org/10.17605/OSF.IO/8FJMA">Paper II</a>’s: in its blinded cross-architecture replication, an initial single-model super-linear estimate did not replicate and is retracted. The paragraph now says only what <a href="https://doi.org/10.17605/OSF.IO/2S3E6">Paper IV.d</a> itself reports, the blinding reversal for two model families. The epistemic status line read “What this programme names Laws are conjectures under registered adversarial test”; it now gives Laws I to III and Laws IV and V their separate status. Unchanged: every registered question, hypothesis and prediction of this study, the benchmark it names and the clause forbidding its replacement, and the restraint stated in sections 1 and 6, which governs.</p>
 <p><strong>This paper and Laws IV and V, 5 October 2026.</strong> Law IV, the ARC Persistence Law, is carried by proposition P15, and Law V, the ARC Embedding Law, by propositions P12 and P21. The study this protocol fixes in advance tests none of the three, and naming the two laws changes nothing printed here.</p>
-<h3 id="app:wording"><span class="header-section-number">A.4</span> Version 1.14 wording of passages re-set, moved or cut</h3>
+<h3 id="app:wording"><span class="header-section-number">A.5</span> Version 1.14 wording of passages re-set, moved or cut</h3>
 <p>The version 1.14 words of every passage this version re-sets or leaves out are printed here, except the copyright notice, which takes the programme’s standard form in the back matter, and the website’s own lines (its links beneath the author’s name and its how-to-cite block), which give way to the first-page footnote and Appendix <a href="#app:cite">D</a>. A passage moved without change keeps its words where it now stands, as Table <a href="#tab:layout">1</a> shows.</p>
 <h5 id="the-title.">The title.</h5>
 <p>Paper XII · The ARC Theory · Public Benchmark Rescoring: an External-Validity Protocol for the Blinding Finding</p>
@@ -313,8 +319,8 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 <p>The ARC Theory (the Theory of Artificial Recursive Creation) · study drafted, preregistered by timestamp and awaiting human submission · this protocol paper first published 14 August 2026</p>
 <h5 id="after-the-footer-the-epistemic-status-line.">After the footer, the epistemic status line.</h5>
 <p><strong>Epistemic status.</strong> What this programme names Laws are conjectures. Laws I to III are under registered adversarial test. Laws IV and V were added on 24 September 2026; the predictions that carry them are registered, the laws themselves are not yet registered, and neither has been tested. Their mathematics is set out in <a href="https://doi.org/10.17605/OSF.IO/4B3VT">Laws IV and V: the mathematics, version 1.0</a>, of 3 October 2026. Every quantity in this paper is operationally defined, and established-law standing is claimed nowhere. The registered programme exists to earn that standing, or lose it, by measurement, replication and survived refutation.</p>
-<h3 id="app:layout"><span class="header-section-number">A.5</span> Layout</h3>
-<div class="table-wrap"><table id="tab:layout" style="width:96%;">
+<h3 id="app:layout"><span class="header-section-number">A.6</span> Layout</h3>
+<div class="table-wrap"><table id="tab:layout">
 <caption><span class="caption-label">Table 1.</span> Where each part of version 1.14 stands in version 1.15.</caption>
 <colgroup>
 <col style="width: 42%" />
@@ -329,7 +335,7 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 <tbody>
 <tr>
 <td style="text-align: left;">Title, author lines, plate, type line and question line</td>
-<td style="text-align: left;">Title, secondary line, author block and first-page footnote; the old forms in Appendix <a href="#app:wording">A.4</a></td>
+<td style="text-align: left;">Title, secondary line, author block and first-page footnote; the old forms in Appendix <a href="#app:wording">A.5</a></td>
 </tr>
 <tr>
 <td style="text-align: left;">Reading key</td>
@@ -337,7 +343,7 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 </tr>
 <tr>
 <td style="text-align: left;">Abstract</td>
-<td style="text-align: left;">Abstract, re-set; the old form in Appendix <a href="#app:wording">A.4</a></td>
+<td style="text-align: left;">Abstract, re-set; the old form in Appendix <a href="#app:wording">A.5</a></td>
 </tr>
 <tr>
 <td style="text-align: left;">Section 1, Why this is the keystone</td>
@@ -353,7 +359,7 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 </tr>
 <tr>
 <td style="text-align: left;">Section 4, The benchmark</td>
-<td style="text-align: left;">Section <a href="#sec:benchmark">4</a>; the citation sentence in the references and Appendix <a href="#app:wording">A.4</a></td>
+<td style="text-align: left;">Section <a href="#sec:benchmark">4</a>; the citation sentence in the references and Appendix <a href="#app:wording">A.5</a></td>
 </tr>
 <tr>
 <td style="text-align: left;">Section 5, Status, honestly</td>
@@ -361,7 +367,7 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 </tr>
 <tr>
 <td style="text-align: left;">Section 6, What a result would and would not mean</td>
-<td style="text-align: left;">Section <a href="#sec:meaning">6</a>; its last paragraph in Appendix <a href="#app:wording">A.4</a></td>
+<td style="text-align: left;">Section <a href="#sec:meaning">6</a>; its last paragraph in Appendix <a href="#app:wording">A.5</a></td>
 </tr>
 <tr>
 <td style="text-align: left;">Related papers of the theory</td>
@@ -369,23 +375,23 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 </tr>
 <tr>
 <td style="text-align: left;">Footer lines</td>
-<td style="text-align: left;">Title page and first-page footnote; the author line and the last line in Appendix <a href="#app:wording">A.4</a></td>
+<td style="text-align: left;">Title page and first-page footnote; the author line and the last line in Appendix <a href="#app:wording">A.5</a></td>
 </tr>
 <tr>
 <td style="text-align: left;">Version history</td>
-<td style="text-align: left;">Appendix <a href="#app:earlier">A.2</a></td>
+<td style="text-align: left;">Appendix <a href="#app:earlier">A.3</a></td>
 </tr>
 <tr>
 <td style="text-align: left;">Epistemic status</td>
-<td style="text-align: left;">Section <a href="#sec:status">5</a>; the old form in Appendix <a href="#app:wording">A.4</a></td>
+<td style="text-align: left;">Section <a href="#sec:status">5</a>; the old form in Appendix <a href="#app:wording">A.5</a></td>
 </tr>
 <tr>
 <td style="text-align: left;">Note on Laws IV and V, 5 October 2026</td>
-<td style="text-align: left;">Appendix <a href="#app:notes">A.3</a></td>
+<td style="text-align: left;">Appendix <a href="#app:notes">A.4</a></td>
 </tr>
 <tr>
 <td style="text-align: left;">Correction note, 3 October 2026</td>
-<td style="text-align: left;">Appendix <a href="#app:notes">A.3</a></td>
+<td style="text-align: left;">Appendix <a href="#app:notes">A.4</a></td>
 </tr>
 <tr>
 <td style="text-align: left;">Copyright and authorship notice</td>
@@ -407,7 +413,7 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 </table></div>
 <h2 id="app:priority"><span class="header-section-number">B</span> Priority record</h2>
 <p>Each dated record of the study’s design and of this paper’s publication is listed with its identifier and the kind of its timestamp: a Bitcoin anchor, a date set by a server (OSF’s or GitHub’s), or a date written inside a record or a document. No kind is presented as stronger than it is. The paragraph after the table is printed as version 1.14 printed it in its Section 5.</p>
-<div class="table-wrap"><table id="tab:priority" style="width:91%;">
+<div class="table-wrap"><table id="tab:priority">
 <caption><span class="caption-label">Table 2.</span> The dated records of the study’s design and of this paper, each with its kind of timestamp.</caption>
 <colgroup>
 <col style="width: 12%" />
@@ -475,13 +481,13 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 <tr>
 <td style="text-align: left;">3 October 2026</td>
 <td style="text-align: left;">Correction note (version 1.13)</td>
-<td style="text-align: left;">this paper, version 1.13 (Appendix <a href="#app:notes">A.3</a>)</td>
+<td style="text-align: left;">this paper, version 1.13 (Appendix <a href="#app:notes">A.4</a>)</td>
 <td style="text-align: left;">a date written in the document</td>
 </tr>
 <tr>
 <td style="text-align: left;">5 October 2026</td>
 <td style="text-align: left;">Dated note placing the study against Laws IV and V (version 1.14)</td>
-<td style="text-align: left;">this paper, version 1.14 (Appendix <a href="#app:notes">A.3</a>)</td>
+<td style="text-align: left;">this paper, version 1.14 (Appendix <a href="#app:notes">A.4</a>)</td>
 <td style="text-align: left;">a date written in the document</td>
 </tr>
 <tr>
@@ -495,7 +501,7 @@ Zheng, Lianmin, Wei-Lin Chiang, Ying Sheng, et al. 2023. <span>‘Judging <span>
 <p>The programme’s record of this paper holds these other dated records of the design. An initial preregistration text, with an amendment of the same date, is dated 6 July 2026; that date is written in the record itself, which names no server date and no anchor for it, and the text of July describes an earlier design. The text prepared for OSF, which states the four questions of section 2, is dated 7 August 2026, again by a date written in the record. This paper’s public OSF component was created on 7 August 2026, a date set by OSF’s server. This paper, which states the same four questions, was first published on 14 August 2026; GitHub’s server sets the date of its publication, and OSF’s the date on which its files were deposited there.</p>
 <h2 id="app:notation"><span class="header-section-number">C</span> Notation and glossary</h2>
 <p>Each symbol and term is listed with its meaning and where it is first defined.</p>
-<div class="table-wrap"><table id="tab:notation" style="width:94%;">
+<div class="table-wrap"><table id="tab:notation">
 <caption><span class="caption-label">Table 3.</span> Symbols and terms used in this paper.</caption>
 <colgroup>
 <col style="width: 22%" />
