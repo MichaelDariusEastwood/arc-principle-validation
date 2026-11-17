@@ -1,23 +1,22 @@
 Title: On the Origin of Scaling Laws: what can composition and transport explain?
 Author: Michael Darius Eastwood
-Version: v3.15
-Version date: 9 November 2026
+Version: v3.16
+Version date: 16 November 2026
 OSF DOI: 10.17605/OSF.IO/XZY9U
 Source: full text extracted from the accompanying official PDF
 Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
 
-   On the Origin of Scaling Laws: what can composition and
-                      transport explain?
-                                             Theory · Framework paper
+    On the Origin of Scaling Laws: what can composition and
+                       transport explain?
+                                            Theory · Framework paper
       Recursive Dynamics · The ARC Theory · Law I, the ARC Principle, a law under test
 
                                              Michael Darius Eastwood
-                               Independent Researcher, London, United Kingdom
-                       ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
+                              Independent Researcher, London, United Kingdom
+                      ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
 
 
-
-                                                          Abstract
+                                                         Abstract
            Predicting how a system scales can help us decide whether resources and correction can keep pace
        with its growth. This framework paper asks which composition and transport assumptions justify a
        scaling prediction before the response is observed. Four classical continuous homomorphism problems
@@ -35,39 +34,72 @@ Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://cre
        histories, corrections and qualified companion results are retained. No universal physical ceiling,
        alignment guarantee or new empirical validation is established.
 
-Version 3.15, revised 9 November 2026, gives five references the titles their cited editions print and omits from the
-retained passages of earlier versions four wordings that later corrections withdrew, giving each correction beside its
-passage. Earlier editions and prediction records remain intact; Appendix A records the substantive corrections.
+Version 3.16, revised 16 November 2026, gives the Introduction this paper’s own opening; the opening sentences
+that earlier versions shared with other papers are removed or replaced. No law, value, table, result or status changes.
+Earlier editions and prediction records remain intact; Appendix A records the substantive corrections.
+
+
+1     Introduction
+Can information about how gains combine predict later scaling, before a larger system is built or relied
+on? This paper asks that as one part of a programme whose concern is whether correction can keep pace
+with a system that improves itself, and which holds that people should retain oversight, containment and
+shutdown for as long as they physically can.
+    A practical example is a supply network. Increasing its size can increase both the demand served
+and the distance resources travel. Predicting throughput from inventory requires knowing which of those
+quantities changes, how routes are chosen and whether transport speed changes. A three-dimensional
+embedding alone does not answer those questions. The same discipline applies to an AI experiment:
+capability, recursive depth, inference cost and correction burden are distinct observables.
+     A framework paper within Recursive Dynamics and the ARC Theory, informing Law I, the ARC Principle, a law under test.
+Working paper, version 3.16, 16 November 2026; first-publication record: 22 February 2026; Appendix A lists every version and
+correction. Recorded on OSF, DOI 10.17605/OSF.IO/XZY9U; theory registration; operational definitions; dated prediction
+register. About the author, founder of Recursive Dynamics: michaeldariuseastwood.com/questions/who-is-michael-darius-
+eastwood; his book, Infinite Architects: osf.io/dqm3e. Licence: CC BY 4.0.
+
+
+                                                             1
+                             The origin of scaling laws in recursive composition
+
+
+   This paper is a theoretical and methodological synthesis across mathematics, transport, biology and
+computation. It distinguishes three steps: an equation constrains a family of functions; a mechanism
+supplies the assumptions of that equation; and measurements test whether the mechanism predicts
+observations. The first step can be a theorem while the later steps remain unresolved. A repeated
+numerical exponent alone does not join them.
+   The contributions are:
+    • A precise account of four classical composition identities, their domains and regularity, with scoped
+      stability and asymptotic extensions.
+    • An explicit transport calculation showing which demand and path assumptions yield 𝑑/(𝑑 + 1),
+      and which extra assumptions connect transport cost to inventory or body mass.
+    • Source-specific biological and physical comparisons that separate measurements from coordinate
+      identities and from historical unsupported inferences.
+    • One prospective test in which independently measured premises predict held-out transport behaviour.
+      The earlier numbered predictions and the full neural-scaling withdrawal remain part of the record.
+    The mathematics supplies conditional results, not a universal physical classification or a numerical
+safety guarantee. Sections 4 and 6 establish the formal tools; Sections 7 to 11 examine their scope through
+examples. Sections 12 and 14 state the evidence and the next test. The appendices preserve the detailed
+provenance, programme placement and superseded argument.
 
 
 
 
-     A framework paper within Recursive Dynamics and the ARC Theory, informing Law I, the ARC Principle, a law
-under test. Working paper, version 3.15, 9 November 2026; first-publication record: 22 February 2026; Appendix A
-lists every version and correction. Recorded on OSF, DOI 10.17605/OSF.IO/XZY9U; theory registration; operational
-definitions; dated prediction register. About the author, founder of Recursive Dynamics, without an institution or a doctorate:
-michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his book, Infinite Architects (first edition, 2 January
-2026): osf.io/dqm3e. Licence: CC BY 4.0.
-
-
-                                                              1
+                                                     2
                              The origin of scaling laws in recursive composition
 
 
 Contents
-1   Introduction                                                                                         5
+1   Introduction                                                                                         1
 
-2   Related work and the contribution                                                                    5
-    2.1 Earlier work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+2   Related work and the contribution                                                                    6
+    2.1 Earlier work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   6
     2.2 What this paper adds . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     7
     2.3 The strongest objection: assumptions chosen after the fit . . . . . . . . . . . . . . . . .      8
 
 3   Name the function and its variables                                                                   8
 
 4 What the composition equations establish                                                            9
-  4.1 The proof and the scope of the four cells . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+  4.1 The proof and the scope of the four cells . . . . . . . . . . . . . . . . . . . . . . . . . . 10
   4.2 A precise consequence for approximate composition . . . . . . . . . . . . . . . . . . . . 10
-  4.3 Scaling limits and regular variation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+  4.3 Scaling limits and regular variation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
 
 5 The principle and its empirical test                                                                   11
 
@@ -82,7 +114,7 @@ Contents
   7.2 Physiological state is part of the observation . . . . . . . . . . . . . . . . . . . . . . . .     16
   7.3 Lifetime totals require a lifetime average . . . . . . . . . . . . . . . . . . . . . . . . . .     16
 
-8 The fission chain reaction                                                                             16
+8 The fission chain reaction                                                                             17
 
 9   Cosmic expansion and the meaning of a shared formula                                                 17
     9.1 The fluid equations determine the expansion . . . . . . . . . . . . . . . . . . . . . . . .      17
@@ -102,14 +134,14 @@ Contents
 
 
 
-                                                     2
+                                                     3
                             The origin of scaling laws in recursive composition
 
 
 12 Evidence, with its measurement and scope                                                            23
    12.1 Biological comparisons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   23
    12.2 Comparisons across domains . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     23
-   12.3 Other reported programme results . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     23
+   12.3 Other reported programme results . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     24
    12.4 Reported error-scaling measurements from the companion programme . . . . . . . . . .           24
 
 13 Equations and what each requires                                                                    26
@@ -130,107 +162,78 @@ Contents
 References                                                                                             34
 
 A Version history and corrections                                                                      43
-  A.1 Version 3.15: revised 9 November 2026 . . . . . . . . . . . . . . . . . . . . . . . . . .        43
-  A.2 Version 3.14: revised 1 November 2026 . . . . . . . . . . . . . . . . . . . . . . . . . .        43
-  A.3 Version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   46
-  A.4 Earlier corrections and notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    49
-  A.5 Version history . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    55
-  A.6 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .      57
+  A.1 Version 3.16: revised 16 November 2026 . . . . . . . . . . . . . . . . . . . . . . . . . .       43
+  A.2 Version 3.15: revised 9 November 2026 . . . . . . . . . . . . . . . . . . . . . . . . . .        43
+  A.3 Version 3.14: revised 1 November 2026 . . . . . . . . . . . . . . . . . . . . . . . . . .        43
+  A.4 Version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   46
+  A.5 Earlier corrections and notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    49
+  A.6 Version history . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    55
+  A.7 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .      57
 
 B Priority record                                                                                   58
-  B.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
-  B.2 Dated predictions and this paper (recorded 25 August 2026) . . . . . . . . . . . . . . . 59
+  B.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+  B.2 Dated predictions and this paper (recorded 25 August 2026) . . . . . . . . . . . . . . . 60
 
-C Notation and measurement glossary                                                                    60
+C Notation and measurement glossary                                                                    61
 
-D The paper’s place in the programme                                                                   62
-  D.1 Which questions this paper informs . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     62
-  D.2 Persistence and placement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      62
-  D.3 Companions and their distinct jobs . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     62
-  D.4 Reading the dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    62
+D The paper’s place in the programme                                                                   63
+  D.1 Which questions this paper informs . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     63
+  D.2 Persistence and placement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      63
+  D.3 Companions and their distinct jobs . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     63
+  D.4 Reading the dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    63
 
-E The contribution beside the closest earlier work                                                     63
+E The contribution beside the closest earlier work                                                     64
 
-F Source-specific biological and physical comparisons                                                  64
-  F.1 Metabolic estimates retain their measurement conditions . . . . . . . . . . . . . . . . .        64
-  F.2 The fungal measurements have different variable pairs . . . . . . . . . . . . . . . . . . .      65
-  F.3 Percolation: a critical exponent and a response slope . . . . . . . . . . . . . . . . . . .      66
-  F.4 A logarithmic coordinate changes a distribution exponent . . . . . . . . . . . . . . . . .       66
+F Source-specific biological and physical comparisons                                                  65
+  F.1 Metabolic estimates retain their measurement conditions . . . . . . . . . . . . . . . . .        65
+  F.2 The fungal measurements have different variable pairs . . . . . . . . . . . . . . . . . . .      66
+  F.3 Percolation: a critical exponent and a response slope . . . . . . . . . . . . . . . . . . .      67
 
 
-                                                    3
+                                                    4
                              The origin of scaling laws in recursive composition
 
 
-    F.5   Historical source claims still requiring verification . . . . . . . . . . . . . . . . . . . . . 67
+    F.4   A logarithmic coordinate changes a distribution exponent . . . . . . . . . . . . . . . . . 67
+    F.5   Historical source claims still requiring verification . . . . . . . . . . . . . . . . . . . . . 68
 
-G Dated programme statements retained for the record                                                     68
+G Dated programme statements retained for the record                                                     69
 
-H Detailed earlier comparisons and reports                                                               68
-  H.1 The earlier heartbeat illustration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     68
-  H.2 The earlier pooled biological comparison . . . . . . . . . . . . . . . . . . . . . . . . .         69
-  H.3 The historical composition-classification result . . . . . . . . . . . . . . . . . . . . . .       70
-  H.4 The alignment run and its code-review limitations . . . . . . . . . . . . . . . . . . . . .        72
-  H.5 The pilot, failed run and later programme . . . . . . . . . . . . . . . . . . . . . . . . .        73
-  H.6 The numerical values of the earlier bound . . . . . . . . . . . . . . . . . . . . . . . . .        73
-  H.7 The earlier illustrative coupling values . . . . . . . . . . . . . . . . . . . . . . . . . . .     74
-  H.8 The earlier physical interpretation and working quantities . . . . . . . . . . . . . . . . .       74
-  H.9 The earlier code and publication record . . . . . . . . . . . . . . . . . . . . . . . . . . .      78
-  H.10 The three figures of the predecessor . . . . . . . . . . . . . . . . . . . . . . . . . . . .      80
+H Detailed earlier comparisons and reports                                                               69
+  H.1 The earlier heartbeat illustration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     69
+  H.2 The earlier pooled biological comparison . . . . . . . . . . . . . . . . . . . . . . . . .         70
+  H.3 The historical composition-classification result . . . . . . . . . . . . . . . . . . . . . .       71
+  H.4 The alignment run and its code-review limitations . . . . . . . . . . . . . . . . . . . . .        73
+  H.5 The pilot, failed run and later programme . . . . . . . . . . . . . . . . . . . . . . . . .        74
+  H.6 The numerical values of the earlier bound . . . . . . . . . . . . . . . . . . . . . . . . .        74
+  H.7 The earlier illustrative coupling values . . . . . . . . . . . . . . . . . . . . . . . . . . .     75
+  H.8 The earlier physical interpretation and working quantities . . . . . . . . . . . . . . . . .       75
+  H.9 The earlier code and publication record . . . . . . . . . . . . . . . . . . . . . . . . . . .      79
+  H.10 The three figures of the predecessor . . . . . . . . . . . . . . . . . . . . . . . . . . . .      81
 
-I   Version 3.13 passages retained with their present scope                                            83
-    I.1 The abstract of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 83
-    I.2 The introduction of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 83
-    I.3 The contribution as version 3.13 stated it . . . . . . . . . . . . . . . . . . . . . . . . . . 85
-    I.4 Three ways things grow, as version 3.13 set them out . . . . . . . . . . . . . . . . . . . 87
-    I.5 The elementary argument, the consequence and the six assumptions of version 3.13 . . . 88
-    I.6 The principle as version 3.13 stated it . . . . . . . . . . . . . . . . . . . . . . . . . . . 89
-    I.7 The network-partition reading of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . 90
-    I.8 The opening of Section 8 of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . 92
-    I.9 The geometric bound as version 3.13 stated it . . . . . . . . . . . . . . . . . . . . . . . 93
-    I.10 The escape and the quantum-error-correction regimes of version 3.13 . . . . . . . . . . . 93
-    I.11 Evidence passages of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 95
-    I.12 The equations of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 96
-    I.13 The prediction record of version 3.13: data, limitations and closing statements . . . . . . 98
-    I.14 The status, limitations and conclusion of version 3.13 . . . . . . . . . . . . . . . . . . . 98
-    I.15 Notation and glossary of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . 100
-    I.16 The novelty statements of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . 102
-
-
-
-
-                                                     4
-                              The origin of scaling laws in recursive composition
+I   Version 3.13 passages retained with their present scope                                            84
+    I.1 The abstract of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 84
+    I.2 The introduction of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 84
+    I.3 The contribution as version 3.13 stated it . . . . . . . . . . . . . . . . . . . . . . . . . . 86
+    I.4 Three ways things grow, as version 3.13 set them out . . . . . . . . . . . . . . . . . . . 88
+    I.5 The elementary argument, the consequence and the six assumptions of version 3.13 . . . 89
+    I.6 The principle as version 3.13 stated it . . . . . . . . . . . . . . . . . . . . . . . . . . . 90
+    I.7 The network-partition reading of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . 91
+    I.8 The opening of Section 8 of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . 93
+    I.9 The geometric bound as version 3.13 stated it . . . . . . . . . . . . . . . . . . . . . . . 94
+    I.10 The escape and the quantum-error-correction regimes of version 3.13 . . . . . . . . . . . 94
+    I.11 Evidence passages of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 96
+    I.12 The equations of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 97
+    I.13 The prediction record of version 3.13: data, limitations and closing statements . . . . . . 99
+    I.14 The status, limitations and conclusion of version 3.13 . . . . . . . . . . . . . . . . . . . 99
+    I.15 Notation and glossary of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . 101
+    I.16 The novelty statements of version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . 103
 
 
-1     Introduction
-I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only
-proof will move the world. People should retain oversight, containment and shutdown for as long as they
-physically can. The research question here is one part of that programme: can information about how
-gains combine predict later scaling, before a larger system is built or relied on?
-    A practical example is a supply network. Increasing its size can increase both the demand served
-and the distance resources travel. Predicting throughput from inventory requires knowing which of those
-quantities changes, how routes are chosen and whether transport speed changes. A three-dimensional
-embedding alone does not answer those questions. The same discipline applies to an AI experiment:
-capability, recursive depth, inference cost and correction burden are distinct observables.
-    This paper is a theoretical and methodological synthesis across mathematics, transport, biology and
-computation. It distinguishes three steps: an equation constrains a family of functions; a mechanism
-supplies the assumptions of that equation; and measurements test whether the mechanism predicts
-observations. The first step can be a theorem while the later steps remain unresolved. A repeated
-numerical exponent alone does not join them.
-    The contributions are:
-      • A precise account of four classical composition identities, their domains and regularity, with scoped
-        stability and asymptotic extensions.
-      • An explicit transport calculation showing which demand and path assumptions yield 𝑑/(𝑑 + 1),
-        and which extra assumptions connect transport cost to inventory or body mass.
-      • Source-specific biological and physical comparisons that separate measurements from coordinate
-        identities and from historical unsupported inferences.
-      • One prospective test in which independently measured premises predict held-out transport behaviour.
-        The earlier numbered predictions and the full neural-scaling withdrawal remain part of the record.
-    The mathematics supplies conditional results, not a universal physical classification or a numerical
-safety guarantee. Sections 4 and 6 establish the formal tools; Sections 7 to 11 examine their scope through
-examples. Sections 12 and 14 state the evidence and the next test. The appendices preserve the detailed
-provenance, programme placement and superseded argument.
+
+
+                                                     5
+                             The origin of scaling laws in recursive composition
 
 
 2     Related work and the contribution
@@ -242,17 +245,11 @@ that constrains a functional form, a specified transport model that supplies an 
 test of whether that model applies. Earlier work establishes much of the mathematics and several of the
 domain models. Their differences are part of the explanation.
 
-2.1     Earlier work
+2.1   Earlier work
 Composition and scaling limits. The continuous Cauchy equations give the four homomorphism
 problems stated in Section 4 (Cauchy 1821). The chosen input and output operations, their domains and
 regularity conditions do the work. In the multiplicative case the result is a power-law family; it does
 not choose the exponent. The connection between rescaling and power laws is established mathematics:
-
-
-                                                      5
-                             The origin of scaling laws in recursive composition
-
-
 Newman (2005, section III.E) discusses it for scale-free distributions, whose inference problem is distinct
 from the regression of one physical quantity against another.
     Approximate composition and asymptotic scaling also have established theories. Hyers (1941) gives
@@ -276,7 +273,7 @@ the same form in 𝐷 dimensions from a more general treatment of hierarchical-n
 than hydrodynamics. The models have stated limits: the 1997 treatment predicts small deviations in the
 smallest mammals, and the 1999 treatment does not expect its relationships to apply to filamentous algae
 and fungi. A fungal application therefore needs its own premises.
-     Banavar, Maritan and Rinaldo (1999) derive a relationship between size and flow in networks with
+    Banavar, Maritan and Rinaldo (1999) derive a relationship between size and flow in networks with
 local connectivity. In the most efficient class they consider, metabolic rate scales as mass to the power
 𝐷/(𝐷 + 1). Their bound concerns the nutrient-delivery rate and the volume of blood in the network; it is
 not a bound on every observable of a physical system. They also compare their relation with river-drainage
@@ -284,6 +281,13 @@ observations in 𝐷 = 2 and identify other distributed transport systems to whi
 Banavar and co-authors (2002) develop the resource-distribution account further and explicitly work
 through the 𝐷 = 1 case. Neither that case nor the fractions 1/2, 2/3 and 3/4 are new predictions of the
 present paper.
+
+
+
+                                                     6
+                             The origin of scaling laws in recursive composition
+
+
      The velocity assumption matters even within a three-dimensional supply model. In the two models of
 Banavar et al. (2010), constant flow velocity across body sizes gives a metabolic exponent of 2/3; allowing
 velocity to scale with mass to the power 1/12, its maximum in those models, gives 3/4. Their geometric,
@@ -299,13 +303,7 @@ of the physical space in which its oscillator network is embedded, and states th
 vascular branching. The flow-accounting calculation in Section 6 does not establish their equivalence or
 turn their shared expression into separate empirical confirmations. Agutter and Tuszynski (2011) review
 the competing explanations.
-    In Bettencourt (2013), urban land area scales with population to the power 𝐷/(𝐷 + 𝐻), where 𝐷
-
-
-                                                     6
-                             The origin of scaling laws in recursive composition
-
-
+     In Bettencourt (2013), urban land area scales with population to the power 𝐷/(𝐷 + 𝐻), where 𝐷
 is the embedding dimension and 𝐻 is the fractal dimension of travel paths. The case 𝐷 = 2, 𝐻 = 1
 gives 2/3; the expression becomes 𝐷/(𝐷 + 1) only when 𝐻 = 1. The same framework gives superlinear
 socioeconomic rates, with exponent 7/6 in that case. Land area, socioeconomic output and metabolic rate
@@ -336,35 +334,36 @@ choosing between their premises against evidence.
 2.2   What this paper adds
 The contribution is a mathematical and methodological synthesis with an explicit route from an observable’s
 composition rule to a prediction that can fail. The classical functional equations, their stability theory,
-regular variation and the earlier transport models supply the starting points. The paper brings them
-together in three steps:
-   1. Declare the equation for the observable. The input and output operations, variable pair,
-      normalisation and regularity conditions are stated before a family is assigned. Exact, approximate
-      and asymptotic composition are kept distinct. A saturation model supplies additional dynamics;
-      boundedness alone does not put it in the Cauchy grid (Sections 3 to 5).
-   2. Expose the assumptions selecting the exponent. The flow-accounting identity and conditional
-      model of Section 6 state how demand and route length scale. The expression 𝑑/(𝑑 + 1) is recovered
-      under particular choices of those exponents. Velocity and the bridge from transport cost to biological
-      mass are separate premises. Section 10 states the geometric bound only for the observable pair and
-      assumptions that support it.
-   3. Test the non-definitional premises and the resulting prediction. The prospective transport test in
-      Section 14 separates calibration of the proposed mechanism from held-out response measurements.
-      The source comparisons ask whether the declared premises apply. The cosmological example
-      distinguishes a change of variables from a physical explanation (Section 9); the recursion model
-      keeps an assumed gain equation separate from a measured capability trajectory (Section 11).
+
 
 
                                                      7
                               The origin of scaling laws in recursive composition
 
 
+regular variation and the earlier transport models supply the starting points. The paper brings them
+together in three steps:
+    1. Declare the equation for the observable. The input and output operations, variable pair,
+       normalisation and regularity conditions are stated before a family is assigned. Exact, approximate
+       and asymptotic composition are kept distinct. A saturation model supplies additional dynamics;
+       boundedness alone does not put it in the Cauchy grid (Sections 3 to 5).
+    2. Expose the assumptions selecting the exponent. The flow-accounting identity and conditional
+       model of Section 6 state how demand and route length scale. The expression 𝑑/(𝑑 + 1) is recovered
+       under particular choices of those exponents. Velocity and the bridge from transport cost to biological
+       mass are separate premises. Section 10 states the geometric bound only for the observable pair and
+       assumptions that support it.
+    3. Test the non-definitional premises and the resulting prediction. The prospective transport test in
+       Section 14 separates calibration of the proposed mechanism from held-out response measurements.
+       The source comparisons ask whether the declared premises apply. The cosmological example
+       distinguishes a change of variables from a physical explanation (Section 9); the recursion model
+       keeps an assumed gain equation separate from a measured capability trajectory (Section 11).
     This route gives the programme a way to formulate and audit particular scaling claims. It does not
 establish the empirical propositions of Law I, nor does the occurrence of the same exponent in another
 domain validate them. Section 16 gives the registered programme’s status. Appendix E places each
 current contribution beside the closest earlier work used here; Appendix B preserves the dated record,
 and Appendix A records the earlier wording and its corrections.
 
-2.3   The strongest objection: assumptions chosen after the fit
+2.3    The strongest objection: assumptions chosen after the fit
 The strongest objection is that the framework could recover a familiar exponent by choosing its operators,
 dimension or transport assumptions after seeing the data. If a fitted slope is inverted to assign a dimension,
 or an inventory is calculated from the identity that the study is meant to test, the apparent agreement adds
@@ -387,63 +386,57 @@ physics has been proved to obey one universal mechanism.
 3     Name the function and its variables
 A scaling statement identifies two quantities and a range. The same system can have a power law in one
 variable pair and an exponential in another. The following examples describe functions; they assign no
-physical mechanism by themselves.
-Definition 1 (Power law). For 𝑥 > 0 and 𝐴 > 0,
 
-                                            𝑦 = 𝐴𝑥 𝑏 ,         𝑏 ∈ R.                                     (1)
 
-Positive exponents below one are sublinear; one is linear; exponents above one are superlinear. Negative
-powers decrease. These are all power laws.
-Definition 2 (Exponential).
-                                                  𝑦 = 𝐴𝑒 𝜆𝑥 .                                             (2)
-Equal additive increments in 𝑥 multiply the output by the same factor. This is distinct from a superlinear
-power law.
-Definition 3 (One saturating response). For 𝑥 ≥ 0, 𝐾 > 0 and 𝑌max > 0,
-                                                               𝑥
-                                               𝑦 = 𝑌max           .                                       (3)
-                                                             𝐾 +𝑥
-This is one bounded increasing form, not the unique consequence of a physical limit. Other bounded
-dynamics can converge differently or oscillate.
-
-                                                         8
+                                                      8
                               The origin of scaling laws in recursive composition
 
 
+physical mechanism by themselves.
+Definition 1 (Power law). For 𝑥 > 0 and 𝐴 > 0,
+                                            𝑦 = 𝐴𝑥 𝑏 ,        𝑏 ∈ R.                                       (1)
+Positive exponents below one are sublinear; one is linear; exponents above one are superlinear. Negative
+powers decrease. These are all power laws.
+Definition 2 (Exponential).
+                                                  𝑦 = 𝐴𝑒 𝜆𝑥 .                                              (2)
+Equal additive increments in 𝑥 multiply the output by the same factor. This is distinct from a superlinear
+power law.
+Definition 3 (One saturating response). For 𝑥 ≥ 0, 𝐾 > 0 and 𝑌max > 0,
+                                                      𝑥
+                                           𝑦 = 𝑌max       .                                                (3)
+                                                    𝐾 +𝑥
+This is one bounded increasing form, not the unique consequence of a physical limit. Other bounded
+dynamics can converge differently or oscillate.
     The logarithmic form belongs to the fourth operation pair in Section 4. Saturation requires a separate
 dynamical or response model. Choosing among these forms requires a declared observable, normalisation,
 error model and test; a visual resemblance is insufficient.
 
 
-4     What the composition equations establish
+4    What the composition equations establish
 A scaling explanation must specify what is combined and what the observable preserves. Classical
 functional equations give an exact answer once those choices are fixed (Cauchy 1821; Aczél 1966). Write
 𝐺 + = (R, +) for the additive real numbers and 𝐺 × = (R>0 , ×) for the multiplicative positive real numbers.
 A homomorphism is a map that preserves the declared source and target operations.
-
 Theorem 1 (Four continuous homomorphism problems). For each of the following source and target
 pairs, every continuous homomorphism has the stated form for some 𝑐 ∈ R, and each stated function is a
 homomorphism:
     1. 𝐹 : 𝐺 + → 𝐺 + preserves addition in both variables:
-
-                            𝐹 (𝑥 + 𝑦) = 𝐹 (𝑥) + 𝐹 (𝑦),        𝐹 (𝑥) = 𝑐𝑥,       𝑥, 𝑦 ∈ R.                   (4)
-
+                            𝐹 (𝑥 + 𝑦) = 𝐹 (𝑥) + 𝐹 (𝑦),          𝐹 (𝑥) = 𝑐𝑥,       𝑥, 𝑦 ∈ R.                (4)
     2. 𝐹 : 𝐺 × → 𝐺 × preserves multiplication in both variables:
-
-                                𝐹 (𝑥𝑦) = 𝐹 (𝑥)𝐹 (𝑦),       𝐹 (𝑥) = 𝑥 𝑐 ,      𝑥, 𝑦 > 0.                     (5)
-
+                                𝐹 (𝑥𝑦) = 𝐹 (𝑥)𝐹 (𝑦),         𝐹 (𝑥) = 𝑥 𝑐 ,      𝑥, 𝑦 > 0.                  (5)
     3. 𝐹 : 𝐺 + → 𝐺 × takes input addition to output multiplication:
-
-                             𝐹 (𝑥 + 𝑦) = 𝐹 (𝑥)𝐹 (𝑦),        𝐹 (𝑥) = 𝑒 𝑐𝑥 ,     𝑥, 𝑦 ∈ R.                    (6)
-
+                              𝐹 (𝑥 + 𝑦) = 𝐹 (𝑥)𝐹 (𝑦),         𝐹 (𝑥) = 𝑒 𝑐𝑥 ,     𝑥, 𝑦 ∈ R.                 (6)
     4. 𝐹 : 𝐺 × → 𝐺 + takes input multiplication to output addition:
-
-                            𝐹 (𝑥𝑦) = 𝐹 (𝑥) + 𝐹 (𝑦),        𝐹 (𝑥) = 𝑐 log 𝑥,      𝑥, 𝑦 > 0.                  (7)
-
+                            𝐹 (𝑥𝑦) = 𝐹 (𝑥) + 𝐹 (𝑦),          𝐹 (𝑥) = 𝑐 log 𝑥,      𝑥, 𝑦 > 0.               (7)
 The logarithm is natural. The additive target is real-valued, not restricted to positive outputs. The constant
 cases are included: 𝑐 = 0 gives the constant zero map into 𝐺 + and the constant one map into 𝐺 × . A
 zero-valued function is not a map into 𝐺 × .
 
-4.1    The proof and the scope of the four cells
+                                                         9
+                              The origin of scaling laws in recursive composition
+
+
+4.1   The proof and the scope of the four cells
 Proof. First suppose 𝐻 : R → R is continuous and additive. The identity at zero gives 𝐻 (0) = 0;
 applying it to 𝑥 + (−𝑥) gives 𝐻 (−𝑥) = −𝐻 (𝑥). Repeated addition gives 𝐻 (𝑛𝑥) = 𝑛𝐻 (𝑥) for every integer
 𝑛. For a positive integer 𝑛, 𝑛𝐻 (1/𝑛) = 𝐻 (1), so 𝐻 (𝑚/𝑛) = (𝑚/𝑛)𝐻 (1) for every integer 𝑚. Thus
@@ -455,14 +448,6 @@ gives 𝐻 (𝑡) = 𝑐𝑡, and substituting 𝑡 = log 𝑥 gives 𝐹 (𝑥)
     For the third row, 𝐻 (𝑡) = log 𝐹 (𝑡) is continuous and additive on R, hence 𝐹 (𝑡) = 𝑒 𝑐𝑡 . For the
 fourth, 𝐻 (𝑡) = 𝐹 (𝑒 𝑡 ) is continuous and additive, hence 𝐹 (𝑥) = 𝑐 log 𝑥. Direct substitution verifies every
 converse, including the constant cases.                                                                       □
-
-
-
-
-                                                       9
-                              The origin of scaling laws in recursive composition
-
-
      Four counts the chosen source and target operation pairs. It does not count all possible physical laws
 or four disjoint sets of numerical functions. The power-law exponent may be negative, zero, sub-linear
 or super-linear. A critical power law can have the power-law form; this theorem neither excludes it nor
@@ -477,42 +462,23 @@ or baseline can change the equation being tested.
 4.2   A precise consequence for approximate composition
 The following statement applies additive Hyers stability in declared logarithmic coordinates (Hyers 1941).
 It specifies both the error norm and its domain.
-
 Proposition 1 (Global logarithmic-defect bound). Let 𝐹 : R>0 → R>0 be continuous. If a constant 𝜀 ≥ 0
 satisfies
                       |log 𝐹 (𝑥𝑦) − log 𝐹 (𝑥) − log 𝐹 (𝑦)| ≤ 𝜀 for every 𝑥, 𝑦 > 0,                (8)
 then there is a unique 𝑐 ∈ R for which
-
                       |log 𝐹 (𝑥) − 𝑐 log 𝑥| ≤ 𝜀,      𝑒 − 𝜀 𝑥 𝑐 ≤ 𝐹 (𝑥) ≤ 𝑒 𝜀 𝑥 𝑐   (𝑥 > 0).                 (9)
-
 Proof. Put ℎ(𝑡) = log 𝐹 (𝑒 𝑡 ) and ℎ 𝑛 (𝑡) = 2−𝑛 ℎ(2𝑛 𝑡). The hypothesis gives
-
                                          |ℎ 𝑛+1 (𝑡) − ℎ 𝑛 (𝑡)| ≤ 2−𝑛−1 𝜀
-
 for every real 𝑡. Summing this bound shows that ℎ 𝑛 converges uniformly to a continuous function 𝐴, with
 | 𝐴(𝑡) − ℎ(𝑡)| ≤ 𝜀. Also
                                   |ℎ 𝑛 (𝑠 + 𝑡) − ℎ 𝑛 (𝑠) − ℎ 𝑛 (𝑡)| ≤ 2−𝑛 𝜀.
 Passing to the limit proves that 𝐴 is additive. The rational and continuity argument above gives 𝐴(𝑡) = 𝑐𝑡.
 If two constants 𝑐 1 , 𝑐 2 met the uniform bound, then |(𝑐 1 − 𝑐 2 )𝑡| ≤ 2𝜀 for every real 𝑡, forcing 𝑐 1 = 𝑐 2 .
 Substitution of 𝑡 = log 𝑥 and exponentiation give the result.                                                □
-
     An absolute residual |𝐹 (𝑥𝑦) − 𝐹 (𝑥)𝐹 (𝑦)| is a different error metric. Observations of finitely many
 noisy pairs cannot establish the global bound in Equation (8). The proposition contains no dynamics that
 attract a system towards a family. Its conclusion is proximity under a stated hypothesis, not a claim that
 perturbations in nature must take this form.
-
-4.3   Scaling limits and regular variation
-Suppose 𝐹 is positive and measurable on the positive reals and, for every 𝑥 > 0, the finite positive limit
-
-                                                            𝐹 (𝑡𝑥)
-                                             𝐻 (𝑥) = lim                                                    (10)
-                                                      𝑡→∞   𝐹 (𝑡)
-exists. Then
-                                           𝐹 (𝑡𝑥𝑦) 𝐹 (𝑡𝑥𝑦) 𝐹 (𝑡𝑥)
-                                                  =
-                                            𝐹 (𝑡)   𝐹 (𝑡𝑥) 𝐹 (𝑡)
-
-
 
                                                        10
                                  The origin of scaling laws in recursive composition
@@ -531,13 +497,22 @@ Physical interpretation              The separate mechanism and measurement link
                                      system
 
 
+4.3   Scaling limits and regular variation
+Suppose 𝐹 is positive and measurable on the positive reals and, for every 𝑥 > 0, the finite positive limit
+                                                               𝐹 (𝑡𝑥)
+                                                  𝐻 (𝑥) = lim                                               (10)
+                                                           𝑡→∞ 𝐹 (𝑡)
+
+exists. Then
+                                                𝐹 (𝑡𝑥𝑦) 𝐹 (𝑡𝑥𝑦) 𝐹 (𝑡𝑥)
+                                                       =
+                                                 𝐹 (𝑡)   𝐹 (𝑡𝑥) 𝐹 (𝑡)
 gives 𝐻 (𝑥𝑦) = 𝐻 (𝑥)𝐻 (𝑦), because 𝑡𝑥 → ∞ for fixed 𝑥 > 0. The limit is measurable, for example by
 taking the sequence 𝑡 = 𝑛. The classical measurable Cauchy result then gives 𝐻 (𝑥) = 𝑥 𝑐 . Writing
 L (𝑡) = 𝐹 (𝑡)/𝑡 𝑐 yields
-
-                                                  L (𝑡𝑥)
-                           𝐹 (𝑡) = 𝑡 𝑐 L (𝑡),            −→ 1      for every fixed 𝑥 > 0.
-                                                  L (𝑡)
+                                                   L (𝑡𝑥)
+                           𝐹 (𝑡) = 𝑡 𝑐 L (𝑡),             −→ 1     for every fixed 𝑥 > 0.
+                                                   L (𝑡)
 This is the regular-variation characterisation, with L a slowly varying factor (Bingham et al. 1987). An
 asymptotic power ratio need not be an exact power at finite scale. For example, at large 𝑡, 𝑡 𝑐 log 𝑡 has the
 same limiting power ratios but local logarithmic slope 𝑐 + 1/log 𝑡.
@@ -547,7 +522,7 @@ these questions (Ostaszewski 2016). The empirical contribution sought here is to
 limit before inspecting the validation curve, then test the resulting prediction against alternatives.
 
 
-5    The principle and its empirical test
+5     The principle and its empirical test
 A recursive update describes a succession of states, 𝑄 𝑛+1 = 𝑇 (𝑄 𝑛 , 𝑢 𝑛 ), where 𝑢 𝑛 names any additional
 input. A composition equation instead relates measurements made at combined inputs. To obtain a scaling
 prediction, a model must connect the update procedure to the observable equation. Dependence on an
@@ -559,19 +534,18 @@ linear map; multiplication of inputs together with addition of real outputs give
 statements about observables, not labels that a substrate acquires merely by branching or feeding back.
     For example, the state rule 𝑄 𝑛+1 = 𝑞𝑄 𝑛 with 𝑞 > 0 and 𝑄 0 > 0 at integer ticks gives 𝑄 𝑛 = 𝑄 0 𝑞 𝑛 .
 Although the state is multiplied at every update, the input tick count adds, and the normalised output is
+
+                                                           11
+                              The origin of scaling laws in recursive composition
+
+
 exponential in that count. Calling the update “multiplicative” without identifying the input operation
 would give the wrong classification.
 
 A bound and convergence are different premises. A bounded sequence can oscillate: 𝑄 𝑛 = 2 + (−1) 𝑛
 never converges. For the particular capped update
 
-                            𝑄 𝑛+1 = min(𝑄 𝑛 + 𝛿 𝑛 , 𝐾),         0 ≤ 𝑄 0 ≤ 𝐾,    𝛿 𝑛 ≥ 0,
-
-
-
-                                                           11
-                              The origin of scaling laws in recursive composition
-
+                          𝑄 𝑛+1 = min(𝑄 𝑛 + 𝛿 𝑛 , 𝐾),           0 ≤ 𝑄 0 ≤ 𝐾,   𝛿 𝑛 ≥ 0,
 
 monotonicity and boundedness together imply convergence to a limit at most 𝐾. In fact 𝑄 𝑛 =
 min(𝑄 0 + 𝑗<𝑛 𝛿 𝑗 , 𝐾). Its limit equals 𝐾 only when the cumulative increments reach or exceed the
@@ -599,7 +573,7 @@ Consider a finite rooted tree that carries a resource from one source to sinks �
 steady non-negative rate 𝑞 𝑖 , with at least one 𝑞 𝑖 > 0. Edge 𝑒 has length ℓ𝑒 ≥ 0 and carries the sum of the
 demands downstream of it:                               ∑︁
                                                 𝑄𝑒 =         𝑞𝑖 ,                                        (11)
-                                                         𝑖:𝑒∈ 𝑃𝑖
+                                                      𝑖:𝑒∈ 𝑃𝑖
 
 where 𝑃𝑖 is the route from the source to sink 𝑖. Flow is conserved at intermediate junctions; the resource
 counted here is neither created nor consumed before reaching its designated sink. Define total throughput
@@ -607,9 +581,9 @@ counted here is neither created nor consumed before reaching its designated sink
 
                                                                         𝑞 𝑖 ℓ(𝑃𝑖 )
                                                                     ∑︁
-                                                               ℓ¯𝑞 = 𝑖
+                                                               ¯
                                ∑︁               ∑︁
-                          𝐵=      𝑞𝑖 ,     𝐶=       ℓ𝑒 𝑄 𝑒 ,                       .                  (12)
+                          𝐵=      𝑞𝑖 ,     𝐶=       ℓ𝑒 𝑄 𝑒 ,   ℓ𝑞 = 𝑖              .                  (12)
                                 𝑖                𝑒
                                                                           𝐵
 
@@ -618,24 +592,24 @@ time. It is a flow-length cost, not automatically energy expenditure, network ma
 
 Lemma 1 (Flow accounting). Under these definitions,
 
-                                                     𝐶 = 𝐵ℓ¯𝑞 .                                          (13)
+                                                  𝐶 = 𝐵ℓ¯𝑞 .                                             (13)
+
+
+                                                        12
+                             The origin of scaling laws in recursive composition
+
 
 Proof. Each sink’s demand contributes to every edge on its route. Exchanging the two finite sums gives
                                      ∑︁      ∑︁       ∑︁ ∑︁
                                 𝐶=       ℓ𝑒      𝑞𝑖 =      𝑞𝑖     ℓ𝑒
-                                           𝑒       𝑖:𝑒∈ 𝑃𝑖         𝑖   𝑒∈ 𝑃𝑖
+                                          𝑒       𝑖:𝑒∈ 𝑃𝑖        𝑖     𝑒∈ 𝑃𝑖
 
-                                                𝑞 𝑖 ℓ(𝑃𝑖 ) = 𝐵ℓ¯𝑞 .
-                                           ∑︁
-                                       =                                                                 (14)
-                                           𝑖
+                                               𝑞 𝑖 ℓ(𝑃𝑖 ) = 𝐵ℓ¯𝑞 .
+                                          ∑︁
+                                      =                                                               (14)
+                                          𝑖
 
-                                                                                                            □
-
-
-                                                             12
-                              The origin of scaling laws in recursive composition
-
+                                                                                                         □
 
     The same accounting applies to a network with split routes when every non-negative route flow and
 every traversal is specified. If there is a circulating flow in addition to the source-to-sink routes, its
@@ -648,15 +622,16 @@ path while charging the actual circulating edge flows would mix two different mo
 6.2   Demand and route length select the exponent
 Let 𝐿 denote a dimensionless size coordinate, such as the ratio of a domain’s linear extent to a fixed
 reference length. All dimensional scales below are carried by positive constants 𝐵0 and ℓ0 .
+
 Proposition 2 (Conditional throughput scaling). For a family satisfying Eq. (13), suppose that, as 𝐿 → ∞,
 
-                         𝐵(𝐿)               ℓ¯𝑞 (𝐿)
-                              ∼ 𝐿 𝜇,                ∼ 𝐿𝜁 ,      𝜇 > 0,    𝜇 + 𝜁 > 0.                     (16)
-                          𝐵0                   ℓ0
+                        𝐵(𝐿)                  ℓ¯𝑞 (𝐿)
+                             ∼ 𝐿 𝜇,                   ∼ 𝐿𝜁 ,         𝜇 > 0,    𝜇 + 𝜁 > 0.             (16)
+                         𝐵0                      ℓ0
 With 𝐶0 = 𝐵0 ℓ0 , throughput against flow-length cost obeys
                                           (︃ )︃ 𝛼𝐶
                                     𝐵       𝐶                  𝜇
-                                        ∼          ,     𝛼𝐶 =     .                                      (17)
+                                        ∼          ,     𝛼𝐶 =     .                                   (17)
                                    𝐵0       𝐶0                𝜇+𝜁
 
 Proof. The accounting identity gives 𝐶/𝐶0 ∼ 𝐿 𝜇+𝜁 . Raising this relation to 𝜇/(𝜇 + 𝜁) and dividing by
@@ -673,11 +648,16 @@ A finite-range fit need not recover the limit. A predictive experiment must ther
 complete finite-range functions and their uncertainty or explicit bounds on the finite-size corrections.
 Simply inserting two limiting exponents into Equation (17) does not supply that prediction.
     The geometric special case is therefore
-                                         𝑑
-                                 𝛼𝐶 =               when 𝜇 = 𝑑 and 𝜁 = 1.                                (19)
-                                        𝑑+1
+                                        𝑑
+                                𝛼𝐶 =                  when 𝜇 = 𝑑 and 𝜁 = 1.                           (19)
+                                       𝑑+1
 Both premises need a reason. Suppose a 𝑑-dimensional family has a number of sinks proportional to 𝐿 𝑑
 and a mean demand per sink tending to a positive size-independent value. Then total demand has exponent
+
+                                                            13
+                              The origin of scaling laws in recursive composition
+
+
 𝜇 = 𝑑. Constant sink density in an expanding domain is one way to obtain the required sink count. A
 change in density or demand per sink changes this conclusion even when the embedding dimension stays
 fixed.
@@ -686,15 +666,10 @@ lies at distance at least 𝑐𝐿ℓ∗ from the source, where 𝑐 > 0 and ℓ
 has length at most 𝐾 𝐿ℓ∗ for a size-independent 𝐾. The lower distance condition and the upper route bound
 place ℓ¯𝑞 between positive constant multiples of 𝐿. Within the power-scaling assumptions of Eq. (16), they
 force 𝜁 = 1. Bounds alone do not supply a limiting prefactor; the stronger asymptotic relation also requires
-
-                                                      13
-                              The origin of scaling laws in recursive composition
-
-
 convergence of the normalised mean route length, for example through a specified self-similar family.
 Demand concentrated near the source, increasing path stretch or unaccounted recirculation changes the
 premises.
-    The demand-distance argument also gives a conditional bound. If the positive fraction at distance at
+     The demand-distance argument also gives a conditional bound. If the positive fraction at distance at
 least 𝑐𝐿ℓ∗ is retained but the upper route bound is dropped, then ℓ¯𝑞 is at least a positive constant times 𝐿.
 Under Eq. (16), 𝜁 ≥ 1. With 𝜇 = 𝑑 > 0, this implies 𝛼𝐶 ≤ 𝑑/(𝑑 + 1). The bound concerns the declared
 throughput and flow-length cost; its hypotheses are part of the result.
@@ -712,9 +687,9 @@ to the residence-time accounting. If edge speeds differ, the exact expression is
                                                                                               ∑︁
 an arbitrary average speed cannot replace the 𝑣 𝑒 .
      A speed that is uniform within each network may still change between sizes. If 𝑣/𝑣 0 ∼ 𝐿 𝜐 , then
-                           𝑁                                𝜇                     𝐶0
-                              ∼ 𝐿 𝜇+𝜁 − 𝜐 ,        𝛼𝑁 =          ,         𝑁0 =      ,                     (21)
-                           𝑁0                             𝜇+𝜁 −𝜐                  𝑣0
+                           𝑁                                𝜇                    𝐶0
+                              ∼ 𝐿 𝜇+𝜁 − 𝜐 ,        𝛼𝑁 =          ,        𝑁0 =      ,                      (21)
+                           𝑁0                             𝜇+𝜁 −𝜐                 𝑣0
 where 𝛼 𝑁 is the throughput exponent against inventory and the denominator must be positive. Constant
 speed across sizes is the special case 𝜐 = 0.
    Body mass 𝑀 requires its own bridge. If independent physiological evidence establishes
@@ -733,20 +708,22 @@ resource throughput being modelled.
     The velocity dependence is explicit in Banavar et al. (2010). Their radial and hierarchically branched
 models supply a three-dimensional volume. They obtain a metabolic mass exponent of 2/3 when flow
 velocity is independent of body size, and an upper value of 3/4 when velocity scales as 𝑀 1/12 under their
+
+
+
+                                                        14
+                            The origin of scaling laws in recursive composition
+
+
 additional service-volume constraints. Their assumptions make the inventory in transit proportional to
 mass and route length proportional to 𝑀 1/3 . In that setting the accounting reads
-                                           𝑀𝑣
-                                     𝐵∝        ∝ 𝑀 2/3+𝜈 ,           𝑣 ∝ 𝑀𝜈.                               (24)
-                                           ℓ¯𝑞
+                                        𝑀𝑣
+                                   𝐵∝       ∝ 𝑀 2/3+𝜈 ,        𝑣 ∝ 𝑀𝜈.                               (24)
+                                        ℓ¯𝑞
 
 This explains the two exponents without changing the spatial dimension. The permissible upper value of 𝜈
 is supplied by that model’s constraints, not by the accounting identity. Its demand and mass assumptions
 must not be silently replaced by 𝜇 = 𝑑 and 𝑀 ∝ 𝐶.
-
-
-                                                        14
-                             The origin of scaling laws in recursive composition
-
 
 6.4   What a cross-domain comparison tests
 The useful prediction is now explicit: independently characterised demand and routing determine a
@@ -780,35 +757,37 @@ the difference between arterial and mixed-venous oxygen content per unit blood v
 with no net accumulation of the oxygen being accounted for, consumption equals blood flow multiplied by
 the oxygen removed from that flow. Since cardiac output is 𝑓 𝐻 𝑉𝑠 , the Fick balance is
 
-                                               𝑉¤O2 = 𝑓 𝐻 𝑉𝑠 Δ𝑂 2 .                                  (25)
+                                            𝑉¤O2 = 𝑓 𝐻 𝑉𝑠 Δ𝑂 2 .                                     (25)
 
 The units are oxygen amount per unit time on each side: beats per unit time, multiplied by blood volume
 per beat and oxygen amount per blood volume. This is a conservation relation, not a spatial scaling law.
-    Use the dimensionless mass 𝑚 = 𝑀/𝑀0 and suppose, over a declared range and comparable
-physiological conditions, that
 
-                          𝑉¤O2 = 𝑉¤0 𝑚 𝑏 ,     𝑉𝑠 = 𝑉𝑠0 𝑚 𝑠 ,         Δ𝑂 2 = Δ𝑂 20 𝑚 𝑒 ,             (26)
 
-with positive prefactors. Substitution gives
 
-                                                                                   𝑉¤0
-                         𝑓 𝐻 = 𝑓 𝐻0 𝑚 ℎ ,      ℎ = 𝑏 − 𝑠 − 𝑒,          𝑓 𝐻0 =             .          (27)
-                                                                                𝑉𝑠0 Δ𝑂 20
-An asymptotic version follows if the three input relations are asymptotic rather than exact powers. In
-either case, the familiar ℎ = −1/4 follows from the three scaling assumptions 𝑏 = 3/4, 𝑠 = 1 and 𝑒 = 0.
-
-                                                       15
+                                                    15
                               The origin of scaling laws in recursive composition
 
 
+   Use the dimensionless mass 𝑚 = 𝑀/𝑀0 and suppose, over a declared range and comparable
+physiological conditions, that
+
+                           𝑉¤O2 = 𝑉¤0 𝑚 𝑏 ,    𝑉𝑠 = 𝑉𝑠0 𝑚 𝑠 ,     Δ𝑂 2 = Δ𝑂 20 𝑚 𝑒 ,                   (26)
+
+with positive prefactors. Substitution gives
+
+                                                                               𝑉¤0
+                          𝑓 𝐻 = 𝑓 𝐻0 𝑚 ℎ ,     ℎ = 𝑏 − 𝑠 − 𝑒,      𝑓 𝐻0 =             .                (27)
+                                                                            𝑉𝑠0 Δ𝑂 20
+An asymptotic version follows if the three input relations are asymptotic rather than exact powers. In
+either case, the familiar ℎ = −1/4 follows from the three scaling assumptions 𝑏 = 3/4, 𝑠 = 1 and 𝑒 = 0.
 The oxygen consumed grows as the three-quarter power, stroke volume grows in proportion to mass, and
 oxygen extraction per unit blood volume is independent of mass. A metabolic-energy exponent can stand
 in for 𝑏 only when its conversion to oxygen consumption is justified for the measurements in question.
     Mass-specific oxygen consumption is a different quantity:
 
-                                              𝑉¤O2   𝑉¤0 𝑏−1
-                                                   =    𝑚 .                                            (28)
-                                               𝑀     𝑀0
+                                               𝑉¤O2   𝑉¤0 𝑏−1
+                                                    =    𝑚 .                                           (28)
+                                                𝑀     𝑀0
 Its exponent equals the heart-rate exponent only if 𝑠 + 𝑒 = 1. The balance therefore gives a testable
 relation between three physiological scalings; dimension alone supplies neither an individual’s pulse nor
 its prefactor.
@@ -829,7 +808,9 @@ The number of beats over a lifespan 𝜏 is the integral of heart rate over that
 
                                                                    1
                                 ∫ 𝜏                                  ∫ 𝜏
-                      𝑁beats =       𝑓 𝐻 (𝑡) d𝑡 = 𝑓¯𝐻 𝜏,    𝑓¯𝐻 =          𝑓 𝐻 (𝑡) d𝑡.                 (29)
+                      𝑁beats =                     ¯
+                                     𝑓 𝐻 (𝑡) d𝑡 = 𝑓 𝐻 𝜏,     ¯
+                                                            𝑓𝐻 =           𝑓 𝐻 (𝑡) d𝑡.                 (29)
                                  0                                 𝜏 0
 
 Here 𝑓¯𝐻 is the lifetime mean, not a resting measurement. If that mean and a consistently defined lifespan
@@ -839,6 +820,12 @@ activity histories or definitions of lifespan. The prefactors and the replacemen
 convenient resting value remain separate empirical questions.
 
 
+
+
+                                                      16
+                               The origin of scaling laws in recursive composition
+
+
 8     The fission chain reaction
 The rest-energy relation 𝐸 = 𝑚𝑐2 (Einstein 1905) and the kinetics of a chain reaction answer different
 questions. A reaction’s energy release depends on the difference between initial and final states. In a
@@ -846,31 +833,25 @@ simplified branching description, the expected number of events in generation �
 a fixed effective multiplication factor 𝑘. Then 𝑁 𝑛 = 𝑁0 𝑘 𝑛 is exponential in additive generation count.
 This is a mathematical description under a fixed-factor premise, not a claim that an actual transient keeps
 that factor constant.
+                                     Table 2. The chain reaction’s regimes.
+
+Regime          𝑘       Cell of the grid                             Behaviour           Status
+Subcritical     𝑘<1     Additive input, multiplicative output        Exponential decay   Classified, not
+                                                                                         predicted
+Supercritical   𝑘>1     Additive input, multiplicative output        Exponential         Classified, not
+                                                                     growth              predicted
+Controlled      𝑘≈1     Bounded by feedback (outside the grid)       Steady power        Classified, not
+                                                                                         predicted
+
+
 
 What the grid does and does not explain: the chain reaction. A branching model grows exponentially
 while its effective multiplication factor exceeds one and stays constant. That is a branching process, and
 the arithmetic was understood in the late 1930s; it owes nothing to this work. In the four-cell grid it
-
-
-                                                      16
-                              The origin of scaling laws in recursive composition
-
-
-                                    Table 2. The chain reaction’s regimes.
-
-Regime          𝑘      Cell of the grid                             Behaviour            Status
-Subcritical     𝑘<1    Additive input, multiplicative output        Exponential decay    Classified, not
-                                                                                         predicted
-Supercritical   𝑘>1    Additive input, multiplicative output        Exponential          Classified, not
-                                                                    growth               predicted
-Controlled      𝑘≈1    Bounded by feedback (outside the grid)       Steady power         Classified, not
-                                                                                         predicted
-
-
 sits in the additive-input, multiplicative-output cell, so the grid classifies it correctly. Classifying is not
 explaining. The physical mechanism and the conditions that sustain its effective factor must be supplied
 separately; naming the cell adds no physical content.
-     The box this section carried until 11 August 2026 is recorded in Appendix A.4.
+     The box this section carried until 11 August 2026 is recorded in Appendix A.5.
 
 
 9     Cosmic expansion and the meaning of a shared formula
@@ -883,19 +864,23 @@ Consider an expanding, spatially flat, homogeneous and isotropic model with one 
 fluid and constant equation-of-state parameter 𝑤. Write 𝑃 = 𝑤𝜌𝑐2 , with 𝜌 the mass-equivalent density, 𝑃
 pressure and 𝑐 the speed of light. There is no additional component in this single-fluid solution. With
 𝐻 = ¤𝑎/𝑎, the Friedmann and continuity equations give (Carroll et al. 2003)
-                                                  8𝜋𝐺
-                                          𝐻2 =         𝜌,                                                  (30)
-                                                   3
+                                                     8𝜋𝐺
+                                           𝐻2 =           𝜌,                                               (30)
+                                                      3
                                              𝜌¤ = −3𝐻 (1 + 𝑤) 𝜌,                                           (31)
-                                            𝑎¥     4𝜋𝐺
-                                                =−      (1 + 3𝑤) 𝜌.                                        (32)
-                                            𝑎        3
+                                            𝑎¥        4𝜋𝐺
+                                                 =−        (1 + 3𝑤) 𝜌.                                     (32)
+                                            𝑎           3
 For 𝑤 > −1, integrating on the expanding branch gives
-                                              )︃ 𝑝
-                                       𝑡 − 𝑡0               2
+                                               )︃ 𝑝
+                                       𝑡 − 𝑡0                      2
                                     (︃
-                         𝑎(𝑡) = 𝑎 ∗                , 𝑝=          ,           𝑡 > 𝑡0 ,                      (33)
-                                         𝑡∗             3(1 + 𝑤)
+                         𝑎(𝑡) = 𝑎 ∗                 ,      𝑝=           ,     𝑡 > 𝑡0 ,                     (33)
+                                         𝑡∗                    3(1 + 𝑤)
+
+                                                       17
+                             The origin of scaling laws in recursive composition
+
 
 where 𝑎 ∗ > 0 and 𝑡∗ > 0 are reference scales consistent with the density normalisation. One way to see
 the exponent is to integrate Eq. (31), obtaining 𝜌 ∝ 𝑎 −3(1+𝑤) , and insert this into Eq. (30). The resulting
@@ -908,17 +893,11 @@ equation makes 𝑎 3(1+𝑤)/2 proportional to 𝑡 − 𝑡 0 .
 This exponential follows by integrating 𝑎¤ = 𝐻Λ 𝑎. It is not a finite power of time obtained by substituting
 𝑤 = −1 into Eq. (33).
 
-
-
-                                                      17
-                                The origin of scaling laws in recursive composition
-
-
-9.2    Acceleration and exponential expansion are distinct
+9.2   Acceleration and exponential expansion are distinct
 The deceleration parameter of the single-fluid model is
-                                                          𝑎 𝑎¥ 1 + 3𝑤
-                                              𝑞 dec = −        =      .                                          (35)
-                                                          𝑎¤ 2    2
+                                                   𝑎 𝑎¥ 1 + 3𝑤
+                                           𝑞 dec = −    =         .                                      (35)
+                                                   𝑎¤ 2      2
 Positive density therefore gives acceleration when 𝑤 < −1/3. At 𝑤 = −1/3, the power exponent is 𝑝 = 1
 and the solution coasts linearly. For −1 < 𝑤 < −1/3, it is an accelerating power law. In particular,
 𝑤 = −2/3 gives 𝑝 = 2 and 𝑎(𝑡) ∝ (𝑡 − 𝑡 0 ) 2 . Exponential expansion occurs at 𝑤 = −1 under the
@@ -928,11 +907,11 @@ from power-law to exponential expansion. That correction is retained here. The q
 its consequence explicit: acceleration does not require an exponential. A linear function is itself a member
 of the power-law family, not a boundary of that family’s mathematical existence.
 
-9.3    An algebraic coordinate, not a measured dimension
+9.3   An algebraic coordinate, not a measured dimension
 For a finite power exponent 𝑝 ≠ 1, define
-                                              𝑝      2                      𝑑eff
-                                   𝑑eff =        =       ,          𝑝=             .                             (36)
-                                            1 − 𝑝 1 + 3𝑤                  𝑑eff + 1
+                                           𝑝      2                   𝑑eff
+                                𝑑eff =        =       ,        𝑝=            .                          (36)
+                                         1 − 𝑝 1 + 3𝑤               𝑑eff + 1
 In this section 𝑑eff is solely the coordinate defined by that equation. It is not the independently specified
 geometric 𝑑 in Section 6. Within the expanding power-law branch, the map is finite for 𝑤 > −1 except at
 𝑤 = −1/3. It is positive for 𝑤 > −1/3 and less than −1 for −1 < 𝑤 < −1/3.
@@ -941,18 +920,6 @@ the boundary from the decelerating side sends 𝑑eff to positive infinity; appr
 side sends it to negative infinity. Formally substituting 𝑤 = −1 gives 𝑑eff = −1, where the expression
 for 𝑝 is undefined. The exponential solution therefore has no finite power exponent represented by this
 coordinate.
-Table 3. Analytic cases of the flat, constant, single-fluid model. The entries follow from its equations; they are not
-measured network dimensions or independent confirmations of a network law.
-
-                   Fluid or case               𝑤     Time exponent 𝑝       𝑞 dec            𝑑eff
-                   Stiff fluid                 1             1/3             2              1/2
-                   Radiation                  1/3            1/2             1               1
-                   Pressureless matter         0             2/3           1/2               2
-                   Coasting                  −1/3             1              0          Undefined
-                   Accelerating example      −2/3             2            −1/2             −2
-                   Vacuum                     −1          Exponential       −1         Not applicable
-
-
     The radiation and pressureless-matter powers follow from 𝑤 = 1/3 and 𝑤 = 0 in the fluid equations.
 Those equations assume a homogeneous background; neither a photon-path network nor a cosmic-web
 partition enters their derivation. Interpreting the numbers 1 and 2 in the last column as such mechanisms
@@ -961,23 +928,34 @@ supply those numbers. The flat, matter-only model of Einstein and de Sitter (193
 Table 3, and the matter era it idealises began at matter-radiation equality, at redshift 𝑧 eq = 3402 ± 26 in
 the baseline results of Planck Collaboration (2020, Table 2). The web is “the largest scale manifestation
 of the anisotropic gravitational collapse of matter” and “consists of the largest non-linear structures in
-
-                                                           18
-                             The origin of scaling laws in recursive composition
-
-
 the Universe” (Cautun et al. 2014); it formed by that collapse, long after the matter era began. In it, the
 analysis of Cautun et al. (2014) “identifies clusters and filaments as the most prominent components of
 the web”, while “voids and sheets take most of the volume”.
 
-9.4   Idealised components and cosmic history
+                                                       18
+                                The origin of scaling laws in recursive composition
+
+
+Table 3. Analytic cases of the flat, constant, single-fluid model. The entries follow from its equations; they are not
+measured network dimensions or independent confirmations of a network law.
+
+                   Fluid or case                 𝑤     Time exponent 𝑝       𝑞 dec           𝑑eff
+                   Stiff fluid                 1             1/3               2             1/2
+                   Radiation                  1/3            1/2               1              1
+                   Pressureless matter         0             2/3             1/2              2
+                   Coasting                  −1/3             1                0         Undefined
+                   Accelerating example      −2/3             2              −1/2            −2
+                   Vacuum                     −1          Exponential         −1        Not applicable
+
+
+9.4    Idealised components and cosmic history
 A single constant 𝑤 is an idealisation, not a complete history of a universe containing several evolving
 contributions. The powers in Table 3 describe the stated one-component models and can describe limiting
 regimes when their assumptions apply. A mixture, an evolving equation of state, spatial curvature or the
 branch with 𝑤 < −1 requires its own solution. A change in the dominant component does not, by itself,
 establish a change in an independently measured composition operator.
 
-9.5   What the common form establishes
+9.5    What the common form establishes
 Equation (36) is a reparametrisation of an exponent already derived from cosmology. It supplies no extra
 equation for the expansion, and fitting 𝑑eff from the same power cannot be an independent prediction of
 that power. In the transport calculation, by contrast, the proposed exponent depends on demand, routes
@@ -989,7 +967,7 @@ supplies no biological prediction, and a biological exponent is not a measuremen
 coordinate in Eq. (36).
 
 
-10    A conditional geometric bound
+10     A conditional geometric bound
 Geometry becomes predictive when the transported quantity and the route assumptions are specified.
 Use the source-to-sink model of Section 6: sink 𝑖 receives a nonnegative demand rate 𝑞 𝑖 , with positive
 total demand 𝐵 = 𝑖 𝑞 𝑖 ; edge 𝑒 has length ℓ𝑒 and downstream flow 𝑄 𝑒 . For the declared routes 𝑃𝑖 , the
@@ -997,36 +975,31 @@ total demand 𝐵 = 𝑖 𝑞 𝑖 ; edge 𝑒 has length ℓ𝑒 and downstream
 flow-weighted mean path length is ℓ¯𝑞 = 𝐵 −1 𝑖 𝑞 𝑖 ℓ(𝑃𝑖 ). On a rooted tree, exchanging the sums gives
                                              ∑︁
 
-
                                                        𝑞 𝑖 ℓ(𝑃𝑖 ) = 𝐵ℓ¯𝑞 .
                                       ∑︁           ∑︁
                                  𝐶=       ℓ𝑒 𝑄 𝑒 =                                                  (37)
-                                         𝑒               𝑖
+                                             𝑒               𝑖
 
 Here 𝐶 has units of demand rate times length. It is not automatically energy expenditure, material
 inventory or body mass. A network with recirculation needs its additional transported flow accounted for
 explicitly.
     Consider a family indexed by dimensionless linear scale 𝐿 → ∞, and suppose
-
-                      𝐵(𝐿) ∼ 𝑏 0 𝐿 𝜇 ,       ℓ¯𝑞 (𝐿) ∼ ℓ0 𝐿 𝜁 ,     𝑏 0 , ℓ0 > 0,   𝜇 > 0.            (38)
-
+                         𝐵(𝐿) ∼ 𝑏 0 𝐿 𝜇 ,        ℓ¯𝑞 (𝐿) ∼ ℓ0 𝐿 𝜁 ,     𝑏 0 , ℓ0 > 0,     𝜇 > 0.                 (38)
 When 𝜇 + 𝜁 > 0, Equation (37) implies
-                                                                          𝜇
-                                𝐵 ∼ 𝑏 1−
-                                      0
-                                         𝛼𝐶 − 𝛼𝐶 𝛼𝐶
-                                           ℓ0 𝐶 ,                 𝛼𝐶 =       .                        (39)
-                                                                         𝜇+𝜁
-The exponent concerns this observable pair. It is not selected by the Cauchy equation alone.
+                                                                              𝜇
+                                    𝐵 ∼ 𝑏 1−
+                                          0
+                                             𝛼𝐶 − 𝛼𝐶 𝛼𝐶
+                                               ℓ0 𝐶 ,                 𝛼𝐶 =       .                               (39)
+                                                                             𝜇+𝜁
 
-Proposition 3 (Demand at macroscopic distance). Suppose fixed constants 0 < 𝑝 ≤ 1 and 𝑐 > 0,
-independent of 𝐿, have the following property for all sufficiently large networks: sinks at Euclidean
-
-
-                                                       19
+                                                           19
                               The origin of scaling laws in recursive composition
 
 
+The exponent concerns this observable pair. It is not selected by the Cauchy equation alone.
+Proposition 3 (Demand at macroscopic distance). Suppose fixed constants 0 < 𝑝 ≤ 1 and 𝑐 > 0,
+independent of 𝐿, have the following property for all sufficiently large networks: sinks at Euclidean
 distance at least 𝑐𝐿 from the source account for at least the fraction 𝑝 of total demand. Under Equation (38),
 route lengths measured in the same physical metric obey 𝜁 ≥ 1. Consequently
                                                            𝜇
@@ -1035,7 +1008,6 @@ route lengths measured in the same physical metric obey 𝜁 ≥ 1. Consequently
 Proof. Every route to those sinks has length at least their source-to-sink distance. Hence ℓ¯𝑞 ≥ 𝑝𝑐𝐿. If
 𝜁 < 1, the assumed relation ℓ¯𝑞 ∼ ℓ0 𝐿 𝜁 would give ℓ¯𝑞 /𝐿 → 0, contradicting this lower bound. Thus 𝜁 ≥ 1,
 and the inequality follows from 𝜇 > 0.                                                                   □
-
     Setting 𝜇 = 𝑑 needs an additional demand assumption. For example, if the number of sinks is
 asymptotic to 𝑛0 𝐿 𝑑 under fixed sink density and their average demand tends to a positive constant 𝑞 0 ,
 then 𝐵 ∼ 𝑛0 𝑞 0 𝐿 𝑑 . Embedding a network in a 𝑑-dimensional domain alone does not fix its sink number or
@@ -1072,14 +1044,14 @@ energy, latency and evaluation costs still accounted for.
 The unchanged rule
                                                √
                                       𝑥 𝑛+1 = ( 𝑥 𝑛 + 1) 2 ,     𝑥0 = 1,                                  (40)
-gives 𝑥 𝑛 = (𝑛 + 1) 2 for every integer 𝑛 ≥ 0. The initial value has that form, and substituting (𝑛 + 1) 2
-into the rule gives (𝑛 + 2) 2 . This is a counterexample to the mathematical inference that fixed rules force
-sub-linearity; it is not an AI measurement.
 
                                                       20
                              The origin of scaling laws in recursive composition
 
 
+gives 𝑥 𝑛 = (𝑛 + 1) 2 for every integer 𝑛 ≥ 0. The initial value has that form, and substituting (𝑛 + 1) 2
+into the rule gives (𝑛 + 2) 2 . This is a counterexample to the mathematical inference that fixed rules force
+sub-linearity; it is not an AI measurement.
     Frozen model weights, fixed agent code, persistent memory, prompts, tools and the procedure that
 proposes subsequent improvements are separate experimental choices. A change to any one does not
 guarantee improvement or faster improvement in the next round. A test must identify what changes, what
@@ -1094,13 +1066,13 @@ assumption is
                                        = 𝑎𝑔 𝛽𝐿 , 𝑎 > 0, 𝛽 𝐿 < 1.                         (41)
                                     𝑑𝑟
 At fixed parameters, integration gives
-                                𝑔 1−𝛽𝐿 − 1              (︂   𝑎 )︂ 𝛼
-                                           = 𝑎𝑟,  𝑔(𝑟) = 1 + 𝑟 ,
-                                  1 − 𝛽𝐿                     𝛼
+                                𝑔 1−𝛽𝐿 − 1                      (︂  𝑎 )︂ 𝛼
+                                           = 𝑎𝑟,          𝑔(𝑟) = 1 + 𝑟 ,
+                                  1 − 𝛽𝐿                            𝛼
 where
-                                                       1
-                                             𝛼=               > 0.                                      (42)
-                                                    1 − 𝛽𝐿
+                                                      1
+                                             𝛼=           > 0.                                          (42)
+                                                   1 − 𝛽𝐿
 Thus 𝑔(𝑟) ∼ (𝑎/𝛼) 𝛼 𝑟 𝛼 as 𝑟 → ∞. At 𝛽 𝐿 = 0 the marginal gain is constant and 𝑔 = 1 + 𝑎𝑟, an affine
 gain rather than an assertion of statistically independent steps. For 0 < 𝛽 𝐿 < 1 the solution is convex and
 its asymptotic exponent exceeds one; negative 𝛽 𝐿 gives an asymptotic exponent below one. These are
@@ -1109,34 +1081,35 @@ bounded, so an unbounded gain law cannot describe it at arbitrary depth. Its mea
 and evaluation axis must be specified; a finite improvement in a bounded score is not evidence for an
 indefinitely valid asymptotic growth law.
      For 𝑟 > 0 the local elasticity is
-                                              𝑑 log 𝑔         𝛼𝑟
-                                                      =            .                                    (43)
-                                              𝑑 log 𝑟      𝑟 + 𝛼/𝑎
+                                              𝑑 log 𝑔      𝛼𝑟
+                                                      =          .                                      (43)
+                                              𝑑 log 𝑟   𝑟 + 𝛼/𝑎
 The scale 𝑟 𝑐 = 𝛼/𝑎 is where that elasticity equals 𝛼/2. It is not a discontinuity or, in general, the onset
 of elasticity above one. When 𝛼 > 1, that onset occurs at 𝑟 > 𝑟 𝑐 /(𝛼 − 1). Over a finite window a fitted
 exponent need not equal 𝛼.
-     In first-pass coordinates put 𝑅 = 𝑟 + 1 and 𝐺 (𝑅) = 𝑔(𝑅 − 1). For a fixed positive baseline 𝐼, the
-model reads                                             [︂     𝑎      ]︂ 𝛼
-                       𝑈 (𝑅) = 𝐼𝐺 (𝑅),         𝐺 (𝑅) = 1 + (𝑅 − 1) ,           𝑅 ≥ 1.                   (44)
-                                                               𝛼
+    In first-pass coordinates put 𝑅 = 𝑟 + 1 and 𝐺 (𝑅) = 𝑔(𝑅 − 1). For a fixed positive baseline 𝐼, the
+model reads                                           [︂   𝑎         ]︂ 𝛼
+                      𝑈 (𝑅) = 𝐼𝐺 (𝑅),       𝐺 (𝑅) = 1 + (𝑅 − 1) ,             𝑅 ≥ 1.                    (44)
+                                                           𝛼
 Here 𝐺 (1) = 1. The exact identity 𝐺 (𝑅) = 𝑅 𝛼 requires 𝑎 = 𝛼; otherwise that power is an asymptotic
 form with its own prefactor. Elasticity against 𝑅 is 𝛼𝑅/(𝑅 − 1 + 𝛼/𝑎), a different finite-depth quantity
 from Equation (43).
-     There is an exact composition identity for the shifted solution, but its input operation is deformed
+    There is an exact composition identity for the shifted solution, but its input operation is deformed
 addition:
-                                         𝑎
-                      𝑟 ⊕𝑎 𝑠 = 𝑟 + 𝑠 + 𝑟 𝑠,        𝑔(𝑟 ⊕𝑎 𝑠) = 𝑔(𝑟)𝑔(𝑠),       𝑟, 𝑠 ≥ 0.                (45)
-                                         𝛼
+                                        𝑎
+                     𝑟 ⊕𝑎 𝑠 = 𝑟 + 𝑠 + 𝑟 𝑠,       𝑔(𝑟 ⊕𝑎 𝑠) = 𝑔(𝑟)𝑔(𝑠),        𝑟, 𝑠 ≥ 0.                 (45)
+                                        𝛼
 Indeed 1 + (𝑎/𝛼) (𝑟 ⊕𝑎 𝑠) = [1 + (𝑎/𝛼)𝑟] [1 + (𝑎/𝛼)𝑠]. This injective change of variable also proves
 associativity and gives the identity element zero on the nonnegative half-line. The resulting structure is a
-commutative monoid, not the full additive real group in Theorem 1. Generalised functional equations
-treat such distinctions (Ostaszewski 2016). Recognising the operation does not establish that a measured
-agent obeys it. Nor does the limit 𝛽 𝐿 → 1 at fixed 𝑎, 𝑟, which gives 𝑔(𝑟) → 𝑒 𝑎𝑟 , create a finite-depth
-divergence.
 
                                                      21
                              The origin of scaling laws in recursive composition
 
+
+commutative monoid, not the full additive real group in Theorem 1. Generalised functional equations
+treat such distinctions (Ostaszewski 2016). Recognising the operation does not establish that a measured
+agent obeys it. Nor does the limit 𝛽 𝐿 → 1 at fixed 𝑎, 𝑟, which gives 𝑔(𝑟) → 𝑒 𝑎𝑟 , create a finite-depth
+divergence.
 
 11.3    Elapsed time, correction and the conditional ceiling
 Depth and time cannot be interchanged without a clock model. Paper XIII defines self-acceleration
@@ -1179,10 +1152,6 @@ ceiling. These are established or conditional error-accounting relationships, no
 capability model. Likewise, a favourable capability or correction exponent demonstrates neither intrinsic
 ethical behaviour nor a deployed safety guarantee. Evaluation must specify the values and tasks, measure
 usefulness alongside correction, and retain human oversight, containment and shutdown for as long as
-they can be held. Embedded correction is the programme’s contingency for control lost against our will,
-whose effectiveness still requires the relevant tests.
-
-
 
 
                                                         22
@@ -1201,6 +1170,10 @@ Physical-qubit count 𝑁                                                       
 Cycle count 𝑇             For independent cycles with constant 0 < 𝑝 𝐿 < 1, cumulative failure probability is
                           1 − (1 − 𝑝 𝐿 ) 𝑇 , tending to one as 𝑇 increases. Temporal dependence needs a different
                           model.
+
+
+they can be held. Embedded correction is the programme’s contingency for control lost against our will,
+whose effectiveness still requires the relevant tests.
 
 
 12     Evidence, with its measurement and scope
@@ -1234,14 +1207,13 @@ explicit.
 measurements of this model. Unsourced fragmentation values remain excluded. A network dimension
 must be assigned from independent geometry or construction before it is used to predict the response.
 
-12.3    Other reported programme results
-Paper VII contains the programme’s historical composition-classification comparisons. Their outcome
-
 
                                                       23
                              The origin of scaling laws in recursive composition
 
 
+12.3   Other reported programme results
+Paper VII contains the programme’s historical composition-classification comparisons. Their outcome
 depends on the classified observable, candidate set and scoring procedure; it is not proof that every
 physical process is a homomorphism. Its dated report and the associated registrations are the sources for
 those tests, which were not rerun for this revision.
@@ -1286,9 +1258,6 @@ within that selected fit and does not account for the post hoc selection of the 
 re-run described above, keeping every model off the ceiling, is the route prepared as a draft registration
 awaiting human submission, toward a discriminating estimate. The 0.49 value, the regression exponent, is
 therefore always quoted with the rest of its row and the fixed-weight settings tested, as the interpretation
-above quotes it, never as a stand-alone confirmation.
-    The parallel sampling finding. The five runs’ result files record parallel exponents of about 0.00
-(DeepSeek R1), −0.03 (GPT-5.4), 0.31 (Gemini 3 Flash, by endpoint estimate; 0.34 by regression), 0.22
 
 
                                                      24
@@ -1320,7 +1289,7 @@ identifier deepseek-reasoner. GPT-5.4 and Groq Qwen3 have no tier-2 sequential e
 endpoint estimates over all 30 problems of 1.47 (regression 1.60, 𝑟 2 = 0.95) and 0.24 (regression 0.09, 𝑟 2 = 0.10), and 0.34 on
 Groq Qwen3’s 18 tier-2 problems, which Paper II does not interpret, because GPT-5.4’s rests on a step from no reasoning to any
 and Groq Qwen3’s accuracy shows no trend. The rows this paper recorded in March 2026, which differed, are described in the
-scope note of 3 October 2026 (Appendix A.4).
+scope note of 3 October 2026 (Appendix A.5).
 
 
 
@@ -1329,6 +1298,9 @@ scope note of 3 October 2026 (Appendix A.4).
                               The origin of scaling laws in recursive composition
 
 
+above quotes it, never as a stand-alone confirmation.
+    The parallel sampling finding. The five runs’ result files record parallel exponents of about 0.00
+(DeepSeek R1), −0.03 (GPT-5.4), 0.31 (Gemini 3 Flash, by endpoint estimate; 0.34 by regression), 0.22
 (Groq Qwen3, over all 30 problems) and none for Grok 4.1 Fast, at 100 per cent at every sample count, so
 the parallel exponent was near zero in two of the five; the reported error-decay exponent was above the
 parallel one wherever both could be estimated, in four of the five runs, and the two arms were not matched
@@ -1372,20 +1344,19 @@ Printed in version 3.13 (31 October 2026) as Prediction 1, The 1D organism predi
       Organisms with genuinely one-dimensional internal metabolic transport (filamentous fungi with
       cytoplasmic streaming, filamentous cyanobacteria with intercellular transport) should have metabolic
       scaling exponent 𝛼 = 1/2 = 0.500.
-      This prediction is derived in earlier work: Banavar et al. (2002) explicitly worked through the 𝐷 = 1
-      case, and Volkov et al. (2022) applied it to forests, showing that trees competing along the vertical
-      height axis constitute an effectively one-dimensional system.
 
 
                                                        26
-                             The origin of scaling laws in recursive composition
+                              The origin of scaling laws in recursive composition
 
 
+      This prediction is derived in earlier work: Banavar et al. (2002) explicitly worked through the 𝐷 = 1
+      case, and Volkov et al. (2022) applied it to forests, showing that trees competing along the vertical
+      height axis constitute an effectively one-dimensional system.
       Status: NOT REJECTED, no equivalence shown (a mean of three factors on different axes),
       not yet confirmed. Definitive testing requires measurements across a wider mass range on isolated
       hyphal systems, ideally using respirometry on individual Neurospora crassa or Aspergillus niger
       hyphae of varying length. Estimated time: 2 to 3 months.
-
 Prediction 2 (withdrawal recorded in version 3.13, 30 October 2026). Withdrawn. The published record
 refutes it.
     Before the version 3.13 manuscript, this paper predicted that the neural scaling exponent (of loss
@@ -1428,14 +1399,12 @@ data”.
 it was printed. It is withdrawn, not adjusted. The withdrawal does not decide the separate conditional
 transport model of Section 6. Its physical applicability requires the premises stated there.
 
-Prediction 3 (Prospective composition classification). The earlier criterion compares a family assigned
-before fitting with the later response. A classical theorem cannot be empirically contradicted while all of
-
-
-                                                     27
+                                                       27
                                The origin of scaling laws in recursive composition
 
 
+Prediction 3 (Prospective composition classification). The earlier criterion compares a family assigned
+before fitting with the later response. A classical theorem cannot be empirically contradicted while all of
 its exact premises hold. The scientific test is whether the independently assigned composition model
 and its measurement assumptions predict held-out observations. The classification rule, alternatives and
 uncertainty must be fixed before those observations are examined.
@@ -1483,8 +1452,6 @@ Mechanism:
       replication with response laundering is still required before the effect can be called confirmed. If
       the effect vanishes under blind scoring, the mechanism is prompt artefact rather than genuine ethical
       reasoning.
-
-
 
 
                                                          28
@@ -2206,7 +2173,7 @@ Jinkui Zhao. Universal growth scaling law determined by dimensionality, 2022. UR
 
 
                                                     42
-                              The origin of scaling laws in recursive composition
+                             The origin of scaling laws in recursive composition
 
 
 A     Version history and corrections
@@ -2215,7 +2182,18 @@ is made; retaining an earlier passage does not make its present correction part 
 records the changes in version 3.14. The subsequent history preserves what the earlier editions said,
 including their claims and the limits of their corrections.
 
-A.1    Version 3.15: revised 9 November 2026
+A.1    Version 3.16: revised 16 November 2026
+Version 3.16 gives the Introduction this paper’s own opening; the opening sentences that earlier versions
+shared with other papers are removed or replaced. No law, value, table, result or status changes. The
+first-page footnote’s author line takes the programme’s present form.
+
+The opening of the Introduction of version 3.15, as printed. I believe advanced AI is an existential
+risk unless values and correction are built into how it reasons; only proof will move the world. People
+should retain oversight, containment and shutdown for as long as they physically can. The research
+question here is one part of that programme: can information about how gains combine predict later
+scaling, before a larger system is built or relied on?
+
+A.2    Version 3.15: revised 9 November 2026
 Version 3.15 is dated 9 November 2026; version 3.14 is dated 1 November 2026, and the first-publication
 record is 22 February 2026. It is a correction edition. It reports no new data, registration, study run or
 empirical result, and no theorem, proof, prediction, kill condition or numerical check changes.
@@ -2235,94 +2213,91 @@ present title.
      The omitted and replaced wordings stand in version 3.14 and the earlier versions, each kept whole in
 this paper’s file history at its DOI.
 
-A.2    Version 3.14: revised 1 November 2026
+A.3    Version 3.14: revised 1 November 2026
 Version 3.14 is dated 1 November 2026. It reports no new data, registration, study run or empirical
 result. The earlier version remains intact. Its content is retained through the current argument, the
 source-measurement and companion records, the explicitly historical material and Appendix I, except
 three cosmological passages kept out for the reason Table 8 gives; superseded interpretations are not
 silently recast as earlier statements of the new conditional argument. The title now carries the paper’s
 established name beside its question.
+
+
+                                                     43
+                                The origin of scaling laws in recursive composition
+
+
     Several corrections below were already made in version 3.13: the restricted abstract, the distinction
 between metabolic scaling and capability against depth, the Friedmann boundary calculation, the
 withdrawal of mixed error aggregates, and the withdrawal of Prediction 2. The table below distinguishes
 those retained corrections from the further changes made in this revision.
-                                      Table 8. Corrections in version 3.14.
+                                         Table 8. Corrections in version 3.14.
 
- Subject                 Current correction and its scope                                               Current location
- Composition and its     The four chosen homomorphism problems now have explicit source and             Section 4
- domain                  target groups: the additive reals and the multiplicative positive reals. The
-                         logarithmic output is real-valued. Normalisation, constant cases and the
-                         rational-to-real proof are stated. This repairs the domain statement; the
-                         classification is not extended to all physical laws.
-
-
-
-                                                            43
-                               The origin of scaling laws in recursive composition
-
-
-Subject                   Current correction and its scope                                                  Current location
-
-Approximate and           The stability statement now gives a global logarithmic defect bound and a         Sections 2 and 4
-asymptotic composition    proof of the resulting multiplicative band around a power. Finite
-                          observations do not establish that global premise. A separate
-                          regular-variation result is credited to its established literature. The earlier
-                          withdrawal of dynamical-attractor language is retained, not dated anew.
-Transport exponent        The current result starts from the flow-accounting identity 𝐶 = 𝐵ℓ¯𝑞 .            Section 6
-                          Demand and mean path scaling give the conditional exponent 𝜇/(𝜇 + 𝜁);
-                          𝑑/(𝑑 + 1) follows only from the stated special choices. This replaces the
-                          unproved claim that dimension, space filling and conservation alone select
-                          the exponent.
-Inventory, mass and the   Flow-weighted transport cost, inventory in transit and body mass are              Sections 6 and 10
-bound                     distinct quantities. Speed and the mass bridge require their own premises.
-                          The geometric bound now states the demand-distance and scaling
-                          assumptions for its throughput-cost comparison. It is not a bound on every
-                          physical observable or on capability against recursive depth.
-Heart rate                The Fick oxygen balance makes metabolic, stroke-volume and                        Section 7
-                          oxygen-extraction assumptions explicit. The heart-rate exponent is their
-                          difference, not a consequence of dimension alone. Behavioural state and
-                          prefactors remain relevant. The earlier correction of unequal lifetime beat
-                          totals is preserved.
-Biological comparisons    Each fungal measurement keeps its own variable pair and uncertainty.              Sections 12 and 14
-                          Two biomass-related factors and a radial-extension-related factor no longer
-                          serve as a pooled validation of one metabolic slope. The disowned
-                          three-group comparison and mixed aggregates are retained as historical
-                          analyses, not current validation. Source-specific measurements and the
-                          competing metabolic evidence remain available.
-Cross-domain              An exact exponent, an algebraic reparametrisation, a measured slope and           Sections 6 and 12
-comparisons               an unsourced value retain different evidential roles. A shared fraction does
-                          not establish a transport mechanism. Earlier physics and biological
-                          catalogue rows are preserved with their sources and corrections; they do
-                          not supply a new aggregate accuracy or a universal validation claim.
-Cosmology                 Version 3.13 already corrected the boundary: 𝑤 = −1/3 gives linear                Section 9
-                          expansion, −1 < 𝑤 < −1/3 accelerating power laws, and 𝑤 = −1
-                          exponential expansion in the specified flat, single-fluid model. That
-                          correction remains. The photon-path and cosmic-web mechanisms and the
-                          dimensional cosmic ladder no longer stand as explanations of these
-                          homogeneous solutions. The mapped dimension is an algebraic
-                          coordinate.
-Recursive gain and        A fixed-rule quadratic recurrence separates iteration from sublinearity.          Sections 11 and 15
-phase claims              The assumed gain equation is given with its shifted solution, finite-depth
-                          elasticity, parameter domain and deformed composition operation. A
-                          superlinear power is not an exponential phase.
-                          Intelligence-as-phase-transition and universal complexity-phase claims
-                          remain historical interpretations rather than current conclusions.
-Correction axes and       Code distance, physical-qubit count and elapsed correction cycles are             Sections 11 and 15
-measured quantities       separated, as are per-cycle suppression and cumulative failure. The two
-                          2024 source dates remain. The current baseline 𝐼 is declared in the
-                          response units; the former universal entropy-reduction definition is
-                          retained historically. Landauer’s erasure bound is not an
-                          energy-to-capability conversion.
+ Subject                   Current correction and its scope                                                  Current location
+ Composition and its       The four chosen homomorphism problems now have explicit source and                Section 4
+ domain                    target groups: the additive reals and the multiplicative positive reals. The
+                           logarithmic output is real-valued. Normalisation, constant cases and the
+                           rational-to-real proof are stated. This repairs the domain statement; the
+                           classification is not extended to all physical laws.
+ Approximate and           The stability statement now gives a global logarithmic defect bound and a         Sections 2 and 4
+ asymptotic composition    proof of the resulting multiplicative band around a power. Finite
+                           observations do not establish that global premise. A separate
+                           regular-variation result is credited to its established literature. The earlier
+                           withdrawal of dynamical-attractor language is retained, not dated anew.
+ Transport exponent        The current result starts from the flow-accounting identity 𝐶 = 𝐵ℓ¯𝑞 .            Section 6
+                           Demand and mean path scaling give the conditional exponent 𝜇/(𝜇 + 𝜁);
+                           𝑑/(𝑑 + 1) follows only from the stated special choices. This replaces the
+                           unproved claim that dimension, space filling and conservation alone select
+                           the exponent.
+ Inventory, mass and the   Flow-weighted transport cost, inventory in transit and body mass are              Sections 6 and 10
+ bound                     distinct quantities. Speed and the mass bridge require their own premises.
+                           The geometric bound now states the demand-distance and scaling
+                           assumptions for its throughput-cost comparison. It is not a bound on every
+                           physical observable or on capability against recursive depth.
+ Heart rate                The Fick oxygen balance makes metabolic, stroke-volume and                        Section 7
+                           oxygen-extraction assumptions explicit. The heart-rate exponent is their
+                           difference, not a consequence of dimension alone. Behavioural state and
+                           prefactors remain relevant. The earlier correction of unequal lifetime beat
+                           totals is preserved.
+ Biological comparisons    Each fungal measurement keeps its own variable pair and uncertainty.              Sections 12 and 14
+                           Two biomass-related factors and a radial-extension-related factor no longer
+                           serve as a pooled validation of one metabolic slope. The disowned
+                           three-group comparison and mixed aggregates are retained as historical
+                           analyses, not current validation. Source-specific measurements and the
+                           competing metabolic evidence remain available.
+ Cross-domain              An exact exponent, an algebraic reparametrisation, a measured slope and           Sections 6 and 12
+ comparisons               an unsourced value retain different evidential roles. A shared fraction does
+                           not establish a transport mechanism. Earlier physics and biological
+                           catalogue rows are preserved with their sources and corrections; they do
+                           not supply a new aggregate accuracy or a universal validation claim.
+ Cosmology                 Version 3.13 already corrected the boundary: 𝑤 = −1/3 gives linear                Section 9
+                           expansion, −1 < 𝑤 < −1/3 accelerating power laws, and 𝑤 = −1
+                           exponential expansion in the specified flat, single-fluid model. That
+                           correction remains. The photon-path and cosmic-web mechanisms and the
+                           dimensional cosmic ladder no longer stand as explanations of these
+                           homogeneous solutions. The mapped dimension is an algebraic
+                           coordinate.
 
 
 
 
-                                                             44
+                                                              44
                                The origin of scaling laws in recursive composition
 
 
  Subject                  Current correction and its scope                                                Current location
 
+ Recursive gain and       A fixed-rule quadratic recurrence separates iteration from sublinearity.        Sections 11 and 15
+ phase claims             The assumed gain equation is given with its shifted solution, finite-depth
+                          elasticity, parameter domain and deformed composition operation. A
+                          superlinear power is not an exponential phase.
+                          Intelligence-as-phase-transition and universal complexity-phase claims
+                          remain historical interpretations rather than current conclusions.
+ Correction axes and      Code distance, physical-qubit count and elapsed correction cycles are           Sections 11 and 15
+ measured quantities      separated, as are per-cycle suppression and cumulative failure. The two
+                          2024 source dates remain. The current baseline 𝐼 is declared in the
+                          response units; the former universal entropy-reduction definition is
+                          retained historically. Landauer’s erasure bound is not an
+                          energy-to-capability conversion.
  Predictions and          The five prediction numbers and their dated record remain. Prediction 2         Sections 14 and 16
  programme results        was withdrawn in version 3.13; its source-based reasons remain current.
                           The other dispositions state the premises now required. The new transport
@@ -2364,6 +2339,10 @@ reports, the failed run, the earlier heartbeat illustration, the superseded pool
 the code provenance and all three predecessor figures that were preserved in source records. Each is
 labelled with its date and scope; no withdrawn inference is restored as a current finding.
 
+                                                             45
+                                The origin of scaling laws in recursive composition
+
+
 How to read the retained history below. The following record is carried forward from the version 3.13
 manuscript of 30 October 2026; version 3.13 was released with the edition date 31 October 2026 and
 the further changes listed above. Its wording is historical: “this version”, “now”, result grades, novelty
@@ -2372,17 +2351,10 @@ References inside that retained record use the section, equation, table, figure 
 printed in version 3.13, unless a passage itself names an earlier edition. The original reference numbers
 are fixed here so that a historical pointer cannot silently lead to a changed current equation or diagram. In
 particular, Figures 1, 2 and 3 below are figures of version 3.13, not current figures. Table 9 retains the
-
-
-
-                                                             45
-                                The origin of scaling laws in recursive composition
-
-
 mapping from version 3.12 to version 3.13; it is not a map into version 3.14. Current claims and status
 are given in the main text and Section 16.
 
-A.3     Version 3.13
+A.4     Version 3.13
 v3.13, 30 October 2026: Substantive. Prediction 2 is withdrawn: the published exponents of loss
 against parameters for language models, and the measured fall of the exponent as the data’s dimension
 rises, refute it. Section 14 now says so, gives the measurements and credits the earlier work on the
@@ -2416,20 +2388,21 @@ on authorship becomes the acknowledgement, unchanged.
       • The parallel exponents are given as the five result files record them, the two arms not matched for
         compute, and GPT-5.4’s starting accuracy as 53.7 per cent; the parallel finding is no longer called
         the most robust result (Section 12).
-      • No result from the analysis of 11 August 2026 is printed; the 19 of 25 is given under the classification
-        rule of March 2026 (Section 12 and Appendix D).
-      • Cost estimates are no longer printed (Section 14).
-      • The Eden Protocol’s loops are named by what they do, with the book’s names given once (Section 14).
-      • No form of “propose” is used for the author’s own work; the ARC Bound is named as the conjectured
-        value of Law III, the ARC Ceiling, a law under test; Paper II’s replication is named as it is titled;
-        Unit 82, registered on 27 October 2026, is named where the paper said the value two was on trial in
-        drafted registrations (Section 11).
+
 
 
                                                         46
                          The origin of scaling laws in recursive composition
 
 
+• No result from the analysis of 11 August 2026 is printed; the 19 of 25 is given under the classification
+  rule of March 2026 (Section 12 and Appendix D).
+• Cost estimates are no longer printed (Section 14).
+• The Eden Protocol’s loops are named by what they do, with the book’s names given once (Section 14).
+• No form of “propose” is used for the author’s own work; the ARC Bound is named as the conjectured
+  value of Law III, the ARC Ceiling, a law under test; Paper II’s replication is named as it is titled;
+  Unit 82, registered on 27 October 2026, is named where the paper said the value two was on trial in
+  drafted registrations (Section 11).
 • The physical and cosmological claims are set out at their true status: the bound is scoped to systems
   whose growth is carried through a space-filling hierarchical network, with the counterexamples
   conceded (Section 10); intelligence is no longer called the one exception to it, the difference being
@@ -2467,6 +2440,12 @@ on authorship becomes the acknowledgement, unchanged.
 • Section 12 no longer says that the framework predicts a sub-linear exponent of capability against
   depth, or that the models’ order in raw performance is consistent with the framework: the paper
   predicts no value for that exponent.
+
+
+                                                 47
+                         The origin of scaling laws in recursive composition
+
+
 • Thommen et al. (2019) are reported in their own terms: they find Kleiber’s three-quarter scaling
   in a planarian and trace it to energy storage, where the paper had said that planarians scale as
   surface-area theory predicts (Sections 6 and 12).
@@ -2475,12 +2454,6 @@ on authorship becomes the acknowledgement, unchanged.
 • The fungal 𝑡 tests no longer reject the 𝑑 = 2 value: they set aside each factor’s own standard error,
   and each factor’s own interval includes 23 (Sections 12 and 14).
 • The two brittle-fragmentation rows, printed with measured values of 0.670 and 0.750 and no source,
-
-
-                                                 47
-                         The origin of scaling laws in recursive composition
-
-
   now read not yet sourced; Figure 2 no longer draws them, and the introduction no longer states their
   exponents (Sections 1, 6, 9 and 16).
 • The tables of the chain reaction and of quantum error correction no longer print ‘ARC Prediction’
@@ -2518,20 +2491,20 @@ on authorship becomes the acknowledgement, unchanged.
   rather than instances of them, and the conclusion says that the universe can be described with three
   composition operators, where it said that it builds itself from them (Sections 15 and 18).
 • Credits are stated as the works state them: Cauchy’s theorem for continuous functions, the
-  measurable and bounded forms being later results; Hyers (1941) for the additive equation, at a
-  question of Ulam’s; Shannon (1948) for the entropy of an information source; Kleiber for the 0.74
-  power over thirteen groups of animals; Fahrenheit (1724) for a reproducible temperature scale,
-  not for temperature; and Einstein (1915) now has a reference entry (Sections 4, 9 and 15, and
-  Appendix E).
-• The account of convergence, and the exponent’s independence of selection, are stated as conditional
-  on the sufficiency of the three conditions, which this paper has not proved (Sections 2, 12 and 15).
-• Related work adds the standard result that invariance under rescaling forces a power law (Newman
 
 
                                                  48
                               The origin of scaling laws in recursive composition
 
 
+        measurable and bounded forms being later results; Hyers (1941) for the additive equation, at a
+        question of Ulam’s; Shannon (1948) for the entropy of an information source; Kleiber for the 0.74
+        power over thirteen groups of animals; Fahrenheit (1724) for a reproducible temperature scale,
+        not for temperature; and Einstein (1915) now has a reference entry (Sections 4, 9 and 15, and
+        Appendix E).
+      • The account of convergence, and the exponent’s independence of selection, are stated as conditional
+        on the sufficiency of the three conditions, which this paper has not proved (Sections 2, 12 and 15).
+      • Related work adds the standard result that invariance under rescaling forces a power law (Newman
         2005) and the critiques of West, Brown and Enquist’s derivation (Dodds et al. 2001; Kozłowski
         and Konarzewski 2004; Savage et al. 2008), and says what He and Zhang (2004) and Maino et al.
         (2014) derive (Section 2).
@@ -2559,7 +2532,7 @@ on authorship becomes the acknowledgement, unchanged.
         and the withdrawn box of Section 8 and the closing line of version 3.12 to Appendix A.2; and the
         Code and data paragraph says what the published suite re-runs and links the commit it names.
 
-A.4     Earlier corrections and notes
+A.5     Earlier corrections and notes
 Correction note, 30 October 2026. Section 14 printed Prediction 2 as: “The neural scaling law
 exponent (loss vs parameters in machine learning) should equal 𝑑/(𝑑 + 1) where 𝑑 is the intrinsic
 dimension of the training data manifold.” Level 6 of Section 12 called it untested; the published record
@@ -2570,6 +2543,11 @@ The earlier work on this exponent and the dimension of the data manifold is cred
 stood, and Kaplan et al. (2020), listed until now without a citation, is cited there. No other result of this
 paper changes with it, and nothing already withdrawn is restored.
 
+
+                                                      49
+                             The origin of scaling laws in recursive composition
+
+
 The abstract of version 3.12, as printed. Scope correction, 22 August 2026. An earlier version of
 this abstract opened by asserting that every scaling law in nature follows one of exactly three mathematical
 forms, and that this paper proves the form is uniquely determined. Both statements were stronger
@@ -2578,11 +2556,6 @@ corrected statement follows. Where a recursive amplification process has a well 
 operator on its input and output, and satisfies the regularity conditions Cauchy’s functional equations
 require, the admissible functional forms are constrained to a small named family. That is a conditional
 mathematical classification, not a survey of nature: it does not establish that every empirical scaling
-
-                                                      49
-                             The origin of scaling laws in recursive composition
-
-
 process is such a homomorphism, and the bounded family’s exhaustiveness remains an open problem, as
 Paper VII states. The grid is four-celled rather than three, the fourth cell being the logarithmic family.
 This paper’s own scope condition, stated below and unchanged, is that the relation applies wherever a
@@ -2622,6 +2595,12 @@ logarithmic one, and says in terms that it does not exhaust scaling laws, becaus
 homomorphisms of either structure. Saturation is among the behaviours it does not cover: it arises from
 bounded dynamics (finite carrying capacity, mass action, receptor occupancy, depletion), and Section 3
 records that presenting it as a Cauchy family is a category error. Raising the count from three to four
+
+
+                                                     50
+                             The origin of scaling laws in recursive composition
+
+
 would not repair this paragraph, because the defect lies in the range of its quantifiers, which run over
 all scaling processes while the result runs over homomorphisms under regularity; the repair reaches the
 quantifier and the domain, not the numeral. Unchanged: the four-cell classification, which is a genuine
@@ -2629,14 +2608,6 @@ completeness statement about homomorphisms; the abstract’s dated scope correct
 follows rather than softens; the placement of saturation in bounded dynamics; this section’s own opening
 paragraph, which already states the classification conditionally, as a classification of admissible functions
 under those conditions and not a survey of nature, and which the anchored sentence contradicts; and
-
-
-
-
-                                                     50
-                              The origin of scaling laws in recursive composition
-
-
 Section 15’s own later statement that bounded growth is a separate, capped case rather than a solution of
 those equations, which is already right and is the form this note follows.
 
@@ -2677,6 +2648,12 @@ rather than a second derivation arriving at the same place by its own route: two
 each reaches its conclusion without recourse to the other, and here one quantity is rewritten as the other.
 The correspondence may still carry content, and this note does not say it does not; what it says is that the
 content has to come from something the map does not supply, either an argument that the two parameters
+
+
+                                                     51
+                              The origin of scaling laws in recursive composition
+
+
 measure the same physical quantity, or a prediction that survives the change of variables and is then
 checked against data not used to fix the map. The same review finds that the seventh entry above, on the
 space of classical laws, carries in this list the cardinality and scope claim that the note at the consequence
@@ -2684,12 +2661,6 @@ for physics in Section 15 addresses, and that note governs this entry too: a fam
 a continuously varying coefficient and a continuously varying exponent is not a finite set, so what is
 defensible is that the admissible forms are finitely many and the family they generate is finite-dimensional;
 and the step from the classification of homomorphisms under regularity to all possible classical physical
-
-
-                                                      51
-                              The origin of scaling laws in recursive composition
-
-
 laws is the step this paper’s abstract withdrew on 22 August 2026, because it requires that every physical
 law be such a homomorphism, which Section 3 says is not generally so. The count of forms is not what is
 at issue in either place: the repair reaches the quantifier and the domain, not the numeral. Prior art is
@@ -2730,6 +2701,12 @@ with two real parameters is ordinarily described as a two-parameter family of ea
 ‘three-parameter’ counts the discrete label alongside the two continuous parameters, which is a naming
 choice rather than an error and is recorded only because it sits in the sentence under repair. The second
 overstatement is scope, and it is the one the note in Section 2 records. What is provable, and provable
+
+
+                                                      52
+                              The origin of scaling laws in recursive composition
+
+
 without data, is the classification of homomorphisms under regularity: where the composition operator
 carries one of the two structures on the positive reals into one of the two structures and the regularity
 conditions hold, the admissible functional forms are constrained to a small named family, four-celled as
@@ -2737,12 +2714,6 @@ Section 3 states, with saturation lying outside it as a bounded case. The step f
 possible classical physical laws is the step the abstract withdrew on 22 August 2026, because it requires
 that every physical law be such a homomorphism, which this paper does not establish and which Section
 3 says is not generally so. Unchanged: the genuine content of the box, that the admissible functional
-
-
-                                                      52
-                              The origin of scaling laws in recursive composition
-
-
 forms are constrained to a small named family under the stated conditions, which is the abstract’s own
 corrected statement and survives this note entire; and the observation that the constraint follows from
 Cauchy’s classification rather than from measurement.
@@ -2783,6 +2754,12 @@ and gives the status of the two laws added since. The section on dated predictio
 of registration as read on 3 and 4 October 2026. Level 3 of Section 11 said of the replication of the
 fifty-domain comparison that its registration was in preparation and not yet approved; it is preregistered
 by timestamp (units 55 and 56, first anchored on 12 August 2026) and not yet registered on OSF, and
+
+
+                                                      53
+                              The origin of scaling laws in recursive composition
+
+
 the sentence now says so. Two passages gave Zhao’s 2022 derivation as from network optimisation; his
 paper derives the form from producer-consumer dynamics, and both now say so. Section 14 listed a
 classical ternary prototype among the strongest next measurements for Eden, to test whether explicit
@@ -2790,12 +2767,6 @@ AFFIRM / DENY / INVESTIGATE routing reduces false certainty on ambiguous cases. 
 names a behavioural test of that question, which a software model of the three-state gate, whose 48 tests
 pass, does not answer. On 4 October 2026 five further passages were corrected. Section 12 headed a
 list of nine entries ‘No previous work has’. Its first entry said that no previous work had derived 12 , 23
-
-
-                                                      53
-                              The origin of scaling laws in recursive composition
-
-
 and 34 from the same formula, and that the model of West, Brown and Enquist (1997) predicts only 34 ,
 not 23 for two-dimensional networks or 12 for one-dimensional ones. The 1997 paper itself notes that its
 result generalises to 𝐷/(𝐷 + 1), and later papers cited in that section state the general form and all three
@@ -2836,6 +2807,12 @@ energy among the systems the formula connects, and the table of Section 13 still
 𝑑 = 2; both are to be read as Section 5 states the case, and neither is a confirmation. The abstract’s ‘per
 section 13’, and Section 5’s ‘(section 13)’ and ‘per section 18’, do not lead, in this paper, to the material
 they name: Section 13 is The Equations, the paper has fifteen numbered sections, and the deletion of the
+
+
+                                                      54
+                              The origin of scaling laws in recursive composition
+
+
 earthquake row is set out in Section 5. In Section 11, the rows of the results table that differ from Table 6b
 of Paper II stand as the results this paper recorded, and Paper II’s later table gives other values for them.
 Unchanged: every passage named here, every result, and every withdrawal already recorded.
@@ -2843,16 +2820,10 @@ Unchanged: every passage named here, every result, and every withdrawal already 
 The closing line of version 3.12, as printed (end of Section 15 of version 3.12). “The universe built a
 cage from geometry. It built a key from recursion. And it left us the mathematics to understand both.”
 It leaves the conclusion in this version because it reads as intelligence escaping the geometric bound, a
-
-
-                                                      54
-                              The origin of scaling laws in recursive composition
-
-
 reading this version withdraws: the bound and the exponent of capability against recursive depth concern
 different pairs of variables (Section 11).
 
-A.5    Version history
+A.6    Version history
 v3.12, 10 October 2026: Editorial. The heading of section 9, the label of its summary box and the
 heading of Level 5 now read The Geometric Bound; no sentence of the text and no mathematics is
 changed.
@@ -2888,6 +2859,12 @@ v3.8, 4 October 2026: Substantive. The theory gained two laws on 24 September 20
 now says where it stands against the five: a dated note beneath the Eden Protocol material in Section 14
 places Prediction 5 and the pilot it reports against Laws IV and V, and Section 5 now names Laws I to III
 where it named the three ARC Laws, with the status of Laws IV and V. Both passages link to the report
+
+
+                                                      55
+                              The origin of scaling laws in recursive composition
+
+
 that sets out the mathematics of the two laws. Section 10’s equation caption and Section 11’s results table,
 interpretation, selection disclosure, combined finding and status table printed a figure of Paper II’s row
 for Gemini 3 Flash apart from the rest of that row, and the table and the selection disclosure gave the
@@ -2895,12 +2872,6 @@ regression exponent the bootstrap interval that belongs to the endpoint exponent
 row whole, as one model’s fit and inconclusive, except the combined finding, which now prints no figure
 and points to the row, and the selection disclosure, which points to the row as the interpretation quotes it;
 the status table marks Paper II published rather than confirmed. The status table also marks Paper IV.a
-
-
-                                                      55
-                              The origin of scaling laws in recursive composition
-
-
 supported rather than confirmed and gives its reversal under blinding as Paper IV.a records it, where it said
 that scorer bias was eliminated; in its rows for the Eden Protocol pilot and Paper V, stakeholder care is
 said to be supported under scoring that was not blind, where it was said to be validated. Section 11 called
@@ -2943,18 +2914,15 @@ preparation, and Zhao’s 2022 derivation is given as from producer-consumer dyn
 it. No registered law, prediction, kill condition or dependency changes; no result is added; no date of any
 claim moves.
 
+                                                      56
+                                The origin of scaling laws in recursive composition
+
+
 v3.7, 21 September 2026: Substantive. Six dated notes are added, each beneath the passage it governs,
 the Section 12 note following the list that carries the two entries it names, recording an owner review
 dated 19 September 2026. Two scope notes, in Section 2 and Section 15, record that two passages restate
 in the body the universal claim this paper’s abstract withdrew on 22 August 2026, and that saturation
 is counted inside a classification Section 3 places outside it. A joint cardinality and scope note at the
-
-
-
-                                                      56
-                                The origin of scaling laws in recursive composition
-
-
 consequence for physics records that a family carrying a continuously varying coefficient and exponent is
 not a finite set, so what is defensible is that the admissible forms are finitely many and the family they
 generate is finite-dimensional; the same note governs the entry in the Section 12 list that carries the same
@@ -2969,7 +2937,7 @@ page move with this revision. First published 22 February 2026, unchanged.
 v3.6: The provenance note at the end has been corrected for accuracy. No claim, date, result or status
 has changed.
 
-A.6    Where the earlier layout now stands
+A.7    Where the earlier layout now stands
 
                                    Table 9. Where the earlier layout now stands.
 
@@ -2995,11 +2963,7 @@ How to read this paper                              Appendix A.2 (kept); its poi
 6. The Heartbeat                                    Section 7
 7. The Connection to 𝐸 = 𝑚𝑐2                        Section 8, now headed The fission chain reaction; the note on
                                                     its withdrawn box in Appendix A.2
-8. The Cosmic Connection                            Section 9; the note on the passage corrected on 11 August
-                                                    2026 in Appendix A.2
-9. The Geometric Bound                              Section 10
-10. The Escape                                      Section 11
-11. The Evidence                                    Section 12; its figure redrawn as Figure 3
+
 
 
                                                         57
@@ -3008,6 +2972,11 @@ How to read this paper                              Appendix A.2 (kept); its poi
 
 Version 3.12                                      Version 3.13
 
+8. The Cosmic Connection                          Section 9; the note on the passage corrected on 11 August
+                                                  2026 in Appendix A.2
+9. The Geometric Bound                            Section 10
+10. The Escape                                    Section 11
+11. The Evidence                                  Section 12; its figure redrawn as Figure 3
 12. What Is New                                   Section 2; its correspondence note of 19 September 2026 in
                                                   Appendix A.2; its analogy box in Appendix E; its closing
                                                   slogan in Appendix D.4
@@ -3045,13 +3014,19 @@ first-publication date. The table identifies that basis as a date written inside
 identifies the server-dated OSF component and first stored PDF revision in March. The working-paper
 header of the 3.x editions printed 16 August 2026 beside the version, later followed by “revised 10 October
 2026”. The record does not establish what the August line marks. It is retained as that header’s wording,
+
+
+                                                      58
+                            The origin of scaling laws in recursive composition
+
+
 not substituted for the February record or reclassified as a newly verified first-publication date. This
 revision assigns neither a new first-publication date nor a stronger timestamp class.
 
 
 
 
-                                                      58
+                                                    59
                                   The origin of scaling laws in recursive composition
 
 
@@ -3105,7 +3080,7 @@ separately dated note after it is also preserved as a record of the later update
         registry submission, and that submission click remains outstanding across the programme;
         “preregistered in substance” is used, always with its qualifier and always beside its attestation
 
-                                                               59
+                                                               60
                                The origin of scaling laws in recursive composition
 
 
@@ -3157,7 +3132,7 @@ distinct; historical symbols remain in explicitly dated quotations only.
 
 
 
-                                                       60
+                                                       61
                             The origin of scaling laws in recursive composition
 
 
@@ -3208,7 +3183,7 @@ preregistered by timestamp; registered A design fixed before data with its times
 
 
 
-                                                      61
+                                                      62
                               The origin of scaling laws in recursive composition
 
 
@@ -3258,12 +3233,12 @@ record; none is silently upgraded to a discovery of the narrower statements firs
 
 
 
-                                                      62
+                                                      63
                                 The origin of scaling laws in recursive composition
 
 
 full differential of this paper against every prior document of the programme is at Eden Vision, section
-II.A.8; the reading note of version 3.12 is kept in Appendix A.4.
+II.A.8; the reading note of version 3.12 is kept in Appendix A.5.
 
 
 E    The contribution beside the closest earlier work
@@ -3315,7 +3290,7 @@ discovery here.
 
 
 
-                                                           63
+                                                           64
                                  The origin of scaling laws in recursive composition
 
 
@@ -3371,7 +3346,7 @@ Reptiles                0.76; 0.80               Standard metabolic rate against
 
 
 
-                                                            64
+                                                            65
                                The origin of scaling laws in recursive composition
 
 
@@ -3424,7 +3399,7 @@ already recorded in version 3.13. These summaries are not silently repaired or u
 
 
 
-                                                       65
+                                                       66
                               The origin of scaling laws in recursive composition
 
 
@@ -3478,7 +3453,7 @@ be identified before an empirical comparison is made.
 
 
 
-                                                              66
+                                                              67
                               The origin of scaling laws in recursive composition
 
 
@@ -3508,7 +3483,7 @@ Earthquake catalogue range       The earlier 𝑏 range of approximately 0.8 to 
 
 
 
-                                                      67
+                                                      68
                               The origin of scaling laws in recursive composition
 
 
@@ -3561,7 +3536,7 @@ arithmetic are kept as the earlier comparison; the current Fick balance requires
 state and prefactor assumptions (Section 7). The lifetime-total correction is retained.
 
 
-                                                        68
+                                                        69
                                 The origin of scaling laws in recursive composition
 
 
@@ -3620,7 +3595,7 @@ outperforms all single-value alternatives (Kleiber 0.750, surface area 0.667, gr
 lower than Kleiber) and AIC. The single formula that generates all three exponent values is the earlier derivations’
 
 
-                                                          69
+                                                          70
                                 The origin of scaling laws in recursive composition
 
 
@@ -3675,7 +3650,7 @@ of this revision. The dated status statements below belong to version 3.13.
 
 
 
-                                                          70
+                                                          71
                                    The origin of scaling laws in recursive composition
 
 
@@ -3714,7 +3689,7 @@ least squares (0.80 by reduced major axis). Published exponents depend on the da
 
 
 
-                                                               71
+                                                               72
                                  The origin of scaling laws in recursive composition
 
 
@@ -3770,7 +3745,7 @@ It is a finding, not a law.
 
 
 
-                                                           72
+                                                           73
                                 The origin of scaling laws in recursive composition
 
 
@@ -3826,7 +3801,7 @@ current result requires the transport assumptions of Sections 6 and 10.
 
 
 
-                                                         73
+                                                         74
                                The origin of scaling laws in recursive composition
 
 
@@ -3881,7 +3856,7 @@ operator fixes the family its law can take (Theorem 1).
 
 
 
-                                                         74
+                                                         75
                                  The origin of scaling laws in recursive composition
 
 
@@ -3938,7 +3913,7 @@ mechanism produces that specific number. Given those conditions, the mechanism c
 other.
 
 
-                                                           75
+                                                           76
                                 The origin of scaling laws in recursive composition
 
 
@@ -3997,7 +3972,7 @@ years (the radiation era, Table 6) to billions of years, through nucleosynthesis
 
 
 
-                                                         76
+                                                         77
                                  The origin of scaling laws in recursive composition
 
 
@@ -4056,7 +4031,7 @@ could understand the phase diagram it was on.
 
 
 
-                                                         77
+                                                         78
                                 The origin of scaling laws in recursive composition
 
 
@@ -4117,7 +4092,7 @@ validation of the new conditional transport protocol, and was not run for this r
 
 
 
-                                                         78
+                                                         79
                                 The origin of scaling laws in recursive composition
 
 
@@ -4135,7 +4110,7 @@ its earlier versions are deposited at doi.org/10.17605/OSF.IO/XZY9U.
 
 
 
-                                                         79
+                                                         80
                                                        The origin of scaling laws in recursive composition
 
 
@@ -4190,7 +4165,7 @@ Paper VII and Paper IX, section 7.
 
 
 
-                                                                                   80
+                                                                                   81
                                 The origin of scaling laws in recursive composition
 
 
@@ -4243,7 +4218,7 @@ era, an identity) is not shown.
 
 
 
-                                                         81
+                                                         82
                                          The origin of scaling laws in recursive composition
 
 
@@ -4288,7 +4263,7 @@ and no measured point is drawn there.
 
 
 
-                                                                 82
+                                                                 83
                                 The origin of scaling laws in recursive composition
 
 
@@ -4343,7 +4318,7 @@ questions matched fractions across fields; Section 1 now starts from a predictio
 
 
 
-                                                          83
+                                                          84
                                  The origin of scaling laws in recursive composition
 
 
@@ -4402,7 +4377,7 @@ grades the evidence, Section 13 gathers the equations, Section 14 states the pre
 
 
 
-                                                           84
+                                                           85
                                    The origin of scaling laws in recursive composition
 
 
@@ -4461,7 +4436,7 @@ against the earlier work, the paper’s claims are that it has:
 
 
 
-                                                             85
+                                                             86
                             The origin of scaling laws in recursive composition
 
 
@@ -4519,7 +4494,7 @@ against the earlier work, the paper’s claims are that it has:
    critical boundary at 𝑑 → ∞. [. . . ]
 
 
-                                                      86
+                                                      87
                                  The origin of scaling laws in recursive composition
 
 
@@ -4577,7 +4552,7 @@ correction of 22 August 2026 states, and Section 4 sets out the grid’s four ce
     The question is: what determines which pattern a system follows?
 
 
-                                                            87
+                                                            88
                                The origin of scaling laws in recursive composition
 
 
@@ -4634,7 +4609,7 @@ bounded dynamics (finite carrying capacity, mass action, receptor occupancy, dep
 and any presentation of it as one is a category error. The earlier framing of this result as a physics-style no-go
 
 
-                                                         88
+                                                         89
                                 The origin of scaling laws in recursive composition
 
 
@@ -4690,7 +4665,7 @@ Superseded statement. Version 3.13 tied a step that multiplies to a power law an
 exponential; Section 5 shows that both the input and the output operation must be named, since a state
 
 
-                                                          89
+                                                          90
                                  The origin of scaling laws in recursive composition
 
 
@@ -4748,7 +4723,7 @@ integument) are limited by surface area geometry rather than internal transport 
 
 
 
-                                                           90
+                                                           91
                                 The origin of scaling laws in recursive composition
 
 
@@ -4810,7 +4785,7 @@ aggregate is retracted, not adjusted: with the KPZ 1D and 2D percolation rows re
 
 
 
-                                                          91
+                                                          92
                                  The origin of scaling laws in recursive composition
 
 
@@ -4868,7 +4843,7 @@ split another atom. Each generation multiplies the number of fission events by a
 
 
 
-                                                          92
+                                                          93
                                 The origin of scaling laws in recursive composition
 
 
@@ -4925,7 +4900,7 @@ circuits deepen. Left uncorrected, this is Pattern 2, and it makes useful quantu
 roughly the inverse of the error rate per operation.
 
 
-                                                         93
+                                                         94
                                  The origin of scaling laws in recursive composition
 
 
@@ -4984,7 +4959,7 @@ P20), and Unit 82, registered on OSF on 27 October 2026 and not yet run (DOI 10.
 premise beneath the value two (P17). The law owns the ground; the ceiling stands on it. The form is settled; its
 
 
-                                                           94
+                                                           95
                                 The origin of scaling laws in recursive composition
 
 
@@ -5042,7 +5017,7 @@ has a genuinely two-dimensional hierarchical transport network, so the 𝑑 = 2 
 data show near-isometric scaling for jellyfish and colonial bryozoans (Purcell 2009; Hartikainen et al. 2014;
 
 
-                                                         95
+                                                         96
                                 The origin of scaling laws in recursive composition
 
 
@@ -5102,7 +5077,7 @@ unsourced.
 
 
 
-                                                          96
+                                                          97
                                The origin of scaling laws in recursive composition
 
 
@@ -5150,7 +5125,7 @@ Embedded Values)      argues that the core alignment impossibility is practicall
 
 
 
-                                                        97
+                                                        98
                                 The origin of scaling laws in recursive composition
 
 
@@ -5207,7 +5182,7 @@ space-filling hierarchical network (Section 10).
 
 
 
-                                                          98
+                                                          99
                                 The origin of scaling laws in recursive composition
 
 
@@ -5266,7 +5241,7 @@ measured; the registered programme exists to measure it.
 
 
 
-                                                         99
+                                                        100
                                The origin of scaling laws in recursive composition
 
 
@@ -5318,7 +5293,7 @@ Symbol                    Meaning                                               
 
 
 
-                                                        100
+                                                        101
                                 The origin of scaling laws in recursive composition
 
 
@@ -5369,7 +5344,7 @@ preregistered by timestamp; registered a design fixed and timestamped before its
 
 
 
-                                                         101
+                                                         102
                                     The origin of scaling laws in recursive composition
 
 
@@ -5425,5 +5400,5 @@ settle it at law level (Section 11 and Section 16) is not yet run.
 
 
 
-                                                               102
+                                                               103
 
