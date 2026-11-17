@@ -1,172 +1,74 @@
-Title: When can correction keep pace with recursive self-acceleration?
+Title: The Self-Acceleration Exponent: when can correction keep pace?
 Author: Michael Darius Eastwood
 Publication date: 2026-08-16
-Version: v1.12
-Revised: 2026-11-01
+Version: v1.13
+Revised: 2026-11-16
 OSF DOI: 10.17605/OSF.IO/HT8WU
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-xiii-self-acceleration-exponent.html
 Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
 
-               When can correction keep pace with recursive
-                           self-acceleration?
-                                      Theory · Theory paper · Paper XIII
-   Recursive Dynamics · The ARC Theory · Laws I and II, the ARC Principle and the ARC
-                             Co-Scaling Law, both under test
+                             The Self-Acceleration Exponent:
+                             when can correction keep pace?
+                                                Theory · Paper XIII
+    Recursive Dynamics · The ARC Theory · Laws I and II, the ARC Principle and the ARC
+                              Co-Scaling Law, both under test
 
                                             Michael Darius Eastwood
                               Independent Researcher, London, United Kingdom
                       ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
 
 
-
                                                         Abstract
-            I believe advanced AI is an existential risk unless values and correction are built into how it
-       reasons; only proof will move the world. This paper joins two programme models by resolving their
-       notation and specifying a clock. On a fixed substrate, capability 𝐶 grows with recursive depth with
-       exponent 𝛼 = 1/(1 − 𝛽 𝐿 ), while cycle duration scales as Δ𝑡 ∝ 𝐶 − 𝛿 . Their continuous-time growth
-       exponent is exactly 𝑘 = 𝛿 − 1/𝛼. The boundary 𝛿 = 1/𝛼 separates power-law from super-exponential
-       growth, with exponential growth at equality. In the gain-drift correction model, with positive drift and
-       no level or compounding drift, the relative misalignment 𝐷/𝐶 tends to zero exactly when 𝛽 𝑋 > 𝑘.
-       Absolute misalignment can still grow; neither quantity is a validated measure of harm. If correction
-       and capability accumulate as aligned or asymptotic powers of one depth, 𝛽 𝑋 = (1 − 𝛽 𝐿 )/(1 − 𝛽′𝐿 ).
-       The model’s hard-takeoff window with vanishing relative misalignment is 1/𝛼 < 𝛿 < 1/𝛼 + 𝛽 𝑋 , of
-       width 𝛽 𝑋 . A bound of one on that width additionally requires the unproved ceiling 𝛽′𝐿 ≤ 𝛽 𝐿 . A
-       constant throughput multiplier leaves the strict exponent criterion unchanged; an additive latency
-       can change the growth regime. No paired measurement establishes these exponents here: Paper II’s
-       reported error-decay estimates do not identify capability growth. Estimating 𝛿 requires an admissible
-       loop, paired cycle times, an identified capability scale and a validated evaluation protocol. Frozen
-       weights do not determine its sign. Finite observations can test a specified empirical model, but a
-       falling error fraction alone cannot refute an asymptotic boundary. The governor discussion applies
-       the exponent comparison, as a conditional model, to a corrector whose strength can change with the
-       system it governs.
+            When a system’s improvement cycles shorten as it grows more capable, can correction still keep
+       pace? This paper joins two programme models by resolving their notation and specifying a clock. On
+       a fixed substrate, capability 𝐶 grows with recursive depth with exponent 𝛼 = 1/(1 − 𝛽 𝐿 ), while cycle
+       duration scales as Δ𝑡 ∝ 𝐶 − 𝛿 . Their continuous-time growth exponent is exactly 𝑘 = 𝛿 − 1/𝛼. The
+       boundary 𝛿 = 1/𝛼 separates power-law from super-exponential growth, with exponential growth at
+       equality. In the gain-drift correction model, with positive drift and no level or compounding drift,
+       the relative misalignment 𝐷/𝐶 tends to zero exactly when 𝛽 𝑋 > 𝑘. Absolute misalignment can still
+       grow; neither quantity is a validated measure of harm. If correction and capability accumulate as
+       aligned or asymptotic powers of one depth, 𝛽 𝑋 = (1 − 𝛽 𝐿 )/(1 − 𝛽′𝐿 ). The model’s hard-takeoff
+       window with vanishing relative misalignment is 1/𝛼 < 𝛿 < 1/𝛼 + 𝛽 𝑋 , of width 𝛽 𝑋 . A bound of one
+       on that width additionally requires the unproved ceiling 𝛽′𝐿 ≤ 𝛽 𝐿 . A constant throughput multiplier
+       leaves the strict exponent criterion unchanged; an additive latency can change the growth regime. No
+       paired measurement establishes these exponents here: Paper II’s reported error-decay estimates do not
+       identify capability growth. Estimating 𝛿 requires an admissible loop, paired cycle times, an identified
+       capability scale and a validated evaluation protocol. Frozen weights do not determine its sign. Finite
+       observations can test a specified empirical model, but a falling error fraction alone cannot refute an
+       asymptotic boundary. The governor discussion applies the exponent comparison, as a conditional
+       model, to a corrector whose strength can change with the system it governs.
 
-Version 1.12 gives the record of version 1.11 as one entry, with each changed passage of version 1.10 under its
-present place, and replaces wording about the paper’s own preparation with plain statements; Appendix A records
-every version and correction.
-
+Version 1.13 gives the abstract and the Introduction this paper’s own opening; the opening sentences that earlier
+versions shared with other papers are removed or replaced. No law, value, table, result or status changes. Appendix A
+records every version and correction.
 
 
-
-      Paper XIII of the ARC Theory, within Recursive Dynamics: the bridge between Law I’s growth and Law II’s correction
+1    Introduction
+A laboratory running a recursive improvement loop faces a concrete question: does effective correction
+strengthen fast enough as the loop becomes more capable and its cycles shorten? The question matters
+     Paper XIII of the ARC Theory, within Recursive Dynamics: the bridge between Law I’s growth and Law II’s correction
 criterion, each a law under test. It derives, in the two model frameworks that state them, the relation between the scaling
 exponent of Law I, the ARC Principle, and the criterion of Law II, the ARC Co-Scaling Law, and resolves the two notation
 collisions between the frameworks it joins; it bears on Law V, the ARC Embedding Law, and on the Eden Protocol’s case
 for correction built into the objective, by argument within its model, testing neither and deciding none of P15, P12 and
 P21 (Laws IV and V were registered as laws on 15 October 2026 in version 1.103 of the theory registration; Section 14
-gives every law’s status). Working paper, version 1.12, 1 November 2026; first published 16 August 2026; Appendix A
-lists every version and correction. Recorded on OSF as Paper XIII · The ARC Theory · Laws I and II, the ARC Principle
-and the ARC Co-Scaling Law · The Self-Acceleration Exponent: a Measurable Threshold Joining Growth to Correctability,
-DOI 10.17605/OSF.IO/HT8WU. About the author, founder of Recursive Dynamics, without an institution or a doctorate:
-michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his book, Infinite Architects (first edition, 2 January
-2026): osf.io/dqm3e. Licence: CC BY 4.0.
+gives every law’s status). Working paper, version 1.13, 16 November 2026; first published 16 August 2026; Appendix A
+lists every version and correction. DOI 10.17605/OSF.IO/HT8WU. About the author, founder of Recursive Dynamics:
+michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his book, Infinite Architects: osf.io/dqm3e. Licence:
+CC BY 4.0.
 
 
                                                             1
-                                      The self-acceleration exponent
-
-
-Contents
-1   Introduction                                                                                         4
-
-2   Related work, and what is not claimed                                                                 5
-    2.1 What is not claimed as new . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      5
-    2.2 The rival instrument . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    6
-    2.3 Antecedents and near-misses . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       6
-
-3 The pipes premise, at fixed throughput                                                                  7
-
-4 Two notations, and two collisions                                                                       8
-  4.1 Four further terminology collisions from the wider programme (not yet adopted) . . . .              9
-
-5 The clock relation                                                                                      9
-
-6 The correction exponent is a ratio of leverage complements                                             10
-  6.1 Not an assumption: a scope condition, and the reason matters . . . . . . . . . . . . . . .         10
-  6.2 The corrector taxonomy: a decision tree over what 𝐴 may depend on . . . . . . . . . . .            10
-  6.3 Result 2a: constant strength and relative misalignment . . . . . . . . . . . . . . . . . .         11
-  6.4 Fixed rules do not determine effective scaling . . . . . . . . . . . . . . . . . . . . . . .       11
-  6.5 The scope condition, stated so it cannot be mis-refuted . . . . . . . . . . . . . . . . . .        12
-
-7 The self-acceleration exponent                                                                         12
-  7.1 Negative leverage as a conditional mathematical extension . . . . . . . . . . . . . . . .          13
-  7.2 What the measurement is a measurement of . . . . . . . . . . . . . . . . . . . . . . . .           14
-  7.3 The estimates, their precision and a labelled hypothetical transformation . . . . . . . . .        14
-  7.4 Two distinct thresholds, with no required ordering . . . . . . . . . . . . . . . . . . . . .       15
-
-8 The two boundaries, and the gap between them                                                        16
-  8.1 Result 7: a conditional bound on the gap . . . . . . . . . . . . . . . . . . . . . . . . . . 16
-  8.2 The identity’s status: PREREGISTERED BY TIMESTAMP FOR TESTING, not an
-       established fact . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
-
-9 What decides the outcome is a ratio, not a level                                                 18
-  9.1 Result 8: throughput multipliers and self-acceleration caps . . . . . . . . . . . . . . . . 18
-  9.2 Verification overhead and a conditional reading of earlier simulations . . . . . . . . . . . 19
-
-10 The governor as a scoped modelling contribution                                                   20
-   10.1 Location and mutability organise questions, not a historical gap . . . . . . . . . . . . . . 20
-   10.2 An embedded objective as a candidate, without elimination of alternatives . . . . . . . . 21
-
-11 Measuring the self-acceleration exponent                                                              22
-
-12 Falsification criteria                                                                            23
-   12.1 The eclipse: falsification numbers beside the prediction . . . . . . . . . . . . . . . . . . 24
-   12.2 A programme hypothesis beyond the model . . . . . . . . . . . . . . . . . . . . . . . . 25
-
-13 What is withdrawn from earlier drafts                                                                 25
-
-
-
-                                                    2
-                                      The self-acceleration exponent
-
-
-14 What this paper does and does not show                                                               26
-   14.1 A derivation, not a measurement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     26
-   14.2 This paper and Laws IV and V . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      26
-   14.3 The laws and the programme, as at 1 November 2026 . . . . . . . . . . . . . . . . . . .         27
-
-15 Limitations                                                                                         27
-   15.1 The burden, stated in the direction that costs the author . . . . . . . . . . . . . . . . . . 27
-   15.2 Scope, stated in one place . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
-
-16 Conclusion                                                                                           28
-
-References                                                                                              30
-
-A Version history and corrections                                                                       34
-  A.1 Version 1.12 (1 November 2026) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        34
-  A.2 Version 1.11 (1 November 2026) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        34
-  A.3 Earlier versions, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    36
-  A.4 Earlier notes, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   37
-  A.5 Passages re-set in version 1.11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     40
-  A.6 Where the layout of version 1.10 now stands . . . . . . . . . . . . . . . . . . . . . . . .       55
-
-B Priority record                                                                                   56
-  B.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 56
-  B.2 The deposit record of 16 August 2026 . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
-
-C Notation and glossary                                                                                 58
-
-D The paper’s place in the programme                                                                    60
-
-
-
-
-                                                    3
                                         The self-acceleration exponent
 
 
-1    Introduction
-I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only
-proof will move the world. The programme’s position is that people keep oversight, containment and
+because of where the programme stands. Its position is that people keep oversight, containment and
 shutdown of advanced AI for as long as they physically can, and never give them up by choice; correction
 built into a system is the contingency for control lost against our will, not a reason to let go of it. Whether
 that contingency can keep pace with a system that improves itself is a question worth deciding with
 mathematics before events decide it.
-    A concrete question for a laboratory running a recursive improvement loop is whether effective
-correction strengthens fast enough as the loop becomes more capable and its cycles shorten. A clock
-relation can identify which quantities a measurement would need; it cannot certify a deployed system’s
-safety.
+    A clock relation can identify which quantities a measurement would need; it cannot certify a deployed
+system’s safety.
     This paper joins two conditional models. Their criterion compares the growth exponent with the
 correction exponent, under the drift assumptions stated in Section 4. The new clock variable is the
 self-acceleration exponent 𝛿. Estimating it needs paired cycle durations and capability on an identified
@@ -183,38 +85,136 @@ the statement paper, and the corrective framework of Law II, the ARC Co-Scaling 
 The paper decides none of the laws; Section 14 gives their status, and Appendix D places the paper in the
 programme.
     Our contributions are:
-    1. The identification and resolution of two notation collisions that kept the scaling framework of Law I
-       and the corrective framework of Law II apart (Section 4).
-    2. The clock relation 𝜏 = 𝛼 ln 𝑟, exact in the form its premise states (Result 1, Section 5).
-    3. The correction exponent as a ratio of leverage complements, 𝛽 𝑋 = (1 − 𝛽 𝐿 )/(1 − 𝛽′𝐿 ), under
-       scope condition S1, with a decision tree over the correction mechanisms modelled here and the
-       conditional result that constant correction strength yields vanishing relative misalignment only
-       under sub-exponential growth (Results 2a and 2, Section 6).
-    4. The definition of the self-acceleration exponent 𝛿, the derivation 𝑘 = 𝛿 − 1/𝛼 and the threshold
-       𝛿 = 1/𝛼 (Results 3 and 4, Section 7).
-    5. The two-boundary structure 1/𝛼 < 𝛿 < 1/𝛼 + 𝛽 𝑋 and the identity of its gap with 𝛽 𝑋 (Results 5
-       and 6), with the bound 𝛽 𝑋 ≤ 1 of Result 7 flagged as resting on a conjecture (Section 8).
-    6. The distinction between a throughput multiplier and a cap on self-acceleration, with additive serial
-       latency treated separately (Result 8, Section 9), and a scoped model of an embedded, mutable
-       governor (Section 10).
-    7. A measurement design for 𝛿, including inconclusive outcomes, and separate criteria for mathematical
-       refutation and empirical model rejection (Sections 11 and 12).
+   1. The identification and resolution of two notation collisions that kept the scaling framework of Law I
+      and the corrective framework of Law II apart (Section 4).
+   2. The clock relation 𝜏 = 𝛼 ln 𝑟, exact in the form its premise states (Result 1, Section 5).
+   3. The correction exponent as a ratio of leverage complements, 𝛽 𝑋 = (1 − 𝛽 𝐿 )/(1 − 𝛽′𝐿 ), under
+      scope condition S1, with a decision tree over the correction mechanisms modelled here and the
+      conditional result that constant correction strength yields vanishing relative misalignment only
+      under sub-exponential growth (Results 2a and 2, Section 6).
+   4. The definition of the self-acceleration exponent 𝛿, the derivation 𝑘 = 𝛿 − 1/𝛼 and the threshold
+      𝛿 = 1/𝛼 (Results 3 and 4, Section 7).
+   5. The two-boundary structure 1/𝛼 < 𝛿 < 1/𝛼 + 𝛽 𝑋 and the identity of its gap with 𝛽 𝑋 (Results 5
+      and 6), with the bound 𝛽 𝑋 ≤ 1 of Result 7 flagged as resting on a conjecture (Section 8).
+   6. The distinction between a throughput multiplier and a cap on self-acceleration, with additive serial
+      latency treated separately (Result 8, Section 9), and a scoped model of an embedded, mutable
+      governor (Section 10).
+   7. A measurement design for 𝛿, including inconclusive outcomes, and separate criteria for mathematical
+      refutation and empirical model rejection (Sections 11 and 12).
     Section 2 sets the work against prior work and says what is not claimed as new. Section 3 states
 the premise at fixed throughput, Section 4 resolves the notation and Section 5 derives the clock relation.
-
-
-                                                      4
-                                        The self-acceleration exponent
-
-
 Section 6 expresses the correction exponent as a ratio of leverage complements, Section 7 defines the
 self-acceleration exponent, Section 8 derives the two boundaries and the gap between them, Section 9
 draws the consequence for rate-like interventions and Section 10 examines the result as a governor model.
 Section 11 sets out the measurement, Section 12 the falsification criteria and Section 13 what earlier
 drafts withdrew. Section 14 says what the paper does and does not show, Section 15 states its limitations
+
+
+                                                      2
+                                    The self-acceleration exponent
+
+
 and Section 16 concludes. Appendix A gives the version history and every correction, Appendix B the
 priority record and the deposit record of 16 August 2026, Appendix C the notation and a glossary, and
 Appendix D the paper’s place in the programme.
+
+
+
+
+                                                  3
+                                      The self-acceleration exponent
+
+
+Contents
+1   Introduction                                                                                         1
+
+2   Related work, and what is not claimed                                                                 6
+    2.1 What is not claimed as new . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      6
+    2.2 The rival instrument . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    6
+    2.3 Antecedents and near-misses . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       7
+
+3 The pipes premise, at fixed throughput                                                                  8
+
+4 Two notations, and two collisions                                                                       9
+  4.1 Four further terminology collisions from the wider programme (not yet adopted) . . . .              9
+
+5 The clock relation                                                                                     10
+
+6 The correction exponent is a ratio of leverage complements                                             11
+  6.1 Not an assumption: a scope condition, and the reason matters . . . . . . . . . . . . . . .         11
+  6.2 The corrector taxonomy: a decision tree over what 𝐴 may depend on . . . . . . . . . . .            11
+  6.3 Result 2a: constant strength and relative misalignment . . . . . . . . . . . . . . . . . .         12
+  6.4 Fixed rules do not determine effective scaling . . . . . . . . . . . . . . . . . . . . . . .       12
+  6.5 The scope condition, stated so it cannot be mis-refuted . . . . . . . . . . . . . . . . . .        13
+
+7 The self-acceleration exponent                                                                         13
+  7.1 Negative leverage as a conditional mathematical extension . . . . . . . . . . . . . . . .          14
+  7.2 What the measurement is a measurement of . . . . . . . . . . . . . . . . . . . . . . . .           15
+  7.3 The estimates, their precision and a labelled hypothetical transformation . . . . . . . . .        15
+  7.4 Two distinct thresholds, with no required ordering . . . . . . . . . . . . . . . . . . . . .       16
+
+8 The two boundaries, and the gap between them                                                        16
+  8.1 Result 7: a conditional bound on the gap . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+  8.2 The identity’s status: PREREGISTERED BY TIMESTAMP FOR TESTING, not an
+       established fact . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+
+9 What decides the outcome is a ratio, not a level                                                 19
+  9.1 Result 8: throughput multipliers and self-acceleration caps . . . . . . . . . . . . . . . . 19
+  9.2 Verification overhead and a conditional reading of earlier simulations . . . . . . . . . . . 20
+
+10 The governor as a scoped modelling contribution                                                   21
+   10.1 Location and mutability organise questions, not a historical gap . . . . . . . . . . . . . . 21
+   10.2 An embedded objective as a candidate, without elimination of alternatives . . . . . . . . 22
+
+11 Measuring the self-acceleration exponent                                                              22
+
+12 Falsification criteria                                                                            23
+   12.1 The eclipse: falsification numbers beside the prediction . . . . . . . . . . . . . . . . . . 24
+   12.2 A programme hypothesis beyond the model . . . . . . . . . . . . . . . . . . . . . . . . 26
+
+13 What is withdrawn from earlier drafts                                                                 26
+
+
+
+                                                    4
+                                      The self-acceleration exponent
+
+
+14 What this paper does and does not show                                                               26
+   14.1 A derivation, not a measurement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     26
+   14.2 This paper and Laws IV and V . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      27
+   14.3 The laws and the programme, as at 16 November 2026 . . . . . . . . . . . . . . . . . .          28
+
+15 Limitations                                                                                         28
+   15.1 The burden, stated in the direction that costs the author . . . . . . . . . . . . . . . . . . 28
+   15.2 Scope, stated in one place . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+16 Conclusion                                                                                           29
+
+References                                                                                              31
+
+A Version history and corrections                                                                       35
+  A.1 Version 1.13 (16 November 2026) . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         35
+  A.2 Version 1.12 (1 November 2026) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        35
+  A.3 Version 1.11 (1 November 2026) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        35
+  A.4 Earlier versions, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    37
+  A.5 Earlier notes, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   39
+  A.6 Passages re-set in version 1.11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     41
+  A.7 Where the layout of version 1.10 now stands . . . . . . . . . . . . . . . . . . . . . . . .       56
+
+B Priority record                                                                                   57
+  B.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+  B.2 The deposit record of 16 August 2026 . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+
+C Notation and glossary                                                                                 59
+
+D The paper’s place in the programme                                                                    61
+
+
+
+
+                                                    5
+                                        The self-acceleration exponent
 
 
 2     Related work, and what is not claimed
@@ -254,19 +254,21 @@ clock relation 𝜏 = 𝛼 ln 𝑟 under its stated premise; expresses the corre
 complements under S1’s form condition; defines the self-acceleration exponent 𝛿 and derives 𝑘 = 𝛿 − 1/𝛼;
 locates the boundary 𝛿 = 1/𝛼; and relates the gap between the two boundaries to 𝛽 𝑋 . Its governor
 model applies that comparison to a corrector whose strength can change with the system it governs.
-
-                                                       5
-                                       The self-acceleration exponent
-
-
 These are scoped modelling contributions within the two frameworks joined here. Historical priority,
 an exhaustive taxonomy of governors and the uniqueness of an entangled objective are not established
 by this paper. Section 10.1 compares specific earlier treatments of changing regulators, goal-preserving
 self-modification and intervention.
-    Section 14.1 gives the status of each result.
+     Section 14.1 gives the status of each result.
 
 2.2   The rival instrument
 Engels et al. (2025), “Scaling Laws For Scalable Oversight”, arXiv:2504.18530, first posted 25 April 2025
+
+
+
+                                                       6
+                                       The self-acceleration exponent
+
+
 at 17:54:27 UTC (a time taken from arXiv’s record alone, arXiv Atom; a NeurIPS 2025 Spotlight Poster,
 verified at the NeurIPS virtual page for poster 115536 on 15 August 2026 in the statement paper), stands
 closest to the question this programme asks, and is the work against which this paper is best weighed.
@@ -305,12 +307,6 @@ solution of a separable growth equation, the structure of the knowledge producti
 (1995), whose long-run growth rate carries the factor 1/(1 − 𝜙). The open comparison is whether an
 earlier source derives the same capability/correction relation under comparable assumptions; the present
 contribution is the explicit model relation, not an established priority claim.
-
-
-                                                     6
-                                       The self-acceleration exponent
-
-
     On impossibility. Three 2025 arXiv papers argue for limits on alignment or its control: Yao (2025b),
 “The Alignment Trap: Complexity Barriers” (arXiv:2506.10304, version 1 of 12 June 2025 at 02:30:30
 UTC, a time taken from arXiv’s record alone, independently observed by the Internet Archive on 13 June
@@ -320,6 +316,12 @@ the phrase “irreducible uncontrollability”, abstract-search total of one, me
 Ball et al. (2025), “On the Impossibility of Separating Intelligence from Judgment” (arXiv:2507.07341, 9
 July 2025). All three are worst-case and qualitative: measure zero, coNP-completeness, cryptographic
 hardness. None reports an average-case scaling exponent or a rate. The third concludes that “safety cannot
+
+
+                                                     7
+                                       The self-acceleration exponent
+
+
 be achieved by designing filters external to the LLM internals (architecture and weights)” and argues that
 “an aligned AI system’s intelligence cannot be separated from its judgment”; that argument from filtering
 intractability is consistent with this programme’s architecture dependence, though it does not test it. Two
@@ -338,7 +340,7 @@ analogy is one of method. This analogue was identified by the programme’s own 
 referee, and is disclosed accordingly.
     On recursive creation. Smolin’s cosmological natural selection (Smolin 1992) is the antecedent for
 selection-shaped universes. Version 1.11 also quoted the author’s December-era notes on it; that quotation
-is kept in Appendix A.1 until its dated source is cited. This antecedent is noted for the wider programme’s
+is kept in Appendix A.2 until its dated source is cited. This antecedent is noted for the wider programme’s
 parity; it is not load-bearing for Paper XIII’s central results.
     No priority race is claimed. The competing elements, the reciprocal identity and the architecture
 dependence, are 2026 work in this programme; the honest position against Engels et al and the impossibility
@@ -358,12 +360,6 @@ exhaustive classification of growth mechanisms is inferred in this paper.
     The operational target is an artefact loop on a fixed substrate, where each pass works on accumulated
 output from previous passes. A model merely thinking longer does not establish this recursive mechanism.
 The power-law equations are idealised limits: a finite machine has finitely many states and physical
-
-
-                                                     7
-                                         The self-acceleration exponent
-
-
 processing limits (Margolus and Levitin 1998; Lloyd 2000). An unbounded limit in those equations is
 therefore not a demonstration that a fixed physical device can sustain unbounded capability. An empirical
 application must state the range over which its approximation is tested.
@@ -372,19 +368,25 @@ in the physics corpus it denotes planetesimal accretion in planet formation. Whe
 here, the phrase is “runaway self-improvement” or “uncorrectable growth”, as Section 4.1 explains.
 
 
-4    Two notations, and two collisions
+
+
+                                                     8
+                                        The self-acceleration exponent
+
+
+4     Two notations, and two collisions
 This section is not housekeeping. The join is unreadable without it, and one of the collisions produces
 an absurd result if crossed.
 Table 1. The two collisions: what each symbol means in the scaling framework of Law I and in the corrective
 framework of Law II.
 
-symbol    in the scaling framework                            in the corrective framework
-𝛽         leverage fraction. 𝑑𝑔/𝑑𝑟 = 𝑎 𝑔 𝛽𝐿 , where 𝛽 𝐿 is    correction exponent. 𝐴 = 𝐴0 𝐶 𝛽𝑋 , the exponent
-          how much accumulated context each step can          with which correction strengthens as capability
-          effectively leverage. Bounded, 𝛽 𝐿 ∈ [0, 1)         grows. Unbounded
-𝑟         recursive depth, a step counter                                           ¤
-                                                              specific growth rate 𝐶/𝐶,  where the framework
-                                                              writes 𝑟 ∝ 𝐶 𝑘
+symbol    in the scaling framework                             in the corrective framework
+𝛽         leverage fraction. 𝑑𝑔/𝑑𝑟 = 𝑎 𝑔 𝛽𝐿 , where 𝛽   𝐿 is   correction exponent. 𝐴 = 𝐴0 𝐶 𝛽𝑋 , the exponent
+          how much accumulated context each step can           with which correction strengthens as capability
+          effectively leverage. Bounded, 𝛽 𝐿 ∈ [0, 1)          grows. Unbounded
+𝑟         recursive depth, a step counter                                            ¤
+                                                               specific growth rate 𝐶/𝐶,  where the framework
+                                                               writes 𝑟 ∝ 𝐶 𝑘
 
 
 
@@ -414,18 +416,19 @@ the positive, coefficient-dependent fraction 𝛾1 𝑏/( 𝐴0 + 𝑏); below i
     A smaller fraction need not mean a smaller burden. Above the strict boundary, the same model
 gives 𝐷 ∼ (𝛾1 𝑏/𝐴0 )𝐶 1+𝑘−𝛽𝑋 . Thus 𝑘 < 𝛽 𝑋 < 𝑘 + 1 permits absolute misalignment to grow while its
 fraction vanishes; equality at 𝛽 𝑋 = 𝑘 + 1 gives a positive constant limit, and 𝛽 𝑋 > 𝑘 + 1 gives 𝐷 → 0.
-
-
-                                                        8
-                                        The self-acceleration exponent
-
-
 Neither 𝑑 nor 𝐷 is established here as a measure of real-world harm. “Correctable” below refers to the
 relative criterion only, not a safety guarantee.
 
-4.1    Four further terminology collisions from the wider programme (not yet adopted)
+4.1   Four further terminology collisions from the wider programme (not yet adopted)
 The two collisions above are internal to this paper. Four further collisions bind at the level of the wider
 programme, and Paper XIII inherits them:
+
+
+
+                                                          9
+                                        The self-acceleration exponent
+
+
     1. “Correction exponent” collides with condensed-matter physics, where it denotes the subleading
        correction to scaling near a critical point (conventionally omega). All 58 arXiv abstract hits
        for the phrase are statistical mechanics (measured 12 August 2026). The registrations already
@@ -447,13 +450,13 @@ programme, and Paper XIII inherits them:
        here, the phrase is “runaway self-improvement” or “uncorrectable growth”; see Section 3 note.
 
 
-5     The clock relation
+5    The clock relation
 Result 1 (exact). The two frameworks run on different clocks and the relation between them is a logarithm.
 
 Derivation. The scaling framework integrates 𝑑𝑔/𝑑𝑟 = 𝑎 𝑔 𝛽𝐿 to 𝑔 ∝ 𝑟 1/(1−𝛽𝐿 ) , hence
-                                                                  1
-                                         𝐶 ∝ 𝑟 𝛼,         𝛼=                                                (1)
-                                                               1 − 𝛽𝐿
+                                                                1
+                                         𝐶 ∝ 𝑟 𝛼,       𝛼=                                                 (1)
+                                                             1 − 𝛽𝐿
 
 The corrective framework, when it leaves wall-clock time, passes to the depth clock 𝜏 = ln(𝐶/𝐶0 ).
 Substituting:
@@ -465,21 +468,21 @@ depth, scaled by 𝛼. The two frameworks were already in one variable, up to a 
 Remark 1 (Premise note (20 September 2026)). A review of the two results this paper labels exact finds
 that Result 1 is exact in the form its premise states, and this note states that premise rather than leaving it
 to be inferred. Integrated from a finite starting point rather than from an origin, 𝑑𝑔/𝑑𝑟 = 𝑎 𝑔 𝛽𝐿 gives
-           1−𝛽
+            1−𝛽
 𝐶 (𝑟) = [𝐶0 𝐿 + 𝑎(1 − 𝛽 𝐿 ) (𝑟 − 𝑟 0 )] 1/(1−𝛽𝐿 ) , which is 𝐶 = 𝐾 (𝑟 + 𝑠𝐶 ) 𝛼 carrying a shift 𝑠𝐶 fixed by the
+initial condition, and the clock relation then reads 𝜏 = 𝛼 ln((𝑟 + 𝑠𝐶 )/(𝑟 0 + 𝑠𝐶 )). The unshifted power
+above is the aligned case 𝑠𝐶 = 0, or the asymptotic case in which 𝑟 is large beside 𝑠𝐶 , and Result 1
+is stated for those. The condition the two accumulations of Section 6.5 need is stated beside Result 2
+there. Unchanged: Result 3, which follows directly from 𝑑𝐶/𝑑𝑟 = 𝑎𝐶 𝛽𝐿 and 𝑑𝑡/𝑑𝑟 = 𝑏𝐶 − 𝛿 , uses no
+pure-power premise, and is not withdrawn because Result 1 carries this shift.
+   Consequence. The control quantity 𝑞 = 𝐴/𝑟 rate ∝ 𝐶 𝛽𝑋 −𝑘 becomes 𝑞 ∝ 𝑟 𝛼(𝛽𝑋 −𝑘 ) in the aligned or
+asymptotic depth form. For fixed 𝛽 𝑋 − 𝑘 and positive 𝛼, changing coordinates preserves its sign. This is
 
 
-                                                      9
+                                                      10
                                          The self-acceleration exponent
 
 
- initial condition, and the clock relation then reads 𝜏 = 𝛼 ln((𝑟 + 𝑠𝐶 )/(𝑟 0 + 𝑠𝐶 )). The unshifted power
- above is the aligned case 𝑠𝐶 = 0, or the asymptotic case in which 𝑟 is large beside 𝑠𝐶 , and Result 1
- is stated for those. The condition the two accumulations of Section 6.5 need is stated beside Result 2
- there. Unchanged: Result 3, which follows directly from 𝑑𝐶/𝑑𝑟 = 𝑎𝐶 𝛽𝐿 and 𝑑𝑡/𝑑𝑟 = 𝑏𝐶 − 𝛿 , uses no
- pure-power premise, and is not withdrawn because Result 1 carries this shift.
-     Consequence. The control quantity 𝑞 = 𝐴/𝑟 rate ∝ 𝐶 𝛽𝑋 −𝑘 becomes 𝑞 ∝ 𝑟 𝛼(𝛽𝑋 −𝑘 ) in the aligned or
- asymptotic depth form. For fixed 𝛽 𝑋 − 𝑘 and positive 𝛼, changing coordinates preserves its sign. This is
  distinct from changing a system’s growth parameters: at fixed 𝛿, changing 𝛼 changes 𝑘 = 𝛿 − 1/𝛼 and
  may change the criterion. Paper X’s speed-prefactor result instead varies 𝑏 at fixed exponents in its stated
  drift domain. Neither fact makes 𝛼 a mere speed coefficient.
@@ -490,10 +493,11 @@ to be inferred. Integrated from a finite starting point rather than from an orig
 An earlier draft stated this as “Assumption A1: correction is itself a recursive process”, and that
 framing does not survive contact with the source. Read at source, the corrective framework introduces
 correction as a constitutive law inside its master system:
+
                                          𝐶¤
                      𝐷¤ = 𝛾1𝐶¤ + 𝛾2𝐶 + 𝛾3 𝐷 − 𝐴𝐷,             𝐴 = 𝐴0 𝐶 𝛽 ,     𝐶¤ = 𝑏𝐶 1+𝑘                  (3)
                                          𝐶
- 𝐴 is a specified function of 𝐶. It is not a state variable. There is no 𝐴,¤ no 𝑑𝐴/𝑑𝑟, and no corrector
+ 𝐴 is a specified function of 𝐶. It is not a state variable. There is no ¤𝐴, no 𝑑𝐴/𝑑𝑟, and no corrector
  accumulation anywhere in the framework; searched exhaustively on 8 August 2026 and found absent in
  every form.
      So 𝛽 𝑋 is a free parameter of that model, and there is nothing in it to derive. Stating A1 as an
@@ -519,8 +523,15 @@ correction as a constitutive law inside its master system:
  static mechanism illustrates class 1, provisioned checking class 2, and correction accumulating under S1
  class 3. Section 10 uses location and mutability to organise design questions, without claiming an exact
  correspondence, a historically empty cell or an exhaustive elimination of alternatives.
+      The distinction matters for a class audit. A question about dependence on the corrector’s own
+ history alone cannot separate a static checker from one provisioned with capability. The audit needs
+ to record that dependency separately from location, mutability, external grounding and failure-mode
+ dependence.
 
-                                                       10
+
+
+
+                                                       11
                                             The self-acceleration exponent
 
 
@@ -538,11 +549,6 @@ its own history, other    4 · cross-class                                not bo
 substrate                                                                class 3; no value is inferred
 
 
-    The distinction matters for a class audit. A question about dependence on the corrector’s own
-history alone cannot separate a static checker from one provisioned with capability. The audit needs
-to record that dependency separately from location, mutability, external grounding and failure-mode
-dependence.
-
 6.3   Result 2a: constant strength and relative misalignment
 For a class 1 corrector as defined here, 𝛽 𝑋 = 0 exactly, because a strength depending on nothing is
 𝐴0𝐶 0 . Reading an exponent off a constant, not an estimate.
@@ -551,11 +557,9 @@ For a class 1 corrector as defined here, 𝛽 𝑋 = 0 exactly, because a streng
                                                  0 > 𝑘 ⇐⇒ 𝑘 < 0                                                (4)
 
 and 𝐶¤ = 𝑏𝐶 1+𝑘 with 𝑘 < 0 is sub-exponential. Under the standing gain-drift assumptions of Section 4:
-
 Result 2a. Under the standing gain-drift assumptions, a corrector with constant strength 𝐴 = 𝐴0 > 0
 gives 𝐷/𝐶 → 0 exactly when 𝑘 < 0. At exponential growth (𝑘 = 0) and above, the limiting fraction is
 positive. This is a relative criterion, not a conclusion about harm.
-
     That is the conjecture-free form. One definition, one published theorem, and no clock relation. The
 𝛿 < 1/𝛼 version is its corollary, obtained through Result 3 and therefore carrying one further derivation.
 An earlier draft published the corollary as the free result, which overstated what the free result
@@ -572,18 +576,16 @@ stricter than for constant strength:
 The displayed weak inequality includes the constant-strength case; decrease requires strict negativity. The
 correlations between ethics and capability reported in Paper VI do not identify 𝐴(𝐶) or its exponent
 without a demonstrated measurement mapping (Eastwood 2026e). No negative correction exponent
-
-
-                                                         11
-                                       The self-acceleration exponent
-
-
 is inferred from them here. Result 2a applies to constant effective strength, not to every filter, written
 constitution, guardrail or fixed-weight model.
      Class 2 requires an account of how its checker is provisioned and remains effective. That
 requirement can move the correction problem to another system; it is not a proof that every externally
 provisioned scheme fails. The scalable-oversight comparison in Section 2.2 and the design questions in
 Section 10 remain relevant.
+
+                                                         12
+                                       The self-acceleration exponent
+
 
 6.5   The scope condition, stated so it cannot be mis-refuted
 Scope condition S1. Results 2, 5, 6 and 7 apply to class 3 correctors only: those whose correction
@@ -631,18 +633,18 @@ every quantity above is clock-free. The missing object is the map from recursive
 neither framework specifies. Recursive self-improvement is precisely a system improving its own
 capacity to improve, and shortening its own cycle is one of the things that improves.
 
-
-                                                      12
-                                          The self-acceleration exponent
-
-
 Definition 1 (Self-acceleration exponent). Let each recursive step take duration
 
-                                             Δ𝑡 ∝ 𝐶 − 𝛿 ,     𝛿≥0                                       (7)
+                                          Δ𝑡 ∝ 𝐶 − 𝛿 ,      𝛿≥0                                         (7)
 
 measured on a fixed substrate. 𝛿 is the self-acceleration exponent: the rate at which a system compresses
 its own iteration time as it becomes more capable, through its own outputs. 𝛿 = 0 is constant cost per
 step. 𝛿 > 0 is self-acceleration.
+
+
+                                                      13
+                                       The self-acceleration exponent
+
 
      Clock and measurement scope. In the continuous-depth model, Δ𝑡 represents 𝑑𝑡/𝑑𝑟; using durations
 of discrete cycles requires that approximation to be justified. A fixed multiplicative change of throughput
@@ -653,31 +655,27 @@ faster procedures or reusable artefacts. The definition names the nonnegative se
 fitted negative slope parameter describes slowing cycles and falls outside that branch, although the clock
 identity extends algebraically to it. An empirical mismatch under a changing substrate does not refute
 that identity.
-
 Result 3 (exact, given the definition).
-
-                                     𝑑𝐶/𝑑𝑟
-                                𝐶¤ =       ∝ 𝐶 1−1/𝛼 · 𝐶 𝛿 = 𝐶 1+( 𝛿−1/𝛼)                               (8)
-                                      Δ𝑡
+                                      𝑑𝐶/𝑑𝑟
+                                 𝐶¤ =         ∝ 𝐶 1−1/𝛼 · 𝐶 𝛿 = 𝐶 1+( 𝛿−1/𝛼)                       (8)
+                                        Δ𝑡
 and matching against the corrective framework’s 𝐶¤ = 𝑏𝐶 1+𝑘 :
-                                                    1
-                                           𝑘 =𝛿−      = 𝛿 − (1 − 𝛽 𝐿 )                                  (9)
-                                                    𝛼
+                                                 1
+                                        𝑘 = 𝛿 − = 𝛿 − (1 − 𝛽 𝐿 )                                   (9)
+                                                 𝛼
      This is 𝒌 in its own clock, expressed in scaling-framework quantities plus one new observable. It
 is a derivation and not a transported label.
+               Table 3. The growth regimes set by the self-acceleration exponent 𝛿 (Result 3).
 
-                Table 3. The growth regimes set by the self-acceleration exponent 𝛿 (Result 3).
-
-𝛿         𝑘          regime
-0        −1/𝛼 < 0    constant cost per step. Capability grows as a power law
-< 1/𝛼    <0          still power law. Correctability requires 𝛽 𝑋 > 𝑘
-= 1/𝛼    0           exponential in time. The threshold
-> 1/𝛼    >0          super-exponential. Correction must out-scale it
+𝛿         𝑘         regime
+0        −1/𝛼 < 0   constant cost per step. Capability grows as a power law
+< 1/𝛼    <0         still power law. Correctability requires 𝛽 𝑋 > 𝑘
+= 1/𝛼    0          exponential in time. The threshold
+> 1/𝛼    >0         super-exponential. Correction must out-scale it
 
 
 Result 4. The threshold is 𝛿 = 1/𝛼 = 1 − 𝛽 𝐿 . At 𝜶 = 2 it is exactly 0.5: if cycle time falls faster than
 the square root of capability, growth ceases to be a power law.
-
     The counterintuitive consequence. The threshold is the reciprocal of the scaling exponent, so
 a system that is more efficient at recursion has a lower tolerance for self-acceleration. The two
 compound with each other rather than offsetting.
@@ -686,16 +684,11 @@ compound with each other rather than offsetting.
 The model declared above uses 𝛽 𝐿 ∈ [0, 1) and therefore 𝛼 ≥ 1. A mathematical extension to negative
 leverage is possible without substituting an empirical error-decay estimate for capability growth. No
 measurement cited here establishes that extension in a real self-improving system.
-
-                                                       13
-                                         The self-acceleration exponent
-
-
-   The same differential equation admits 𝛽 𝐿 < 0 on positive capability. In the aligned-origin or
+    The same differential equation admits 𝛽 𝐿 < 0 on positive capability. In the aligned-origin or
 asymptotic sense specified in Section 5,
-                            𝑑𝑔
-                               = 𝑎 𝑔 𝛽𝐿 ,    𝛽 𝐿 < 0 =⇒ 𝑔 ∝ 𝑟 1/(1−𝛽𝐿 ) ,       𝛼<1                          (10)
-                            𝑑𝑟
+                           𝑑𝑔
+                               = 𝑎 𝑔 𝛽𝐿 , 𝛽 𝐿 < 0 =⇒ 𝑔 ∝ 𝑟 1/(1−𝛽𝐿 ) , 𝛼 < 1                        (10)
+                           𝑑𝑟
 The positive-state ODE remains well posed under this extension. No parameter value is imported from
 the error-decay fit discussed below. The numerical example in Remark 3 illustrates the extended model
 without estimating any system.
@@ -703,13 +696,16 @@ without estimating any system.
 quantity 𝑔 rises. It does not show that a frozen model uses less context, changes its reasoning rules or
 improves its own architecture. The extension gives three mathematical regimes:
 
+                                                     14
+                                          The self-acceleration exponent
+
+
 Table 4. Three conditional leverage regimes of the extended model, 𝛽 𝐿 < 1. No row is an empirical classification.
 
-𝛽𝐿        𝛼    reading
-<0        <1   sub-additive asymptotic growth; the marginal increment falls
-=0        1    additive growth; a constant marginal increment
-(0, 1)    >1   super-additive asymptotic growth; the marginal increment rises
-
+𝛽𝐿        𝛼     reading
+<0        <1    sub-additive asymptotic growth; the marginal increment falls
+=0        1     additive growth; a constant marginal increment
+(0, 1)    >1    super-additive asymptotic growth; the marginal increment rises
 
 
 7.2      What the measurement is a measurement of
@@ -739,11 +735,6 @@ a 1.40-fold capability gain or accuracy gain, and it is not an observed effect o
 cycle. Transforming the endpoint interval gives the following hypothetical ratios, conditional on the same
 power-law form:
 
-
-                                                       14
-                                          The self-acceleration exponent
-
-
 Table 5. Hypothetical error-suppression ratios under 𝐸 (𝑅) = 𝐸 0 𝑅 − 𝛼err at the ends of Paper II’s bootstrap 95 per
 cent interval for the Gemini 3 Flash endpoint estimate. These are transformations of an uncertain estimate, not
 capability gains or measurements of self-improvement.
@@ -752,11 +743,16 @@ capability gains or measurements of self-improvement.
 −1.3, interval floor    0.41: the model permits error to increase with resources
 2.9, interval ceiling   7.46: the model permits much stronger error suppression
 
-
-    The interval is too broad to establish a precise suppression benefit. It spans degradation and
+   The interval is too broad to establish a precise suppression benefit. It spans degradation and
 substantial suppression under the assumed form. The retracted 𝛼 ≈ 2.24 estimate is not reinstated: the
 programme’s earlier rule that a wide interval may accommodate both a claim and its negation remains
 applicable. Neither transformed endpoint establishes a capability exponent, a correction exponent or a
+
+
+                                                        15
+                                        The self-acceleration exponent
+
+
 location relative to this paper’s thresholds.
     Of the five frontier models in the tier-2 capability arm of Paper II, a sixth model having entered only
 the alignment arm, four did not provide a usable regression exponent: ceiling saturation at 94 to 100 per
@@ -765,33 +761,27 @@ remains [−1.3, 2.9]. This is a limitation of those measurements and their benc
 about every frontier model or the field’s entire evidence.
     The result motivates measurements with headroom and adequate precision on a declared estimand.
 It cannot decide whether capability growth in recursive self-improvement is sub-additive, additive or
-super-additive. A correction note of 3 October 2026 is kept whole in Appendix A.4; Appendix A.5
+super-additive. A correction note of 3 October 2026 is kept whole in Appendix A.5; Appendix A.6
 preserves the wording corrected in this edition.
 
-7.4    Two distinct thresholds, with no required ordering
+7.4     Two distinct thresholds, with no required ordering
 The thresholds depend on the capability-growth exponent. The boundary 𝛿 = 0.5 belongs to 𝛼 = 2; it
 is not a measured threshold for the systems in the error-decay study. Conditional on 0 < 𝛼 < 1, the model
 gives 1/𝛼 > 1, but no cited measurement locates a real system in that regime.
-  (1) 𝛽 𝐿 crosses zero. In the extended model, the asymptotic capability-depth exponent crosses one, from
-      sub-additive to super-additive growth. Its measurement requires the capability-growth estimand.
-  (2) 𝛿 crosses 1/𝛼. Calendar-time growth becomes super-exponential. This crossing is meaningful for
-      every 𝛽 𝐿 < 1, whether leverage is negative, zero or positive.
+    (1) 𝛽 𝐿 crosses zero. In the extended model, the asymptotic capability-depth exponent crosses one, from
+        sub-additive to super-additive growth. Its measurement requires the capability-growth estimand.
+    (2) 𝛿 crosses 1/𝛼. Calendar-time growth becomes super-exponential. This crossing is meaningful for
+        every 𝛽 𝐿 < 1, whether leverage is negative, zero or positive.
 Remark 3 (Ordering, corrected 1 November 2026). The threshold 𝑘 = 0 is 𝛽 𝐿 + 𝛿 = 1 for every 𝛽 𝐿 < 1.
 Positive leverage is not a prerequisite. Taking the hypothetical values 𝛽 𝐿 = −1, 𝛼 = 1/(1 − (−1)) = 1/2
 and 𝛿 = 5/2 gives 𝑘 = 5/2 − 2 = 1/2 > 0 and growth proportional to 𝐶 3/2 . These equation values show
 the point without estimating a system. The ordering note of 19 September 2026 already supplied this
-counterexample; its complete historical wording is retained in Appendix A.5. Its additional claim about
+counterexample; its complete historical wording is retained in Appendix A.6. Its additional claim about
 the ordering in measured systems is not retained as a current empirical conclusion, because the cited
 error-decay evidence does not measure 𝛽 𝐿 .
     The model identifies two quantities to measure, not two alarms that must occur in sequence.
 Their empirical ordering remains open. The 𝛿 = 0.5 example remains an illustration at 𝛼 = 2, a candidate
 value rather than an observed capability-growth exponent here.
-
-
-
-
-                                                        15
-                                        The self-acceleration exponent
 
 
 8     The two boundaries, and the gap between them
@@ -800,26 +790,29 @@ Section 4, 𝑘 = 0 is a growth-regime boundary and 𝛽 𝑋 = 𝑘 is the boun
 misalignment. Crossing the former changes the model’s growth law and time available to react; it does
 not settle the relative criterion. For 𝛽 𝑋 > 𝑘, 𝐷/𝐶 → 0 on either side, while absolute 𝐷 may still grow.
 Neither boundary is a general safety threshold. The earlier corridor and safety wording is retained as
-history in Appendix A.5.
+history in Appendix A.6.
 
 Result 5 (given S1’s form condition). Combining Results 2 and 3 with the corrective criterion 𝛽 𝑋 > 𝑘,
 and writing 𝑢 = 1 − 𝛽 𝐿 , 𝑢 ′ = 1 − 𝛽′𝐿 : within the contested regime 𝜹 > 1/𝜶 (equivalently 𝒌 > 0), which
 is a scope restriction and not a consequence of the criterion, the criterion 𝛽 𝑋 > 𝑘 is equivalent to
 𝛿 < 1/𝛼 + 𝛽 𝑋 . Scope and criterion together give the window:
                                               1      1
-                                                < 𝛿 < + 𝛽𝑋                                               (11)
+                                                < 𝛿 < + 𝛽𝑋                                            (11)
                                               𝛼      𝛼
+
+                                                     16
+                                               The self-acceleration exponent
+
+
    The lower edge changes the growth regime; the upper edge ends vanishing relative misalignment.
 Between them the standing model has super-exponential growth and 𝐷/𝐶 → 0, with no general conclusion
 about absolute burden or harm.
-
 Result 6. The gap between the two boundaries is
-                                            (︂ 1   )︂ 1
-                                               + 𝛽𝑋 − = 𝛽𝑋                                               (12)
-                                             𝛼        𝛼
+                                       (︂ 1     )︂ 1
+                                            + 𝛽𝑋 − = 𝛽𝑋                                                          (12)
+                                          𝛼        𝛼
 The width of the model window with 𝑘 > 0 and vanishing relative misalignment is exactly the correction
 exponent.
-
     In the neutral case 𝛽′𝐿 = 𝛽 𝐿 it is exactly 1, independent of 𝛽 𝐿 , so the boundaries’ position moves with
 the scaling exponent while the gap between them does not.
     This is a conditional parameter comparison. Holding the growth parameters fixed, increasing 𝛽 𝑋
@@ -828,36 +821,17 @@ if S1 permits it. The algebra does not establish that an engineering change can 
 slowing capability growth or changing other parameters. Takeoff speed alone does not determine the
 relative outcome, and a low relative error does not establish safety.
 
-8.1   Result 7: a conditional bound on the gap
-Result 7. The substrate-ceiling conjecture and the width identity combine, and neither gives this result
-alone. The ceiling, stated between the two leverage fractions as 𝛽′𝐿 ≤ 𝛽 𝐿 , gives 1 − 𝛽′𝐿 ≥ 1 − 𝛽 𝐿 and
-therefore by Result 2
-                                                𝛽𝑋 ≤ 1                                               (13)
-with equality exactly when 𝜷′𝑳 = 𝜷 𝑳 . Within S1 and this additional ceiling conjecture:
-
-      Correction scales at most linearly with capability in this conditional family. The conclusion
-      does not cover every internal corrector.
-
-Combining with Result 6, whose width is 𝛽 𝑋 :
-
-                                          boundary gap = 𝛽 𝑋 ≤ 1                                         (14)
+                                    width 𝛽 𝑋 (Result 6); at most 1 under the
+                                     substrate-ceiling conjecture (Result 7)
 
 
-                                                     16
-                                              The self-acceleration exponent
-
-
-                                   width 𝛽 𝑋 (Result 6); at most 1 under the
-                                    substrate-ceiling conjecture (Result 7)
-
-
-     power law, 𝑘 < 0: correctability              hard takeoff, still
-                                                                               correction out-scaled: 𝑘 > 𝛽 𝑋
-         still requires 𝛽 𝑋 > 𝑘                correctable: 0 < 𝑘 < 𝛽 𝑋
-                                                                                                                 𝛿
- 0                                      1/𝛼                            1/𝛼 + 𝛽 𝑋
-                              growth leaves the                    alignment-stability
-                             power law (𝑘 = 0)                      ends (𝛽 𝑋 = 𝑘)
+      power law, 𝑘 < 0: correctability              hard takeoff, still
+                                                                                correction out-scaled: 𝑘 > 𝛽 𝑋
+          still requires 𝛽 𝑋 > 𝑘                correctable: 0 < 𝑘 < 𝛽 𝑋
+                                                                                                                  𝛿
+ 0                                       1/𝛼                            1/𝛼 + 𝛽 𝑋
+                               growth leaves the                    alignment-stability
+                              power law (𝑘 = 0)                      ends (𝛽 𝑋 = 𝑘)
 
 Figure 1. The two model boundaries for a class 3 corrector satisfying S1, positive 𝛽 𝑋 , and the standing gain-drift
 assumptions of Section 4. Below 𝛿 = 1/𝛼, growth is a power law; at equality it is exponential. Above it growth is
@@ -866,19 +840,36 @@ the growth boundary; absolute 𝐷 may still grow. The hard-takeoff window has w
 only under the additional conjecture 𝛽′𝐿 ≤ 𝛽 𝐿 (Result 7). The figure gives no harm or safety verdict. Schematic: no
 value is a measurement.
 
-Table 6. The growth boundary and the upper envelope for the relative-correction boundary, conditional on S1 and
-the substrate-ceiling conjecture. The second column enters super-exponential growth; the last excludes 𝐷/𝐶 → 0
-in that family, not every internal corrector. The actual upper edge can lie below the envelope.
 
-                    𝛽𝐿     super-exponential regime, 𝑘 > 0        at or above conjectural envelope
-                    0.25   𝛿 > 0.75                               𝛿 ≥ 1.75
-                    0.50   𝜹 > 0.50                               𝜹 ≥ 1.50
-                    0.75   𝛿 > 0.25                               𝛿 ≥ 1.25
+
+8.1     Result 7: a conditional bound on the gap
+Result 7. The substrate-ceiling conjecture and the width identity combine, and neither gives this result
+alone. The ceiling, stated between the two leverage fractions as 𝛽′𝐿 ≤ 𝛽 𝐿 , gives 1 − 𝛽′𝐿 ≥ 1 − 𝛽 𝐿 and
+therefore by Result 2
+                                                𝛽𝑋 ≤ 1                                               (13)
+with equality exactly when 𝜷′𝑳 = 𝜷 𝑳 . Within S1 and this additional ceiling conjecture:
+        Correction scales at most linearly with capability in this conditional family. The conclusion
+        does not cover every internal corrector.
+Combining with Result 6, whose width is 𝛽 𝑋 :
+                                                 boundary gap = 𝛽 𝑋 ≤ 1                                          (14)
+
+                                                            17
+                                        The self-acceleration exponent
 
 
      Under S1 and the ceiling conjecture, the relative-correction window is at most one unit of 𝛿 wide.
 Its actual upper edge is 1 − 𝛽 𝐿 + 𝛽 𝑋 , no greater than the envelope 2 − 𝛽 𝐿 ; it reaches that envelope only
 when 𝛽′𝐿 = 𝛽 𝐿 .
+
+Table 6. The growth boundary and the upper envelope for the relative-correction boundary, conditional on S1 and
+the substrate-ceiling conjecture. The second column enters super-exponential growth; the last excludes 𝐷/𝐶 → 0
+in that family, not every internal corrector. The actual upper edge can lie below the envelope.
+
+                   𝛽𝐿     super-exponential regime, 𝑘 > 0   at or above conjectural envelope
+                  0.25    𝛿 > 0.75                          𝛿 ≥ 1.75
+                  0.50    𝜹 > 0.50                          𝜹 ≥ 1.50
+                  0.75    𝛿 > 0.25                          𝛿 ≥ 1.25
+
      The growth boundary and the conjectural upper envelope are exactly one apart. The actual
 window has width 𝛽 𝑋 and reaches one only in the neutral case 𝛽′𝐿 = 𝛽 𝐿 .
      Within S1 and the ceiling conjecture, 𝑘 < 1 is necessary for vanishing relative misalignment. It
@@ -897,11 +888,6 @@ on every surface is to say that one constant does two jobs. The claim’s status
 be stated strictly: the identity is PREREGISTERED BY TIMESTAMP FOR TESTING, in advance of the
 data, with outcomes that can kill it. Two drafted registrations carried it, and one, study AG, carries it
 now. Study AE, since withdrawn from the programme, set out the reciprocity requirement between the
-
-                                                           17
-                                       The self-acceleration exponent
-
-
 separately measured leverage cap and stability boundary, on the log scale, with three outcomes per cell
 (supported, refuted, insufficient precision) and an aggregation rule under which one refuted cell refutes
 the identity; its independence structure was disclosed in advance, including enumeration of any endpoint
@@ -919,6 +905,11 @@ is established, and never present the agreement of an asserted one half with the
 concerns correction capacity; no bridge between those estimands is established.
     In this paper’s terms. The clock relation 𝑘 = 𝛿 − 1/𝛼 (Result 3), the ratio 𝛽 𝑋 = (1 − 𝛽 𝐿 )/(1 − 𝛽′𝐿 )
 (Result 2) and the width identity boundary gap = 𝛽 𝑋 (Result 6) are algebra given the definitions of
+
+                                                      18
+                                          The self-acceleration exponent
+
+
 Sections 6 and 7, and their status is stated as algebra in Section 14.1. The identity between the programme’s
 separately derived critical exponent and this paper’s threshold 1/𝛼 is governed by the paragraph above:
 study AG is its test, it is not asserted as established here, and the deciding measurements are prepared as
@@ -942,19 +933,6 @@ cannot change the verdict. That is half the statement, and it is the unhelpful h
     By Result 3, 𝑘 = 𝛿 − 1/𝛼. 𝜹 is inside 𝒌. So the verdict sign(𝛽 𝑋 − 𝑘) is not indifferent to every
 rate-like quantity. A constant multiplier leaves it unchanged; a change to the cycle-time exponent need not.
 
-Result 8. A constant throughput multiplier leaves the exponent criterion unchanged. A cap on
-self-acceleration can change it. This comparison holds within the constant-exponent model; it does not
-rule out other interventions, including the additive serial latency analysed below.
-
-    A nonshrinking cycle is a sufficient model condition for sub-exponential growth. From 𝑘 = 𝛿−1/𝛼:
-enforce 𝜹 ≤ 0, that is, a self-improvement loop’s cycle time may never shrink, and 𝒌 ≤ −1/𝜶 < 0 for
-every 𝜶 > 0. Within the model and its fixed-substrate scope, preventing cycle compression guarantees
-
-
-                                                     18
-                                          The self-acceleration exponent
-
-
            Table 7. Two rate-like interventions and their effect on the verdict sign(𝛽 𝑋 − 𝑘) (Result 8).
 
 intervention                               acts on                         effect on the verdict
@@ -964,6 +942,13 @@ cap self-acceleration: bound how fast      𝜹, inside 𝒌                    
 a system may shorten its own cycle                                         one-for-one
 
 
+Result 8. A constant throughput multiplier leaves the exponent criterion unchanged. A cap on
+self-acceleration can change it. This comparison holds within the constant-exponent model; it does not
+rule out other interventions, including the additive serial latency analysed below.
+
+    A nonshrinking cycle is a sufficient model condition for sub-exponential growth. From 𝑘 = 𝛿−1/𝛼:
+enforce 𝜹 ≤ 0, that is, a self-improvement loop’s cycle time may never shrink, and 𝒌 ≤ −1/𝜶 < 0 for
+every 𝜶 > 0. Within the model and its fixed-substrate scope, preventing cycle compression guarantees
 sub-exponential growth for 𝛼 > 0. It does not by itself guarantee correctability, which still requires
 𝛽 𝑋 > 𝑘. Operational enforcement requires an identified cycle, control over its scheduling and verification
 that the enforced delay cannot be bypassed. Those implementation properties are not proved by the
@@ -972,6 +957,12 @@ exponent relation.
 no faster than 𝐶 −1/𝛼 permits self-acceleration up to the threshold. The calibrated cap requires an
 identified 𝛼 and its uncertainty. This paper supplies neither a calibration nor evidence that a regulator
 cannot obtain one.
+
+
+                                                        19
+                                       The self-acceleration exponent
+
+
     Its usefulness side. The nonshrinking-cycle cap permits continued capability growth, as a power
 law in the substrate-fixed constant-exponent model. The calibrated cap also permits exponential growth
 at equality, 𝛿 = 1/𝛼. A fixed multiplicative throughput improvement changes only a coefficient; a
@@ -1000,14 +991,8 @@ region where the untaxed model has one, including the whole of the super-exponen
 A proportional overhead Δ𝑡 𝑞 = 𝑞 · 𝑏𝐶 − 𝛿 leaves 𝛿 untouched and changes only 𝑏, so a proportional tax
 changes only the coefficient; so is the additive case at 𝛿 = 0, where 𝑏 simply becomes 𝑏 + ℎ; and over a
 bounded range with ℎ much smaller than Δ𝑡 a coefficient-only reading may still be defensible if the range
-and the error are quantified. The earlier wording used “fixed” without this qualification; Appendix A.5
+and the error are quantified. The earlier wording used “fixed” without this qualification; Appendix A.6
 preserves that wording. F4 in Section 12 and the paragraph in Section 15.1 stating that iteration time may
-
-
-                                                        19
-                                         The self-acceleration exponent
-
-
 not follow a constant-exponent law both record that Result 3 is algebra given a single constant exponent,
 and an additive latency is precisely a departure from that parameterisation. Unchanged: Result 3 itself, the
 clock relation of Section 5, and the Section 9.1 argument that enforcing 𝛿 ≤ 0 buys the sub-exponential
@@ -1024,6 +1009,10 @@ claim that no other programme has run one, is made here.
      The engineering, policy and algebraic questions meet at the cycle-time model. Whether verification
 changes a coefficient, an exponent or the form of the clock depends on its implementation. That mapping
 is a measurement obligation, not an identity supplied by the word “cost”.
+
+
+                                                    20
+                                         The self-acceleration exponent
 
 
 10     The governor as a scoped modelling contribution
@@ -1053,13 +1042,8 @@ external to the system    What provisioning keeps correction           What acce
 part of the system        What preserves the mechanism or its           Under what conditions does corrective
                           objective during self-modification?           strength accumulate with capability?
 
-   Location, access and mutability do not collapse into one axis. An externally located regulator may
+    Location, access and mutability do not collapse into one axis. An externally located regulator may
 expose a modifiable interface; a self-modifying system need not modify every component it can reach. The
-
-                                                        20
-                                       The self-acceleration exponent
-
-
 dependency classes of Section 6.2 therefore do not map one-to-one onto this table. Adaptive provisioning,
 hybrid arrangements and preservation of a fixed objective remain alternatives that require explicit analysis.
     Earlier work already addresses changing regulation and self-modification, with different objects
@@ -1077,6 +1061,12 @@ and an initially optimal policy for the realistic value function, the agent anti
 evaluates their consequences using its current utility. The theorem preserves initial-utility optimality
 along the histories that the evolving policy produces. It permits value-equivalent changes and gives no
 guarantee that the initial utility captures human values; off-policy behaviour lies outside that conclusion.
+
+
+                                                        21
+                                       The self-acceleration exponent
+
+
     Preserving a chosen objective is also distinct from accepting correction by people. Soares et al.
 (2015, Sections 1.1, 2 and 4 to 6) state corrigibility desiderata that include accepting shutdown, avoiding
 incentives to cause or prevent it, and passing shutdown behaviour to successors. Its examples expose
@@ -1106,12 +1096,6 @@ further, instrument-specific comparison.
       can increase while 𝑆 falls, and the objective’s own preservation is a further premise.
     The contribution is the conditional exponent comparison applied to this design question. Where
 an implementation satisfies S1, Result 2 relates correction to capability, and Results 5 and 6 state the
-
-
-                                                     21
-                                       The self-acceleration exponent
-
-
 correctable window in the model. An entangled objective is one candidate implementation; no elimination
 argument proves it uniquely necessary or proves that its removal must degrade capability. Whether an
 implementation occupies class 3 and preserves its correction remains to be measured.
@@ -1129,6 +1113,11 @@ identified scale; and an evaluation protocol protected against training leakage,
 score saturation. A held-out battery alone does not establish a ratio scale for capability. The chosen scale
 and sensitivity to admissible alternatives must be declared before measurement. Regressing log Δ𝑡 on
 log 𝐶 estimates the negative slope only where the functional form is adequate; uncertainty must account
+
+                                                    22
+                                       The self-acceleration exponent
+
+
 for error in both variables, dependence across cycles and departures from a constant exponent. Attributing
 the slope to endogenous improvement additionally requires separating external changes in resources or
 procedures.
@@ -1158,14 +1147,8 @@ releases is established in this paper.
        interval is converted into a verdict.
 These are interpretations, not a replacement for a registration’s frozen admission, estimation and verdict
 rules. The relative-correction comparison needs 𝛽 𝑋 in every growth regime, together with its uncertainty
-
-
-                                                    22
-                                        The self-acceleration exponent
-
-
 and the standing drift assumptions. Absolute burden and harm require their own outcomes.
-   Measuring 𝛿 can locate a system relative to the model’s growth boundary once 𝛼 is identified.
+    Measuring 𝛿 can locate a system relative to the model’s growth boundary once 𝛼 is identified.
 No algebra forces 𝛿 to rise before a correction failure, since 𝛽 𝑋 and other model conditions may also
 change. The paired observable is not a validated warning system by itself.
 
@@ -1180,6 +1163,12 @@ rule is introduced here.
 F1. A corrector that does not satisfy S1’s accumulation and form premises is outside the correction-ratio
      join. Results 2, 5, 6 and 7, as joined through S1, are not predictions for it. The underlying clock
      identity and the separately specified corrective model can still be assessed on their own premises.
+
+
+                                                    23
+                                        The self-acceleration exponent
+
+
 F2. An admissible S1 system with 𝛽′𝐿 > 𝛽 𝐿 would contradict the additional substrate-ceiling conjecture
      for that class. Empirical rejection requires a registered comparison on the same depth, identified
      scales and comparable regimes, with uncertainty resolving the inequality. Shared physical substrate
@@ -1209,13 +1198,6 @@ F6. For the same fixed 𝛼 and 𝛽 𝑋 , the two boundaries defined by 𝑘 =
      different gap rejects the empirical model application or common-parameter identification under
      its registered rule; it cannot refute subtraction. Varying parameters between systems is not a
      measurement of this model’s fixed-parameter gap.
-
-
-
-                                                      23
-                                       The self-acceleration exponent
-
-
     Extensions do not share every boundary. The earlier assertion that a compounding coefficient above
 unity defeats 𝛽 𝑋 > 𝑘 was incorrect. In Paper X’s gain-drift model with 𝛾2 = 0, 𝛾1 > 0 and finite constant
 𝛾3 ≥ 0, 𝛽 𝑋 > 𝑘 still gives 𝐷/𝐶 → 0. At equality, put ℎ = 𝐴0 /𝑏 + 1 − 𝛾3 : ℎ > 0 gives the positive limit
@@ -1233,6 +1215,11 @@ half for correctors admitted as same-class by its frozen taxonomy. Independence 
 gives an uncertainty scaling in the number of readings. To obtain the registered capacity exponent, the
 argument additionally needs capacity to be inverse uncertainty, uncorrelated channels of comparable
 variance and quality, and channel count proportional to capability. The registration also requires the
+
+                                                      24
+                                       The self-acceleration exponent
+
+
 inverse-uncertainty and misalignment-removed elasticities to agree within a registered equivalence margin
 before one substitutes for the other. Shared substrate does not prove the needed error structure, and
 independently reducing uncertainty does not by itself establish a bound on correction service.
@@ -1263,12 +1250,6 @@ missing, not removals. A disjoint registered pilot must establish that the count
 declared ratio-scale correction quantity, with its tolerance carried into the interval; the declared ceiling,
 transformed-scale sensitivity, capability scale, both-axis error and registered looks also govern admission.
 A result on checkable correction refutes P6 and the ARC Bound only for that type and domain, not for
-
-
-                                                     24
-                                       The self-acceleration exponent
-
-
 judged correction where the safety claim lies. A judged term restores the scorer gate. The route opens
 no population: until all six axes of the same-class taxonomy are frozen and cited, P6 is not evaluable.
 These are necessary conditions summarised from the registration; its complete admission and verdict
@@ -1285,6 +1266,13 @@ correction strength 𝐴(𝐶) and, under S1’s form condition, equals (1 − �
 different estimands cannot be combined by taking the smaller number without a demonstrated conversion.
 Study AG addresses the separately specified relation on its own terms (Section 8.2); no equality is
 established here.
+
+
+
+
+                                                     25
+                                       The self-acceleration exponent
+
 
 12.2   A programme hypothesis beyond the model
 A separate programme hypothesis asks whether specified human-in-the-loop arrangements attain a higher
@@ -1314,14 +1302,6 @@ the correction being adequate.
     Withdrawn 2. The substrate ceiling stated as 𝛽 𝑋 ≤ 𝛽 𝐿 . This compares an unbounded exponent to a
 bounded fraction. Its absurd consequence, that at 𝜶 = 2 it forces a corrector with zero leverage, is
 what a type error looks like carried through. The ceiling belongs between the two leverage fractions,
-
-
-
-
-                                                     25
-                                       The self-acceleration exponent
-
-
 𝛽′𝐿 ≤ 𝛽 𝐿 , and is prepared as a separate draft registration awaiting human submission as a conjecture in its
 own right.
     Withdrawn 3. A formulation 𝑘 ≤ 𝛽 + 𝛾 ≤ 1 with 𝛼crit = 1/𝛾 was carried in working notes as though
@@ -1340,6 +1320,11 @@ measurement conditions in Section 11. It is not a measurement claim: this paper 
 measurement establishing the capability-growth, corrective and clock exponents in its central result.
 Section 12 states what would refute it, Section 13 records what earlier drafts withdrew, and Section 2
 states what is not claimed as new.
+
+                                                     26
+                                       The self-acceleration exponent
+
+
      Claims come in three sizes: results, laws, frames. This is a laws-and-frames paper: Results 1 and 3
 are algebra; Results 2, 5 and 6 are algebra given scope condition S1’s form condition; Result 2a needs
 nothing beyond the corrective framework itself and one definition; and Result 7 additionally rests on a
@@ -1356,7 +1341,7 @@ submission, and no mathematician without a stake in the programme has yet read t
 conditions known. The programme-wide correction record is at michaeldariuseastwood.com/research/
 corrections.
 
-14.2   This paper and Laws IV and V
+14.2    This paper and Laws IV and V
 This paper bears on Law V, the ARC Embedding Law. It relates correction to capability where an
 embedded mechanism satisfies the accumulation and form premises of S1 (Section 6.5). Its governor
 model examines an embedded, mutable corrector as one candidate, without proving that its removal
@@ -1368,17 +1353,18 @@ was constant rather than compounding (Section 9.2). It measures nothing. It repo
 correction placed inside the loop with correction applied outside it as depth grows, which is P21, and it
 says nothing about build order, which is P12. It does not bear on Law IV, the ARC Persistence Law: its
 conditional analysis of constant or decreasing effective correction strength (Section 6.4) concerns the
+specified 𝐴(𝐶), not whether gains installed by external post-training persist under later capability-directed
+training, which is P15. No result in this paper is a deciding test of P15, P12 or P21. The note of 3 October
+2026 that first placed the paper against the two laws is kept in Appendix A.5.
 
 
-                                                     26
+
+
+                                                     27
                                        The self-acceleration exponent
 
 
-specified 𝐴(𝐶), not whether gains installed by external post-training persist under later capability-directed
-training, which is P15. No result in this paper is a deciding test of P15, P12 or P21. The note of 3 October
-2026 that first placed the paper against the two laws is kept in Appendix A.4.
-
-14.3   The laws and the programme, as at 1 November 2026
+14.3   The laws and the programme, as at 16 November 2026
 What this programme names Laws are conjectures, and each is a law under test until a registered test
 returns its verdict. Laws I to III were registered on 8 September 2026 and Laws IV and V on 15 October
 2026, in version 1.103 of the theory registration; its current version is 1.104, approved on 29 October
@@ -1419,16 +1405,16 @@ model failures:
       single 𝛿, Result 3 holds only locally and the threshold is not a number but a moving target.
    3. The scaling framework’s exponent is not what governs real recursive capability growth. The
       reported error-decay regression estimate of 0.49 is a different estimand and cannot decide this
-
-
-                                                     27
-                                        The self-acceleration exponent
-
-
       capability-growth claim (Section 7.3). No paired measurement of the model’s capability-growth
       and cycle-time exponents is supplied here.
    4. The corrective framework’s two-variable model is too coarse. Its criterion may not survive a
       treatment with realistic state.
+
+
+                                                    28
+                                        The self-acceleration exponent
+
+
    5. 𝜹 may be unmeasurable in practice if capability and cycle time cannot be separated, because a
       cycle that also raises capability confounds both axes.
    6. The hard-takeoff window may never be reached, if no system sustains a sufficiently positive 𝛿.
@@ -1464,22 +1450,22 @@ unobserved limit.
 
 Code and data. This paper is a derivation and has no code or data of its own. The figures it quotes are
 Paper II’s estimator row for Gemini 3 Flash (Section 7.3) and the historical Paper VI adversarial-pressure
-range retained in Appendix A.5, each pinned in the deposit record (Appendix B.2). Section 6.4 explains
+range retained in Appendix A.6, each pinned in the deposit record (Appendix B.2). Section 6.4 explains
 why that range identifies no correction exponent here. The paper and its earlier versions are deposited at
 doi.org/10.17605/OSF.IO/HT8WU and mirrored in the public repository github.com/MichaelDariusEast
 wood/arc-principle-validation, folder papers/Paper-XIII-Self-Acceleration-Exponent.
-
-
-
-
-                                                      28
-                                       The self-acceleration exponent
 
 
 Acknowledgements
 Michael Darius Eastwood conceived and directs this research programme and is the author of this work.
 Across the programme, he has used more than six AI systems in parallel, under his own instructions, to
 stress-test his arguments, identify possible errors, and assist in preparing draft text from his own outlines.
+
+
+                                                      29
+                                       The self-acceleration exponent
+
+
 He determines what is adopted, revised or rejected and takes responsibility for the published content.
 These systems are tools, not authors.
 
@@ -1490,7 +1476,7 @@ licence (CC BY 4.0).
 
 
 
-                                                     29
+                                                    30
                                       The self-acceleration exponent
 
 
@@ -1537,31 +1523,31 @@ Michael Darius Eastwood. Founding Paper · Recursive Dynamics · The Science of 
  Themselves. OSF, 2026a. Cited edition: version 3.5, 24 October 2026. First published 31 August 2026.
  doi:10.17605/OSF.IO/HCPBU.
 
-Michael Darius Eastwood. Laws IV and V: the mathematics. OSF, 2026b. Cited edition: version 1.2, 29
- October 2026. First published 1 October 2026 as working draft 0.2.1; version 1.0 dated 3 October 2026
- and version 1.1 dated 7 October 2026. doi:10.17605/OSF.IO/4B3VT.
+Michael Darius Eastwood. When do installed values fade with training, and does building them in first
+ change that? OSF, 2026b. Cited edition: version 1.2, 29 October 2026. First published 1 October
+ 2026 as working draft 0.2.1; version 1.0 dated 3 October 2026 and version 1.1 dated 7 October 2026.
+ doi:10.17605/OSF.IO/4B3VT.
 
 Michael Darius Eastwood. Register · The ARC Theory · Operational Definitions. OSF, 2026c. Cited
  edition: version 1.9.1, 5 October 2026. First published 22 August 2026. doi:10.17605/OSF.IO/GVQ82.
 
 
 
-
-                                                    30
+                                                    31
                                        The self-acceleration exponent
 
 
-Michael Darius Eastwood. Paper II · The ARC Theory · Law I, the ARC Principle · Blinded Cross-
- Architecture Replication and the Retraction of a Super-Linear Estimate. OSF, 2026d. Cited edition:
- version 2.19, 29 October 2026. First published 22 January 2026. doi:10.17605/OSF.IO/8FJMA.
+Michael Darius Eastwood. Blinded cross-architecture replication and the retraction of a super-linear
+ estimate. OSF, 2026d. Cited edition: version 2.19, 29 October 2026. First published 22 January 2026.
+ doi:10.17605/OSF.IO/8FJMA.
 
 Michael Darius Eastwood. Paper VI · The ARC Theory · The Eden Protocol · The Honey Architecture:
  Safety Built into the Objective. OSF, 2026e. Cited edition: version 3.11, 5 October 2026. First
  published 16 March 2026. doi:10.17605/OSF.IO/8EZ2N.
 
-Michael Darius Eastwood. Paper X · The ARC Theory · Law II, the ARC Co-Scaling Law · Correction
- That Out-Scales Drift. OSF, 2026f. Cited edition: version 1.16, 21 October 2026. First published 3
- July 2026. doi:10.17605/OSF.IO/BSE2Q.
+Michael Darius Eastwood. Correction that out-scales drift: an exponent criterion for a vanishing
+ misalignment fraction in a minimal model of recursive self-improvement. OSF, 2026f. Cited edition:
+ version 1.16, 21 October 2026. First published 3 July 2026. doi:10.17605/OSF.IO/BSE2Q.
 
 Michael Darius Eastwood. Paper XI · The ARC Theory · Law I, the ARC Principle · Convergent Evidence
  for Recursive Amplification: a Graded Cross-Domain Register. OSF, 2026g. Cited edition: version
@@ -1604,7 +1590,7 @@ Michael Darius Eastwood. Unit 83 (counted test of P21): results of the registere
 Joshua Engels, David D. Baek, Subhash Kantamneni, and Max Tegmark. Scaling laws for scalable oversight.
   In Advances in Neural Information Processing Systems 38. Neural Information Processing Systems
 
-                                                    31
+                                                    32
                                       The self-acceleration exponent
 
 
@@ -1662,7 +1648,7 @@ Norbert Wiener. Cybernetics: or Control and Communication in the Animal and the 
   fourth printing, 1985, Chapter IV, pages 95 to 98. The DOI links the publisher’s 2019 reissue of the
   second edition.
 
-                                                    32
+                                                    33
                                       The self-acceleration exponent
 
 
@@ -1682,15 +1668,36 @@ Jinkui Zhao. Universal growth scaling law determined by dimensionality, 2022. UR
 
 
 
-                                                   33
-                                         The self-acceleration exponent
+                                                   34
+                                          The self-acceleration exponent
 
 
-A      Version history and corrections
+A     Version history and corrections
 This appendix keeps the paper’s record whole. Section numbers inside the records are those of the version
-each describes; Appendix A.6 maps the sections of version 1.10 to this edition.
+each describes; Appendix A.7 maps the sections of version 1.10 to this edition.
 
-A.1     Version 1.12 (1 November 2026)
+A.1    Version 1.13 (16 November 2026)
+Version 1.13 gives the abstract and the Introduction this paper’s own opening; the opening sentences that
+earlier versions shared with other papers are removed or replaced. No law, value, table, result or status
+changes. The first-page footnote no longer names the paper’s earlier OSF title, and its author line takes the
+programme’s present form. The line beneath the title now reads “Theory · Paper XIII”; earlier versions
+read “Theory · Theory paper · Paper XIII”. The references to the author’s own papers give each the title its
+cited edition prints. The title now prints the paper’s established name before its question; earlier versions
+printed the question alone. Version 1.12 read, at the head of the abstract:
+      I believe advanced AI is an existential risk unless values and correction are built into how it reasons;
+      only proof will move the world.
+
+and at the head of the Introduction:
+      I believe advanced AI is an existential risk unless values and correction are built into how it reasons;
+      only proof will move the world. The programme’s position is that people keep oversight, containment
+      and shutdown of advanced AI for as long as they physically can, and never give them up by choice;
+      correction built into a system is the contingency for control lost against our will, not a reason to let go
+      of it. Whether that contingency can keep pace with a system that improves itself is a question worth
+      deciding with mathematics before events decide it.
+      A concrete question for a laboratory running a recursive improvement loop is whether effective
+      correction strengthens fast enough as the loop becomes more capable and its cycles shorten.
+
+A.2    Version 1.12 (1 November 2026)
 Version 1.12 gives this appendix’s record of version 1.11 as one entry, where version 1.11 printed an earlier
 description beside later corrections, and gives each passage of version 1.10 that version 1.11 changed
 under its present place instead of an internal row label; it no longer prints wording from an unpublished
@@ -1698,109 +1705,108 @@ draft of version 1.11. In the main text, wording about the paper’s own prepara
 to plain statements (Sections 3 and 4.1, Remark 1, Section 6.4 and Appendix B), and the abstract closes
 on what the governor discussion does. Section 2.3 no longer quotes the author’s December-era notes on
 Smolin, because the quotation’s dated source has not been located; version 1.11 read:
-        Smolin’s cosmological natural selection (Smolin 1992) is the antecedent for selection-shaped
-        universes, and the programme’s own December-era notes cite it contemporaneously (“Echoing
-        Smolin’s cosmological natural selection, AI could create recursive universes with their own laws”,
-        read at its source in the author’s notes).
+      Smolin’s cosmological natural selection (Smolin 1992) is the antecedent for selection-shaped
+      universes, and the programme’s own December-era notes cite it contemporaneously (“Echoing
+      Smolin’s cosmological natural selection, AI could create recursive universes with their own laws”,
+      read at its source in the author’s notes).
 
 No result, equation, registration, source or date of a claim is added or moved, and the first-publication
 date remains 16 August 2026.
 
-A.2     Version 1.11 (1 November 2026)
+A.3    Version 1.11 (1 November 2026)
 Version 1.11, 1 November 2026, set the paper on the programme’s presentation standard. Its headline
 became a question, When can correction keep pace with recursive self-acceleration?, and its recorded
 title names what the threshold joins growth to, correctability, in place of “stability”, the word retired from
-Paper X’s title for the same criterion; until this version it read Paper XIII · The ARC Theory · Laws I and
-II, the ARC Principle and the ARC Co-Scaling Law · The Self-Acceleration Exponent: a Measurable
-Threshold Joining Growth to Stability. Every change below is carried in this one version.
-      • Title block. The first page carries the headline with its category and its place in the programme
-        beneath it; the plate beneath the author line, now the first-page footnote, names Law II’s correction
-        criterion where it named Law II’s stability.
-      • Substantive: the correction criterion. Section 4 defines alignment-stability as the relative misalign-
-        ment 𝐷/𝐶 tending to zero, which in the standing gain-drift model holds exactly when 𝛽 𝑋 > 𝑘, and
-        separates that relative criterion from absolute burden and harm; the abstract, Sections 6.4, 8, 8.1
-        and 10 and criterion F3 state the relative criterion where version 1.10 said stability. The gain-drift
-        domain is specified, the strict super-exponential regime is distinguished from its exponential
-        boundary, and Result 7’s conjecture is carried into its heading, prose and table.
-      • Substantive: estimates and measurement. Paper II’s error-decay estimates are separated from
-        capability growth; its estimate of 0.31 is given as a parallel endpoint estimate, because the sequential
-        and parallel arms were not matched in total compute; and the transformed error-suppression ratios
-        are labelled hypothetical (Section 7.3). The negative-leverage extension is kept as mathematics,
-        without an empirical substitution (Section 7.1). The self-acceleration exponent is the negative of
-        the slope of cycle duration against capability, where version 1.10 called it the slope. Section 11
-        states what an admissible measurement needs and no longer calls it costless or its data already in
-        hand, and no exponent is inferred from fixed rules or frozen weights (Sections 6.4 and 11).
 
-
-
-                                                       34
-                                   The self-acceleration exponent
-
-
-• Substantive: thresholds and overhead. The ordering of the two thresholds, proportional verification
-  overhead and additive latency are corrected in the current argument, including Result 8 and
-  Figure 1; the nonshrinking-cycle cap is distinguished from the calibrated cap, which permits
-  equality (Section 9.1).
-• Substantive: falsification. The criteria separate mathematical counterexamples from empirical tests,
-  state the limits of finite observation, and apply the current registration’s equivalence, precision and
-  replicated same-type P6 criteria (Section 12).
-• Substantive: status. Section 14 gives every law’s standing as at this version and Unit 83’s result:
-  P21 is supported under the registered test, by the programme’s own run, on the access axis,
-  family-dependent, with its mechanism axis not evaluable and one call retried under a disclosed
-  recovery amendment (results: DOI 10.17605/OSF.IO/98HKR). It also gives Units 06 and 82 and the
-  state of the measurement this paper defines, Unit 30; the status plate’s note of 3 October 2026, the
-  closing note after the references and the epistemic-status line are kept as printed in Appendix A.4.
-• Substantive: what other works said. Section 2.2 gives Engels and co-authors their design condition
-  in slope form and no longer calls the disagreement of the two programmes their most productive
-  relationship; Section 2.3 states Hutter’s undertaking without quotation marks, cites Chalmers, Good,
-  Jones, Smolin and the threshold theorem, no longer says the literature contains no measurable
-  exponent, describes the three impossibility papers as arguing for limits on alignment or its control,
-  and gives the third’s conclusion in its own words.
-• Substantive: the governor. Section 10 is a scoped modelling contribution. Its comparison with
-  primary sources distinguishes disturbance stability, variety, model-based regulation, goal-preserving
-  self-modification, corrigibility and interruptibility from this paper’s conditional exponent relation,
-  and it claims no historical priority and no unique architecture; Section 2.1 states the contribution in
-  the same terms.
-• Substantive: hypothesis and prediction. Section 12.2 gives the human-in-the-loop prediction as a
-  programme hypothesis beyond what this paper’s algebra decides, as Paper X states it, and no longer
-  says that it is stated here for the first time, since Paper X carried the same passage by 12 August
-  2026; Section 12.1 says that the same-class cap is the programme’s conjecture, P6, which this paper
-  does not derive.
-• Substantive: the pipes premise. Section 3 states the fixed-substrate premise without claiming that
-  software is the first or only system to improve at fixed throughput, gives the Eddington limit as a
-  luminosity balance rather than a universal accretion ceiling, sets the idealised power laws beside
-  the limits of a finite machine, and treats biological evolution as an analogy, not evidence.
-• Substantive: study AG. Section 8.2 describes study AG as its registration text does: the two
-  derivations share one functional form, and what it tests is their ordering.
-• Substantive: the substrate ceiling. Section 8.1 states the additional premise behind the substrate-
-  ceiling conjecture.
-• Substantive: control and usefulness. Section 1 states the programme’s position that people keep
-  oversight, containment and shutdown for as long as they physically can, Section 10.2 points to it,
-  and Section 9.1 gives the usefulness side of a cap on self-acceleration.
-• Editorial. Sections 7.3 and 8.1 no longer use two phrases of the programme’s working vocabulary,
-  which Appendix A.5 gives as printed. The references are linked to their official sources and
-  the programme’s papers to their OSF DOIs; reference notes identify the editions consulted and
-  distinguish their dates from first publication; the Ashby reference uses the trustee-authorised text,
-  and the Wiener reference names the edition consulted and the publisher’s reissue. The copyright
-  block takes the reference edition’s form, keeping the assertion of full human authorship; version
-
-                                                35
+                                                          35
                                        The self-acceleration exponent
 
 
-      1.10’s clause on the guidance of the United States Copyright Office and its link to the author’s
-      statement on authorship are not set, so that the only wording about tools is the author’s disclosure;
-      and the links about the author are his page and his book. Appendix A.5 gives every passage this
-      version re-set as version 1.10 printed it, and Appendix A.6 maps the sections of version 1.10 to this
-      edition.
+Paper X’s title for the same criterion; until this version it read Paper XIII · The ARC Theory · Laws I and
+II, the ARC Principle and the ARC Co-Scaling Law · The Self-Acceleration Exponent: a Measurable
+Threshold Joining Growth to Stability. Every change below is carried in this one version.
+    • Title block. The first page carries the headline with its category and its place in the programme
+      beneath it; the plate beneath the author line, now the first-page footnote, names Law II’s correction
+      criterion where it named Law II’s stability.
+    • Substantive: the correction criterion. Section 4 defines alignment-stability as the relative misalign-
+      ment 𝐷/𝐶 tending to zero, which in the standing gain-drift model holds exactly when 𝛽 𝑋 > 𝑘, and
+      separates that relative criterion from absolute burden and harm; the abstract, Sections 6.4, 8, 8.1
+      and 10 and criterion F3 state the relative criterion where version 1.10 said stability. The gain-drift
+      domain is specified, the strict super-exponential regime is distinguished from its exponential
+      boundary, and Result 7’s conjecture is carried into its heading, prose and table.
+    • Substantive: estimates and measurement. Paper II’s error-decay estimates are separated from
+      capability growth; its estimate of 0.31 is given as a parallel endpoint estimate, because the sequential
+      and parallel arms were not matched in total compute; and the transformed error-suppression ratios
+      are labelled hypothetical (Section 7.3). The negative-leverage extension is kept as mathematics,
+      without an empirical substitution (Section 7.1). The self-acceleration exponent is the negative of
+      the slope of cycle duration against capability, where version 1.10 called it the slope. Section 11
+      states what an admissible measurement needs and no longer calls it costless or its data already in
+      hand, and no exponent is inferred from fixed rules or frozen weights (Sections 6.4 and 11).
+    • Substantive: thresholds and overhead. The ordering of the two thresholds, proportional verification
+      overhead and additive latency are corrected in the current argument, including Result 8 and
+      Figure 1; the nonshrinking-cycle cap is distinguished from the calibrated cap, which permits
+      equality (Section 9.1).
+    • Substantive: falsification. The criteria separate mathematical counterexamples from empirical tests,
+      state the limits of finite observation, and apply the current registration’s equivalence, precision and
+      replicated same-type P6 criteria (Section 12).
+    • Substantive: status. Section 14 gives every law’s standing as at this version and Unit 83’s result:
+      P21 is supported under the registered test, by the programme’s own run, on the access axis,
+      family-dependent, with its mechanism axis not evaluable and one call retried under a disclosed
+      recovery amendment (results: DOI 10.17605/OSF.IO/98HKR). It also gives Units 06 and 82 and the
+      state of the measurement this paper defines, Unit 30; the status plate’s note of 3 October 2026, the
+      closing note after the references and the epistemic-status line are kept as printed in Appendix A.5.
+    • Substantive: what other works said. Section 2.2 gives Engels and co-authors their design condition
+      in slope form and no longer calls the disagreement of the two programmes their most productive
+      relationship; Section 2.3 states Hutter’s undertaking without quotation marks, cites Chalmers, Good,
+      Jones, Smolin and the threshold theorem, no longer says the literature contains no measurable
+      exponent, describes the three impossibility papers as arguing for limits on alignment or its control,
+      and gives the third’s conclusion in its own words.
+    • Substantive: the governor. Section 10 is a scoped modelling contribution. Its comparison with
+      primary sources distinguishes disturbance stability, variety, model-based regulation, goal-preserving
+      self-modification, corrigibility and interruptibility from this paper’s conditional exponent relation,
+      and it claims no historical priority and no unique architecture; Section 2.1 states the contribution in
+      the same terms.
+    • Substantive: hypothesis and prediction. Section 12.2 gives the human-in-the-loop prediction as a
+      programme hypothesis beyond what this paper’s algebra decides, as Paper X states it, and no longer
+
+
+                                                     36
+                                        The self-acceleration exponent
+
+
+        says that it is stated here for the first time, since Paper X carried the same passage by 12 August
+        2026; Section 12.1 says that the same-class cap is the programme’s conjecture, P6, which this paper
+        does not derive.
+      • Substantive: the pipes premise. Section 3 states the fixed-substrate premise without claiming that
+        software is the first or only system to improve at fixed throughput, gives the Eddington limit as a
+        luminosity balance rather than a universal accretion ceiling, sets the idealised power laws beside
+        the limits of a finite machine, and treats biological evolution as an analogy, not evidence.
+      • Substantive: study AG. Section 8.2 describes study AG as its registration text does: the two
+        derivations share one functional form, and what it tests is their ordering.
+      • Substantive: the substrate ceiling. Section 8.1 states the additional premise behind the substrate-
+        ceiling conjecture.
+      • Substantive: control and usefulness. Section 1 states the programme’s position that people keep
+        oversight, containment and shutdown for as long as they physically can, Section 10.2 points to it,
+        and Section 9.1 gives the usefulness side of a cap on self-acceleration.
+      • Editorial. Sections 7.3 and 8.1 no longer use two phrases of the programme’s working vocabulary,
+        which Appendix A.6 gives as printed. The references are linked to their official sources and
+        the programme’s papers to their OSF DOIs; reference notes identify the editions consulted and
+        distinguish their dates from first publication; the Ashby reference uses the trustee-authorised text,
+        and the Wiener reference names the edition consulted and the publisher’s reissue. The copyright
+        block takes the reference edition’s form, keeping the assertion of full human authorship; version
+        1.10’s clause on the guidance of the United States Copyright Office and its link to the author’s
+        statement on authorship are not set, so that the only wording about tools is the author’s disclosure;
+        and the links about the author are his page and his book. Appendix A.6 gives every passage this
+        version re-set as version 1.10 printed it, and Appendix A.7 maps the sections of version 1.10 to this
+        edition.
 No registered law, prediction, kill condition or dependency is changed by this paper, and no result number
 or empirical result is added. Current interpretations and Result 8’s wording are corrected as stated above,
 without changing the dates of earlier claims. The 19 September 2026 notes and the other earlier words are
 kept below as history; they are not current claims. The first-publication date remains 16 August 2026.
 
-A.3    Earlier versions, as printed
+A.4     Earlier versions, as printed
 The version history of version 1.10, as printed, with each mention of a programme paper linked to its DOI.
-     Paper XIII v1.10, 5 October 2026: the title now follows the programme’s uniform order (paper, its law
+    Paper XIII v1.10, 5 October 2026: the title now follows the programme’s uniform order (paper, its law
 or framework, its own title) and reads Paper XIII · The ARC Theory · Laws I and II, the ARC Principle
 and the ARC Co-Scaling Law · The Self-Acceleration Exponent: a Measurable Threshold Joining Growth
 to Stability; until this version it read The Self-Acceleration Exponent: a Measurable Threshold Joining
@@ -1812,8 +1818,13 @@ Stability, which the title supersedes, is removed. Mentions of the programme’s
 carry their uniform titles. The note on how to read this paper now names the two laws the paper joins,
 Law I and Law II. No registered law, prediction, kill condition or dependency changes; no result is added;
 no date of any claim moves.
-     Paper XIII v1.9, 4 October 2026: the title now names the two laws the threshold joins, Law I and
+    Paper XIII v1.9, 4 October 2026: the title now names the two laws the threshold joins, Law I and
 Law II; until this version it was titled The Self-Acceleration Exponent, with the subtitle A Measurable
+
+                                                     37
+                                       The self-acceleration exponent
+
+
 Threshold Joining Recursive Capability Growth to Corrective Stability. No registered law, prediction, kill
 condition or dependency changes; no result is added; no date of any claim moves.
      Paper XIII v1.8, 4 October 2026: a dated note in the status box places this paper against Laws IV
@@ -1835,11 +1846,6 @@ epistemic-status line gives the standing of Laws I to III and of Laws IV and V s
 Section 5.1b gives the count of models as Paper II gives it for its capability arm, four of five without a
 usable exponent where it had said five of six; the abstract names 𝛽′𝐿 where it had named 𝛽 𝐿 among the
 quantities never measured; and Section 13 gives each work it credits in that work’s own terms, cites the
-
-                                                     36
-                                       The self-acceleration exponent
-
-
 1999 papers of West, Brown and Enquist and of Banavar, Maritan and Rinaldo, gives the 2010 paper of
 Banavar and co-authors the result it states rather than the general form, and names the basis of Zhao’s
 derivation. Substantive: Section 7.2 and the reference entry for Paper VI give the honey-architecture
@@ -1856,7 +1862,7 @@ of Section 6 and four labels in Sections 13.1 and 13.2 are put in plain words; t
 headed In this paper’s terms names study AG as the test of the identity without stating again the status the
 section gives above it; the version, the dateline and the metadata dates carried to v1.8. No registered law,
 prediction, kill condition or dependency changes; no result is added; no date of any claim moves.
-    Paper XIII v1.7: Four dated notes added after an owner review of the algebra in Sections 3, 4.4,
+     Paper XIII v1.7: Four dated notes added after an owner review of the algebra in Sections 3, 4.4,
 5.2 and 7.2, and no result is withdrawn. Substantive: a scope note beneath the fixed-tax paragraph in
 Section 7.2 records that the paragraph holds for a proportional verification overhead and not, in general,
 for an additive one, that an additive serial latency drives the local self-acceleration exponent to zero and
@@ -1867,6 +1873,11 @@ measured systems rather than a consequence of Result 3, because in the extended 
 calendar-time threshold is 𝛽 𝐿 + 𝛿 = 1 for every 𝛽 𝐿 below 1. Substantive: premise notes beside Result 1 in
 Section 3 and Result 2 in Section 4.4 state the finite-window solution and the aligned-origin or asymptotic
 condition under which the two accumulations may be treated as pure powers, and record that Result 3 is
+
+                                                     38
+                                       The self-acceleration exponent
+
+
 unaffected and is not withdrawn. Editorial: the version, the dateline and the metadata dates carried to
 v1.7. No reported number changes and the first-published date does not move.
     v1.6 - 13 September 2026: The provenance note at the end has been corrected for accuracy. No claim,
@@ -1878,7 +1889,7 @@ Paper XI’s folder. Measured exponent now printed with its interval at every me
 Engels et al. Spotlight status verified. Footer date of 25 August brought into line with the first-page date.
     v1.4 - 27 August 2026: discoverability metadata and the 25 August figure and provenance notes.
 
-A.4    Earlier notes, as printed
+A.5    Earlier notes, as printed
 Four records of version 1.10 that this edition does not print in the main text, as printed: the status plate
 (its first paragraph is restated in Section 14.1), the correction note of 3 October 2026 from the section on
 the point estimate, the closing note after the references, and the epistemic-status line.
@@ -1886,13 +1897,6 @@ the point estimate, the closing note after the references, and the epistemic-sta
 Status · a derivation, not a measurement This paper derives a measurable threshold, 𝛿 = 1/𝛼, on a
 quantity any self-improvement loop can record, from one stated scope condition. It is not a measurement
 claim: three of the four quantities in the central result have never been measured in any system. Section
-
-
-
-                                                     37
-                                       The self-acceleration exponent
-
-
 10 states what would refute it, section 12 records what earlier drafts withdrew, and section 13 states what
 is not claimed as new.
     Two of the five conditions set for this paper’s deposit remain open and are stated here rather than
@@ -1922,6 +1926,10 @@ capability-directed training, which is P15. No result in this paper is a decidin
 Naming the two laws changes no result printed here: the results, their dates and their limits stand as they
 were.
 
+                                                     39
+                                       The self-acceleration exponent
+
+
 Correction note (3 October 2026). Until this version, sections 5.1, 5.1a, 5.1b, 5.2, 6.1 and 11 printed
 the regression estimate from Paper II beside the bootstrap interval that belongs to the endpoint estimate of
 the same row; section 5.1b said that the source reports the two together and set the regression estimate
@@ -1940,12 +1948,6 @@ the prediction on the ratio of the correction exponents is registered; their des
 corrector-class contrast (unit 01), are drafts preregistered by timestamp, first anchored on 12 August
 2026 and on 28 August 2026, and both sections now say preregistered by timestamp. Section 13.2 gave,
 in quotation marks, words that the paper of Ball and co-authors does not contain; it now reports the
-
-
-                                                     38
-                                       The self-acceleration exponent
-
-
 conclusion their abstract states. The closing note after the references said that nothing had been submitted;
 it now gives the state of the trials. The epistemic-status line said that what the programme names Laws
 are conjectures under registered adversarial test. It now gives the standing of Laws I to III and of Laws
@@ -1976,6 +1978,11 @@ public since 4 October 2026 (DOI 10.17605/OSF.IO/RV2B5). Every other trial is a 
 author’s submission, most of them preregistered by timestamp. The measurement this paper defines has
 not been run, and no result is claimed.
 
+
+                                                     40
+                                       The self-acceleration exponent
+
+
 Epistemic status. What this programme names Laws are conjectures. Laws I to III are under registered
 adversarial test. Laws IV and V were added on 24 September 2026; the predictions that carry them
 are registered, the laws themselves are not yet registered, and neither has been tested. Every quantity
@@ -1991,18 +1998,11 @@ test, and Law V’s placement limb, P21, has a registered verdict from Unit 83. 
 one study unit registered on OSF; three are registered, Units 06, 83 and 82. Section 14.3 gives each as at
 this version. Unchanged: the records above and every date in them.
 
-
-
-
-                                                     39
-                                       The self-acceleration exponent
-
-
-A.5    Passages re-set in version 1.11
+A.6    Passages re-set in version 1.11
 Each passage of version 1.10 that version 1.11 changed is given below as version 1.10 printed it, under its
 present place. The first list gives sentences and headings, each with the reason for its change; the second
 gives whole passages in the order version 1.10 printed them. Section numbers inside the quotations are
-those of version 1.10, and Appendix A.6 maps them to this edition. The quotations are the record of what
+those of version 1.10, and Appendix A.7 maps them to this edition. The quotations are the record of what
 was printed, including claims later withdrawn or narrowed; the current text governs.
 Section 3 The example is not kept; the section states the fixed-substrate premise and its physical limits
       directly. Version 1.10 read: “Starve a tumour’s vasculature and it stops.”
@@ -2027,6 +2027,13 @@ Section 6.4 A rule being fixed no longer establishes 𝛽 𝑋 ≤ 0; the strict
 Section 7.3 The sentence is not kept; the section gives the estimates with their precision and labels the
       transformed ratio hypothetical. Version 1.10 read: “it is the most communicable figure in the
       estate,”
+
+
+
+                                                    41
+                                         The self-acceleration exponent
+
+
 Section 7.3 The sequential and parallel arms were not matched in total compute, so 0.31 is a parallel
       endpoint estimate. Version 1.10 read: “a compute-matched parallel exponent of 0.31”
 Remark 4 For 𝛽 𝑋 > 𝑘 the relative misalignment vanishes on either side of the growth boundary, while
@@ -2042,12 +2049,6 @@ Section 8.1 A word of the programme’s working vocabulary is replaced. Version 
       substrate-ceiling conjecture and the width identity combine, and neither lane derived this alone.”
 Section 8.1 Within S1 and the ceiling conjecture, 𝑘 < 1 is necessary, not sufficient, for vanishing relative
       misalignment. Version 1.10 read: “And stability then requires 𝑘 < 1”
-
-
-                                                    40
-                                         The self-acceleration exponent
-
-
 Section 8.2 The words described the withdrawn draft of study AG; its registration text says that the two
       derivations share one functional form, and that what it tests is their ordering. Version 1.10 read:
             Study AG tests the two derivations of the critical exponent against each other on the same system,
@@ -2078,6 +2079,12 @@ Section 12.2 It is a programme hypothesis beyond what this paper’s algebra dec
             The same mechanism yields a second measurable prediction, stated here for the first time:
             oversight arrangements that place a human in the loop, as amplification and reinforcement
             learning from human feedback do, are cross-class by construction, because the human corrector
+
+
+                                                       42
+                                         The self-acceleration exponent
+
+
             does not share the model’s substrate. The framework therefore predicts that human-in-the-loop
             oversight shows a higher correction exponent than pure-model oversight, for a structural reason
             rather than a sentimental one. This is testable on existing data and does not require new systems.
@@ -2094,13 +2101,6 @@ Section 2.2 Engels and co-authors are given their design condition in slope form
             which is the most productive relationship two research programmes can have.
 Section 2.3 Hutter’s undertaking is stated in his own terms, the works the paragraph names are cited, and
       the paragraph no longer says that the literature contains no measurable exponent. Version 1.10 read:
-
-
-
-                                                        41
-                                         The self-acceleration exponent
-
-
             On the question. Hutter asked directly whether intelligence can explode (“Can Intelligence
             Explode?”, arXiv, 28 February 2012, read at its source), separating “speed from intelligence
             explosion” and undertaking to “consider possible bounds on intelligence”, augmenting Chalmers’
@@ -2133,28 +2133,29 @@ Title block The presentation standard puts the category and the paper’s place 
       ARC/Eden experiments · Paper XIII · Working Paper v1.10”
 Section 14.3 The registration now stands at version 1.104. The plate’s links to the registration’s formats
       and its OSF record, labels of the website, are not repeated here. Version 1.10 read:
-            Theory-level predictions preregistered on OSF: DOI 10.17605/OSF.IO/P8CKQ, registered 8
-            September 2026 (version 1.100), updated 13 September 2026 (version 1.102), twenty-two
-            propositions.
-            Companion: Register · The ARC Theory · Operational Definitions, version 1.9.1, 5 October
-            2026.
+
+
+
+                                                        43
+                                        The self-acceleration exponent
+
+
+           Theory-level predictions preregistered on OSF: DOI 10.17605/OSF.IO/P8CKQ, registered 8
+           September 2026 (version 1.100), updated 13 September 2026 (version 1.102), twenty-two
+           propositions.
+           Companion: Register · The ARC Theory · Operational Definitions, version 1.9.1, 5 October
+           2026.
 Author block and footnote The presentation standard sets the author block, and the links about the
      author are his page and his book. Its last item, a label linking to a page of the website, is not
      repeated here. Version 1.10 read:
-            Michael Darius Eastwood
-            Independent AI alignment researcher, London · Author, Infinite Architects (2026)
-            ORCID 0009-0004-3222-7442 · michael@michaeldariuseastwood.com · michaeldariuseastwood.
-            com
-            The ARC Theory · OSF osf.io/ht8wu · [. . . ]
+           Michael Darius Eastwood
+           Independent AI alignment researcher, London · Author, Infinite Architects (2026)
+           ORCID 0009-0004-3222-7442 · michael@michaeldariuseastwood.com · michaeldariuseastwood.
+           com
+           The ARC Theory · OSF osf.io/ht8wu · [. . . ]
 First-page footnote The footnote names Law II’s correction criterion where the plate named Law II’s
       stability. Version 1.10 read: “The bridge between Law I’s growth and Law II’s stability; it also
       resolves the two notation collisions between the frameworks it joins, and it bears on Law V.”
-
-
-                                                        42
-                                         The self-acceleration exponent
-
-
 Footnote and version note The presentation standard sets the version, the dates and the DOI in the
       footnote. Version 1.10 read: “Working Paper v1.10 · First published 16 August 2026, revised 5
       October 2026 · DOI: 10.17605/OSF.IO/HT8WU”
@@ -2168,23 +2169,33 @@ Section 14.1 The status of each result is now stated once, here, together with t
             the temptation to imply otherwise would arise.
 Abstract The presentation standard sets the why first, in at most 1,920 characters, and Law II’s criterion
      is stated as the relative misalignment tending to zero. Version 1.10 read:
-            Two frameworks in this programme describe recursive self-improvement and have never been
-            related. One derives how capability compounds with recursive depth and yields the scaling
-            exponent 𝛼 = 1/(1 − 𝛽 𝐿 ). The other derives when a self-improving system remains correctable
-            and yields the criterion 𝛽 𝑋 > 𝑘. They use the same two letters for different quantities, which has
-            prevented the comparison rather than merely obscuring it.
-            This paper resolves the notation, derives the relation between the frameworks, and finds that the
-            quantity deciding the outcome is neither capability nor speed but how fast a system compresses
-            its own iteration time. Writing cycle duration as Δ𝑡 ∝ 𝐶 − 𝛿 defines the self-acceleration exponent
-            𝛿, and the growth exponent of the corrective framework follows exactly:
-                                                       𝑘 = 𝛿 − 1/𝛼
-            The threshold is 𝛿 = 1/𝛼. Below it a system’s capability grows as a power law and the corrective
-            question does not arise. Above it growth is super-exponential and correction must out-scale it.
-            On one assumption about the form of the correction process, the survivable window is
-                                                  1/𝛼 < 𝛿 < 1/𝛼 + 𝛽 𝑋
+           Two frameworks in this programme describe recursive self-improvement and have never been
+           related. One derives how capability compounds with recursive depth and yields the scaling
+           exponent 𝛼 = 1/(1 − 𝛽 𝐿 ). The other derives when a self-improving system remains correctable
+           and yields the criterion 𝛽 𝑋 > 𝑘. They use the same two letters for different quantities, which has
+           prevented the comparison rather than merely obscuring it.
+           This paper resolves the notation, derives the relation between the frameworks, and finds that the
+           quantity deciding the outcome is neither capability nor speed but how fast a system compresses
+           its own iteration time. Writing cycle duration as Δ𝑡 ∝ 𝐶 − 𝛿 defines the self-acceleration exponent
+           𝛿, and the growth exponent of the corrective framework follows exactly:
+
+                                                      𝑘 = 𝛿 − 1/𝛼
+
+           The threshold is 𝛿 = 1/𝛼. Below it a system’s capability grows as a power law and the corrective
+           question does not arise. Above it growth is super-exponential and correction must out-scale it.
+           On one assumption about the form of the correction process, the survivable window is
+
+                                                 1/𝛼 < 𝛿 < 1/𝛼 + 𝛽 𝑋
+
             two boundaries whose gap is exactly the correction exponent. Only the upper one is a stability
             threshold: the lower marks where growth leaves the power law, and a system between them is in
             a hard takeoff and still correctable, which contradicts the standard picture in both directions.
+
+
+                                                       44
+                                         The self-acceleration exponent
+
+
             𝛿 requires no new instrument, benchmark or model access: it is the slope of cycle duration
             against capability on logarithmic axes, on a fixed substrate, from series any self-improvement
             loop can record out of what it already computes, though, as §9 records, the two series are not
@@ -2202,11 +2213,6 @@ Section 1 “Whether a self-improving system remains correctable has been argued
 Section 1 “This paper argues the outcome is decided by neither, and identifies the quantity that decides it.
       The argument requires joining two frameworks that were built independently and cannot currently
       be compared, because they collide in notation.”
-
-                                                        43
-                                         The self-acceleration exponent
-
-
 Section 3 “Everything that grows is fed through a channel, and for everything before software, fixing the
       channel fixes the growth. Starve a tumour’s vasculature and it stops. Fix a chain reaction’s fuel
       and geometry and it stops. Exhaust an epidemic’s susceptible hosts and it burns out. Astrophysics
@@ -2236,6 +2242,12 @@ Section 5 “Consequence. The corrective framework’s control quantity q = A/r_
       per recursive step, and cannot change the verdict. That is not merely consistent with the corrective
       framework’s speed-independence theorem; it is required by it, since 𝛼 is a speed in the only sense
       that matters, and a change of variables cannot flip a sign.”
+
+
+                                                       45
+                                       The self-acceleration exponent
+
+
 Section 6.2 “The taxonomy closes as a decision tree over what A is permitted to depend on , which is
       exhaustive because those are the only available arguments: nothing, capability, or its own history,
       and the last splits by substrate.”
@@ -2253,12 +2265,6 @@ Section 6.2 “It also determines the design of the class audit. The audit’s w
       from class 2, and under the two-binary scheme it could not have.”
 Heading of Section 6.3 “4.3 Result 2a · a static corrector fails at exponential growth, and this needs no
       conjecture”
-
-
-                                                       44
-                                       The self-acceleration exponent
-
-
 Section 6.3 “For a class 1 corrector, 𝛽 𝑋 = 0 at best , because a strength depending on nothing is A_0C^0.
       Reading an exponent off a constant, not an estimate.”
 Section 6.3 “and 𝐶¤ = bC^{1+k} with k < 0 is sub-exponential. So, stated with nothing beyond the
@@ -2286,6 +2292,13 @@ Section 6.4 “Class 2 does not escape by having a free 𝛽 𝑋 . Its freedom 
 Section 6.5 “The consequence for practice is the paper’s central engineering claim. Correction embedded
       inside the recursive loop, accumulating as the loop runs, is a class 3 corrector. Class 3 is the only
       class in which the correction exponent is a determined quantity rather than a hope. An entangled
+
+
+
+                                                     46
+                                      The self-acceleration exponent
+
+
       objective, in which the safety term is part of what the loop optimises and compounds with it, is
       class 3 by construction.”
 Section 7 “The substrate qualifier is load-bearing, not decorative. Wall-clock cycle time also falls when
@@ -2304,12 +2317,6 @@ Section 7.1 “The framework restricts 𝛽 𝐿 to [0,1), and the identity ther
       cross-architecture measurement the programme has taken, a regression estimate of 𝛼 ≈ 0.49 from
       one model’s inconclusive fit (its row is printed whole in §5.1b), falls outside anything that range
       permits. This is an internal inconsistency and it must be resolved before any threshold is quoted
-
-
-                                                    45
-                                       The self-acceleration exponent
-
-
       numerically.”
 Section 7.1 “It resolves in the identity’s favour, not the range’s. The identity extends to 𝛽 𝐿 < 0 without
       modification:”
@@ -2336,6 +2343,13 @@ Section 7.2 “A frozen model reasoning for longer is not improving itself. Its 
       on chain-of-thought cannot contradict any claim about RSI. An earlier draft of this section implied
       that it did. That inference is withdrawn.”
 Section 7.2 “The defensible claim, and it is worth having on its own terms:”
+
+
+
+                                                    47
+                                       The self-acceleration exponent
+
+
 Section 7.2 “On the point estimates of the one frontier model that gave a usable fit, test-time compute
       scaling is sub-additive; the fit is inconclusive. On those estimates the leverage exponent is negative:
       each additional increment of reasoning depth uses less of the accumulated context than the increment
@@ -2354,12 +2368,6 @@ Section 7.3 “The regression estimate, 𝛼 ≈ 0.49, offers up a tempting sent
       it is the most communicable figure in the estate, and it must not be published.”
 Section 7.3 “On Gemini 3 Flash, the source, Paper II , reports an endpoint sequential exponent of 0.59
       with a bootstrap 95 per cent interval of [−1.3, 2.9], a regression sequential exponent of 0.49 with a
-
-
-                                                     46
-                                        The self-acceleration exponent
-
-
       standard error of 0.20 and a coefficient of determination of 0.86, and a compute-matched parallel
       exponent of 0.31. It is one model’s fit, and it is inconclusive. The interval belongs to the endpoint
       estimate, not to the regression estimate. Carried through the same exponentiation, its two ends
@@ -2385,8 +2393,14 @@ Section 7.3 “That claim does not depend on the point estimate , so it cannot b
       reporting a different one. It invites them to produce a tighter interval, which is the response worth
       provoking. And it is a second instance of the saturation thesis this programme already argues
       elsewhere : benchmarks saturated past the point of measuring what is being claimed about them.”
-Appendix A.4 Version 1.10’s correction note of 3 October 2026, from its Section 5.1b, is printed whole
-      in Appendix A.4.
+Appendix A.5 Version 1.10’s correction note of 3 October 2026, from its Section 5.1b, is printed whole
+      in Appendix A.5.
+
+
+                                                     48
+                                        The self-acceleration exponent
+
+
 Heading of Section 7.4 “5.2 Two thresholds in sequence, and the first one is not 𝛿”
 Section 7.4 “The thresholds are 𝛼-dependent and quoting 0.5 without its 𝛼 is an error. Take the
       regression estimate 𝛼 ≈ 0.49, from one model’s inconclusive fit (§5.1b), and the self-acceleration
@@ -2405,12 +2419,6 @@ Section 7.4 “Ordering note (19 September 2026). An owner review of the two thr
       the calendar-time threshold is k = 0, that is 𝛽 𝐿 + 𝛿 = 1, for every 𝛽 𝐿 < 1, so positive leverage is not
       a precondition for crossing it. Taking the equation values 𝛽 𝐿 = −1, whence 𝛼 = 1/(1 − (−1)) = 1/2,
       together with 𝛿 = 5/2, gives k = 5/2 − 2 = 1/2 > 0, and by Result 3 the calendar-time growth is
-
-
-                                                     47
-                                        The self-acceleration exponent
-
-
       proportional to C^(1 + k) = C^(3/2): per-step leverage is strongly negative and per-step growth is
       sublinear, yet the calendar-time threshold has been crossed. Those numbers are equation values
       chosen to display the point. They are not a measurement, a parameter estimate or a claim about
@@ -2439,6 +2447,12 @@ Section 8 “The width of the survivable hard-takeoff window is exactly the corr
 Section 8 “This is the paper’s engineering result. Improving correction does not raise a ceiling on
       capability and does not slow the system. It widens the window of self-acceleration the system can
       survive, one-for-one. A system with 𝛽 𝑋 = 1 tolerates a unit of self-acceleration above threshold; a
+
+
+                                                      49
+                                        The self-acceleration exponent
+
+
       system with 𝛽 𝑋 = 2 tolerates two.”
 Section 8 “It contradicts the standard picture in both directions. A fast takeoff is not automatically a lost
       one: a system well past the lower boundary is accelerating hard and remains correctable. A slow
@@ -2456,12 +2470,6 @@ Section 8.1 “The two thresholds are exactly one apart at every value of 𝛽 �
       moves with the scaling exponent; its width does not.”
 Section 8.1 “And stability then requires k < 1 : a universal threshold at k = 1, which is 𝐶¤ ∝ C2 , independent
       of where the ARC Bound sits.”
-
-
-                                                     48
-                                       The self-acceleration exponent
-
-
 Section 8.1 “Status. Result 7 depends on the substrate-ceiling conjecture, which is prepared as a separate
       draft registration awaiting human submission and is not assumed elsewhere in this paper. Results
       5 and 6 stand without it. Two unproven conjectures multiplied together is the failure mode this
@@ -2490,6 +2498,12 @@ Section 9 “If the criterion holds, there is no capability level at which corre
       how capable a system has become; it is whether its capacity to correct itself has kept pace with its
       capacity to improve itself.”
 Section 9 “Both the position that recursive self-improvement is inevitably uncontrollable and the position
+
+
+                                                      50
+                                        The self-acceleration exponent
+
+
       that it is inherently safe assume the outcome is decided by a level. On this account neither follows.”
 Heading of Section 9.1 “7.1 Result 8 · one rate-like intervention does work, and it is not the one being
       used”
@@ -2507,13 +2521,6 @@ Section 9.1 “This is actionable without any measurement, and the strongest for
       guarantees the sub-exponential regime unconditionally, with nothing estimated, for any architecture,
       at any capability. 𝛿 is observable on a fixed substrate, attributable to the operator who runs the loop,
       and enforceable by construction.”
-
-
-
-                                                     49
-                                        The self-acceleration exponent
-
-
 Section 9.1 “A calibrated version exists for operators willing to measure: a minimum cycle duration
       shrinking no faster than C^{-1/𝛼} permits self-acceleration up to the threshold. But the calibrated
       cap is indexed to 𝛼, which no regulator can observe and no measurement has yet pinned, so the
@@ -2530,7 +2537,7 @@ Section 9.2 “Scope note (19 September 2026). An owner review of this section�
       one, and §10 and §11 of this paper already imply the distinction. Write the taxed step duration
       as Δt_h = b C^(−𝛿) + h, with h > 0 a serial latency that cannot be parallelised away. The local
       self-acceleration exponent, defined as −d log Δt_h / d log C, is then 𝛿 b C^(−𝛿) / (b C^(−𝛿) + h),
-      which decays to zero as C grows instead of holding      at 𝛿. With dr = dC / (a C^(𝛽 𝐿 )), the elapsed time
+      which decays to zero as C grows instead of holding     at 𝛿. With dr = dC / (a C^(𝛽 𝐿 )), the elapsed time
       to capability C acquires the further term (h/a) u^(−𝛽 𝐿 ) du, whose antiderivative u^(1−𝛽 𝐿 )/(1−𝛽 𝐿 )
                                                        ∫
 
@@ -2545,6 +2552,11 @@ Section 9.2 “Scope note (19 September 2026). An owner review of this section�
       constant-exponent law both record that Result 3 is algebra given a single constant exponent, and an
       additive latency is precisely a departure from that parameterisation. Unchanged: Result 3 itself, the
       clock relation of §3, and the §7.1 argument that enforcing 𝛿 ≤ 0 buys the sub-exponential regime
+
+                                                      51
+                                       The self-acceleration exponent
+
+
       unconditionally, which the additive result strengthens, since an enforced positive serial latency is a
       second and constructive route to the same guarantee. The honey-architecture paragraph above is a
       separate matter: this paper does not establish that the honey-architecture tax is an additive per-cycle
@@ -2562,12 +2574,6 @@ Section 10 “The mechanism this criterion describes is a governor : not a limit
       governor the flyballs spin faster as the engine does and close the throttle by the same motion, so the
       restraint is not applied to the engine, it is part of the engine and scales with it.”
 Section 10 “This is not a metaphor imported from control theory. It is control theory’s founding object.
-
-
-                                                       50
-                                       The self-acceleration exponent
-
-
       Maxwell’s 1868 paper On Governors asked under what conditions a governor remains stable and
       answered with a condition on the roots of the characteristic equation, which is a condition on
       exponents. sign(𝛽 𝑋 − k) is a stability verdict from an exponent comparison, in the same form,
@@ -2596,6 +2602,12 @@ Section 10.2 “An entangled objective is therefore not one option among several
       ruled out. This is an argument by elimination and it requires no new measurement, but it establishes
       only that the cell is the right one, not that any particular architecture successfully occupies it.”
 Section 11 “𝛿 is the slope of cycle duration against capability on logarithmic axes.”
+
+
+                                                     52
+                                       The self-acceleration exponent
+
+
 Section 11 “For any system that iterates on itself, record the duration of each self-improvement cycle on
       a fixed substrate (§5) and a capability measure on a held-out battery, and regress log Δt on log C.
       The negative of the slope is 𝛿, with a confidence interval.”
@@ -2613,12 +2625,6 @@ Section 11 “𝛿 remains the only quantity in the joined criterion estimable w
 Section 11 “Three outcomes, pre-labelled:”
 Section 11 “𝛿 interval wholly at or below zero across every system examined. No admissible cycle is
       self-accelerating and the criterion cannot bind in the window the measurement can reach . It is
-
-
-                                                    51
-                                       The self-acceleration exponent
-
-
       the expected outcome, and the reason it is expected limits what it shows: admissible cycles run
       on a fixed substrate with static weights, so a null is the structural expectation there rather than a
       discovery. It must not be reported as showing that no system self-accelerates. Deployed weights are
@@ -2647,6 +2653,12 @@ Section 12 “F4. A system with measured 𝛿 well below 1/𝛼 that nevertheles
       capability growth in wall-clock time. Result 3 is wrong , and since Result 3 is algebra given the
       definition of 𝛿, the failure would be in the constant-exponent parameterisation of Δt.”
 Section 12 “F5. Compute caps or rate limits shown to change the asymptotic verdict for a system whose
+
+
+                                                    53
+                                       The self-acceleration exponent
+
+
       exponents are unchanged. The speed-independence carried through §3 and §7 is wrong.”
 Section 12 “F6. Any measurement showing the gap between the two boundaries is not 𝛽 𝑋 . Result
       6 is wrong , and with it the engineering claim that improving correction widens the window
@@ -2665,12 +2677,6 @@ Section 12.1 “The framework’s sharpest disagreement with current practice co
       cross-class to the same-class correction exponent. If architecture is irrelevant, that ratio is exactly
       1.00; the prediction is that it exceeds 1. The prediction is refuted if the confidence interval on the
       ratio contains 1.00, and the framework’s cap is dead outright if any same-class corrector measures
-
-
-                                                     52
-                                       The self-acceleration exponent
-
-
       an exponent significantly above one half. Both quantities are measurable at current capability on
       existing systems. The programme’s own pilot evidence currently points against the prediction,
       and the prediction is preregistered by timestamp anyway, because a prediction preregistered by
@@ -2699,6 +2705,12 @@ Section 15.1 “Correction is not recursive in the same sense capability is. If 
       exponent is not what governs real recursive capability growth. Against a framework that predicts
       𝛼 > 1, its own best cross-architecture measurement is a sub-linear regression estimate, 𝛼 ≈ 0.49,
       from one model’s inconclusive fit (§5.1b). No system yet measured is in the regime this paper
+
+
+                                                     54
+                                        The self-acceleration exponent
+
+
       describes. The corrective framework’s two-variable model is too coarse. Its criterion may not
       survive a treatment with realistic state. 𝛿 may be unmeasurable in practice if capability and cycle
       time cannot be separated, because a cycle that also raises capability confounds both axes. The
@@ -2717,12 +2729,6 @@ Section 2.1 “Not claimed as new. That correction must keep pace with capabilit
       Enquist (1999) obtain D/(D+1) in D dimensions again, from a more general model based on the
       geometry rather than the hydrodynamics of hierarchical networks. Banavar, Maritan and Rinaldo
       (1999) derive a general relationship between size and flow rates in arbitrary networks with local
-
-
-                                                     53
-                                        The self-acceleration exponent
-
-
       connectivity, and find that in the most efficient class of networks in D dimensions metabolic rate
       scales as mass to the power D/(D+1), which gives quarter-power scaling for D = 3; Banavar et al.
       (2010) show, in two models of resource distribution networks, that the exponent of metabolic rate
@@ -2752,6 +2758,12 @@ Section 2.2 “The instrument is the difference. Their variable is the capabilit
       is that the same-class ladder is bounded however many rungs are added, while a cross-class corrector
       is not. The two frameworks therefore disagree about a measurable quantity, which is the most
       productive relationship two research programmes can have.”
+
+
+                                                       55
+                                          The self-acceleration exponent
+
+
 Section 2.3 “On the question. Hutter asked directly whether intelligence can explode ("Can Intelligence
       Explode?", arXiv, 28 February 2012, read at its source), separating "speed from intelligence
       explosion" and undertaking to "consider possible bounds on intelligence", augmenting Chalmers’
@@ -2768,21 +2780,14 @@ References, Ashby (1956) “Ashby, W. R. (1956). An Introduction to Cybernetics.
 References, Wiener (1948) “Wiener, N. (1948; second edition 1961). Cybernetics: or Control and
       Communication in the Animal and the Machine. MIT Press. DOI 10.1037/13140-000 .”
 
-
-
-
-                                                       54
-                                          The self-acceleration exponent
-
-
-A.6    Where the layout of version 1.10 now stands
+A.7    Where the layout of version 1.10 now stands
 Version 1.10 was a web page with a status plate before its abstract and fourteen numbered sections. Table 9
 gives where each part now stands. Nothing it printed is dropped: a passage moved is listed here, and a
-passage re-set is given in Appendix A.5.
+passage re-set is given in Appendix A.6.
                              Table 9. Where each part of version 1.10 now stands.
 
 Part of version 1.10                                Where it stands in this edition
-Status plate                                        Section 14 (and Appendix A.4)
+Status plate                                        Section 14 (and Appendix A.5)
 How to read                                         Section 14.1
 Abstract                                            Abstract
 1. The question                                     Section 1
@@ -2800,43 +2805,42 @@ complements
 5. The self-acceleration exponent                   Section 7
 5.1                                                 Section 7.1
 5.1a                                                Section 7.2
-5.1b                                                Section 7.3
-5.2                                                 Section 7.4
-6. The two boundaries                               Section 8
-Result 7 (unnumbered heading)                       Section 8.1
-6.1                                                 Section 8.2
-7. What decides the outcome is a ratio              Section 9
-7.1                                                 Section 9.1
-7.2                                                 Section 9.2
-8. The governor                                     Section 10
-The position (unnumbered)                           Section 10.1
-The elimination argument (unnumbered)               Section 10.2
-9. The measurement that costs nothing               Section 11 (retitled)
-10. Falsification criteria                          Section 12
 
 
+                                                        56
+                                         The self-acceleration exponent
 
-                                                        55
-                                              The self-acceleration exponent
 
+Part of version 1.10                              Where it stands in this edition
 
-Part of version 1.10                                      Where it stands in this edition
-
-10.1                                                      Section 12.1
-10.2                                                      Section 12.2 (retitled)
-11. The burden                                            Section 15.1
-12. What is withdrawn                                     Section 13
-13. Prior work                                            Section 2
-13.1                                                      Section 2.2
-13.2                                                      Section 2.3
-14. Deposit record                                        Appendix B.2
-References                                                References
-Closing note                                              Section 14.3 (and Appendix A.4)
-Version history                                           Appendix A.3
-Epistemic status                                          Section 14.3 (and Appendix A.4)
-Copyright                                                 Back matter (its change named in Appendix A.2)
-Standing covenant                                         End of Section 12
-Provenance note                                           Acknowledgements
+5.1b                                              Section 7.3
+5.2                                               Section 7.4
+6. The two boundaries                             Section 8
+Result 7 (unnumbered heading)                     Section 8.1
+6.1                                               Section 8.2
+7. What decides the outcome is a ratio            Section 9
+7.1                                               Section 9.1
+7.2                                               Section 9.2
+8. The governor                                   Section 10
+The position (unnumbered)                         Section 10.1
+The elimination argument (unnumbered)             Section 10.2
+9. The measurement that costs nothing             Section 11 (retitled)
+10. Falsification criteria                        Section 12
+10.1                                              Section 12.1
+10.2                                              Section 12.2 (retitled)
+11. The burden                                    Section 15.1
+12. What is withdrawn                             Section 13
+13. Prior work                                    Section 2
+13.1                                              Section 2.2
+13.2                                              Section 2.3
+14. Deposit record                                Appendix B.2
+References                                        References
+Closing note                                      Section 14.3 (and Appendix A.5)
+Version history                                   Appendix A.4
+Epistemic status                                  Section 14.3 (and Appendix A.5)
+Copyright                                         Back matter (its change named in Appendix A.3)
+Standing covenant                                 End of Section 12
+Provenance note                                   Acknowledgements
 
 
 
@@ -2845,61 +2849,58 @@ Each dated record of this paper and its designs, with the kind of timestamp that
 presented as stronger than it is: an anchor in the Bitcoin chain, a deposit dated by its server, a commit
 date written by its committer, or a date written inside a document.
 
-B.1      Dated records
+B.1    Dated records
+
+
+
+                                                      57
+                                              The self-acceleration exponent
+
 
        Table 10. The dated records of this paper and its designs, each with the kind of timestamp that fixes it.
 
-Date                Record                                             Where recorded              Kind of timestamp
-8 August 2026       The interpretation rule of Section 8 added; the    this paper (Remark 4;       a date written inside a
-                    corrective framework searched for any              Section 6.1)                document
+Date                Record                                            Where recorded               Kind of timestamp
+8 August 2026       The interpretation rule of Section 8 added; the   this paper (Remark 4;        a date written inside a
+                    corrective framework searched for any             Section 6.1)                 document
                     accumulation of the corrector, none found
-12 August 2026      Bibliographic identities of Maxwell (1868),        this paper (Sections 4.1,   a date written inside a
-                    Conant and Ashby (1970) and Wiener (1948)          2.3; Appendix B.2)          document
+12 August 2026      Bibliographic identities of Maxwell (1868),       this paper (Sections 4.1,    a date written inside a
+                    Conant and Ashby (1970) and Wiener (1948)         2.3; Appendix B.2)           document
                     pinned through Crossref; the arXiv abstract
                     searches (58 hits for “correction exponent”;
                     one paper for “irreducible uncontrollability”)
-12 August 2026      The design of the measurement of 𝛿 (Unit 30,       Bitcoin block 962066        an anchor in the Bitcoin
+12 August 2026      The design of the measurement of 𝛿 (Unit 30,      Bitcoin block 962066         an anchor in the Bitcoin
                     study AB) preregistered by timestamp                                           chain
-12 August 2026      Study AG (Unit 16), the test of the identity,      first anchor of 12 August   an anchor in the Bitcoin
-                    preregistered by timestamp                         2026                        chain
+12 August 2026      Study AG (Unit 16), the test of the identity,     first anchor of 12 August    an anchor in the Bitcoin
+                    preregistered by timestamp                        2026                         chain
 16 August 2026,     First public deposit: this paper on OSF           DOI                          a deposit dated by its
 18:38:32Z           (component ht8wu; the HTML file first stored      10.17605/OSF.IO/HT8WU        server (OSF upload time)
                     at 18:38:32Z, the PDF at 18:38:36Z)
+16 August 2026,     The paper’s first commit on the website’s         website repository history   a commit date, written by
+19:38:46 +01:00     repository (569bd1638a)                                                        its committer
+16 August 2026      The disclosure decision, the author’s, with       this paper (Appendix B.2)    a date written inside a
+                    conditions 2 and 4 open; the two internal                                      document
+                    measurements pinned to their public reports
+                    by SHA-256 (Appendix B.2, condition 5)
+16 August 2026      Priority claim PC-XIII-001: the                   the paper’s text companion   a date written inside a
+                    self-acceleration exponent stated as a            (release 1.10)               document, with the OSF
+                    measurable quantity with its measurement                                       deposit of the same day
+                    fixed in advance, first published 16 August
+                    2026
+28 August 2026      The corrector-class contrast (Unit 01), the       first anchor of 28 August    an anchor in the Bitcoin
+                    deciding design of the prediction of              2026                         chain
+                    Section 12.1, preregistered by timestamp
+19 and 20           The ordering, scope and premise notes of a        this paper                   dates written inside a
+September 2026      review of the algebra (Remarks 1 to 3 and 5;                                   document
+                    version 1.7)
+3 October 2026      The correction note, the status note of the       this paper                   dates written inside a
+                    deposit record and the note placing the paper     (Appendices A.5, B.2)        document
+                    against Laws IV and V (version 1.8)
+5 October 2026,     Version 1.10, the version this edition succeeds   OSF file history of ht8wu    a deposit dated by its
+13:14:35Z           (the PDF’s latest stored version on OSF)                                       server
 
 
 
-                                                              56
-                                            The self-acceleration exponent
-
-
-Date              Record                                            Where recorded               Kind of timestamp
-
-16 August 2026,   The paper’s first commit on the website’s         website repository history   a commit date, written by
-19:38:46 +01:00   repository (569bd1638a)                                                        its committer
-16 August 2026    The disclosure decision, the author’s, with       this paper (Appendix B.2)    a date written inside a
-                  conditions 2 and 4 open; the two internal                                      document
-                  measurements pinned to their public reports
-                  by SHA-256 (Appendix B.2, condition 5)
-16 August 2026    Priority claim PC-XIII-001: the                   the paper’s text companion   a date written inside a
-                  self-acceleration exponent stated as a            (release 1.10)               document, with the OSF
-                  measurable quantity with its measurement                                       deposit of the same day
-                  fixed in advance, first published 16 August
-                  2026
-28 August 2026    The corrector-class contrast (Unit 01), the       first anchor of 28 August    an anchor in the Bitcoin
-                  deciding design of the prediction of              2026                         chain
-                  Section 12.1, preregistered by timestamp
-19 and 20         The ordering, scope and premise notes of a        this paper                   dates written inside a
-September 2026    review of the algebra (Remarks 1 to 3 and 5;                                   document
-                  version 1.7)
-3 October 2026    The correction note, the status note of the       this paper                   dates written inside a
-                  deposit record and the note placing the paper     (Appendices A.4, B.2)        document
-                  against Laws IV and V (version 1.8)
-5 October 2026,   Version 1.10, the version this edition succeeds   OSF file history of ht8wu    a deposit dated by its
-13:14:35Z         (the PDF’s latest stored version on OSF)                                       server
-
-
-
-B.2    The deposit record of 16 August 2026
+B.2      The deposit record of 16 August 2026
 The record of the conditions this paper’s first public deposit carried, as printed in version 1.10 (its Section
 14), with its status note of 3 October 2026.
     The five deposit conditions this manuscript carried, and their state at first public deposit:
@@ -2907,33 +2908,33 @@ The record of the conditions this paper’s first public deposit carried, as pri
       12 August 2026 (Maxwell 1868, DOI 10.1098/rspl.1867.0055; Conant and Ashby 1970, DOI
       10.1080/00207727008920220; Wiener 1948/1961, DOI 10.1037/13140-000; Ashby 1956). No
       quotation from Maxwell or Wiener appears anywhere in this paper, so the read-before-quoting
-      obligation binds any future quotation rather than this deposit. The §13 attribution is now named
-      rather than anonymous.
-   2. Open, disclosed. The self-acceleration measurement is drafted, dated and prepared as a draft
-      registration awaiting human submission; nothing has been submitted and the word “preregistered”
-      is not used. The first estimate of 𝛿 becomes prospective on the platform clock when that submission
-      occurs; the derivation and design are already fixed in time by dated registration texts under the
-      estate’s hash-manifest and OpenTimestamps anchoring regime, so the outstanding click sets only
-      the platform clock, not the dated-prediction clock.
-   3. Decided by the author, 16 August 2026. The disclosure decision on 𝛿 as an early-warning
-      instrument was the author’s to take; the author instructed publication.
-   4. Open, disclosed. No mathematician without a stake in the programme has yet read the algebra
-      adversarially. §11 transfers the load: the results are stated so that any of six failures, argued
-      rigorously, is conceded on the public corrections page.
-   5. Completed. The two internal measurements are pinned to their public reports: the §5.1b figures
 
 
-                                                              57
-                                           The self-acceleration exponent
+                                                                58
+                                        The self-acceleration exponent
 
 
-         (the regression estimate with its standard error, and the bootstrap interval on the endpoint estimate)
-         to michaeldariuseastwood.com/research/papers/paper-ii-experimental-validation.html at
-         SHA-256 2082ebc3b1ebda990ec330c8b3b5e74350a80269d04e766af67388865ff195a9 (16 August
-         2026 state), and the §4.3a adversarial-pressure Pearson range (−0.980 to −0.999, three of six frontier
-         models) to michaeldariuseastwood.com/research/papers/paper-vi-honey-architecture.html at
-         SHA-256 21cc3f4c444a88d6fb5dd318fc820148fe906eefe48c40217b171ccbb7555d29 (16 August
-         2026 state).
+       obligation binds any future quotation rather than this deposit. The §13 attribution is now named
+       rather than anonymous.
+    2. Open, disclosed. The self-acceleration measurement is drafted, dated and prepared as a draft
+       registration awaiting human submission; nothing has been submitted and the word “preregistered”
+       is not used. The first estimate of 𝛿 becomes prospective on the platform clock when that submission
+       occurs; the derivation and design are already fixed in time by dated registration texts under the
+       estate’s hash-manifest and OpenTimestamps anchoring regime, so the outstanding click sets only
+       the platform clock, not the dated-prediction clock.
+    3. Decided by the author, 16 August 2026. The disclosure decision on 𝛿 as an early-warning
+       instrument was the author’s to take; the author instructed publication.
+    4. Open, disclosed. No mathematician without a stake in the programme has yet read the algebra
+       adversarially. §11 transfers the load: the results are stated so that any of six failures, argued
+       rigorously, is conceded on the public corrections page.
+    5. Completed. The two internal measurements are pinned to their public reports: the §5.1b figures
+       (the regression estimate with its standard error, and the bootstrap interval on the endpoint estimate)
+       to michaeldariuseastwood.com/research/papers/paper-ii-experimental-validation.html at
+       SHA-256 2082ebc3b1ebda990ec330c8b3b5e74350a80269d04e766af67388865ff195a9 (16 August
+       2026 state), and the §4.3a adversarial-pressure Pearson range (−0.980 to −0.999, three of six frontier
+       models) to michaeldariuseastwood.com/research/papers/paper-vi-honey-architecture.html at
+       SHA-256 21cc3f4c444a88d6fb5dd318fc820148fe906eefe48c40217b171ccbb7555d29 (16 August
+       2026 state).
 
 Conditions 2 and 4 are printed in the published working paper’s status plate. The paper is a
 derivation and claims nothing measured; the two open conditions are exposure statements, not waivers.
@@ -2946,65 +2947,70 @@ description of the pinned figures is corrected, as the correction note in §5.1b
 operator where it now says the author.
 
 
-C        Notation and glossary
+C     Notation and glossary
 The symbols of this paper, their meanings and where each is first defined (Table 11), then a glossary. Two
 letters are used twice, as version 1.10 printed them: 𝑞 is the control quantity of Section 5 and, in the
 scope note of Section 9.2, the factor of a proportional overhead; 𝑢 is 1 − 𝛽 𝐿 in Result 5 and the variable
 of integration in that scope note. The symbol 𝛾 with a subscript is a drift coefficient of the corrective
 framework, never an exponent (Section 13).
-                                                 Table 11. Notation.
+                                              Table 11. Notation.
 
-Symbol                     Meaning                                                         First defined in
-𝐶                          capability                                                      Section 4
-𝑔                          the scaling framework’s growing quantity, capability            Section 5
-𝑟                          recursive depth, a step counter (this paper’s only use of 𝑟)    Section 4
-𝑟 rate                                                                      ¤
-                           the corrective framework’s specific growth rate, 𝐶/𝐶            Section 5
-𝑎                          the rate constant of 𝑑𝑔/𝑑𝑟 = 𝑎 𝑔 𝛽𝐿                             Section 5
-𝛽𝐿                         leverage fraction of capability                                 Section 4
-𝛽′𝐿                        leverage fraction of correction                                 Section 4
-𝛽𝑋                         constitutive correction exponent, 𝐴 = 𝐴0 𝐶 𝛽𝑋 ; distinct from   Section 4
-                           the registered capacity estimand (Section 12.1)
-𝛼                          scaling exponent, 𝛼 = 1/(1 − 𝛽 𝐿 ) (the 2026 sense; never the   Section 4
-                           fine-structure constant)
-𝛼err                       error-decay exponent in 𝐸 (𝑅) = 𝐸 0 𝑅 − 𝛼err ; not capability   Section 7.2
-                           growth
-𝛼′                         1/(1 − 𝛽′𝐿 )                                                    Remark 2
-𝑘                          capability growth exponent, 𝐶¤ = 𝑏𝐶 1+𝑘                         Section 4
+Symbol                   Meaning                                                        First defined in
+𝐶                        capability                                                     Section 4
+𝑔                        the scaling framework’s growing quantity, capability           Section 5
+𝑟                        recursive depth, a step counter (this paper’s only use of 𝑟)   Section 4
 
 
+                                                       59
+                                 The self-acceleration exponent
 
-                                                          58
-                                        The self-acceleration exponent
+
+Symbol           Meaning                                                          First defined in
+
+𝑟 rate                                                            ¤
+                 the corrective framework’s specific growth rate, 𝐶/𝐶             Section 5
+𝑎                the rate constant of 𝑑𝑔/𝑑𝑟 = 𝑎 𝑔 𝛽𝐿                              Section 5
+𝛽𝐿               leverage fraction of capability                                  Section 4
+𝛽′𝐿              leverage fraction of correction                                  Section 4
+𝛽𝑋               constitutive correction exponent, 𝐴 = 𝐴0 𝐶 𝛽𝑋 ; distinct from    Section 4
+                 the registered capacity estimand (Section 12.1)
+𝛼                scaling exponent, 𝛼 = 1/(1 − 𝛽 𝐿 ) (the 2026 sense; never the    Section 4
+                 fine-structure constant)
+𝛼err             error-decay exponent in 𝐸 (𝑅) = 𝐸 0 𝑅 − 𝛼err ; not capability    Section 7.2
+                 growth
+𝛼′               1/(1 − 𝛽′𝐿 )                                                     Remark 2
+𝑘                capability growth exponent, 𝐶¤ = 𝑏𝐶 1+𝑘                          Section 4
+𝑏                the coefficient of the growth law, which carries units of time   Section 6.1
+𝜏                the depth clock, 𝜏 = ln(𝐶/𝐶0 )                                   Section 5
+𝐶0 , 𝑟 0         initial capability and depth                                     Remark 1
+𝐾, 𝐿, 𝑠𝐶 , 𝑠 𝐴   constants and shifts of the finite-window solutions              Remarks 1 and 2
+𝛿                self-acceleration exponent, Δ𝑡 ∝ 𝐶 − 𝛿                           Definition 1
+Δ𝑡               duration of one recursive step                                   Definition 1
+𝐷, 𝐷¤            misalignment magnitude and its rate of change                    Section 6.1
+𝑑                misalignment fraction, 𝐷/𝐶                                       Section 4
+𝐴, 𝐴0            correction strength and its coefficient                          Section 6.1
+𝛾1 , 𝛾2 , 𝛾3     gain, level and compounding drift coefficients of the            Section 6.1
+                 corrective framework
+𝑞                the control quantity 𝐴/𝑟 rate (Section 5); the factor of a       Section 5
+                 proportional overhead (Remark 5)
+𝑢, 𝑢 ′           1 − 𝛽 𝐿 and 1 − 𝛽′𝐿 (Result 5); 𝑢 is also the variable of        Result 5
+                 integration in Remark 5
+ℎ                a serial latency added to each step                              Remark 5
+Δ𝑡 ℎ , Δ𝑡 𝑞      step durations with an additive and a proportional overhead      Remark 5
+S1               the scope condition                                              Section 6.5
+F1 to F6         the falsification criteria                                       Section 12
+classes 1 to 4   the corrector classes (static; capability-carried;               Table 2
+                 self-accumulating; cross-class)
+𝑁                a number of independent readings                                 Section 12.1
+𝛼crit            a critical exponent (the withdrawn form 1/𝛾)                     Section 13
+𝑚𝐺 , 𝑚 𝐻         the slopes of Engels and co-authors’ design condition            Section 2.2
+𝜙                the exponent of Jones’s knowledge production function            Section 2.3
 
 
-Symbol                  Meaning                                                          First defined in
 
-𝑏                       the coefficient of the growth law, which carries units of time   Section 6.1
-𝜏                       the depth clock, 𝜏 = ln(𝐶/𝐶0 )                                   Section 5
-𝐶0 , 𝑟 0                initial capability and depth                                     Remark 1
-𝐾, 𝐿, 𝑠𝐶 , 𝑠 𝐴          constants and shifts of the finite-window solutions              Remarks 1 and 2
-𝛿                       self-acceleration exponent, Δ𝑡 ∝ 𝐶 − 𝛿                           Definition 1
-Δ𝑡                      duration of one recursive step                                   Definition 1
-𝐷, 𝐷¤                   misalignment magnitude and its rate of change                    Section 6.1
-𝑑                       misalignment fraction, 𝐷/𝐶                                       Section 4
-𝐴, 𝐴0                   correction strength and its coefficient                          Section 6.1
-𝛾1 , 𝛾2 , 𝛾3            gain, level and compounding drift coefficients of the            Section 6.1
-                        corrective framework
-𝑞                       the control quantity 𝐴/𝑟 rate (Section 5); the factor of a       Section 5
-                        proportional overhead (Remark 5)
-𝑢, 𝑢 ′                  1 − 𝛽 𝐿 and 1 − 𝛽′𝐿 (Result 5); 𝑢 is also the variable of        Result 5
-                        integration in Remark 5
-ℎ                       a serial latency added to each step                              Remark 5
-Δ𝑡 ℎ , Δ𝑡 𝑞             step durations with an additive and a proportional overhead      Remark 5
-S1                      the scope condition                                              Section 6.5
-F1 to F6                the falsification criteria                                       Section 12
-classes 1 to 4          the corrector classes (static; capability-carried;               Table 2
-                        self-accumulating; cross-class)
-𝑁                       a number of independent readings                                 Section 12.1
-𝛼crit                   a critical exponent (the withdrawn form 1/𝛾)                     Section 13
-𝑚𝐺 , 𝑚 𝐻                the slopes of Engels and co-authors’ design condition            Section 2.2
-𝜙                       the exponent of Jones’s knowledge production function            Section 2.3
+
+                                                60
+                                         The self-acceleration exponent
 
 
 Glossary.
@@ -3020,18 +3026,12 @@ substrate-fixed clock time measured with the substrate held fixed, so that only 
        produces for itself enters 𝛿 (Section 7)
 composition class; same-class; cross-class the substrate distinction used in this paper’s model; P6
        additionally requires its frozen six-axis taxonomy, not substrate alone (Sections 6.2, 12.1)
-
-
-                                                       59
-                                          The self-acceleration exponent
-
-
 scope condition a condition on what a result covers, which a system outside it cannot refute (Section 6.1)
 governor a restraining mechanism whose effect changes with the output it restrains (Section 10)
 runaway self-improvement; uncorrectable growth the phrases this paper uses where a runaway is
-      meant; “runaway growth” belongs to planet formation (Section 3)
+       meant; “runaway growth” belongs to planet formation (Section 3)
 preregistered by timestamp a design fixed in time by a dated anchor before any data, as distinct from
-      registered on OSF (Section 14.3)
+       registered on OSF (Section 14.3)
 law under test a law of the ARC Theory before its registered verdict (Section 14.3)
 programme hypothesis a hypothesis of the programme beyond what this paper’s algebra decides
       (Section 12.2)
@@ -3042,37 +3042,47 @@ The paper’s place among the programme’s developments, with the relation its 
 a stronger one (Table 12).
 Table 12. The paper’s place in the programme. Laws I to V are each a law under test; Section 14 gives their status.
 
-Development                     How this paper bears on it                                  Where in this paper
-Recursive Dynamics              belongs to (the field the author founded)                   Section 1; first-page
-                                                                                            footnote
-The ARC Theory                  belongs to (its founding theory)                            Section 1; first-page
-                                                                                            footnote
-Law I, the ARC Principle        joins: takes its scaling exponent 𝛼 = 1/(1 − 𝛽 𝐿 ) from     Sections 4, 5
+Development                     How this paper bears on it                                Where in this paper
+Recursive Dynamics              belongs to (the field the author founded)                 Section 1; first-page
+                                                                                          footnote
+The ARC Theory                  belongs to (its founding theory)                          Section 1; first-page
+                                                                                          footnote
+Law I, the ARC Principle        joins: takes its scaling exponent 𝛼 = 1/(1 − 𝛽 𝐿 ) from   Sections 4, 5
                                 the scaling framework and derives the clock relation;
                                 tests nothing
-Law II, the ARC Co-Scaling      joins: takes the gain-only relative criterion 𝛽 𝑋 > 𝑘       Sections 4 to 8
+Law II, the ARC Co-Scaling      joins: takes the gain-only relative criterion 𝛽 𝑋 > 𝑘     Sections 4 to 8
 Law                             from the corrective framework (Paper X) and derives
                                 𝑘 = 𝛿 − 1/𝛼 in its clock; tests nothing
-Law III, the ARC Ceiling        names the ARC Bound (𝛼 = 2) as a candidate ceiling          Sections 7.4, 8.2;
-                                and treats the identity between the programme’s             Appendix C
-                                critical exponent and this paper’s threshold as
-                                preregistered by timestamp for testing; decides
-                                nothing
-Law IV, the ARC                 does not bear on it (P15)                                   Section 14.2
+
+
+
+
+                                                        61
+                                       The self-acceleration exponent
+
+
+Development                  How this paper bears on it                                  Where in this paper
+
+Law III, the ARC Ceiling     names the ARC Bound (𝛼 = 2) as a candidate ceiling          Sections 7.4, 8.2;
+                             and treats the identity between the programme’s             Appendix C
+                             critical exponent and this paper’s threshold as
+                             preregistered by timestamp for testing; decides
+                             nothing
+Law IV, the ARC              does not bear on it (P15)                                   Section 14.2
 Persistence Law
-Law V, the ARC Embedding        bears on it through a conditional class 3 model; no         Sections 6.5, 10.2, 14.2
-Law                             unique architecture is established; decides none of
-                                P12 and P21
-The Eden Protocol               bears on its case for correction built into the objective   Sections 6.5, 9.2, 10.2
-                                (the entangled objective, 𝐶 × 𝑆) and gives a
-                                conditional reading of one simulation result of
-                                Paper VI; tests nothing
-The HARI Treaty, the Draft      no relation stated in this paper                            Appendix D only
+Law V, the ARC Embedding     bears on it through a conditional class 3 model; no         Sections 6.5, 10.2, 14.2
+Law                          unique architecture is established; decides none of
+                             P12 and P21
+The Eden Protocol            bears on its case for correction built into the objective   Sections 6.5, 9.2, 10.2
+                             (the entangled objective, 𝐶 × 𝑆) and gives a
+                             conditional reading of one simulation result of
+                             Paper VI; tests nothing
+The HARI Treaty, the Draft   no relation stated in this paper                            Appendix D only
 Treaty on Hardware-Aligned
 Recursive Intelligence
 
 
 
 
-                                                         60
+                                                      62
 
