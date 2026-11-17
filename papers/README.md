@@ -41,7 +41,7 @@ Most folders hold these files:
 | VIII | [The Load-Bearing Test: is AI safety a tax on capability, or part of what holds it up?](Paper-VIII-The-Load-Bearing-Proof/) | v3.10 (revised 16 Nov 2026) | 18 Mar 2026 | DGM (null), gated self-mod simulation (positive), weight-level LoRA | `experiments/` and `results/` |
 | IX | [Synthesis and Roadmap](Paper-IX-Synthesis-and-Roadmap/) | v2.7 (revised 5 Oct 2026) | 18 Mar 2026 | Synthesis paper (references all experiments) | `results/` |
 | X | [Correction That Out-Scales Drift: when does correction keep pace with a system that improves itself?](Paper-X-Coupled-CoScaling-Correction/) | v1.18 (revised 9 Nov 2026) | 3 Jul 2026 | Verification harness and an independent theorem suite of 14 checks | `Paper-X-Coupled-CoScaling-Correction/results/` |
-| XI | [Are separate fields converging on the same principle of recursive amplification?](Paper-XI-Convergence/) | v1.16 (revised 1 Nov 2026) | 2 Jul 2026 | - | - |
+| XI | [Convergent Evidence for Recursive Amplification: are separate fields converging on the same principle?](Paper-XI-Convergence/) | v1.17 (revised 16 Nov 2026) | 2 Jul 2026 | - | - |
 | XII | [Public Benchmark Rescoring: does blinding change AI evaluation scores on a public benchmark?](Paper-XII-Public-Benchmark-Rescoring/) | v1.16 (revised 16 Nov 2026) | 14 Aug 2026 | - | - |
 | XIII | [The Self-Acceleration Exponent: when can correction keep pace?](Paper-XIII-Self-Acceleration-Exponent/) | v1.13 (revised 16 Nov 2026) | 16 Aug 2026 | - | - |
 
