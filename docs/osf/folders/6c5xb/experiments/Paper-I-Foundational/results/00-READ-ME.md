@@ -1,0 +1,3 @@
+# results
+
+Not in use. This folder was made on 17 March 2026, in the project's early layout, and never filled. Paper I's results file of 17 January 2026 is in the folder `data/Paper i`, and the results as they stood on 4 July 2026 are in `data/Paper-I-ARC-Principle-results.zip`. The current code is in the public repository's [paper-i-foundational__Paper-I](https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/paper-i-foundational__Paper-I), and the results the paper cites are in [papers/Paper-I-ARC-Principle/results](https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/papers/Paper-I-ARC-Principle/results).

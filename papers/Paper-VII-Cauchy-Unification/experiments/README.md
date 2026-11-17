@@ -1,4 +1,13 @@
 # Where the code lives
 
-This paper's experiment estate is shared and lives at `../../../experiments/cauchy-unification__Paper-VII/`.
-Full map: /EXPERIMENTS-INDEX.md at the repository root.
+This folder holds this note only. Paper VII's experiment code and its recorded outputs are in the experiment home [`experiments/cauchy-unification__Paper-VII/`](../../../experiments/cauchy-unification__Paper-VII/):
+
+- The code that was run: [`scripts/`](../../../experiments/cauchy-unification__Paper-VII/scripts/)
+- What that code recorded: [`results/`](../../../experiments/cauchy-unification__Paper-VII/results/)
+- The input data: [`data/`](../../../experiments/cauchy-unification__Paper-VII/data/)
+- The extension protocol of 17 March 2026: [`preregistration/`](../../../experiments/cauchy-unification__Paper-VII/preregistration/)
+- The result files this paper cites: [`results/`](../results/), in this paper's folder
+
+Read the home's [README](../../../experiments/cauchy-unification__Paper-VII/README.md) before citing a result from it. Its `preregistration/` folder holds the extension protocol of 17 March 2026, which is not a registration.
+
+The map of every experiment is [`EXPERIMENTS-INDEX.md`](../../../EXPERIMENTS-INDEX.md). The code and data are all rights reserved, with the [Replication Licence 1.0](../../../LICENCE-REPLICATION.md).

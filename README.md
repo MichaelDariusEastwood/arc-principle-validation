@@ -1,7 +1,7 @@
 # The ARC Principle and the Eden Protocol
 
 **The code, data and recorded outputs behind a research programme on recursive intelligence
-scaling and embedded AI alignment.** 35 document folders, ten experiments, every result
+scaling and embedded AI alignment.** 35 document folders, the code and recorded outputs of every published experiment, and every result
 file the papers cite.
 
 [![OSF DOI](https://img.shields.io/badge/OSF-10.17605%2FOSF.IO%2F6C5XB-blue)](https://doi.org/10.17605/OSF.IO/6C5XB)
@@ -27,7 +27,7 @@ arc-principle-validation/
 ├── CITATION.cff               machine-readable citation
 ├── EXPERIMENTS-INDEX.md       every experiment, indexed by claim
 ├── papers/                    35 document folders, each with its own README
-├── experiments/               10 experiments plus shared code, mapped in experiments/README.md
+├── experiments/               nine experiment homes, shared code and superseded scripts, mapped in experiments/README.md
 ├── instruments/               reference code for runs not yet made, mapped in instruments/README.md
 ├── priority-claims/           the dated provenance record
 └── docs/                      reproducibility notes, release notes, PDF checksums
@@ -37,6 +37,21 @@ Every folder has a `README.md` saying what is in it and what it is for. Start wi
 [`experiments/README.md`](experiments/README.md) if you came to check a result.
 
 See [the publication canon](docs/PUBLICATION-CANON.md) and [release manifest](papers/publication-manifest.json) for the separation of document exports from website pages.
+
+## Where everything is
+
+| You want | Go to |
+|---|---|
+| A document at its latest version | its folder in [`papers/`](papers/), listed in [`papers/README.md`](papers/README.md); every version is on OSF under the document's DOI |
+| The code and recorded outputs behind a result | [`EXPERIMENTS-INDEX.md`](EXPERIMENTS-INDEX.md), then the experiment's home in [`experiments/`](experiments/); Papers VIII and X keep theirs in their own folders under `papers/` |
+| Reference code for runs not yet made | [`instruments/`](instruments/) |
+| A registered study unit | its registration and results on OSF: Unit 06 ([registration](https://doi.org/10.17605/OSF.IO/RV2B5), [results](https://doi.org/10.17605/OSF.IO/4BPHG)); Unit 83 ([registration](https://doi.org/10.17605/OSF.IO/MN73W), [results](https://doi.org/10.17605/OSF.IO/98HKR), and its code in [`experiments/unit-83-counted-p21/`](experiments/unit-83-counted-p21/)); Unit 82 ([registration](https://doi.org/10.17605/OSF.IO/JUFG4)); Unit 83b ([registration](https://doi.org/10.17605/OSF.IO/4HK32)) |
+| The priority record | [`priority-claims/`](priority-claims/) |
+| Release notes and the PDF checksums | [`docs/`](docs/) |
+| The licences | [`LICENCE`](LICENCE): the papers are CC BY 4.0; the code, data and results are all rights reserved, with the [Replication Licence 1.0](LICENCE-REPLICATION.md) |
+| The OSF project | [osf.io/6c5xb](https://osf.io/6c5xb/); its `00-START-HERE.md` lists every document with its DOI and code folder, and says which of the project's own folders are in use |
+
+**Kept, but not in use:** superseded files in `_archive/` and `archive/` folders; the four early scaling scripts in [`experiments/arc-scaling-lineage/`](experiments/arc-scaling-lineage/); in three paper folders, the same edition under the document's earlier file name; and Paper X's June 2026 deposit texts in its `osf/` folder.
 
 ## Rules this repository follows
 
@@ -123,7 +138,7 @@ never an empirical validation.
 | [Eden Vision](papers/Eden-Vision/) | the philosophical foundations | position paper |
 | [Executive Summary](papers/Executive-Summary/) | the programme overview | overview |
 | [Master Table of Contents](papers/Master-Table-of-Contents/) | suite navigation | index |
-| [The HARI Treaty: What evidence should justify international safeguards for advanced AI?](papers/HARI-Treaty-Paper/) | Draft Treaty on Hardware-Aligned Recursive Intelligence; a conditional governance proposal | working draft; specialist and external review remain open |
+| [The HARI Treaty, the Draft Treaty on Hardware-Aligned Recursive Intelligence: What evidence should justify international safeguards for advanced AI?](papers/HARI-Treaty-Paper/) | a conditional governance proposal | working draft; specialist and external review remain open |
 | [The HARI Treaty draft instruments](papers/HARI-Treaty-Draft-Instruments/) | the Draft Treaty on Hardware-Aligned Recursive Intelligence | working draft; its existing review remains open |
 
 Where a result is under correction or withdrawn, the
@@ -158,10 +173,10 @@ result files beside the committed ones and never overwrites them.
 
 ## Running an experiment
 
-Experiments live in two places, and both are real. The per-paper folders under
-`papers/<Paper>/experiments/` hold the experiments belonging to a single paper. The
-top-level `experiments/` tree holds the nine experiments that span papers or predate the
-split; [`experiments/README.md`](experiments/README.md) maps each one to the documents it
+Experiments live in two places, and both are real. Papers VIII and X keep their experiments
+in their own folders: `papers/Paper-VIII-The-Load-Bearing-Proof/experiments/` and
+`papers/Paper-X-Coupled-CoScaling-Correction/`. The top-level `experiments/` tree holds nine
+experiment homes: eight for papers and one for Unit 83; [`experiments/README.md`](experiments/README.md) maps each one to the documents it
 supports.
 
 Where an experiment supports it, prefer the shared gateway:

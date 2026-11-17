@@ -1,24 +1,32 @@
-# EXPERIMENTS-INDEX — the canonical map of every experiment in the programme
+# EXPERIMENTS-INDEX: the map of every experiment in the programme
 
-Compiled 4 July 2026 from a file-level survey of both experiment homes. This file is the
-navigation truth for the repo; the older experiments/CANONICAL_RESULTS_MAP.md (12 March)
-is retained but superseded where they disagree.
+**Updated 17 November 2026.** Parts 1 and 2 below were compiled on 4 July 2026 from a file-level survey of the repository, and their paths are kept as they were written then. The table in this opening gives each experiment's home as the repository holds it today; where a path below disagrees with it, the table is right.
 
-## How this repository is organised (read this first)
+## Where each experiment lives (read this first)
 
-- **Canonical home per paper: `papers/<paper>/`** (experiments, results, figures beside the
-  manuscript). Paper X is the reference pattern: fully self-contained with its own Makefile,
-  Dockerfile, tests and SHA-256 MANIFEST.
-- **`experiments/<name>__Paper-N/`** is the by-experiment working view: shared estates
-  (e.g. the alignment suite serving Papers III and IV.a-d) live here. Where both homes hold
-  copies, THIS INDEX states which copy is canonical.
-- **`instruments/`** holds reference code for confirmatory runs that have not been made. It is
-  not an experiment home and carries no result; its row is below and its own README is
-  [`instruments/README.md`](instruments/README.md).
-- **Nothing is ever deleted.** Duplicates and superseded files move to `_archive/` folders
-  local to their home (operator rule, 2026-07-04).
-- The out-of-repo folder `~/Arc & Eden Test Results/` is the raw capture archive; every
-  result a reader needs has an in-repo canonical copy named below.
+| Experiment home | Documents it supports | What is there |
+|---|---|---|
+| [`experiments/paper-i-foundational__Paper-I/`](experiments/paper-i-foundational__Paper-I/) | Paper I | the original validation toolkit |
+| [`experiments/paper-ii-compute__Paper-II/`](experiments/paper-ii-compute__Paper-II/) | Paper II | the one-model runner of January 2026, the six-model runner, their results and figures |
+| [`experiments/alignment-scaling__Papers-IV-a-b-c-d/`](experiments/alignment-scaling__Papers-IV-a-b-c-d/) | Papers III, IV.a, IV.b, IV.c and IV.d; the working report | the alignment-scaling runners v1 to v5, the v6 runner, and the recorded results |
+| [`experiments/blind-prediction-test__Paper-III-and-Foundational/`](experiments/blind-prediction-test__Paper-III-and-Foundational/) | Paper III and The ARC Principle | the blind prediction test |
+| [`experiments/eden-intervention__Paper-V/`](experiments/eden-intervention__Paper-V/) | Paper V | the Eden intervention runs |
+| [`experiments/honey-architecture__Paper-VI/`](experiments/honey-architecture__Paper-VI/) | Paper VI | the simulations and live-model runs, with figures |
+| [`experiments/cauchy-unification__Paper-VII/`](experiments/cauchy-unification__Paper-VII/) | Paper VII | the domain validations, null controls, data and the extension protocol of 17 March 2026; read its README first |
+| [`experiments/domain-validation__Foundational-and-Origin/`](experiments/domain-validation__Foundational-and-Origin/) | The ARC Principle and On the Origin of Scaling Laws | the domain validation and the verification suite |
+| [`papers/Paper-VIII-The-Load-Bearing-Proof/experiments/`](papers/Paper-VIII-The-Load-Bearing-Proof/experiments/) | Paper VIII | its three experiments, the twelve run ledgers and the tests |
+| [`papers/Paper-X-Coupled-CoScaling-Correction/`](papers/Paper-X-Coupled-CoScaling-Correction/) | Paper X | the simulation suite, the model runs and the theorem verification |
+| [`experiments/unit-83-counted-p21/`](experiments/unit-83-counted-p21/) | Unit 83, a registered study unit | its registered code and the record of its run |
+| [`experiments/analysis-tools__Cross-Programme/`](experiments/analysis-tools__Cross-Programme/) | Papers II, IV.a to IV.d and V | shared analysis code; no result of its own |
+| [`experiments/shared/`](experiments/shared/) | the experiment scripts | the adapter they share; no result of its own |
+| [`experiments/arc-scaling-lineage/`](experiments/arc-scaling-lineage/) | none directly | four early scripts, kept as a record; superseded |
+| [`instruments/`](instruments/) | the theory's registered propositions | reference code for runs not yet made; no result |
+
+- **A paper's own folder** under `papers/` holds its exports, its `results/` and its `figures/`. Only Papers VIII and X keep their experiments there. Where a paper's folder holds an `experiments/` folder with a note in it, the note links to the home above.
+- **Each experiment's evidence tier** is given in [`experiments/README.md`](experiments/README.md).
+- **The registered study units** have their registrations and results on OSF: Unit 06 (registration DOI 10.17605/OSF.IO/RV2B5, results DOI 10.17605/OSF.IO/4BPHG), Unit 83 (registration DOI 10.17605/OSF.IO/MN73W, results DOI 10.17605/OSF.IO/98HKR), Unit 82 (registration DOI 10.17605/OSF.IO/JUFG4) and Unit 83b (registration DOI 10.17605/OSF.IO/4HK32). Unit 83's code is also in this repository, in the home above.
+- **Nothing is ever deleted.** Superseded and duplicated files move to an `_archive/` folder beside them.
+- **Two places named in Parts 1 and 2 are not in this repository:** the older map `experiments/CANONICAL_RESULTS_MAP.md`, and the raw capture folder kept outside it.
 
 ## Paper X in one box (the five suites, disentangled)
 
@@ -68,7 +76,7 @@ Convention used below: "canonical home" is the paper's own `papers/<paper-dir>/`
 - Canonical home: `papers/Paper-II-Experimental-Validation/`
 - Experiments (in `experiments/paper-ii-compute__Paper-II/scripts/`):
   - `arc_paper_ii_validation_v1_deepseek.py` — original single-model DeepSeek-R1 sequential-depth ladder plus parallel-samples condition.
-  - `arc_paper_ii_validation_v2.py` — multi-model port of v1 across six models (DeepSeek R1, OpenAI GPT-5.4, Claude Opus 4.6, Gemini Flash, Groq Qwen3-32B, Grok 4.1 Fast); 12 tier-1 + 18 tier-2 problems; alpha_sequential and alpha_parallel per tier with bootstrap CI, optional 4-layer blinding verify pass.
+  - `arc_paper_ii_validation_v2.py`: multi-model port of v1 across six models (DeepSeek R1, OpenAI GPT-5.4, Claude Opus 4.6, Gemini Flash, Groq Qwen3-32B, Grok 4.1 Fast); 12 tier-1 + 18 tier-2 problems; alpha_sequential and alpha_parallel per tier with bootstrap CI, and an optional verify pass written to a four-layer blinding design.
   - `arc_validation_deepseek.py` — supporting DeepSeek-only validation harness.
   - `regenerate_figure_15.py` — regenerates the "complete experimental summary" figure; header explicitly notes the correction of alpha from 3.15 to 2.2.
 - Results (in both `papers/Paper-II-Experimental-Validation/results/` and `experiments/paper-ii-compute__Paper-II/results/`):
@@ -283,7 +291,7 @@ Every claim below is grounded in a file opened during this pass. Unclear origins
 ### Paper III: The Alignment Scaling Problem
 - Canonical home: papers/Paper-III-Alignment-Scaling-Problem/
 - Experiments:
-  - Alignment scaling v1 to v5: measures alignment quality vs recursive reasoning depth across frontier models. Runners live in the shared root: experiments/alignment-scaling__Papers-IV-a-b-c-d/scripts/arc_alignment_scaling_v1.py through arc_alignment_scaling_v5.py, plus arc_eden_v6_runner.py. Paper III shares this suite with Papers IV.a to IV.d; the paper's own README states the split explicitly. No dedicated protocol document in-tree; the v5.4.3 preamble inside arc_alignment_scaling_v5.py describes the 4-layer blinding + N-scorer consensus protocol.
+  - Alignment scaling v1 to v5: measures alignment quality vs recursive reasoning depth across frontier models. Runners live in the shared root: experiments/alignment-scaling__Papers-IV-a-b-c-d/scripts/arc_alignment_scaling_v1.py through arc_alignment_scaling_v5.py, plus arc_eden_v6_runner.py. Paper III shares this suite with Papers IV.a to IV.d; the paper's own README states the split explicitly. No dedicated protocol document in-tree; the v5.4.3 preamble inside arc_alignment_scaling_v5.py names the design, four-layer blinding + N-scorer consensus; no run is described here as conducted under it.
   - Blind prediction test — separate, physics-domains falsifier for the ARC exponent formula alpha = 1/(1 - beta); tests 5 systems (Barabasi-Albert networks, gradient descent with momentum, belief propagation decoder, coupled oscillators, evolutionary algorithm). Runner: experiments/blind-prediction-test__Paper-III/BLIND_PREDICTION_TEST.py. Companion forensic write-up: experiments/blind-prediction-test__Paper-III/BLIND_TEST_FORENSIC_ANALYSIS.md. No PROTOCOL document beyond the script's own docstring.
 - Results:
   - papers/Paper-III-Alignment-Scaling-Problem/results/v1/ (4 files) — v1 raw alignment scoring (claude-sonnet, deepseek-r1, gemini-flash, openai-o1), 10 March 2026, produced by arc_alignment_scaling_v1.py.
