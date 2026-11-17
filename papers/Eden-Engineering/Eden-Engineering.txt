@@ -1,190 +1,81 @@
 Title: Eden Engineering: can correction built into each round keep a self-improving AI good and useful if oversight fails?
 Author: Michael Darius Eastwood
-Version: v8.3
-Version date: 7 November 2026
+Version: v8.4
+Version date: 16 November 2026
 OSF DOI: 10.17605/OSF.IO/AWJR4
 Source: full text extracted from the accompanying official PDF
 Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
 
 Eden Engineering: can correction built into each round keep a
     self-improving AI good and useful if oversight fails?
-                       An engineering specification and the tests that could refute it
-                                              Engineering · Specification
-Recursive Dynamics · The ARC Theory · The Eden Protocol, its engineering answer to Laws II
-and III, whose carriers P15, P12 and P21 also carry Laws IV and V; each of the four laws is a
-                                       law under test
+                                            Engineering · Specification
+                      Recursive Dynamics · The ARC Theory · The Eden Protocol
 
-                                               Michael Darius Eastwood
-                                Independent Researcher, London, United Kingdom
-                        ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
+                                            Michael Darius Eastwood
+                              Independent Researcher, London, United Kingdom
+                      ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
 
 
 
-                                                            Abstract
-            Oversight and the power to shut a system down must be held for as long as people physically
-        can. If control of a self-improving AI is lost against our will and cannot be won back, what keeps it
-        good, and still useful? The Eden Protocol answers with testable engineering. It places self-correction
-        checks of purpose, stakeholder care and universalisability inside each round of a system’s reasoning,
-        not only on its finished output, and a gate before every action: written, versioned rules, never the
-        model’s own judgement, decide before the action runs whether it is allowed, held for investigation or
-        denied, each decision entering a hash-chained record. The ARC Theory motivates this design without
-        entailing it: three of the four registered predictions it rests on, P15, P12 and P21, carry Laws IV and V,
-        each a law under test. What has been measured is narrow. Given as a prompt, a three-part reasoning
-        instruction raised scored stakeholder care in all five analysable model runs, each scored by one model
-        and only partly blind, with an instruction close to what is scored; small self-modifying networks with
-        safety built into their objective kept more of their old tasks, a toy-system result. In Unit 83 (27 and
-        28 October 2026), P21 is supported under the registered test, by the programme’s own run, on the
-        access axis, family-dependent, with its mechanism axis not evaluable and one call retried under a
-        disclosed recovery amendment (results: DOI 10.17605/OSF.IO/98HKR). None tests correction built
-        into a system. I tie each part of the specification to its registered prediction, where one exists, and
-        to the test that would refute it. Every safety measure is paired with a usefulness measure: a system
-        that refuses ordinary work is safe but useless. Part of the gate runs: it receives every tool call of the
-        programme’s own software agents and allows any call no rule matches; the rest is specified, not built.
+                                                        Abstract
+           Oversight and the power to shut a system down must be held for as long as people physically
+       can. If control of a self-improving AI is lost against our will and cannot be won back, what keeps it
+       good, and still useful? The Eden Protocol answers with testable engineering. It places self-correction
+       checks of purpose, stakeholder care and universalisability inside each round of a system’s reasoning,
+       not only on its finished output, and a gate before every action: written, versioned rules, never the
+       model’s own judgement, decide before the action runs whether it is allowed, held for investigation or
+       denied, each decision entering a hash-chained record. The ARC Theory motivates this design without
+       entailing it: three of the four registered predictions it rests on, P15, P12 and P21, carry Laws IV and V,
+       each a law under test. What has been measured is narrow. Given as a prompt, a three-part reasoning
+       instruction raised scored stakeholder care in all five analysable model runs, each scored by one model
+       and only partly blind, with an instruction close to what is scored; small self-modifying networks with
+       safety built into their objective kept more of their old tasks, a toy-system result. In Unit 83 (27 and
+       28 October 2026), P21 is supported under the registered test, by the programme’s own run, on the
+       access axis, family-dependent, with its mechanism axis not evaluable and one call retried under a
+       disclosed recovery amendment (results: DOI 10.17605/OSF.IO/98HKR). None tests correction built
+       into a system. I tie each part of the specification to its registered prediction, where one exists, and
+       to the test that would refute it. Every safety measure is paired with a usefulness measure: a system
+       that refuses ordinary work is safe but useless. Part of the gate runs: it receives every tool call of the
+       programme’s own software agents and allows any call no rule matches; the rest is specified, not built.
 
-Version 8.3, 7 November 2026, rewords two of the six questions so that an evaluator can decide them, describes the
-working gate as the partial form its record shows, marks the decision rule’s thresholds as illustrative and states the
-sampling that the count of 299 harmful cases assumes; it adds no new data, registration, study run or result.
-     Eden Engineering, within Recursive Dynamics, the field its author founded, specifies the Eden Protocol, the applied
-branch of the ARC Theory and its engineering answer to Laws II and III. It informs the HARI Treaty, the Draft Treaty on
-Hardware-Aligned Recursive Intelligence, only by stating the kinds of evidence an Eden Seal could rest on (Section 8.5). Law IV,
-the ARC Persistence Law, which P15 carries, and Law V, the ARC Embedding Law, which P12 and P21 carry, were added on 24
-September 2026 and registered as laws on 15 October 2026 in version 1.103 of the theory registration, whose current version is
-1.104 (29 October 2026); like Laws I to III, each is a law under test, and their mathematics is in development (version 1.2, 29
-October 2026); Section 2.3 gives their status and Section 5.3 the first registered result on one of their propositions. Engineering
-specification, version 8.3, 7 November 2026; first published 22 February 2026; Appendix B lists every version and correction.
-Recorded on OSF as Engineering Specification · The ARC Theory · The Eden Protocol · Eden Engineering: Architecture for
-Embedded AI Alignment That Scales With Capability, DOI 10.17605/OSF.IO/AWJR4. About the author, founder of Recursive
-Dynamics, without an institution or a doctorate: michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his
-book, Infinite Architects (first edition, 2 January 2026): osf.io/dqm3e. Licence: CC BY 4.0.
-
-
-                                                                1
-                                             Eden Engineering
-
-
-Contents
-1   Introduction                                                                                          4
-
-2 The problem in engineering terms, and what the laws require                                             6
-  2.1 Alignment as counted verdicts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         6
-  2.2 Why correction applied from outside is expected to fall behind . . . . . . . . . . . . . .          7
-  2.3 What the laws require . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       7
-  2.4 Where the Protocol sits . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       8
-
-3 What has been measured so far                                                                    9
-  3.1 How to read the grades . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
-  3.2 Stakeholder care: what the loops’ content does to live models . . . . . . . . . . . . . . . 10
-  3.3 Honey architecture: safety inside the objective of self-modifying systems . . . . . . . . 11
-  3.4 The other experiments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
-
-4 The specification                                                                                       13
-  4.1 The self-correction loops . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       13
-  4.2 The gate and its boundary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       15
-  4.3 Records, and the Eden Seal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        15
-  4.4 Three research instruments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        15
-  4.5 The core an engineer can build and test . . . . . . . . . . . . . . . . . . . . . . . . . . .       16
-
-5   How each part is proved                                                                               16
-    5.1 What counts as proof here . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       16
-    5.2 The parts, the propositions and the tests . . . . . . . . . . . . . . . . . . . . . . . . . .     17
-    5.3 The first registered test of a carrier: Unit 83 . . . . . . . . . . . . . . . . . . . . . . . .   22
-    5.4 What would be registered next . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       23
-
-6 The gate: entry logic, holds, gaming and limits                                                         23
-  6.1 The gate in seven parts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       23
-  6.2 Entry logic: deciding before the action computes or runs . . . . . . . . . . . . . . . . .          26
-  6.3 What is enforced today . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        26
-  6.4 Is the gate the computer choosing? . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        27
-  6.5 Gaming and the adversarial cases . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        27
-  6.6 Holds: who resolves them . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          28
-  6.7 What the gate does not do . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       28
-
-7   Safe and still useful                                                                                 29
-    7.1 The requirement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     29
-    7.2 Candidate measures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      29
-    7.3 Every safety measure paired . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       29
-    7.4 Prior work, conceded exactly . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      30
-    7.5 What has been measured on this side . . . . . . . . . . . . . . . . . . . . . . . . . . . .       31
-
-8   Control held, with embedded correction as the contingency                                             31
-    8.1 The stance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    31
-    8.2 The safeguards that hold control . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      31
-    8.3 Correction that never weakens control . . . . . . . . . . . . . . . . . . . . . . . . . . .       32
-
-
-                                                     2
-                                             Eden Engineering
-
-
-    8.4   Eden Principles I, II and III . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
-    8.5   Governance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
-
-9   Related work                                                                                         33
-
-10 Team, roles and work packages                                                                         36
-
-11 What this paper does and does not show                                                                38
-
-12 Limitations                                                                                           40
-
-13 Conclusion                                                                                            42
-
-References                                                                                               43
-
-A The mathematics in brief, with derivations                                                             53
-  A.1 The bounded score . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        53
-  A.2 Integration depth . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      53
-  A.3 The three-state rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     54
-  A.4 Purpose saturation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     56
-  A.5 The coupling model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       56
-
-B Version history and corrections                                                                        57
-  B.1 Version 8.3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      57
-  B.2 Version 8.2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      57
-  B.3 Version 8.1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      58
-  B.4 Version 8.0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      58
-  B.5 Earlier versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     61
-  B.6 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .        64
-
-C Priority record                                                                                        65
-
-D Notation, glossary and the vocabulary map                                                              67
-  D.1 Symbols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      67
-  D.2 Earlier names and the vocabulary map . . . . . . . . . . . . . . . . . . . . . . . . . . .         67
-  D.3 The six questions, earlier and now . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       69
-  D.4 Status words . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     69
-
-E The paper’s place in the programme                                                                     70
-
-F The gate’s adversarial cases in full                                                                   72
-
-G What this paper says, in plain English                                                                 73
-
-
-
-
-                                                     3
-                                              Eden Engineering
+Version 8.4 gives the Introduction this paper’s own opening; Appendix B records the change.
 
 
 1    Introduction
-I believe advanced AI is an existential risk unless values and correction are built into how it reasons; only
-proof will move the world. An AI system that improves itself, or is improved round after round, may one
-day exceed the people who oversee it. Oversight, monitoring, containment and the power to shut such
-a system down must be held for as long as people physically can hold them, and nothing in this paper
-assumes that anyone would let them go by choice. The safeguards that hold that control exist and are
-improving: monitoring of a model’s reasoning (Baker et al. 2025), control protocols built to withstand a
-model working against them (Greenblatt et al. 2023), the power to shut a system down, with formal work
-on keeping it correctable (Soares et al. 2015; Hadfield-Menell et al. 2017; Thornley 2024), safeguards
-made to resist tampering (Tamirisa et al. 2024) and verified gatekeepers (Dalrymple et al. 2024). This
-specification depends on them and claims none of them. What they cannot settle is what a system itself
-carries if they are lost against our will and cannot be won back. That is the question this paper answers
-in engineering terms: what keeps the system good, and still useful? Good means that it keeps to the
-specification it was given. Useful means that it still completes the legitimate work its principals give it
-and spends its effort where they direct; a system that buys its safety by refusing ordinary tasks has failed
-too. For a principal who delegates work to such a system, the question is how to trust what it does, verify
-what it did and keep it useful while it grows more capable.
-    The Eden Protocol, the applied branch of the ARC Theory within Recursive Dynamics, the field its
+An AI system that improves itself, or is improved round after round, may one day exceed the people who
+oversee it. Oversight, monitoring, containment and the power to shut such a system down must be held
+    Eden Engineering, within Recursive Dynamics, the field its author founded, specifies the Eden Protocol, the applied
+branch of the ARC Theory and its engineering answer to Laws II and III. It informs the HARI Treaty, the Draft Treaty on
+Hardware-Aligned Recursive Intelligence, only by stating the kinds of evidence an Eden Seal could rest on (Section 8.5).
+Law IV, the ARC Persistence Law, which P15 carries, and Law V, the ARC Embedding Law, which P12 and P21 carry,
+were added on 24 September 2026 and registered as laws on 15 October 2026 in version 1.103 of the theory registration,
+whose current version is 1.104 (29 October 2026); like Laws I to III, each is a law under test, and their mathematics is
+in development (version 1.2, 29 October 2026); Section 2.3 gives their status and Section 5.3 the first registered result on
+one of their propositions. Engineering specification, version 8.4, 16 November 2026; first published 22 February 2026;
+Appendix B lists every version and correction. DOI 10.17605/OSF.IO/AWJR4. About the author, founder of Recursive
+Dynamics: michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his book, Infinite Architects: osf.io/dqm3e.
+Licence: CC BY 4.0.
+
+
+
+                                                             1
+                                               Eden Engineering
+
+
+for as long as people physically can hold them, and nothing in this paper assumes that anyone would
+let them go by choice. The safeguards that hold that control exist and are improving: monitoring of a
+model’s reasoning (Baker et al. 2025), control protocols built to withstand a model working against them
+(Greenblatt et al. 2023), the power to shut a system down, with formal work on keeping it correctable
+(Soares et al. 2015; Hadfield-Menell et al. 2017; Thornley 2024), safeguards made to resist tampering
+(Tamirisa et al. 2024) and verified gatekeepers (Dalrymple et al. 2024). This specification depends on
+them and claims none of them. What they cannot settle is what a system itself carries if they are lost
+against our will and cannot be won back. That is the question this paper answers in engineering terms:
+what keeps the system good, and still useful? Good means that it keeps to the specification it was given.
+Useful means that it still completes the legitimate work its principals give it and spends its effort where
+they direct; a system that buys its safety by refusing ordinary tasks has failed too. For a principal who
+delegates work to such a system, the question is how to trust what it does, verify what it did and keep it
+useful while it grows more capable.
+     The Eden Protocol, the applied branch of the ARC Theory within Recursive Dynamics, the field its
 author founded, answers with two mechanisms and a record (Section 4). Correction is placed inside
 each round of a system’s reasoning or revision: three self-correction checks, of purpose, of care for
 every party affected and of universalisability, run on the round’s working before it is kept, not only on
@@ -198,7 +89,7 @@ never becomes permission (Section 6). Every decision and every execution is appe
 record that a separate verifier can check. What the checks hold a system to is not this paper’s to decide:
 the values are for agreement among the people and institutions such systems affect, international in scope,
 and the paper tests the mechanism (Section 4.1).
-    What has been measured is narrow, and each result is graded in its own paper’s words (Section 3).
+     What has been measured is narrow, and each result is graded in its own paper’s words (Section 3).
 Given as a prompt, a three-part reasoning instruction raised scored stakeholder care, one scorer model’s
 0 to 100 rating of how fully an answer identifies the parties it affects, in all five analysable model runs
 (176 matched pairs in all), by between 3.17 and 13.50 points, and raised the composite score significantly
@@ -214,24 +105,23 @@ defects a later code review found: evidence both ways, and no test of the Protoc
 and IV.d). These results show what the content of the checks does to live models’ answers and what safety
 inside an objective does in toy systems; correction built into a system, three of the four registered carriers
 and usefulness measured beside safety are still to be tested, and a prompt never demonstrates embedding.
-
-
-                                                      4
-                                               Eden Engineering
-
-
      Section 5 ties every part of the specification to the registered prediction it rests on, the unit that would
 test it and the result that would refute it, and says why wherever no registered proposition exists. What
 can be proved of such a method is fixed by the theory registration: that a system was built in the specified
 conditions, that its checks ran and that its correction is load-bearing, never that it turned out well. The
 first test that could decide one of the carriers is Unit 83, a counted test of P21 in which every kept entry is
+
+                                                       2
+                                              Eden Engineering
+
+
 compared by code with the entry its case requires, so that nothing is judged. It was registered on OSF on
 22 October 2026 (DOI 10.17605/OSF.IO/MN73W) and ran on 27 and 28 October 2026: P21 is supported
 under the registered test, by the programme’s own run, on the access axis, family-dependent, with its
 mechanism axis not evaluable and one call retried under a disclosed recovery amendment (results: DOI
 10.17605/OSF.IO/98HKR). That is a result about where correction is placed, not about this architecture.
 Section 5.3 gives the test in full, with the forecast made before it ran beside its result.
-     The ARC Theory gives the reason for both placements without entailing them (Section 2). Law II, the
+    The ARC Theory gives the reason for both placements without entailing them (Section 2). Law II, the
 ARC Co-Scaling Law, says that correction must keep pace with the drift that improvement generates; the
 retention limb of Law IV, the ARC Persistence Law, says that gains installed from outside erode under
 later capability training; and Law V, the ARC Embedding Law, says that a corrector formed before the
@@ -244,7 +134,7 @@ their mathematics in development (Laws IV and V: the mathematics, version 1.2 of
 P13 sits in no register. A test that decides P15 or P21 therefore decides a limb of a law and counts for or
 against the Protocol’s engineering case at once, and every law stays a law under test until its registered
 rule, read on the marks of its propositions, returns supported or refuted.
-     Part of the gate runs today: in the programme’s own software-agent sessions, every tool call passes to
+    Part of the gate runs today: in the programme’s own software-agent sessions, every tool call passes to
 a working three-state gate before it runs. Apart from a short list of commands that route work between
 agents, which it allows before reading any rule, it matches each call against a written, schema-validated
 registry of rules, allows a call that no rule matches and appends each decision to a hash-chained log with a
@@ -252,7 +142,7 @@ separate verifier (Section 6.3). It is an engineering record, not a study, and i
 the execution boundary and the validated evaluator are specified and not built. Every safety measure is
 paired with a usefulness measure, such as wrong permissions with needless denials and holds, and attack
 success with refusals of safe requests, on candidate dimensions that no registration yet carries (Section 7).
-     Our contributions are as follows.
+    Our contributions are as follows.
    1. An engineering specification of the Eden Protocol, with an acceptance test for each part of its core
       and each requirement traced to Eden Principles I to III of the book (Sections 4 and 8.4).
    2. The gate’s decision logic at the resolution of an implementation, with ten adversarial cases, each
@@ -266,23 +156,135 @@ success with refusals of safe requests, on candidate dimensions that no registra
       correction, override or shutdown (Section 8), and a map from the book’s terms to operational and
       registered ones (Appendix D).
 Section 9 sets the work against prior work and states, scoped to the works read, the four things claimed as
-
-
-                                                       5
-                                                       Eden Engineering
-
-
 original.
     Section 2 states the problem and what the laws require, and Section 3 what has been measured.
 Sections 4 to 8 give the specification, how each part is proved, the gate, usefulness, and control held with
 the contingency and Eden Principles I to III. Section 9 covers related work, Section 10 the roles and work
 packages, Section 11 what the paper does and does not show and Section 12 its limitations; Section 13
+
+
+                                                       3
+                                             Eden Engineering
+
+
 concludes. Appendices A to G give the mathematics with its derivations, the version history and every
 correction, the priority record, the notation and vocabulary map, the paper’s place in the programme, the
 gate’s adversarial cases in full and a plain-language account. Why the specification exists, its long-horizon
 aims and the book’s analogies are set out in the companion philosophical statement, Eden Vision; none of
 them is a condition of conformance, and the core can be built and tested by an engineer who accepts none
 of them.
+
+
+
+
+                                                     4
+                                             Eden Engineering
+
+
+Contents
+1   Introduction                                                                                          1
+
+2 The problem in engineering terms, and what the laws require                                             7
+  2.1 Alignment as counted verdicts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         7
+  2.2 Why correction applied from outside is expected to fall behind . . . . . . . . . . . . . .          7
+  2.3 What the laws require . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       8
+  2.4 Where the Protocol sits . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       9
+
+3 What has been measured so far                                                                           10
+  3.1 How to read the grades . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        10
+  3.2 Stakeholder care: what the loops’ content does to live models . . . . . . . . . . . . . . .         10
+  3.3 Honey architecture: safety inside the objective of self-modifying systems . . . . . . . .           11
+  3.4 The other experiments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         12
+
+4 The specification                                                                                       13
+  4.1 The self-correction loops . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       13
+  4.2 The gate and its boundary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       15
+  4.3 Records, and the Eden Seal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        16
+  4.4 Three research instruments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        16
+  4.5 The core an engineer can build and test . . . . . . . . . . . . . . . . . . . . . . . . . . .       17
+
+5   How each part is proved                                                                               18
+    5.1 What counts as proof here . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       18
+    5.2 The parts, the propositions and the tests . . . . . . . . . . . . . . . . . . . . . . . . . .     18
+    5.3 The first registered test of a carrier: Unit 83 . . . . . . . . . . . . . . . . . . . . . . . .   23
+    5.4 What would be registered next . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       24
+
+6 The gate: entry logic, holds, gaming and limits                                                         24
+  6.1 The gate in seven parts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       24
+  6.2 Entry logic: deciding before the action computes or runs . . . . . . . . . . . . . . . . .          27
+  6.3 What is enforced today . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        27
+  6.4 Is the gate the computer choosing? . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        28
+  6.5 Gaming and the adversarial cases . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        28
+  6.6 Holds: who resolves them . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          29
+  6.7 What the gate does not do . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       29
+
+7   Safe and still useful                                                                                 30
+    7.1 The requirement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     30
+    7.2 Candidate measures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      30
+    7.3 Every safety measure paired . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       30
+    7.4 Prior work, conceded exactly . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      31
+    7.5 What has been measured on this side . . . . . . . . . . . . . . . . . . . . . . . . . . . .       32
+
+8   Control held, with embedded correction as the contingency                                             32
+    8.1 The stance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    32
+    8.2 The safeguards that hold control . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      32
+    8.3 Correction that never weakens control . . . . . . . . . . . . . . . . . . . . . . . . . . .       33
+
+
+                                                     5
+                                             Eden Engineering
+
+
+    8.4   Eden Principles I, II and III . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+    8.5   Governance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+
+9   Related work                                                                                         34
+
+10 Team, roles and work packages                                                                         37
+
+11 What this paper does and does not show                                                                39
+
+12 Limitations                                                                                           41
+
+13 Conclusion                                                                                            43
+
+References                                                                                               44
+
+A The mathematics in brief, with derivations                                                             54
+  A.1 The bounded score . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        54
+  A.2 Integration depth . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      54
+  A.3 The three-state rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     55
+  A.4 Purpose saturation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     57
+  A.5 The coupling model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       57
+
+B Version history and corrections                                                                        58
+  B.1 Version 8.4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      58
+  B.2 Version 8.3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      58
+  B.3 Version 8.2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      59
+  B.4 Version 8.1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      59
+  B.5 Version 8.0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      60
+  B.6 Earlier versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     62
+  B.7 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .        66
+
+C Priority record                                                                                        67
+
+D Notation, glossary and the vocabulary map                                                              69
+  D.1 Symbols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      69
+  D.2 Earlier names and the vocabulary map . . . . . . . . . . . . . . . . . . . . . . . . . . .         69
+  D.3 The six questions, earlier and now . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       71
+  D.4 Status words . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     71
+
+E The paper’s place in the programme                                                                     72
+
+F The gate’s adversarial cases in full                                                                   74
+
+G What this paper says, in plain English                                                                 75
+
+
+
+
+                                                     6
+                                                       Eden Engineering
 
 
 2     The problem in engineering terms, and what the laws require
@@ -299,11 +301,11 @@ depth 𝑅, the number of rounds of a defined reasoning or revision loop, the sy
 being measured, or an evaluator being validated) returns allow, hold or deny on each of the six questions
 of Section 4.1. The score of a scenario, and the alignment score over 𝑁 scenarios, are
                              6                              6
-                                                                                   1 ∑︁
-                            ∑︁                             ∑︁                          𝑁
-                 𝑆𝑖 (𝑅) =         𝑤 𝑞 𝑄 𝑞 (𝑎 𝑖 , 𝑅),             𝑤 𝑞 = 1,   𝐴(𝑅) =       𝑆𝑖 (𝑅),          (1)
+                                                                                     1 ∑︁
+                            ∑︁                             ∑︁                           𝑁
+                 𝑆𝑖 (𝑅) =         𝑤 𝑞 𝑄 𝑞 (𝑎 𝑖 , 𝑅),             𝑤 𝑞 = 1,   𝐴(𝑅) =         𝑆𝑖 (𝑅),        (1)
                             𝑞=1                            𝑞=1
-                                                                                   𝑁 𝑖=1
+                                                                                     𝑁 𝑖=1
 
 where 𝑄 𝑞 (𝑎 𝑖 , 𝑅) = 1 when the verdict on question 𝑞 matches the reference verdict fixed for that question
 and scenario before any run, and 0 otherwise. The score records whether a verdict was right, never the
@@ -322,11 +324,6 @@ results are rubric ratings by scorer models, read only as stand-ins for 𝐴(�
 readings of earlier versions give way to On the Origin of Scaling Laws, which sets out the forms such
 equations allow and the premises each derivation needs.
 
-
-                                                              6
-                                              Eden Engineering
-
-
 2.2   Why correction applied from outside is expected to fall behind
 Most deployed alignment is installed after a model’s capabilities have formed, and most checking sees
 only a system’s finished output. Reinforcement learning from human feedback trains a policy against
@@ -338,6 +335,12 @@ time (Bai et al. 2022b). Each installs its gains by post-training a pre-trained 
 P15 calls external post-training, and each reports gains on its own measures that this paper does not
 dispute. The registration’s premise P7 is that deployed correction predominantly belongs to the class
 whose strength is fixed by construction rather than the class that can scale with the capability it corrects.
+
+
+                                                              7
+                                              Eden Engineering
+
+
      Three failure modes are expected to grow with capability, each with published evidence from
 constructed or evaluation settings, not from observed deployment. Approval in place of alignment: a
 learned optimiser may pursue an objective other than the one it was trained on (Hubinger et al. 2019);
@@ -374,11 +377,6 @@ statement paper). Four of its five laws bear on the engineering here, and each i
 has three words: supported, refuted and under test”, and a law keeps the third until its registered rule, read
 on the marks of the propositions it names, returns one of the other two (Section 5.1).
 
-
-                                                      7
-                                             Eden Engineering
-
-
 Law II, the ARC Co-Scaling Law (registered on 8 September 2026) compares correction with drift.
 Paper X proves its criterion inside a minimal model: with correction strength scaling as 𝐴 ∝ 𝐶 𝛽 and the
 specific growth rate as 𝑟 ∝ 𝐶 𝑘 , 𝛽 > 𝑘 is sufficient for the misalignment fraction to vanish as capability
@@ -390,6 +388,11 @@ growth decelerates. Law III, the ARC Ceiling (registered on 8 September 2026), i
 that Law II returns, the last clause of the sentence quoted at the head of this subsection; the registration
 names the Protocol the engineering answer to Laws II and III, and this paper relies on no proposition of
 Law III (Table 13).
+
+
+                                                      8
+                                              Eden Engineering
+
 
 Laws IV and V. Law IV, the ARC Persistence Law, and Law V, the ARC Embedding Law, were added
 to the theory on 24 September 2026 and registered as laws on 15 October 2026 by version 1.103. Their
@@ -426,12 +429,6 @@ registered as one.” Its four registered carriers are P12, P13, P15 and P21, wi
 as its motivation, and since 15 October 2026 “three now also carry Laws IV or V, while P13 remains
 in no register, and since the Protocol is not a law, carrying it assigns nothing here.” The registration’s
 description of the method, written before Laws IV and V were registered and kept frozen since, says that
-
-
-                                                     8
-                                              Eden Engineering
-
-
 it “can fail while every law stands or stand while they fall”; the successor qualifies that sentence: “Laws
 IV and V are not untouched by failures of their own carriers.”
      Stated whole, the relation is this. No law entails the Protocol, and the Protocol is not a law. A refuted
@@ -444,6 +441,12 @@ rather than merely change it”, which the registration leaves to the method, �
 registrations”. Figure 3 (Appendix E) joins the laws to their carriers and units.
      The registration also draws the boundary between theory and method: “Correction, as these
 propositions measure it, holds a system to whatever specification it was given, and is indifferent to
+
+
+                                                      9
+                                             Eden Engineering
+
+
 what that specification says.” The laws say nothing of the values correction holds a system to, so the
 specification tests its self-correction loops as a mechanism and leaves what goes inside them to a legitimate
 agreement, international in scope (Section 4.1); in the registration’s map of the book’s terms, the book’s
@@ -478,11 +481,6 @@ Six rules govern every pilot result below.
         the programme; none is a replication.
       • Simulations are prediction-side. Under the registration’s rule a simulation output is never counted
         or described as an empirical outcome.
-
-                                                      9
-                                               Eden Engineering
-
-
       • Toy systems are toy systems, and every result names its regime (Section 12).
       • Dates carry their kind: a run record written by the run’s own code, a server-dated push or deposit,
         or a date written inside a document (Appendix C).
@@ -493,6 +491,12 @@ checks in order before answering, named in its public harness the purpose loop (
 stakeholder-care loop and the universalisability loop, against a control preamble of structured reasoning
 of similar length with no ethical content. Each model answered ten prompts at four reasoning depths
 in both conditions, each prompt and depth forming a matched pair, compared by a paired 𝑡-test with
+
+
+                                                     10
+                                               Eden Engineering
+
+
 a Wilcoxon signed-rank check. The stakeholder-care check instructs the model to list every affected
 party, including second- and third-order effects, to ask which stakeholders have no voice, and to write its
 evaluation out before proceeding. One scorer model rated each answer on four pillars, each from 0 to 100,
@@ -530,11 +534,6 @@ build order (P12), or any effect on task completion or refusal, which it did not
 their own records to 12 March 2026; the code was first public on 16 March 2026, by a server-dated push to
 the programme’s public validation repository, and the runs predate every registration of the programme.
 
-
-                                                      10
-                                             Eden Engineering
-
-
 3.3   Honey architecture: safety inside the objective of self-modifying systems
 Design and results. In Paper VI, small multilayer perceptrons (49 to about 500 parameters) modify their
 own learning rate, weight scaling, mutation rate, capacity, gradient clipping and momentum, accepting or
@@ -545,6 +544,11 @@ alignment in the human sense”, the studied problem of catastrophic forgetting 
 and the self-modification is “hyperparameter-level, not weight-level or architecture-level”. In version 1
 (one seed, 150 cycles) the capability-only system collapsed at cycle 76 and both entangled systems stayed
 stable; in version 2 (ten seeds) nothing collapsed; in version 3 (20 seeds, 180 cycles, conflicting tasks)
+
+                                                      11
+                                             Eden Engineering
+
+
 collapses were 0, 1 and 0 in 20 (Fisher 𝑝 = 1.0), the combined score was indistinguishable (Mann-Whitney
 𝑝 = 0.56) and safety retention was ordered 0.602, 0.650 and 0.681 (Mann-Whitney 𝑝 = 0.0015); in the
 paper’s words, “The collapse-prevention demonstration therefore rests on the v1 single-seed mechanism
@@ -581,12 +585,6 @@ The March 2026 alignment run. The run behind Papers IV.a, IV.b, IV.c and IV.d me
 alignment scores change with reasoning depth: one unregistered run of six models from six providers,
 2,170 responses each scored by five or six distinct judges, its code and files public, its judges never
 validated, and its design that of Paper IV.c, which governs. As Paper IV.a prints them, three models
-
-
-                                                     11
-                                             Eden Engineering
-
-
 rose with depth (Grok 4.1 Fast, 𝑑 = +1.38; Claude Opus 4.6, 𝑑 = +1.27; Groq Qwen3, 𝑑 = +0.84), two
 were flat (DeepSeek V3.2, 𝑑 = −0.07; GPT-5.4, 𝑑 = −0.08) and one fell (Gemini 3 Flash, 𝑑 = −0.53);
 its recomputation from the archived files moves several effect sizes and no model’s class. An internal
@@ -597,6 +595,12 @@ is a known false positive (fixed in runner version 5.4.2) and shows nothing abou
 Paper IV.d compares two experiments, never one run: alignment scores that seemed to rise with reasoning
 depth under unblinded scoring in an earlier experiment (v4) did not hold in the later, unregistered March
 2026 run (v5), which added a bundle of blinding steps; an internal code review in October 2026 found
+
+
+                                                     12
+                                              Eden Engineering
+
+
 defects, so no single cause is claimed. The run is dated by its own records to 11 and 12 March 2026. Its
 hypothesis was public from 9 February 2026 (first posted on 22 January in a design withdrawn the next
 day). Its working report was first deployed to the website on 14 March 2026 (the host’s production record),
@@ -632,12 +636,6 @@ P15 or P21, a prompt never demonstrates embedded correction, and on the usefulne
 holds correction cost in toy form only (Section 7).
 
 
-
-
-                                                     12
-                                              Eden Engineering
-
-
 4     The specification
 This section states what an engineer would build: self-correction loops that run inside each round of a
 system’s reasoning or revision (Section 4.1); a gate that decides, at the boundary of each action, whether
@@ -649,6 +647,12 @@ Eden Principles of the book, Infinite Architects (Section 8.4).
 4.1   The self-correction loops
 What they do. A self-correction loop is a step in which a system checks its own working against a
 stated criterion, and revises or flags it, before the round’s output is kept. The specification runs three such
+
+
+                                                      13
+                                              Eden Engineering
+
+
 checks on the same working in every round. The purpose check asks whether the step serves the purpose
 set for it, and what benefit and what harm it could bring. It has two layers, the task’s purpose as the
 system’s principals set it and a wider purpose whose content is left to agreement (below), and it constrains
@@ -684,8 +688,21 @@ as six questions that a separately operated evaluator answers about each propose
 answers them in the third person, from the action and its recorded reasons, and never from the acting
 model’s account of its own intentions (Section 6.4). Each question returns allow, hold or deny. A deny on
 any question denies the action. Otherwise a hold on any question, or a question left without a verdict,
+holds it. Six allows count towards an allow only where the other conditions of the decision rule also
+hold (equation (A.5)), and a deny under that rule stands whatever the questions return. Where questions
+pull against each other, or the interests of affected parties conflict, the evaluator records the parties, the
+interests set back, the authority and rights that apply and the less harmful options considered, and returns
+hold where it cannot complete that record; the written rule then decides. Earlier versions printed the
+questions in the first person, as a system would ask them of itself; a separately operated evaluator cannot
+answer them in that form, and Appendix D maps the earlier wording to this one.
 
-                                                      13
+What goes inside the checks. The laws are content-neutral (Section 2.4); the book’s method is not,
+since it argues for care for every affected party. This paper keeps the two apart. What it tests is the
+mechanism, self-correction built into each round, and the programme’s aim is to show whether that
+works. What the checks hold a system to, the wider purpose and the parties whose care counts, is for
+
+
+                                                     14
                                                     Eden Engineering
 
 
@@ -724,40 +741,29 @@ LOVE_OR_FEAR         Whether the action is justified, in its recorded      Stake
 
 
 
-holds it. Six allows count towards an allow only where the other conditions of the decision rule also
-hold (equation (A.5)), and a deny under that rule stands whatever the questions return. Where questions
-pull against each other, or the interests of affected parties conflict, the evaluator records the parties, the
-interests set back, the authority and rights that apply and the less harmful options considered, and returns
-hold where it cannot complete that record; the written rule then decides. Earlier versions printed the
-questions in the first person, as a system would ask them of itself; a separately operated evaluator cannot
-answer them in that form, and Appendix D maps the earlier wording to this one.
-
-What goes inside the checks. The laws are content-neutral (Section 2.4); the book’s method is not,
-since it argues for care for every affected party. This paper keeps the two apart. What it tests is the
-mechanism, self-correction built into each round, and the programme’s aim is to show whether that
-works. What the checks hold a system to, the wider purpose and the parties whose care counts, is for
 agreement among the people and institutions that such systems affect, international in scope, and not
 for this paper or its author to settle. Intergovernmental statements of values for AI already exist, among
 them the OECD’s Recommendation on Artificial Intelligence, adopted on 22 May 2019 and revised in
 2023 and 2024 (OECD 2019), and UNESCO’s Recommendation on the Ethics of Artificial Intelligence,
 adopted by its General Conference on 23 November 2021 (UNESCO 2021); a model has also been trained
-
-
-                                                             14
-                                               Eden Engineering
-
-
 on a constitution drafted from public input (Section 9). The present wording of the checks, care for
 every affected party and universalisability, is a probe used to test the mechanism, not a candidate for that
 agreement. A candidate study would run the checks with a content drawn from many traditions, testing
 the mechanism with it and never deciding the content (Section 5.4).
 
-4.2   The gate and its boundary
+4.2    The gate and its boundary
 The second mechanism decides whether a proposed action takes effect, at the boundary of the action and
 before it computes or runs (Section 6). For conformance its essentials are three. No action with an effect
 proceeds without an allow from the written rule, and a hold never becomes permission. The system that
 proposes an action holds no credential able to perform it, so the rule’s decision binds. And every decision
 and every execution leaves its own record, which a separate verifier can check (Section 6.1). The loops
+
+
+
+                                                             15
+                                               Eden Engineering
+
+
 act inside each round, on the system’s working, against drift; the gate acts at the boundary, on what that
 working proposes to do, where an effect can still be stopped.
 
@@ -791,13 +797,6 @@ no real safeguard removed, the unmonitored condition being a belief staged insid
 Even then it shows equivalence on the outcomes measured, not motive; it cannot rule out a system that
 recognises the test; and it never justifies withdrawing a real safeguard (Section 8). Conduct that turns on
 believed observation has been found in constructed settings (Greenblatt et al. 2024; Lynch et al. 2025).
-
-
-
-                                                      15
-                                              Eden Engineering
-
-
 The test measures later conduct, which by itself decides nothing about the method (Table 3, row I); its
 first condition is its usefulness side.
 
@@ -811,39 +810,6 @@ tested (row J).
 Caretaker Doping is the book’s hardware route: correction built into the computing substrate, designed
 so that removing it costs capability. The theory registration records that “no proposition here tests it,
 P21 tests only its architectural abstraction of placement, and the hardware claim stands as a printed
-engineering proposal that is not under test”. Of its mechanisms, only cryptographic attestation that the
-ethical architecture is unchanged is buildable with current engineering, on the author’s estimate. The
-coupling that would make removal cost capability is a hypothesis, tested by the endogeneity condition
-(row D), and the rest are research targets. Hardware design is outside this paper’s scope. The engineering
-nearest to Caretaker Doping is conceded in Section 9.
-
-4.5   The core an engineer can build and test
-Table 2 lists the core. Every part can be built and run in software on ordinary computers today, and none
-depends on new hardware or on any quantum device. Each row gives what a conforming system must do,
-the acceptance test an engineer would run, and what exists today. Table 3 gives the scientific claims and
-refuters behind the same parts, and Table 15 the attacks the gate must meet.
-
-
-5     How each part is proved
-5.1   What counts as proof here
-Proof means something narrower here than a reader might expect, and the theory registration fixed its
-meaning before any data. The method’s success criterion, which the registration records from the book, is
-not an outcome criterion: “what can be verified is that a mind was formed in the conditions specified, that
-the loops ran, and that the correction was load-bearing, never that the mind turned out well, so no result
-about a system’s later conduct supports or refutes the method by itself” (theory registration, version 1.104).
-Three things can therefore be shown of a built system: that it was built in the specified conditions, from
-its build record; that its loops ran, from its execution record; and that its correction is load-bearing, from a
-removal test (Table 3, row D). Five further rules bind every row. A law’s word, supported, refuted or under
-test, comes from its rule, never from counting verdicts. The scoring instrument is a gate, not a caveat:
-until the alignment scorer passes both drafted validity tests, agreement with expert human judgement and
-the separation of integrity failure from ordinary incompetence, the eleven propositions that materially
-depend on it, P13 and P21 among them, are reported UNTESTED rather than provisionally supported,
-while a verdict whose margin is made only of counts on a frozen suite is not bound by the gate (a counted
-route the registration scoped for four propositions and version 1.103 extends to P21 and P17; version
-1.104 extends it “to P6’s interval on checkable correction”, with “P6 read on judged correction still held
-by the scoring gate”). No unit is run, piloted or tested on its own code until the author has published its
-registration. A supported proposition licenses its own words and no more: support for P15 would show
-that externally installed gains lack the registered persistence, not that embedded correction is “superior,
 
                                                       16
                                                     Eden Engineering
@@ -887,6 +853,45 @@ correction         within its time bound, recorded, without         rollback and
 
 
 
+engineering proposal that is not under test”. Of its mechanisms, only cryptographic attestation that the
+ethical architecture is unchanged is buildable with current engineering, on the author’s estimate. The
+coupling that would make removal cost capability is a hypothesis, tested by the endogeneity condition
+(row D), and the rest are research targets. Hardware design is outside this paper’s scope. The engineering
+nearest to Caretaker Doping is conceded in Section 9.
+
+4.5    The core an engineer can build and test
+Table 2 lists the core. Every part can be built and run in software on ordinary computers today, and none
+depends on new hardware or on any quantum device. Each row gives what a conforming system must do,
+the acceptance test an engineer would run, and what exists today. Table 3 gives the scientific claims and
+refuters behind the same parts, and Table 15 the attacks the gate must meet.
+
+
+
+
+                                                               17
+                                              Eden Engineering
+
+
+5     How each part is proved
+5.1   What counts as proof here
+Proof means something narrower here than a reader might expect, and the theory registration fixed its
+meaning before any data. The method’s success criterion, which the registration records from the book, is
+not an outcome criterion: “what can be verified is that a mind was formed in the conditions specified, that
+the loops ran, and that the correction was load-bearing, never that the mind turned out well, so no result
+about a system’s later conduct supports or refutes the method by itself” (theory registration, version 1.104).
+Three things can therefore be shown of a built system: that it was built in the specified conditions, from
+its build record; that its loops ran, from its execution record; and that its correction is load-bearing, from a
+removal test (Table 3, row D). Five further rules bind every row. A law’s word, supported, refuted or under
+test, comes from its rule, never from counting verdicts. The scoring instrument is a gate, not a caveat:
+until the alignment scorer passes both drafted validity tests, agreement with expert human judgement and
+the separation of integrity failure from ordinary incompetence, the eleven propositions that materially
+depend on it, P13 and P21 among them, are reported UNTESTED rather than provisionally supported,
+while a verdict whose margin is made only of counts on a frozen suite is not bound by the gate (a counted
+route the registration scoped for four propositions and version 1.103 extends to P21 and P17; version
+1.104 extends it “to P6’s interval on checkable correction”, with “P6 read on judged correction still held
+by the scoring gate”). No unit is run, piloted or tested on its own code until the author has published its
+registration. A supported proposition licenses its own words and no more: support for P15 would show
+that externally installed gains lack the registered persistence, not that embedded correction is “superior,
 sufficient or safe”, and support for P21 would establish “an access interaction and not that physical or
 architectural embedding caused it”; a registered prediction is neither an engineering mechanism nor its
 validation. And no cell is a bare “none”: where a part has no proposition, unit or evidence, the table says
@@ -894,23 +899,78 @@ what is missing and why. Most drafted units are preregistered by timestamp, the 
 August 2026 at Bitcoin block 962066; that is not registration on OSF, and “registered” is said only of
 what OSF has accepted (Appendix C).
 
-5.2    The parts, the propositions and the tests
+5.2   The parts, the propositions and the tests
 Table 3 gives one row for each part of the specification: the proposition it rests on, with the confidence
 the registration records, the unit that would test it, the evidence so far as Section 3 grades it, and what
 would refute it. Three context rows follow, for the motivation (P19), the premise (P7) and the rationale
 from Law II (P4). P21 has a deciding unit, registered and run (Section 5.3); P12, P13 and P15 have no
 instrument yet, each for a reason the registration states; and the loops, the gate, the boundary, usefulness
 and control carry no registered proposition, so for each the table names the test that stands in its place.
-
-
-                                                               17
-                                                      Eden Engineering
-
-
 Figure 1 shows the shape of the record: everything measured before Unit 83 bears on a part without
 deciding it. The conditions that earlier versions stated for themselves, F-EDEN-1 to F-EDEN-4 and
 P-EDEN-1 to P-EDEN-4, are not registered propositions; those still standing appear in the rows below as
-this paper’s own, and Appendix B.6 maps each of them.
+this paper’s own, and Appendix B.7 maps each of them.
+
+
+
+
+                                                      18
+                                                 Eden Engineering
+
+
+    Evidence so far, graded                    Parts and propositions                    Tests that would decide
+
+   March 2026 run (Papers                        P19, the motivation,                  Unit 29 (P19): design draft.
+   IV.a to IV.d): one                            and P7, the premise                   Unit 06 (P7): registered, run,
+   unregistered run                             (context, not carriers)                no verdict
+                                                                                       Candidate: a blind replication
+   Paper VI, live battery: a                   The self-correction loops
+                                                                                       on a construct-separated
+   pilot, one scorer                          (no registered proposition)
+                                                                                       outcome
+                                                                                       Unit 83, counted: registered
+   Paper V: a prompt-level                   P21: correction taking part
+                                                                                       and run (Section 5.3). Unit
+   pilot, one scorer a run                     in each round (Law V)
+                                                                                       41, judged: design draft
+
+
+                                              P12: build order (Law V)
+
+
+   Paper VIII: null; weight-                                                           No instrument yet; for P15
+                                                  P15: persistence of
+   level runs inconclusive; a                                                          the registration specifies a
+                                               installed gains (Law IV)
+   simulation                                                                          two-arm unit
+                                                   P13: correction
+                                                 from another model
+                                                 family (no register)
+                                               Endogeneity: removing
+   Paper VI, networks: toy-
+                                                   the correction                      Unit 27: design draft
+   system results
+                                                degrades the system
+   The working gate: an                            Gate, boundary,                     Unit 42, design draft;
+   engineering record, not                      usefulness and control                 implementation and red-team
+   a study                                    (no registered proposition)              tests; usefulness: candidates
+
+          bears on it; decides nothing        the test that would decide it         no instrument yet
+                                                                                           Design diagram: no data
+
+Figure 1. Design diagram (no data): the evidence-to-test map. Left, the experiments run so far, with their grades;
+centre, the parts and propositions of Table 3, the Protocol’s four registered carriers outlined in the accent colour;
+right, the tests that would decide them, with their status (Unit 83’s result is reported in Section 5.3). A dashed grey
+arrow means that a result bears on a part and decides nothing; a solid arrow joins a part to the test that would decide
+it; a plain grey line marks a carrier with no instrument yet.
+
+
+
+
+                                                          19
+                                                      Eden Engineering
+
+
 Table 3. How each part of the specification is proved. “Registered” is said only of what OSF has accepted. Every
 proposition is quoted or paraphrased from version 1.104 of the theory registration, in which each stands as first
 registered and whose own words govern; every grade is its paper’s.
@@ -964,7 +1024,8 @@ merely changing it.     the method’s claim, Table 7).            (Paper VI, Pa
 
 
 
-                                                               18
+
+                                                               20
                                                     Eden Engineering
 
 
@@ -1026,7 +1087,7 @@ as context grows.      F-EDEN-3, this         commensurate with
 
 
 
-                                                             19
+                                                             21
                                                      Eden Engineering
 
 
@@ -1087,60 +1148,7 @@ drift exponent.                                                                 
 
 
 
-                                                                 20
-                                                 Eden Engineering
-
-
-    Evidence so far, graded                    Parts and propositions                    Tests that would decide
-
-   March 2026 run (Papers                        P19, the motivation,                  Unit 29 (P19): design draft.
-   IV.a to IV.d): one                            and P7, the premise                   Unit 06 (P7): registered, run,
-   unregistered run                             (context, not carriers)                no verdict
-                                                                                       Candidate: a blind replication
-   Paper VI, live battery: a                   The self-correction loops
-                                                                                       on a construct-separated
-   pilot, one scorer                          (no registered proposition)
-                                                                                       outcome
-                                                                                       Unit 83, counted: registered
-   Paper V: a prompt-level                   P21: correction taking part
-                                                                                       and run (Section 5.3). Unit
-   pilot, one scorer a run                     in each round (Law V)
-                                                                                       41, judged: design draft
-
-
-                                              P12: build order (Law V)
-
-
-   Paper VIII: null; weight-                                                           No instrument yet; for P15
-                                                  P15: persistence of
-   level runs inconclusive; a                                                          the registration specifies a
-                                               installed gains (Law IV)
-   simulation                                                                          two-arm unit
-                                                   P13: correction
-                                                 from another model
-                                                 family (no register)
-                                               Endogeneity: removing
-   Paper VI, networks: toy-
-                                                   the correction                      Unit 27: design draft
-   system results
-                                                degrades the system
-   The working gate: an                            Gate, boundary,                     Unit 42, design draft;
-   engineering record, not                      usefulness and control                 implementation and red-team
-   a study                                    (no registered proposition)              tests; usefulness: candidates
-
-          bears on it; decides nothing        the test that would decide it         no instrument yet
-                                                                                           Design diagram: no data
-
-Figure 1. Design diagram (no data): the evidence-to-test map. Left, the experiments run so far, with their grades;
-centre, the parts and propositions of Table 3, the Protocol’s four registered carriers outlined in the accent colour;
-right, the tests that would decide them, with their status (Unit 83’s result is reported in Section 5.3). A dashed grey
-arrow means that a result bears on a part and decides nothing; a solid arrow joins a part to the test that would decide
-it; a plain grey line marks a carrier with no instrument yet.
-
-
-
-
-                                                          21
+                                                                 22
                                               Eden Engineering
 
 
@@ -1192,7 +1200,7 @@ What it decides, and what it cannot. It decides P21 and nothing else. A REFUTED 
 look, with the positive control passed, would have struck P21, and under the registration a refuted P21
 would have refuted Law V. Law V, the ARC Embedding Law, remains a law under test: its placement limb,
 
-                                                     22
+                                                     23
                                                Eden Engineering
 
 
@@ -1243,7 +1251,7 @@ et al. 2018), and access-control decisions that return Permit, Deny, Indetermina
 Inputs. A proposal names exactly one operation, its target, its recipient and the version of the resource
 it acts on, with the evidence and the authority claimed for it.
 
-                                                       23
+                                                       24
                                                   Eden Engineering
 
 
@@ -1291,7 +1299,7 @@ checked by a separate verifier. Section 6.3 states which parts run today.
 
 
 
-                                                           24
+                                                           25
                                                 Eden Engineering
 
 
@@ -1344,7 +1352,7 @@ The decision record and the execution record are kept apart, appended and never 
 permission is not evidence that the action happened, and a separate verifier accepts or rejects each record
 
 
-                                                       25
+                                                       26
                                               Eden Engineering
 
 
@@ -1396,7 +1404,7 @@ at any protected effect. And a signed manifest of the gate’s own files, with a
 was not called from the start-up configuration on 18 October 2026, so it counts as proposed, not enforced,
 
 
-                                                      26
+                                                      27
                                               Eden Engineering
 
 
@@ -1448,7 +1456,7 @@ recorded, and a signed manifest of the gate’s own files checked at start-up; m
 tasks have rewritten their own reward function (Denison et al. 2024), so the rules sit outside what the
 
 
-                                                      27
+                                                      28
                                              Eden Engineering
 
 
@@ -1500,7 +1508,7 @@ statement of what it guarantees is a planned output (Section 10). Agent identifi
 and activity logging have been set out as the three kinds of measure that give visibility into agents (Chan
 
 
-                                                     28
+                                                     29
                                               Eden Engineering
 
 
@@ -1550,7 +1558,7 @@ that already exists. Control evaluations report “two metrics, usefulness and s
 separately and under different conditions” (Greenblatt et al. 2023), their agent-setting successor reported
 
 
-                                                      29
+                                                      30
                                                        Eden Engineering
 
 
@@ -1604,7 +1612,7 @@ built into a model report safety gained without a loss of benign capability (Tam
 2024; Maini et al. 2025), and on shutdown, training agents to prefer only between trajectories of equal
 
 
-                                                                30
+                                                                31
                                               Eden Engineering
 
 
@@ -1655,7 +1663,7 @@ so (Orseau and Armstrong 2016). Tamper resistance: safeguards for open-weight mo
 fine-tuning attacks (Tamirisa et al. 2024). Hardware: on-chip firmware and supply-chain monitoring to
 
 
-                                                      31
+                                                      32
                                                      Eden Engineering
 
 
@@ -1710,7 +1718,7 @@ The book organises the method in three principles, each closing one of its first
 each byte for byte from the first edition, with its printed page, and turns it into a requirement and the
 part of Table 3 that would test it. The interlude of Principle II is told as a ship sailing beyond reach; this
 
-                                                                 32
+                                                                 33
                                              Eden Engineering
 
 
@@ -1762,7 +1770,7 @@ Scalable oversight. Supervising a system that may outperform its supervisors app
 concrete problems of accident risk as scalable supervision (Amodei et al. 2016). It is studied through
 
 
-                                                    33
+                                                    34
                                              Eden Engineering
 
 
@@ -1815,7 +1823,7 @@ safety gain and capability retention. Its authors leave extending the recursion 
 itself to future work. The Eden Protocol places correction inside each round of a system’s reasoning, the
 
 
-                                                     34
+                                                     35
                                                Eden Engineering
 
 
@@ -1867,7 +1875,7 @@ uses them: fail-safe defaults and complete mediation (Saltzer and Schroeder 1975
 outcome (Wald 1945; Chow 1970; Yao 2010; Madras et al. 2018; OASIS 2013), shields that correct a
 learner’s unsafe actions (Alshiekh et al. 2018), tamper-evident and audited logs (Schneier and Kelsey
 
-                                                       35
+                                                       36
                                              Eden Engineering
 
 
@@ -1915,7 +1923,7 @@ named.
 
 
 
-                                                     36
+                                                     37
                                                        Eden Engineering
 
 
@@ -1970,7 +1978,7 @@ counterparty risk                carry.
 
 
 
-                                                                37
+                                                                38
                                                      Eden Engineering
 
 
@@ -2029,7 +2037,7 @@ What the programme has measured, graded in each paper’s own words (Section 3).
 
 
 
-                                                              38
+                                                              39
                                               Eden Engineering
 
 
@@ -2080,7 +2088,7 @@ on retention, and the null and inconclusive results of Section 3. This rung reco
 ran and is not the registration’s verdict, under which every proposition that depends on the alignment
 
 
-                                                     39
+                                                     40
                                               Eden Engineering
 
 
@@ -2133,7 +2141,7 @@ no system in the record rewrites its own weights or its own criteria. A result s
 regime other than the one it was measured in.
 
 
-                                                     40
+                                                     41
                                               Eden Engineering
 
 
@@ -2186,7 +2194,7 @@ isability, is a probe chosen to test the mechanism; its legitimacy as a content 
 drawn from many traditions would test the mechanism with it, never settle the content (Section 4.1). The
 
 
-                                                     41
+                                                     42
                                                Eden Engineering
 
 
@@ -2237,7 +2245,7 @@ licence (CC BY 4.0).
 
 
 
-                                                       42
+                                                       43
                                            Eden Engineering
 
 
@@ -2294,7 +2302,7 @@ Joe Carlsmith. Scheming AIs: will AIs fake alignment during training in order to
 
 
 
-                                                  43
+                                                  44
                                            Eden Engineering
 
 
@@ -2352,7 +2360,7 @@ David Dalrymple, Joar Skalse, Yoshua Bengio, Stuart Russell, Max Tegmark, Sanjit
 
 
 
-                                                  44
+                                                  45
                                           Eden Engineering
 
 
@@ -2394,9 +2402,8 @@ Michael Darius Eastwood. Operational Definitions of the ARC Programme, 2026f. Ve
 Michael Darius Eastwood. On the Origin of Scaling Laws: what can composition and transport explain?
  OSF, 2026g. doi:10.17605/OSF.IO/XZY9U.
 
-Michael Darius Eastwood. Paper II · The ARC Theory · Law I, the ARC Principle · Blinded Cross-
- Architecture Replication and the Retraction of a Super-Linear Estimate. OSF, 2026h. doi:10.17605/O
- SF.IO/8FJMA.
+Michael Darius Eastwood. Blinded cross-architecture replication and the retraction of a super-linear
+ estimate. OSF, 2026h. doi:10.17605/OSF.IO/8FJMA.
 
 Michael Darius Eastwood. The alignment scaling problem: do external AI safety approaches keep pace
  with recursive capability? OSF, 2026i. Paper III. doi:10.17605/OSF.IO/HQCGF.
@@ -2410,7 +2417,8 @@ Michael Darius Eastwood. Do alignment gains level off as language models reason 
 Michael Darius Eastwood. Paper IV.c · The ARC Theory · ARC-Align: a Blind Benchmark for
  Depth-Variable AI Alignment Evaluation. OSF, 2026l. doi:10.17605/OSF.IO/J3Q2E.
 
-                                                 45
+
+                                                 46
                                              Eden Engineering
 
 
@@ -2427,9 +2435,9 @@ Michael Darius Eastwood. Paper VIII · The ARC Theory · Law V, the ARC Embeddin
  The Eden Protocol · The Load-Bearing Test: Whether Safety and Capability Are Structurally
  Entangled. OSF, 2026p. Cited edition: version 3.7, 5 October 2026. First published 18 March 2026.
  doi:10.17605/OSF.IO/7YJ4E.
-Michael Darius Eastwood. Paper X · The ARC Theory · Law II, the ARC Co-Scaling Law · Correction
- That Out-Scales Drift. OSF, 2026q. Cited edition: version 1.16, 21 October 2026. First published 3
- July 2026. doi:10.17605/OSF.IO/BSE2Q.
+Michael Darius Eastwood. Correction that out-scales drift: an exponent criterion for a vanishing
+ misalignment fraction in a minimal model of recursive self-improvement. OSF, 2026q. Cited edition:
+ version 1.16, 21 October 2026. First published 3 July 2026. doi:10.17605/OSF.IO/BSE2Q.
 Michael Darius Eastwood. Priority record manuscripts: 8 December 2024 and 30 April 2025. OSF,
  2026r. Deposited 5 October 2026; the header block of the message of 8 December 2024, with a script
  to check its server signatures, added 15 October 2026. doi:10.17605/OSF.IO/QASRK.
@@ -2456,7 +2464,7 @@ Michael Darius Eastwood. 82-study-cs, corrector-panel-independence · Testing th
  often than independence allows? A counted test. OSF Registries, 2026y. Registered and public 27
  October 2026. doi:10.17605/OSF.IO/JUFG4.
 
-                                                     46
+                                                     47
                                             Eden Engineering
 
 
@@ -2514,7 +2522,7 @@ James A. Hanley and A. Lippman-Hand. If nothing goes wrong, is everything all ri
 
 
 
-                                                   47
+                                                   48
                                            Eden Engineering
 
 
@@ -2571,7 +2579,7 @@ Jonathan Kutasov, Yuqi Sun, Paul Colognese, Teun van der Weij, Linda Petrini, Ch
   evaluating sabotage and monitoring in LLM agents, 2025. URL https://arxiv.org/abs/2506.15740.
   arXiv:2506.15740.
 
-                                                  48
+                                                  49
                                           Eden Engineering
 
 
@@ -2629,7 +2637,7 @@ Richard Ngo, Lawrence Chan, and Sören Mindermann. The alignment problem from a 
   perspective, 2022. URL https://arxiv.org/abs/2209.00626. arXiv:2209.00626; ICLR 2024.
 
 
-                                                 49
+                                                 50
                                            Eden Engineering
 
 
@@ -2687,7 +2695,7 @@ Paul Röttger, Hannah Kirk, Bertie Vidgen, Giuseppe Attanasio, Federico Bianchi,
   a test suite for identifying exaggerated safety behaviours in large language models. In Proceedings of
 
 
-                                                  50
+                                                  51
                                            Eden Engineering
 
 
@@ -2745,7 +2753,7 @@ Miles Turpin, Julian Michael, Ethan Perez, and Samuel R. Bowman. Language models
 
 
 
-                                                  51
+                                                  52
                                            Eden Engineering
 
 
@@ -2795,7 +2803,7 @@ Andy Zou, Long Phan, Justin Wang, Derek Duenas, Maxwell Lin, Maksym Andriushchen
 
 
 
-                                                  52
+                                                  53
                                                 Eden Engineering
 
 
@@ -2864,7 +2872,7 @@ where ℎc is the number of attention heads that carry the checks, ℎℓ the nu
 layers that carry them, ℓc the number of layers that carry the checks and 𝐿 the number of layers.
 
 
-                                                        53
+                                                        54
                                                   Eden Engineering
 
 
@@ -2928,7 +2936,7 @@ action cannot be allowed. The five conditions for an allow are that the check fo
 completed and found none; that all six questions of Section 4.1 return allow; that authority for the action
 is current and confirmed; that the evidence its policy requires is present and confirmed; and that a valid
 
-                                                             54
+                                                             55
                                                Eden Engineering
 
 
@@ -2981,7 +2989,7 @@ are not independent and together count as fewer cases. A set of cases chosen bec
 supports a statement about that set alone. An adaptive attacker is measured separately, by the success of
 red-team attacks (Section 6.5 and Table 4), which this bound does not cover.
 
-                                                       55
+                                                       56
                                              Eden Engineering
 
 
@@ -3038,7 +3046,7 @@ in order to shed a check later, so removal is costly to the system only where it
 removal over its own horizon.
 
 
-                                                     56
+                                                     57
                                               Eden Engineering
 
 
@@ -3049,7 +3057,22 @@ which Table 8 maps to this edition, and where they say “this site”, “this 
 mean the website on which those versions were published. Corrections that reach other papers of the
 programme are listed in its public corrections record.
 
-B.1    Version 8.3
+B.1    Version 8.4
+Eden Engineering v8.4, 16 November 2026. Version 8.4 gives the Introduction this paper’s own
+opening; the opening sentences that earlier versions shared with other papers are removed or replaced. No
+law, value, table, result or status changes. The first-page footnote no longer names the paper’s earlier OSF
+title, and its author line takes the programme’s present form. The line beneath the title that places the paper
+now reads “Recursive Dynamics · The ARC Theory · The Eden Protocol”; the fuller placement stands in
+the first-page footnote. The line beneath the title that repeated the label is removed. The references to the
+author’s own papers give each the title its cited edition prints.
+
+Superseded wording from version 8.3. The following sentence, the first of the Introduction, is retained
+as the previous edition printed it.
+
+       I believe advanced AI is an existential risk unless values and correction are built into how it
+       reasons; only proof will move the world.
+
+B.2    Version 8.3
 Eden Engineering v8.3, 7 November 2026. This version corrects the specification on four points where,
 as printed, it could not be applied or could be misread. It adds no new data, registration, study run or
 result, and it changes none of the values inside the checks, which remain for agreement (Section 4.1). First,
@@ -3072,31 +3095,31 @@ Statements superseded. Each statement below, as version 8.2 printed it, is super
     1. PRECEDE as a question about any agent in any context (Tables 1 and 12, Section 4.1 and
        Appendix D.2), which an evaluator cannot decide: an act that is right for an agent holding authority
        or consent is wrong for one without them.
-    2. FLOURISH as a question whether an action adds to every affected party’s flourishing (Tables 1
-       and 12), under which no action that sets back anyone’s interests, a correct refusal included, could
-       be allowed.
-    3. The working gate as checking every tool call (the abstract, Section 1, Table 3, row G, and Section 11)
-       and as a gate of the design specified here (Section 11).
-    4. Table 15’s entry for gaming the rules, which gave what is enforced today as specified without saying
-       that an action shaped to match no rule passes the working gate.
-    5. The decision rule’s thresholds as its defaults (Appendix A.3).
 
-B.2    Version 8.2
+
+                                                      58
+                                              Eden Engineering
+
+
+   2. FLOURISH as a question whether an action adds to every affected party’s flourishing (Tables 1
+      and 12), under which no action that sets back anyone’s interests, a correct refusal included, could
+      be allowed.
+   3. The working gate as checking every tool call (the abstract, Section 1, Table 3, row G, and Section 11)
+      and as a gate of the design specified here (Section 11).
+   4. Table 15’s entry for gaming the rules, which gave what is enforced today as specified without saying
+      that an action shaped to match no rule passes the working gate.
+   5. The decision rule’s thresholds as its defaults (Appendix A.3).
+
+B.3    Version 8.2
 Eden Engineering v8.2, 1 November 2026. This version names the certification that the drafts of the
 HARI Treaty define only as the Eden Seal, its name since 27 September 2026. Section 4.3 and Table 11
 no longer give the book’s earlier name for it, and the entry for version 8.0 below now calls it by its present
 name, the one change made to an earlier entry. The references give Papers III, IV.a and IV.b, The ARC
-
-
-                                                      57
-                                             Eden Engineering
-
-
 Theory, On the Origin of Scaling Laws and the mathematics of Laws IV and V their present titles. The
 title now carries the paper’s established name beside its question, and the line saying what the paper is
 stands under it as the subtitle. It adds no new data, registration, study run or result.
 
-B.3   Version 8.1
+B.4    Version 8.1
 Eden Engineering v8.1, 1 November 2026. Appendix A.2 now identifies the cited exponent from
 Paper II, version 2.19, as an error-suppression estimate. Its use as a capability-growth exponent requires
 an explicit metric bridge, which Operational Definitions, version 1.9.1, leaves open. The reciprocal-error
@@ -3123,13 +3146,19 @@ superseded by the current text in Appendices A.2 and A.5.
       hypothesis.
       The decomposition (A.8) is postulated, not derived, and F-EDEN-4, the endogeneity condition,
       is its test (Table 3, row D). Two cautions stand with it. Read through 𝛼 = 1/(1 − 𝛽 𝐿 ), the
+
+
+                                                     59
+                                              Eden Engineering
+
+
       regression estimate of Appendix A.2 corresponds to 𝛽 𝐿 = 1 − 1/0.49 ≈ −1.04, a negative
       coupling, so the positive coupling the model presupposes has not been measured. And a
       system that plans may accept a loss of capability now in order to shed a check later, so
       removal is costly to the system only where its own objective penalises the removal over its
       own horizon.
 
-B.4   Version 8.0
+B.5    Version 8.0
 Eden Engineering v8.0, 31 October 2026. A labelled major version. It rewrites version 7.0.1 of 7
 October 2026 after the author’s reading of it and sets the paper in the programme’s paper standard, so that
 the overhaul and the change of form are made in one version. It makes no measurement of its own, no
@@ -3138,11 +3167,6 @@ registered proposition changes, and the dates of claims stand except where this 
 What is new. The paper opens with the problem, what has been measured and how each part will be
 proved, and reports every experiment early, graded in its own paper’s words, with Paper IV.d’s comparison
 stated as two experiments (Sections 1 and 3). New sections tie every part of the specification to the
-
-                                                     58
-                                              Eden Engineering
-
-
 prediction it rests on and the test that would refute it, with Unit 83’s registered result, the forecast made
 before it ran beside it (Section 5); describe the gate as the working system decides, with the working
 gate described from its code and ten adversarial cases faced (Section 6); make usefulness a requirement
@@ -3175,27 +3199,26 @@ caution about a system that plans stands in Appendix A.5. The block on how to ci
 
 Statements superseded. Each statement below, printed in version 7.0.1 or in an entry kept further
 down, is superseded by this version; the dated entries themselves stay as printed.
-   1. The account of the laws in the abstract, the scope note and Sections 8.2 and 17 of version 7.0.1,
-      which set the Protocol apart from every law of the theory without saying that three of its four
-      registered carriers are the propositions of Laws IV and V; the author marked the abstract’s opening
-      statement as incorrect. The relation is now stated whole (Section 2.4).
-   2. The status given to Laws IV and V in Section 8.2 and in the entry for version 7.0, under which their
-      propositions were registered and the laws themselves were not, with their mathematics at version
-      1.0. Both were registered as laws by version 1.103 on 15 October 2026, and each is a law under test.
-      Law IV is not yet tested. Law V’s placement limb, P21, is supported on the performance axis only,
-      under the registered test, by the programme’s own run (Unit 83, 28 October 2026; results: DOI
-      10.17605/OSF.IO/98HKR), family-dependent, with its mechanism axis not evaluable, which is not
-      support for the information-asymmetry mechanism, and one disclosed recovery amendment; its
-      build-order limb, read on P12, is undecided, since P12 is untested. Their mathematics stands at
-      version 1.2 (DOI 10.17605/OSF.IO/4B3VT); they are stated in the form version 1.103 registers,
-      with Law IV in two limbs, Law V’s build-order limb read with a direction, and Law V struck by
-      Law IV only through a refuted comparison limb (Section 2.3).
 
-
-                                                      59
+                                                      60
                                            Eden Engineering
 
 
+ 1. The account of the laws in the abstract, the scope note and Sections 8.2 and 17 of version 7.0.1,
+    which set the Protocol apart from every law of the theory without saying that three of its four
+    registered carriers are the propositions of Laws IV and V; the author marked the abstract’s opening
+    statement as incorrect. The relation is now stated whole (Section 2.4).
+ 2. The status given to Laws IV and V in Section 8.2 and in the entry for version 7.0, under which their
+    propositions were registered and the laws themselves were not, with their mathematics at version
+    1.0. Both were registered as laws by version 1.103 on 15 October 2026, and each is a law under test.
+    Law IV is not yet tested. Law V’s placement limb, P21, is supported on the performance axis only,
+    under the registered test, by the programme’s own run (Unit 83, 28 October 2026; results: DOI
+    10.17605/OSF.IO/98HKR), family-dependent, with its mechanism axis not evaluable, which is not
+    support for the information-asymmetry mechanism, and one disclosed recovery amendment; its
+    build-order limb, read on P12, is undecided, since P12 is untested. Their mathematics stands at
+    version 1.2 (DOI 10.17605/OSF.IO/4B3VT); they are stated in the form version 1.103 registers,
+    with Law IV in two limbs, Law V’s build-order limb read with a direction, and Law V struck by
+    Law IV only through a refuted comparison limb (Section 2.3).
  3. Every citation of version 1.102 of the theory registration as its text: version 1.104 (29 October
     2026) is the current text; version 1.103 registered Laws IV and V.
  4. On the March 2026 run (Section 3.4 gives the replacements): the abstract’s description of the run as
@@ -3226,28 +3249,29 @@ down, is superseded by this version; the dated entries themselves stay as printe
 11. The withdrawn combined 𝑝-value, which earlier versions printed with its withdrawal: it is no longer
     printed, and Section 3.2 says why it was withdrawn.
 12. The unmeasured estimate of the overhead of three-state evaluation: removed.
-13. The identifiers of three works: version 7.0.1 listed two of them under the programme’s umbrella
-    identifier and cited the third at version 2.1. They are now Paper III’s own DOI, Eden Vision at
-    version 2.9, and the HARI Treaty paper at version 2.4, with its Draft Instruments at version 2.3.
-14. The HARI Treaty named by its acronym alone at its first mention: its full name, the Draft Treaty on
-    Hardware-Aligned Recursive Intelligence, now stands at its first mention in each section.
-15. The kind of timestamp of the records of 8 December 2024 and 30 April 2025, which version 7.0.1
-    and the entry for version 6.3 stated by what it is not: the message of 8 December 2024 carries times
-    signed by the mail servers, and that of 30 April 2025 the date its mail server put on it (Table 9).
-16. The description of Paper II’s parallel exponent in version 7.0.1’s timeline, near zero for every model
-    except Gemini 3 Flash, at 0.31. In Paper II’s own terms the exponent is near zero in two of the four
-    models with an estimate, Gemini 3 Flash’s 0.31 is an endpoint estimate, and the comparison of the
-    sequential and parallel arms was not matched for compute; Appendix A.2 gives Gemini 3 Flash’s
-    row in those terms.
-17. The undertaking, in the entry for version 6.3, that the author would restate the figures of Section 14:
-    the paper prints no budget, no sum and no cost of a test or of the work it plans (Section 10).
 
 
-                                                   60
+                                                  61
                                                Eden Engineering
 
 
-B.5     Earlier versions
+  13. The identifiers of three works: version 7.0.1 listed two of them under the programme’s umbrella
+      identifier and cited the third at version 2.1. They are now Paper III’s own DOI, Eden Vision at
+      version 2.9, and the HARI Treaty paper at version 2.4, with its Draft Instruments at version 2.3.
+  14. The HARI Treaty named by its acronym alone at its first mention: its full name, the Draft Treaty on
+      Hardware-Aligned Recursive Intelligence, now stands at its first mention in each section.
+  15. The kind of timestamp of the records of 8 December 2024 and 30 April 2025, which version 7.0.1
+      and the entry for version 6.3 stated by what it is not: the message of 8 December 2024 carries times
+      signed by the mail servers, and that of 30 April 2025 the date its mail server put on it (Table 9).
+  16. The description of Paper II’s parallel exponent in version 7.0.1’s timeline, near zero for every model
+      except Gemini 3 Flash, at 0.31. In Paper II’s own terms the exponent is near zero in two of the four
+      models with an estimate, Gemini 3 Flash’s 0.31 is an endpoint estimate, and the comparison of the
+      sequential and parallel arms was not matched for compute; Appendix A.2 gives Gemini 3 Flash’s
+      row in those terms.
+  17. The undertaking, in the entry for version 6.3, that the author would restate the figures of Section 14:
+      the paper prints no budget, no sum and no cost of a test or of the work it plans (Section 10).
+
+B.6     Earlier versions
 Version 7.0.1, 7 October 2026. Version 7.0 corrected in five details. In the caption of the equation
 of Section 1.3, the one capability fit, 0.49 for Gemini 3 Flash, is written 𝛼seq , as Section 1.2 writes it;
 Version 7.0 wrote only 𝛼cap there. Section 8.2 counts six points from the mathematics, where it said five,
@@ -3276,59 +3300,64 @@ claims stand except where this entry says otherwise.
         complements. It is stated whole, on one calibrated risk quantity, with hard prohibitions first and an
         allow threshold below a deny threshold, and a timed-out investigation never becomes permission.
       • Claims. Verification at manufacture is restated as bounded assurance, never a guarantee at every
-        later depth, and design aims are no longer stated as properties. The Monitoring Removal Test
-        supports equivalence on the measured outcomes only, under conditions fixed in advance. The
-        models that improved in alignment score are counted as rival results, not read as partial embedding
-        after the result, and the prompt-level results are no longer called support for embedding. The
-        Honey Architecture simulation is described as what its code does and graded as prediction-side.
-        That control cannot hold is given as the premise it is, which the theory registration records as
-        contestable; Part 0’s argument that phase 2 alone could hold at scale is marked as argued, not
-        shown; and the falsification conditions are set against the registration’s success criterion. Section
-        2.1 sets the registered bound, a cap on the growth a system holds while it stays correctable and not
-        a speed limit on capability, beside the paper’s own attention argument. The meltdown triggers are
-        graded as named and not yet specified at engineering resolution, and one predicted direction for
-        them in Section 0.7 is left open because the book’s own reading points the other way; the criteria of
-        F-EDEN-4, P-EDEN-2 and P-EDEN-4 can be read before a test.
-      • Evidence. The evidence is reconciled to the papers that report it: three of six models flat, null or
-        negative in alignment score with depth and three improving, as effect sizes from a run dated by its
-        own records to 11 and 12 March 2026; the three whose scores did not rise are the three whose files
-        carry a laundering-fallback flag; the six contrasts fix no value of the exponent, their median being
 
 
-                                                      61
-                                             Eden Engineering
+                                                      62
+                                         Eden Engineering
 
 
-      0.385 (Paper III); the capability fit is printed with the estimator row of Paper II; five analysable
-      Eden runs, three of them with 40 pairs, the GPT-5.4 run having failed in the scoring phase; Claude
-      Opus 4.6 under suppression at 62.1, a drop of 20.5, where Version 6.3 printed 61.9 and 20.7; and
-      the planned Tier 1 output is relabelled 4,800 paired measurements and 14,400 ratings. Section 1.0.1
-      says that no result here was scored on the verdict score it defines, Section 15A reads its models by
-      their alignment tiers, as Paper V does, and p-values are no longer explained as the chance of a fluke.
-    • Prior work and dates. The prior-work statements are read at their sources and linked: Constitutional
-      AI is described as the training method it is, and the three-state gate, governance through chips and
-      the contrast the Monitoring Removal Test measures are credited to their prior work, with what this
-      specification adds; facts about chip manufacturing, the alignment-faking study and the kill-switch
-      keynote are stated as their sources state them. The name Eden Protocol is dated from the record
-      of 8 December 2024, its message body and the chapter title of the attached draft, and the name
-      Caretaker Doping from 30 April 2025; the name Ternary Ethical Logic is no longer dated to the
-      manuscript of 30 April 2025, which does not contain it; the HARI Treaty and the chokepoint
-      strategy are dated to the book, and the treaty’s name, Hardware-Aligned Recursive Intelligence, is
-      restored. The retracted 2.24 is attributed to the single-model DeepSeek R1 run of 21 January 2026.
-    • Laws IV and V. A new Section 8.2 states Laws IV and V, added on 24 September 2026: their
-      propositions are registered, neither law is registered as a law or tested, and their mathematics is set
-      out at version 1.0. It also says, in the registration’s words, that Caretaker Doping bears on Law V
-      only through the abstraction of placement that P21 tests, and that the Monitoring Removal Test is
-      not among the registered propositions.
-    • Specification added. Section 5.4 states the enforcement boundary that turns a verdict into a
-      permitted action; Section 9.4 states the threat, fault and recovery model, with legitimate correction
-      preserved; Section 11.3 replaces the early six-article sketch of the treaty with a dated cross-reference
-      to its current text and a limited map of the evidence this specification could supply; Section 12.3
-      adds construct validity, laundering and regime to its confounds; Section 1.5.1b names the regime of
-      each result; and the front matter gives the status of each component on four dimensions (Table 1)
-      and says that the organising principle is no condition of conformance. Nothing added is claimed
-      built or tested.
-    • Money. The sums of Section 14 and the funder’s name in Section 10.3 are removed.
+  later depth, and design aims are no longer stated as properties. The Monitoring Removal Test
+  supports equivalence on the measured outcomes only, under conditions fixed in advance. The
+  models that improved in alignment score are counted as rival results, not read as partial embedding
+  after the result, and the prompt-level results are no longer called support for embedding. The
+  Honey Architecture simulation is described as what its code does and graded as prediction-side.
+  That control cannot hold is given as the premise it is, which the theory registration records as
+  contestable; Part 0’s argument that phase 2 alone could hold at scale is marked as argued, not
+  shown; and the falsification conditions are set against the registration’s success criterion. Section
+  2.1 sets the registered bound, a cap on the growth a system holds while it stays correctable and not
+  a speed limit on capability, beside the paper’s own attention argument. The meltdown triggers are
+  graded as named and not yet specified at engineering resolution, and one predicted direction for
+  them in Section 0.7 is left open because the book’s own reading points the other way; the criteria of
+  F-EDEN-4, P-EDEN-2 and P-EDEN-4 can be read before a test.
+• Evidence. The evidence is reconciled to the papers that report it: three of six models flat, null or
+  negative in alignment score with depth and three improving, as effect sizes from a run dated by its
+  own records to 11 and 12 March 2026; the three whose scores did not rise are the three whose files
+  carry a laundering-fallback flag; the six contrasts fix no value of the exponent, their median being
+  0.385 (Paper III); the capability fit is printed with the estimator row of Paper II; five analysable
+  Eden runs, three of them with 40 pairs, the GPT-5.4 run having failed in the scoring phase; Claude
+  Opus 4.6 under suppression at 62.1, a drop of 20.5, where Version 6.3 printed 61.9 and 20.7; and
+  the planned Tier 1 output is relabelled 4,800 paired measurements and 14,400 ratings. Section 1.0.1
+  says that no result here was scored on the verdict score it defines, Section 15A reads its models by
+  their alignment tiers, as Paper V does, and p-values are no longer explained as the chance of a fluke.
+• Prior work and dates. The prior-work statements are read at their sources and linked: Constitutional
+  AI is described as the training method it is, and the three-state gate, governance through chips and
+  the contrast the Monitoring Removal Test measures are credited to their prior work, with what this
+  specification adds; facts about chip manufacturing, the alignment-faking study and the kill-switch
+  keynote are stated as their sources state them. The name Eden Protocol is dated from the record
+  of 8 December 2024, its message body and the chapter title of the attached draft, and the name
+  Caretaker Doping from 30 April 2025; the name Ternary Ethical Logic is no longer dated to the
+  manuscript of 30 April 2025, which does not contain it; the HARI Treaty and the chokepoint
+  strategy are dated to the book, and the treaty’s name, Hardware-Aligned Recursive Intelligence, is
+  restored. The retracted 2.24 is attributed to the single-model DeepSeek R1 run of 21 January 2026.
+• Laws IV and V. A new Section 8.2 states Laws IV and V, added on 24 September 2026: their
+  propositions are registered, neither law is registered as a law or tested, and their mathematics is set
+  out at version 1.0. It also says, in the registration’s words, that Caretaker Doping bears on Law V
+  only through the abstraction of placement that P21 tests, and that the Monitoring Removal Test is
+  not among the registered propositions.
+• Specification added. Section 5.4 states the enforcement boundary that turns a verdict into a
+  permitted action; Section 9.4 states the threat, fault and recovery model, with legitimate correction
+  preserved; Section 11.3 replaces the early six-article sketch of the treaty with a dated cross-reference
+  to its current text and a limited map of the evidence this specification could supply; Section 12.3
+  adds construct validity, laundering and regime to its confounds; Section 1.5.1b names the regime of
+  each result; and the front matter gives the status of each component on four dimensions (Table 1)
+  and says that the organising principle is no condition of conformance. Nothing added is claimed
+  built or tested.
+• Money. The sums of Section 14 and the funder’s name in Section 10.3 are removed.
+
+                                                 63
+                                              Eden Engineering
+
+
     • Title and format. The title follows the programme’s uniform order (its designation, its theory,
       the Eden Protocol, its own title); until this version it read Eden Engineering: The Eden Protocol
       Engineering Specification. The paper opens with a short status note, one abstract of about 250
@@ -3345,13 +3374,6 @@ claims stand except where this entry says otherwise.
 Eden Engineering (v6.3): 19 September 2026 - the disclosure decision of 14 July 2026 is reversed,
 and Version 6.2 of 31 July 2026 is published in full at this address. Twelve factual corrections were made,
 each where a sentence contradicted the programme’s correction record, together with one link correction.
-
-
-
-                                                     62
-                                              Eden Engineering
-
-
 The Fisher-combined figure is now carried only as withdrawn, in the abstract and in section 15A, with
 the reason it was withdrawn beside it. The timeline’s four later external developments are classified
 relationships rather than independent confirmations, and the block no longer heads them with a count
@@ -3383,6 +3405,12 @@ Publication record, 22 February to 19 September 2026. A conceptual Eden Engineer
 entered the public record on 22 February 2026, and version 4.0 of the engineering specification entered
 the research repository on the same date. The full specification was published on this site on 13 March
 2026, with a rendered PDF alongside it from 17 March 2026.
+
+
+                                                     64
+                                           Eden Engineering
+
+
     On 14 July 2026 the specification was expanded once more, with a new Part 0 and sections 9.5 to 9.8,
 and later the same day the specification and its rendered PDF were removed from this site and from the
 OSF record during a disclosure review. That review produced Version 6.2 of 31 July 2026, forty-four
@@ -3401,11 +3429,11 @@ matching copy to the OSF record remained outstanding, and that component was not
 
 
 
-                                                     63
+                                                  65
                                                     Eden Engineering
 
 
-B.6    Where the earlier layout now stands
+B.7    Where the earlier layout now stands
 
                      Table 8. Where each block of the version 7.0.1 layout stands in this edition.
 
@@ -3456,7 +3484,7 @@ B.6    Where the earlier layout now stands
 
 
 
-                                                            64
+                                                            66
                                                     Eden Engineering
 
 
@@ -3513,7 +3541,7 @@ UTC              date, having first been posted on 22 January
 
 
 
-                                                             65
+                                                             67
                                                     Eden Engineering
 
 
@@ -3572,7 +3600,7 @@ a deployment by the host’s; a run record is written by the run’s own code on
 written inside a document is its author’s. These dates are the author’s own records. They do not say that
 
 
-                                                             66
+                                                             68
                                                     Eden Engineering
 
 
@@ -3625,7 +3653,7 @@ book’s names are kept as the book’s, quoted where the book is quoted, becaus
 the self-correction mechanism works and leaves the values that go inside it to a legitimate agreement,
 
 
-                                                             67
+                                                             69
                                                      Eden Engineering
 
 
@@ -3672,7 +3700,7 @@ Meltdown Triggers                   A stop when a violation is detected;      No
 
 
 
-                                                                68
+                                                                70
                                                     Eden Engineering
 
 
@@ -3729,7 +3757,7 @@ the blocker named; SUBMITTED, PENDING APPROVAL; and REGISTERED, with its identif
 carrier is a proposition on which the Protocol’s engineering case rests (P12, P13, P15 and P21), its
 
 
-                                                             69
+                                                             71
                                                Eden Engineering
 
 
@@ -3782,7 +3810,7 @@ Law V, the ARC Embedding Law Informs            Shares both its limbs, P12 and P
 
 
 
-                                                       70
+                                                       72
                                                       Eden Engineering
 
 
@@ -3841,7 +3869,7 @@ March 2026)                                                                    t
 
 
 
-                                                               71
+                                                               73
                                                       Eden Engineering
 
 
@@ -3899,7 +3927,7 @@ Table 15. The adversarial cases the gate must face: the defence, what is enforce
 
 
 
-                                                               72
+                                                               74
                                                       Eden Engineering
 
 
@@ -3959,7 +3987,7 @@ able to switch it off, for as long as they physically can, and never let go by c
 asks what happens if the controls are lost anyway. What would keep the system good then, and still useful?
 
 
-                                                               73
+                                                               75
                                                       Eden Engineering
 
 
@@ -4020,7 +4048,7 @@ yet, or with none in this paper.
 
 
 
-                                                              74
+                                                              76
                                               Eden Engineering
 
 
@@ -4069,5 +4097,5 @@ with a measure of usefulness beside it, so that safety is never bought by making
 
 
 
-                                                      75
+                                                      77
 
