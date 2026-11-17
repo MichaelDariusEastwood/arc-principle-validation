@@ -1,25 +1,29 @@
-# Master Table of Contents · Recursive Dynamics · The ARC Theory Paper Suite and Glossary
+# Master Table of Contents: where should a reader start, and how does every part of the programme fit together?
 
-**Full title:** Master Table of Contents · Recursive Dynamics · The ARC Theory Paper Suite and Glossary
-**Version:** v3.30 (Working Paper)
-**Version date:** revised 15 October 2026
-**First published:** 16 March 2026
+**Version:** 3.31
+**Revised:** 17 November 2026
+**First published:** 2026-03-16
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-In the document's own words (version 3.30):
+From the abstract (version 3.31):
 
-> Every document the programme register holds, in the order the author set, with its reading guide and glossary. ... This document is an INDEX, not a result or law of its own: a table of contents and glossary that names each organ of The ARC Theory (the Theory of Artificial Recursive Creation) and directs the reader to its own file for the load-bearing content.
+> This table of contents maps every document of the programme in which its author founded Recursive Dynamics, the study of what limits systems that improve themselves. The programme asks what would keep a self-improving AI system aligned and useful if control of it were lost against our will, and it holds that control, hardware included, should be kept for as long as it physically can be. Its founding theory, the ARC Theory, states five laws, each a law under test. Their foundation is Law I, the ARC Principle, which gives capability as a power of recursive depth, $U = I R^{\alpha}$, and grew from the equation $U = IR$ written on 8 December 2024. The Eden Protocol specifies loops of ethical evaluation and self-correction built into a system’s architecture before training, run at each defined step of reasoning and action and taking part in every rewrite. Its governance proposal, the HARI Treaty, the Draft Treaty on Hardware-Aligned Recursive Intelligence, is a draft for consultation that no State has negotiated, adopted or signed. The programme holds thirty-six documents: twelve in theory, ten in empirical work, three in engineering, two in governance, six overviews and records and three in other fields. Each has a card giving its area and type, its version and date and its DOI, and saying in this document’s own words what it asks and what it found, at the grade it gives itself. A reading path, a dated timeline, the main results, a glossary, the counts and the citations follow, and the status of the laws, with the one registered verdict so far, is stated once, in Section 9. Every document is listed at the version public at its DOI on 17 November 2026, and where a card and its document differ, the document governs.
 
-## Experiments
+## Status and changes
 
-This is an index document. Experiments are distributed across the individual paper directories.
+Version 3.31 is this table of contents’ first edition in the programme’s presentation standard, rebuilt from the programme’s catalogue and from each document’s current release; Appendix B records what changed. Internally source-checked and read in rendered form; not independent peer review.
 
-## Links
+The complete historical material and correction record remain in the lettered appendices.
 
-- **OSF DOI:** https://doi.org/10.17605/OSF.IO/VC9RX
-- **OSF programme DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
-- **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+## Files and sources
 
-The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.
+- [PDF](Master-Table-of-Contents.pdf)
+- [Document HTML](Master-Table-of-Contents.html)
+- [Text](Master-Table-of-Contents.txt)
+- [Citation metadata](Master-Table-of-Contents.cff)
+- [LaTeX source](Master-Table-of-Contents-latex-source.tar.gz)
+- [OSF record](https://doi.org/10.17605/OSF.IO/VC9RX)
+
+These are the official document exports. Stable filenames preserve earlier versions in file history. Written research is CC BY 4.0; separately identified code, data and source records retain their stated licences.
