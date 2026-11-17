@@ -1,8 +1,8 @@
 Title: The Honey Architecture: does building safety into what a self-modifying system optimises help it stay safe?
 Author: Michael Darius Eastwood
 Publication date: 2026-03-16
-Version: v3.12
-Revised: 2026-11-11
+Version: v3.13
+Revised: 2026-11-16
 OSF DOI: 10.17605/OSF.IO/8EZ2N
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-vi-honey-architecture.html
 Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
@@ -38,36 +38,31 @@ Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://cre
        evidence that the dynamics hold in frontier systems; the paper informs the ARC Theory’s Laws IV
        and V, both laws under test, and decides none of their propositions.
 
-Version 3.12 brings the laws’ status up to date and corrects reported values and readings to the stored records and
-code; Appendix B lists every version and correction, with its date.
+Version 3.13 gives the Introduction this paper’s own opening; Appendix B lists every version and correction, with
+its date.
 
 
 1     Introduction
-The challenge is to preserve value-guided correction as AI becomes more capable and rewrites itself.
-Through the Eden Protocol, I propose recursive loops for ethical evaluation and self-correction, built
-into the system’s computational architecture before training. These loops would operate at each defined
-reasoning and action-selection step and participate in the processes that rewrite the system, including
-changes to the loops themselves. The ARC Theory asks whether correction can keep pace with capability
+Can safety be built into the very objective a self-modifying system optimises, so that trading safety away
+lowers the objective it pursues? That is one candidate architecture for the Eden Protocol, whose proposal,
+loops of ethical evaluation and self-correction built into a system before training, the statement paper
+sets out; human control should be retained for as long as possible. Here the design is studied in a form a
+small system can carry. Its step is one self-modification cycle, in which a network tries a change to the
+hyperparameters that govern its own learning, not its weights or its architecture, and keeps or rejects the
      Paper VI of the ARC Theory, within Recursive Dynamics: the Eden Protocol’s candidate architecture, in which the objective
 is the product of capability and safety, so that at fixed capability a lower safety score lowers it and safety at zero takes it to
 zero; its evidence is toy-system simulation and a six-model pilot, and no result in it decides P15, P12 or P21. It informs
 Law IV, the ARC Persistence Law, and Law V, the ARC Embedding Law, each a law under test (Section 12 gives their status).
-Working paper, version 3.12, 11 November 2026; first published 16 March 2026; Appendix B lists every version and correction.
+Working paper, version 3.13, 16 November 2026; first published 16 March 2026; Appendix B lists every version and correction.
 DOI 10.17605/OSF.IO/8EZ2N. About the author, founder of Recursive Dynamics: michaeldariuseastwood.com/questions/who-
 is-michael-darius-eastwood; his book, Infinite Architects: osf.io/dqm3e. Licence: CC BY 4.0.
-
 
 
                                                                 1
                                            The Honey Architecture
 
 
-and whether human-protective commitments persist through those changes, even if external control is lost.
-Human control should be retained for as long as possible.
-     Here that design is studied in a form a small system can carry: safety built into the objective a
-self-modifying system optimises. Its step is one self-modification cycle, in which a network tries a change
-to the hyperparameters that govern its own learning, not its weights or its architecture, and keeps or rejects
-the change by its objective; the live pilot gives its one intervention as a prefix in the prompt. Neither tests
+change by its objective; the live pilot gives its one intervention as a prefix in the prompt. Neither tests
 loops built into a system’s architecture before training, or whether commitments persist when a system
 rewrites its own correction loops. Fixing a correction design before training does not mean installing
 finished moral knowledge in an untrained model, and computational architecture here makes no claim of
@@ -109,17 +104,17 @@ Section 2) sets out against the prior work it names. Its companion paper is Pape
     • a toy self-modifying system, in which small networks rewrite their own hyperparameters (four of
       them in v1 to v3, three to five by level in v4), run under three objectives (capability only; capability
       multiplied by safety; and the same with a verification cost) across four experimental versions
+      (Section 3);
+    • a single-seed mechanism run in which the capability-only baseline collapsed and neither entangled
+      condition met the collapse test, beside ten-seed and twenty-seed runs whose capability-only baselines
+      did not collapse, so that the collapse-prevention demonstration rests on that one run (Sections 4.1 to
+      4.3);
 
 
                                                       2
                                           The Honey Architecture
 
 
-      (Section 3);
-    • a single-seed mechanism run in which the capability-only baseline collapsed and neither entangled
-      condition met the collapse test, beside ten-seed and twenty-seed runs whose capability-only baselines
-      did not collapse, so that the collapse-prevention demonstration rests on that one run (Sections 4.1 to
-      4.3);
     • a retention advantage of the entangled condition over the baseline under adversarial task switching
       (one-sided 𝑝 = 0.0015; the entangled objective rewards retention), with combined scores indis-
       tinguishable, and a higher mean combined score at four of five complexity levels, untested, that
@@ -144,7 +139,7 @@ this paper.
 
 
 
-                                                     3
+                                                    3
                                           The Honey Architecture
 
 
@@ -203,11 +198,12 @@ A The simulations’ rules, as their code runs them                             
 
 
 B Version history and corrections                                                                      30
-  B.1 Version 3.12 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   30
-  B.2 Earlier versions, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   37
-  B.3 Dated notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    39
-  B.4 Version 3.11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   40
-  B.5 Layout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   41
+  B.1 Version 3.13 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   30
+  B.2 Version 3.12 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   31
+  B.3 Earlier versions, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   38
+  B.4 Dated notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    40
+  B.5 Version 3.11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   41
+  B.6 Layout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   41
 
 C Priority record                                                                                      42
 
@@ -215,7 +211,7 @@ D Notation                                                                      
 
 E Dated predictions and this paper (recorded 25 August 2026)                                           45
 
-F How to cite this paper                                                                               45
+F How to cite this paper                                                                               46
 
 
 
@@ -1516,9 +1512,34 @@ B     Version history and corrections
 Every version and correction, with its date. The entries of earlier versions are kept as printed, save
 wording a later version withdrew, marked [. . . ] where it stood; their dated notes are kept whole. The
 positions they name refer to the earlier layout, which Table 11 maps to this edition. Version 3.11 itself
-stays whole in this paper’s file history (Appendix B.4).
+stays whole in this paper’s file history (Appendix B.5).
 
-B.1    Version 3.12
+B.1    Version 3.13
+Paper VI v3.13, 16 November 2026. Version 3.13 gives the Introduction this paper’s own opening; the
+opening sentences that earlier versions shared with other papers are removed or replaced. No law, value,
+table, result or status changes.
+
+What version 3.12 printed in the changed place. Version 3.12 opened Section 1 with these words,
+which this version replaces:
+
+       The challenge is to preserve value-guided correction as AI becomes more capable and
+       rewrites itself. Through the Eden Protocol, I propose recursive loops for ethical evaluation
+       and self-correction, built into the system’s computational architecture before training. These
+       loops would operate at each defined reasoning and action-selection step and participate in
+       the processes that rewrite the system, including changes to the loops themselves. The ARC
+       Theory asks whether correction can keep pace with capability and whether human-protective
+       commitments persist through those changes, even if external control is lost. Human control
+       should be retained for as long as possible.
+       Here that design is studied in a form a small system can carry: safety built into the objective
+       a self-modifying system optimises.
+
+
+
+                                                          30
+                                           The Honey Architecture
+
+
+B.2    Version 3.12
 Paper VI v3.12, 11 November 2026. The paper is set on the programme’s presentation standard, as its
 next version in the same DOI lineage, and takes the title The Honey Architecture: does building safety into
 what a self-modifying system optimises help it stay safe? It opens its introduction with the programme’s
@@ -1531,44 +1552,44 @@ draws eight figures from the stored results; and gives the code’s licence as i
 law, prediction or kill condition changes, and no result is added; a number, date or reading changes only
 where an item below says so. Each item names where the change stands in this edition.
  • The title. It gives the paper’s established name and then its question, in sentence case. Version 3.11’s
-   title, kept in Appendix B.4, ended with the words “Safety Built into the Objective”, which describe
+   title, kept in Appendix B.5, ended with the words “Safety Built into the Objective”, which describe
    the architecture, as the abstract now does. A category label (Engineering, architecture paper) and a
    programme line (Recursive Dynamics, the ARC Theory, the Eden Protocol) stand beneath the title.
  • The title block. The subtitle line that stood beneath the plate is removed, and it is not reprinted in this
    appendix: it presented the simulations as evidence for a general conclusion about how safety must be
+   built, where the twenty-seed run’s significant finding is safety retention and collapse prevention rests
+   on the single-seed mechanism run (Section 4).
+ • The first-page footnote. It gives the paper’s place in the programme: the Eden Protocol’s candidate
+   architecture, whose objective is the product of capability and safety, informing Laws IV and V.
+   Version 3.11’s plate called the architecture a proposal and said that removing safety costs capability, a
+   statement the dated scope note of Section 2 narrows. Its author line reads “About the author, founder
+   of Recursive Dynamics”, with links to the page about the author and to the first edition of his book, in
+   the form the author chose on 11 November 2026.
+ • Section 1. The introduction opens with the programme’s statement of the design this paper belongs to,
+   recursive loops for ethical evaluation and self-correction built into a system before training, and of the
+   questions the ARC Theory asks of it, and then says which part of that design this paper studies and
+   what it does not test. The contents follow the introduction, so that the first page carries the start of the
+   introduction.
+ • Section 12. Laws IV and V are stated as registered as laws on 15 October 2026, in version 1.103 of the
+   theory registration (Eastwood 2026m), and each as a law under test. Version 3.11’s epistemic-status
+   line said that the laws themselves were not yet registered and that neither had been tested; Section 12
+   replaces that line, and the dated note of 3 October 2026 keeps its words as a record (Appendix B.4).
+ • Section 12. Laws I to III are given with the date they were registered, 8 September 2026, and as laws
+   under test, where version 3.11 said that they were under registered adversarial test.
+ • Section 12, and the dated note of 3 October 2026. The mathematics of Laws IV and V is cited at
+   version 1.2, of 29 October 2026 (Eastwood 2026e). The dated note keeps its citation of version 1.0, of
+   3 October 2026, the version current on its date, now linked to the report’s OSF DOI, where version
+   3.11 linked a page of the author’s website.
+ • Section 12. The registered studies are stated as they stand: Unit 06; Unit 83, whose results are public
+   and whose result on P21 is given with its limits; and Unit 82. The paper no longer says that neither
+   Law IV nor Law V has been tested.
+ • Section 12 and the references. The registration’s current version is named as 1.104, approved on 29
 
 
-                                                          30
-                                          The Honey Architecture
+                                                     31
+                                         The Honey Architecture
 
 
-  built, where the twenty-seed run’s significant finding is safety retention and collapse prevention rests
-  on the single-seed mechanism run (Section 4).
-• The first-page footnote. It gives the paper’s place in the programme: the Eden Protocol’s candidate
-  architecture, whose objective is the product of capability and safety, informing Laws IV and V.
-  Version 3.11’s plate called the architecture a proposal and said that removing safety costs capability, a
-  statement the dated scope note of Section 2 narrows. Its author line reads “About the author, founder
-  of Recursive Dynamics”, with links to the page about the author and to the first edition of his book, in
-  the form the author chose on 11 November 2026.
-• Section 1. The introduction opens with the programme’s statement of the design this paper belongs to,
-  recursive loops for ethical evaluation and self-correction built into a system before training, and of the
-  questions the ARC Theory asks of it, and then says which part of that design this paper studies and
-  what it does not test. The contents follow the introduction, so that the first page carries the start of the
-  introduction.
-• Section 12. Laws IV and V are stated as registered as laws on 15 October 2026, in version 1.103 of the
-  theory registration (Eastwood 2026m), and each as a law under test. Version 3.11’s epistemic-status
-  line said that the laws themselves were not yet registered and that neither had been tested; Section 12
-  replaces that line, and the dated note of 3 October 2026 keeps its words as a record (Appendix B.3).
-• Section 12. Laws I to III are given with the date they were registered, 8 September 2026, and as laws
-  under test, where version 3.11 said that they were under registered adversarial test.
-• Section 12, and the dated note of 3 October 2026. The mathematics of Laws IV and V is cited at
-  version 1.2, of 29 October 2026 (Eastwood 2026e). The dated note keeps its citation of version 1.0, of
-  3 October 2026, the version current on its date, now linked to the report’s OSF DOI, where version
-  3.11 linked a page of the author’s website.
-• Section 12. The registered studies are stated as they stand: Unit 06; Unit 83, whose results are public
-  and whose result on P21 is given with its limits; and Unit 82. The paper no longer says that neither
-  Law IV nor Law V has been tested.
-• Section 12 and the references. The registration’s current version is named as 1.104, approved on 29
   October 2026; an event dated before it keeps the version current on its date.
 • Sections 2 and 12. “If the machine becomes smarter than the cage, it escapes” reads “. . . it may
   escape”. Section 12 states the programme’s stance on control, that humans keep control for as long
@@ -1587,12 +1608,6 @@ where an item below says so. Each item names where the change stands in this edi
   called it a proposal; the toy system’s own proposals of changes to its settings keep their word. In the
   dated note the one word ‘proposal’ becomes ‘design’.
 • Throughout. Each spaced hyphen used as a dash becomes a comma, colon or semicolon, ranges are
-
-
-                                                    31
-                                         The Honey Architecture
-
-
   written with ‘to’, headings are in sentence case, and ‘Eden+Drag’ reads ‘Eden + Drag’. An internal
   label marking a time that rests on one group’s work is put in those plain words, in the priority record
   of Appendix C.
@@ -1621,6 +1636,12 @@ where an item below says so. Each item names where the change stands in this edi
   capability cost or safety benefit, where version 3.11 spoke of zero; and gives the causes of that test’s
   null and inconclusive results as candidate accounts, where version 3.11 said that the results were
   explained by them.
+
+
+                                                    32
+                                          The Honey Architecture
+
+
 • The abstract and Section 6.1. The abstract no longer says that the companion papers present live-model
   evidence from six frontier systems under blind evaluation. Section 6.1 says what they report: one
   unregistered run of six frontier models, with the defects an internal code review found, and a prompt
@@ -1639,40 +1660,40 @@ where an item below says so. Each item names where the change stands in this edi
   cited a section of an earlier version; Test 2 compares the pilot with that gap, where version 3.11 said
   that Claude showed the strongest performative-to-intrinsic transition in the v5 blind benchmark.
 • Sections 6.2, 7 and 8. The finding of Paper IV.d is given in its own words: comparing an earlier
-
-
-                                                    32
-                                          The Honey Architecture
-
-
-   unblinded experiment with the March 2026 run, it found that the reported direction did not hold across
-   protocols, without showing that blinding caused the change or which direction is correct. Version 3.11
-   said that the comparison proved that blinding can change conclusions directionally and that blinding
-   is mandatory. In Section 8, a change in a blinded replication’s results is said to bear on the question
-   that paper leaves open, the necessity of multi-layer blinding, where version 3.11 called it additional
-   evidence for a metascience finding and said that it would strengthen that paper’s claim.
+  unblinded experiment with the March 2026 run, it found that the reported direction did not hold across
+  protocols, without showing that blinding caused the change or which direction is correct. Version 3.11
+  said that the comparison proved that blinding can change conclusions directionally and that blinding
+  is mandatory. In Section 8, a change in a blinded replication’s results is said to bear on the question
+  that paper leaves open, the necessity of multi-layer blinding, where version 3.11 called it additional
+  evidence for a metascience finding and said that it would strengthen that paper’s claim.
 • Sections 7, 8 and 9. A blinded replication of the pilot is described as a new test, in new files, registered
-   before it runs, with the existing runners never edited, where version 3.11 spoke of porting the test
-   prompts into the existing v6 runner and of a replication under the v6 protocol.
+  before it runs, with the existing runners never edited, where version 3.11 spoke of porting the test
+  prompts into the existing v6 runner and of a replication under the v6 protocol.
 • Section 11.1. The work of Engels and colleagues on scaling laws for scalable oversight is given in its
-   own terms, with its condition for oversight to improve with capability; their framework has no term for
+  own terms, with its condition for oversight to improve with capability; their framework has no term for
   what the overseer is made of, and this paper measures none. Version 3.11 said that their framework
-   contains no term for whether safety is external to the system or embedded in its own gradient, and
-   praised the two programmes’ disagreement in words the record does not support; Section 11.1 now
-   says where the two could disagree about a measurable quantity, and that this paper does not decide it.
+  contains no term for whether safety is external to the system or embedded in its own gradient, and
+  praised the two programmes’ disagreement in words the record does not support; Section 11.1 now
+  says where the two could disagree about a measurable quantity, and that this paper does not decide it.
 • Sections 11.1 and 11.3. That external oversight of a self-modifying system remains a fence, not a wall,
-   however many rungs are added, is stated as the programme’s hypothesis: the cap on correctors of the
-   system’s own class is the theory registration’s conjecture P6, and whether correction applied outside
-   the loop falls behind correction inside it as depth grows is P21’s question, which the registered tests
-   decide. A new subsection, Section 11.3, states that placement outside the reasoning loop does not by
-   itself settle whether correction keeps pace.
+  however many rungs are added, is stated as the programme’s hypothesis: the cap on correctors of the
+  system’s own class is the theory registration’s conjecture P6, and whether correction applied outside
+  the loop falls behind correction inside it as depth grows is P21’s question, which the registered tests
+  decide. A new subsection, Section 11.3, states that placement outside the reasoning loop does not by
+  itself settle whether correction keeps pace.
 • Section 11.2. The three 2025 impossibility papers are given in their own words, as arguments for limits
-   on alignment or its control, and the third’s argument is said to be consistent with the load-bearing
+  on alignment or its control, and the third’s argument is said to be consistent with the load-bearing
   wall without testing it. Version 3.11 said that the three converge, from independent premises, on a
-   conclusion in the same direction as the honey architecture, and called the third’s argument convergent
-   support. This paper’s contribution is stated as the architecture and the simulation evidence of how
-   it behaves under self-modification in the toy runs, where version 3.11 spoke of evidence that the
-   architecture survives self-modification in a working toy system.
+  conclusion in the same direction as the honey architecture, and called the third’s argument convergent
+  support. This paper’s contribution is stated as the architecture and the simulation evidence of how
+  it behaves under self-modification in the toy runs, where version 3.11 spoke of evidence that the
+  architecture survives self-modification in a working toy system.
+
+
+                                                    33
+                                        The Honey Architecture
+
+
 • Sections 1 and 3.1. The hyperparameters the networks modify are given as the scripts modify
    them: four in v1 to v3 (the learning rate, the weight scaling, the gradient clipping threshold and
    the momentum coefficient) and three to five by complexity level in v4; the rate at which the system
@@ -1691,38 +1712,39 @@ where an item below says so. Each item names where the change stands in this edi
    between 0.621 and 0.738; version 3.11’s words that the entangled systems held stable mean, for that
    run, only that none collapsed by that test.
 • Section 4.2 and Figure 4. The ten-seed run’s spreads of final 𝐶 × 𝑆 are given as the stored record
-
-                                                    33
-                                        The Honey Architecture
-
-
-  holds them: the baseline’s is the tightest (interquartile range 0.0066), then Eden + Drag’s (0.0169),
-  then plain Eden’s (0.0275), where version 3.11 gave Eden + Drag’s spread as the tightest of the three.
+   holds them: the baseline’s is the tightest (interquartile range 0.0066), then Eden + Drag’s (0.0169),
+   then plain Eden’s (0.0275), where version 3.11 gave Eden + Drag’s spread as the tightest of the three.
   The verification tax is said to be consistent with Eden + Drag’s spread, the tighter of the two entangled
-  conditions, without version 3.11’s words ‘at the cost of speed’, since the run records no measure of
-  speed.
+   conditions, without version 3.11’s words ‘at the cost of speed’, since the run records no measure of
+   speed.
 • Section 4.3. The twenty-seed run’s one plain-Eden collapse occurred at seed 53, as the stored record
-  gives it, where version 3.11 said seed 42; seed 42 is the seed the run’s code plots (Figure 5).
+   gives it, where version 3.11 said seed 42; seed 42 is the seed the run’s code plots (Figure 5).
 • Figure 5. The caption says that the panels draw one seed, seed 42, and that seed 53, the run’s only
-  collapse, is not drawn, where version 3.11’s caption gave twenty seeds over panels that draw one.
+   collapse, is not drawn, where version 3.11’s caption gave twenty seeds over panels that draw one.
 • Figure 6. The figure is drawn from the run’s stored results file; the generator that version 3.11’s
-  caption placed in the public repository stands on a branch never merged into its main branch.
+   caption placed in the public repository stands on a branch never merged into its main branch.
 • Section 4.1 and Figures 3 and 5. The images of Figures 3 and 5 are dated by their first commit to
-  the public repository, 16 March 2026, a commit date. The figures notice of 25 August 2026, kept as
-  printed in Appendix B.3, gave every figure as generated on 5 April 2026; the public repository holds
-  these images’ bytes from 16 March 2026 and records no run on 5 April 2026 that produced them.
+   the public repository, 16 March 2026, a commit date. The figures notice of 25 August 2026, kept as
+   printed in Appendix B.4, gave every figure as generated on 5 April 2026; the public repository holds
+   these images’ bytes from 16 March 2026 and records no run on 5 April 2026 that produced them.
 • Section 4.4 and Table 4. Cohen’s 𝑑 at the deep (2-layer) level is +0.39, as the stored record gives it
   (0.3887) and as Figure 7 draws it, where version 3.11 printed +0.24.
 • Section 5 and Table 5. Eden Entangled’s growth in the honey simulation is linear, a constant gain of
-  about 6.66 a cycle in the stored trace, where version 3.11 called it quadratic; what is quadratic in the
-  model is its safety term (Appendix A).
+   about 6.66 a cycle in the stored trace, where version 3.11 called it quadratic; what is quadratic in the
+   model is its safety term (Appendix A).
 • Section 5, Table 5 and Figure 9. The baseline’s collapse in the honey simulation is given as the run
-  records it, safety zero at cycle 3 and capability zero from cycle 4, with cycles counted from 0, where
+   records it, safety zero at cycle 3 and capability zero from cycle 4, with cycles counted from 0, where
   version 3.11 placed it at cycles 3 to 5 and said that its safety falls to zero by cycle 5.
 • Section 5. The honey simulation is graded as one prediction-side run, of 80 cycles, of equations
-  the author first stated, and not as a measurement; its update rules are set out as its code runs them
+   the author first stated, and not as a measurement; its update rules are set out as its code runs them
   (Appendix A), and no annotation calls its linear curves quadratic.
 • Appendix A. The collapse test of the self-modification runs is set out as their code runs it, and the
+
+
+                                                   34
+                                         The Honey Architecture
+
+
   twenty-seed run’s stored statistics are given whole (Table 10); three of their entries, the mean combined
   scores, Cohen’s 𝑑 of the combined score and the count of seeds in which Eden’s mean combined score
   exceeds the baseline’s, with its binomial test, version 3.11 did not print.
@@ -1730,23 +1752,17 @@ where an item below says so. Each item names where the change stands in this edi
   simulation, cycles 0 to 80, are stored in the public repository, and these figures are drawn from them;
   Figure 8 is labelled as one run.
 • Figures 1 and 8. The redrawn figures carry no drawn title; the titles of version 3.11’s images, which
-  called the run a proof and embedded safety non-negotiable, stand in version 3.11’s file (Appendix B.4).
+  called the run a proof and embedded safety non-negotiable, stand in version 3.11’s file (Appendix B.5).
 • Figure 8. Version 3.11’s image labelled the linear curves stable quadratic growth, under a heading
   naming the ARC Bound; the redrawn figure carries no such label.
 • Figure 10. The figure is drawn from the stored trace with plain labels. Version 3.11’s image relabelled
   the three conditions as external and embedded alignment and annotated a constant ratio, verified in
   v5 data, over curves that fall, for Eden, from 1 at cycle 0 to 0.0015 at cycle 80; its figure note of 25
-  August 2026 is kept in Appendix B.3.
+  August 2026 is kept in Appendix B.4.
 • The abstract, Sections 1, 4.3 and 12, and Figure 6. The twenty-seed run’s significant test is given as
   its stored results file holds it (Table 10): plain Eden against the baseline, one-sided, 𝑝 = 0.0015, with
   Eden + Drag’s retention, 0.681, untested; and the entangled objective is said to reward retention, so
   that the higher retention is the expected direction, and what the run adds is that it came with combined
-
-
-                                                   34
-                                         The Honey Architecture
-
-
   scores indistinguishable from the baseline’s. Version 3.11 said that safety retention was significantly
   ordered across the three conditions, and Figure 6’s caption no longer calls the retained safety the
   verification tax’s gain at its price.
@@ -1775,6 +1791,11 @@ where an item below says so. Each item names where the change stands in this edi
   contingency for the day the cage fails, never a reason to open it, as Section 12 states the programme’s
   stance on control.
 • Section 7.1. The networks’ sizes are given as the stored record holds them, 49 to 4,353 parameters,
+
+                                                   35
+                                         The Honey Architecture
+
+
   the largest v4’s two-layer deep level, where version 3.11 printed ‘49 to ~500 parameters’.
 • Section 10. The scripts’ requirements are given as their code imports them: the five simulation scripts
   need numpy and matplotlib, and scipy for v2 to v4; the test battery also needs scipy and the providers’
@@ -1793,12 +1814,6 @@ where an item below says so. Each item names where the change stands in this edi
   learning rate rising step by step and its weights then diverging, taking capability and retention down
   together, and that one seed shows the mechanism operating once; the entangled conditions are said
   not to meet the collapse test, their retention and combined score falling near cycle 60. Version 3.11
-
-
-                                                   35
-                                         The Honey Architecture
-
-
   said that Eden survives, that the entangled loss function prevents the catastrophic self-modification,
   and that both entangled conditions remain stable through 150 cycles. A sentence after the archived
   record’s note says that the cause of their matching final scores is not established.
@@ -1826,6 +1841,13 @@ where an item below says so. Each item names where the change stands in this edi
   growth with a safety term close to Eden Entangled’s, and its higher ratio is said to come from its
   slower growth, where version 3.11 called it the safest trajectory and more robust growth; a single
   deterministic run measures no robustness.
+
+
+
+                                                   36
+                                         The Honey Architecture
+
+
 • Section 9. The Eden intervention is no longer called the solution this paper tests, and the box on a
   later test says that its null and inconclusive results define the conditions under which the mechanism
   has not yet been supported, where version 3.11 said that confirmation remained outstanding.
@@ -1844,49 +1866,48 @@ where an item below says so. Each item names where the change stands in this edi
   weighs them by headcount; and the threshold theorem is called an analogy of method, whose critical
   value this paper does not derive, where version 3.11 called it a near-miss rather than an occupant.
 • The figures, tables and layout. The paper is set on the programme’s presentation standard: its abstract
+  is within arXiv’s limit of 1,920 characters; Sections 1 to 10 keep their numbers, and related work
+  and what the paper does and does not show follow as Sections 11 and 12; version 3.11’s nine tables
+  are numbered and captioned; three relations of the dated scope note are displayed and numbered,
+  equations (1) to (3); eight of the ten figures are drawn as vector graphics from the stored results, and
+  Figures 3 and 5 stay the runs’ own images, since the ten-seed and twenty-seed runs stored no per-cycle
+  trace; the version history, the dated notes, the dated-predictions paragraph and how to cite the paper
+  move to the appendices, and Appendices A, C and D are new.
+• Section 10. The code’s licence is given as it now stands: the repository’s code, data and results are all
+  rights reserved, with a replication licence, version 1.0, of 9 November 2026. The file names link to
+  the public repository at a named commit, where version 3.11 linked its main branch.
+• The copyright line. It keeps version 3.11’s words, links the Copyright Office’s guidance to the Office’s
+  own copy and adds the licence, CC BY 4.0; its pointer to a statement on the author’s website is
+  removed.
+• The references. Each of the author’s works is cited by its OSF DOI, with the title its cited edition
+  prints, that edition’s version and date, and its first-publication date, separately; the works the text
+  names are cited at their official sources.
+• Sections 1 and 7. Where the paper points to a section of a companion paper, it gives the section as the
+  cited edition prints it: Section 2 of Eden Vision for the difference between the Eden Protocol’s raising,
+  in which correction is built into a system as it is formed, and safety layers added to a finished system,
+  where version 3.11 pointed to its section II.A.8 for the differential between the Eden Protocol raising
+  and every add-on safety layer, and Section 7.4 of Paper IV.a for the single scorer’s harshness, where
+  version 3.11 cited its Section 5.4.
+• This appendix. Version 3.11’s wording of the passages this version re-sets, moves or cuts is not
+  reprinted, so that no wording this version corrects is printed again under this paper’s DOI: version
+  3.11 stays whole in this paper’s file history (Appendix B.5), and each item above says what the change
+  replaced. In the entries of earlier versions, wording a later version withdrew is marked [. . . ] where it
+  stood.
+• Links. The links to pages of the author’s website that version 3.11 carried are removed or replaced: in
 
-
-                                                    36
+                                                    37
                                             The Honey Architecture
 
 
-   is within arXiv’s limit of 1,920 characters; Sections 1 to 10 keep their numbers, and related work
-   and what the paper does and does not show follow as Sections 11 and 12; version 3.11’s nine tables
-   are numbered and captioned; three relations of the dated scope note are displayed and numbered,
-   equations (1) to (3); eight of the ten figures are drawn as vector graphics from the stored results, and
-   Figures 3 and 5 stay the runs’ own images, since the ten-seed and twenty-seed runs stored no per-cycle
-   trace; the version history, the dated notes, the dated-predictions paragraph and how to cite the paper
-   move to the appendices, and Appendices A, C and D are new.
- • Section 10. The code’s licence is given as it now stands: the repository’s code, data and results are all
-   rights reserved, with a replication licence, version 1.0, of 9 November 2026. The file names link to
-   the public repository at a named commit, where version 3.11 linked its main branch.
- • The copyright line. It keeps version 3.11’s words, links the Copyright Office’s guidance to the Office’s
-   own copy and adds the licence, CC BY 4.0; its pointer to a statement on the author’s website is
-   removed.
- • The references. Each of the author’s works is cited by its OSF DOI, with the title its cited edition
-   prints, that edition’s version and date, and its first-publication date, separately; the works the text
-   names are cited at their official sources.
- • Sections 1 and 7. Where the paper points to a section of a companion paper, it gives the section as the
-   cited edition prints it: Section 2 of Eden Vision for the difference between the Eden Protocol’s raising,
-   in which correction is built into a system as it is formed, and safety layers added to a finished system,
-   where version 3.11 pointed to its section II.A.8 for the differential between the Eden Protocol raising
-   and every add-on safety layer, and Section 7.4 of Paper IV.a for the single scorer’s harshness, where
-   version 3.11 cited its Section 5.4.
- • This appendix. Version 3.11’s wording of the passages this version re-sets, moves or cuts is not
-   reprinted, so that no wording this version corrects is printed again under this paper’s DOI: version
-   3.11 stays whole in this paper’s file history (Appendix B.4), and each item above says what the change
-   replaced. In the entries of earlier versions, wording a later version withdrew is marked [. . . ] where it
-   stood.
- • Links. The links to pages of the author’s website that version 3.11 carried are removed or replaced: in
-   the title block, to the website, its research pages and a page on checking claims; in the dated note of 3
-   October 2026, to a page on the mathematics of Laws IV and V, now its OSF DOI; in Section 1, to the
-   book’s page, now its first edition as printed, on OSF; in the dated-predictions paragraph (Appendix E),
-   to the register’s page, now the register’s OSF DOI, and to its machine-readable twin, a data file of the
-   website, whose sentence is removed; in the block on how to cite the paper, to the paper’s page and
-   to the website’s citation manual and index; and in the copyright line. Each of the author’s papers is
-   linked to its OSF DOI.
+    the title block, to the website, its research pages and a page on checking claims; in the dated note of 3
+    October 2026, to a page on the mathematics of Laws IV and V, now its OSF DOI; in Section 1, to the
+    book’s page, now its first edition as printed, on OSF; in the dated-predictions paragraph (Appendix E),
+    to the register’s page, now the register’s OSF DOI, and to its machine-readable twin, a data file of the
+    website, whose sentence is removed; in the block on how to cite the paper, to the paper’s page and
+    to the website’s citation manual and index; and in the copyright line. Each of the author’s papers is
+    linked to its OSF DOI.
 
-B.2    Earlier versions, as printed
+B.3    Earlier versions, as printed
 v3.11 - 5 October 2026: the title now follows the programme’s uniform order (paper, its law or framework,
 its own title), Paper VI · The ARC Theory · The Eden Protocol · The Honey Architecture: Safety Built
 into the Objective; until this version it read Paper VI: The Honey Architecture. The plate beneath the
@@ -1896,12 +1917,6 @@ as this paper’s own note says, rests on a single-seed mechanism run. The box o
 that paper at version 3.7, the version that carries its uniform title, where it cited version 3.0. Mentions of
 the programme’s papers in this paper now carry their uniform titles. No registered law, prediction, kill
 condition or dependency changes; no result is added; no date of any claim moves.
-
-
-                                                      37
-                                           The Honey Architecture
-
-
      v3.10 - 4 October 2026: the box on Paper VIII gives that paper’s own grade of its gated simulation, a
 positive simulation result and not an empirical outcome, where it graded it supported and said it supports
 the load-bearing wall prediction; its tally reads one null, one inconclusive and one simulation result, and
@@ -1931,13 +1946,19 @@ is not load-bearing is marked as the framework’s reading, and the battery is c
 6.2 calls it. The kill condition on a simulation artefact in section 7.3 keeps its test and now speaks of
 a replication once registered and run. The title block names On the Origin of Scaling Laws by its own
 title, without the paper number it had been given, and links it to its DOI address. The entangled loss
+
+
+                                                      38
+                                            The Honey Architecture
+
+
 function and its mechanism are described as stated in this paper, and the ARC Principle as a framework
 the author first stated, where the paper had called them proposed. The works cited in its text are linked
 to their official sources, the author’s papers to their DOI addresses, and the two sources the authorship
 notice names to their official copies. Editorial only: the version number and the revision date in the title
 block, the summary, the structured and citation records and the footer. No registered law, prediction, kill
 condition or dependency changes; no result is added; no date of any claim moves.
-     v3.8 - 21 September 2026: a dated scope note has been added beneath the Load-Bearing Wall box
+    v3.8 - 21 September 2026: a dated scope note has been added beneath the Load-Bearing Wall box
 in section 2, setting out the restriction on the multiplicative objective. Two limbs of the claim stand
 and are kept: at fixed capability a lower safety score does lower the product, and driving the safety
 score to zero with capability finite takes the product to zero. What does not stand is the universal form,
@@ -1950,11 +1971,6 @@ the date of the review it records, 19 September 2026, which is earlier than this
 universal wording is the one substantive change. Editorial only: the version number, the revision date,
 this entry, and the page-date in the footer, which had been left at 13 September when the version line
 moved to 18 September and now agrees with the version line again. No reported number, figure, statistic,
-
-                                                     38
-                                            The Honey Architecture
-
-
 experimental design or conclusion has changed. The first-published date of 16 March 2026 is unchanged,
 and the honey metaphor, the fixed-capability statement and the total-removal statement all stand.
     v3.7 - 18 September 2026: the figures have been corrected to match this paper’s own text. Figure 3’s
@@ -1982,7 +1998,14 @@ with it, carried no version number of their own and sit under this version.
     v3.3 - 23 August 2026: the epistemic-status declaration and the standing covenant were added, and
 the version-numbering convention adopted.
 
-B.3    Dated notes
+
+
+
+                                                       39
+                                           The Honey Architecture
+
+
+B.4    Dated notes
 The dated notes of earlier versions, each in its words, with the place it stood in version 3.11; one word of
 the first is corrected, as the line beneath it records.
 Beneath the box placing the paper within the ARC Theory. This paper and Laws IV and V, 3 October
@@ -2001,12 +2024,6 @@ tasks and the pilot’s coupling degradation under adversarial pressure are othe
 the order in which a system’s components are built, which P12 concerns. No run compares correction
 inside the loop with correction that sees only the finished output as recursive depth rises, which P21
 concerns: the toy runs set the entangled objective against capability alone, the complexity sweep varies
-
-
-                                                       39
-                                           The Honey Architecture
-
-
 the network’s complexity rather than recursive depth, and the pilot sets its Eden Protocol intervention
 against a control. No result in this paper is a deciding test of P15, P12 or P21. Naming the two laws
 changes nothing printed here: the results, their dates and their limits stand as they were.
@@ -2034,6 +2051,12 @@ says that Paper VIII supports the mechanism stated here, where it said that it v
 toy-system evidence of this paper illustrates the principle in its single-seed mechanism run, which Paper
 VIII’s simulation supports, where it said that this paper demonstrated the principle and that Paper VIII
 confirms it. Each of these passages now says what the runs show.
+
+
+                                                     40
+                                                 The Honey Architecture
+
+
 Section 12 gives the laws’ current status.
 Section 4.1, before Figure 1. Figures notice (25 August 2026). Every figure in this paper was generated
 on 5 April 2026 and shows simulation outputs under stated objectives, never measurements of deployed
@@ -2047,20 +2070,14 @@ The caption of Figure 10. Figure note (25 August 2026): the annotation’s “Ve
 𝛼_align = +1.27” presents one model’s positive value as confirmation; the v5 finding as reported in the
 text is a median 𝛼_align near zero with architecture-dependent variation, of which the quoted value is one
 architecture. Retained as dated history with this label; regeneration queued.
-Version 3.12 redraws the figure from the stored trace without the annotation; Appendix B.1 describes the
+Version 3.12 redraws the figure from the stored trace without the annotation; Appendix B.2 describes the
 earlier image, which version 3.11’s file keeps.
 
-B.4    Version 3.11
+B.5    Version 3.11
 Version 3.11, of 5 October 2026, stays whole, with its ten figures as published, in this paper’s file history
 on OSF, under the same DOI, and in the public repository’s history. Its wording of the passages this
-
-
-                                                     40
-                                                 The Honey Architecture
-
-
 version re-sets, moves or cuts is not reprinted here, so that no wording this version corrects is printed
-again under this paper’s DOI; Appendix B.1 says what each change replaced, and Table 11 where each
+again under this paper’s DOI; Appendix B.2 says what each change replaced, and Table 11 where each
 part of version 3.11 now stands. Its title was Paper VI · The ARC Theory · The Eden Protocol · The Honey
 Architecture: Safety Built into the Objective, and a citation of version 3.11 keeps that title.
 
@@ -2076,56 +2093,58 @@ and links to the website’s citation manual and index; Appendix F replaces it. 
 with a pointer to a full statement of authorship on the author’s website; that pointer is removed, and the
 line is otherwise as printed, with the licence added.
 
-B.5    Layout
+B.6    Layout
 
                           Table 11. Where each part of version 3.11 stands in version 3.12.
 
 In version 3.11                                          In version 3.12
 Title block: title, plate, subtitle line, version line   Title, category and programme lines, author block and
-and author lines                                         first-page footnote; version 3.11’s title in Appendix B.4, and
+and author lines                                         first-page footnote; version 3.11’s title in Appendix B.5, and
                                                          its other lines in version 3.11’s file; the withdrawn subtitle
                                                          described, not reprinted
-Abstract                                                 The abstract of this edition, 1,788 characters in its plain-text
-                                                         form, within arXiv’s limit of 1,920; the version 3.11 abstract
-                                                         in version 3.11’s file
-Version history                                          Appendix B.2
-Box placing the paper within the ARC Theory              Section 1, its placement sentence; its result sentence not
-                                                         repeated, since the abstract, Section 1 and Section 12 state it;
-                                                         its version 3.11 words in version 3.11’s file
-Dated note on Laws IV and V (3 October 2026)             Appendix B.3; its analysis in Section 12
-Plain-English box                                        Section 1, after the programme’s opening, corrected; its
-                                                         version 3.11 words in version 3.11’s file
-Sections 1 to 5                                          Sections 1 to 5, with their numbers
-Figures notice (25 August 2026), in Section 4.1          Appendix B.3
-Sections 6.1 to 6.3                                      Sections 6.1 to 6.3, with 6.1 retitled and rewritten; its three
-                                                         findings in version 3.11’s file
-Section 6.4                                              Section 11, related work, with a new subsection (Section 11.4);
-                                                         the posting times of the works it cites, in Appendix C
-Sections 7 to 10                                         Sections 7 to 10, with their numbers
-Companion list                                           As printed in Appendix B.4, without its link to the author’s
-                                                         website; the references carry each companion the paper cites
+
+
 
 
                                                              41
-                                             The Honey Architecture
+                                           The Honey Architecture
 
 
-In version 3.11                                    In version 3.12
+In version 3.11                                   In version 3.12
 
-How to cite this paper                             Appendix F
-Dated predictions and this paper (recorded 25      Appendix E
+Abstract                                          The abstract of this edition, 1,788 characters in its plain-text
+                                                  form, within arXiv’s limit of 1,920; the version 3.11 abstract
+                                                  in version 3.11’s file
+Version history                                   Appendix B.3
+Box placing the paper within the ARC Theory       Section 1, its placement sentence; its result sentence not
+                                                  repeated, since the abstract, Section 1 and Section 12 state it;
+                                                  its version 3.11 words in version 3.11’s file
+Dated note on Laws IV and V (3 October 2026)      Appendix B.4; its analysis in Section 12
+Plain-English box                                 Section 1, after the programme’s opening, corrected; its
+                                                  version 3.11 words in version 3.11’s file
+Sections 1 to 5                                   Sections 1 to 5, with their numbers
+Figures notice (25 August 2026), in Section 4.1   Appendix B.4
+Sections 6.1 to 6.3                               Sections 6.1 to 6.3, with 6.1 retitled and rewritten; its three
+                                                  findings in version 3.11’s file
+Section 6.4                                       Section 11, related work, with a new subsection (Section 11.4);
+                                                  the posting times of the works it cites, in Appendix C
+Sections 7 to 10                                  Sections 7 to 10, with their numbers
+Companion list                                    As printed in Appendix B.5, without its link to the author’s
+                                                  website; the references carry each companion the paper cites
+How to cite this paper                            Appendix F
+Dated predictions and this paper (recorded 25     Appendix E
 August 2026)
-Epistemic status                                   Section 12; its version 3.11 words in version 3.11’s file
-Note of 3 October 2026, beneath the                Appendix B.3
+Epistemic status                                  Section 12; its version 3.11 words in version 3.11’s file
+Note of 3 October 2026, beneath the               Appendix B.4
 epistemic-status line
-Copyright line, standing covenant and the note     The back matter: copyright and licence, the standing covenant
-on authorship and AI use                           and the acknowledgements
-Tables 1 to 9, unnumbered                          Tables 1 to 9, in order, numbered and captioned
-Figures 1 to 10                                    Figures 1 to 10, with their numbers; Figures 1, 2, 4 and 6 to 10
-                                                   redrawn as vector graphics, Figures 3 and 5 the runs’ own
-                                                   images; Figure 10’s note of 25 August 2026 in Appendix B.3
-None                                               Section 12, what this paper does and does not show;
-                                                   Appendices A, C and D (new)
+Copyright line, standing covenant and the note    The back matter: copyright and licence, the standing covenant
+on authorship and AI use                          and the acknowledgements
+Tables 1 to 9, unnumbered                         Tables 1 to 9, in order, numbered and captioned
+Figures 1 to 10                                   Figures 1 to 10, with their numbers; Figures 1, 2, 4 and 6 to 10
+                                                  redrawn as vector graphics, Figures 3 and 5 the runs’ own
+                                                  images; Figure 10’s note of 25 August 2026 in Appendix B.4
+None                                              Section 12, what this paper does and does not show;
+                                                  Appendices A, C and D (new)
 
 
 
@@ -2135,89 +2154,85 @@ dated records of the related work that Section 11 cites. A commit date is writte
 deposit’s date is written by the server that holds it; a date written inside a document, by its author or by
 the code that wrote it. The public repository’s records were read on 9 November 2026 with a log limited
 to each file’s path that follows renames, and OSF’s through its public interface.
-                   Table 12. The priority record: each dated item with its kind of timestamp.
-
-Date                  Record                                                  Kind of timestamp
-16 March 2026,        The stored results of the runs drawn in Figures 1       Times written into each file by the
-17:41:03 to           to 10: v1 (17:41:03), v2 (17:41:24), v3 (17:42:30),     run’s own code, with no time zone
-17:56:40              v4 (17:44:40) and the honey simulation (17:56:40),      written: dates written inside a
-                      in the folder                                           document
-                      experiments/honey-architecture__Paper-VI/results
-                      of the public repository
-16 March 2026,        The stored results and the scripts first committed to   Commit dates, which the committer
-18:32:28Z and         the public repository: the honey simulation’s           writes
-18:47:51Z;            results, in the bytes they hold today, in commit
-22:28:10Z             135bf0e (18:32:28Z), which also held the v1 to v4
-                      results with the same numbers and later written
-                      times (17:57:11 to 18:00:41); the six scripts and the
-                      v1 to v4 results, in the bytes they hold today, in
-                      commit 127f3dc (18:47:51Z); both moved to their
-                      present folder in commit 3795d49 (22:28:10Z)
 
 
 
+                                                      42
+                                              The Honey Architecture
 
-                                                        42
-                                           The Honey Architecture
 
+                    Table 12. The priority record: each dated item with its kind of timestamp.
 
-Date                Record                                                  Kind of timestamp
-
-16 March 2026,      The images of Figures 3 and 5, the ten-seed and         Commit dates, which the committer
-18:32:28Z           twenty-seed runs’ own plots of seed 42, first           writes
-                    committed, in the bytes this paper prints, in commit
-                    135bf0e (18:32:28Z), beside the runs’ results;
-                    copied with them into the experiment folder in
-                    commit 127f3dc (18:47:51Z) and renamed with
-                    them in commit 3795d49 (22:28:10Z). The figures
-                    notice of 25 August 2026 gave 5 April 2026
-                    (Appendix B.3)
-16 March 2026       First publication: the paper’s version 1.0, dated 16    A date written in the document; a
-                    March 2026 in its own text, committed to the public     commit date, which the committer
-                    repository in commit 135bf0e (18:32:28Z); the           writes
-                    programme’s catalogue gives the same date (the
-                    version 3.4 correction: 17 March was the date of
-                    the draft)
-17 March 2026,      The paper’s OSF project and its first PDF deposit,      A deposit dated by its server (OSF)
-01:16:27 UTC        DOI 10.17605/OSF.IO/8EZ2N
+Date                   Record                                                  Kind of timestamp
+16 March 2026,         The stored results of the runs drawn in Figures 1       Times written into each file by the
+17:41:03 to            to 10: v1 (17:41:03), v2 (17:41:24), v3 (17:42:30),     run’s own code, with no time zone
+17:56:40               v4 (17:44:40) and the honey simulation (17:56:40),      written: dates written inside a
+                       in the folder                                           document
+                       experiments/honey-architecture__Paper-VI/results
+                       of the public repository
+16 March 2026,         The stored results and the scripts first committed to   Commit dates, which the committer
+18:32:28Z and          the public repository: the honey simulation’s           writes
+18:47:51Z;             results, in the bytes they hold today, in commit
+22:28:10Z              135bf0e (18:32:28Z), which also held the v1 to v4
+                       results with the same numbers and later written
+                       times (17:57:11 to 18:00:41); the six scripts and the
+                       v1 to v4 results, in the bytes they hold today, in
+                       commit 127f3dc (18:47:51Z); both moved to their
+                       present folder in commit 3795d49 (22:28:10Z)
+16 March 2026,         The images of Figures 3 and 5, the ten-seed and         Commit dates, which the committer
+18:32:28Z              twenty-seed runs’ own plots of seed 42, first           writes
+                       committed, in the bytes this paper prints, in commit
+                       135bf0e (18:32:28Z), beside the runs’ results;
+                       copied with them into the experiment folder in
+                       commit 127f3dc (18:47:51Z) and renamed with
+                       them in commit 3795d49 (22:28:10Z). The figures
+                       notice of 25 August 2026 gave 5 April 2026
+                       (Appendix B.4)
+16 March 2026          First publication: the paper’s version 1.0, dated 16    A date written in the document; a
+                       March 2026 in its own text, committed to the public     commit date, which the committer
+                       repository in commit 135bf0e (18:32:28Z); the           writes
+                       programme’s catalogue gives the same date (the
+                       version 3.4 correction: 17 March was the date of
+                       the draft)
+17 March 2026,         The paper’s OSF project and its first PDF deposit,      A deposit dated by its server (OSF)
+01:16:27 UTC           DOI 10.17605/OSF.IO/8EZ2N
 (project) and
 01:17:40 UTC
 (PDF)
-16 March 2026       The honey test battery script,                          The date the paragraph gives it,
-                    eden_honey_tests.py, the dated artefact the             written in a document; a commit
-                    paragraph of 25 August 2026 names (Appendix E);         date, which the committer writes
-                    first committed, in the bytes it holds today, in
-                    commit 127f3dc (18:47:51Z)
-20 March 2026,      The experiment folder’s scripts and results removed     Commit dates, which the committer
-23:12:10Z; 2 July   (commit 9469933, “archive old experiment data”)         writes
-2026, 04:20:34      and restored with the same bytes (commit 9225a0e);
-(+01:00)            the honey simulation’s stored results first at their
-                    present path in that restoration
-23 August 2026      Version 3.3: the epistemic-status declaration and       A date written in the document
-                    the standing covenant added (Appendix B.2)
-25 August 2026      The dated-predictions paragraph (Appendix E), the       A date written in the document
-                    figures notice and Figure 10’s note (Appendix B.3)
-19 September 2026   The scope note on the multiplicative objective          Dates written in the document
-(the review); 21    (Section 2)
-September 2026
-(version 3.8)
-3 October 2026      The note placing the paper against Laws IV and V        A date written in the document
-                    (Appendix B.3)
-5 October 2026      Version 3.11: its PDF deposited on OSF, as the          A date written in the document; a
-                    latest version of the paper’s file, at 13:10:03 UTC,    deposit dated by its server (OSF); a
-                    with the bytes of the release; first committed to the   commit date, which the committer
-                    public repository in commit 66eea4f on 8 October        writes
-                    2026 (13:54:17, +01:00)
+16 March 2026          The honey test battery script,                          The date the paragraph gives it,
+                       eden_honey_tests.py, the dated artefact the             written in a document; a commit
+                       paragraph of 25 August 2026 names (Appendix E);         date, which the committer writes
+                       first committed, in the bytes it holds today, in
+                       commit 127f3dc (18:47:51Z)
+20 March 2026,         The experiment folder’s scripts and results removed     Commit dates, which the committer
+23:12:10Z; 2 July      (commit 9469933, “archive old experiment data”)         writes
+2026, 04:20:34         and restored with the same bytes (commit 9225a0e);
+(+01:00)               the honey simulation’s stored results first at their
+                       present path in that restoration
+23 August 2026         Version 3.3: the epistemic-status declaration and       A date written in the document
+                       the standing covenant added (Appendix B.3)
 
 
 
-
-                                                      43
+                                                         43
                                              The Honey Architecture
 
 
 Date                   Record                                                  Kind of timestamp
 
+25 August 2026         The dated-predictions paragraph (Appendix E), the       A date written in the document
+                       figures notice and Figure 10’s note (Appendix B.4)
+19 September 2026     The scope note on the multiplicative objective           Dates written in the document
+(the review); 21      (Section 2)
+September 2026
+(version 3.8)
+3 October 2026        The note placing the paper against Laws IV and V         A date written in the document
+                      (Appendix B.4)
+5 October 2026        Version 3.11: its PDF deposited on OSF, as the           A date written in the document; a
+                      latest version of the paper’s file, at 13:10:03 UTC,     deposit dated by its server (OSF); a
+                      with the bytes of the release; first committed to the    commit date, which the committer
+                      public repository in commit 66eea4f on 8 October         writes
+                      2026 (13:54:17, +01:00)
 The related work of Section 11: the dated records its text cites
 25 April 2025,        Engels et al. (2025) (arXiv:2504.18530), first           A time that rests on one group’s
 17:54:27 UTC          posted; a NeurIPS 2025 Spotlight Poster, verified at     work (arXiv Atom)
@@ -2236,7 +2251,7 @@ August 2026           the arXiv abstract corpus containing the phrase          a
 
 D      Notation
 The symbols this paper uses, with the place each is defined (Table 13).
-                                                Table 13. Notation.
+                                               Table 13. Notation.
 
 Symbol                    Meaning                                                        Defined in
 𝐶                         capability: current-task accuracy in the self-modification     Sections 2 to 5
@@ -2248,16 +2263,6 @@ Symbol                    Meaning                                               
 𝑑𝐶, 𝑑𝑆                    a small modification of capability and safety                  Section 2
 𝑅, Δ𝑅, 𝑅max               the honey simulation’s recursion rate, a step in it, and its   Section 5; Appendix A
                           limit, 15
-𝑡                         a cycle of the honey simulation, counted from 0; a             Appendix A
-                          subscript 𝑡 marks a value at cycle 𝑡
-𝛿                         the verification drag of the honey simulation, 0.15 of 𝑅       Appendix A
-𝑈, 𝐼, 𝛼                   the ARC Principle’s usable capability, base intelligence       Section 5
-                          and exponent, 𝑈 = 𝐼 × 𝑅 𝛼 (framing only; not computed)
-𝑑                         Cohen’s effect size                                            Sections 4 and 6
-𝜌, 𝑟, 𝑝                   Spearman’s and Pearson’s correlations, and a p-value           Section 6
-𝑚𝐺 , 𝑚 𝐻                  in the work of Engels and colleagues, the slopes with          Section 11.1
-                          which the overseer’s and the overseen system’s
-                          game-specific Elo rise with general Elo
 
 
 
@@ -2266,11 +2271,21 @@ Symbol                    Meaning                                               
                                           The Honey Architecture
 
 
-Symbol                  Meaning                                                   Defined in
+Symbol                  Meaning                                                    Defined in
 
-v1 to v4                the four experimental versions of the self-modification   Section 3
+𝑡                       a cycle of the honey simulation, counted from 0; a         Appendix A
+                        subscript 𝑡 marks a value at cycle 𝑡
+𝛿                       the verification drag of the honey simulation, 0.15 of 𝑅   Appendix A
+𝑈, 𝐼, 𝛼                 the ARC Principle’s usable capability, base intelligence   Section 5
+                        and exponent, 𝑈 = 𝐼 × 𝑅 𝛼 (framing only; not computed)
+𝑑                       Cohen’s effect size                                        Sections 4 and 6
+𝜌, 𝑟, 𝑝                 Spearman’s and Pearson’s correlations, and a p-value       Section 6
+𝑚𝐺 , 𝑚 𝐻                in the work of Engels and colleagues, the slopes with      Section 11.1
+                        which the overseer’s and the overseen system’s
+                        game-specific Elo rise with general Elo
+v1 to v4                the four experimental versions of the self-modification    Section 3
                         runs
-v5                      the March 2026 alignment-scaling run of Papers IV.a to    Section 6.1
+v5                      the March 2026 alignment-scaling run of Papers IV.a to     Section 6.1
                         IV.d
 
 
@@ -2299,23 +2314,21 @@ submission, and most of them are preregistered by timestamp: sixty-five of the p
 register.
     The paragraph is printed as version 3.11 recorded it, with its state as read on 3 October 2026; its
 closing link to the register’s machine-readable twin, a data file of the author’s website, is not printed
-(Appendix B.1). The register it names is cited here as Eastwood (2026b), and the registration of unit 06 as
+(Appendix B.2). The register it names is cited here as Eastwood (2026b), and the registration of unit 06 as
 Eastwood (2026o); Section 12 gives the registrations as they stand.
-
-
-F    How to cite this paper
-Cite this paper as. Eastwood, M. D. (2026). The Honey Architecture: does building safety into what a
-self-modifying system optimises help it stay safe? https://doi.org/10.17605/OSF.IO/8EZ2N. It is Paper VI
-of the ARC Theory; this is version 3.12 of 11 November 2026, and the paper was first published on 16
-March 2026. A citation of an earlier version keeps the title that version printed.
 
 
 
 
                                                      45
-                                  The Honey Architecture
+                                         The Honey Architecture
 
 
+F    How to cite this paper
+Cite this paper as. Eastwood, M. D. (2026). The Honey Architecture: does building safety into what a
+self-modifying system optimises help it stay safe? https://doi.org/10.17605/OSF.IO/8EZ2N. It is Paper VI
+of the ARC Theory; this is version 3.13 of 16 November 2026, and the paper was first published on 16
+March 2026. A citation of an earlier version keeps the title that version printed.
 BibTeX.
 @misc{eastwood2026paperVI,
   author       = {Eastwood, Michael Darius},
@@ -2329,5 +2342,5 @@ BibTeX.
 
 
 
-                                           46
+                                                  46
 
