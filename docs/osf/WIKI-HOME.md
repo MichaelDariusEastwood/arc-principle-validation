@@ -1,0 +1,23 @@
+# The ARC Theory
+
+I began with one question: if we lose control of AI and cannot get it back, what keeps it good? This project puts my answer to registered tests and reports whatever they show. (Michael Darius Eastwood, founder of Recursive Dynamics)
+
+What is here: the ARC Theory and the programme that tests it; the theory's registration, accepted on OSF on 8 September 2026, with twenty-two severable propositions, each stating what would refute it; the papers; the registers that define every term and date every prediction; the priority record; and the first registered study with its results.
+
+Where things stand (17 November 2026). The ARC Theory states five laws, each a law under test: Law I, the ARC Principle; Law II, the ARC Co-Scaling Law; Law III, the ARC Ceiling; Law IV, the ARC Persistence Law; Law V, the ARC Embedding Law. Laws I to III were registered with the theory's twenty-two predictions on 8 September 2026 (DOI 10.17605/OSF.IO/P8CKQ); the registration's current version, 1.104, was approved on 29 October 2026. Laws IV and V were added on 24 September 2026 and registered as laws on 15 October 2026 in version 1.103; their mathematics is set out in a report and is still in development. Law IV, the ARC Persistence Law, has not yet been tested; Law V, the ARC Embedding Law, is a law under test. Four study units are registered. Unit 06 (the corrector-class audit) was registered on 1 October 2026 (DOI 10.17605/OSF.IO/RV2B5) and ran on 6 October 2026; one of its two runs could not start, so it is reported as administratively incomplete, with no verdict drawn (results: DOI 10.17605/OSF.IO/4BPHG). Unit 83, the registered test of P21, was registered on 22 October 2026 (DOI 10.17605/OSF.IO/MN73W), ran on 27 and 28 October 2026 and gave the programme's first registered verdict: P21 is supported under the registered test, by the programme's own run, on the access axis, family-dependent, with its mechanism axis not evaluable and one call retried under a disclosed recovery amendment (results: DOI 10.17605/OSF.IO/98HKR). Unit 82 was registered on 27 October 2026 (DOI 10.17605/OSF.IO/JUFG4) and has not yet run. Unit 83b, the lettered successor of Unit 83, was registered on OSF on 7 November 2026 and became public on 7 November 2026 (DOI 10.17605/OSF.IO/4HK32); it has not yet run. No result has yet been replicated outside the programme. Sixty-five study designs are preregistered by timestamp, first anchored on 12 August 2026 at Bitcoin block 962066; registered on OSF means what the author submitted and OSF accepted.
+
+How to read it: each document's earliest file here carries every later version under the same name, so every link ever given out serves the latest version, and the wiki page Earliest files names and links them. Corrections stay in public and are never deleted.
+
+The files in this project: each document has its own page on OSF, listed with its DOI and its code folder in 00-START-HERE.md, at the top of [this project's storage](https://osf.io/6c5xb/files/osfstorage). That file also lists each registered study unit with its registration and results. The storage holds the papers' PDFs, in the folder archive, and their HTML files; each file receives every new version of its paper, whatever its name says. It also holds the code, data, figures and experiments the project stored from January to July 2026, kept as they were stored and no longer in use; each folder has a note saying so. The current code, data and recorded outputs are in the [public repository](https://github.com/MichaelDariusEastwood/arc-principle-validation).
+
+Licence: the papers are free to read and reuse under the Creative Commons Attribution 4.0 licence. The study code and data published with them are all rights reserved, with a [replication licence](https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/LICENCE-REPLICATION.md) that lets anyone run, adapt and re-analyse them to reproduce or check the results.
+
+## Where to start
+
+- [The theory's registration, accepted on 8 September 2026; its current version is 1.104](https://osf.io/p8ckq/)
+- [The first registered study and its results (Unit 06)](https://doi.org/10.17605/OSF.IO/4BPHG)
+- [The first registered verdict and its results (Unit 83)](https://doi.org/10.17605/OSF.IO/98HKR)
+- [The code, data and recorded outputs](https://github.com/MichaelDariusEastwood/arc-principle-validation)
+- [The priority record](https://osf.io/h3r95/)
+- [Every document's earliest file on OSF](https://osf.io/6c5xb/wiki/Earliest%20files/)
+- [The website's map of every paper and test](https://www.michaeldariuseastwood.com/research/)

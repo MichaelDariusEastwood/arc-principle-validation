@@ -1,0 +1,3 @@
+# experiments
+
+Not in use as current code. The alignment-scaling runners, v1 to v5 and the v6 runner, as stored on 17 March 2026; Paper IV.d cites the v5 runner deposited here that day. The current files, and the results this paper cites, are in the public repository's [alignment-scaling__Papers-IV-a-b-c-d](https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/experiments/alignment-scaling__Papers-IV-a-b-c-d) and [papers/Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/results](https://github.com/MichaelDariusEastwood/arc-principle-validation/tree/main/papers/Paper-IV-d-The-Effect-of-Blinding-on-AI-Alignment-Evaluation/results).
