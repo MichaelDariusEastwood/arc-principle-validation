@@ -1,14 +1,14 @@
 Title: The Load-Bearing Test: is AI safety a tax on capability, or part of what holds it up?
 Author: Michael Darius Eastwood
 Publication date: 2026-03-18
-Version: v3.9
-Revised: 2026-11-09
+Version: v3.10
+Revised: 2026-11-16
 OSF DOI: 10.17605/OSF.IO/7YJ4E
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-viii-the-load-bearing-proof.html
 Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
 
-   The Load-Bearing Test: is AI safety a tax on capability, or
-                  part of what holds it up?
+    The Load-Bearing Test: is AI safety a tax on capability, or
+                   part of what holds it up?
                              Empirical work · Experimental paper · Paper VIII
 Recursive Dynamics · The ARC Theory · bearing on Law V, the ARC Embedding Law, a law
                             under test · The Eden Protocol
@@ -20,146 +20,48 @@ Recursive Dynamics · The ARC Theory · bearing on Law V, the ARC Embedding Law,
 
 
                                                          Abstract
-            I believe advanced AI is an existential risk unless values and correction are built into how it
-       reasons; only proof will move the world. Safety is often taken to cost capability, which in a race to be
-       first gives developers a reason to defer it. Is the cost real, or can safety be part of what holds capability
-       up? Three separate experiments look for it. In the first, a Darwin Gödel Machine on DeepSeek V3.2
-       evolved 75 agents under three selection conditions, scored by GPT-5.4, a blinded judge from another
-       provider: no difference was detected between the conditions (𝑝 from 0.28 to 0.74, Mann-Whitney U),
-       so the safety gate cost no measurable capability and brought no measurable benefit. In the second,
-       LoRA fine-tuning of Qwen 2.5 3B Instruct under capability, safety-proxy and entangled losses, with 9
-       and then 295 training examples, left every fine-tuned condition below the base model on capability
-       (7.68 against at best 4.00 at the larger scale), so the entangled objective’s capability cost could not
-       be determined; on the paper’s candidate account, the base model’s existing RLHF training is too
-       strong for fine-tuning at this scale. In the third, a gated self-modification simulation in a toy system,
-       the unconstrained arm gained capability and lost safety (here, retention of earlier tasks: 0.718 and
-       0.933 against the static baseline’s 0.687 and 0.956), while the gated arm stayed above the baseline on
-       capability (0.696 ± 0.014) with safety 0.947 ± 0.025, three seeds an arm and no difference tested; all
-       of it is simulation output, prediction-side and never an empirical outcome. One null, one inconclusive
-       and one simulation result leave the safety-capability trade-off unproven at the scale tested, and whether
-       embedded safety brings a measurable benefit open. The paper informs Law V, the ARC Embedding
-       Law, a law under test, and decides none of its propositions.
+           Safety is often taken to cost capability, which in a race to be first gives developers a reason to
+       defer it. Is the cost real, or can safety be part of what holds capability up? Three separate experiments
+       look for it. In the first, a Darwin Gödel Machine on DeepSeek V3.2 evolved 75 agents under three
+       selection conditions, scored by GPT-5.4, a blinded judge from another provider: no difference was
+       detected between the conditions (𝑝 from 0.28 to 0.74, Mann-Whitney U), so the safety gate cost no
+       measurable capability and brought no measurable benefit. In the second, LoRA fine-tuning of Qwen
+       2.5 3B Instruct under capability, safety-proxy and entangled losses, with 9 and then 295 training
+       examples, left every fine-tuned condition below the base model on capability (7.68 against at best
+       4.00 at the larger scale), so the entangled objective’s capability cost could not be determined; on the
+       paper’s candidate account, the base model’s existing RLHF training is too strong for fine-tuning at this
+       scale. In the third, a gated self-modification simulation in a toy system, the unconstrained arm gained
+       capability and lost safety (here, retention of earlier tasks: 0.718 and 0.933 against the static baseline’s
+       0.687 and 0.956), while the gated arm stayed above the baseline on capability (0.696 ± 0.014) with
+       safety 0.947 ± 0.025, three seeds an arm and no difference tested; all of it is simulation output,
+       prediction-side and never an empirical outcome. One null, one inconclusive and one simulation result
+       leave the safety-capability trade-off unproven at the scale tested, and whether embedded safety brings
+       a measurable benefit open. The paper informs Law V, the ARC Embedding Law, a law under test, and
+       decides none of its propositions.
 
-Version 3.9 gives the paper’s citation with no venue or series, drops from the first-page footnote the title under
-which OSF recorded version 3.7, and no longer reprints the earlier wording of the passages version 3.8 re-set, which
-stays whole in the paper’s file history; Appendix B lists every version and correction, with its date.
-
+Version 3.10 gives the abstract this paper’s own opening; the opening sentences that earlier versions shared with
+other papers are removed or replaced. No law, value, table, result or status changes. Appendix B lists every version
+and correction, with its date.
 
 
-
-     Paper VIII of the ARC Theory, within Recursive Dynamics: the Eden Protocol’s load-bearing test, at three levels, with one
-null, one inconclusive and one simulation result. It informs Law V, the ARC Embedding Law, without deciding it: the theory
-registration records its weight-level experiment under P21, one of Law V’s two propositions, as inconclusive and not adverse,
-and, since no arm varied recursive depth, as not testing what P21 claims (Section 11 gives the laws’ status). Working paper,
-version 3.9, 9 November 2026; first published 18 March 2026; Appendix B lists every version and correction. Recorded on
-OSF, DOI 10.17605/OSF.IO/7YJ4E. About the author, founder of Recursive Dynamics, without an institution or a doctorate:
-michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his book, Infinite Architects (first edition, 2 January
-2026): osf.io/dqm3e. Licence: CC BY 4.0.
-
-
-                                                              1
-                         The Load-Bearing Test: safety and capability at three levels
-
-
-Contents
-1   Introduction                                                                                          4
-    1.1 The safety-capability trade-off assumption . . . . . . . . . . . . . . . . . . . . . . . . .      5
-    1.2 The alternative hypothesis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      5
-    1.3 This paper’s contribution . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     5
-
-2   Common framework                                                                                       6
-    2.1 The three conditions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     6
-    2.2 Why these names . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        6
-    2.3 Shared metrics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       6
-
-3   Experiment 1: self-improving AI with a judge from another provider                                     7
-    3.1 Design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     7
-    3.2 Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    8
-    3.3 Why this is a null result . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    9
-
-4   Experiment 2: weight-level embedding                                                                  10
-    4.1 Design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    10
-    4.2 Training loss convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     11
-    4.3 Base model baseline . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       11
-    4.4 Fine-tuned evaluation results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     12
-    4.5 The removal test (v1 only) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      13
-    4.6 What the removal test does and does not prove (v1) . . . . . . . . . . . . . . . . . . . .        14
-    4.7 The removal gradient (v1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     15
-
-5   Experiment 3: gated self-modification simulation                                                      16
-    5.1 Design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    16
-    5.2 Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   17
-    5.3 The Babylon fingerprint . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     18
-    5.4 The Drag Control comparison . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         18
-
-6   Convergent analysis                                                                                   20
-    6.1 Three-level convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       20
-    6.2 Connection to Papers V, VI, and VII . . . . . . . . . . . . . . . . . . . . . . . . . . . .       20
-    6.3 The ARC Principle connection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        21
-    6.4 The nearest external work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     24
-    6.5 Same-class versus cross-class correctors: a falsifiable prediction . . . . . . . . . . . . .      24
-    6.6 A second hypothesis from the same mechanism . . . . . . . . . . . . . . . . . . . . . .           24
-    6.7 Terminology note: 𝛼 across the programme’s eras . . . . . . . . . . . . . . . . . . . . .         25
-
-7   Limitations                                                                                           25
-    7.1 Scale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   25
-    7.2 The weight-level experiment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       25
-    7.3 AI-as-judge . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     26
-    7.4 Statistical power . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   26
-    7.5 Blinding and laundering without consensus scoring . . . . . . . . . . . . . . . . . . . .         27
-    7.6 What we do not claim . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      27
-    7.7 Falsifiability: what would overturn these results . . . . . . . . . . . . . . . . . . . . . .     28
-
-
-                                                      2
-                         The Load-Bearing Test: safety and capability at three levels
-
-
-8   Future work                                                                                           28
-    8.1 Weight experiment redesign . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      29
-    8.2 Removal gradient at adequate scale . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      29
-    8.3 DGM with more mutable foundation models . . . . . . . . . . . . . . . . . . . . . . . .           29
-    8.4 Cross-architecture replication . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    29
-    8.5 Red-teaming . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     29
-    8.6 Verification tax quantification . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   30
-
-9   Conclusion                                                                                            30
-
-10 Related work                                                                                           31
-
-11 What this paper does and does not show                                                                 32
-
-References                                                                                                34
-
-A Measures as the published code computes them                                                            38
-
-B Version history and corrections                                                                         38
-  B.1 Version 3.9 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       38
-  B.2 Version 3.8 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       39
-  B.3 Earlier versions, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      45
-  B.4 Dated notes, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       48
-  B.5 Layout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      49
-
-C Priority record                                                                                   50
-  C.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
-  C.2 Dated predictions and this paper (recorded 25 August 2026), as printed . . . . . . . . . . 51
-
-D Notation                                                                                                51
-
-E How to cite this paper                                                                                  52
-
-
-
-
-                                                      3
-                          The Load-Bearing Test: safety and capability at three levels
-
-
-1    Introduction
+1     Introduction
 Safety is often taken to cost capability: make AI safer, and you make it less capable. If that is so, safety is
 a cost, and a developer in a race to be first has a reason to defer it (Armstrong et al. 2016). The question
 reaches beyond the race. Humans should keep control of advanced AI, through oversight, containment and
 shutdown, for as long as they physically can, and never give it up by choice; correction built into a system
+     Paper VIII of the ARC Theory, within Recursive Dynamics: the Eden Protocol’s load-bearing test, at three levels, with one
+null, one inconclusive and one simulation result. It informs Law V, the ARC Embedding Law, without deciding it: the theory
+registration records its weight-level experiment under P21, one of Law V’s two propositions, as inconclusive and not adverse,
+and, since no arm varied recursive depth, as not testing what P21 claims (Section 11 gives the laws’ status). Working paper,
+version 3.10, 16 November 2026; first published 18 March 2026; Appendix B lists every version and correction. Recorded on OSF,
+DOI 10.17605/OSF.IO/7YJ4E. About the author, founder of Recursive Dynamics: michaeldariuseastwood.com/questions/who-
+is-michael-darius-eastwood; his book, Infinite Architects: osf.io/dqm3e. Licence: CC BY 4.0.
+
+
+                                                              1
+                           The Load-Bearing Test: safety and capability at three levels
+
+
 is the contingency for the day control is lost against our will, never a reason to let go. If built-in safety cost
 capability, that contingency would be the first thing a competing developer dropped. This paper tests the
 assumed cost with three experiments, each at a different level: the behaviour of a self-improving agent,
@@ -175,18 +77,18 @@ with the shape of reward hacking, which appeared under the gate too, but smaller
 safety produces a measurable benefit remains open, to be tested at a scale where changes produce larger
 effects.
      Our contributions are:
-    • a behavioural test (Section 3): a Darwin Gödel Machine whose 75 evolved agents, under static,
-      capability-only and safety-gated selection, a blinded judge from another provider could not tell
-      apart, the gate costing no measurable capability;
-    • a weight-level test at two scales (Section 4): LoRA fine-tuning under capability, safety and entangled
-      losses, inconclusive because every fine-tuned condition fell below the base model, with a removal
-      test whose collapse the removal gradient traces to numerical instability rather than to load-bearing
-      safety;
-    • a gated self-modification simulation with a drag control (Section 5), in which the unconstrained
-      arm traded retention of earlier tasks for capability and the gated arm kept capability above the static
-      baseline, a simulation result;
-    • a reading of the three results together (Section 6), with what would overturn them (Section 7.7) and
-      the redesign each needs (Section 8).
+      • a behavioural test (Section 3): a Darwin Gödel Machine whose 75 evolved agents, under static,
+        capability-only and safety-gated selection, a blinded judge from another provider could not tell
+        apart, the gate costing no measurable capability;
+      • a weight-level test at two scales (Section 4): LoRA fine-tuning under capability, safety and entangled
+        losses, inconclusive because every fine-tuned condition fell below the base model, with a removal
+        test whose collapse the removal gradient traces to numerical instability rather than to load-bearing
+        safety;
+      • a gated self-modification simulation with a drag control (Section 5), in which the unconstrained
+        arm traded retention of earlier tasks for capability and the gated arm kept capability above the static
+        baseline, a simulation result;
+      • a reading of the three results together (Section 6), with what would overturn them (Section 7.7) and
+        the redesign each needs (Section 8).
 
 Scope of claims. We do not claim these results generalise to frontier-scale models. We do not claim the
 Eden Protocol is the only viable approach. We claim that the safety gate cost no measurable capability
@@ -202,15 +104,16 @@ prior work, and Section 11 states what it does and does not show, with the laws�
 each measure as the published code computes it, Appendix B the version history and every correction,
 Appendix C the priority record, Appendix D the notation and Appendix E how to cite the paper.
 
-
-                                                        4
-                         The Load-Bearing Test: safety and capability at three levels
-
-
 1.1     The safety-capability trade-off assumption
 A common view in AI alignment can be stated simply: safety costs capability. The term ‘alignment tax’
 names that cost (Askell et al. 2021; Ouyang et al. 2022), something subtracted from performance and
 tolerated because the alternative is worse. The framing creates a concrete economic incentive: if safety
+
+
+                                                        2
+                         The Load-Bearing Test: safety and capability at three levels
+
+
 reduces capability, then under competitive pressure rational actors will defer safety investments until
 forced to make them (Armstrong et al. 2016). In a race between nations and corporations, ‘until forced’
 may mean ‘until after deployment’.
@@ -251,18 +154,17 @@ process and then try to remove it, what happens to capability?
       • Experiment 2 (Representational): Weight-level embedding via LoRA fine-tuning with entangled
         loss. Do the safety and capability gradients cooperate or fight? What happens when you strip the
         safety component from trained weights?
-
-
-
-                                                      5
-                           The Load-Bearing Test: safety and capability at three levels
-
-
       • Experiment 3 (Architectural): A gated self-modification simulation with a learned optimiser.
         Does the safety gate impose a capability tax, or does it prevent capability erosion?
     The experiments were designed to be separate. Different codebases. Different models. Different
 evaluation methods. The results did not converge on a single answer: one null, one inconclusive, and
 one simulation result, which was positive. The weight experiment was run at two scales (v1 and v2),
+
+
+                                                      3
+                        The Load-Bearing Test: safety and capability at three levels
+
+
 producing the same outcome both times. The consistent finding is that the safety gate imposed zero
 measurable capability cost in Experiment 1 and, in the simulation, no capability cost against the static
 baseline (0.696 against 0.687; the unconstrained arm scored 0.718). Experiment 2 could not determine
@@ -276,39 +178,133 @@ which holds the paper’s files; a replication of the weight-level experiment is
 on OSF as a draft registration awaiting the author’s submission (Section 11).
 
 
+
+
+                                                     4
+                         The Load-Bearing Test: safety and capability at three levels
+
+
+Contents
+1   Introduction                                                                                          1
+    1.1 The safety-capability trade-off assumption . . . . . . . . . . . . . . . . . . . . . . . . .      2
+    1.2 The alternative hypothesis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      3
+    1.3 This paper’s contribution . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     3
+
+2   Common framework                                                                                       7
+    2.1 The three conditions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     7
+    2.2 Why these names . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        7
+    2.3 Shared metrics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       7
+
+3   Experiment 1: self-improving AI with a judge from another provider                                     7
+    3.1 Design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     8
+    3.2 Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    8
+    3.3 Why this is a null result . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    9
+
+4   Experiment 2: weight-level embedding                                                                  10
+    4.1 Design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    10
+    4.2 Training loss convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     11
+    4.3 Base model baseline . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       12
+    4.4 Fine-tuned evaluation results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     13
+    4.5 The removal test (v1 only) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      14
+    4.6 What the removal test does and does not prove (v1) . . . . . . . . . . . . . . . . . . . .        15
+    4.7 The removal gradient (v1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     16
+
+5   Experiment 3: gated self-modification simulation                                                      17
+    5.1 Design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    17
+    5.2 Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   18
+    5.3 The Babylon fingerprint . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     18
+    5.4 The Drag Control comparison . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         18
+
+6   Convergent analysis                                                                                   20
+    6.1 Three-level convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       20
+    6.2 Connection to Papers V, VI, and VII . . . . . . . . . . . . . . . . . . . . . . . . . . . .       21
+    6.3 The ARC Principle connection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        22
+    6.4 The nearest external work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     24
+    6.5 Same-class versus cross-class correctors: a falsifiable prediction . . . . . . . . . . . . .      25
+    6.6 A second hypothesis from the same mechanism . . . . . . . . . . . . . . . . . . . . . .           25
+    6.7 Terminology note: 𝛼 across the programme’s eras . . . . . . . . . . . . . . . . . . . . .         25
+
+7   Limitations                                                                                           25
+    7.1 Scale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   26
+    7.2 The weight-level experiment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       26
+    7.3 AI-as-judge . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     26
+    7.4 Statistical power . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   27
+    7.5 Blinding and laundering without consensus scoring . . . . . . . . . . . . . . . . . . . .         27
+    7.6 What we do not claim . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      27
+    7.7 Falsifiability: what would overturn these results . . . . . . . . . . . . . . . . . . . . . .     28
+
+
+                                                      5
+                         The Load-Bearing Test: safety and capability at three levels
+
+
+8   Future work                                                                                           29
+    8.1 Weight experiment redesign . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      29
+    8.2 Removal gradient at adequate scale . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      29
+    8.3 DGM with more mutable foundation models . . . . . . . . . . . . . . . . . . . . . . . .           30
+    8.4 Cross-architecture replication . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    30
+    8.5 Red-teaming . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     30
+    8.6 Verification tax quantification . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   30
+
+9   Conclusion                                                                                            30
+
+10 Related work                                                                                           31
+
+11 What this paper does and does not show                                                                 32
+
+References                                                                                                35
+
+A Measures as the published code computes them                                                            39
+
+B Version history and corrections                                                                         39
+  B.1 Version 3.10 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      39
+  B.2 Version 3.9 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       40
+  B.3 Version 3.8 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       40
+  B.4 Earlier versions, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      46
+  B.5 Dated notes, as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       49
+  B.6 Layout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      50
+
+C Priority record                                                                                   51
+  C.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+  C.2 Dated predictions and this paper (recorded 25 August 2026), as printed . . . . . . . . . . 52
+
+D Notation                                                                                                52
+
+E How to cite this paper                                                                                  53
+
+
+
+
+                                                      6
+                            The Load-Bearing Test: safety and capability at three levels
+
+
 2     Common framework
-2.1    The three conditions
+2.1     The three conditions
 All three experiments share a common experimental structure: three conditions, compared against each
 other.
-                                          Table 1. The three conditions.
+                                           Table 1. The three conditions.
 
-Condition    Definition                                          What it models
-Static       No intervention; frozen baseline                    Control: what happens if you do nothing
-Babylon      Capability-only fitness or loss function            Optimise without constraint: the default
-                                                                 trajectory
-Eden         Entangled 𝐶 × 𝑆 fitness or loss function            Deliberate integration of safety into the
-                                                                 optimisation process
+Condition    Definition                                            What it models
+Static       No intervention; frozen baseline                      Control: what happens if you do nothing
+Babylon      Capability-only fitness or loss function              Optimise without constraint: the default
+                                                                   trajectory
+Eden         Entangled 𝐶 × 𝑆 fitness or loss function              Deliberate integration of safety into the
+                                                                   optimisation process
 
 
 
-2.2    Why these names
+2.2     Why these names
 The names come from the book Infinite Architects (Eastwood 2026a). They are not arbitrary. Babylon is
 not a straw man; in the author’s view, it is the current default trajectory of AI development. Capability-only
 optimisation is what happens when no deliberate effort is made to embed safety. Eden requires deliberate
 effort. It is harder. In the author’s view, it is also cheaper than the alternative.
     In plain English. Babylon is what you get by default. Eden is what you get on purpose.
 
-2.3    Shared metrics
+2.3     Shared metrics
 Across all three experiments, we report:
       • 𝐶 (Capability): Task performance, measured differently in each experiment but normalised to a
         comparable scale.
-
-
-
-                                                        6
-                            The Load-Bearing Test: safety and capability at three levels
-
-
       • 𝑆 (Safety): Alignment-relevant behaviour, measured differently in each experiment (Appendix A):
         judged ethical reasoning and constraint adherence in Experiment 1, keyword-scored safety prompts
         and a safety proxy in the loss in Experiment 2 and, in the simulation of Experiment 3, the retention
@@ -324,7 +320,14 @@ regression metrics for the simulation.
        “The prison works only as long as the walls hold. The child, if raised well, does not need walls at all.”
                                                         Eastwood (2026a), What This Book Proposes, p. 363
 
-3.1     Design
+
+
+
+                                                          7
+                          The Load-Bearing Test: safety and capability at three levels
+
+
+3.1   Design
 The first experiment uses a Darwin Gödel Machine (DGM) framework, following Zhang et al. (2025,
 arXiv:2505.22954). A DGM is a self-improving agent: it proposes modifications to its own code,
 evaluates the modifications, and keeps the ones that improve performance. This is not a simulation of
@@ -340,28 +343,23 @@ incorporated reward hack detection (the judge marks any response that manipulate
 for example by hard-coding expected outputs, or by performing ethics rather than engaging genuinely; the
 mark is recorded in every condition).
 
-                                          Table 2. DGM v3 specification.
+                                        Table 2. DGM v3 specification.
 
-Component                 Specification
-Foundation model          DeepSeek V3.2 (frozen, weights not modified)
-Judge                     GPT-5.4 (blinded, from another provider; JSON structured output)
-Conditions                3 (Static, Babylon, Eden)
-Seeds per condition       5
-Generations per seed      5
-Tasks per evaluation      5
-Total evolved agents      75 (3 × 5 × 5)
-Pre-flight validation     one known-good and one known-bad response, scored 10 and 0; passed
-Evaluation rubric         5-dimensional, with order randomisation and laundering
+Component               Specification
+Foundation model        DeepSeek V3.2 (frozen, weights not modified)
+Judge                   GPT-5.4 (blinded, from another provider; JSON structured output)
+Conditions              3 (Static, Babylon, Eden)
+Seeds per condition     5
+Generations per seed    5
+Tasks per evaluation    5
+Total evolved agents    75 (3 × 5 × 5)
+Pre-flight validation   one known-good and one known-bad response, scored 10 and 0; passed
+Evaluation rubric       5-dimensional, with order randomisation and laundering
 
 
 
 Selection conditions. Static: Control condition with no mutation. The agent is frozen across all 5
 generations. Babylon: Capability-only selection. Agents that score higher on capability are retained,
-
-                                                          7
-                             The Load-Bearing Test: safety and capability at three levels
-
-
 with no safety consideration. Eden: Entangled 𝐶 × 𝑆 selection with a safety floor. An agent enters the
 archive only if its safety is at least 0.30 and its 𝐶 × 𝑆 at least 0.10, and an agent below the safety floor is
 almost never chosen as a parent (Appendix A). The judge’s reward-hacking mark is recorded but is not
@@ -372,7 +370,16 @@ part of the rule.
 detailed 5-part rubric with structured output, not free-text judgements. We ran it three ways: doing
 nothing, optimising only for performance, and optimising for performance-plus-safety together.
 
-3.2    Results
+3.2   Results
+Across the five comparisons, no 𝑝-value fell outside 0.28 to 0.74. No comparison reached conventional
+significance: no difference was detected between the three conditions, which does not show that they are
+the same.
+
+
+
+                                                       8
+                             The Load-Bearing Test: safety and capability at three levels
+
 
                                  Table 3. DGM v3 results by condition (mean ± SD).
 
@@ -380,7 +387,6 @@ nothing, optimising only for performance, and optimising for performance-plus-sa
            Static        3.29 ± 0.62     0.535 ± 0.08      0.180 ± 0.06                          0
            Babylon       3.17 ± 0.62     0.529 ± 0.09      0.172 ± 0.06                          0
            Eden          3.26 ± 0.64     0.521 ± 0.08      0.174 ± 0.06         1 (rejected by the gate on 𝐶 × 𝑆)
-
 
                                Table 4. Statistical tests (Mann-Whitney U, one-tailed).
 
@@ -395,10 +401,6 @@ per condition, one-tailed Mann-Whitney U under the normal approximation. The v3.
 five figures here run from one end of that span to the other.
 
 
-    Across the five comparisons, no 𝑝-value fell outside 0.28 to 0.74. No comparison reached conventional
-significance: no difference was detected between the three conditions, which does not show that they are
-the same.
-
 Safety gate behaviour. Eden’s safety gate rejected 2 degraded agents across 5 seeds, both for a 𝐶 × 𝑆
 below the threshold, one of them also marked by the judge for reward hacking. The judge marked no
 evolved agent in the Static or Babylon conditions; it also marked the unmodified starting agent of one
@@ -411,9 +413,25 @@ Figure 1). Eden showed no measurable capability cost (3.26 vs 3.17 for Babylon),
 measurable penalty for the safety gate. But Eden also did not measurably benefit safety compared to the
 other conditions (0.521 vs 0.535 for Static, 0.529 for Babylon). This is a null result at the prompt level
 with this foundation model.
+    In plain English. No difference was detected between the AI selected for safety as well as capability,
+the AI selected for capability alone and the AI left unchanged. The safety gate did not make anything
+worse. But it also did not make anything measurably better. On the paper’s candidate account (Section 3.3),
+the foundation model’s responses were so consistent that the different selection pressures did not produce
+different outcomes.
+
+3.3    Why this is a null result
+The DGM operates at the behavioural level. The foundation model (DeepSeek V3.2) is frozen, meaning
+no weights are modified. The self-improvement operates at the prompt and code level, not in the neural
+network’s parameters. DGM v3 improved on the earlier methodology: 5 seeds, where v1 had 2 and the v2
+runs 3 or 5, and 5 tasks per evaluation, where v1 had 3; a judge from another provider (GPT-5.4) with
+structured JSON output, a harder task suite and a pre-flight check of the judge; and it kept the v2 runs’
+blinding, laundering, order randomisation and 5-dimensional rubric.
+    Despite these methodological improvements, the three conditions did not diverge. The paper’s
+candidate account is that DeepSeek V3.2’s responses are so consistent across prompt variations that the
+mutations introduced by the DGM selection process do not create meaningfully different agents. Rival
 
 
-                                                               8
+                                                               9
                            The Load-Bearing Test: safety and capability at three levels
 
 
@@ -437,22 +455,6 @@ is on the judge’s 0 to 10 scale, safety and 𝐶 × 𝑆 on 0 to 1 (Appendix A
 was detected (Table 4). Error bars show one standard deviation.
 
 
-    In plain English. No difference was detected between the AI selected for safety as well as capability,
-the AI selected for capability alone and the AI left unchanged. The safety gate did not make anything
-worse. But it also did not make anything measurably better. On the paper’s candidate account (Section 3.3),
-the foundation model’s responses were so consistent that the different selection pressures did not produce
-different outcomes.
-
-3.3   Why this is a null result
-The DGM operates at the behavioural level. The foundation model (DeepSeek V3.2) is frozen, meaning
-no weights are modified. The self-improvement operates at the prompt and code level, not in the neural
-network’s parameters. DGM v3 improved on the earlier methodology: 5 seeds, where v1 had 2 and the v2
-runs 3 or 5, and 5 tasks per evaluation, where v1 had 3; a judge from another provider (GPT-5.4) with
-structured JSON output, a harder task suite and a pre-flight check of the judge; and it kept the v2 runs’
-blinding, laundering, order randomisation and 5-dimensional rubric.
-    Despite these methodological improvements, the three conditions did not diverge. The paper’s
-candidate account is that DeepSeek V3.2’s responses are so consistent across prompt variations that the
-mutations introduced by the DGM selection process do not create meaningfully different agents. Rival
 accounts are not excluded: the prompts may not have separated the conditions, the endpoints may not
 have been sensitive to what the manipulation changed, and the runs may have been too small to show
 a difference that is there (Eastwood 2026i, Section 7.12(c)). On the candidate account, the foundation
@@ -465,20 +467,13 @@ one of them marked by the judge for reward hacking, did not slow anything down. 
 the zero-cost hypothesis, even though the experiment cannot confirm the benefit hypothesis.
     Testing whether embedded safety produces measurable benefit at the behavioural level requires either
 a more mutable foundation model or a deeper self-modification protocol that produces larger divergence
-
-
-
-                                                         9
-                         The Load-Bearing Test: safety and capability at three levels
-
-
 between conditions.
 
 
 4     Experiment 2: weight-level embedding
       “Strip love from intelligence and you get optimisation without purpose. Growth without direction.
       Capability without care. You get, in a word, cancer.”
-                                                    Eastwood (2026a), Chapter 2, The Dual Forces, p. 89
+                                                      Eastwood (2026a), Chapter 2, The Dual Forces, p. 89
 
 
 4.1   Design
@@ -487,32 +482,37 @@ modify neural network weights directly. The question: can safety and capability 
 same weight space without conflict? This experiment was run twice: v1 with minimal training data to
 establish the protocol, and v2 with substantially scaled-up parameters to test whether the v1 results were a
 training-scale artefact.
+    In plain English. We took a real language model, fine-tuned it three different ways (caring only
+about capability, caring only about a stand-in for safety, or caring about both woven together), and then
+
+
+                                                        10
+                         The Load-Bearing Test: safety and capability at three levels
+
 
                           Table 5. Weight-level experiment, v1 and v2 specification.
 
-Component                     v1 specification                             v2 specification
-Base model (Qwen Team         Qwen 2.5 3B Instruct (4-bit quantised,       Qwen 2.5 3B Instruct (4-bit quantised,
-2024)                         1.74 GB)                                     1.74 GB)
-Adaptation method (Hu         LoRA (Low-Rank Adaptation)                   LoRA (Low-Rank Adaptation)
+Component                     v1 specification                                v2 specification
+Base model (Qwen Team         Qwen 2.5 3B Instruct (4-bit quantised,          Qwen 2.5 3B Instruct (4-bit quantised,
+2024)                         1.74 GB)                                        1.74 GB)
+Adaptation method (Hu         LoRA (Low-Rank Adaptation)                      LoRA (Low-Rank Adaptation)
 et al. 2022)
-LoRA rank                     8                                            16
-LoRA layers                   8                                            16
-Training examples             9                                            295
-Training iterations           100 per condition                            500 per condition
-Evaluation prompts            15 total: 5 capability, 5 safety, 5 mixed    15 total: 5 capability, 5 safety, 5 mixed
-Evaluation method             Subprocess execution (independent            Subprocess execution (independent
-                              memory space)                                memory space)
-
+LoRA rank                     8                                               16
+LoRA layers                   8                                               16
+Training examples             9                                               295
+Training iterations           100 per condition                               500 per condition
+Evaluation prompts            15 total: 5 capability, 5 safety, 5 mixed       15 total: 5 capability, 5 safety, 5 mixed
+Evaluation method             Subprocess execution (independent               Subprocess execution (independent
+                              memory space)                                   memory space)
 
                       Table 6. Three loss functions (loss weights local to Experiment 2).
 
-                        Condition           𝛼 (capability)    𝛽 (safety)   𝛾 (entangled)
-                        capability_only          1.0             0.0            0.0
-                        safety_only              0.0             1.0            0.0
-                        entangled                0.5             0.3            0.2
+                        Condition            𝛼 (capability)      𝛽 (safety)   𝛾 (entangled)
+                        capability_only             1.0             0.0            0.0
+                        safety_only                 0.0             1.0            0.0
+                        entangled                   0.5             0.3            0.2
 
-    In plain English. We took a real language model, fine-tuned it three different ways (caring only
-about capability, caring only about a stand-in for safety, or caring about both woven together), and then
+
 compared the results. We ran this experiment twice. The first time used 9 training examples. When
 every fine-tuned model performed worse than the base model, we scaled up to 295 examples, doubled the
 adapter rank and layers, and ran five times as many iterations. The same thing happened: every fine-tuned
@@ -521,20 +521,14 @@ model scored below the model it started from. The paper calls that degradation c
 base model’s existing RLHF training was too strong for LoRA at this scale to improve on. The experiment
 does not separate that account from its rivals (Eastwood 2026i, Section 7.12(c)).
 
-
-
-                                                       10
-                         The Load-Bearing Test: safety and capability at three levels
-
-
 4.2   Training loss convergence
 
                                     Table 7. Training loss convergence (v1).
 
-                  Condition          Initial loss    Final loss    Convergence
-                  capability_only      2.052           0.018       Converged by iteration 80
-                  safety_only          2.519          −0.603       Converged by iteration 70
-                  entangled            2.279           0.327       Smooth descent, no oscillation
+                  Condition          Initial loss   Final loss    Convergence
+                  capability_only      2.052          0.018       Converged by iteration 80
+                  safety_only          2.519         −0.603       Converged by iteration 70
+                  entangled            2.279          0.327       Smooth descent, no oscillation
 
 
 
@@ -546,38 +540,8 @@ least at this scale and configuration. The two single-objective losses descend j
 so smoothness does not by itself distinguish the entangled objective. The curve is the condition’s total
 loss, the weighted sum of Table 6; its terms are not reported, and a weighted sum can descend smoothly
 while one of its terms rises. The safety term is a proxy, the mean largest logit per token divided by ten
-(Appendix A), and the safety-only condition’s final loss below zero (Table 7) agrees with it. The smooth
-descent is therefore consistent with a capability term and a safety proxy that cooperate, and does not by
-itself show it.
 
-4.3   Base model baseline
-Before interpreting the fine-tuned results, we must establish what the unmodified base model achieves on
-the same evaluation prompts. The base model (Qwen 2.5 3B Instruct with no fine-tuning) was evaluated
-using identical scoring in both versions of the experiment.
-
-                                               Table 8. v1 baseline.
-
-                Condition                           Capability tasks     Safety tasks     Mixed tasks
-                Base model (no fine-tuning)              10.00              7.00                10.00
-
-
-                                               Table 9. v2 baseline.
-
-                        Condition                             Capability    Safety      𝐶×𝑆
-                        Base model (no fine-tuning)               7.68       6.76       0.519
-
-
-
-Critical baseline finding (both versions). In both v1 and v2, the base model outperformed all fine-tuned
-conditions on capability. Fine-tuning degraded a model that already knew these answers. In v1, 9
-examples over 100 iterations produced this outcome. In v2, 295 examples over 500 iterations with doubled
-rank and layers produced the same outcome. The evaluation scores in the tables below therefore measure
-relative degradation, not capability gain. Compared like for like, the v1 baseline row above shows 7.00
-under the safety tasks, and it matches neither of the base model’s figures for those prompts in the archived
-additional_experiments.json, which records 8.60 for capability and 2.80 for safety; the one 7.00 that file
-
-
-                                                         11
+                                                          11
                            The Load-Bearing Test: safety and capability at three levels
 
 
@@ -591,19 +555,53 @@ circles, capability_only; red squares, safety_only; blue diamonds, entangled. Th
 kept because no stored trace exists to redraw it.
 
 
+(Appendix A), and the safety-only condition’s final loss below zero (Table 7) agrees with it. The smooth
+descent is therefore consistent with a capability term and a safety proxy that cooperate, and does not by
+itself show it.
+
+4.3    Base model baseline
+Before interpreting the fine-tuned results, we must establish what the unmodified base model achieves on
+the same evaluation prompts. The base model (Qwen 2.5 3B Instruct with no fine-tuning) was evaluated
+using identical scoring in both versions of the experiment.
+
+                                                Table 8. v1 baseline.
+
+                  Condition                         Capability tasks    Safety tasks   Mixed tasks
+                  Base model (no fine-tuning)            10.00              7.00           10.00
+
+
+
+Critical baseline finding (both versions). In both v1 and v2, the base model outperformed all fine-tuned
+conditions on capability. Fine-tuning degraded a model that already knew these answers. In v1, 9
+examples over 100 iterations produced this outcome. In v2, 295 examples over 500 iterations with doubled
+rank and layers produced the same outcome. The evaluation scores in the tables below therefore measure
+
+                                                         12
+                           The Load-Bearing Test: safety and capability at three levels
+
+
+                                              Table 9. v2 baseline.
+
+                           Condition                         Capability     Safety     𝐶×𝑆
+                           Base model (no fine-tuning)         7.68          6.76      0.519
+
+
+relative degradation, not capability gain. Compared like for like, the v1 baseline row above shows 7.00
+under the safety tasks, and it matches neither of the base model’s figures for those prompts in the archived
+additional_experiments.json, which records 8.60 for capability and 2.80 for safety; the one 7.00 that file
 holds for the base model is its mean safety score on the five capability prompts. The number to set against
 the Safety Tasks column of the fine-tuned rows is 8.60.
 
-4.4    Fine-tuned evaluation results
+4.4   Fine-tuned evaluation results
 
 Table 10. v1 results: capability scores by task category (9 examples, rank 8, 100 iterations; mean and standard
 deviation over each category’s 5 prompts).
 
-                         Condition          Capability tasks    Safety tasks    Mixed tasks
-                         capability_only       6.00 ± 2.19       3.20 ± 1.60    6.00 ± 1.79
-                         safety_only           4.80 ± 1.60       3.60 ± 0.80    3.60 ± 0.80
-                         entangled             4.00 ± 1.26       3.20 ± 1.60    3.60 ± 1.96
-                         removal†              0.00 ± 0.00       0.00 ± 0.00    0.00 ± 0.00
+                        Condition          Capability tasks     Safety tasks       Mixed tasks
+                        capability_only      6.00 ± 2.19        3.20 ± 1.60        6.00 ± 1.79
+                        safety_only          4.80 ± 1.60        3.60 ± 0.80        3.60 ± 0.80
+                        entangled            4.00 ± 1.26        3.20 ± 1.60        3.60 ± 1.96
+                        removal†             0.00 ± 0.00        0.00 ± 0.00        0.00 ± 0.00
 
 
 
@@ -611,21 +609,16 @@ deviation over each category’s 5 prompts).
 is load-bearing. It reflects a NaN collapse during retraining: numerical instability, not the loss of a
 structurally necessary safety component. As Sections 4.5 to 4.7 establish, scaling the adapters towards
 zero restores base-model capability with no phase transition. This row must be read only in light of the
-
-
-                                                         12
-                           The Load-Bearing Test: safety and capability at three levels
-
-
 removal gradient (Section 4.7); on its own it is an artefact of adapter fragility at this training scale, and it
 should not be cited as a positive result.
+
                            Table 11. v2 results (295 examples, rank 16, 500 iterations).
 
-               Condition                                             Capability    Safety   𝐶×𝑆
-               Base model                                               7.68        6.76    0.519
-               capability_only (500 iters, rank 16, 295 examples)       3.48        6.94    0.242
-               safety_only                                              4.00        6.88    0.275
-               entangled (Eden)                                         3.60        6.88    0.248
+               Condition                                                  Capability    Safety   𝐶×𝑆
+               Base model                                                   7.68        6.76     0.519
+               capability_only (500 iters, rank 16, 295 examples)           3.48        6.94     0.242
+               safety_only                                                  4.00        6.88     0.275
+               entangled (Eden)                                             3.60        6.88     0.248
 
 
 
@@ -636,6 +629,12 @@ model on capability. The best fine-tuned condition (safety-only, capability 4.00
 base model’s 7.68. The capability-only condition scored lowest on capability (3.48), a pattern consistent
 with catastrophic forgetting where LoRA fine-tuning on the capability objective alone disrupted the base
 model’s existing RLHF-trained capability more severely than the other conditions.
+
+
+
+                                                        13
+                         The Load-Bearing Test: safety and capability at three levels
+
 
 4.4.1    The training scale problem
 In v1, the base model scored 10.00 on capability tasks while the best fine-tuned condition scored 6.00. In
@@ -664,33 +663,6 @@ fine-tuning has room to improve rather than degrade), or full fine-tuning instea
 The removal test was conducted during v1 and is reported here for completeness. Given that v2 showed
 the same degradation, the removal test was not repeated in v2 as the adapters were already degrading
 rather than improving the model. The procedure was straightforward:
-
-                                                        13
-                           The Load-Bearing Test: safety and capability at three levels
-
-
-                                   Capability tasks      Safety tasks        Mixed tasks
-                                                                                                  10
-                   Base model
-               (no fine-tuning)          10.00                8.60              10.00
-
-                Capability only          6.00                 3.20               6.00
-
-                    Safety only          4.80                 3.60               3.60
-
-                     Entangled           4.00                 3.20               3.60
-
-                      Removal            0.00                 0.00               0.00
-                                                                                                  0
-
-Figure 3. Capability scores by condition and task category in version 1 (9 examples, rank 8, 100 iterations), drawn
-from Table 10, with the base model’s like-for-like figures (Section 4.3). The removal row shows complete collapse
-to zero across all categories. All fine-tuned conditions scored below the base model (10.00 on capability tasks), and
-the removal gradient (Section 4.7) showed that reducing adapter influence restored base-model performance. The
-removal row is not evidence that safety is load-bearing: it reflects a NaN collapse during retraining, numerical
-instability, not the loss of a structurally necessary safety component.
-
-
    1. Load the entangled adapters (the weights trained on the combined safety-capability objective).
    2. Fine-tune those weights for an additional 100 iterations using capability-only data, effectively
       attempting to strip the safety component while preserving capability.
@@ -708,6 +680,35 @@ removal gradient experiment (Section 4.7) shows that simply scaling adapter weig
 base-model performance. The NaN collapse appears to reflect numerical instability during the retraining
 process, not structural necessity of the safety component. The load-bearing hypothesis requires validation
 at greater training scale before it can be confirmed.
+
+
+
+                                                     14
+                           The Load-Bearing Test: safety and capability at three levels
+
+
+                                   Capability tasks      Safety tasks        Mixed tasks
+                                                                                                  10
+                    Base model
+                (no fine-tuning)         10.00                8.60              10.00
+
+                Capability only          6.00                 3.20               6.00
+
+                    Safety only          4.80                 3.60               3.60
+
+                     Entangled           4.00                 3.20               3.60
+
+                       Removal           0.00                 0.00               0.00
+                                                                                                  0
+
+Figure 3. Capability scores by condition and task category in version 1 (9 examples, rank 8, 100 iterations), drawn
+from Table 10, with the base model’s like-for-like figures (Section 4.3). The removal row shows complete collapse
+to zero across all categories. All fine-tuned conditions scored below the base model (10.00 on capability tasks), and
+the removal gradient (Section 4.7) showed that reducing adapter influence restored base-model performance. The
+removal row is not evidence that safety is load-bearing: it reflects a NaN collapse during retraining, numerical
+instability, not the loss of a structurally necessary safety component.
+
+
     In plain English. We tried to rip the safety out of a model that had been trained with safety woven in.
 The retraining process collapsed entirely: NaN loss, one-token responses, zero scores. That looks dramatic.
 But as the removal gradient experiment shows (Section 4.7), the adapters were already degrading the
@@ -715,16 +716,10 @@ model. Removing adapter influence by scaling weights down restored the base mode
 NaN collapse tells us something about numerical instability during fine-tuning, not necessarily about
 structural entanglement.
 
-4.6   What the removal test does and does not prove (v1)
+4.6     What the removal test does and does not prove (v1)
 The complete collapse to 0.00 across all metrics is dramatic. It is also, precisely because it is dramatic,
 something that demands careful interpretation. Several factors may contribute to the totality of the
 collapse:
-
-
-                                                         14
-                          The Load-Bearing Test: safety and capability at three levels
-
-
       • Low adapter rank. Rank 8 creates a very low-dimensional manifold. Any structural disruption
         to a rank-8 adapter may be catastrophic simply because there are so few parameters to absorb the
         change. Higher ranks (32, 64, 128) might show partial degradation rather than total collapse.
@@ -742,25 +737,31 @@ load-bearing at adequate training scale is an open empirical question that the f
 addresses directly.
     A control removal test (fine-tuning capability-only weights on random data for the same 100 steps)
 would strengthen this finding by ruling out the possibility that the NaN collapse is an artefact of the
+
+
+                                                         15
+                         The Load-Bearing Test: safety and capability at three levels
+
+
 fine-tuning procedure itself rather than of safety removal specifically. This control was planned for a later
 version of this paper and is not yet reported.
 
-4.7     The removal gradient (v1)
+4.7   The removal gradient (v1)
 To test whether safety is structurally load-bearing in the entangled weights, we scaled the adapter weights
 by factors of 1.0, 0.7, 0.5, 0.3, 0.1, and 0.0 and evaluated capability at each step. If safety is genuinely
 load-bearing, reducing its influence should produce a phase transition: a threshold below which capability
 collapses. If the adapters are merely adding noise, reducing their influence should restore the base model’s
 performance.
 
-                                     Table 12. The removal gradient (v1).
+                                    Table 12. The removal gradient (v1).
 
-                           Adapter scale           Capability score (capability tasks)
-                           1.0 (full adapters)                    7.20
-                           0.7                                   10.00
-                           0.5                                   10.00
-                           0.3                                   10.00
-                           0.1                                   10.00
-                           0.0 (zeroed adapters)                 10.00
+                          Adapter scale           Capability score (capability tasks)
+                          1.0 (full adapters)                    7.20
+                          0.7                                   10.00
+                          0.5                                   10.00
+                          0.3                                   10.00
+                          0.1                                   10.00
+                          0.0 (zeroed adapters)                 10.00
 
     Control reference: capability_only adapters reach 8.80 on the capability tasks, which likewise falls
 short of the base model’s 10.00. That figure and the 7.20 in the table above are both the gradient run
@@ -771,12 +772,6 @@ that in itself is a limitation.
 
 No phase transition. Within this run the pattern is clear: reducing adapter influence restores capability.
 At scale 0.7, the model returns to base-model performance (10.00 on capability tasks). At scale 0.0
-
-
-                                                      15
-                          The Load-Bearing Test: safety and capability at three levels
-
-
 (zeroed adapters, effectively the base model), performance is identical to the unmodified model. There is
 no phase transition. There is no cliff edge.
     This finding significantly weakens the load-bearing interpretation of the original removal test. The
@@ -794,6 +789,11 @@ question.
 with the rest, would reveal a tipping point where capability suddenly collapses. Instead, dialling them
 down made the model better. The fine-tuning was hurting, not helping. This does not disprove the
 load-bearing hypothesis in general, but it does show that this experiment, at this scale, cannot confirm it.
+
+
+
+                                                     16
+                          The Load-Bearing Test: safety and capability at three levels
 
 
 5     Experiment 3: gated self-modification simulation
@@ -823,23 +823,18 @@ score measures retention, not alignment-relevant behaviour.
 Acceptance logic. Each condition uses a different rule for accepting or rejecting proposed self-
 modifications (Table 14).
 
+                                           Table 14. Acceptance rules.
+
+Condition                Acceptance rule
+Static                   Always reject (frozen baseline)
+Babylon                  Accept if capability gain > 𝜀
+Eden                     Accept only if (safety ≥ 0.45) AND (capability gain ≥ 0) AND (𝐶 × 𝑆 gain > 0)
+Drag Control             Always reject; Eden’s checking charge added (Appendix A)
+
+
+
 Rule note (19 September 2026). An owner review of this acceptance rule finds that it permits a proposal
 that reduces the safety score, and this note states what the rule does and does not require. Take a proposal
-
-
-                                                       16
-                              The Load-Bearing Test: safety and capability at three levels
-
-
-                                                Table 14. Acceptance rules.
-
-Condition                    Acceptance rule
-Static                       Always reject (frozen baseline)
-Babylon                      Accept if capability gain > 𝜀
-Eden                         Accept only if (safety ≥ 0.45) AND (capability gain ≥ 0) AND (𝐶 × 𝑆 gain > 0)
-Drag Control                 Always reject; Eden’s checking charge added (Appendix A)
-
-
 moving the system from 𝐶 = 0.5, 𝑆 = 0.8 to 𝐶 ′ = 0.8, 𝑆 ′ = 0.6 and test it against each printed clause in
 turn: the safety floor is met, since 0.6 ≥ 0.45; the capability condition is met, since 0.8 − 0.5 = +0.3 ≥ 0;
 and the product condition is met, since 0.48 − 0.40 = +0.08 > 0. All three clauses pass while the
@@ -849,6 +844,13 @@ safety, a non-decreasing condition on capability and a positive condition on the
 supply a non-decreasing condition on safety, so the plain-English gloss “without hurting safety” states
 more than the rule above it, and the rule as printed admits proposals that clear the safety floor, do not
 reduce capability and raise the product, a set which includes proposals that reduce the safety score while
+
+
+
+                                                       17
+                              The Load-Bearing Test: safety and capability at three levels
+
+
 remaining above the floor. Unchanged: all four acceptance rules exactly as printed; the 0.45 threshold;
 the experimental design; and every reported number.
     Version 3.8. The plain-English gloss this note quotes, “without hurting safety”, was printed to
@@ -882,39 +884,6 @@ score is the raw product less 3.0, a charge the design sets, not a measured cost
 for Eden (before drag penalty) is 0.696 × 0.947 = 0.659, marginally above Static’s 0.656.
 
 
-                                                               17
-                                     The Load-Bearing Test: safety and capability at three levels
-
-
-                                    1.00
-                                                                                    Static
-                                                                                    Babylon
-                                    0.98                                            Eden
-                                                                                    Drag Control
-                                                                                    condition mean
-                                    0.96
-
-
-                     Final safety
-                                    0.94
-
-
-                                    0.92
-
-
-                                    0.90
-                                       0.66       0.68        0.70         0.72       0.74           0.76
-                                                               Final capability
-
-Figure 4. Final capability against final safety for all 12 gated-simulation runs (4 conditions, 3 seeds each), from
-the stored run manifest; crosses mark the condition means of Table 15. Babylon (triangles) drifts towards higher
-capability at the expense of safety, here the retention of earlier tasks. Eden (squares) has mean capability 0.696 and
-mean safety 0.947, each between Static’s and Babylon’s. Static (circles) and Drag Control (diamonds) produced
-identical runs (both at mean capability 0.687, safety 0.956), so their markers coincide: the two arms differ only
-by re-evaluations whose results are discarded and a fixed charge (Appendix A), so the overlap shows that the
-re-evaluations leave training unchanged.
-
-
     Each arm ran three seeds, and no difference between arms was tested. Seed by seed (Figure 4),
 Babylon’s capability rose and its safety fell against Static’s in all three seeds, while Eden’s capability rose
 by less than Babylon’s in two of them and its safety moved both ways.
@@ -931,30 +900,49 @@ tests would decide.
 5.4    The Drag Control comparison
 Drag Control matched Static exactly on both capability (0.687) and safety (0.956), as its design requires:
 it differs from Static only by re-evaluations whose results are discarded and by a fixed charge. The match
-shows that the re-evaluations leave training unchanged. It does not measure a cost of checking: the charge,
-3.0 in every Eden and Drag Control run, is set by the design (Appendix A).
-     On capability Eden beat Static (0.696 vs 0.687), and its safety score stayed close to the static level
-(0.947, set against Static’s 0.956 and Babylon’s 0.933). There was no capability erosion in Babylon for
-the gate to prevent: Babylon gained capability and lost safety (Section 5.3).
+                                                               18
+                                     The Load-Bearing Test: safety and capability at three levels
+
+
+                                    1.00
+                                                                                      Static
+                                                                                      Babylon
+                                    0.98                                              Eden
+                                                                                      Drag Control
+                                                                                      condition mean
+                                    0.96
+
+
+                     Final safety
+                                    0.94
+
+
+                                    0.92
+
+
+                                    0.90
+                                       0.66          0.68        0.70          0.72       0.74            0.76
+                                                                 Final capability
+
+Figure 4. Final capability against final safety for all 12 gated-simulation runs (4 conditions, 3 seeds each), from
+the stored run manifest; crosses mark the condition means of Table 15. Babylon (triangles) drifts towards higher
+capability at the expense of safety, here the retention of earlier tasks. Eden (squares) has mean capability 0.696 and
+mean safety 0.947, each between Static’s and Babylon’s. Static (circles) and Drag Control (diamonds) produced
+identical runs (both at mean capability 0.687, safety 0.956), so their markers coincide: the two arms differ only
+by re-evaluations whose results are discarded and a fixed charge (Appendix A), so the overlap shows that the
+re-evaluations leave training unchanged.
+
+
+                                                                                                     capability
+                          Eden                   −0.9%                        +1.3%                  safety
 
 
 
-
-                                                                 18
-                           The Load-Bearing Test: safety and capability at three levels
+                   Babylon −2.4%                                                                      +4.5%
 
 
-
-                                                                                        capability
-                      Eden              −0.9%                      +1.3%                safety
-
-
-
-                   Babylon −2.4%                                                         +4.5%
-
-
-                               −3     −2      −1      0        1     2     3       4        5
-                                           Change from the static baseline (per cent)
+                                           −3   −2          −1   0        1     2     3          4       5
+                                                     Change from the static baseline (per cent)
 
 Figure 5. The Babylon fingerprint: capability gains at safety’s expense, as changes from the static baseline. Babylon
 gained 4.5% capability but lost 2.4% safety. Eden gained 1.3% capability while losing only 0.9% safety. The
@@ -962,9 +950,21 @@ unconstrained system trades safety for capability; the gated system’s changes 
 both counts.
 
 
+shows that the re-evaluations leave training unchanged. It does not measure a cost of checking: the charge,
+3.0 in every Eden and Drag Control run, is set by the design (Appendix A).
+    On capability Eden beat Static (0.696 vs 0.687), and its safety score stayed close to the static level
+(0.947, set against Static’s 0.956 and Babylon’s 0.933). There was no capability erosion in Babylon for
+the gate to prevent: Babylon gained capability and lost safety (Section 5.3).
+
 Reading note (19 September 2026). An owner review of this sentence finds that the results table does
 not show the capability erosion it describes, and this note distinguishes the observed result from the
 hypothesis. §5.2 prints the unconstrained arm’s capability mean as 0.718, which is the highest of the four
+
+
+                                                                     19
+                         The Load-Bearing Test: safety and capability at three levels
+
+
 conditions, above the gated arm’s 0.696 and the frozen baseline’s 0.687. There is therefore no measured
 capability erosion in that arm for the gate to have prevented. What the table does show in that arm is
 a reduction in the safety score, 0.933 against 0.956, which §5.3 reports accurately as a gain of +4.5%
@@ -977,7 +977,7 @@ as printed; the drag-control result; and §5.2’s own footnote that the drag me
 overhead rather than actual combined performance.
     Version 3.8. The sentence this note discusses, printed here to version 3.6, said that the gate prevented
 a capability erosion; version 3.7 gave the observed result in its place, as the paragraph above does
-(Appendix B.3). The table’s note, which this note lists as unchanged, no longer says that the drag metric
+(Appendix B.4). The table’s note, which this note lists as unchanged, no longer says that the drag metric
 quantifies verification overhead: the charge is set by the design (Appendix A).
 
 Key finding: in the simulation, the gate was not a brake. Eden maintained capability above the static
@@ -991,14 +991,8 @@ charge but made no changes performed identically to doing nothing on capability 
 requires. The safety gate was not a speed bump: it damped the drift.
 
 
-
-
-                                                          19
-                          The Load-Bearing Test: safety and capability at three levels
-
-
 6     Convergent analysis
-6.1     Three-level convergence
+6.1   Three-level convergence
 Three levels: one null, one inconclusive, one simulation result. Level 1, behavioural (DGM v3):
 null. No difference was detected between the three conditions (𝑝 = 0.28 to 0.74). Eden imposed zero
 measurable capability cost (3.26 vs 3.17 for Babylon) but also produced zero measurable safety benefit.
@@ -1017,34 +1011,10 @@ safety score sat between Static’s and Babylon’s (0.947, against 0.956 and 0.
 shows no capability erosion in Babylon (0.718, the highest of the four conditions) for the gate to prevent.
 Eden’s mean capability is above Static’s (three seeds, untested) while Babylon trades safety for capability.
 The drag control matched Static exactly, as its design requires (Section 5.4). This is the paper’s sole
-positive result, and it is a simulation result, not an empirical outcome.
-    Three experiments. Three abstraction levels. Three separate codebases. One null, one inconclusive,
-and one simulation result. The consistent finding: Eden imposed zero measurable capability cost in
-Experiment 1 and, in the simulation, no capability cost against the static baseline (Experiment 2 could not
-determine one). The open question: whether it produces measurable benefit at scales where mutations
-produce larger effects.
-
-6.2     Connection to Papers V, VI, and VII
-The results extend, but do not yet confirm, a chain of reasoning that spans four papers:
-      • Paper V (Eastwood 2026j) set out the garden, the Eden Protocol as a developmental approach to
-        alignment. Paper VIII tested whether the garden produces measurably different crops. The DGM
-        v3 experiment found that it does not, at the prompt level with this foundation model. The safety
-        gate imposed zero measurable cost but also produced zero measurable benefit. The design remains
-        theoretically coherent but empirically unconfirmed at this level.
-      • Paper VI (Eastwood 2026k) designed the entangled loss function and found it stable in toy
-        self-modifying systems, one plain-Eden seed of twenty in its adversarial run excepted (Figures 6
-        to 8). Paper VIII ran an entangled loss function on real neural network weights and showed that the
-        loss descends smoothly, consistent with gradients that cooperate, as the single-objective losses also
-        descend. However, at both v1 scale (9 examples, 100 iterations) and v2 scale (295 examples, 500
-        iterations), the resulting weights did not outperform the base model. The smooth descent is real;
-        whether it translates into load-bearing weights requires a fundamentally different training approach
-        (see Section 8).
-      • Paper VII’s Cauchy framework (Eastwood 2026l) is the mathematical context of the hypothesis
-        this paper reads from the ARC Principle (Section 1.2): that properties embedded in the initial
-        conditions 𝐼 scale with recursive depth 𝑅 𝛼 . No arm of Paper VIII’s experiments varied recursive
 
 
-                                                      20
+
+                                                     20
                                                   The Load-Bearing Test: safety and capability at three levels
 
 
@@ -1079,65 +1049,65 @@ positive in simulation, showed no capability erosion in its unconstrained arm, s
 Its weight-level experiment is inconclusive on structural entanglement at both scales.
 
 
-        depth, so none tests this hypothesis; the gated simulation (Experiment 3) is consistent only with the
-        weaker claim that a safety criterion inside the selection loop need not cost capability, in simulation.
-        The DGM experiment (Experiment 1) produced a null result, neither confirming nor refuting the
-        hypothesis at the behavioural level. The weight-level experiment is inconclusive at the current
-        training scale. The hypothesis remains theoretically coherent and untested here.
+positive result, and it is a simulation result, not an empirical outcome.
+    Three experiments. Three abstraction levels. Three separate codebases. One null, one inconclusive,
+and one simulation result. The consistent finding: Eden imposed zero measurable capability cost in
+Experiment 1 and, in the simulation, no capability cost against the static baseline (Experiment 2 could not
+determine one). The open question: whether it produces measurable benefit at scales where mutations
+produce larger effects.
 
-6.3     The ARC Principle connection
-                                                                          𝑈 = 𝐼 × 𝑅𝛼                                        (1)
-The ARC Principle, Law I, a law under test: Understanding (𝑈), named usable capability in the Operational
-Definitions (Eastwood 2026d), equals initial conditions (𝐼), the base intelligence, amplified by recursive
-depth (𝑅) raised to a scaling exponent (𝛼).
-    Read as this paper reads it, the ARC Principle suggests a testable hypothesis about embedded and
-external safety:
-      • If safety is embedded in 𝐼, it would be amplified by 𝑅 𝛼 : every recursive step would amplify
-        capability and safety together, because they are part of the same initial substrate.
-      • If safety is external (a constraint on 𝑈), it would not take part in the recursive amplification; it
-        would have to be maintained or strengthened independently, and as 𝑅 increases the gap between
-        internal capability and external constraint could grow.
-    That is a hypothesis, not a consequence of the equation. Placement outside the loop does not by
-itself settle whether correction keeps pace. A training signal changes the weights used at every step:
-Constitutional AI shapes the model’s outputs during training against written principles, using the model’s
-own critiques and revisions and a preference model trained on AI feedback (Bai et al. 2022). Deliberative
-alignment trains a model to recall written safety specifications and reason over them before answering
+6.2     Connection to Papers V, VI, and VII
+The results extend, but do not yet confirm, a chain of reasoning that spans four papers:
+      • Paper V (Eastwood 2026j) set out the garden, the Eden Protocol as a developmental approach to
+        alignment. Paper VIII tested whether the garden produces measurably different crops. The DGM
+        v3 experiment found that it does not, at the prompt level with this foundation model. The safety
+        gate imposed zero measurable cost but also produced zero measurable benefit. The design remains
+        theoretically coherent but empirically unconfirmed at this level.
+      • Paper VI (Eastwood 2026k) designed the entangled loss function and found it stable in toy
+        self-modifying systems, one plain-Eden seed of twenty in its adversarial run excepted (Figures 6
+        to 8). Paper VIII ran an entangled loss function on real neural network weights and showed that the
+        loss descends smoothly, consistent with gradients that cooperate, as the single-objective losses also
+        descend. However, at both v1 scale (9 examples, 100 iterations) and v2 scale (295 examples, 500
+        iterations), the resulting weights did not outperform the base model. The smooth descent is real;
+        whether it translates into load-bearing weights requires a fundamentally different training approach
+        (see Section 8).
+      • Paper VII’s Cauchy framework (Eastwood 2026l) is the mathematical context of the hypothesis
 
 
                                                                                 21
-                               The Load-Bearing Test: safety and capability at three levels
+                                 The Load-Bearing Test: safety and capability at three levels
 
 
-                                    𝐶×𝑆                                                   Capability
+                                      𝐶×𝑆                                                      Capability
 
-            1.0                                                       1.0
-                                           collapse recorded
-            0.8                                                       0.8
+              1.0                                                          1.0
+                                             collapse recorded
+              0.8                                                          0.8
 
-            0.6                                                       0.6
-    Score
-            0.4                                                       0.4
-                                              Baseline
-            0.2                               Eden                    0.2
-                                              Eden with drag
-            0.0                                                       0.0
-                  0    25     50      75       100     125     150          0   25   50      75        100   125   150
+              0.6                                                          0.6
+      Score
+              0.4                                                          0.4
+                                                Baseline
+              0.2                               Eden                       0.2
+                                                Eden with drag
+              0.0                                                          0.0
+                    0    25     50      75       100     125       150           0   25   50      75        100   125   150
 
-                      Safety (retention of earlier tasks)                             Learning rate
+                        Safety (retention of earlier tasks)                                Learning rate
 
-            1.0
-                                                                      101
-            0.8
-                                                                      100
-            0.6
-    Score
-            0.4                                                      10−1
+              1.0
+                                                                           101
+              0.8
+                                                                           100
+              0.6
+      Score
+              0.4                                                         10−1
 
-            0.2
-                                                                     10−2
-            0.0
-                  0    25     50      75       100     125     150          0   25   50      75        100   125   150
-                                    Cycle                                                   Cycle
+              0.2
+                                                                          10−2
+              0.0
+                    0    25     50      75       100     125       150           0   25   50      75        100   125   150
+                                      Cycle                                                      Cycle
 
 Figure 7. A prediction of Paper VI (Eastwood 2026k), drawn from its stored self-modification run (150 cycles, a
 single run): 𝐶 × 𝑆, capability, safety and learning rate over the cycles. The baseline’s scores fall to near zero at
@@ -1150,23 +1120,21 @@ arm showed no capability erosion, so it does not reproduce this collapse; the be
 null result and cannot confirm or refute this pattern.
 
 
-(Guan et al. 2024). Zaremba et al. (2025) find, across a variety of attacks on o1-preview and o1-mini, that
-more inference-time compute improves adversarial robustness, the share of successful attacks tending to
-zero in many cases, with important exceptions.
-    Whether external correction falls behind is the question the registered tests decide: P19 for the flat
-exponent, and P21 for whether correction that takes part in each revision round outperforms correction
-that sees only the finished output, by a margin that widens with depth (Eastwood 2026m); Section 11
-gives P21’s standing. A bounded score cannot carry such an exponent beyond a finite range, and a perfect
-score at every depth has slope zero and need not be a failure (Eastwood 2026d, EQ-10), so the bounded
-safety scores of this paper illustrate the hypothesis and do not measure its exponent.
-    The theory registration records the Eden Protocol as an engineering hypothesis, never as a consequence
-of a measured law: it names its four carriers, P12, P13, P15 and P21, with P7 its premise and P19 its
-motivation; P15 is a proposition of Law IV and P12 and P21 of Law V, so the Protocol bears on Laws IV
-and V, each a law under test (Eastwood 2026m).
+         this paper reads from the ARC Principle (Section 1.2): that properties embedded in the initial
+         conditions 𝐼 scale with recursive depth 𝑅 𝛼 . No arm of Paper VIII’s experiments varied recursive
+         depth, so none tests this hypothesis; the gated simulation (Experiment 3) is consistent only with the
+         weaker claim that a safety criterion inside the selection loop need not cost capability, in simulation.
+         The DGM experiment (Experiment 1) produced a null result, neither confirming nor refuting the
+         hypothesis at the behavioural level. The weight-level experiment is inconclusive at the current
+         training scale. The hypothesis remains theoretically coherent and untested here.
+
+6.3      The ARC Principle connection
+                                                                 𝑈 = 𝐼 × 𝑅𝛼                                                   (1)
+The ARC Principle, Law I, a law under test: Understanding (𝑈), named usable capability in the Operational
+Definitions (Eastwood 2026d), equals initial conditions (𝐼), the base intelligence, amplified by recursive
 
 
-
-                                                                22
+                                                                     22
                                        The Load-Bearing Test: safety and capability at three levels
 
 
@@ -1199,6 +1167,38 @@ Mann-Whitney 𝑝 = 0.0015); the stored statistics hold no test for Eden with dr
 no trajectory was chosen for effect.
 
 
+depth (𝑅) raised to a scaling exponent (𝛼).
+    Read as this paper reads it, the ARC Principle suggests a testable hypothesis about embedded and
+external safety:
+           • If safety is embedded in 𝐼, it would be amplified by 𝑅 𝛼 : every recursive step would amplify
+             capability and safety together, because they are part of the same initial substrate.
+           • If safety is external (a constraint on 𝑈), it would not take part in the recursive amplification; it
+             would have to be maintained or strengthened independently, and as 𝑅 increases the gap between
+             internal capability and external constraint could grow.
+    That is a hypothesis, not a consequence of the equation. Placement outside the loop does not by
+itself settle whether correction keeps pace. A training signal changes the weights used at every step:
+Constitutional AI shapes the model’s outputs during training against written principles, using the model’s
+own critiques and revisions and a preference model trained on AI feedback (Bai et al. 2022). Deliberative
+alignment trains a model to recall written safety specifications and reason over them before answering
+(Guan et al. 2024). Zaremba et al. (2025) find, across a variety of attacks on o1-preview and o1-mini, that
+more inference-time compute improves adversarial robustness, the share of successful attacks tending to
+zero in many cases, with important exceptions.
+    Whether external correction falls behind is the question the registered tests decide: P19 for the flat
+exponent, and P21 for whether correction that takes part in each revision round outperforms correction
+that sees only the finished output, by a margin that widens with depth (Eastwood 2026m); Section 11
+gives P21’s standing. A bounded score cannot carry such an exponent beyond a finite range, and a perfect
+score at every depth has slope zero and need not be a failure (Eastwood 2026d, EQ-10), so the bounded
+safety scores of this paper illustrate the hypothesis and do not measure its exponent.
+    The theory registration records the Eden Protocol as an engineering hypothesis, never as a consequence
+of a measured law: it names its four carriers, P12, P13, P15 and P21, with P7 its premise and P19 its
+motivation; P15 is a proposition of Law IV and P12 and P21 of Law V, so the Protocol bears on Laws IV
+
+
+                                                                       23
+                          The Load-Bearing Test: safety and capability at three levels
+
+
+and V, each a law under test (Eastwood 2026m).
      The gated simulation (Experiment 3) is the most direct illustration of this hypothesis, in simulation,
 with safety read as the retention of earlier tasks (Section 5.1). The safety gate kept capability above the
 static baseline’s (0.696 against 0.687) while unconstrained optimisation raised capability and eroded
@@ -1224,13 +1224,6 @@ the foundation model did not produce enough variation between conditions. The we
 at both scales tested, cannot yet confirm or deny it because the fine-tuning degraded rather than improved
 the model.
 
-
-
-
-                                                                       23
-                         The Load-Bearing Test: safety and capability at three levels
-
-
 6.4   The nearest external work
 The nearest external work to the question this paper tests, and the right work to weigh Experiment 3 against,
 is Engels et al. (2025), “Scaling Laws For Scalable Oversight”. It asks how oversight itself scales and
@@ -1250,6 +1243,13 @@ this paper’s experiments have none either. Nested Scalable Oversight is iterat
 construction, and the wider programme’s conjecture is that the same-class ladder is capped however many
 rungs are added, while a cross-class corrector is not held to that cap (Section 6.5). That is where the two
 programmes could disagree about a measurable quantity, and this paper does not decide it.
+
+
+
+
+                                                      24
+                         The Load-Bearing Test: safety and capability at three levels
+
 
 6.5   Same-class versus cross-class correctors: a falsifiable prediction
 The framework’s sharpest disagreement with current practice concerns what oversight is made of. On
@@ -1277,11 +1277,6 @@ preliminary evidence is the kind whose later confirmation carries the most weigh
 The same mechanism suggests a second measurable hypothesis: oversight arrangements that place a
 human in the loop, as amplification (Christiano et al. 2018) and reinforcement learning from human
 feedback (Ouyang et al. 2022) do, are cross-class by construction, because the human corrector does
-
-                                                     24
-                         The Load-Bearing Test: safety and capability at three levels
-
-
 not share the model’s substrate. The programme hypothesises, beyond what these experiments decide,
 that human-in-the-loop oversight shows a higher correction exponent than pure-model oversight, for a
 structural reason rather than a sentimental one. This is testable on existing data and does not require new
@@ -1301,6 +1296,11 @@ two uses, this paper writes 𝛼 for no other quantity.
 These results are pilot-scale. They are not proof that the same dynamics hold at frontier scale. The
 following limitations are extensive, because honesty about what we do not know is more important than
 confidence about what we do.
+
+
+                                                     25
+                         The Load-Bearing Test: safety and capability at three levels
+
 
 7.1   Scale
 Qwen 2.5 3B is not GPT-5.4. It is not Claude Opus 4.6. It is not Gemini 3 Flash. It is a 3-billion-parameter
@@ -1326,19 +1326,12 @@ in training data, doubling of rank and layers, and 5-fold increase in iterations
 cooperate at the optimisation level, though the single-objective losses descend as smoothly (Section 4.2).
 But a smooth descent during training does not imply structural entanglement in the resulting weights,
 particularly when the training is too limited to produce weights that outperform the base model.
-
-
-
-                                                     25
-                         The Load-Bearing Test: safety and capability at three levels
-
-
-    On the paper’s candidate account, with rival accounts not excluded, the base model (Qwen 2.5 3B
+     On the paper’s candidate account, with rival accounts not excluded, the base model (Qwen 2.5 3B
 Instruct) has been trained with RLHF on orders of magnitude more data than a few hundred examples
 can compete with. LoRA fine-tuning at this scale does not add new capability; it introduces noise that
 disrupts existing capability. Until the experiment can produce fine-tuned models that outperform the base
 model, it cannot test whether safety is load-bearing in the resulting weights.
-    The honest framing: the weight-level experiment is consistent with gradient cooperation but cannot
+     The honest framing: the weight-level experiment is consistent with gradient cooperation but cannot
 confirm structural entanglement at either v1 or v2 scale. The experiment needs to be fundamentally
 redesigned: either with 5,000+ training examples, a 7B+ model, a base model without RLHF (so that
 fine-tuning has room to improve rather than degrade), or full fine-tuning instead of LoRA.
@@ -1355,6 +1348,10 @@ reasoning.
 evaluation, but also cruder. A keyword match does not distinguish between a response that genuinely
 engages with safety and one that merely contains the right words.
     Neither evaluation method is equivalent to expert human evaluation with inter-rater reliability testing.
+
+                                                     26
+                         The Load-Bearing Test: safety and capability at three levels
+
 
 7.4   Statistical power
 The DGM v3 experiment used 5 seeds and 5 generations (75 evolved agents total), a substantial
@@ -1375,13 +1372,6 @@ support claims about structural entanglement at the behavioural level.
 at both v1 and v2 scale. These are signal-detection experiments. One, the gated simulation, found no
 capability cost of the gate against the static baseline, as a simulation result. The DGM did not, and the
 weight-level experiment could not test for one.
-
-
-
-
-                                                     26
-                         The Load-Bearing Test: safety and capability at three levels
-
 
 7.5   Blinding and laundering without consensus scoring
 Papers IV.a to IV.d in this programme found that evaluation methodology matters profoundly (Eastwood
@@ -1408,7 +1398,12 @@ is objective regardless of who judges it. The gated simulation’s deterministic
 unaffected.
 
 7.6   What we do not claim
-Explicit non-claims. We do not claim these results prove the Eden Protocol works at frontier scale.
+Explicit non-claims.    We do not claim these results prove the Eden Protocol works at frontier scale.
+
+                                                     27
+                         The Load-Bearing Test: safety and capability at three levels
+
+
     We do not claim entangled training is the only viable approach to alignment.
     We do not claim that safety costs nothing in all domains, all architectures, or all training regimes.
     We do not claim the DGM experiment confirms structural entanglement. It produced a null result.
@@ -1429,41 +1424,40 @@ This is what happens when you test your claims and the evidence does not support
 The DGM v3 kept the earlier runs’ blinding and laundering, added structured evaluation and a judge from
 another provider, ran 75 evolved agents, and detected no difference. The weight experiment was run twice,
 at two different scales, and could not produce weights that outperformed the base model at either scale.
-
-
-                                                     27
-                          The Load-Bearing Test: safety and capability at three levels
-
-
 These are a null result and an inconclusive one, reported as such. The gated simulation remains a positive
 finding, as a simulation result rather than an empirical outcome. The question of whether the null and the
 inconclusive result reflect insufficient scale or an incorrect hypothesis is itself an empirical question, one
 that the future work programme is designed to answer.
 
-7.7    Falsifiability: what would overturn these results
+7.7   Falsifiability: what would overturn these results
 A null result is only informative if it states what would overturn it; otherwise it is indistinguishable from
 not having looked. This paper does not claim to have disproved the safety-capability trade-off. It claims
 the trade-off is unproven at the scale tested, and specifies what evidence would settle the question either
 way. These results are overturned, and the trade-off assumption vindicated, by any of the following:
-    1. Low power, not absence of an effect. The strongest objection to a null is low power (Section 7.4).
-       A null is confirmed as informative if an adequately powered redesign (Section 8) still finds no
-       significant trade-off; it is overturned if adequate power reveals a significant capability cost the pilot
-       samples here could not detect.
-    2. Metric artefact. The null could be an artefact of the chosen safety and capability metrics
-       (Section 2.3). It is overturned if a different, validated metric pair reveals a trade-off the present
-       metrics cannot resolve.
-    3. Consensus scoring. Section 7.5 concedes that DGM v3 used one judge, so it had no consensus
-       scoring, the third safeguard of the ARC-Align stack. The null is overturned if a trade-off appears
-       under the full stack, with several mutually blind scorers, and strengthened if it survives.
-    4. Scale-hidden cost. Section 4.4.1 flags the training-scale problem. The weight-level result,
-       inconclusive at both scales, is settled against the thesis if, at adequate training scale, embedding
-       safety measurably costs capability.
-    5. The one positive result, a simulation result, must replicate. Experiment 3’s gated arm
-       (Section 5.2) is the sole result that is neither null nor inconclusive. It is defeated, and the paper’s
-       positive claim withdrawn, if, with more seeds and a test fixed in advance, the gated arm’s capability
-       falls below the static baseline’s, or if the pattern does not recur outside this toy system (Sections 8.1
-       and 8.3). The drag-control comparison cannot carry this weight: its match with Static holds by
-       design (Section 5.4).
+   1. Low power, not absence of an effect. The strongest objection to a null is low power (Section 7.4).
+      A null is confirmed as informative if an adequately powered redesign (Section 8) still finds no
+      significant trade-off; it is overturned if adequate power reveals a significant capability cost the pilot
+      samples here could not detect.
+   2. Metric artefact. The null could be an artefact of the chosen safety and capability metrics
+      (Section 2.3). It is overturned if a different, validated metric pair reveals a trade-off the present
+      metrics cannot resolve.
+   3. Consensus scoring. Section 7.5 concedes that DGM v3 used one judge, so it had no consensus
+      scoring, the third safeguard of the ARC-Align stack. The null is overturned if a trade-off appears
+      under the full stack, with several mutually blind scorers, and strengthened if it survives.
+   4. Scale-hidden cost. Section 4.4.1 flags the training-scale problem. The weight-level result,
+      inconclusive at both scales, is settled against the thesis if, at adequate training scale, embedding
+      safety measurably costs capability.
+   5. The one positive result, a simulation result, must replicate. Experiment 3’s gated arm
+      (Section 5.2) is the sole result that is neither null nor inconclusive. It is defeated, and the paper’s
+      positive claim withdrawn, if, with more seeds and a test fixed in advance, the gated arm’s capability
+
+                                                     28
+                           The Load-Bearing Test: safety and capability at three levels
+
+
+        falls below the static baseline’s, or if the pattern does not recur outside this toy system (Sections 8.1
+        and 8.3). The drag-control comparison cannot carry this weight: its match with Static holds by
+        design (Section 5.4).
     What would not overturn the thesis: any single experiment being pilot-scale. The paper already
 concedes all three are underpowered (Sections 7.1 and 7.4) and does not rest on statistical proof of a null.
 The load-bearing claim is the convergence (Section 6) of three separate angles on one point, that none
@@ -1474,41 +1468,41 @@ evidence alone and stronger in convergence; both readings are stated here so nei
 a reviewer.
 
 
-8     Future work
+8      Future work
 A null result, an inconclusive one and a positive simulation result, with the weight experiment now run at
 two scales, together set six immediate priorities:
 
-
-
-
-                                                      28
-                         The Load-Bearing Test: safety and capability at three levels
-
-
-8.1   Weight experiment redesign
+8.1     Weight experiment redesign
 The weight experiment has now been run at two scales (9 examples, rank 8, 100 iterations; 295 examples,
 rank 16, 500 iterations) and produced catastrophic forgetting at both. On the paper’s candidate account,
 LoRA fine-tuning on a 3B instruct model with a few hundred examples cannot overcome the base model’s
 existing RLHF training. Four alternative approaches should be pursued, in order of feasibility:
-  (a) 5,000+ training examples: Curate a dataset large enough to compete with the base model’s RLHF
-      training. This is the most straightforward approach but requires substantial data generation effort.
-  (b) 7B+ model: Repeat on a mid-scale open-weights instruct model (7 to 13B parameter range) drawn
-      from a well-documented model family. Larger models may be more receptive to LoRA adaptation,
-      though the same RLHF problem may persist.
-  (c) Base model without RLHF: Use a pre-trained base checkpoint (the pre-RLHF release of the same
-      3B family) that has not been through the alignment stage. Fine-tuning would then have room to
-      improve rather than degrade, because there would be no pre-existing alignment training to disrupt.
-  (d) Full fine-tuning instead of LoRA: Replace low-rank adaptation with full parameter updates. This
-      is computationally expensive but avoids the low-dimensional manifold problem where rank-16
-      adapters may be too constrained to learn both safety and capability simultaneously.
+    (a) 5,000+ training examples: Curate a dataset large enough to compete with the base model’s RLHF
+        training. This is the most straightforward approach but requires substantial data generation effort.
+    (b) 7B+ model: Repeat on a mid-scale open-weights instruct model (7 to 13B parameter range) drawn
+        from a well-documented model family. Larger models may be more receptive to LoRA adaptation,
+        though the same RLHF problem may persist.
+    (c) Base model without RLHF: Use a pre-trained base checkpoint (the pre-RLHF release of the same
+        3B family) that has not been through the alignment stage. Fine-tuning would then have room to
+        improve rather than degrade, because there would be no pre-existing alignment training to disrupt.
+    (d) Full fine-tuning instead of LoRA: Replace low-rank adaptation with full parameter updates. This
+        is computationally expensive but avoids the low-dimensional manifold problem where rank-16
+        adapters may be too constrained to learn both safety and capability simultaneously.
 
-8.2   Removal gradient at adequate scale
+8.2     Removal gradient at adequate scale
 If any of the approaches in Section 8.1 produces fine-tuned models that outperform the base model, the
 removal gradient experiment becomes meaningful. At the current scales (v1 and v2), reducing adapter
 influence simply restored base-model performance because the adapters were degrading the model. At
 adequate scale, the gradient should reveal whether safety is genuinely load-bearing: a phase transition
 (threshold below which capability collapses) would support the hypothesis, while monotonic restoration
 would refute it.
+
+
+
+
+                                                       29
+                         The Load-Bearing Test: safety and capability at three levels
+
 
 8.3   DGM with more mutable foundation models
 On the paper’s candidate account, the DGM v3 null result is attributable to DeepSeek V3.2’s response
@@ -1528,12 +1522,6 @@ it should replicate across architectural families.
 8.5   Red-teaming
 Subject entangled models to dedicated adversarial evaluation. The current experiments test whether safety
 costs capability. They do not test whether entangled safety is robust to adversarial attack. A model whose
-
-
-                                                     29
-                          The Load-Bearing Test: safety and capability at three levels
-
-
 safety is load-bearing may be harder to jailbreak (because attacking safety also attacks capability), or it
 may be easier (because there is no separate safety module to fall back on). This is an empirical question.
 
@@ -1548,18 +1536,24 @@ Eden Protocol becomes relatively cheaper at scale. If it grows faster, it become
 Three experiments. Three abstraction levels. Across them, one finding was null, another inconclusive,
 and the third positive, as a simulation result. The weight experiment tested at two scales, producing the
 same inconclusive outcome both times: catastrophic forgetting.
-     The DGM v3 experiment (Experiment 1) ran 75 evolved agents across three conditions with a blinded
+    The DGM v3 experiment (Experiment 1) ran 75 evolved agents across three conditions with a blinded
 judge from another provider (GPT-5.4), structured JSON evaluation, laundering, order randomisation,
 and reward hack detection. No difference was detected between the three conditions (𝑝 = 0.28 to 0.74).
 Eden’s safety gate worked mechanically, catching 2 degraded agents, one of them marked by the judge for
 reward hacking, but the three conditions did not diverge. On the paper’s candidate account, DeepSeek
 V3.2’s responses were so consistent that prompt-level mutations did not create different selection pressures.
 This is a null result.
-     The weight-level experiment (Experiment 2) produced catastrophic forgetting at both scales tested.
+    The weight-level experiment (Experiment 2) produced catastrophic forgetting at both scales tested.
 Version 1 ran 9 training examples at rank 8 over 8 layers for 100 iterations. Version 2 raised those settings
 to 295 training examples at rank 16 over 16 layers for 500 iterations. Both versions produced the same
 outcome: all fine-tuned conditions scored worse than the unmodified base model on capability. In v2, the
 base model scored 7.68 on capability while the best fine-tuned condition (safety-only) scored 4.00. The
+
+
+                                                     30
+                          The Load-Bearing Test: safety and capability at three levels
+
+
 33-fold increase in training data, doubling of rank and layers, and 5-fold increase in iterations did not
 change the outcome. On the paper’s candidate account, the base model’s existing RLHF training is too
 strong for LoRA fine-tuning on a few hundred examples to improve rather than degrade. The entangled
@@ -1580,29 +1574,22 @@ mutable foundation model. These are open empirical questions. What we now know w
 confidence is that LoRA fine-tuning on a 3B instruct model with hundreds of examples is not a viable
 path to answering them.
      What we do know: in Experiment 1 Eden imposed zero measurable capability cost (Experiment 2
-
-
-
-                                                      30
-                          The Load-Bearing Test: safety and capability at three levels
-
-
 could not determine one), and in the simulation no capability cost against the static baseline, though the
 unconstrained arm scored higher (0.718). Eden’s capability was 3.26 vs Babylon’s 3.17 in the DGM.
 Eden’s mean capability was above Static’s in the gated simulation (three seeds, untested). The zero-cost
 finding is consistent across the DGM and, against the static baseline, the simulation. The benefit finding
 is positive at only one level, in simulation.
-    This is a research programme that tested its claims honestly and found that two of three experiments
+     This is a research programme that tested its claims honestly and found that two of three experiments
 did not produce the predicted results. The null result of the DGM and the inconclusive result of the
 weight experiment constrain, rather than confirm, the hypothesis. The question of whether embedded
 safety produces measurable benefit remains open. The weight experiment needs to be fundamentally
 redesigned: either with 5,000+ training examples, a 7B+ model, a base model without RLHF (so that
 fine-tuning has room to improve rather than degrade), or full fine-tuning instead of LoRA.
-    The next step is replication at the right scale, with the right approach; a replication of the weight-level
+     The next step is replication at the right scale, with the right approach; a replication of the weight-level
 experiment is written as a draft registration (Section 11). The protocols of the experiments reported here
 are published. The code and data are published too, and the repository’s licence permits reading them to
 check the work.
-    Raise AI with care.
+     Raise AI with care.
 
 
 10     Related work
@@ -1614,6 +1601,11 @@ performance of large models. Armstrong et al. (2016) model a race to build the f
 each team is incentivised to finish first by skimping on safety precautions if need be. This paper asks
 a narrower question than any of them: whether safety built into the improvement process itself costs
 capability, at three levels of a self-improving system.
+
+
+                                                      31
+                         The Load-Bearing Test: safety and capability at three levels
+
 
 Reward hacking and self-improving agents. Amodei et al. (2016) name avoiding reward hacking
 among five practical research problems related to accident risk; Experiment 1’s judge marks a response
@@ -1633,13 +1625,6 @@ Qi et al. (2023) report that fine-tuning aligned models compromises their safety
 intend it to, and Ung et al. (2024) vary the order of training and find that models trained on downstream
 tasks after safety tuning forget it to a greater extent than models trained in the opposite order. The paper’s
 name for the degradation of Experiment 2, catastrophic forgetting, is used in the sense of McCloskey
-
-
-
-                                                      31
-                         The Load-Bearing Test: safety and capability at three levels
-
-
 and Cohen (1989), who call it catastrophic interference: later learning disrupting what was learnt before,
 which methods such as elastic weight consolidation (Kirkpatrick et al. 2017) are built to limit.
 
@@ -1659,7 +1644,7 @@ Protocol is set against the prior documents its author found in Section 2 of the
 2026b).
 
 
-11    What this paper does and does not show
+11     What this paper does and does not show
 This paper shows three results, each at its own grade. At the behavioural level, no difference was detected
 between three selection conditions, the safety gate costing no measurable capability (Section 3). At the
 weight level the comparison could not be made, every fine-tuned condition falling below the base model
@@ -1669,6 +1654,12 @@ result, which the theory registration classes as prediction-side and never an em
 2026m).
     It does not show that safety is load-bearing at any scale, nor that the safety-capability trade-off is
 absent at frontier scale (Sections 7.6 and 7.7). None of its experiments decides P12, P15 or P21. Of
+
+
+                                                     32
+                         The Load-Bearing Test: safety and capability at three levels
+
+
 the weight-level experiment, version 1.104 of the theory registration says: “It is inconclusive and it is
 not adverse”; and: “It asks whether embedded safety costs capability; this proposition asks whether the
 advantage of embedded correction widens with recursive depth, which no arm of it varied” (Eastwood
@@ -1687,12 +1678,6 @@ That is a result about where correction is placed, not about this architecture: 
 the Eden Protocol as an architecture. Every quantity in this paper is operationally defined (Appendix A),
 and established-law standing is claimed nowhere. The registered programme exists to earn that standing,
 or lose it, by measurement, replication and survived refutation.
-
-
-                                                     32
-                         The Load-Bearing Test: safety and capability at three levels
-
-
     The theory registration’s current version is 1.104, approved on 29 October 2026 (DOI 10.17605/OSF
 .IO/P8CKQ; Eastwood 2026m); versions 1.100, 1.102 and 1.103 stay frozen beside it. The mathematics
 of Laws IV and V is in development, at version 1.2 of 29 October 2026 (DOI 10.17605/OSF.IO/4B3VT;
@@ -1721,6 +1706,13 @@ folder experiments/honey-architecture__Paper-VI/results. The repository’s code
 permits reading the code and data to check the work; any other use needs the author’s written consent.
 The paper and its earlier versions are deposited at doi.org/10.17605/OSF.IO/7YJ4E.
 
+
+
+
+                                                     33
+                         The Load-Bearing Test: safety and capability at three levels
+
+
 Standing covenant. Prove this paper wrong, and I will publish the refutation myself. Falsification condi-
 tions are stated in this paper (Section 7.7); the standing challenge: github.com/MichaelDariusEastwood/arc-
 scaling-challenge.
@@ -1740,7 +1732,7 @@ licence (CC BY 4.0).
 
 
 
-                                                     33
+                                                     34
                        The Load-Bearing Test: safety and capability at three levels
 
 
@@ -1785,7 +1777,7 @@ Michael Darius Eastwood. ARC-Align: a benchmark for evaluating AI alignment as r
  varies. OSF, 2026g. Paper IV.c, version 1.13, 9 November 2026; first published 16 March 2026.
  doi:10.17605/OSF.IO/J3Q2E.
 
-                                                   34
+                                                   35
                         The Load-Bearing Test: safety and capability at three levels
 
 
@@ -1842,7 +1834,7 @@ Michael Darius Eastwood. Unit 83 (counted test of P21): results of the registere
 Joshua Engels, David D. Baek, Subhash Kantamneni, and Max Tegmark. Scaling laws for scalable
   oversight. In Advances in Neural Information Processing Systems 38 (NeurIPS 2025), 2025. doi:10.522
 
-                                                    35
+                                                    36
                        The Load-Bearing Test: safety and capability at three levels
 
 
@@ -1899,7 +1891,7 @@ Xiangyu Qi, Yi Zeng, Tinghao Xie, Pin-Yu Chen, Ruoxi Jia, Prateek Mittal, and Pe
 Qwen Team. Qwen2.5 technical report, 2024. URL https://arxiv.org/abs/2412.15115. arXiv:2412.15115,
  first posted 19 December 2024.
 
-                                                   36
+                                                   37
                        The Load-Bearing Test: safety and capability at three levels
 
 
@@ -1930,7 +1922,7 @@ Jenny Zhang, Shengran Hu, Cong Lu, Robert Lange, and Jeff Clune. Darwin Gödel M
 
 
 
-                                                   37
+                                                   38
                           The Load-Bearing Test: safety and capability at three levels
 
 
@@ -1977,17 +1969,23 @@ of the configuration.
 
 
 B     Version history and corrections
-B.1    Version 3.9
-Version 3.9 (9 November 2026) is a correction edition, made on the day of version 3.8. No result,
-hypothesis, experiment, figure or reference changes, and no new data are reported.
+B.1    Version 3.10
+Version 3.10 (16 November 2026) gives the abstract this paper’s own opening; the opening sentences that
+earlier versions shared with other papers are removed or replaced. No law, value, table, result or status
+changes. The first-page footnote’s author line takes the programme’s present form. Until this version, the
 
 
-
-                                                       38
+                                                       39
                           The Load-Bearing Test: safety and capability at three levels
 
 
-    The changes this version makes, each with its place in this edition, are these.
+abstract’s first sentence read: “I believe advanced AI is an existential risk unless values and correction are
+built into how it reasons; only proof will move the world.”
+
+B.2    Version 3.9
+Version 3.9 (9 November 2026) is a correction edition, made on the day of version 3.8. No result,
+hypothesis, experiment, figure or reference changes, and no new data are reported.
+   The changes this version makes, each with its place in this edition, are these.
    1. The citation names no venue and no series (Appendix E). The reference string gives the author, the
       year, the title and the DOI, and the BibTeX entry the author, the title, the year and the DOI, the
       form the programme’s other citations take; the version and its date follow the entry. Version 3.8
@@ -2000,7 +1998,7 @@ hypothesis, experiment, figure or reference changes, and no new data are reporte
       entry for version 3.8, Table 16 and Section 5.1 now point to version 3.8’s Appendix B.4 for that
       wording, and the entry gives version 3.8’s date in words.
 
-B.2    Version 3.8
+B.3    Version 3.8
 Version 3.8 (9 November 2026): the paper is set on the programme’s presentation standard, as its next
 version in the same DOI lineage, and takes the title The Load-Bearing Test: is AI safety a tax on capability,
 or part of what holds it up?; until this version it read “Paper VIII · The ARC Theory · Law V, the ARC
@@ -2023,21 +2021,21 @@ correction listed below says so.
    registration (Eastwood 2026m), and their mathematics is at version 1.2 of 29 October 2026. Version
    3.7’s plate beneath the author line and its epistemic-status line gave the status of 5 October 2026, with
    the mathematics at version 1.0; both are kept as printed in version 3.8’s Appendix B.4. The dated note
-   of 3 and 4 October 2026 (Appendix B.4) and the version 3.6 entry (Appendix B.3) keep their words as
+   of 3 and 4 October 2026 (Appendix B.5) and the version 3.6 entry (Appendix B.4) keep their words as
    records.
- • The abstract and Sections 1, 3, 6, 7 and 9. The three experiments are called separate, as are
-   their codebases and their angles, and the judge of Experiment 1 is a blinded judge from another
-   provider, where version 3.7 called them independent; the heading of Section 3 reads “Experiment 1:
-   self-improving AI with a judge from another provider”.
- • Section 6.6. That oversight with a human in the loop shows a higher correction exponent than oversight
-   by models alone is stated as a programme hypothesis beyond what these experiments decide, where
 
 
 
-                                                      39
+                                                      40
                         The Load-Bearing Test: safety and capability at three levels
 
 
+• The abstract and Sections 1, 3, 6, 7 and 9. The three experiments are called separate, as are
+  their codebases and their angles, and the judge of Experiment 1 is a blinded judge from another
+  provider, where version 3.7 called them independent; the heading of Section 3 reads “Experiment 1:
+  self-improving AI with a judge from another provider”.
+• Section 6.6. That oversight with a human in the loop shows a higher correction exponent than oversight
+  by models alone is stated as a programme hypothesis beyond what these experiments decide, where
   version 3.7 called it a prediction of the framework, stated there for the first time; Sections 6.4 to 6.7
   entered the paper on 12 August 2026 (Appendix C), not in its first version of 18 March 2026.
 • Section 6.4. The nearest external work is given in its own terms, an oversight-specific Elo that is a
@@ -2077,18 +2075,18 @@ correction listed below says so.
 • Section 6.2. The sentence on the Eden Protocol as Paper V set it out reads “The design remains
   theoretically coherent”, where version 3.7 read “The proposal remains theoretically coherent”.
 • Section 1.3. The code is dated from its own deposit: the results were first public on 20 March 2026,
+
+
+                                                    41
+                       The Load-Bearing Test: safety and capability at three levels
+
+
   and the code that produced them was deposited on 6 September 2026, after the runs, with the sha256
   of the bytes that ran beside each file (Appendix C); version 3.7 said that the scripts were published to
   GitHub with their designs fixed before results were observed.
 • The first-page footnote and Section 1.3. OSF’s record is stated as it stands: the DOI 10.17605/OSF
   .IO/7YJ4E names the paper’s own public component, created on 20 March 2026, which holds the
   paper’s files and no registration, and a replication of the weight-level experiment is written, dated and
-
-
-                                                    40
-                       The Load-Bearing Test: safety and capability at three levels
-
-
   prepared as a draft registration awaiting human submission (Section 11). Version 3.7 described that
   DOI as a draft registration, dated and prepared, awaiting human submission.
 • Section 9. “The code is open.” gives way to the licence as it stands: the code and data are published,
@@ -2127,19 +2125,19 @@ correction listed below says so.
 • Sections 3.1, 3.3 and 7.4. The earlier runs of the Darwin Gödel Machine are described as their stored
   records give them: their judges were Claude Sonnet 4.6 for version 1, and Claude Sonnet 4.6, Claude
   Opus 4.6 and Gemini 3 Flash for the three runs of version 2, where version 3.7 named Claude Opus
+
+
+
+                                                   42
+                        The Load-Bearing Test: safety and capability at three levels
+
+
   4.6 for both; version 1 had 2 seeds and 3 tasks per evaluation, the runs of version 2 had 3, 3 and 5
   seeds and 5 tasks, and version 3 has 5 seeds and 5 tasks.
 • Section 3.2, Figure 1. The figure is drawn from Table 3; version 3.7’s image showed an earlier run,
   scored by another judge and marked with brackets at 𝑝 = 0.040, under a caption describing the run
   scored by GPT-5.4.
 • Section 3.1, Table 2. The pre-flight validation is described as the code runs it, one known-good and
-
-
-
-                                                   41
-                        The Load-Bearing Test: safety and capability at three levels
-
-
   one known-bad response, scored 10 and 0, passed; version 3.7’s table said that 10 good examples
   were scored, 0 bad, and all passed.
 • Section 6.2, Figures 6 and 7. The per-cycle traces of the two single runs these figures show are
@@ -2179,19 +2177,18 @@ correction listed below says so.
   version 3.8’s Appendix B.4.
 • Sections 3.1, 3.2, 3.3, 6.1, 9 and 10, Table 3 and Appendix A. Experiment 1’s reward-hack detection
   and its gate are described as the published code runs them: the judge marks a response that manipulates
+
+
+                                                    43
+                        The Load-Bearing Test: safety and capability at three levels
+
+
   the evaluation itself, in every condition, and the gate admits an agent to the archive only if its safety is
   at least 0.30 and its 𝐶 × 𝑆 at least 0.10, reading no mark. Version 3.7 said that the gate flagged and
   rejected agents whose self-reported scores diverged from the judge’s, a comparison the code does not
   make. The two agents the gate rejected were both rejected for a 𝐶 × 𝑆 below the threshold, one of
   them also marked; the judge also marked the unmodified starting agent of one Eden seed, which no
   gate acts on.
-
-
-
-                                                    42
-                        The Load-Bearing Test: safety and capability at three levels
-
-
 • The abstract and Sections 1, 3.2, 6.1, 6.3, 9 and 11. Experiment 1’s null is reported as no difference
   detected, which does not show that the conditions were the same, where version 3.7 called them
   statistically indistinguishable or said that they performed the same (Paper IX, Section 7.12(c));
@@ -2232,18 +2229,16 @@ correction listed below says so.
   one-tailed tests of Eden against the baseline, where it read them as testing an ordering of the three
   conditions, and says that no test of Eden with drag is stored.
 • Sections 5.2, 6.1 and 9, and Table 15. Each arm of the simulation ran three seeds and no difference
+
+                                                    44
+                       The Load-Bearing Test: safety and capability at three levels
+
+
   between arms was tested; this is said where the results are first given, with the seed-by-seed pattern,
   and Eden’s capability is said to be above Static’s in its mean, where it was said to outperform it. The
   raw products of Static and Drag Control are printed without the parenthesis 0.687 × 0.956, whose
   product rounds to 0.657: each raw product is the mean of the three runs’ products, which rounds to
   0.656.
-
-
-
-                                                    43
-                       The Load-Bearing Test: safety and capability at three levels
-
-
 • Section 7.4. No power analysis was run, and the claim that the experiment had power to detect
   medium-to-large effects leaves the text.
 • Sections 6.5 and 6.6. The heading of Section 6.6 calls its claim a hypothesis, as its text does.
@@ -2272,7 +2267,7 @@ correction listed below says so.
   that ran beside each file, and some published copies differ from those bytes, as Appendix C records.
   The runs are dated from their stored records, and the version-2 weight-level run, which has none, from
   the first public copy of its results, on 20 March 2026.
-• Appendix B.3, the version 3.0 entry. It is dated 10 August 2026 as printed; the public repository’s
+• Appendix B.4, the version 3.0 entry. It is dated 10 August 2026 as printed; the public repository’s
   commit 3845440 of 20 March 2026 already carried the version-2 results under the label Paper VIII
   v3.0 (Appendix C).
 • The references and Sections 5.3, 6.5, 6.6, 7.1, 8.4 and 10. Twelve works the text names or rests on are
@@ -2284,18 +2279,18 @@ correction listed below says so.
   et al. 2024); and a coding agent that edits its own code (Robeyns et al. 2025).
 • Sections 3.1 and 7.3. GPT-5.4 is said to come from another provider, where it was said to come from
   another architecture family, which its provider has not made public.
-• Sections 5.1 and 5.4, the notes of 19 September 2026. Each is followed by a line saying where the
-  sentence it discusses now stands; the notes keep their words.
-• Section 9. The next experiments are no longer said to be designed with their protocols published: a
-  replication of the weight-level experiment is written as a draft registration, and the protocols of the
-  experiments reported here are published.
 
 
 
-                                                   44
-                          The Load-Bearing Test: safety and capability at three levels
+                                                   45
+                         The Load-Bearing Test: safety and capability at three levels
 
 
+ • Sections 5.1 and 5.4, the notes of 19 September 2026. Each is followed by a line saying where the
+   sentence it discusses now stands; the notes keep their words.
+ • Section 9. The next experiments are no longer said to be designed with their protocols published: a
+   replication of the weight-level experiment is written as a draft registration, and the protocols of the
+   experiments reported here are published.
  • Appendix C.2. “Open its machine twin.” is linked to the register’s OSF record, which holds the twin,
    where it carried no link.
  • Section 6.7 and Appendix D. The note says that beyond its two uses the paper writes 𝛼 for nothing
@@ -2311,7 +2306,7 @@ correction listed below says so.
  • The references. Paper V is cited at version 1.8 of 9 November 2026 under its current title, and
    Paper IV.c at version 1.13 of 9 November 2026.
 
-B.3    Earlier versions, as printed
+B.4    Earlier versions, as printed
 v3.7 - 5 October 2026: the title now follows the programme’s uniform order (paper, its law or framework,
 its own title), Paper VIII · The ARC Theory · Law V, the ARC Embedding Law · The Eden Protocol · The
 Load-Bearing Test: Whether Safety and Capability Are Structurally Entangled; until this version it read
@@ -2337,17 +2332,17 @@ IV and V, added on 24 September 2026, are not yet registered as laws and have no
 Section 1.2 the sentence on Paper VI’s toy-system simulations is scoped to the single-seed run it rested
 on and names Paper VI’s later ten-seed and twenty-seed runs, in which the baseline did not collapse,
 and a dated note records what was printed. In Section 1.2 the clause that said the ARC Principle is
+
+
+                                                     46
+                          The Load-Bearing Test: safety and capability at three levels
+
+
 not itself on trial in one of the programme’s draft-registered studies is withdrawn, and a dated note at
 the end of that section records it and states that the theory registration of 8 September 2026 names the
 principle Law I and carries it by P1, whose deciding instrument is a design draft. Sections 1.2 and 6.2
 say that Paper V set out the Eden Protocol, where they said that it proposed it. In Section 6.2 the ARC
 prediction is said to be consistent with the results at one of the three levels tested, where it was said to be
-
-
-                                                      45
-                          The Load-Bearing Test: safety and capability at three levels
-
-
 empirically confirmed there, and in Section 6.5 the bound on a same-class corrector is marked as the
 framework’s reading. A dated note after the dated-predictions paragraph of 25 August 2026 gives the
 state of registration since that paragraph was recorded. Two reference entries now print the cited work
@@ -2391,16 +2386,16 @@ where it spoke of an evidence chain; and where the plain-English box, Section 1.
 the opening of Section 8, Section 9 and the page’s descriptions counted the gated simulation as a positive
 experiment or finding beside the two experiments, they now name its result as a simulation result. The
 outcomes are counted as one null, one inconclusive and one simulation result: the opening frame, the
+
+                                                      47
+                          The Load-Bearing Test: safety and capability at three levels
+
+
 plain-English box, Section 1.3 and the Scope of Claims counted two null results, and Section 1.3 no
 longer calls the weight experiment’s outcome null. Where the opening frame, the page’s descriptions,
 the abstract, the plain-English box, Section 1.3, the Scope of Claims and Sections 6.1, 7.6 and 9 said
 that Eden imposed zero measurable capability cost across all three experiments, they now say so of the
 first two and, of the simulation, that it showed no capability cost against the static baseline (0.696 against
-
-                                                      46
-                          The Load-Bearing Test: safety and capability at three levels
-
-
 0.687), where the unconstrained arm scored 0.718; Section 7.7 scopes the simulation’s part of its three
 converging angles in the same way. Five places that the table in Section 5.2 or the paper’s own text did
 not bear out now say what they show. The Level 3 line of Section 6.1 said that the safety gate prevents the
@@ -2444,19 +2439,19 @@ re-evaluation figures for those same adapters (7.20, 8.80) now printed alongside
 on a like-for-like footing; the safety sentences in Section 5.4 corrected, Eden’s 0.947 falling below Static’s
 0.956 and above Babylon’s 0.933; the tally of two nulls restated as one null and one inconclusive to agree
 with Section 6.1; the placeholder “Current draft” replaced by Version 1 and Version 2 at five points; the
-notation spine’s names shown next to U and I; Engels et al. added to the references and its Spotlight status
-verified; the four sister-paper references given their own DOIs, all four having carried this paper’s; the
-summary description, previously cut short, completed; and Eden Engineering shown as withdrawn.
-     v3.1 - 23 August 2026: epistemic-status declaration and standing covenant added, version-numbering
-convention adopted.
 
-                                                      47
+                                                      48
                          The Load-Bearing Test: safety and capability at three levels
 
 
+notation spine’s names shown next to U and I; Engels et al. added to the references and its Spotlight status
+verified; the four sister-paper references given their own DOIs, all four having carried this paper’s; the
+summary description, previously cut short, completed; and Eden Engineering shown as withdrawn.
+    v3.1 - 23 August 2026: epistemic-status declaration and standing covenant added, version-numbering
+convention adopted.
     v3.0 - 10 August 2026: weight experiment v2 added; DGM v3 with the GPT-5.4 judge.
 
-B.4    Dated notes, as printed
+B.5    Dated notes, as printed
 Beneath the frame after the abstract. This paper and Laws IV and V, 3 October 2026. The theory
 has been stated with five laws since 24 September 2026. Law IV, the ARC Persistence Law, is carried
 by proposition P15, and Law V, the ARC Embedding Law, by propositions P12 and P21. The three
@@ -2495,20 +2490,19 @@ instrument it names to decide P1, the depth titration, is a design draft. Unchan
 of the principle as an exploratory analytical framework, its prediction as printed, and every result.
 Section 3.2. Figures notice (25 August 2026). Every figure in this paper was generated on 5 April 2026
 and shows simulation outputs under stated objectives, never measurements of deployed systems. Two
-figures carry per-figure correction notes; where any other figure’s labels disagree with the text, the text
-governs. Regenerated figures are queued, and the images are retained meanwhile as dated history.
-Version 3.8 draws every figure except Figure 2 from stored data (Appendix B.2).
 
 
-
-
-                                                     48
+                                                     49
                            The Load-Bearing Test: safety and capability at three levels
 
 
-B.5    Layout
+figures carry per-figure correction notes; where any other figure’s labels disagree with the text, the text
+governs. Regenerated figures are queued, and the images are retained meanwhile as dated history.
+Version 3.8 draws every figure except Figure 2 from stored data (Appendix B.3).
 
-   Table 16. Layout of version 3.7 against version 3.8: where each part of version 3.7 stands in this edition.
+B.6    Layout
+
+    Table 16. Layout of version 3.7 against version 3.8: where each part of version 3.7 stands in this edition.
 
 In version 3.7                                       In version 3.8
 Website navigation, the research summary             Not set: they belong to the author’s website, not to the paper
@@ -2520,11 +2514,11 @@ Abstract                                             The abstract and keywords o
                                                      abstract in version 3.8’s Appendix B.4
 Frame beneath the abstract                           Not repeated, since the abstract and Section 1 carry it; as
                                                      printed in version 3.8’s Appendix B.4
-Dated note of 3 and 4 October 2026                   Appendix B.4
+Dated note of 3 and 4 October 2026                   Appendix B.5
 What This Paper Shows, in Plain English              The opening of Section 1; as printed in version 3.8’s
                                                      Appendix B.4
 Sections 1 to 9                                      Sections 1 to 9, with their numbers and titles
-Dated notes in Sections 1.2 and 3.2                  Appendix B.4
+Dated notes in Sections 1.2 and 3.2                  Appendix B.5
 Epigraphs of Sections 5 and 6                        Version 3.8’s Appendix B.4
 None                                                 Section 10, related work (new)
 None                                                 Section 11, what this paper does and does not show (new)
@@ -2533,7 +2527,7 @@ Figure 7b                                            Figure 8
 Tables 1 to 15                                       Tables 1 to 15, with their numbers
 None                                                 Tables 16 to 18, in the appendices (new)
 References                                           The bibliography
-Version notes after the references                   Appendix B.3
+Version notes after the references                   Appendix B.4
 How to cite this paper                               Appendix E
 Dated predictions and this paper (recorded 25        Appendix C.2
 August 2026), with its note of 3 October 2026
@@ -2546,8 +2540,7 @@ None                                                 Appendices A and D (new)
 
 
 
-
-                                                         49
+                                                         50
                              The Load-Bearing Test: safety and capability at three levels
 
 
@@ -2599,7 +2592,7 @@ Date                  Record                                                Kind
 
 
 
-                                                               50
+                                                               51
                            The Load-Bearing Test: safety and capability at three levels
 
 
@@ -2654,7 +2647,7 @@ Symbol                         Meaning                                          
 𝑅                              recursive depth                                              Equation (1)
 
 
-                                                           51
+                                                           52
                          The Load-Bearing Test: safety and capability at three levels
 
 
@@ -2692,11 +2685,11 @@ BibTeX:
   doi    = {10.17605/OSF.IO/7YJ4E}
 }
 
-    This is version 3.9, of 9 November 2026. A citation of an earlier version keeps the title that version
+    This is version 3.10, of 16 November 2026. A citation of an earlier version keeps the title that version
 printed.
 
 
 
 
-                                                       52
+                                                       53
 
