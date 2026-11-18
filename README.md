@@ -5,6 +5,7 @@ scaling and embedded AI alignment.** 35 document folders, the code and recorded 
 file the papers cite.
 
 [![OSF DOI](https://img.shields.io/badge/OSF-10.17605%2FOSF.IO%2F6C5XB-blue)](https://doi.org/10.17605/OSF.IO/6C5XB)
+[![Zenodo DOI](https://img.shields.io/badge/Zenodo-10.5281%2Fzenodo.24352688-blue)](https://doi.org/10.5281/zenodo.24352688)
 
 ## What this repository claims, and what it does not
 
@@ -250,6 +251,7 @@ This repository ships a machine-readable [`CITATION.cff`](CITATION.cff). On GitH
 | Deposit | DOI |
 |---------|-----|
 | Complete suite, parent record | [10.17605/OSF.IO/6C5XB](https://doi.org/10.17605/OSF.IO/6C5XB) |
+| This repository, archived on Zenodo at each release (all versions) | [10.5281/zenodo.24352688](https://doi.org/10.5281/zenodo.24352688); the first release, v2026.11.18 of 18 November 2026, is [10.5281/zenodo.24352689](https://doi.org/10.5281/zenodo.24352689) |
 
 The deposit record's own description is author-held and refreshed at deposit time rather than
 by branches, so its document count can trail `CITATION.cff`, which carries the current one.
