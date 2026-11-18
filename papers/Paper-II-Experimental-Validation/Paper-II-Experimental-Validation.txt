@@ -1,8 +1,8 @@
 Title: Blinded cross-architecture replication and the retraction of a super-linear estimate
 Author: Michael Darius Eastwood
 Publication date: 2026-01-22
-Version: v2.22
-Revised: 2026-11-18
+Version: v2.23
+Revised: 2026-11-19
 OSF DOI: 10.17605/OSF.IO/8FJMA
 Canonical URL: https://www.michaeldariuseastwood.com/research/papers/paper-ii-experimental-validation.html
 Licence: CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/
@@ -12,22 +12,22 @@ Blinded cross-architecture replication and the retraction of a
 Paper II of the ARC Theory: the measurement programme of Law I, the ARC Principle, a law
                                        under test
 
-                                               Michael Darius Eastwood
+                                              Michael Darius Eastwood
                                Independent Researcher, London, United Kingdom
                        ORCID 0009-0004-3222-7442 michael@michaeldariuseastwood.com
 
 
 
-                                                           Abstract
+                                                          Abstract
            How much more capable does AI become when it thinks longer? If capability compounded
        super-linearly with reasoning depth, a safeguard that did not grow with it would fall behind, so
        the answer bears on AI safety. Law I of the ARC Theory, the ARC Principle, a law under test,
        concerns capability; measured as error, 𝐸 (𝑅) = 𝐸 0 𝑅 − 𝛼 , only through a metric bridge, it first predicted
        super-linear suppression (𝛼 > 1) for sequential reasoning and sub-linear suppression for parallel
-       sampling. We measured 𝛼 on competition mathematics in two phases. On DeepSeek R1 with visible
-       reasoning tokens (12 problems), the parallel exponent was 𝛼 ≈ 0, and the sequential endpoint estimate,
-       𝛼 ≈ 2.24, is retracted: it did not replicate in a blinded study across frontier models (18 AIME and
-       Putnam-level problems, 𝑛 = 54 per depth per model, four-layer cross-verification). Two models were
+       sampling. We measured the error-decay exponent 𝛼 on competition mathematics in two phases. On
+       DeepSeek R1 with visible reasoning tokens (12 problems), the parallel exponent was 𝛼 ≈ 0, and the
+       sequential endpoint estimate, 𝛼 ≈ 2.24, is retracted: it did not replicate in a blinded study across
+       frontier models (18 AIME and Putnam-level problems, 𝑛 = 54 per depth per model). Two models were
        at or near ceiling, one stepped from 54 to 100 per cent and one stayed near 50 per cent; only Gemini
        3 Flash scaled smoothly, with regression estimate 0.49 (standard error 0.20, 𝑟 2 = 0.86, three depth
        levels) and endpoint estimate 0.59, whose bootstrap 95 per cent interval [−1.3, 2.9] contains both zero
@@ -39,27 +39,27 @@ Paper II of the ARC Theory: the measurement programme of Law I, the ARC Principl
        in a companion arm, did not move with capability (one run, under a code-review caveat). We state
        what would refute the surviving claim and what a deciding measurement requires.
 
-Version 2.22 reads the paper’s exponents throughout as exponents of error decay, as the abstract does: Section 6.4,
-the conclusion and the glossary no longer place a model in a range of 𝛼 = 1/(1 − 𝛽 𝐿 ), and the reading that a frozen
-model must give 𝛼 < 1 is withdrawn. Appendix B gives each correction.
+Version 2.23 calls the exponent it reports the exponent of error decay in the abstract, the first-page note and the list
+of contributions, as the body has since version 2.22. Appendix B gives each correction.
 
 
 1     Introduction
 How much more capable does AI become when it thinks longer? Reasoning models now spend
 computation at inference time, and the question is not idle: if capability compounded super-linearly with
 reasoning depth, any safeguard that did not itself grow with depth would fall further behind at every step
-     Paper II of the ARC Theory, within Recursive Dynamics: the measurement programme of Law I, the ARC Principle, a law
-under test, with a blinded cross-architecture replication of the ARC Equation’s exponent and the retraction of a super-linear
-estimate. It bears in two ways, neither a test, on Law V, the ARC Embedding Law (added on 24 September 2026 and registered
-as a law on 15 October 2026 in version 1.103 of the theory registration, a law under test; its mathematics set out as conditional
-theorems with proofs, identities and kill conditions, version 1.3), and its Section 7 states, as conditional theorems, the argument
-behind the Eden Protocol, which criterion F5 would test and which is untested. Working paper, version 2.22, 18 November
-2026; first published 22 January 2026; Appendix B gives this version’s corrections and every version note since version 2.10.
-DOI 10.17605/OSF.IO/8FJMA. About the author, founder of Recursive Dynamics: michaeldariuseastwood.com/questions/who-
-is-michael-darius-eastwood; his book, Infinite Architects: osf.io/dqm3e. Licence: CC BY 4.0.
+      Paper II of the ARC Theory, within Recursive Dynamics: the measurement programme of Law I, the ARC Principle, a
+law under test, with a blinded cross-architecture replication of an exponent of error decay, which bears on the ARC Equation’s
+capability exponent only through a metric bridge, and the retraction of a super-linear estimate. It bears in two ways, neither a
+test, on Law V, the ARC Embedding Law (added on 24 September 2026 and registered as a law on 15 October 2026 in version
+1.103 of the theory registration, a law under test; its mathematics set out as conditional theorems with proofs, identities and
+kill conditions, version 1.3), and its Section 7 states, as conditional theorems, the argument behind the Eden Protocol, which
+criterion F5 would test and which is untested. Working paper, version 2.23, 19 November 2026; first published 22 January 2026;
+Appendix B gives this version’s corrections and every version note since version 2.10. DOI 10.17605/OSF.IO/8FJMA. About
+the author, founder of Recursive Dynamics: michaeldariuseastwood.com/questions/who-is-michael-darius-eastwood; his book,
+Infinite Architects: osf.io/dqm3e. Licence: CC BY 4.0.
 
 
-                                                                1
+                                                               1
                                    Blinded cross-architecture replication
 
 
@@ -102,13 +102,13 @@ independent samples helped little or not at all in four models and clearly in on
 to 71.1 per cent over all 30 problems, the model whose depth arm showed no trend), and the sequential
 exponent was above the parallel one wherever both could be estimated.
      Our contributions are as follows.
-   1. A two-phase measurement of the depth exponent 𝛼 of the ARC Principle, 𝐸 (𝑅) = 𝐸 0 𝑅 − 𝛼
-      (Definition 1), on competition mathematics: a single-model study on DeepSeek R1, with recursive
-      depth measured directly from visible reasoning tokens (Sections 4.2 and 5.1 to 5.3), and a replication
-      across frontier models with bootstrap intervals and four-layer cross-verification in which no model
-      verifies its own answers (Sections 4.3 and 5.5). Comparisons of the two forms at matched compute
-      came first (Snell et al. 2024; Sharma and Chopra 2025); they report which form wins and by how
-      much rather than a separate exponent for each condition (Section 2).
+   1. A two-phase measurement of the error-decay exponent 𝛼 of the ARC Principle’s error model,
+      𝐸 (𝑅) = 𝐸 0 𝑅 − 𝛼 (Definition 1), on competition mathematics: a single-model study on DeepSeek R1,
+      with recursive depth measured directly from visible reasoning tokens (Sections 4.2 and 5.1 to 5.3),
+      and a replication across frontier models with bootstrap intervals and four-layer cross-verification in
+      which no model verifies its own answers (Sections 4.3 and 5.5). Comparisons of the two forms at
+      matched compute came first (Snell et al. 2024; Sharma and Chopra 2025); they report which form
+      wins and by how much rather than a separate exponent for each condition (Section 2).
 
 
 
@@ -231,14 +231,15 @@ References                                                                      
 A Proof sketch of Theorem 1                                                                               46
 
 B Version history and corrections                                                                         46
-  B.1 Version 2.22 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      46
-  B.2 Version 2.21 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      47
-  B.3 Version 2.20 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      47
-  B.4 Version 2.19 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      48
-  B.5 Version 2.18 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      49
-  B.6 Earlier notes kept as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       51
-  B.7 Version history . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       53
-  B.8 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .         56
+  B.1 Version 2.23 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      46
+  B.2 Version 2.22 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      47
+  B.3 Version 2.21 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      47
+  B.4 Version 2.20 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      48
+  B.5 Version 2.19 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      48
+  B.6 Version 2.18 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      49
+  B.7 Earlier notes kept as printed . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       51
+  B.8 Version history . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       54
+  B.9 Where the earlier layout now stands . . . . . . . . . . . . . . . . . . . . . . . . . . . .         56
 
 C Priority record                                                                                         60
   C.1 Dated records . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       60
@@ -841,7 +842,7 @@ noisy draw and errors average out, the central limit theorem gives error falling
 exponent is 0.5: no compounding, no leverage, no theory. Nobody has put this objection to us. We state it
 because a referee would see it within minutes.
 
-Objection note (19 September 2026). A dated note on this objection, kept as printed in Appendix B.6,
+Objection note (19 September 2026). A dated note on this objection, kept as printed in Appendix B.7,
 finds that the half exponent does not follow from independent averaging for the proportion of incorrect
 responses fitted here, so one half is a reference value until a sampling, aggregation and decision model
 connects it to that outcome, and closeness to it identifies no mechanism.
@@ -1198,7 +1199,7 @@ Figures 2 and 5.
 
 
 Estimator notes (19 September and 3 October 2026). Two dated notes on these estimates are kept as
-printed in Appendix B.6; the corrections they record are made in this subsection and in Section 5.5.
+printed in Appendix B.7; the corrections they record are made in this subsection and in Section 5.5.
 
 6.4                       The Intelligence Formula connection
 The Intelligence Formula from Paper I predicts:
@@ -2368,10 +2369,10 @@ Zefan Zheng, Robert Chis-Ciure, Peter Thestrup Waade, Anna Eiserbeck, Jaan Aru, 
 
 
                                                     45
-                                    Blinded cross-architecture replication
+                                     Blinded cross-architecture replication
 
 
-A     Proof sketch of Theorem 1
+A      Proof sketch of Theorem 1
 The proof sketch of Theorem 1, moved here from Section 7.1; the theorem is conditional, and Remark 4
 records that its first condition is not shown by this paper’s cross-architecture evidence.
 
@@ -2387,14 +2388,14 @@ depth is the misalignment probability 1 − 𝐴(𝑅).
     Conversely, if alignment is implemented as an external filter (output checking, content moderation), it
 does not participate in recursive amplification. Filter effectiveness 𝐹 remains constant (filter stagnation):
 
-                                                 𝐹 (𝑅) = 𝐹0                                            (A.2)
+                                                  𝐹 (𝑅) = 𝐹0                                           (A.2)
 
     As recursive capability 𝐶 scales as 𝑅 𝛼 with 𝛼 > 1, the ratio of capability to constraint 𝐶/𝐹 grows
 without bound (constraint divergence):
 
-                                        𝐶 (𝑅)       𝐶0 × 𝑅 𝛼
-                                     lim      = lim          =∞                                        (A.3)
-                                    𝑅→∞ 𝐹 (𝑅)   𝑅→∞    𝐹0
+                                         𝐶 (𝑅)       𝐶0 × 𝑅 𝛼
+                                      lim      = lim          =∞                                       (A.3)
+                                     𝑅→∞ 𝐹 (𝑅)   𝑅→∞    𝐹0
     The divergence of 𝐶/𝐹 holds for every 𝛼 > 0; what condition (a) adds is that alignment participating
 fully in recursion, 𝛽 𝐴 = 𝛼, grows super-linearly.
     Implication: Within this sketch’s assumptions, a filter of constant effectiveness, equation (A.2),
@@ -2403,26 +2404,38 @@ participates in recursive amplification keeps pace with capability. This is a pr
 guarantee about any real system, and no reason to relax external oversight.                             □
 
 
-B     Version history and corrections
+B      Version history and corrections
 This version’s corrections, and every version note since version 2.10, each with its date. Notes from
 earlier versions are kept as printed; the positions they name refer to the earlier layout, which Table 22
 maps to this edition.
 
-B.1    Version 2.22
+B.1     Version 2.23
+Paper II v2.23, 19 November 2026. This version carries version 2.22’s reading of the paper’s exponents,
+as exponents of error decay, to the places a reader meets first. No number, estimate, interval, date or DOI
+of the measurements changes.
+
+Corrections of 19 November 2026, in this version.            Each is stated without reprinting the words it
+replaces; version 2.22 keeps them in its file on OSF.
+      • The abstract names the exponent it reports as the exponent of error decay. To stay within 1,920
+        characters it leaves the four layers of the cross-verification to Section 4.3, which describes them.
+
+
+                                                      46
+                                      Blinded cross-architecture replication
+
+
+      • The first-page note names the replicated exponent as an exponent of error decay and says how it
+        bears on the ARC Equation.
+      • The first item of the contributions in Section 1 names the error-decay exponent of the ARC
+        Principle’s error model.
+
+B.2     Version 2.22
 Paper II v2.22, 18 November 2026. This version reads the paper’s exponents throughout as exponents
 of error decay, as its abstract and Section 3.1 already did. No number, estimate, interval, date or DOI of
 the measurements changes.
 
-Corrections of 18 November 2026, in this version.           Each is stated without reprinting the words it
+Corrections of 18 November 2026, in this version.             Each is stated without reprinting the words it
 replaces; version 2.21 keeps them in its file on OSF.
-
-
-
-
-                                                     46
-                                      Blinded cross-architecture replication
-
-
       • Section 6.4 named two ranges of 𝛼 = 1/(1 − 𝛽 𝐿 ), a physical regime below one and an intelligence
         regime above it, and placed Gemini 3 Flash’s fit in the first. The relation’s 𝛼 is a capability exponent
         and the fit is an error-decay exponent, so the section now says that the fit places the model in neither
@@ -2439,7 +2452,7 @@ replaces; version 2.21 keeps them in its file on OSF.
       • Section 3.1 now says that every exponent the paper measures is the error-decay exponent, 𝛼err in
         the notation of Operational Definitions (Eastwood 2026e), written 𝛼 here.
 
-B.2     Version 2.21
+B.3     Version 2.21
 Paper II v2.21, 18 November 2026. The abstract and Section 10 now say what the runs measure:
 computation at inference on models whose weights are fixed, which is neither the recursive depth the
 theory registration counts, completed revision rounds, nor self-improvement. To keep the abstract within
@@ -2454,19 +2467,6 @@ versions through 1.105 of 18 November 2026, which added P23, and counts its twen
 Appendix C gains the rows of versions 1.104 and 1.105, and its record of 15 October 2026 names the
 mathematics then current, version 1.1. No value or status of these runs changes.
 
-B.3     Version 2.20
-Paper II v2.20, 15 November 2026. This version corrects the paper’s account of the record of 8
-December 2024, states Law I, the ARC Principle, as it is registered, and corrects the dates of one outside
-preprint. No number, date or DOI of the measurements changes, and no law, proposition, prediction or
-kill condition changes.
-
-Corrections of 15 November 2026, in this version.             Each is stated without reprinting the words it
-replaces.
-      • Earlier versions gave the record of 8 December 2024 as the source of the ARC Principle and of the
-        embedded-alignment thesis, and as establishing priority. Appendix C.4 and Section 3.1 now say
-        what the record holds: the equation 𝑈 = 𝐼 𝑅, in which 𝑈 named the universe, an earlier form of
-        the principle’s equation; and the embedded-alignment idea in words, which an earlier work states
-        and Appendix C.4 credits. The ARC Principle in its capability form is dated to its formalisation in
 
 
 
@@ -2474,6 +2474,19 @@ replaces.
                                      Blinded cross-architecture replication
 
 
+B.4     Version 2.20
+Paper II v2.20, 15 November 2026. This version corrects the paper’s account of the record of 8
+December 2024, states Law I, the ARC Principle, as it is registered, and corrects the dates of one outside
+preprint. No number, date or DOI of the measurements changes, and no law, proposition, prediction or
+kill condition changes.
+
+Corrections of 15 November 2026, in this version.            Each is stated without reprinting the words it
+replaces.
+      • Earlier versions gave the record of 8 December 2024 as the source of the ARC Principle and of the
+        embedded-alignment thesis, and as establishing priority. Appendix C.4 and Section 3.1 now say
+        what the record holds: the equation 𝑈 = 𝐼 𝑅, in which 𝑈 named the universe, an earlier form of
+        the principle’s equation; and the embedded-alignment idea in words, which an earlier work states
+        and Appendix C.4 credits. The ARC Principle in its capability form is dated to its formalisation in
         Paper I (17 January 2026), and the record is described as first recorded, not published. Table 24 no
         longer calls the record the point at which priority was established.
       • The abstract, the introduction and Section 3.1 state Law I, the ARC Principle, as it is registered,
@@ -2500,10 +2513,16 @@ replaces.
       • Section 12.6 and Table 21 give the estimate 𝛼 ≈ 0.49 as an error-decay estimate, which bears on
         capability only through the metric bridge of Section 3.1.
 
-B.4     Version 2.19
+B.5     Version 2.19
 Paper II v2.19, 29 October 2026. This version states the status of Laws IV and V as it stands after
 the registered run of Unit 83, grades one row of the prediction scorecard as the record supports, and
 withdraws a clause of a reprinted figure caption. No number, date or DOI of the measurements changes.
+
+
+
+                                                      48
+                                     Blinded cross-architecture replication
+
 
 Corrections of 29 October 2026, in this version.         The words printed before are given here.
       • The first-page footnote gave Law V, the ARC Embedding Law, as “not yet tested”; it now gives it as
@@ -2513,18 +2532,13 @@ Corrections of 29 October 2026, in this version.         The words printed befor
         supports: observed in the programme’s earlier runs, precursor evidence that decides no registered
         proposition. No run is called exploratory unless its own row in the programme’s dated ledger of
         runs says so.
-      • The caption of Figure 13 of version 2.17, reprinted in Appendix B.8, keeps its words as printed;
+      • The caption of Figure 13 of version 2.17, reprinted in Appendix B.9, keeps its words as printed;
         the bracket after it, which read “[Section 7.3 now states Constitutional AI in its own terms.]”, now
         withdraws its Constitutional AI clause.
       • The epistemic status read “no registered test of any of the five has yet returned a verdict”; it now
         says that every law is a law under test until a registered test returns its verdict.
 
-
-                                                      48
-                                      Blinded cross-architecture replication
-
-
-B.5     Version 2.18
+B.6     Version 2.18
 Paper II v2.18, 21 October 2026. This version sets the paper in the programme’s paper form: a title
 page with one first-page footnote, an abstract of at most 1,920 characters, a contents page, numbered
 sections, numbered environments and equations, vector figures and lettered appendices, with the history,
@@ -2557,76 +2571,75 @@ is obtained; one date moves, the naming of the Eden Protocol, from 30 April 2025
 December 2024, and the corrections below give the dates of the March 2026 runs and of the published
 AIME 2025 points from their records.
 
+
+                                                      49
+                                    Blinded cross-architecture replication
+
+
 Corrections of 21 October 2026, in this version. Each was checked at its source: the run’s result files
 and script in the public repository, the records of the works cited, DeepSeek’s API notes and model card,
 and version 1.103 of the theory registration. The values printed before are given here.
-      • The parallel exponent was printed as near zero in four of the five models and called the paper’s
-        strongest replicated finding. The result files give near zero in DeepSeek R1 and GPT-5.4, 0.31 in
-        Gemini 3 Flash and 0.22 in Groq Qwen3 over all 30 problems, and none for Grok 4.1 Fast, at 100%
-        at every sample count; that reading, the display 𝛼sequential > 𝛼parallel ≈ 0 and the statuses that rested
-        on it are corrected. Gemini 3 Flash’s 0.31 is named as the endpoint estimate (its regression estimate
-        is 0.34), where it was printed as a regression.
-      • Grok 4.1 Fast was printed as 100% at every depth; its result file records 96.3% to 100%.
-      • Gemini 3 Flash’s estimates rest on three of its five depth levels, not on the full token range.
-      • The bootstrap is described as the script runs it (each depth level resampled separately, for sequential
-        endpoint estimates only), the cross-model verification as the script runs it (a second model solves
-
-
-                                                       49
-                               Blinded cross-architecture replication
-
-
-  each problem and its answer is compared with the key; it does not mark the subject’s answers), the
-  script as 1,457 lines, and the data as summary result files, of which those of GPT-5.4 and Groq
-  Qwen3 hold no cross-verification summary.
-• GPT-5.4’s tier-2 accuracy with reasoning set to none was printed as 50.0% and is 53.7%; Groq
-  Qwen3’s tier-2 accuracies were printed as 51.9%, 53.7%, 40.7%, 48.1% and 53.7% and are 44.4%,
-  50.0%, 44.4%, 50.0% and 53.7%; the two models’ parallel figures were printed for tier 2 as about
-  55% and as 42.6% to 63.0%, and are given over all 30 problems, the only split the files store. No
-  record of the earlier values was found. The sequential values the files record for those two runs are
-  now printed beside the reason they are not interpreted.
-• The label DeepSeek R1 is given as the API identifier deepseek-reasoner, which DeepSeek’s
-  API notes give as the thinking mode of DeepSeek-V3.1 from 21 August 2025 and of V3.2 by the
-  run dates; each model’s depth control is given as the script sets it, with its prompt prefixes.
-• The compute-matched comparison, never run, is no longer claimed, and falsification condition F3
-  is recorded as not tested as stated; “Refuted” and “Confirmed” give way to the grading the evidence
-  supports.
-• The glosses of 𝛼, and the range of the coupling 𝛽 for which 𝛼 > 1, are corrected.
-• The published AIME 2025 points are sourced to DeepSeek-AI’s model card for DeepSeek-R1-0528,
-  not to the DeepSeek-R1 report, and the timeline no longer dates that accuracy to 20 January 2025.
-• Two biology statements are set in their sources’ words.
-• Related work adds the earlier and later comparisons of sequential and parallel test-time computation,
-  self-consistency and self-correction, and gives proposition P1 as registered on 8 September 2026;
-  Constitutional AI is stated as a training method.
-• The count of single-model problems solved at every budget, printed as four, is given as the
-  reconstruction’s seven.
-• The March 2026 runs are dated from their result files (11 and 12 March 2026) and their code’s first
-  publication (16 March 2026), and Unit 06 is stated.
-• The three dated notes of 19 September and 3 October 2026 move whole to Appendix B.6, their
-  corrections made in the passages they concern.
-• The single-model study’s ceiling was printed as one problem that “failed consistently across all
-  budgets, likely requiring capabilities beyond the model’s reach regardless of reasoning depth”. The
-  result file keeps each budget’s accuracy only, so which problem was scored wrong cannot be read
-  from it, and the answer key of problem 11 is wrong; whether any problem lay beyond the model’s
-  reach is open (Section 5.1).
-• The capability and alignment reading was printed for six frontier models; five were measured on
-  both, since Claude Opus 4.6 carried the alignment arm only (Section 12.6).
-• The estimate of about 0.49 was printed as the “most robust cross-architecture estimate”, and
-  elsewhere as the most robust or the cross-architecture estimate. It is the best surviving estimate,
-  from one model (Gemini 3 Flash), and inconclusive (Sections 5.5 and 10).
-• The record of 8 December 2024 was described as provider-key cryptographic evidence and by
-  naming a kind of timestamp it is not. It is now described by who signed its time: a message the
-  author sent himself on 8 December 2024, its time signed by the sending server and sealed by
-  Google’s servers, the signature and the seal both verified on 8 October 2026 against the keys in
-  DNS (Appendices C.1 and C.3). The first boundary of Appendix C.3, whose heading keeps the
-  date of its correction, 16 August 2026, was reworded on 21 October 2026.
+    • The parallel exponent was printed as near zero in four of the five models and called the paper’s
+      strongest replicated finding. The result files give near zero in DeepSeek R1 and GPT-5.4, 0.31 in
+      Gemini 3 Flash and 0.22 in Groq Qwen3 over all 30 problems, and none for Grok 4.1 Fast, at 100%
+      at every sample count; that reading, the display 𝛼sequential > 𝛼parallel ≈ 0 and the statuses that rested
+      on it are corrected. Gemini 3 Flash’s 0.31 is named as the endpoint estimate (its regression estimate
+      is 0.34), where it was printed as a regression.
+    • Grok 4.1 Fast was printed as 100% at every depth; its result file records 96.3% to 100%.
+    • Gemini 3 Flash’s estimates rest on three of its five depth levels, not on the full token range.
+    • The bootstrap is described as the script runs it (each depth level resampled separately, for sequential
+      endpoint estimates only), the cross-model verification as the script runs it (a second model solves
+      each problem and its answer is compared with the key; it does not mark the subject’s answers), the
+      script as 1,457 lines, and the data as summary result files, of which those of GPT-5.4 and Groq
+      Qwen3 hold no cross-verification summary.
+    • GPT-5.4’s tier-2 accuracy with reasoning set to none was printed as 50.0% and is 53.7%; Groq
+      Qwen3’s tier-2 accuracies were printed as 51.9%, 53.7%, 40.7%, 48.1% and 53.7% and are 44.4%,
+      50.0%, 44.4%, 50.0% and 53.7%; the two models’ parallel figures were printed for tier 2 as about
+      55% and as 42.6% to 63.0%, and are given over all 30 problems, the only split the files store. No
+      record of the earlier values was found. The sequential values the files record for those two runs are
+      now printed beside the reason they are not interpreted.
+    • The label DeepSeek R1 is given as the API identifier deepseek-reasoner, which DeepSeek’s
+      API notes give as the thinking mode of DeepSeek-V3.1 from 21 August 2025 and of V3.2 by the
+      run dates; each model’s depth control is given as the script sets it, with its prompt prefixes.
+    • The compute-matched comparison, never run, is no longer claimed, and falsification condition F3
+      is recorded as not tested as stated; “Refuted” and “Confirmed” give way to the grading the evidence
+      supports.
+    • The glosses of 𝛼, and the range of the coupling 𝛽 for which 𝛼 > 1, are corrected.
+    • The published AIME 2025 points are sourced to DeepSeek-AI’s model card for DeepSeek-R1-0528,
+      not to the DeepSeek-R1 report, and the timeline no longer dates that accuracy to 20 January 2025.
+    • Two biology statements are set in their sources’ words.
+    • Related work adds the earlier and later comparisons of sequential and parallel test-time computation,
+      self-consistency and self-correction, and gives proposition P1 as registered on 8 September 2026;
+      Constitutional AI is stated as a training method.
+    • The count of single-model problems solved at every budget, printed as four, is given as the
+      reconstruction’s seven.
+    • The March 2026 runs are dated from their result files (11 and 12 March 2026) and their code’s first
+      publication (16 March 2026), and Unit 06 is stated.
+    • The three dated notes of 19 September and 3 October 2026 move whole to Appendix B.7, their
+      corrections made in the passages they concern.
+    • The single-model study’s ceiling was printed as one problem that “failed consistently across all
+      budgets, likely requiring capabilities beyond the model’s reach regardless of reasoning depth”. The
+      result file keeps each budget’s accuracy only, so which problem was scored wrong cannot be read
 
 
 
-                                                50
-                                     Blinded cross-architecture replication
+                                                     50
+                                    Blinded cross-architecture replication
 
 
+        from it, and the answer key of problem 11 is wrong; whether any problem lay beyond the model’s
+        reach is open (Section 5.1).
+      • The capability and alignment reading was printed for six frontier models; five were measured on
+        both, since Claude Opus 4.6 carried the alignment arm only (Section 12.6).
+      • The estimate of about 0.49 was printed as the “most robust cross-architecture estimate”, and
+        elsewhere as the most robust or the cross-architecture estimate. It is the best surviving estimate,
+        from one model (Gemini 3 Flash), and inconclusive (Sections 5.5 and 10).
+      • The record of 8 December 2024 was described as provider-key cryptographic evidence and by
+        naming a kind of timestamp it is not. It is now described by who signed its time: a message the
+        author sent himself on 8 December 2024, its time signed by the sending server and sealed by
+        Google’s servers, the signature and the seal both verified on 8 October 2026 against the keys in
+        DNS (Appendices C.1 and C.3). The first boundary of Appendix C.3, whose heading keeps the
+        date of its correction, 16 August 2026, was reworded on 21 October 2026.
       • The epistemic status said that Laws I to III were under registered adversarial test. They were
         registered on 8 September 2026, and Laws IV and V on 15 October 2026 (version 1.103); no
         registered test of any of the five has yet returned a verdict (Section 10).
@@ -2634,9 +2647,8 @@ and version 1.103 of the theory registration. The values printed before are give
         review of October 2026. Section 12.6 now states it, and each passage of this version that gives
         those readings points to it.
 
-B.6     Earlier notes kept as printed
+B.7     Earlier notes kept as printed
 As printed in version 2.17 (5 October 2026), after its abstract, the box headed Recent changes read:
-
         Recent changes
         This version reports complete tier-2 results from the multi-model replication study:
 
@@ -2660,6 +2672,11 @@ As printed in version 2.17 (5 October 2026), after its abstract, the box headed 
 
 Figures notice (25 August 2026). Every figure in this paper was generated on 5 April 2026 and predates
 the corrections its text now carries. Where any figure asserts sequential 𝛼 > 1 support, a 2.2 sequential
+
+                                                     51
+                                     Blinded cross-architecture replication
+
+
 estimate, or an “all data consistent” status, that is the superseded April reading: the text’s corrected results
 (the retracted 2.24, the frozen-regime sequential 0.49) govern. The loudest instances carry per-figure
 notes; regenerated figures are queued, and the images are retained meanwhile as dated history.
@@ -2673,12 +2690,6 @@ image is superseded and preserved in version history.
 Figure 10, figure note (25 August 2026): regenerated from this paper’s corrected text. The image
 now shows the published exponents with their intervals, the initial single-model estimate displayed AS
 retracted, and the six-model result as what it is: architecture-dependent behaviour, one clean sub-linear fit
-
-
-                                                      51
-                                    Blinded cross-architecture replication
-
-
 with its wide bootstrap interval shown, two ceilings, a step function and a floor. Every value is extracted
 from the paper at generation time (tools/generate_paper_ii_fig13.py in the public repository);
 the April image is superseded and preserved in version history.
@@ -2714,9 +2725,14 @@ draw”     for that outcome, the mean of the indicators has expectation 𝑝, i
 proportion of incorrect responses, so the central limit theorem does not give 𝐸 (𝑅) ∝ 𝑅 −1/2 for the quantity
 fitted here. If the intended outcome is instead a single aggregated answer, the decision rule has to be
 stated, and a natural one does not produce the half exponent either: averaging independent
-                                                                                      √        scores of fixed
+                                                                                     √        scores of fixed
                                    2
 positive mean 𝜇 and variance 𝜎 and thresholding at zero gives 𝑃(error) = Φ(−𝜇 𝑅/𝜎), a Gaussian tail
+
+                                                      52
+                                    Blinded cross-architecture replication
+
+
 that decays faster than any power of 𝑅 and so is not a power law at all. A half exponent is accordingly a
 reference value until a specified sampling, aggregation and decision model connects it to the measured
 outcome, and proximity to it identifies neither compounding nor averaging as the mechanism; nor does a
@@ -2729,12 +2745,6 @@ unstated element this note identifies. Unchanged: the objection itself, which is
 paragraph that follows for a test capable of separating compounding from independent-sample averaging,
 which is the part of this passage that carries the scientific weight; and the comparison with non-recursive
 alternatives, which is kept and defined accurately.
-
-
-
-                                                     52
-                                    Blinded cross-architecture replication
-
 
 Estimator note (19 September 2026), beside the gap sentence of Section 6.3. An owner review
 of this sentence finds that the quantity named and the quantity printed are not the same contrast, and
@@ -2770,6 +2780,12 @@ endpoint estimate of 0.59 and not with the regression estimate of 0.49, which is
 error of 0.20. Table 7 prints that interval in the row of 0.49 and stands as printed. Before this version, the
 abstract, the label of Equation 4, the result of §4.1 and the first point of §9.2 printed the interval beside
 0.49; each now prints it beside 0.59. Before this version, the text also took the fit beyond one model, or
+
+
+                                                     53
+                                    Blinded cross-architecture replication
+
+
 treated it as settled. The abstract, §5.4 (twice), §11.1 and §11.2 said that it placed current models, or
 the exponent, in the physical or sub-linear regime. Section 2.4 said that it placed current models well
 below the limit of two, and the status of F4 in §8 said that it put the quadratic limit question outside
@@ -2781,16 +2797,12 @@ for every model; it now gives the parallel exponents as Table 6b does. Each of t
 that the fit is one model’s and inconclusive. Unchanged: every reported estimate and interval; Tables 6b
 and 7 as printed; and the note above, which this note follows without recomputing any quantity.
 
-B.7    Version history
+B.8    Version history
 As printed at the head of version 2.17, its version line read:
-
-
-                                                     53
-                                    Blinded cross-architecture replication
-
 
       Working Paper v2.17 | 16 March 2026, retitled 16 August 2026, 4 October 2026 and 5 October
       2026, revised 5 October 2026
+
 The version notes follow, newest first. Versions 2.10 to 2.14 printed no date in their notes; the date in
 brackets is the revision date printed in that version’s own version line (v2.10 to v2.12) or, for v2.13 and
 v2.14, whose notes were added while the version line still read v2.12, the date its note was added.
@@ -2821,6 +2833,12 @@ interval [−1.3, 2.9] beside the regression estimate of 0.49, it now prints it 
 Gemini 3 Flash fit beyond one model, or treated it as settled, it now says that it is one model’s fit and
 inconclusive; one sentence of Section 5.4 now gives the parallel exponents as Table 6b does. A dated note
 in Section 5.3 records what was printed before. Four reference entries are corrected from each work’s
+
+
+                                                     54
+                                   Blinded cross-architecture replication
+
+
 own record. The entry for arXiv:2411.06709 now carries the title the record gives it, and the entry under
 Zhao, which printed the identifier of another work, now names Zhao, J., Universal growth scaling law
 determined by dimensionality, arXiv:2206.01850. The entry under Demetrius printed the year 2010, the
@@ -2836,11 +2854,6 @@ as universal, where it said confirmed beside its exception. The epistemic status
 programme names Laws are conjectures under registered adversarial test; it now says that Laws I to III are
 under registered adversarial test, and that Laws IV and V, added on 24 September 2026, are carried by
 registered predictions but are not yet registered as laws and have not been tested. The author information
-
-                                                     54
-                                    Blinded cross-architecture replication
-
-
 said that he proposed the ARC Principle and the embedded-alignment thesis, and the first contribution of
 Section 1.3 said that this paper proposes the ARC Principle; they now say that he first stated them and
 that this paper states it. Section 10.4 and Supplementary Note 2 said that the Eden Protocol was now
@@ -2873,6 +2886,12 @@ is now named as retracted: the sequential cell of Table 6, which carries the cro
 section 4.5 beside it, the label of the Equation 4 box and the result sentence of section 4.1, the status
 paragraph of section 2.4, the cross-domain row of Table 9, the F4 row of Table 10, the Phase 1 sentence
 and the page description. Figures 5, 13 and 15 carry the words of the paper’s own tables and captions as
+
+
+                                                    55
+                                      Blinded cross-architecture replication
+
+
 alt text, in place of a bare figure number and, at Figure 13, of a four-band reading that Table 8’s five rows
 do not support. Every Willow sentence that gave the December 2024 result without its preprint date now
 carries the preprint date of 24 August 2024 and the Nature publication date of 9 December 2024, graded
@@ -2888,12 +2907,6 @@ review of those passages. Substantive: the half exponent is stated as a referenc
 sampling, aggregation and decision model connects it to the proportion of incorrect responses this paper
 fits, so that the objection is sharpened rather than removed; and the contrast named in Section 5.3 is
 identified as a within-model descriptive difference of 0.18 between the sequential 0.49 and the parallel
-
-
-                                                     55
-                                        Blinded cross-architecture replication
-
-
 0.31, with the provenance of the interval carried with 0.49 left open. Editorial: the version number and
 the revision date, in the version line, the footer, the summary and the machine-readable fields, including
 the page-dates field, which had not moved with v2.11. No reported estimate, interval or conclusion has
@@ -2912,19 +2925,28 @@ result or status has changed.
 v2.10 (13 September 2026): The provenance note at the end has been corrected for accuracy. No claim,
 date, result or status has changed.
 
-B.8    Where the earlier layout now stands
+B.9   Where the earlier layout now stands
 
-                   Table 22. Where each block of the version 2.17 layout stands in this edition.
+                  Table 22. Where each block of the version 2.17 layout stands in this edition.
+
+Block in the earlier layout                        Where it stands in this edition
+Sections
+Header, plate, version line, abstract, Recent      Title block and footnote; abstract (new); Appendix B.7
+changes, summary paragraphs, reading key,          (Recent changes); Appendix B.8 (version line); the opening of
+Laws IV and V note                                 Section 7; Section 10 (reading key, Laws IV and V note); the
+                                                   cross-domain summary paragraph not set, as a repeat of
+                                                   Section 8
+1.1 Background and motivation; 1.2 The             Section 1
+research question
+
+
+
+                                                       56
+                                        Blinded cross-architecture replication
+
 
 Block in the earlier layout                          Where it stands in this edition
-Sections
-Header, plate, version line, abstract, Recent        Title block and footnote; abstract (new); Appendix B.6
-changes, summary paragraphs, reading key,            (Recent changes); Appendix B.7 (version line); the opening of
-Laws IV and V note                                   Section 7; Section 10 (reading key, Laws IV and V note); the
-                                                     cross-domain summary paragraph not set, as a repeat of
-                                                     Section 8
-1.1 Background and motivation; 1.2 The               Section 1
-research question
+
 1.3 Contribution of this paper                       Section 1, contributions list (re-set)
 1.4 Priority establishment, with Table 1             Appendices C.4 and C.2 (Table 24)
 1.5 Related work                                     Section 2
@@ -2932,117 +2954,107 @@ research question
                                                      Section 2)
 3.1 to 3.4 Methods (3.2a, 3.2b)                      Section 4 (4.2 and 4.3)
 4.1 to 4.5 Results (4.5.1 to 4.5.7)                  Section 5 (5.5.1 to 5.5.7); the dated note under Objection 5 in
-                                                     Appendix B.6
+                                                     Appendix B.7
 5.1 to 5.4 Consolidated evidence                     Section 6; the two dated estimator notes of 5.3 in
-                                                     Appendix B.6
+                                                     Appendix B.7
 6.1 to 6.5 Implications for AI safety                Section 7; the proof sketch of 6.1 in Appendix A
 7.1 to 7.4 Cross-domain evidence                     Section 8
 8 Falsification criteria                             Section 9.1
-
-
-
-                                                         56
-                                      Blinded cross-architecture replication
-
-
-Block in the earlier layout                        Where it stands in this edition
-
-9.1 Acknowledged limitations                       Section 11.1
-9.2 What this paper does not establish             Section 10
-9.3 Falsifiability: what would refute this         Section 9.2
-9.4 The comparison assumes two things about        Section 11.2
+9.1 Acknowledged limitations                         Section 11.1
+9.2 What this paper does not establish               Section 10
+9.3 Falsifiability: what would refute this           Section 9.2
+9.4 The comparison assumes two things about          Section 11.2
 its own arms
-10.1 to 10.6 Discussion                            Section 12 (Supplementary Note 2 merged into 12.4)
-11.1, 11.2, 11.4 Conclusion                        Section 13 (13.1, 13.2, 13.3)
-11.3 What was confirmed, what was refuted          Section 10 (Table 19)
+10.1 to 10.6 Discussion                              Section 12 (Supplementary Note 2 merged into 12.4)
+11.1, 11.2, 11.4 Conclusion                          Section 13 (13.1, 13.2, 13.3)
+11.3 What was confirmed, what was refuted            Section 10 (Table 19)
 (Table 13)
-Data availability                                  Back matter, code and data
-Acknowledgements; Author information               Back matter (the disclosure; competing interests);
-                                                   Appendix C.4 (priority sentences)
-Extended Data Tables 1 to 3                        Appendix E
-Supplementary Note 1 (email record)                Appendix C.3
-Supplementary Note 2 (relationship to Infinite     Section 12.4 (merged; repeats not set)
+Data availability                                    Back matter, code and data
+Acknowledgements; Author information                 Back matter (the disclosure; competing interests);
+                                                     Appendix C.4 (priority sentences)
+Extended Data Tables 1 to 3                          Appendix E
+Supplementary Note 1 (email record)                  Appendix C.3
+Supplementary Note 2 (relationship to Infinite       Section 12.4 (merged; repeats not set)
 Architects)
-Supplementary Note 3 (prediction and               Appendix C.2 (Table 25)
+Supplementary Note 3 (prediction and                 Appendix C.2 (Table 25)
 convergent-timing record)
-Version notes v2.10 to v2.17                       Appendix B.7
-How to cite; footer; navigation                    Not set (the DOI is in the footnote)
+Version notes v2.10 to v2.17                         Appendix B.8
+How to cite; footer; navigation                      Not set (the DOI is in the footnote)
 Figures
-Figure 1                                           Not set: a repeat of Definition 1, Table 1 and the regime list;
-                                                   its measured-state box pairs [−1.3, 2.9] with 0.49 against the
-                                                   estimator note of 3 October 2026; caption below; figure note
-                                                   in Appendix B.6
-Figure 2                                           Not set: a repeat of Table 7 and of Figure 1; caption below
-Figure 3                                           Redrawn as panel (a) of Figure 3 (vector), placed in
-                                                   Section 6.1 beside Table 15
-Figure 4                                           Redrawn as panel (b) of Figure 3 (vector)
-Figure 5                                           Redrawn as Figure 1 (vector), placed in Section 5.3
-Figure 6                                           Redrawn as Figure 4 (vector), placed in Section 6.1
-Figure 7                                           Not set: a repeat of Tables 5 and 6 and Figure 1; caption below
-Figure 9                                           Not set: superseded art of 5 April 2026; replaced by Figure 5;
-                                                   caption below
-Figure 10                                          Replaced by Figure 5 (vector, a forest plot of Tables 15 and 8
-                                                   with each interval beside its own estimator); caption below; its
-                                                   figure note of 25 August 2026 in Appendix B.6
-Figure 12                                          Redrawn as Figure 6 (vector), placed in Section 7.1, without
-                                                   the text boxes (they stand in the text and caption)
+Figure 1                                             Not set: a repeat of Definition 1, Table 1 and the regime list;
+                                                     its measured-state box pairs [−1.3, 2.9] with 0.49 against the
+                                                     estimator note of 3 October 2026; caption below; figure note
+                                                     in Appendix B.7
+Figure 2                                             Not set: a repeat of Table 7 and of Figure 1; caption below
 
 
 
+                                                         57
+                                   Blinded cross-architecture replication
 
-                                                       57
-                                    Blinded cross-architecture replication
 
+Block in the earlier layout                     Where it stands in this edition
 
-Block in the earlier layout                      Where it stands in this edition
-
-Figure 13                                        Not set: a repeat of Table 16; caption below; its gloss “Current
-                                                 RLHF is overwhelmingly external” contradicts Table 16
-Figure 14                                        Not set: superseded art (it gives the published 1.34 as the AI
-                                                 value and a Willow exponent of 1.10, which Section 8.1 says
-                                                 is a different object); Table 17 governs; caption below
-Figure 15                                        Not set: a repeat of Figure 1 and Table 13; its caption says
-                                                 “parallel 𝛼 ≈ 0 universally”, the reading v2.15 corrected
-                                                 elsewhere; caption below
+Figure 3                                        Redrawn as panel (a) of Figure 3 (vector), placed in
+                                                Section 6.1 beside Table 15
+Figure 4                                        Redrawn as panel (b) of Figure 3 (vector)
+Figure 5                                        Redrawn as Figure 1 (vector), placed in Section 5.3
+Figure 6                                        Redrawn as Figure 4 (vector), placed in Section 6.1
+Figure 7                                        Not set: a repeat of Tables 5 and 6 and Figure 1; caption below
+Figure 9                                        Not set: superseded art of 5 April 2026; replaced by Figure 5;
+                                                caption below
+Figure 10                                       Replaced by Figure 5 (vector, a forest plot of Tables 15 and 8
+                                                with each interval beside its own estimator); caption below; its
+                                                figure note of 25 August 2026 in Appendix B.7
+Figure 12                                       Redrawn as Figure 6 (vector), placed in Section 7.1, without
+                                                the text boxes (they stand in the text and caption)
+Figure 13                                       Not set: a repeat of Table 16; caption below; its gloss “Current
+                                                RLHF is overwhelmingly external” contradicts Table 16
+Figure 14                                       Not set: superseded art (it gives the published 1.34 as the AI
+                                                value and a Willow exponent of 1.10, which Section 8.1 says
+                                                is a different object); Table 17 governs; caption below
+Figure 15                                       Not set: a repeat of Figure 1 and Table 13; its caption says
+                                                “parallel 𝛼 ≈ 0 universally”, the reading v2.15 corrected
+                                                elsewhere; caption below
 Tables
-Table 1                                          Table 24, Appendix C.2
-Table 2                                          Table 1, Section 3.1
-Table 3                                          Table 2, Section 4.1
-Table 3b                                         Table 3, Section 4.3
-Table 3c                                         Table 4, Section 4.3
-Table 4                                          Table 5, Section 5.1
-Table 5                                          Table 6, Section 5.2
-Table 6                                          Table 7, Section 5.3
-Table 6b                                         Table 8, Section 5.5
-Table 6c                                         Table 9, Section 5.5
-Table 6d                                         Table 10, Section 5.5
-The unnumbered table of Section 4.5.4            Table 11, Section 5.5 (version 2.17 prints it without a number;
-(GPT-5.4)                                        caption: “GPT-5.4 tier-2 accuracy by depth.”)
-Table 6f                                         Table 12, Section 5.5
-Table 6g                                         Table 13, Section 5.5
-Table 6h                                         Table 14, Section 5.5
-Table 7                                          Table 15, Section 6.1
-Table 8                                          Table 16, Section 7.3
-Table 9                                          Table 17, Section 8.4
-Table 10                                         Table 18, Section 9.1
-Table 11                                         Table 20, Section 11.1 (with new rows on the answer key of
-                                                 problem ARC11, the depth levels behind each estimate and
-                                                 the prompt prefixes)
-Table 12                                         Table 21, Section 12.6
-Table 13                                         Table 19, Section 10 (moved from Section 11.3)
-Extended Data Table 1                            Table 28, Appendix E
-Extended Data Table 2                            Table 29, Appendix E
-Extended Data Table 3                            Table 30, Appendix E
-The table of Supplementary Note 3                Table 25, Appendix C.2
+Table 1                                         Table 24, Appendix C.2
+Table 2                                         Table 1, Section 3.1
+Table 3                                         Table 2, Section 4.1
+Table 3b                                        Table 3, Section 4.3
+Table 3c                                        Table 4, Section 4.3
+Table 4                                         Table 5, Section 5.1
+Table 5                                         Table 6, Section 5.2
+Table 6                                         Table 7, Section 5.3
+Table 6b                                        Table 8, Section 5.5
+Table 6c                                        Table 9, Section 5.5
+Table 6d                                        Table 10, Section 5.5
+The unnumbered table of Section 4.5.4           Table 11, Section 5.5 (version 2.17 prints it without a number;
+(GPT-5.4)                                       caption: “GPT-5.4 tier-2 accuracy by depth.”)
+Table 6f                                        Table 12, Section 5.5
+Table 6g                                        Table 13, Section 5.5
+Table 6h                                        Table 14, Section 5.5
+Table 7                                         Table 15, Section 6.1
 
 
 
-                                                     58
+                                                    58
                                      Blinded cross-architecture replication
 
 
 Block in the earlier layout                       Where it stands in this edition
 
+Table 8                                           Table 16, Section 7.3
+Table 9                                           Table 17, Section 8.4
+Table 10                                          Table 18, Section 9.1
+Table 11                                          Table 20, Section 11.1 (with new rows on the answer key of
+                                                  problem ARC11, the depth levels behind each estimate and
+                                                  the prompt prefixes)
+Table 12                                          Table 21, Section 12.6
+Table 13                                          Table 19, Section 10 (moved from Section 11.3)
+Extended Data Table 1                             Table 28, Appendix E
+Extended Data Table 2                             Table 29, Appendix E
+Extended Data Table 3                             Table 30, Appendix E
+The table of Supplementary Note 3                 Table 25, Appendix C.2
 Equations
 Unnumbered (the Definition box; version 2.17      Equation (1), Section 3.1, inside Definition 1
 counts it as Equation 1, since its numbering
@@ -3053,7 +3065,7 @@ Equation 4 (Sequential 𝛼 Estimation)              Equation (4), Section 5.1
 Equation 5 (Parallel 𝛼 Estimation)                Equation (5), Section 5.2
 Equation 10 (Gemini 3 Flash Sequential 𝛼,         Equation (6), Section 5.5
 Tier-2)
-Equation 11 (Revised Fundamental Inequality,      Equation (7), Section 6.2, without its ≈ 0 (Appendix B.5)
+Equation 11 (Revised Fundamental Inequality,      Equation (7), Section 6.2, without its ≈ 0 (Appendix B.6)
 the six-model study)
 Equation 12 (Intelligence Formula)                Equation (8), Section 6.4
 Equation 9 (Quantum Error Correction Scaling)     Equation (9), Section 8.1
@@ -3065,13 +3077,17 @@ Equation 6 (Alignment Scaling)                    Equation (A.1), Appendix A
 Equation 7 (Filter Stagnation)                    Equation (A.2), Appendix A
 Equation 8 (Constraint Divergence)                Equation (A.3), Appendix A
 
-
     The captions of the eight figures of version 2.17 that are not set, or are replaced by a new caption,
 follow as printed, each under its number in version 2.17; the figure notes of Figures 1 and 10 are in
-Appendix B.6.
+Appendix B.7.
 
 Figure 1. The ARC Principle formulation 𝐸 (𝑅) = 𝐸 0 × 𝑅 − 𝛼 where 𝑈 = 𝐼 × 𝑔(𝑅). 𝛼 = 1/(1 − 𝛽) from
 self-referential coupling 𝛽. 𝛼seq ≈ 0.49 (sub-linear, Gemini 3 Flash). the earlier single-model 𝛼 ≈ 2.24
+
+                                                      59
+                                    Blinded cross-architecture replication
+
+
 estimate was a single-model artefact, retracted, did not replicate.
 
 Figure 2. Sequential recursion compounds: each step builds on prior output (𝛼 > 0). Parallel recursion
@@ -3085,12 +3101,6 @@ investment.
 Figure 9. Alpha comparison across all data sources. the initial single-model study DeepSeek 𝛼 ≈ 2.24
 [1.5, 3.0]: RETRACTED (inflated by small sample). the six-model study Gemini 𝛼 ≈ 0.49, 𝑟 2 = 0.86:
 DEFENSIBLE. OpenAI o1: 𝛼 ≈ 0.1-0.3. DeepSeek R1 report, two model versions on AIME 2025:
-
-
-                                                      59
-                                    Blinded cross-architecture replication
-
-
 𝛼 ≈ 1.34. The multi-model data narrows the defensible claim to sub-linear sequential scaling with a
 robust parallel null. [Sections 6.2 and 6.3 now give the parallel exponents as the result files record them.]
 
@@ -3122,7 +3132,6 @@ and convergent-timing record, the email transmission record and the priority pas
 
 C.1    Dated records
 Table 23 gives each record with its date, its identifier and its kind of timestamp.
-
 
 
 
@@ -3180,7 +3189,7 @@ March 2026       its main predictions, with their        repository, timestamped
                  result files first published; the       commit of the result files at     committer writes
                  multi-model version of this paper       18:55:25 UTC
                  dated the same day (the version line
-                 of 2.17, Appendix B.7)
+                 of 2.17, Appendix B.8)
 20 March 2026    The single-model estimate of about      The theory registration,          Date written inside the document
                  2.24 withdrawn after it failed to       version 1.103
                  replicate across architectures          (10.17605/OSF.IO/P8CKQ)
@@ -3399,10 +3408,10 @@ Symbol                            Meaning                                       
                                   mass 𝐵, written 𝑀 ∝ 𝐵3/4
 𝜙                                 integrated information, the measure of Integrated        §8.3
                                   Information Theory
-𝑋1 , . . . , 𝑋𝑅 , 𝑝, 𝜇, 𝜎 2 , Φ   in the objection note: wrong-answer indicators, their    Appendix B.6
+𝑋1 , . . . , 𝑋𝑅 , 𝑝, 𝜇, 𝜎 2 , Φ   in the objection note: wrong-answer indicators, their    Appendix B.7
                                   Bernoulli parameter, the mean and variance of a score,
                                   and the standard normal distribution function
-𝑆, 𝑃; Var, Cov                    in the estimator note: paired sequential and parallel    Appendix B.6
+𝑆, 𝑃; Var, Cov                    in the estimator note: paired sequential and parallel    Appendix B.7
                                   estimators; variance and covariance
 𝑑, 𝑝 (Table 21)                   Cohen’s effect size of alignment change with depth,      §12.6
                                   and its 𝑝-value
