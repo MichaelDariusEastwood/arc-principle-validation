@@ -1,32 +1,35 @@
-# Paper IX · The ARC Theory · Synthesis and Roadmap
+# Synthesis and Roadmap: which of the programme's claims survived their tests, and which must be tested next?
 
-**Full title:** Paper IX · The ARC Theory · Synthesis and Roadmap
-**Version:** v2.7
-**Version date:** Working Paper, revised 5 October 2026
-**First published:** 18 March 2026
+**Version:** 3.0
+**Revised:** 17 November 2026
+**First published:** 2026-03-18
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-The synthesis paper for the ARC/Eden research programme. Integrates the papers that precede it into a single honest assessment of what it classes as 'proven at pilot scale', what is inconclusive, and what remains to be tested.
+From the abstract (version 3.0):
 
-## Key Contents
+> Which of the programme’s claims survived their tests, and which must be tested next? Graded on the evidence ladder of its theory registration, the programme’s record holds one registered verdict, four precursor results that decide no registered proposition, one null, two inconclusive results and two simulations, with three registered units still without a verdict. Five results count against the programme, among them a blind test whose predictions failed and a prediction of the neural scaling exponent withdrawn as refuted, and twenty-one corrections change how a result should be read. The registered verdict is on proposition P21, in its counted test, Unit 83: P21 is supported under the registered test, by the programme’s own run, on the access axis, family-dependent, with its mechanism axis not evaluable and one call retried under a disclosed recovery amendment. Each of the five laws is a law under test: no registered test has yet run on Law I, the ARC Principle, Law II, the ARC Co-Scaling Law, Law III, the ARC Ceiling, or Law IV, the ARC Persistence Law, which predicts that installed alignment erodes under later capability training and that embedded alignment retains more of it. Law V, the ARC Embedding Law, which predicts that correction formed before a capability out-scales correction added after it, and that correction inside each round pulls away with depth from correction of finished work, has its placement limb supported on the performance axis only, which is not support for the information-asymmetry mechanism, and its build-order limb undecided. Of the registered units still to run, only Unit 83b, the same test on three providers, can move a law’s word, and only by refuting Law V, the ARC Embedding Law, through P21; the theory’s proposal is set out in its statement paper. No law is proved.
 
-- Five-tier evidence hierarchy (in the paper's own terms: 'proven at pilot scale', supported, inconclusive, methodological, theoretical)
-- Complete programme map as of 20 September 2026 (Table 3): twenty-five rows over the twenty-nine documents the register carries
-- What the programme got wrong (nineteen corrections documented)
-- Phased roadmap with costs (Phase A: 60-140k through Phase C: 10-50M)
-- Separate sections for funders and peer reviewers
+From The ARC Theory (version 7.10), on the status of Laws IV and V:
 
-## Experiments
+> Laws IV and V (the ARC Persistence Law and the ARC Embedding Law) were added on 24 September 2026 and registered as laws on 15 October 2026 in version 1.103, each a law under test; their mathematics, set out at version 1.2 of 29 October 2026, is in development.
 
-This is a synthesis document. Experiments are distributed across the individual paper directories.
+https://doi.org/10.17605/OSF.IO/GW5MX
 
-## Links
+## Status and changes
 
-- **OSF DOI:** https://doi.org/10.17605/OSF.IO/K7RUZ
-- **Programme OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
-- **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
-- **Research hub:** https://www.michaeldariuseastwood.com/research/
+Version 3.0 rebuilds the synthesis and the roadmap from the programme’s records on its date; Appendix A.2 keeps the catalogue of corrections and Appendix A its version history. Internally source-checked and read in rendered form; not independent peer review.
 
-The HTML is the official document export, not the website page. The PDF is byte-identical to that export release on the website. New versions retain these filenames, with their own commits.
+The complete historical material and correction record remain in the lettered appendices.
+
+## Files and sources
+
+- [PDF](Paper-IX-Synthesis-and-Roadmap.pdf)
+- [Document HTML](Paper-IX-Synthesis-and-Roadmap.html)
+- [Text](Paper-IX-Synthesis-and-Roadmap.txt)
+- [Citation metadata](Paper-IX-Synthesis-and-Roadmap.cff)
+- [LaTeX source](Paper-IX-Synthesis-and-Roadmap-latex-source.tar.gz)
+- [OSF record](https://doi.org/10.17605/OSF.IO/K7RUZ)
+
+These are the official document exports. Stable filenames preserve earlier versions in file history. Written research is CC BY 4.0; separately identified code, data and source records retain their stated licences.
