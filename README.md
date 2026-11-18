@@ -11,10 +11,15 @@ file the papers cite.
 It ships the material a reader needs to check the programme's results: the code that was
 run, the outputs that code recorded, and the canonical released documents under papers/.
 
-**Nothing here has been independently replicated, and nothing here has been through peer
-review.** Two results have been withdrawn by the author and are marked as withdrawn where
-they appear. One paper is under correction. Those are stated in the results table below
-rather than left for a reader to discover. A claim of priority for the theory's five components together was withdrawn on 12 November 2026; [`priority-claims/README.md`](priority-claims/README.md) states it.
+What the work has been through is internal and never independent: adversarial refutation
+rounds, automated gates run on every release, source and quotation checks against each
+cited work, and dated revisions with published corrections, a system shown whole on
+[the review page](https://www.michaeldariuseastwood.com/review/). Nothing here has yet been
+independently replicated or through formal peer review, and those checks replace neither.
+Two results have been withdrawn by the author and are marked as withdrawn where they
+appear; the results table below gives each document's status, and the
+[corrections notice](https://www.michaeldariuseastwood.com/research/corrections/) is
+authoritative where a result has been corrected or withdrawn. A claim of priority for the theory's five components together was withdrawn on 12 November 2026; [`priority-claims/README.md`](priority-claims/README.md) states it.
 
 ## Repository structure
 
@@ -69,15 +74,16 @@ the existing one.
 **Code that has produced no result is not filed as an experiment.** `experiments/` holds runs
 that produced results; `instruments/` holds instruments for runs that have not been made.
 
-## Current implementation entry point (7 September 2026)
+## The oversight assay, an instrument (7 September 2026)
 
-The new [exact arithmetic oversight assay](instruments/oversight-assay/README.md)
-provides an independent scorer for raw model responses, with fixed denominators and
+The [exact arithmetic oversight assay](instruments/oversight-assay/README.md)
+scores raw model responses, with fixed denominators and
 explicit failure handling. It is an instrument-development task, not a new empirical
 result or a validated alignment metric. The [decision-study proposal](docs/oversight-decision-study-20260907.md)
 connects a measurable oversight failure, comparison and potential configuration decision.
 
-The theory-level public document currently shows draft predictions. Code, a DOI,
+The theory's predictions were registered on OSF on 8 September 2026; the registration's row
+below gives its current version. Code, a DOI,
 a timestamp or a repository deposit does not make an experiment registered, tested,
 peer reviewed or independently replicated. The current protocol and paper versions
 are listed on the [research website](https://www.michaeldariuseastwood.com/research/).
@@ -121,7 +127,7 @@ never an empirical validation.
 | [Paper VIII](papers/Paper-VIII-The-Load-Bearing-Proof/) | whether entangled safety is load-bearing | one null, one inconclusive and one simulation result leave the safety-capability trade-off unproven at the scale tested, and whether embedded safety brings a measurable benefit open |
 | [Paper IX](papers/Paper-IX-Synthesis-and-Roadmap/) | synthesis of the programme and a four-tier replication roadmap | synthesis |
 | [Paper X](papers/Paper-X-Coupled-CoScaling-Correction/) | coupled co-scaling of capability and correction | published |
-| [Paper XI](papers/Paper-XI-Convergence/) | convergence across independent traditions | published |
+| [Paper XI](papers/Paper-XI-Convergence/) | whether separate fields are converging on the same principle, with the sources compared claim by claim | published |
 | [Paper XII](papers/Paper-XII-Public-Benchmark-Rescoring/) | public benchmark rescoring | published |
 | [Paper XIII](papers/Paper-XIII-Self-Acceleration-Exponent/) | the self-acceleration exponent | published |
 | [Paper C](papers/Paper-C-PNP/) | polymathy and neurodivergent cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy | published |
@@ -129,7 +135,7 @@ never an empirical validation.
 | [The ARC Theory](papers/The-ARC-Theory/) | the theory-level statement | published |
 | [The ARC Theory, two-page form](papers/The-ARC-Theory-Two-Page-Form/) | the theory in two pages | published |
 | [Recursive Dynamics, the founding paper](papers/Recursive-Dynamics-Founding-Paper/) | the science of systems that improve themselves | published |
-| [The theory-level predictions registration](papers/ARC-Theory-Predictions-Registration/) | twenty-two severable propositions, registered before any admissible confirmatory outcome | registered on OSF, 8 September 2026 |
+| [The theory-level predictions registration](papers/ARC-Theory-Predictions-Registration/) | twenty-two severable propositions, registered before any admissible confirmatory outcome; version 1.105 adds P23, dated from that version | registered on OSF, 8 September 2026; the registry's update to version 1.104, 29 October 2026; version 1.105 written 18 November 2026 |
 | [The Dated Prediction Register](papers/Dated-Prediction-Register/) | forward predictions as one verifiable chain | published |
 | [The ARC Alignment-Scaling Working Report](papers/ARC-Alignment-Scaling-Working-Report/) | the live laboratory notebook of the alignment-scaling work | working report |
 | [Foundational](papers/Foundational/) | the axiomatic derivation and the `d/(d+1)` prediction | published |
@@ -218,8 +224,8 @@ here**; the credit belongs to its authors.
 the dimensional-scaling tradition of West, Brown and Enquist and related derivations across
 physics and biology. What is claimed is the Cauchy unification: deriving the family of
 admissible scaling laws from the Cauchy functional equations, and showing that one framework
-accounts for the observed cross-domain exponents. That claim is the one currently under
-correction, and Paper VII's row above says so.
+accounts for the observed cross-domain exponents. Paper VII's row above gives the corrections made to it, and the corrections notice is
+authoritative.
 
 ## Citation
 
