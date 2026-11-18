@@ -55,7 +55,7 @@ Most folders hold these files:
 | [The Eden Vision: what should the intelligence we build be for?](Eden-Vision/) | v2.15 (revised 16 Nov 2026) | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
 | [Executive Summary: how can self-improving AI remain useful and aligned?](Executive-Summary/) | v3.29 (revised 15 Nov 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
 | [Master Table of Contents: where should a reader start, and how does every part of the programme fit together?](Master-Table-of-Contents/) | v3.32 (revised 17 Nov 2026) | 16 Mar 2026 | Navigation document linking all papers |
-| [The ARC Theory: once the self-improving minds we build exceed us, what determines what they do?](The-ARC-Theory/) | v7.10 (revised 15 Nov 2026) | 14 Aug 2026 | Growth, correction and alignment in recursive systems |
+| [The ARC Theory: once the self-improving minds we build exceed us, what determines what they do?](The-ARC-Theory/) | v7.11 (revised 18 Nov 2026) | 14 Aug 2026 | Growth, correction and alignment in recursive systems |
 | [The ARC Theory: does control survive recursive self-improvement?](The-ARC-Theory-Two-Page-Form/) | v3.7 (revised 16 Nov 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
 | [Recursive Dynamics: what limits any system that improves itself, whatever it is made of?](Recursive-Dynamics-Founding-Paper/) | v3.6 (revised 17 Nov 2026) | 31 Aug 2026 | Recursive Dynamics: The Proposal of a Field |
 | [Paper C](Paper-C-PNP/) | v1.11 (revised 29 Oct 2026) | 3 Jul 2026 | Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy |
