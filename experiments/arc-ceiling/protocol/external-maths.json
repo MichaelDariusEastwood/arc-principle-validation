@@ -1,0 +1,10 @@
+{
+  "dataset": "Qwen/ProcessBench",
+  "revision": "3bdcd5371ed567559a78f559c01c13a6deee7604",
+  "splits": ["gsm8k","math","olympiadbench","omnimath"],
+  "max_cases_per_split_per_class": 128,
+  "max_tokens_both_tokenizers": 384,
+  "model_order": ["pythia","smollm"],
+  "selection": "Use one prefix per source solution. For an erroneous solution inspect its annotated first error. For an error-free solution select an ID-hashed step. Preserve the full problem, prior steps and target step. Exclude any item too long for either input budget, then select the lowest SHA256 IDs within each source and class. Report exclusions and denominators.",
+  "measurement": "Both pinned unadapted base models see the same natural-language prefix. Score native single-token yes/no odds, greedy balanced accuracy, sensitivity, specificity and Brier loss. On actual erroneous prefixes record joint misses and phi. This secondary transfer diagnostic is not the official first-error localisation score, matched-generation inference, or an OSF registration."
+}
