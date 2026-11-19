@@ -20,4 +20,4 @@ Registered 8 September 2026 at version 1.100; updated 13 September 2026 at versi
 - **Programme OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
-The PDF, HTML, text and citation files are version 1.105's files of record, deposited on 18 November 2026; the PDF was checked against the registry's approved text. The Markdown and JSON forms are the website's copies and follow its publication of version 1.105. Versions 1.100, 1.102, 1.103 and 1.104 stay frozen beside the current files.
+The PDF, HTML, text and citation files are version 1.105's files of record, deposited on 18 November 2026; the PDF was checked against the registry's approved text. The Markdown and JSON companions reproduce all fourteen approved responses. The JSON reports the number of propositions from the numbered entries in the Predictions field. Versions 1.100, 1.102, 1.103 and 1.104 stay frozen beside the current files.
