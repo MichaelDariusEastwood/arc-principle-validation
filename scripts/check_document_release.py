@@ -49,6 +49,58 @@ class Representation(HTMLParser):
             self.problems.append('executable remote script in a document export')
 
 
+def registration_companion_findings(row, root):
+    """Check both reader downloads against the registered full text and its date record."""
+    if row.get('slug') != 'arc-theory-predictions-registration':
+        return []
+    prefix = 'papers/{0}/{0}.'.format(row['folder'])
+    out = []
+    for ext in ('md', 'json'):
+        entry = row['files'].get(ext, {})
+        path = root / (prefix + ext)
+        if entry.get('path') != prefix + ext or not path.is_file():
+            out.append('missing declared registration companion: ' + ext)
+        elif hashlib.sha256(path.read_bytes()).hexdigest() != entry.get('sha256'):
+            out.append('registration companion checksum differs: ' + ext)
+    if out:
+        return out
+    try:
+        record = json.loads((root / (prefix + 'json')).read_text(encoding='utf-8'))
+        markdown = (root / (prefix + 'md')).read_text(encoding='utf-8')
+        official = (root / row['files']['txt']['path']).read_text(encoding='utf-8')
+        fields = record['fields']
+        # Immutable field IDs of OSF's Theory-Based Predictions schema, in registry order.
+        keys = [f'343-{i}' for i in (2, 4, 7, 9, 12, 14, 17, 19, 21, 24, 26, 29, 31, 33)]
+        if [field['key'] for field in fields] != keys:
+            return ['registration field identity or order differs from the approved schema']
+        registered = '\n\n'.join(field['title'] + '\n\n' + field['text'] for field in fields)
+        if not official.rstrip('\n').endswith(registered):
+            out.append('machine field bodies differ from the official text')
+        position = 0
+        for field in fields:
+            body = field['text']
+            start = markdown.find(body, position)
+            if not body or len(body) != field['characters'] or start < 0:
+                out.append('registration Markdown or length differs for ' + field['key'])
+                break
+            position = start + len(body)
+        predictions = next(field['text'] for field in fields if field['key'] == '343-24')
+        numbers = [int(n) for n in re.findall(r'^P(\d+)\s*·', predictions, re.M)]
+        if (not numbers or numbers != list(range(1, len(numbers) + 1))
+                or type(record.get('propositions')) is not int or record['propositions'] != len(numbers)):
+            out.append('machine proposition count disagrees with the numbered Predictions field')
+        version = row['version']
+        latest = record['versions'][-1]
+        if latest['version'] != version or latest['sha256'] != row['files']['pdf']['sha256']:
+            out.append('machine version history disagrees with the release PDF')
+        headline = markdown.partition('\n\n')[2].split('\n', 1)[0]
+        if not re.search(r'\bRegistration v' + re.escape(version) + r'(?:[.]?(?:\s|$))', headline):
+            out.append('registration Markdown introduction identifies a different edition')
+    except (KeyError, IndexError, TypeError, ValueError, OSError) as error:
+        out.append('invalid registration companion: ' + type(error).__name__)
+    return out
+
+
 def findings(row, root=ROOT):
     if row.get('representation') not in RELEASE_PROFILES:
         return ['official document export still required']
@@ -80,6 +132,7 @@ def findings(row, root=ROOT):
                 out.append('citation version disagrees with manifest')
         if ext == 'txt' and len(data) < row.get('minimum_text_bytes', 1000):
             out.append('text companion below recorded full-text floor')
+    out.extend(registration_companion_findings(row, root))
     # Required document identities are fixed in the checker, not removable row flags.
     try:
         from document_pdf_metadata import metadata_findings
