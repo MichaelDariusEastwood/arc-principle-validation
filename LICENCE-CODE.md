@@ -14,6 +14,8 @@ This licence governs all **software and data artefacts** in this repository, inc
 
 Anyone may publish what they find, the data they collect and their changes, with attribution. That licence sets out the terms, including what it does not grant.
 
+**Older package notes.** Some packages published before 9 November 2026 say that a live run needs the author's permission. For every use the Replication Licence covers, that permission is given by it. Where a package's frozen code checks a registration or a private component before it runs, the package's own documents say which.
+
 **Everything else is reserved.** No other use is licensed: for example, building these artefacts into a product or service, training an AI model on their prompts, banks or responses, or redistributing them other than as the Replication Licence allows. Any such use needs the prior express written consent of the author.
 
 The methods, code and results are the subject of ongoing research and of priority and authorship claims by the author. They may be protected by copyright, database rights and trade-secret protections under the laws of England and Wales and other jurisdictions. Nothing here waives any right.
