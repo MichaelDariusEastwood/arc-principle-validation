@@ -1,23 +1,36 @@
 # Licence for the code, experiments, scripts, data and results
 
-**All rights reserved, with a replication licence.**
+**The Apache License, Version 2.0.**
 
-Copyright © 2026 Michael Darius Eastwood. All rights reserved, except as the Replication Licence grants.
+Copyright 2026 Michael Darius Eastwood.
 
-This licence governs all **software and data artefacts** in this repository, including but not limited to source code, experiment harnesses, analysis scripts, datasets, results, notebooks, Dockerfiles and Makefiles: for example, any files under `*/experiments/*`, `*/code/*` or `*/scripts/*`, and any `*.py`, `*.ts`, `*.ipynb` or `*.sh`. The written research works (papers, text, figures and PDFs) are governed separately by [`LICENCE-PAPERS.md`](LICENCE-PAPERS.md).
+From 22 November 2026 the software and data artefacts in this repository are licensed under the [Apache License, Version 2.0](LICENCE). That covers source code, experiment harnesses, analysis scripts, study packs and run sheets, prompts and rubrics, released item banks, datasets, results, notebooks, Dockerfiles and Makefiles: for example, any files under `*/experiments/*`, `*/code/*` or `*/scripts/*`, and any `*.py`, `*.ts`, `*.ipynb` or `*.sh`. It covers every version already published here and every version to come. The written research works (papers, text, figures and PDFs) are licensed separately under CC BY 4.0: see [`LICENCE-PAPERS.md`](LICENCE-PAPERS.md).
 
-**Replication is licensed.** Under the [Replication Licence, version 1.0](LICENCE-REPLICATION.md) (9 November 2026), anyone may download, copy, run, study and modify these artefacts, and collect and analyse new data with them, to:
-- reproduce or check the programme's reported results;
-- test whether they generalise to other models, providers, data or settings;
-- review them;
-- teach about them.
+## What you may do
 
-Anyone may publish what they find, the data they collect and their changes, with attribution. That licence sets out the terms, including what it does not grant.
+Anyone may use, copy, modify, merge, publish, distribute, sublicense and sell these artefacts, for any purpose, commercial or not. A redistribution carries a copy of the licence, keeps the copyright notices and the [`NOTICE`](NOTICE) file, and states what was changed. The licence includes a patent licence from the author for the released code (its section 3).
 
-**Older package notes.** Some packages published before 9 November 2026 say that a live run needs the author's permission. For every use the Replication Licence covers, that permission is given by it. Where a package's frozen code checks a registration or a private component before it runs, the package's own documents say which.
+## What it does not cover
 
-**Everything else is reserved.** No other use is licensed: for example, building these artefacts into a product or service, training an AI model on their prompts, banks or responses, or redistributing them other than as the Replication Licence allows. Any such use needs the prior express written consent of the author.
+These keep their own terms, or are never released here:
 
-The methods, code and results are the subject of ongoing research and of priority and authorship claims by the author. They may be protected by copyright, database rights and trade-secret protections under the laws of England and Wales and other jurisdictions. Nothing here waives any right.
+- third-party content, such as a public benchmark, a model, or a provider's output where its terms say otherwise;
+- code that names another open licence beside it, such as the MIT licence;
+- keys, tokens and other secrets, which the artefacts never include;
+- sealed materials not yet released;
+- personal data;
+- hardware design material.
 
-Licensing enquiries: michael@michaeldariuseastwood.com
+## Licence words inside earlier packages
+
+Some packages published before 22 November 2026 say "all rights reserved" or name the Replication Licence, version 1.0. Those packages are frozen and their files are hashed, so their words are kept byte for byte. For every file they hold, the Apache License 2.0 now governs. [`LICENCE-REPLICATION.md`](LICENCE-REPLICATION.md) is kept, marked superseded, as the record of the terms that applied from 9 to 22 November 2026.
+
+## A request about training
+
+The licence does not restrict training. As a request, and not a condition of the licence, please keep the released prompts, item banks and responses out of the training data of AI models, so that the tests built on them stay valid measurements.
+
+## History
+
+This repository carried the MIT licence from 22 January 2026; copies obtained under it remain governed by MIT for their recipients. The code, data and results were later reserved, and from 9 November 2026 they carried the Replication Licence, version 1.0. From 22 November 2026 they are licensed under the Apache License 2.0.
+
+Enquiries: michael@michaeldariuseastwood.com

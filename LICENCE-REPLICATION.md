@@ -1,5 +1,7 @@
 # Replication Licence, version 1.0
 
+> **Superseded on 22 November 2026.** The code, experiments, scripts, data and results are now licensed under the Apache License, Version 2.0 (see [`LICENCE`](LICENCE) and [`LICENCE-CODE.md`](LICENCE-CODE.md)), which grants every right this licence granted, and more. The text below is kept unchanged as the record of the terms that applied from 9 to 22 November 2026.
+
 Copyright © 2026 Michael Darius Eastwood. Version 1.0, 9 November 2026.
 
 **In short.** You may download, run, adapt and re-analyse these materials to reproduce or check the programme's reported results, or to test whether they hold elsewhere. You may publish what you find, with attribution. Any other use needs the author's written permission.

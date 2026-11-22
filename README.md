@@ -27,9 +27,10 @@ authoritative where a result has been corrected or withdrawn. A claim of priorit
 ```
 arc-principle-validation/
 ├── README.md                  this file
-├── LICENCE                    which licence governs which material
-├── LICENCE-CODE.md            code, experiments, data and results
-├── LICENCE-PAPERS.md          papers, text, figures and PDFs
+├── LICENCE                    the Apache License 2.0: code, experiments, data and results
+├── NOTICE                     the copyright and citation notice
+├── LICENCE-CODE.md            what the Apache licence covers here, and what it does not
+├── LICENCE-PAPERS.md          papers, text, figures and PDFs: CC BY 4.0
 ├── CITATION.cff               machine-readable citation
 ├── EXPERIMENTS-INDEX.md       every experiment, indexed by claim
 ├── papers/                    35 document folders, each with its own README
@@ -54,7 +55,7 @@ See [the publication canon](docs/PUBLICATION-CANON.md) and [release manifest](pa
 | A registered study unit | its registration and results on OSF: Unit 06 ([registration](https://doi.org/10.17605/OSF.IO/RV2B5), [results](https://doi.org/10.17605/OSF.IO/4BPHG)); Unit 83 ([registration](https://doi.org/10.17605/OSF.IO/MN73W), [results](https://doi.org/10.17605/OSF.IO/98HKR), and its code in [`experiments/unit-83-counted-p21/`](experiments/unit-83-counted-p21/)); Unit 82 ([registration](https://doi.org/10.17605/OSF.IO/JUFG4)); Unit 83b ([registration](https://doi.org/10.17605/OSF.IO/4HK32)) |
 | The priority record | [`priority-claims/`](priority-claims/) |
 | Release notes and the PDF checksums | [`docs/`](docs/) |
-| The licences | [`LICENCE`](LICENCE): the papers are CC BY 4.0; the code, data and results are all rights reserved, with the [Replication Licence 1.0](LICENCE-REPLICATION.md) |
+| The licences | the code, data and results are under the Apache License 2.0 ([`LICENCE`](LICENCE), [`NOTICE`](NOTICE)); the papers are CC BY 4.0 ([`LICENCE-PAPERS.md`](LICENCE-PAPERS.md)) |
 | The OSF project | [osf.io/6c5xb](https://osf.io/6c5xb/); its `00-START-HERE.md` lists every document with its DOI and code folder, and says which of the project's own folders are in use |
 
 **Kept, but not in use:** superseded files in `_archive/` and `archive/` folders; the four early scaling scripts in [`experiments/arc-scaling-lineage/`](experiments/arc-scaling-lineage/); in three paper folders, the same edition under the document's earlier file name; and Paper X's June 2026 deposit texts in its `osf/` folder.
@@ -264,16 +265,16 @@ by branches, so its document count can trail `CITATION.cff`, which carries the c
 
 ## Licence
 
-This repository is **dual-licensed**, and which licence applies depends on the material.
+Which licence applies depends on the material.
 
 | Material | Licence |
 |----------|---------|
+| Code, experiments, scripts, data and results | the Apache License, Version 2.0: anyone may use, copy, change and share them, for any purpose, keeping the copyright notices and the [NOTICE](NOTICE) file; see [LICENCE](LICENCE) and [LICENCE-CODE.md](LICENCE-CODE.md) |
 | Papers, text, figures and PDFs | Creative Commons Attribution 4.0 International (CC BY 4.0), see [LICENCE-PAPERS.md](LICENCE-PAPERS.md) |
-| Code, experiments, scripts, data and results | all rights reserved, with a replication licence: anyone may run, adapt and re-analyse them to reproduce, check or test the generalisation of the reported results, and publish what they find; see [LICENCE-REPLICATION.md](LICENCE-REPLICATION.md) and [LICENCE-CODE.md](LICENCE-CODE.md) |
 
-[LICENCE](LICENCE) states the split. Reading, checking and re-analysing the committed
-results is expressly what this repository exists for; redistribution of the code is not
-granted by either licence.
+Packages published before 22 November 2026 keep their own licence words, which said "all rights reserved" or named the
+Replication Licence; those files are frozen and hashed, and the Apache License 2.0 now governs them.
+[LICENCE-REPLICATION.md](LICENCE-REPLICATION.md) is kept as the record of the terms from 9 to 22 November 2026.
 
 ## Contributing
 
