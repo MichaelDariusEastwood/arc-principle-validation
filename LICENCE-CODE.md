@@ -8,14 +8,14 @@ From 22 November 2026 the software and data artefacts in this repository are lic
 
 ## What you may do
 
-Anyone may use, copy, modify, merge, publish, distribute, sublicense and sell these artefacts, for any purpose, commercial or not. A redistribution carries a copy of the licence, keeps the copyright notices and the [`NOTICE`](NOTICE) file, and states what was changed. The licence includes a patent licence from the author for the released code (its section 3).
+Anyone may use, copy, change and share these artefacts, and works made from them, for any purpose, commercial or not. A redistribution carries a copy of the licence, keeps the copyright notices and the [`NOTICE`](NOTICE) file, and says which files were changed. The licence includes a patent licence from the author for the released code (its section 3). It grants no right to the author's names or marks beyond describing where the work came from (its section 6). This is a summary; the licence text governs.
 
 ## What it does not cover
 
 These keep their own terms, or are never released here:
 
 - third-party content, such as a public benchmark, a model, or a provider's output where its terms say otherwise;
-- code that names another open licence beside it, such as the MIT licence;
+- files that name another open licence for themselves, such as CC BY 4.0 for a report or the MIT licence for code;
 - keys, tokens and other secrets, which the artefacts never include;
 - sealed materials not yet released;
 - personal data;
@@ -23,7 +23,7 @@ These keep their own terms, or are never released here:
 
 ## Licence words inside earlier packages
 
-Some packages published before 22 November 2026 say "all rights reserved" or name the Replication Licence, version 1.0. Those packages are frozen and their files are hashed, so their words are kept byte for byte. For every file they hold, the Apache License 2.0 now governs. [`LICENCE-REPLICATION.md`](LICENCE-REPLICATION.md) is kept, marked superseded, as the record of the terms that applied from 9 to 22 November 2026.
+Some packages published before 22 November 2026 say "all rights reserved", name the Replication Licence, version 1.0, or say that a live run needs the author's permission. Those packages are frozen and their files are hashed, so their words are kept byte for byte. For every file they hold, the Apache License 2.0 now governs, and no further permission is needed. Where a package's frozen code checks a registration or a private component before it runs, the package's own documents say which. [`LICENCE-REPLICATION.md`](LICENCE-REPLICATION.md) is kept, marked superseded, as the record of the terms that applied from 9 to 22 November 2026.
 
 ## A request about training
 
@@ -31,6 +31,6 @@ The licence does not restrict training. As a request, and not a condition of the
 
 ## History
 
-This repository carried the MIT licence from 22 January 2026; copies obtained under it remain governed by MIT for their recipients. The code, data and results were later reserved, and from 9 November 2026 they carried the Replication Licence, version 1.0. From 22 November 2026 they are licensed under the Apache License 2.0.
+This repository carried the MIT licence from 22 January 2026 to 5 July 2026; copies obtained under it remain governed by MIT for their recipients. From 5 July 2026 the code, data and results were all rights reserved, and from 9 November 2026 they carried the Replication Licence, version 1.0. From 22 November 2026 they are licensed under the Apache License 2.0.
 
 Enquiries: michael@michaeldariuseastwood.com

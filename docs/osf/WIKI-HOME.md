@@ -10,7 +10,7 @@ How to read it: each document's earliest file here carries every later version u
 
 The files in this project: each document has its own page on OSF, listed with its DOI and its code folder in 00-START-HERE.md, at the top of [this project's storage](https://osf.io/6c5xb/files/osfstorage). That file also lists each registered study unit with its registration and results. The storage holds the papers' PDFs, in the folder archive, and their HTML files; each file receives every new version of its paper, whatever its name says. It also holds the code, data, figures and experiments the project stored from January to July 2026, kept as they were stored and no longer in use; each folder has a note saying so. The current code, data and recorded outputs are in the [public repository](https://github.com/MichaelDariusEastwood/arc-principle-validation).
 
-Licence: the papers are free to read and reuse under the Creative Commons Attribution 4.0 licence. The study code and data published with them are all rights reserved, with a [replication licence](https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/LICENCE-REPLICATION.md) that lets anyone run, adapt and re-analyse them to reproduce or check the results.
+Licence: the papers are free to read and reuse under the Creative Commons Attribution 4.0 licence. The study code, data and results published with them are licensed under the [Apache License 2.0](https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/LICENCE), so anyone may use, change and share them.
 
 ## Where to start
 

@@ -11,4 +11,4 @@ This folder holds this note only. Paper II's experiment code and its recorded ou
 
 The one-model runner of January 2026 and the six-model runner are both in `scripts/`.
 
-The map of every experiment is [`EXPERIMENTS-INDEX.md`](../../../EXPERIMENTS-INDEX.md). The code and data are all rights reserved, with the [Replication Licence 1.0](../../../LICENCE-REPLICATION.md).
+The map of every experiment is [`EXPERIMENTS-INDEX.md`](../../../EXPERIMENTS-INDEX.md). The code and data are licensed under the [Apache License 2.0](../../../LICENCE).

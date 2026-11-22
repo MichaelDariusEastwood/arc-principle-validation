@@ -10,4 +10,4 @@ This folder holds this note only. Paper VII's experiment code and its recorded o
 
 Read the home's [README](../../../experiments/cauchy-unification__Paper-VII/README.md) before citing a result from it. Its `preregistration/` folder holds the extension protocol of 17 March 2026, which is not a registration.
 
-The map of every experiment is [`EXPERIMENTS-INDEX.md`](../../../EXPERIMENTS-INDEX.md). The code and data are all rights reserved, with the [Replication Licence 1.0](../../../LICENCE-REPLICATION.md).
+The map of every experiment is [`EXPERIMENTS-INDEX.md`](../../../EXPERIMENTS-INDEX.md). The code and data are licensed under the [Apache License 2.0](../../../LICENCE).
