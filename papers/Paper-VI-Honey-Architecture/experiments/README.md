@@ -8,4 +8,4 @@ This folder holds this note only. Paper VI's experiment code and its recorded ou
 - How to run it again: [`REPRODUCE.md`](../../../experiments/honey-architecture__Paper-VI/REPRODUCE.md)
 - The result files this paper cites: [`results/`](../results/), in this paper's folder
 
-The map of every experiment is [`EXPERIMENTS-INDEX.md`](../../../EXPERIMENTS-INDEX.md). The code and data are all rights reserved, with the [Replication Licence 1.0](../../../LICENCE-REPLICATION.md).
+The map of every experiment is [`EXPERIMENTS-INDEX.md`](../../../EXPERIMENTS-INDEX.md). The code and data are licensed under the [Apache License 2.0](../../../LICENCE).

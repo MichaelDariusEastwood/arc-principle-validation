@@ -6,7 +6,7 @@ Copyright © 2026 Michael Darius Eastwood.
 
 This licence governs the **written research works** in this repository: the prose, figures, and PDF and HTML documents under `papers/` and any equivalent written content. It is the licence the papers carry on the website, in their citation files and on OSF. (Software artefacts are governed separately by [`LICENCE-CODE.md`](LICENCE-CODE.md).)
 
-A paper's LaTeX source package (`papers/<Folder>/<Folder>-latex-source.tar.gz`) is part of the paper and carries CC BY 4.0, its preamble macros included; the code, experiments, scripts, data and results stay all rights reserved under [`LICENCE-CODE.md`](LICENCE-CODE.md).
+A paper's LaTeX source package (`papers/<Folder>/<Folder>-latex-source.tar.gz`) is part of the paper and carries CC BY 4.0, its preamble macros included; the code, experiments, scripts, data and results are licensed under the Apache License 2.0 ([`LICENCE`](LICENCE) and [`LICENCE-CODE.md`](LICENCE-CODE.md)).
 
 ## What you may do
 - **Share**: copy and redistribute the material in any medium or format, for any purpose, including commercially.

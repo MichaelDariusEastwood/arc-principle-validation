@@ -6,7 +6,7 @@
 - **The code, data and recorded outputs** are on GitHub, in the public repository [arc-principle-validation](https://github.com/MichaelDariusEastwood/arc-principle-validation). The table below names each document's code folder.
 - **The registered study units** each have a registration and, once run, a results component: Unit 06 ([registration](https://doi.org/10.17605/OSF.IO/RV2B5), [results](https://doi.org/10.17605/OSF.IO/4BPHG)), Unit 83 ([registration](https://doi.org/10.17605/OSF.IO/MN73W), [results](https://doi.org/10.17605/OSF.IO/98HKR)), Unit 82 ([registration](https://doi.org/10.17605/OSF.IO/JUFG4); not yet run) and Unit 83b ([registration](https://doi.org/10.17605/OSF.IO/4HK32); not yet run).
 - **This project's own storage.** `archive` is in use: the papers' PDFs at their first addresses. `code`, `data`, `experiments` and `figures` are not in use: what the project stored from January to July 2026, kept as it was stored. `paper` was never filled. Every folder has a `00-READ-ME.md`.
-- **Licence.** The papers are CC BY 4.0. The study code and data are all rights reserved, with the [Replication Licence 1.0](https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/LICENCE-REPLICATION.md).
+- **Licence.** The papers are CC BY 4.0. The study code, data and results are under the [Apache License 2.0](https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/LICENCE).
 
 ## Where each document is
 
@@ -111,4 +111,4 @@ Every folder holds a `00-READ-ME.md` saying the same in two to four lines. The s
 
 ## Licence
 
-The papers are free to read and reuse under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The study code, data and recorded outputs published with them are all rights reserved, with the [Replication Licence, version 1.0](https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/LICENCE-REPLICATION.md): anyone may run, adapt and re-analyse them to reproduce or check the reported results, or to test whether they hold elsewhere, and may publish what they find, with attribution.
+The papers are free to read and reuse under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The study code, data and recorded outputs published with them are licensed under the [Apache License, Version 2.0](https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/main/LICENCE): anyone may use, copy, change and share them, for any purpose, keeping the copyright notices.

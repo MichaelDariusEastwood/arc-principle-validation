@@ -10,4 +10,4 @@ This folder holds this note only. Paper IV.a's experiment code and its recorded 
 
 This experiment home serves Papers III, IV.a, IV.b, IV.c and IV.d.
 
-The map of every experiment is [`EXPERIMENTS-INDEX.md`](../../../EXPERIMENTS-INDEX.md). The code and data are all rights reserved, with the [Replication Licence 1.0](../../../LICENCE-REPLICATION.md).
+The map of every experiment is [`EXPERIMENTS-INDEX.md`](../../../EXPERIMENTS-INDEX.md). The code and data are licensed under the [Apache License 2.0](../../../LICENCE).
