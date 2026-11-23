@@ -19,3 +19,5 @@ In the report's own words (version 1.1):
 - **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
 
 The PDF and the HTML are the version 1.1 files as deposited on OSF (j6mkb) on 15 October 2026. The PDF (SHA-256 4460c5531bf04fc03d4607824dc2af2fb7f89fb96149c21b60b45234caa29686) is byte-identical to the website's, and the HTML is the document export, not the website page. The text and citation companions are not in this folder yet. New versions retain these filenames, with their own commits.
+
+The citation file, ARC-Alignment-Scaling-Working-Report.cff, is the version 1.1 citation metadata, the same bytes the website serves at /research/reports/arc-align-scaling-report.cff. Version 1.1 was released without a text export; the report's next version brings its text export with its PDF, its HTML and its citation file, on every mirror at once.
