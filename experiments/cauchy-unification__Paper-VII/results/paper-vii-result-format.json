@@ -1,0 +1,94 @@
+{
+  "kind": "Reversible standard JSON companions to published Paper VII files",
+  "verified_utc": "2026-11-25T18:41:35.493493+00:00",
+  "standard": "https://www.rfc-editor.org/rfc/rfc8259#section-6",
+  "rule": "Only four unquoted positive-infinity tokens in each published file are replaced by null. These are the same domain-20 Hill and logistic AICc and BIC fields in the full and the misses-only tables. Each null means that the original program withheld the score under its small-sample guard. All other bytes retain their original values and wording. The historical citation names Shen. The 2025 article is by Jiao and colleagues, doi:10.1038/s41467-025-64488-7.",
+  "reproduce": "python3 paper_vii_results_view.py ORIGINAL.json NEW.strict.json",
+  "recover": "python3 paper_vii_results_view.py --restore NEW.strict.json NEW.reconstructed.json",
+  "files": [
+    {
+      "published_file": "results_50_domain_validation.json",
+      "companion": "paper-vii-results-standard.json",
+      "earlier_source": "https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/5435e77622d531e300c05bd1880217be368f356c/experiments/cauchy-unification__Paper-VII/results/results_50_domain_validation.json",
+      "two_public_paths": [
+        "https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/6b6f1c1d04f4caa1561404eb3ee4a3c912b1c403/experiments/cauchy-unification__Paper-VII/results/results_50_domain_validation.json",
+        "https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/6b6f1c1d04f4caa1561404eb3ee4a3c912b1c403/papers/Paper-VII-Cauchy-Unification/results/results_50_domain_validation.json"
+      ],
+      "source_sha256": "c51988968d14e624a059deff6ceb2166d059d75a307f6da2413b5ba8fe7e24bc",
+      "view_sha256": "f8e650db0fe1b10bd79873ccdb67568860de4f81683334bd3bcbb7ceb14dfaec",
+      "source_bytes": 73790,
+      "view_bytes": 73774,
+      "locations": [
+        {
+          "pointer": "/results/19/top_fits/2/aicc",
+          "model": "hill"
+        },
+        {
+          "pointer": "/results/19/top_fits/2/bic",
+          "model": "hill"
+        },
+        {
+          "pointer": "/results/19/top_fits/3/aicc",
+          "model": "logistic"
+        },
+        {
+          "pointer": "/results/19/top_fits/3/bic",
+          "model": "logistic"
+        }
+      ],
+      "checks": [
+        "Both public paths match the dated source bytes",
+        "JavaScript rejects the archive and reads the full companion",
+        "Strict Python accepts the complete companion",
+        "All four pointers have the recorded model and field",
+        "The reverse operation reproduces every original byte",
+        "Repeat delivery preserves the file",
+        "Altered input is rejected",
+        "Wrong direction is rejected",
+        "Existing different destination is preserved"
+      ]
+    },
+    {
+      "published_file": "empirical_miss_analysis.json",
+      "companion": "paper-vii-miss-analysis-standard.json",
+      "earlier_source": "https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/8edaec0461997982e7651e937f1b8e79636c4c03/experiments/cauchy-unification__Paper-VII/results/empirical_miss_analysis.json",
+      "two_public_paths": [
+        "https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/6b6f1c1d04f4caa1561404eb3ee4a3c912b1c403/experiments/cauchy-unification__Paper-VII/results/empirical_miss_analysis.json",
+        "https://github.com/MichaelDariusEastwood/arc-principle-validation/blob/6b6f1c1d04f4caa1561404eb3ee4a3c912b1c403/papers/Paper-VII-Cauchy-Unification/results/empirical_miss_analysis.json"
+      ],
+      "source_sha256": "edba33113699a9b5ad267861f505840bd131e4c449331fcd27910e2048afd7b2",
+      "view_sha256": "c49f1d137b24eed3360304fe9c9d6a63b627f2c005845669c9d9e5006a716aac",
+      "source_bytes": 12097,
+      "view_bytes": 12081,
+      "locations": [
+        {
+          "pointer": "/misses/4/top_fits/2/aicc",
+          "model": "hill"
+        },
+        {
+          "pointer": "/misses/4/top_fits/2/bic",
+          "model": "hill"
+        },
+        {
+          "pointer": "/misses/4/top_fits/3/aicc",
+          "model": "logistic"
+        },
+        {
+          "pointer": "/misses/4/top_fits/3/bic",
+          "model": "logistic"
+        }
+      ],
+      "checks": [
+        "Both public paths match the dated source bytes",
+        "JavaScript rejects the archive and reads the full companion",
+        "Strict Python accepts the complete companion",
+        "All four pointers have the recorded model and field",
+        "The reverse operation reproduces every original byte",
+        "Repeat delivery preserves the file",
+        "Altered input is rejected",
+        "Wrong direction is rejected",
+        "Existing different destination is preserved"
+      ]
+    }
+  ]
+}
