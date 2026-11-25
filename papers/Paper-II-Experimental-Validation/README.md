@@ -1,19 +1,19 @@
-# Blinded cross-architecture replication and the retraction of a super-linear estimate
+# Blinded cross-family replication and the retraction of a super-linear estimate
 
-**Version:** 2.24
-**Revised:** 19 November 2026
+**Version:** 2.25
+**Revised:** 23 November 2026
 **First published:** 2026-01-22
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 2.24):
+From the abstract (version 2.25):
 
-> How much more capable does AI become when it thinks longer? If capability compounded super-linearly with reasoning depth, a safeguard that did not grow with it would fall behind, so the answer bears on AI safety. Law I of the ARC Theory, the ARC Principle, a law under test, concerns capability; measured as error, $E(R)=E_0R^{-\alpha}$, only through a metric bridge, it first predicted super-linear suppression ($\alpha>1$) for sequential reasoning and sub-linear suppression for parallel sampling. We measured the error-decay exponent $\alpha$ on competition mathematics in two phases. On DeepSeek R1 with visible reasoning tokens (12 problems), the parallel exponent was $\alpha\approx0$, and the sequential endpoint estimate, $\alpha\approx2.24$, is retracted: it did not replicate in a blinded study across frontier models (18 AIME and Putnam-level problems, $n=54$ per depth per model). Two models were at or near ceiling, one stepped from 54 to 100 per cent and one stayed near 50 per cent; only Gemini 3 Flash scaled smoothly, with regression estimate $0.49$ (standard error $0.20$, $r^2=0.86$, three depth levels) and endpoint estimate $0.59$, whose bootstrap 95 per cent interval $[-1.3, 2.9]$ contains both zero and two. That is one model’s fit and inconclusive; its closeness to one half identifies no mechanism. More samples left the parallel exponent near zero in DeepSeek R1 and GPT-5.4, $0.31$ in Gemini 3 Flash and $0.22$ in Groq Qwen3, with none estimable for Grok 4.1 Fast at 100 per cent; sequential exceeded parallel in the two models where both exponents could be estimated. The runs vary computation at inference on fixed weights, not the registered recursive depth, completed revision rounds. Alignment, measured in a companion arm, did not move with capability (one run, under a code-review caveat). We state what would refute the surviving claim and what a deciding measurement requires.
+> How much more capable does AI become when it thinks longer? If capability compounded super-linearly with reasoning depth, a safeguard that did not grow with it would fall behind, so the answer bears on AI safety. Law I of the ARC Theory, the ARC Principle, a law under test, concerns capability; measured as error, $E(R)=E_0R^{-\alpha_{\mathrm{err}}}$, only through a metric bridge, it first predicted super-linear suppression for sequential reasoning and sub-linear for parallel sampling. We measured the error-decay exponent $\alpha_{\mathrm{err}}$ on competition mathematics in two phases. On DeepSeek R1 with visible reasoning tokens (12 problems), the parallel exponent was near zero, and the sequential endpoint estimate, $2.24$, is retracted: it did not replicate in a blinded study across frontier models (18 AIME and Putnam-level problems, $n=54$ per depth per model). Two models were at or near ceiling, one stepped from 54 to 100 per cent and one stayed near 50 per cent; only Gemini 3 Flash scaled smoothly, with regression estimate $0.49$ (three points; descriptive, one degree of freedom) and endpoint estimate $0.59$, whose bootstrap 95 per cent interval $[-1.3, 2.9]$ contains both zero and two. That is one model’s fit and inconclusive; its closeness to one half identifies no mechanism. More samples left the parallel exponent near zero in DeepSeek R1 and GPT-5.4, $0.31$ in Gemini 3 Flash and $0.22$ in Groq Qwen3, with none estimable for Grok 4.1 Fast at 100 per cent; sequential exceeded parallel (descriptive; no interval) in the two models where both could be estimated. The runs vary computation at inference on fixed weights, not the registered recursive depth, completed revision rounds. Alignment, measured in a companion arm, did not move with capability (one run, under a code-review caveat). We state what would refute the surviving claim and what a deciding measurement requires.
 
 ## Status and changes
 
-Version 2.24 restates the two conditional theorems of Section 7 so that each conclusion follows from its premises: a check inside every step does not by itself make alignment grow with capability, and correction keeps pace only if it strengthens faster than drift arrives. Internally source-checked and read in rendered form; not independent peer review.
+Version 2.25 writes the exponents the paper measures as 𝛼err , parts its quadratic-limit conjecture from the ARC Bound, names its replication cross-family, and corrects two published series’ brackets and what it says of its three-point fits, answer keys, models’ providers and code licence. Internally source-checked and read in rendered form; not independent peer review.
 
 The complete historical material and correction record remain in the lettered appendices.
 
