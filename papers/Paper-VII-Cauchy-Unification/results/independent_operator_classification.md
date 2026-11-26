@@ -1,3 +1,7 @@
+> **Note added 26 November 2026.** This file is kept as it was committed to this repository on 17 March 2026. Nothing below the line has been changed; the SHA-256 of the file as it stood before this note is `e12f5ac9c4c7421f4e96bb3d5fe8483365a478c16aa4434c2d703be6fbfbb266`. The classification it records was made inside the programme. It is an internal check and not an independent assessment, whatever its title, its "Assessor" line and its closing verdict say; its blinding is the self-declaration in its own "Method" line and not an enforced procedure. No assessor outside the programme has classified these domains. Paper VII says so in its limitations (version 3.19, Section 13): "The composition operator classification is done by the author, not by an independent assessor." The paper's current edition, in `papers/Paper-VII-Cauchy-Unification/`, states the result and its status.
+
+---
+
 # Independent Operator Classification of 25 Empirical Curve-Fit Domains
 
 **Assessor:** Claude Opus 4.6 (independent assessment, not author-affiliated)

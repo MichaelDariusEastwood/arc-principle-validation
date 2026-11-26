@@ -32,7 +32,7 @@ arc-principle-validation/
 ├── LICENCE-CODE.md            what the Apache licence covers here, and what it does not
 ├── LICENCE-PAPERS.md          papers, text, figures and PDFs: CC BY 4.0
 ├── CITATION.cff               machine-readable citation
-├── EXPERIMENTS-INDEX.md       every experiment, indexed by claim
+├── EXPERIMENTS-INDEX.md       every experiment's home, with each of its files
 ├── papers/                    35 document folders, each with its own README
 ├── experiments/               nine experiment homes, shared code and superseded scripts, mapped in experiments/README.md
 ├── instruments/               reference code for runs not yet made, mapped in instruments/README.md
@@ -52,7 +52,7 @@ See [the publication canon](docs/PUBLICATION-CANON.md) and [release manifest](pa
 | A document at its latest version | its folder in [`papers/`](papers/), listed in [`papers/README.md`](papers/README.md); every version is on OSF under the document's DOI |
 | The code and recorded outputs behind a result | [`EXPERIMENTS-INDEX.md`](EXPERIMENTS-INDEX.md), then the experiment's home in [`experiments/`](experiments/); Papers VIII and X keep theirs in their own folders under `papers/` |
 | Reference code for runs not yet made | [`instruments/`](instruments/) |
-| A registered study unit | its registration and results on OSF: Unit 06 ([registration](https://doi.org/10.17605/OSF.IO/RV2B5), [results](https://doi.org/10.17605/OSF.IO/4BPHG)); Unit 83 ([registration](https://doi.org/10.17605/OSF.IO/MN73W), [results](https://doi.org/10.17605/OSF.IO/98HKR), and its code in [`experiments/unit-83-counted-p21/`](experiments/unit-83-counted-p21/)); Unit 82 ([registration](https://doi.org/10.17605/OSF.IO/JUFG4)); Unit 83b ([registration](https://doi.org/10.17605/OSF.IO/4HK32)) |
+| A registered study unit | its registration and results on OSF: Unit 06, the corrector-class audit ([registration](https://doi.org/10.17605/OSF.IO/RV2B5), [results](https://doi.org/10.17605/OSF.IO/4BPHG)); Unit 83, a counted test of in-loop correction with depth ([registration](https://doi.org/10.17605/OSF.IO/MN73W), [results](https://doi.org/10.17605/OSF.IO/98HKR), and its code in [`experiments/unit-83-counted-p21/`](experiments/unit-83-counted-p21/)); Unit 82, a counted test of corrector-panel independence ([registration](https://doi.org/10.17605/OSF.IO/JUFG4)); Unit 83b, a second registered test of P21 ([registration](https://doi.org/10.17605/OSF.IO/4HK32)) |
 | The priority record | [`priority-claims/`](priority-claims/) |
 | Release notes and the PDF checksums | [`docs/`](docs/) |
 | The licences | the code, data and results are under the Apache License 2.0 ([`LICENCE`](LICENCE), [`NOTICE`](NOTICE)); the papers are CC BY 4.0 ([`LICENCE-PAPERS.md`](LICENCE-PAPERS.md)) |

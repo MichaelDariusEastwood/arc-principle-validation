@@ -1,3 +1,7 @@
+> **Note added 26 November 2026.** This file is kept as it was committed to this repository on 17 March 2026. Nothing below the line has been changed; the SHA-256 of the file as it stood before this note is `517337b55854135106e46e8c921b59880a5608de8e9c35a7f4bffeee2352911b`. The review it records was made inside the programme, at the author's request. It is an internal review and not an independent one, and its verdict is not the paper's. Paper VII keeps all six misses as misses (version 3.19, Section 7): "The explanations are post hoc, and no miss can be dismissed: whether any miss reflects its dataset rather than a wrong prediction is for the replication to decide (Section 13.1, item 4). These are genuine failures that an independent replication must address." The paper's current edition, in `papers/Paper-VII-Cauchy-Unification/`, states the result and its status.
+
+---
+
 # Miss Analysis: 6 Failures in the 50-Domain Cauchy Validation
 
 **Date:** 2026-03-17
