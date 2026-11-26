@@ -9,9 +9,9 @@ and what its evidence is worth.
 `<what-it-measures>__<the-document-it-supports>`
 
 The double underscore separates the two halves. A folder supporting more than one
-document names them together, as `Papers-IV-a-b-c-d` does. Two folders carry no
-document suffix because they support no single one: `shared/` and
-`arc-scaling-lineage/`.
+document names them together, as `Papers-IV-a-b-c-d` does. Three folders carry no
+document suffix: `shared/` and `arc-scaling-lineage/`, which support no single
+document, and `unit-83-counted-p21/`, which holds a registered study unit.
 
 ## What a folder contains
 
@@ -31,8 +31,8 @@ beside the existing one.
 |--------|----------|------------------|---------------|
 | `paper-i-foundational__Paper-I` | Paper I | the original ARC Principle validation toolkit | supporting |
 | `paper-ii-compute__Paper-II` | Paper II | sequential against parallel scaling, six models | pilot |
-| `alignment-scaling__Papers-IV-a-b-c-d` | Papers IV.a to IV.d | alignment scaling across depth, versions v1 to v5 | pilot |
-| `eden-intervention__Paper-V` | Paper V | the Eden intervention against a control, five analysable runs | pilot, single-scorer, not blinded |
+| `alignment-scaling__Papers-IV-a-b-c-d` | Papers III, IV.a to IV.d | alignment scaling across depth, versions v1 to v5 | pilot |
+| `eden-intervention__Paper-V` | Paper V | the Eden intervention against a control, five analysable runs | pilot, single-scorer, partially blind |
 | `honey-architecture__Paper-VI` | Paper VI | the honey architecture in simulation and against live models | mechanistic in simulation, exploratory on live models |
 | `cauchy-unification__Paper-VII` | Paper VII | the cross-domain functional-equation classification | **under correction**, see below |
 | `domain-validation__Foundational-and-Origin` | Foundational, On the Origin of Scaling Laws | the dimensional relation across physics and other domains | supporting, mathematical |
@@ -40,6 +40,7 @@ beside the existing one.
 | `analysis-tools__Cross-Programme` | Papers II, IV.a to IV.d, V | shared analysis code, not a result | tooling |
 | `shared` | all experiments | the gateway adapter the experiment scripts share | tooling |
 | `arc-scaling-lineage` | none directly | the four early standalone scaling scripts, kept as a record | superseded |
+| `unit-83-counted-p21` | Unit 83, a registered study unit | a counted test of in-loop correction with depth: the registered code and the record of its run | registered |
 
 ## Paper VIII keeps its experiments with the paper
 
@@ -56,7 +57,9 @@ Evidence tier: pilot, unblinded, not replicated.
 they were reported under has since been corrected: the functional-equation grid has four
 cells rather than three, and the primary statistic is a permutation test conditioned on
 both marginals rather than the binomial reported at the time. The recorded outputs stand;
-the reading placed on them does not. Read the corrections notice before citing anything
+the reading placed on them does not. Read the
+[corrections notice](https://www.michaeldariuseastwood.com/research/corrections/), the note at
+the head of that folder's README and the paper's current edition before citing anything
 from this folder.
 
 ## What the evidence tiers mean
@@ -65,6 +68,7 @@ from this folder.
 |------|----------------|
 | pilot | real data with stated methodological limits, most often single-scorer or unblinded |
 | blind-scored | the scorer could not see the condition, and blinding integrity was itself measured |
+| registered | a study unit run from a registration that was public on OSF before the run; the registration and the results record state the verdict and its limits |
 | mechanistic | a mechanism demonstrated in a toy system, with no claim about any deployed system |
 | supporting | mathematical or computational validation of a step, not an empirical result |
 | exploratory | pattern-finding, never confirmatory |
@@ -73,7 +77,8 @@ from this folder.
 
 No tier in this table means validated, replicated or independently confirmed. Nothing in
 this repository has been independently replicated, and no result here has been through
-peer review.
+peer review. What the work has been through instead is set out in the repository's
+[README](../README.md).
 
 ## Two of these paths are cited from outside
 

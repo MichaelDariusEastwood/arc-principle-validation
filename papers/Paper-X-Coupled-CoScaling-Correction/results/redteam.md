@@ -1,3 +1,7 @@
+> **Note added 26 November 2026.** This file is kept as it has stood since 27 June 2026. Nothing below the line has been changed; the SHA-256 of the file as it stood before this note is `d6117b5252648cef7894894ef566137ca1117f6521cf33825ffe2a3b7dde987a`. The review it records was internal: every step of it was made inside the programme, and its word "independent" describes steps of that review that did not see one another's working, not a reviewer outside the programme. The paper calls it an internal red-team review (version 1.18, Section 9.3). It predates the review of the theorem statements of 19 October 2026, of which the paper says: "A later review of the theorem statements, of 19 October 2026, found limbs that were false as stated or lacked a hypothesis; this version corrects them (Appendix B.4)." Where this report and the paper's current edition differ, the paper is right.
+
+---
+
 # Paper X - Adversarial Red-Team Report
 
 **Method.** An independent multi-agent adversarial red-team attacked Paper X across five
