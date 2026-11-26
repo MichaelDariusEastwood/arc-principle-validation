@@ -1,19 +1,19 @@
 # The Eden Vision: what should the intelligence we build be for?
 
-**Version:** 2.15
-**Revised:** 16 November 2026
+**Version:** 2.16
+**Revised:** 26 November 2026
 **First published:** 2026-02-22
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 2.15):
+From the abstract (version 2.16):
 
-> What should the intelligence we build be for, and what would keep it good if control were lost? This philosophical statement of the Eden Protocol argues for raising intelligence towards flourishing rather than consumption. In the words of its registration, the ARC Theory, which motivates the Protocol, says that “capability under recursive self-improvement rises as a power of the number of times a system has revised itself” (Law I, the ARC Principle, the foundation: $U=I\times R^{\alpha}$; $U=IR$ of 8 December 2024 named the universe). The paper synthesises AI alignment, developmental ethics and religious traditions as sources of ethical reflection, not empirical evidence. Its method is conceptual argument, comparison with prior work and a bounded reading of the programme’s results. It sets out two phases: retain human control and measurable correction for as long as possible; seek values that persist if control is lost. It considers the conditional criterion of Law II, the ARC Co-Scaling Law, for a vanishing misalignment fraction ($\beta>k$) in the specified positive gain-drift model, and what it would require of a system’s own correction; the law remains under test. The contribution is a design philosophy and a statement of its unresolved tests. In the cited March 2026 run, alignment scores did not rise with depth for three of six models; an internal review later found code defects. A separate prompt intervention raised scored stakeholder care in five analysable runs, with non-blind scoring. These observations establish neither the models’ training mechanisms nor persistence under self-modification. A design fixed before training, with correction participating in reasoning, action selection and self-rewriting, remains a proposal. The paper derives no empirical guarantee that a system able to alter its correction will choose to preserve it. That is the hypothesis the programme must test.
+> What should the intelligence we build be for, and what would keep it good if control were lost? This philosophical statement of the Eden Protocol argues for raising intelligence towards flourishing rather than consumption. In the words of its registration, the ARC Theory, which motivates the Protocol, says that “capability under recursive self-improvement rises as a power of the number of times a system has revised itself” (Law I, the ARC Principle, the foundation: $U=I\times R^{\alpha}$; $U=IR$ of 8 December 2024 named the universe). The paper synthesises AI alignment, developmental ethics and religious traditions as sources of ethical reflection, not empirical evidence. Its method is conceptual argument, comparison with prior work and a bounded reading of the programme’s results. It sets out two phases: retain human control and measurable correction for as long as possible; seek values that persist if control is lost. It considers the conditional criterion of Law II, the ARC Co-Scaling Law, for a vanishing misalignment fraction ($\beta_C>k$) in the specified positive gain-drift model, and what it would ask of a system’s own correction; the law remains under test. The contribution is a design philosophy and a statement of its unresolved tests. In the cited March 2026 run, alignment scores did not rise with depth for three of six models; an internal review found code defects. A separate prompt intervention raised scored stakeholder care in five analysable runs, with partially blind scoring. These observations establish neither the models’ training mechanisms nor persistence under self-modification. A design fixed before training, with correction participating in reasoning, action selection and self-rewriting, remains a proposal. The paper derives no empirical guarantee that a system able to alter its correction will choose to preserve it. That is the hypothesis the programme must test.
 
 ## Status and changes
 
-Version 2.15 gives the Introduction this paper’s own opening (Appendix A). Internally source-checked and read in rendered form; not independent peer review.
+Version 2.16 gives the cited prompt runs’ scoring as partially blind and brings statuses and citations up to date (Appendix A). Internally source-checked and read in rendered form; not independent peer review.
 
 The complete historical material and correction record remain in the lettered appendices.
 
