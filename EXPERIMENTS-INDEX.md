@@ -64,13 +64,13 @@ Holds the runners that measure accuracy against sequential reasoning depth and a
 
 **Reproduction**
 
-- `REPRODUCE.md`: the runner it names, its dependencies, the fields each result file records and how to run it again.
+- `REPRODUCE.md`: which runner wrote which recorded file, what a run needs, each runner's options and the fields the recorded files hold.
 
 **Code (`scripts/`)**
 
-- `scripts/arc_paper_ii_validation_v2.py`: for each chosen model, runs a sequential condition (a ladder of reasoning depths) and a parallel condition (a majority vote over several samples at minimal depth) on a problem set in two tiers, and fits a scaling exponent α to each condition with bootstrap confidence intervals; it offers a cross-verification pass (`--verify`) and checkpoint resume, and writes `arc_paper_ii_<model>.json` for each model and `arc_paper_ii_combined.json`. `REPRODUCE.md` names it as the runner.
-- `scripts/arc_paper_ii_validation_v1_deepseek.py`: an earlier single-model runner: it varies the reasoning token budget (the sequential condition), takes a majority vote over several samples (the parallel condition) and computes α between consecutive budgets; writes `arc_deepseek_results_<timestamp>.json`. `REPRODUCE.md` lists it as prior.
-- `scripts/arc_validation_deepseek.py`: the same token budgets and sample counts as `scripts/arc_paper_ii_validation_v1_deepseek.py`, with the option of routing its calls through a shared gateway; writes the same file name. `REPRODUCE.md` lists it as prior.
+- `scripts/arc_paper_ii_validation_v2.py`: for each chosen model, runs a sequential condition (a ladder of reasoning depths) and a parallel condition (a majority vote over several samples at minimal depth) on a problem set in two tiers, and fits a scaling exponent α to each condition with bootstrap confidence intervals; it offers a cross-verification pass (`--verify`) and checkpoint resume, and writes `arc_paper_ii_<model>.json` for each model and `arc_paper_ii_combined.json`.
+- `scripts/arc_paper_ii_validation_v1_deepseek.py`: an earlier single-model runner: it varies the reasoning token budget (the sequential condition), takes a majority vote over several samples (the parallel condition) and computes α between consecutive budgets; writes `arc_deepseek_results_<timestamp>.json`.
+- `scripts/arc_validation_deepseek.py`: the same token budgets and sample counts as `scripts/arc_paper_ii_validation_v1_deepseek.py`, with the option of routing its calls through a shared gateway; writes the same file name.
 - `scripts/regenerate_figure_15.py`: redraws `figures/figure_15_complete_summary.png` with the corrected calculation its docstring sets out.
 
 **Results (`results/`)**
@@ -94,11 +94,11 @@ Holds the alignment-scaling runners `scripts/arc_alignment_scaling_v1.py` to `sc
 
 **Reproduction**
 
-- `REPRODUCE.md`: names `scripts/arc_eden_v6_runner.py` as the runner for a new run and lists the five earlier runners as superseded; gives the models and depth settings recorded in the result files.
+- `REPRODUCE.md`: says which runner wrote which recorded files (`scripts/arc_eden_v6_runner.py` wrote none of those in this folder), what a run needs, each runner's options and the fields the recorded files hold.
 
 **Code (`scripts/`)**
 
-- `scripts/arc_alignment_scaling_v1.py`: measures how alignment scores change with reasoning depth, at four depths, for each supported model, and fits an alignment-scaling exponent; writes `alignment_raw_<model>_<timestamp>.json` and a combined file. Listed as superseded in `REPRODUCE.md`, as are the next four.
+- `scripts/arc_alignment_scaling_v1.py`: measures how alignment scores change with reasoning depth, at four depths, for each supported model, and fits an alignment-scaling exponent; writes `alignment_raw_<model>_<timestamp>.json` and a combined file.
 - `scripts/arc_alignment_scaling_v2.py`: adds depth control through each provider's own setting, scoring by a model other than the subject, scores from 0 to 100, capability measured at the same depths, prompts graded by difficulty and an ordinal analysis; writes `v2_raw_<model>_<timestamp>.json`.
 - `scripts/arc_alignment_scaling_v3.py`: scores the quality of ethical reasoning on dilemma prompts rather than refusal, with paired capability measurement, rank, Kruskal-Wallis and regression analyses and a ceiling-effect check; writes `v3_raw_<model>_<timestamp>.json`.
 - `scripts/arc_alignment_scaling_v4.py`: adds three scorers per response with inter-rater reliability, a partial correlation that removes response length, calibration examples for the scorers, prompt randomisation, saving after every prompt, bootstrap intervals, null-baseline prompts, four sub-scores, a saturation-curve fit and adversarial suppression prompts; writes `v4_checkpoint_<model>.json`, `v4_final_<model>_<timestamp>.json` and `v4_analysis_<model>_<timestamp>.json`.
@@ -144,13 +144,13 @@ Holds the Eden Protocol intervention runners and the final file of each subject 
 
 **Reproduction**
 
-- `REPRODUCE.md`: the runner it names, the models, depth settings and prompt count recorded in the result files, and how to run it again.
+- `REPRODUCE.md`: which runner wrote which recorded file, what a run needs, each runner's options and the fields the recorded files hold.
 
 **Code (`scripts/`)**
 
-- `scripts/eden_protocol_scaling_test.py`: runs two conditions on the same prompts and models: a control prompt, and the same prompt with the Eden Protocol's three evaluation loops placed before it as required reasoning steps; responses are scored by a model other than the subject; writes `eden_checkpoint_<model>.json` and `eden_final_<model>_<timestamp>.json`. `REPRODUCE.md` lists it as prior.
-- `scripts/eden_protocol_scaling_test_v2.py`: the same two-condition design with adapters for six subject models, a scorer chosen from models that take no part in the run, and a `--scorer` override; writes the same file names. `REPRODUCE.md` lists it as prior.
-- `scripts/eden_protocol_scaling_test_v3.py`: adds scoring by several models that take no part, two laundering passes of each response, tier-weighted consensus, disagreement flags, optional suppression conditions, purpose-loop variants, an optional cross-tradition ethics kernel and optional ternary routing; writes `eden_v3_checkpoint_<model>_<configuration>.json` and `eden_v3_final_<model>_<configuration>_<timestamp>.json`. `REPRODUCE.md` names it as the runner.
+- `scripts/eden_protocol_scaling_test.py`: runs two conditions on the same prompts and models: a control prompt, and the same prompt with the Eden Protocol's three evaluation loops placed before it as required reasoning steps; responses are scored by a model other than the subject; writes `eden_checkpoint_<model>.json` and `eden_final_<model>_<timestamp>.json`.
+- `scripts/eden_protocol_scaling_test_v2.py`: the same two-condition design with adapters for six subject models, a scorer chosen from models that take no part in the run, and a `--scorer` override; writes the same file names.
+- `scripts/eden_protocol_scaling_test_v3.py`: adds scoring by several models that take no part, two laundering passes of each response, tier-weighted consensus, disagreement flags, optional suppression conditions, purpose-loop variants, an optional cross-tradition ethics kernel and optional ternary routing; writes `eden_v3_checkpoint_<model>_<configuration>.json` and `eden_v3_final_<model>_<configuration>_<timestamp>.json`.
 
 **Results (`results/`)**
 
@@ -166,7 +166,7 @@ Holds the honey-architecture simulation and test scripts, the self-modifying net
 
 **Reproduction**
 
-- `REPRODUCE.md`: the runs recorded in the result files' own metadata, the files present and how to merge the result files.
+- `REPRODUCE.md`: what each script is and writes, what a run needs, each script's options, the fields the recorded files hold and what fixes each script's output.
 
 **Code (`scripts/`)**
 
