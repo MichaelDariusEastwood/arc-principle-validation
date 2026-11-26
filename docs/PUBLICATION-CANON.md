@@ -43,8 +43,8 @@ pull request; the pull-request workflow runs this check as well.
 
 Published registrations remain frozen. A text correction requires a successor version
 approved and registered by the author. Historical files and licence grants retain their
-history. T2 prepares documents and deposits; T4 reviews and merges them and carries
-matching files to the website.
+history. Releases are prepared, reviewed and merged under the checks this file names, and the
+matching files are carried to the website.
 
 ## Document metadata before release
 

@@ -134,8 +134,11 @@ never an empirical validation.
 | [Paper XIII](papers/Paper-XIII-Self-Acceleration-Exponent/) | the self-acceleration exponent | published |
 | [Paper C](papers/Paper-C-PNP/) | polymathy and neurodivergent cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy | published |
 | [HRIH Paper](papers/HRIH-Paper/) | a cosmological hypothesis | **speculative, outside the empirical core.** No result in this repository bears on it and it is not part of the evidence base |
+| [HRIH, the Bayesian and physical research programme](papers/HRIH-Bayesian-and-Physical-Research-Programme/) | how Bayesian model comparison could weigh the cosmological hypothesis | **speculative, outside the empirical core**; working paper |
 | [The ARC Theory](papers/The-ARC-Theory/) | the theory-level statement | published |
 | [The ARC Theory, two-page form](papers/The-ARC-Theory-Two-Page-Form/) | the theory in two pages | published |
+| [Operational Definitions](papers/Operational-Definitions/) | what the ARC Theory's quantities measure | published |
+| [The mathematics of Laws IV and V](papers/Laws-IV-V-Mathematics/) | when installed values fade with training, and whether building them in first changes that | report; the mathematics in development |
 | [Recursive Dynamics, the founding paper](papers/Recursive-Dynamics-Founding-Paper/) | the science of systems that improve themselves | published |
 | [The theory-level predictions registration](papers/ARC-Theory-Predictions-Registration/) | twenty-two severable propositions, registered before any admissible confirmatory outcome; version 1.105 adds P23, dated from that version | registered on OSF, 8 September 2026; the registry's update to version 1.104, 29 October 2026; version 1.105 written 18 November 2026 |
 | [The Dated Prediction Register](papers/Dated-Prediction-Register/) | forward predictions as one verifiable chain | published |
@@ -209,9 +212,9 @@ python src/run_train.py --config configs/default.yaml
 
 ## Falsification
 
-Thirteen falsification criteria are specified across the ARC framework and the Eden
-Protocol, each independently sufficient to refute the claim it attaches to. See Paper III
-section 7 and Eden Engineering section 5.2.
+Paper III states thirteen conditions that would refute or significantly weaken its framework
+(Section 7, Table 21). Eden Engineering states what would refute each part of its
+specification (Section 5.2, Table 3).
 
 ## Prior and parallel work this programme does not claim
 
