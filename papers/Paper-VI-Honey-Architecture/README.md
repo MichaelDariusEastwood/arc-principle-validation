@@ -1,25 +1,25 @@
 # The Honey Architecture: does building safety into what a self-modifying system optimises help it stay safe?
 
-**Version:** 3.13
-**Revised:** 16 November 2026
+**Version:** 3.14
+**Revised:** 26 November 2026
 **First published:** 2026-03-16
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-From the abstract (version 3.13):
+From the abstract (version 3.14):
 
-> A system that improves itself while optimising for capability alone may trade away its own safety. Does building safety into what it optimises help it stay safe? This paper studies toy neural networks that rewrite their own hyperparameters under an objective that multiplies capability by safety (here, the retention of earlier tasks), so that at fixed capability a lower safety score lowers the objective and safety at zero takes it to zero. In a single-seed mechanism run (v1), the capability-only baseline collapsed (recorded at cycle 76) and neither entangled condition met the collapse test; in ten-seed and twenty-seed runs (v2, v3) the capability-only baselines did not collapse (0 of 10; 0 of 20) and one plain entangled seed did (1 of 20; Fisher $p = 1.0$). In the twenty-seed run the entangled condition, whose objective rewards retention, retained earlier tasks better than the baseline (0.650 against 0.602; one-sided Mann-Whitney $p = 0.0015$; with verification drag 0.681, untested), while combined scores were indistinguishable ($p = 0.56$). In a complexity sweep (v4) its mean combined score exceeded the baseline’s at four of five levels (Cohen’s $d$ at most 0.46, untested), constant rather than compounding. A higher-level simulation, one prediction-side run of equations the author first stated, illustrates the same contrast, which its rules fix: capability is set to zero once safety falls to 0.01 or below. A six-model pilot, single-scorer and unblinded, found three models whose alignment scores fell under adversarial pressure while their capability scores held. These are toy-system and pilot results, not evidence that the dynamics hold in frontier systems; the paper informs the ARC Theory’s Laws IV and V, both laws under test, and decides none of their propositions.
+> Neural networks that adjusted their own training settings retained earlier regression tasks better when their objective rewarded retention. Does this give a system a reason to preserve the checks that protect people? The experiments measure the first effect. The second is the design question. In an initial single-seed run the capability-only baseline collapsed at cycle 76. The capability-only baseline survived in all ten seeds of the second run and all twenty of the third. One of twenty runs with the product objective collapsed (Fisher $p=1.0$). In the twenty-seed comparison the mean retention scores were 0.650 and 0.602 (reported one-sided Mann-Whitney $p=0.0015$). The additional verification condition scored 0.681 and also trained on earlier tasks while evaluating proposals. The combined-score test gave $p=0.56$ for superiority. A complexity sweep found a higher mean combined score at four of five levels (Cohen’s $d$ at most 0.46, untested). In all four implementations, the stored-weight update omitted the adjustable scale used by the forward pass. The published outcomes describe those implementations. In an unblinded six-model pilot with a single scorer, three models’ alignment scores fell under pressure while their capability scores held. These results inform the ARC Persistence Law and the ARC Embedding Law under test. A registered comparison would be needed to establish whether the design protects people during self-modification.
 
-From The ARC Theory (version 7.10), on the status of Laws IV and V:
+From The ARC Theory (version 7.12), on the status of Laws IV and V:
 
-> Laws IV and V (the ARC Persistence Law and the ARC Embedding Law) were added on 24 September 2026 and registered as laws on 15 October 2026 in version 1.103, each a law under test; their mathematics, set out at version 1.2 of 29 October 2026, is in development.
+> Laws IV and V (the ARC Persistence Law and the ARC Embedding Law) were added on 24 September 2026 and registered as laws on 15 October 2026 in version 1.103, each a law under test; their mathematics is set out in their own report, at version 1.4 of 22 November 2026, as conditional theorems with proofs, identities and kill conditions.
 
 https://doi.org/10.17605/OSF.IO/GW5MX
 
 ## Status and changes
 
-Version 3.13 gives the Introduction this paper’s own opening; Appendix B lists every version and correction, with its date. Internally source-checked and read in rendered form; not independent peer review.
+Version 3.14 clarifies the training rule and the measured outcomes. Internally source-checked and read in rendered form; not independent peer review.
 
 The complete historical material and correction record remain in the lettered appendices.
 
