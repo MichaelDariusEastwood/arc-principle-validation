@@ -28,8 +28,8 @@ Most folders hold these files:
 
 | # | Paper | Version | First Published | Key Experiment | Results Location |
 |---|-------|---------|-----------------|----------------|-----------------|
-| I | [The ARC Equation: does intelligence compound when each step builds on the last, or merely accumulate?](Paper-I-ARC-Principle/) | v1.22 (revised 18 Nov 2026) | 17 Jan 2026 | Scaling toolkit validation | `Paper-I-ARC-Principle/results/` |
-| II | [Blinded cross-architecture replication and the retraction of a super-linear estimate](Paper-II-Experimental-Validation/) | v2.24 (revised 19 Nov 2026) | 22 Jan 2026 | Cross-architecture compute scaling (6 models, 30 problems) | `Paper-II-Experimental-Validation/results/` and `experiments/results/` |
+| I | [The ARC Equation: does intelligence compound when each step builds on the last, or merely accumulate?](Paper-I-ARC-Principle/) | v1.23 (revised 23 Nov 2026) | 17 Jan 2026 | Scaling toolkit validation | `Paper-I-ARC-Principle/results/` |
+| II | [Blinded cross-family replication and the retraction of a super-linear estimate](Paper-II-Experimental-Validation/) | v2.25 (revised 23 Nov 2026) | 22 Jan 2026 | Cross-architecture compute scaling (6 models, 30 problems) | `Paper-II-Experimental-Validation/results/` and `experiments/results/` |
 | III | [The alignment scaling problem: do external AI safety approaches keep pace with recursive capability?](Paper-III-Alignment-Scaling-Problem/) | v1.25 (revised 18 Nov 2026) | 9 Feb 2026 | Alignment scaling v1-v5 (6 models, 6-7 blind scorers) | `experiments/results/v5-final/` |
 | IV.a | [When an AI reasons longer, does its alignment improve, stall or decline?](Paper-IV-a-Baked-In-vs-Computed-Alignment/) | v1.13 (revised 15 Nov 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
 | IV.b | [Do alignment gains level off as language models reason longer?](Paper-IV-b-Alignment-Saturation-at-Low-Depth/) | v1.13 (revised 15 Nov 2026) | 16 Mar 2026 | Shared v5 alignment experiment | `results/v5-final/` |
@@ -55,7 +55,7 @@ Most folders hold these files:
 | [The Eden Vision: what should the intelligence we build be for?](Eden-Vision/) | v2.15 (revised 16 Nov 2026) | 22 Feb 2026 | Philosophical position paper on alignment-as-parenting |
 | [Executive Summary: how can self-improving AI remain useful and aligned?](Executive-Summary/) | v3.29 (revised 15 Nov 2026) | 22 Feb 2026 | Grant-facing summary of the full programme |
 | [Master Table of Contents: where should a reader start, and how does every part of the programme fit together?](Master-Table-of-Contents/) | v3.32 (revised 17 Nov 2026) | 16 Mar 2026 | Navigation document linking all papers |
-| [The ARC Theory: once the self-improving minds we build exceed us, what determines what they do?](The-ARC-Theory/) | v7.11 (revised 18 Nov 2026) | 14 Aug 2026 | Growth, correction and alignment in recursive systems |
+| [The ARC Theory: once the self-improving minds we build exceed us, what determines what they do?](The-ARC-Theory/) | v7.12 (revised 22 Nov 2026) | 14 Aug 2026 | Growth, correction and alignment in recursive systems |
 | [The ARC Theory: does control survive recursive self-improvement?](The-ARC-Theory-Two-Page-Form/) | v3.7 (revised 16 Nov 2026) | 17 Aug 2026 | Does Control Survive Recursive Self-Improvement? The theory in two pages |
 | [Recursive Dynamics: what limits any system that improves itself, whatever it is made of?](Recursive-Dynamics-Founding-Paper/) | v3.6 (revised 17 Nov 2026) | 31 Aug 2026 | Recursive Dynamics: The Proposal of a Field |
 | [Polymathy and Neurodivergent Cognition: does visible high performance show that no support is needed?](Paper-C-PNP/) | v1.12 (revised 18 Nov 2026) | 3 Jul 2026 | Polymathy and Neurodivergent Cognition: the Polymathic Neurodivergent Profile (PNP) and the Capability-Adjustment Fallacy |
@@ -76,7 +76,7 @@ Most folders hold these files:
 | [Theory-level predictions registration](ARC-Theory-Predictions-Registration/) | v1.105 (revised 18 Nov 2026) | 8 Sep 2026 | The theory's twenty-three severable propositions: the twenty-two registered together on OSF on 8 September 2026 (DOI 10.17605/OSF.IO/P8CKQ) and P23, added by version 1.105 on 18 November 2026; the frozen v1.100, v1.102, v1.103 and v1.104 PDFs sit beside the current text |
 | [The Dated Prediction Register: when was each prediction made, and did it come before the evidence?](Dated-Prediction-Register/) | v2.2 (revised 9 Nov 2026) | 25 Aug 2026 | Forward predictions as one verifiable chain |
 | [Operational Definitions: what do the ARC Theory's quantities measure?](Operational-Definitions/) | v2.0.0 (revised 1 Nov 2026) | 22 Aug 2026 | The register of the programme's operational definitions of its terms (OSF DOI 10.17605/OSF.IO/GVQ82) |
-| [The mathematics of Laws IV and V: when do installed values fade with training, and does building them in first change that?](Laws-IV-V-Mathematics/) | v1.3 (revised 17 Nov 2026) | 1 Oct 2026 (v0.2.1) | The mathematics of the ARC Theory's Laws IV and V (added 24 September 2026), in development |
+| [The mathematics of Laws IV and V: when do installed values fade with training, and does building them in first change that?](Laws-IV-V-Mathematics/) | v1.4 (revised 22 Nov 2026) | 1 Oct 2026 (v0.2.1) | The mathematics of the ARC Theory's Laws IV and V (added 24 September 2026), in development |
 | [The ARC Alignment-Scaling Working Report](ARC-Alignment-Scaling-Working-Report/) | v1.1 (revised 11 Oct 2026) | commenced 10 Mar 2026 | The live laboratory notebook of the alignment-scaling work (OSF record j6mkb) |
 
 ---
