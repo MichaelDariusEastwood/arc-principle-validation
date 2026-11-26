@@ -148,3 +148,7 @@ The statements below correct those of this release note; the original text above
 7. The heading of the lead findings, "the two strongest, defensible results", is corrected as follows: the two lead findings are stated at the strength of their evidence in items 1 and 2 above, and neither is ranked as the strongest.
 
 8. Row V of the table of research papers (Stewardship Gene), which opens "Stakeholder care is the most robust intervention", is corrected as follows: a stakeholder-care intervention raised stakeholder-care scores in each of five analysable model runs (Paper V); the combined p is withdrawn (AQ-017), and the run was not blinded; it is not ranked against other interventions.
+
+## Correction of 26 November 2026
+
+In item 1 of the correction of 21 October 2026, the earlier Gemini value is ρ = +0.311 (p = 0.0032, on 88 alignment entries), as the run's analysis record carries it (`experiments/alignment-scaling__Papers-IV-a-b-c-d/results/v4/v4_analysis_gemini-flash_20260311_013243.json`); no record carries 0.275.
