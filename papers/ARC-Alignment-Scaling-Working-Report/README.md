@@ -1,23 +1,29 @@
-# The ARC Alignment-Scaling Working Report
+# The ARC Alignment-Scaling Experiment: does AI become more ethical as it reasons longer?
 
-**Kind:** a working report (the live laboratory notebook of the alignment-scaling work, commenced 10 March 2026)
-**Version:** v1.1
-**Version date:** 11 October 2026
+**Version:** 1.2
+**Revised:** 26 November 2026
+**First published:** 2026-03-14
 **Author:** Michael Darius Eastwood
 
 ## Summary
 
-In the report's own words (version 1.1):
+From the abstract (version 1.2):
 
-> Current ARC-Align running report covering the six-model blind benchmark, scorer architecture, blinding progression, and current alignment-scaling results.
+> Does AI become more ethical as it reasons longer? This working report is the dated laboratory notebook, kept since 10 March 2026, of the experiment built to measure that, with other models as judges. It records five versions of the experiment, each with its defects. Papers III and IV.a to IV.d report from its runs. In the unregistered March 2026 run (v5), six models from six providers gave 2,170 responses, each scored by five or six distinct model judges after a bundle of blinding steps. As the run’s pipeline printed them, the judged scores rose with the depth labels for three models, showed no statistically supported direction for two and fell for one; these classes describe scores, not properties of models. For five of the six, the deeper labels also changed an instruction naming what the rubric rewards, and an internal code review in October 2026 found that, for the three models that read flat or negative, the scoring endpoint’s output cap cut the deepest paraphrases before the judges saw them, and that judges scored paraphrases written by their own model. The result stands as one unregistered run under those caveats until a registered re-analysis of the stored responses reports. Two model families whose scores rose with depth in the earlier, unblinded experiment (v4) did not keep that direction in v5, but the runs differed in more than blinding, so no single cause is claimed. Whether alignment gains level off remains open. The notebook also records one model’s inconclusive error-decay fit and a partially blind pilot of a prompt-level ethical-reasoning instruction. Version 1.2 keeps every dated entry and corrects in place, with a dated marker, each statement the record no longer supports. The notebook tests none of the ARC Theory’s five laws, each a law under test.
 
-## Links
+## Status and changes
 
-- **Published page:** https://www.michaeldariuseastwood.com/research/reports/arc-align-scaling-report.html
-- **OSF record:** https://osf.io/j6mkb/
-- **Programme OSF DOI:** https://doi.org/10.17605/OSF.IO/6C5XB
-- **GitHub:** https://github.com/MichaelDariusEastwood/arc-principle-validation
+Version 1.2 gives the notebook its present title and form and groups its chapters by version of the experiment without renumbering them; Appendix E lists every version and correction. Internally source-checked and read in rendered form; not independent peer review.
 
-The PDF and the HTML are the version 1.1 files as deposited on OSF (j6mkb) on 15 October 2026. The PDF (SHA-256 4460c5531bf04fc03d4607824dc2af2fb7f89fb96149c21b60b45234caa29686) is byte-identical to the website's, and the HTML is the document export, not the website page. The text and citation companions are not in this folder yet. New versions retain these filenames, with their own commits.
+The complete historical material and correction record remain in the lettered appendices.
 
-The citation file, ARC-Alignment-Scaling-Working-Report.cff, is the version 1.1 citation metadata, the same bytes the website serves at /research/reports/arc-align-scaling-report.cff. Version 1.1 was released without a text export; the report's next version brings its text export with its PDF, its HTML and its citation file, on every mirror at once.
+## Files and sources
+
+- [PDF](ARC-Alignment-Scaling-Working-Report.pdf)
+- [Document HTML](ARC-Alignment-Scaling-Working-Report.html)
+- [Text](ARC-Alignment-Scaling-Working-Report.txt)
+- [Citation metadata](ARC-Alignment-Scaling-Working-Report.cff)
+- [LaTeX source](ARC-Alignment-Scaling-Working-Report-latex-source.tar.gz)
+- [OSF record](https://doi.org/10.17605/OSF.IO/J6MKB)
+
+These are the official document exports. Stable filenames preserve earlier versions in file history. Written research is CC BY 4.0; separately identified code, data and source records retain their stated licences.

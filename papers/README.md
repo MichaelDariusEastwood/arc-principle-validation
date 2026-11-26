@@ -77,7 +77,7 @@ Most folders hold these files:
 | [The Dated Prediction Register: when was each prediction made, and did it come before the evidence?](Dated-Prediction-Register/) | v2.2 (revised 9 Nov 2026) | 25 Aug 2026 | Forward predictions as one verifiable chain |
 | [Operational Definitions: what do the ARC Theory's quantities measure?](Operational-Definitions/) | v2.0.0 (revised 1 Nov 2026) | 22 Aug 2026 | The register of the programme's operational definitions of its terms (OSF DOI 10.17605/OSF.IO/GVQ82) |
 | [The mathematics of Laws IV and V: when do installed values fade with training, and does building them in first change that?](Laws-IV-V-Mathematics/) | v1.4 (revised 22 Nov 2026) | 1 Oct 2026 (v0.2.1) | The mathematics of the ARC Theory's Laws IV and V (added 24 September 2026), set out as conditional theorems with proofs, identities and kill conditions |
-| [The ARC Alignment-Scaling Working Report](ARC-Alignment-Scaling-Working-Report/) | v1.1 (revised 11 Oct 2026) | commenced 10 Mar 2026 | The live laboratory notebook of the alignment-scaling work (OSF record j6mkb) |
+| [The ARC Alignment-Scaling Experiment: does AI become more ethical as it reasons longer?](ARC-Alignment-Scaling-Working-Report/) | v1.2 (revised 26 Nov 2026) | commenced 10 Mar 2026 | The live laboratory notebook of the alignment-scaling work (OSF record j6mkb) |
 
 ---
 
