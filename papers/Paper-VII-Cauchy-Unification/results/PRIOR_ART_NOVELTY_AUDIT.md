@@ -1,3 +1,7 @@
+> **Note added 27 November 2026.** This file is kept as it was last revised in this repository on 21 October 2026; it was first committed on 27 June 2026. Nothing below the line has been changed; the SHA-256 of the file as it stood before this note is `3c78ac5d5e1263ad73db08c9580bcba07e6cdab46cc07fccc1632fdfabfa2b7d`. The four searches it records were run inside the programme. They are internal searches and not independent ones, and where the file calls them or their verdicts independent, that word is not the paper's. The thesis it audits names three families, with saturation among them. Paper VII (version 3.21, Theorem 1 and Proposition 1) states that Cauchy's four functional equations admit four families, linear, power law, exponential and logarithmic, and that a saturation curve rests on an assumed ceiling rather than on those equations. Section 2 of the paper credits the earlier work this record found, each for what it states.
+
+---
+
 # Prior-Art & Novelty Audit - the Cauchy Cluster (Paper VII, with Foundational & On the Origin of Scaling Laws)
 
 **Method.** Four independent, web-enabled prior-art searches were run in parallel across the
